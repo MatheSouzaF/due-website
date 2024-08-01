@@ -1,4 +1,4 @@
-function initInvista() {
+function swiperInvista() {
   const swiper = new Swiper('.swiper-container', {
     slidesPerView: 1.05,
     spaceBetween: 16,
@@ -13,7 +13,8 @@ function initInvista() {
       prevEl: '.swiper-btn-prev',
     },
   });
-
+}
+function hoverCard() {
   $('.card-invista').hover(
     function () {
       $(this).addClass('hover-invista');
@@ -33,6 +34,37 @@ function initInvista() {
       items.clearQueue().removeClass('visible');
     }
   );
+}
+
+function animationCards() {
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const cardsInvista = document.querySelectorAll('.card-invista');
+  
+  function pathCard() {
+    cardsInvista.forEach((card, i) => {
+      gsap.to(card, {
+        delay: i * 0.3,
+        duration: 1.5,
+        ease: "power2.out", // Adiciona um easer para suavizar a animação
+        onStart: () => card.classList.add('clipPath-invista'),
+      });
+    });
+  }
+  
+  gsap.from('.invista', {
+    scrollTrigger: {
+      trigger: '.invista',
+      ease: "power2.out", // Adiciona um easer para suavizar a 
+      start: 'top-=500',
+      onEnter: pathCard,
+    },
+  });
+}
+function initInvista() {
+  swiperInvista();
+  hoverCard();
+  animationCards();
 }
 
 export {initInvista};

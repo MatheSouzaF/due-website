@@ -28,4 +28,897 @@
 .input-color-form {
   color: #656565;
 }
+
+body.page-template-homepage .nossos-club-resorts {
+  padding: 120px 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-titulo_link {
+  margin-bottom: 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+body.page-template-homepage .nossos-club-resorts .box-titulo_link h2 {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.8px;
+  color: #002b36;
+  font-size: 40px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-titulo_link h2 br {
+    display: none;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-titulo_link .link-empreendimentos {
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  color: #002b36;
+  position: relative;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-titulo_link .link-empreendimentos {
+    display: none;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-titulo_link .link-empreendimentos::after {
+  content: "";
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  left: 0;
+  position: absolute;
+  background-color: #002b36;
+}
+body.page-template-homepage .nossos-club-resorts .box-titulo_link .link-empreendimentos:hover::after {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop {
+    display: none;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos {
+  cursor: pointer;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  height: 528px;
+}
+@media (min-width: 1600px) {
+  body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card {
+    height: 628px;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card::after {
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.2)));
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-midia {
+  width: 100%;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-midia .imagem-empreendimento {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-midia .video-empreendimento {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card:hover .video-empreendimento {
+  opacity: 1;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-label {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-label .label-informativo {
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.48px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  bottom: 24px;
+  padding: 0 24px;
+  width: 100%;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .container-text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .container-text .box-svg {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .localizacao-empreendimento {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 12px */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .nome-empreendimento {
+  color: #fff;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 100%;
+  letter-spacing: 0.56px;
+  margin-bottom: 18px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .box-informacoes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 32px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .box-informacoes .informacoes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 8px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos .box-card .box-textos-empreendimentos .box-informacoes .informacoes p {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.32px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos.hover-card .box-card::after {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos.hover-card .box-textos-empreendimentos {
+  bottom: -20px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos.hover-card .box-textos-empreendimentos .container-text .box-svg {
+  opacity: 1;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .card-empreendimentos.hover-card .box-textos-empreendimentos .box-informacoes .informacoes {
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons {
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  width: 100%;
+  height: 74px;
+  gap: 16px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons svg {
+  -webkit-filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+          filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  width: 80px;
+  height: 80px;
+  pointer-events: auto;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons svg circle {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons svg:hover {
+  scale: 1.02;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons svg:hover circle {
+  stroke-width: 2;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-desktop .swiper-empreendimento .box-buttons .swiper-button-disabled {
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile {
+    display: none;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile {
+  cursor: pointer;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card {
+  height: 528px;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card::after {
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.2)));
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-midia {
+  width: 100%;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-midia .imagem-empreendimento {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-label {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-label .label-informativo {
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: 0.48px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  bottom: 24px;
+  padding: 0 24px;
+  width: 100%;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .container-text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .container-text .box-svg {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .localizacao-empreendimento {
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 12px */
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .nome-empreendimento {
+  color: #fff;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 100%;
+  letter-spacing: 0.56px;
+  margin-bottom: 18px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .box-informacoes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 32px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .box-informacoes .informacoes {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 8px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile .box-card .box-textos-empreendimentos .box-informacoes .informacoes p {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.32px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile.hover-card .box-card::after {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile.hover-card .box-textos-empreendimentos {
+  bottom: -20px;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile.hover-card .box-textos-empreendimentos .container-text .box-svg {
+  opacity: 1;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .card-empreendimentos-mobile.hover-card .box-textos-empreendimentos .box-informacoes .informacoes {
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons {
+  display: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  width: 100%;
+  height: 74px;
+  gap: 16px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons svg {
+  -webkit-filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+          filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  width: 80px;
+  height: 80px;
+  pointer-events: auto;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons svg circle {
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons svg:hover {
+  scale: 1.02;
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons svg:hover circle {
+  stroke-width: 2;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+body.page-template-homepage .nossos-club-resorts .box-cards-empreendimentos-mobile .box-buttons .swiper-button-disabled {
+  opacity: 0;
+}
+body.page-template-homepage .nossos-club-resorts .link-empreendimentos-mobile {
+  width: 100%;
+  padding: 20px;
+}
+body.page-template-homepage .nossos-club-resorts .link-empreendimentos-mobile p {
+  font-size: 11px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nossos-club-resorts .link-empreendimentos-mobile {
+    display: none;
+  }
+}
+body.page-template-homepage .nosso-proposito {
+  position: relative;
+  margin: 64px 0;
+}
+@media (min-width: 1024px) {
+  body.page-template-homepage .nosso-proposito {
+    padding: 120px 0 195px;
+  }
+}
+body.page-template-homepage .nosso-proposito .shape-due {
+  position: absolute;
+  right: 0;
+  top: -120px;
+}
+@media (max-width: 1024px) {
+  body.page-template-homepage .nosso-proposito .shape-due {
+    display: none;
+  }
+}
+body.page-template-homepage .nosso-proposito .wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  padding: 0;
+  gap: 56px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nosso-proposito .wrapper {
+    padding: 0 48px;
+  }
+}
+@media (min-width: 1024px) {
+  body.page-template-homepage .nosso-proposito .wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 120px;
+  }
+}
+@media (min-width: 1200px) {
+  body.page-template-homepage .nosso-proposito .wrapper {
+    padding: 0 80px;
+  }
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left {
+  width: 100%;
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left {
+    padding: 0 24px;
+  }
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left .subtitulo-proposito {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0.28px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  color: #002b36;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left .subtitulo-proposito {
+    font-size: 16px;
+  }
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left .titulo-proposito {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 300;
+  color: #002b36;
+  line-height: 140%;
+  letter-spacing: 0.56px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  margin-bottom: 16px;
+  max-width: 463px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left .titulo-proposito {
+    font-size: 40px;
+  }
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-left .descricao-proposito {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%; /* 25.2px */
+  letter-spacing: 0.36px;
+  max-width: 463px;
+  margin-bottom: 40px;
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-right {
+  width: 100%;
+  position: relative;
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-right .video-proposito {
+  max-height: 584px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.page-template-homepage .nosso-proposito .wrapper .box-proposito-right .img-proposito {
+  -webkit-box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+          box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  position: absolute;
+  left: -111px;
+  bottom: -75px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+@media (max-width: 1024px) {
+  body.page-template-homepage .nosso-proposito .wrapper .box-proposito-right .img-proposito {
+    left: initial;
+    right: 24px;
+    bottom: -24px;
+    width: 200px;
+    height: 250px;
+  }
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .nosso-proposito .wrapper .box-proposito-right .img-proposito {
+    width: 145.979px;
+    height: 198px;
+  }
+}
+body.page-template-homepage .encante-se {
+  overflow: hidden;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .encante-se {
+    padding-bottom: 300px;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se {
+  padding: 190px 0;
+  position: relative;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+@media (max-width: 1024px) {
+  body.page-template-homepage .encante-se .container-encante-se {
+    padding: 190px 0 80px;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 1440px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+@media (min-width: 1024px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-img-encante-se {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-img-encante-se img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left {
+  position: relative;
+  z-index: 2;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .box-svg {
+  margin-bottom: 32px;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .titulo-encante-se {
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+  letter-spacing: 0.8px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  color: #fff;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .titulo-encante-se {
+    font-size: 40px;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .descricao-encante-se {
+  font-size: 20px;
+  max-width: 640px;
+  color: #fff;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 140%;
+  letter-spacing: 0.56px;
+  margin-bottom: 40px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+@media (min-width: 768px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .descricao-encante-se {
+    font-size: 28px;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .link-encante-se {
+  -webkit-transition: 0.6s !important;
+  transition: 0.6s !important;
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .titulo-encante-se {
+    text-align: center;
+  }
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-left .descricao-encante-se {
+    max-width: 300px;
+    text-align: center;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 440px;
+  background-color: #fff;
+  padding: 40px 56px;
+  -webkit-clip-path: inset(0 0 100% 0);
+          clip-path: inset(0 0 100% 0);
+  -webkit-transition: -webkit-clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: -webkit-clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+  transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1), -webkit-clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right.clipPath {
+  -webkit-clip-path: inset(0 0 -100px -100px);
+          clip-path: inset(0 0 -100px -100px);
+}
+@media (max-width: 768px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right {
+    padding: 40px 30px;
+    margin-bottom: -300px;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 24px;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios:not(:first-of-type):not(:last-of-type) {
+  padding: 20px 0;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios:not(:last-of-type) {
+  border-bottom: 1px solid #e9e3dd;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios:first-of-type {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios:last-of-type {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .lista-comentarios .titulo-comentarios {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  letter-spacing: 0.4px;
+  color: #002b36;
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .svg-caribe {
+  position: absolute;
+  bottom: -50px;
+  left: -60px;
+}
+@media (max-width: 1024px) {
+  body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .svg-caribe {
+    display: none;
+  }
+}
+body.page-template-homepage .encante-se .container-encante-se .wrapper .box-conteudo-right .svg-caribe svg {
+  width: 140px;
+  -webkit-filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+          filter: drop-shadow(3px 5px 2px rgba(0, 0, 0, 0.4));
+  height: 140px;
+}
+body.page-template-homepage .zoom .box-img-encante-se {
+  scale: 1.1;
+}
 /*# sourceMappingURL=home.css.map */

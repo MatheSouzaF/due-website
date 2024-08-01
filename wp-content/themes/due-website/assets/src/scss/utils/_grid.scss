@@ -13,7 +13,20 @@ $grid-sm-columns: 6;
     padding: 0 48px;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(lg) {
+    padding: 0 80px;
+    max-width: 2000px;
+    margin: 0 auto;
+  }
+}
+.wrapper-mobile {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 20px;
+  transition: 0.6s;
+  @include media-breakpoint-up(sm) {
+    padding: 0 48px;
   }
 
   @include media-breakpoint-up(lg) {

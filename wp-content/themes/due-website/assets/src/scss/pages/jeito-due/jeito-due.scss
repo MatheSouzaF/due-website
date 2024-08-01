@@ -1,0 +1,266 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+body.page-template-jeito-due {
+  .page-jeito-due {
+    .banner-jeito-due {
+      margin: 134px 0 74px;
+      @include media-breakpoint-up(md) {
+        margin: 212px 0 120px;
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 120px;
+        gap: 20px;
+        .titulo-jeito-due {
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          letter-spacing: 0.64px;
+          font-size: 22px;
+          color: $due-tertiary;
+          max-width: 645px;
+          @include media-breakpoint-up(sm) {
+            font-size: 32px;
+          }
+        }
+        .descricao-jeito-due {
+          color: $due-tertiary;
+          max-width: 447px;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.36px;
+          margin-bottom: 30px;
+          display: none;
+          @include media-breakpoint-up(sm) {
+            display: flex;
+          }
+        }
+      }
+      .box-image-banner {
+        @include media-breakpoint-down(sm) {
+          margin-bottom: 48px;
+        }
+        width: 100%;
+        img {
+          max-height: 720px;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .wrapper-mobile {
+        display: flex;
+        justify-content: flex-end;
+        .descricao-jeito-due-mobile {
+          color: $due-tertiary;
+          max-width: 447px;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.36px;
+          margin-bottom: 30px;
+          text-align: end;
+          @include media-breakpoint-up(sm) {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .proposito-jeito-due {
+      margin-bottom: 120px;
+      .wrapper {
+        .titulo-proposito-jeito-due {
+          max-width: 509px;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.64px;
+          padding-left: 32px;
+          border-left: 1px solid $due-tertiary;
+          margin-bottom: 40px;
+          @include media-breakpoint-up(sm) {
+            font-size: 32px;
+          }
+        }
+        .box-img-repeater {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          gap: 40px;
+          @include media-breakpoint-up(md) {
+            gap: 20px;
+            flex-direction: row;
+          }
+          .img-video {
+            position: relative;
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+            .button-play {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              //   width: 100%;
+              //   height: 100%;
+              transform: translate(-50%, -50%);
+              justify-content: center;
+              @include media-breakpoint-down(sm) {
+                width: 100%;
+                svg {
+                  width: 45px;
+                  height: 45px;
+                }
+              }
+            }
+          }
+          .modal {
+            display: none;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+          }
+
+          .modal__bg {
+            background: rgba(0, 0, 0, 0.8);
+            height: 100vh;
+            position: absolute;
+            width: 100%;
+          }
+
+          .modal__content {
+            background: $due-tertiary;
+            left: 50%;
+            padding: 6px;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            @include media-breakpoint-up(sm) {
+              width: 80%;
+              height: 80%;
+            }
+            .video-container {
+              height: 100%;
+              iframe {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+
+          .js-modal-close-btn {
+            font-size: 13px;
+            cursor: pointer;
+            position: absolute;
+            right: 25px;
+            top: 65px;
+            @include media-breakpoint-up(sm) {
+              top: 25px;
+            }
+            svg {
+              transition: 0.6s;
+            }
+            &:hover {
+              svg {
+                scale: 1.05;
+              }
+            }
+          }
+
+          .modal__content video {
+            width: 100%;
+            height: auto;
+            vertical-align: bottom;
+            margin-bottom: 8px;
+          }
+
+          .box-svg-text {
+            display: flex;
+            flex-direction: column;
+            gap: 64px;
+            .box-repeater {
+              display: flex;
+              flex-direction: column;
+              gap: 24px;
+              .text-box-repeater {
+                max-width: 347px;
+                min-width: 300px;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 140%;
+                letter-spacing: 0.36px;
+                color: $due-tertiary;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .reducao-social {
+        background-color: $background;
+      .container-social {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 64px 0 180px;
+        @include media-breakpoint-up(md) {
+          padding: 120px 0 180px;
+          flex-direction: row;
+        }
+        .box-texto-reducao-social {
+          transition: 0.6s;
+          padding: 0 20px;
+          max-width: 520px;
+          @include media-breakpoint-up(sm) {
+            padding: 0 0 0 48px;
+          }
+
+          @include media-breakpoint-up(lg) {
+            padding: 0 0 0 80px;
+          }
+          .titulo-reducao-social {
+            color: $due-tertiary;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 140%;
+            letter-spacing: 0.64px;
+            font-size: 24px;
+            transition: 0.6s;
+            margin-bottom: 24px;
+            @include media-breakpoint-up(sm) {
+              font-size: 32px;
+            }
+          }
+          .descricao-reducao-social {
+            p {
+              color: $due-tertiary;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 140%; /* 25.2px */
+              letter-spacing: 0.36px;
+              font-family: 'founders-grotesk', sans-serif;
+              font-size: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

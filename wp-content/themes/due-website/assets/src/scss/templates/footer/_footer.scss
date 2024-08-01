@@ -133,7 +133,70 @@
     position: absolute;
     bottom: -70px;
     right: -70px;
-    z-index: 1;
+    z-index: 0;
+  }
+  .rd-form {
+    .rd-section {
+      background-color: transparent !important;
+      .rd-column {
+        div {
+          background-color: transparent !important;
+          .bricks-form__field {
+            .bricks-form__input {
+              background-color: transparent !important;
+              font-family: 'terminal-test', sans-serif !important;
+              font-size: 16px !important;
+              font-style: normal !important;
+              font-weight: 400 !important;
+              line-height: 140% !important;
+              letter-spacing: 0.32px !important;
+            }
+            .bricks-form__static {
+              font-family: 'founders-grotesk', sans-serif !important;
+              font-size: 16px !important;
+              font-style: normal !important;
+              font-weight: 300 !important;
+              line-height: 140% !important;
+              letter-spacing: 0.32px !important;
+              a {
+                cursor: pointer;
+              }
+            }
+            option {
+              color: $due-tertiary !important;
+            }
+          }
+          .bricks-form__fieldset {
+            gap: 40px !important;
+          }
+          .select2-container {
+            .select2-choice {
+              background-color: transparent !important;
+            }
+          }
+          .bricks-form__submit {
+            width: fit-content !important;
+            .rd-button {
+              background-color: transparent !important;
+              padding: 20px 40px !important;
+              height: initial !important;
+              font-family: 'terminal-test', sans-serif !important;
+              font-size: 12px !important;
+              font-style: normal !important;
+              font-weight: 500 !important;
+              line-height: 140% !important;
+              letter-spacing: 0.48px !important;
+              text-transform: uppercase !important;
+              transition: 0.6s;
+              &:hover {
+                background-color: #fff !important;
+                color: $due-tertiary !important;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .box-links {
     display: flex;

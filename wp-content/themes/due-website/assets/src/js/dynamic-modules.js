@@ -35,6 +35,11 @@ function initDynamicModules() {
       moduleFunction: 'initPage',
     },
     {
+      selector: '.page-template-jeito-due',
+      modulePath: './pages/jeito-due/jeito-due.js',
+      moduleFunction: 'initJeitoDUE',
+    },
+    {
       selector: 'body',
       modulePath: './base/header.js',
       moduleFunction: 'initHeader',

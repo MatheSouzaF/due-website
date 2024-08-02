@@ -4,6 +4,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'terminal-test', sans-serif;
 }
+body{
+  overflow-x: hidden;
+}
 .lenis {
   &.lenis-smooth {
     scroll-behavior: auto;

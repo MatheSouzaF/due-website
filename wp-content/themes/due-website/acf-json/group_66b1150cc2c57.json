@@ -5,7 +5,7 @@
         {
             "key": "field_66b116f82385c",
             "label": "Nome",
-            "name": "nome",
+            "name": "empreendimento_nome",
             "aria-label": "",
             "type": "text",
             "instructions": "Insira o nome do empreendimento.",
@@ -251,5 +251,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722911419
+    "modified": 1722948259
 }

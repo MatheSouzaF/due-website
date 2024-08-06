@@ -23,6 +23,33 @@
             "append": ""
         },
         {
+            "key": "field_66b18a48a9423",
+            "label": "Status",
+            "name": "status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecione o status atual do empreendimento",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "pronto": "Pronto",
+                "obra": "Em obra",
+                "lancamento": "Lançamento"
+            },
+            "default_value": "pronto",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_66b116d72385b",
             "label": "Localização",
             "name": "localizacao_emprendimento",
@@ -224,5 +251,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722887371
+    "modified": 1722911419
 }

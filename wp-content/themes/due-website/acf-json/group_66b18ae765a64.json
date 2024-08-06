@@ -1,0 +1,179 @@
+{
+    "key": "group_66b18ae765a64",
+    "title": "CPT - Tipologia",
+    "fields": [
+        {
+            "key": "field_66b18ae766cb8",
+            "label": "Nome",
+            "name": "nome",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Nome da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b18b1766cb9",
+            "label": "Pertence a qual empreendimento",
+            "name": "pertence_a_qual_empreendimento",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Insira a qual empreendimento pertence essa tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": [],
+            "default_value": "orla",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66b18b7466cba",
+            "label": "Característica da tipologia",
+            "name": "caracteristica_da_tipologia",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira as caractrísticas da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66b18ba166cbb",
+                    "label": "Ícone SVG",
+                    "name": "icone_svg",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "Ícone SVG da caractrísticas da tipologia",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": 2,
+                    "mime_types": "",
+                    "parent_repeater": "field_66b18b7466cba"
+                },
+                {
+                    "key": "field_66b18be366cbc",
+                    "label": "Característica",
+                    "name": "caracteristica",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Texto da característica da tipologia",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66b18b7466cba"
+                }
+            ]
+        },
+        {
+            "key": "field_66b18c4566cbe",
+            "label": "Descrição da tipologia",
+            "name": "descricao_da_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Texto de descrição da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b18c7a66cbf",
+            "label": "Imagem",
+            "name": "imagem",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Imagem principal da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tipologias"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1722912194
+}

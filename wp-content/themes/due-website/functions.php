@@ -2,7 +2,7 @@
 
 // CPT
 include('app/models/empreendimento.php');
-// include('app/models/tipologia.php');
+include('app/models/tipologia.php');
 include('app/controllers/empreendimento-controller.php');
 
 // CONFIG

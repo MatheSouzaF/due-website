@@ -2,6 +2,7 @@ function bannerJeitoDUE() {
   const tituloJeito = document.querySelector('.titulo-jeito-due');
   const descricaoJeito = document.querySelector('.descricao-jeito-due');
   const imgBanner = document.querySelector('.box-image-banner');
+  
   let TLFADE = gsap.timeline();
 
   TLFADE.from(tituloJeito, {

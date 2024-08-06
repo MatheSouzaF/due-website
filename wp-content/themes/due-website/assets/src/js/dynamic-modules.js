@@ -40,6 +40,11 @@ function initDynamicModules() {
       moduleFunction: 'initJeitoDUE',
     },
     {
+      selector: '.page-template-iniciativas',
+      modulePath: './pages/iniciativas/iniciativas.js',
+      moduleFunction: 'initIniciativas',
+    },
+    {
       selector: 'body',
       modulePath: './base/header.js',
       moduleFunction: 'initHeader',

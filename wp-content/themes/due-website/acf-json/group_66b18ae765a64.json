@@ -277,7 +277,7 @@
             "aria-label": "",
             "type": "checkbox",
             "instructions": "Selecione os diferenciais do empreendimento",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -297,6 +297,31 @@
             "toggle": 0,
             "save_custom": 0,
             "custom_choice_button_text": "Adicionar nova escolha"
+        },
+        {
+            "key": "field_66bbb5b16a371",
+            "label": "Foto da tipologia",
+            "name": "foto_da_tipologia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Insira uma foto da tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": 738,
+            "min_height": 768,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -317,5 +342,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723577393
+    "modified": 1723577819
 }

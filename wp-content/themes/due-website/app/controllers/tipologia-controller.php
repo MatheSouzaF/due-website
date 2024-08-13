@@ -11,7 +11,6 @@ function acf_load_empreendimentos_field_choices($field)
     );
     
     $empreendimentos = new WP_Query($args);
-		var_dump($empreendimentos->have_post());
 
     if ($empreendimentos->have_posts()) {
         while ($empreendimentos->have_posts()) {

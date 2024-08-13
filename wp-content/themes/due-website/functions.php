@@ -4,6 +4,7 @@
 include('app/models/empreendimento.php');
 include('app/models/tipologia.php');
 include('app/controllers/empreendimento-controller.php');
+include('app/controllers/tipologia-controller.php');
 
 // CONFIG
 include('configure/configure.php');

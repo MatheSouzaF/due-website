@@ -2,23 +2,31 @@
 
 function acf_load_empreendimentos_field_choices($field)
 {
-	$field['pertence_a_qual_empreendimento'] = array();
+    $field['choices'] = array();
 
-	$choices = get_field('empreendimento_nome', 'option', false);
+    $args = array(
+        'post_type' => 'empreendimentos',
+        'posts_per_page' => -1, // Obter todos os posts
+        'post_status' => 'publish' // Somente posts publicados
+    );
+    
+    $empreendimentos = new WP_Query($args);
+		var_dump($empreendimentos->have_post());
 
-	$choices = explode("\n", $choices);
+    if ($empreendimentos->have_posts()) {
+        while ($empreendimentos->have_posts()) {
+            $empreendimentos->the_post();
 
-	$choices = array_map('trim', $choices);
+            $nome = get_field('empreendimento_nome');
 
-	if (is_array($choices)) {
+            if (!empty($nome)) {
+                $field['choices'][$nome] = $nome;
+            }
+        }
+        wp_reset_postdata();
+    }
 
-		foreach ($choices as $choice) {
-
-			$field['pertence_a_qual_empreendimento'][$choice] = $choice;
-		}
-	}
-
-	return $field;
+    return $field;
 }
 
 add_filter('acf/load_field/name=pertence_a_qual_empreendimento', 'acf_load_empreendimentos_field_choices');

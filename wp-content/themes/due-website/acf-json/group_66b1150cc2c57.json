@@ -1,6 +1,6 @@
 {
     "key": "group_66b1150cc2c57",
-    "title": "CPT - Empreendimentos",
+    "title": "Ficha técnica do empreendimento",
     "fields": [
         {
             "key": "field_66b116f82385c",
@@ -23,33 +23,6 @@
             "append": ""
         },
         {
-            "key": "field_66b18a48a9423",
-            "label": "Status",
-            "name": "status",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Selecione o status atual do empreendimento",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "pronto": "Pronto",
-                "obra": "Em obra",
-                "lancamento": "Lançamento"
-            },
-            "default_value": "pronto",
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 1,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_66b116d72385b",
             "label": "Localização",
             "name": "localizacao_emprendimento",
@@ -70,12 +43,138 @@
             "append": ""
         },
         {
-            "key": "field_66b116a62385a",
-            "label": "Texto informativo",
-            "name": "label_informativo_card",
+            "key": "field_66bb9c5be1639",
+            "label": "É um Studio?",
+            "name": "e_um_studio",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marque se o empreendimento é um Studio",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_66bb988fe1637",
+            "label": "Quantidade de quartos",
+            "name": "quantidade_de_quartos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66bb9c5be1639",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bb9e7263e13",
+                    "label": "Mínimo de quartos",
+                    "name": "minimo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bb988fe1637"
+                },
+                {
+                    "key": "field_66bb9e8863e14",
+                    "label": "Máximo de quartos",
+                    "name": "maximo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bb988fe1637"
+                }
+            ]
+        },
+        {
+            "key": "field_66b18a48a9423",
+            "label": "Estágio da Obra",
+            "name": "estagio_da_obra",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecione o status atual do empreendimento",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "lancamento": "Lançamento",
+                "obra": "Em obra",
+                "ultimas": "Últimas unidades",
+                "vendido": "100% vendido"
+            },
+            "default_value": "pronto",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66bba1f5beaa8",
+            "label": "Oferta",
+            "name": "oferta",
             "aria-label": "",
             "type": "text",
-            "instructions": "Insira o texto informativo para o rótulo do cartão.",
+            "instructions": "",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -84,37 +183,19 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "placeholder": "Texto Informativo",
+            "maxlength": 60,
+            "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_66b1165623859",
-            "label": "Cor de Fundo",
-            "name": "background_label_card",
-            "aria-label": "",
-            "type": "color_picker",
-            "instructions": "Selecione a cor de fundo para o rótulo do cartão.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "enable_opacity": 0,
-            "return_format": "string"
-        },
-        {
             "key": "field_66b115df23857",
-            "label": "Imagem",
-            "name": "imagem_nossos_club_resorts",
+            "label": "Foto",
+            "name": "foto_empreendimento",
             "aria-label": "",
             "type": "image",
             "instructions": "Adicione uma imagem representativa do empreendimento.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -123,8 +204,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": "",
-            "min_height": "",
+            "min_width": 405,
+            "min_height": 528,
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -135,11 +216,11 @@
         {
             "key": "field_66b1160b23858",
             "label": "Vídeo",
-            "name": "video_hover_empreendimento",
+            "name": "video_empreendimento",
             "aria-label": "",
             "type": "url",
             "instructions": "Insira a URL do vídeo para hover do empreendimento.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -148,89 +229,6 @@
             },
             "default_value": "",
             "placeholder": "URL do Vídeo"
-        },
-        {
-            "key": "field_66b1150d23856",
-            "label": "Link",
-            "name": "link",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "Insira as informações do link para o empreendimento.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": ""
-        },
-        {
-            "key": "field_66b117282385d",
-            "label": "Informações",
-            "name": "informacoes_empreendimento",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Adicionar linha",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66b118052385e",
-                    "label": "Ícone SVG",
-                    "name": "svg_informacao_empreendimento",
-                    "aria-label": "",
-                    "type": "file",
-                    "instructions": "Faça upload de um arquivo SVG para a informação.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "parent_repeater": "field_66b117282385d"
-                },
-                {
-                    "key": "field_66b118ce2385f",
-                    "label": "Texto da informação",
-                    "name": "texto_informacao_empreendimento",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Insira o texto descritivo da informação.",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "Texto",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66b117282385d"
-                }
-            ]
         }
     ],
     "location": [
@@ -251,5 +249,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722948259
+    "modified": 1723572858
 }

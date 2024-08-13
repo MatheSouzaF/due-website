@@ -133,7 +133,7 @@ function add_query_var_extract_acf()
 }
 // END
 
-function acf_load_color_field_choices($field)
+function acf_load_empreendimentos_field_choices($field)
 {
 	$field['pertence_a_qual_empreendimento'] = array();
 
@@ -154,4 +154,4 @@ function acf_load_color_field_choices($field)
 	return $field;
 }
 
-add_filter('acf/load_field/name=pertence_a_qual_empreendimento', 'acf_load_color_field_choices');
+add_filter('acf/load_field/name=pertence_a_qual_empreendimento', 'acf_load_empreendimentos_field_choices');

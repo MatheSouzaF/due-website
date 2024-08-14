@@ -4,7 +4,7 @@ function register_custom_post_type_empreendimento()
     $labels = array(
         'name'                => _x('Empreendimentos', 'Post Type General Name'),
         'singular_name'       => _x('Empreendimento', 'Post Type Singular Name'),
-        'menu_name'           => __('Empreendimentos'),
+        'menu_name'           => __('Empreendimentos - Ficha Técnica'),
         'all_items'           => __('Todos Empreendimentos'),
         'view_item'           => __('Ver Empreendimento'),
         'add_new_item'        => __('Adicionar Novo Empreendimento'),

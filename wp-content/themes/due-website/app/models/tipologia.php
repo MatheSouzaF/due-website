@@ -3,7 +3,7 @@ function register_custom_post_type_tipologia() {
     $labels = array(
         'name'                => _x('Tipologias', 'Post Type General Name'),
         'singular_name'       => _x('Tipologia', 'Post Type Singular Name'),
-        'menu_name'           => __('Tipologias'),
+        'menu_name'           => __('Tipologias - Ficha Técnica'),
         'all_items'           => __('Todas Tipologias'),
         'view_item'           => __('Ver Tipologia'),
         'add_new_item'        => __('Adicionar Nova Tipologia'),

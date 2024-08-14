@@ -36,17 +36,17 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "Lalalala": "Lalalala",
+                "Cais Eco Residencia": "Cais Eco Residencia"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
-            "allow_null": 0,
+            "allow_null": 1,
             "ui": 1,
             "ajax": 0,
-            "placeholder": "",
-            "pertence_a_qual_empreendimento": {
-                "": ""
-            }
+            "placeholder": ""
         },
         {
             "key": "field_66bbadb89514b",
@@ -54,7 +54,7 @@
             "name": "localizacao",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Será preenchido automaticamente ao salvar\/atualizar a tipologia",
             "required": 0,
             "conditional_logic": [
                 [
@@ -81,7 +81,7 @@
             "name": "estagio_da_obra",
             "aria-label": "",
             "type": "text",
-            "instructions": "",
+            "instructions": "Será preenchido automaticamente ao salvar\/atualizar a tipologia",
             "required": 0,
             "conditional_logic": [
                 [
@@ -130,15 +130,7 @@
             "type": "repeater",
             "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
             "required": 1,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66bbb24b285fe",
-                        "operator": "!=",
-                        "value": "1"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -342,5 +334,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723577819
+    "modified": 1723650518
 }

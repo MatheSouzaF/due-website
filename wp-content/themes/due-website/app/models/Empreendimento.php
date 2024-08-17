@@ -24,7 +24,7 @@ function register_custom_post_type_empreendimento()
         'supports'            => array('title', 'editor', 'thumbnail', 'revisions'),
         'public'              => true,
         'has_archive'         => true,
-        'rewrite'             => array('slug' => 'empreendimentos'),
+        'rewrite'             => array('slug' => 'empreendimentos-ficha-tec'),
         'show_in_rest'        => true,
         'menu_icon'           => 'dashicons-building',
     );

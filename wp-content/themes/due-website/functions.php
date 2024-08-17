@@ -1,12 +1,18 @@
 <?php
 
 // CPT
-include('app/models/empreendimento.php');
-include('app/models/single-empreendimento.php');
-include('app/models/tipologia.php');
+include('app/models/Empreendimento.php');
+include('app/models/SingleEmpreendimento.php');
+include('app/models/Tipologia.php');
 
-include('app/controllers/empreendimento-controller.php');
-include('app/controllers/tipologia-controller.php');
+include('app/controllers/EmpreendimentoController.php');
+include('app/controllers/TipologiaController.php');
+
+include('app/services/EmpreendimentoDetails.php');
+include('app/services/AcfHooks.php');
+include('app/services/InjectScripts.php');
+
+include('app/states/AjaxMethods.php');
 
 // CONFIG
 include('configure/configure.php');

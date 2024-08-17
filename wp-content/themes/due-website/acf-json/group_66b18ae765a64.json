@@ -37,8 +37,7 @@
                 "id": ""
             },
             "choices": {
-                "Lalalala": "Lalalala",
-                "Cais Eco Residencia": "Cais Eco Residencia"
+                "244": "Cais Eco"
             },
             "default_value": false,
             "return_format": "value",
@@ -54,7 +53,7 @@
             "name": "localizacao",
             "aria-label": "",
             "type": "text",
-            "instructions": "Será preenchido automaticamente ao salvar\/atualizar a tipologia",
+            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
             "required": 0,
             "conditional_logic": [
                 [
@@ -81,7 +80,7 @@
             "name": "estagio_da_obra",
             "aria-label": "",
             "type": "text",
-            "instructions": "Será preenchido automaticamente ao salvar\/atualizar a tipologia",
+            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
             "required": 0,
             "conditional_logic": [
                 [
@@ -334,5 +333,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723651102
+    "modified": 1723912006
 }

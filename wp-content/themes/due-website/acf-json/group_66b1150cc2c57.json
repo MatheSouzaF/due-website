@@ -133,6 +133,76 @@
             ]
         },
         {
+            "key": "field_66c0df9749b46",
+            "label": "Metragem",
+            "name": "metragem",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66c0df9749b47",
+                    "label": "Metragem mínima",
+                    "name": "metragem_minima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c0df9749b46"
+                },
+                {
+                    "key": "field_66c0df9749b48",
+                    "label": "Metragem máxima",
+                    "name": "metragem_maxima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c0df9749b46"
+                }
+            ]
+        },
+        {
             "key": "field_66b18a48a9423",
             "label": "Estágio da Obra",
             "name": "estagio_da_obra",
@@ -241,5 +311,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723912913
+    "modified": 1723916369
 }

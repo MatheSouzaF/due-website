@@ -7,6 +7,7 @@ include('app/models/Tipologia.php');
 
 include('app/controllers/EmpreendimentoController.php');
 include('app/controllers/TipologiaController.php');
+include('app/controllers/EmpreendimentoSinglePageController.php');
 
 include('app/services/EmpreendimentoDetails.php');
 include('app/services/AcfHooks.php');

@@ -60,7 +60,6 @@ jQuery(document).ready(function ($) {
                 tipologia_id: tipologiaId
             },
             success: function (response) {
-                console.log("🚀 ~ response:", response)
                 if (response.success) {
                     var minRooms = response.data.rooms[0].minimo_de_quartos
                     var maxRooms = response.data.rooms[0].maximo_de_quartos

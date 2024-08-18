@@ -37,10 +37,11 @@
                 "id": ""
             },
             "choices": {
+                "273": "Praia X",
                 "244": "Cais Eco"
             },
             "default_value": false,
-            "return_format": "value",
+            "return_format": "label",
             "multiple": 0,
             "allow_null": 1,
             "ui": 1,
@@ -333,5 +334,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723912006
+    "modified": 1724007756
 }

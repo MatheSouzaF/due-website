@@ -4,10 +4,12 @@
 include('app/models/Empreendimento.php');
 include('app/models/SingleEmpreendimento.php');
 include('app/models/Tipologia.php');
+include('app/models/SingleTipologia.php');
 
 include('app/controllers/EmpreendimentoController.php');
 include('app/controllers/TipologiaController.php');
 include('app/controllers/EmpreendimentoSinglePageController.php');
+include('app/controllers/TipologiaSinglePageController.php');
 
 include('app/services/EmpreendimentoDetails.php');
 include('app/services/AcfHooks.php');

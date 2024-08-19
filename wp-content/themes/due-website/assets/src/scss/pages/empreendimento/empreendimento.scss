@@ -1,0 +1,13 @@
+main.page-empreendimentos-tipologia {
+  padding: 120px 0;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .card-empreendimentos {
+    flex-basis: calc(33% - 16px);
+    padding: 0;
+  }
+}

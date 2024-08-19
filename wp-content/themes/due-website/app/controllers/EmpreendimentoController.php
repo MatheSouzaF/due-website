@@ -40,6 +40,7 @@ class EmpreendimentoController
                 $location = get_field('localizacao_emprendimento');
                 $isStudio = get_field('e_um_studio');
                 $rooms = get_field('quantidade_de_quartos');
+                $size = get_field('metragem');
                 $status = get_field('estagio_da_obra');
                 $offer = get_field('oferta');
                 $photo = get_field('foto_empreendimento');
@@ -52,6 +53,7 @@ class EmpreendimentoController
                     'location' => $location,
                     'isStudio' => $isStudio,
                     'rooms' => $rooms,
+                    'size' => $size,
                     'status' => $status,
                     'offer' => $offer,
                     'photo' => $photo,

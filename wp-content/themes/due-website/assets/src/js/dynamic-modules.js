@@ -59,6 +59,11 @@ function initDynamicModules() {
       modulePath: './base/modal-video.js',
       moduleFunction: 'initModal',
     },
+    {
+      selector: '.page-empreendimentos-tipologia',
+      modulePath: './pages/empreendimento/empreendimento.js',
+      moduleFunction: 'initEmpreendimento',
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

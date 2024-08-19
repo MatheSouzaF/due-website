@@ -37,4 +37,5 @@ function ajax_get_tipologia_by_id() {
   wp_die();
 }
 
+add_action('wp_ajax_get_project_by_id', 'ajax_get_project_by_id');
 add_action('wp_ajax_get_tipologia_by_id', 'ajax_get_tipologia_by_id');

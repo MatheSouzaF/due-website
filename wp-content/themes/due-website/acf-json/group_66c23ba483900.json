@@ -1,0 +1,600 @@
+{
+    "key": "group_66c23ba483900",
+    "title": "Single page da tipologia",
+    "fields": [
+        {
+            "key": "field_66c23be4e1420",
+            "label": "Hero",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1,
+            "selected": 0
+        },
+        {
+            "key": "field_66c23ba4e141f",
+            "label": "Tipologia",
+            "name": "tipologia",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "279": "Cais Eco Tipologia"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66c23bf0e1421",
+            "label": "Nome do empreendimento que pertence",
+            "name": "nome_do_empreendimento_que_pertence",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66c23c09e1422",
+            "label": "Localização (Praia - Cidade\/Estado)",
+            "name": "localizacao_tipologia_single",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66c23c21e1423",
+            "label": "Foto da tipologia",
+            "name": "foto_da_tipologia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": 736,
+            "min_height": 768,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66c23c37e1424",
+            "label": "Quantidade de quartos",
+            "name": "quantidade_de_quartos",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66c23c3fe1425",
+            "label": "Metragem",
+            "name": "metragem",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66c23ca1e1426",
+            "label": "Diferenciais e Características",
+            "name": "diferenciais_e_caracteristicas_select",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "2 vagas na garagem": "2 vagas na garagem",
+                "cozinha gourmet": "cozinha gourmet",
+                "sala ampliada": "sala ampliada",
+                "3 opções de plantas": "3 opções de plantas",
+                "2 pavimentos": "2 pavimentos",
+                "varanda": "varanda"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Adicionar nova escolha"
+        },
+        {
+            "key": "field_66c23e5ae1427",
+            "label": "Galeria Tour 360",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1,
+            "selected": 0
+        },
+        {
+            "key": "field_66c23e70e1428",
+            "label": "Imagens 360",
+            "name": "imagens_360",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66c23e89e1429",
+            "label": "Galeria",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1,
+            "selected": 0
+        },
+        {
+            "key": "field_66c23f0ee142a",
+            "label": "Imagens e vídeos",
+            "name": "imagens_e_videos",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66c24a34af1d7",
+            "label": "Opções de plantas",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 1,
+            "selected": 0
+        },
+        {
+            "key": "field_66c257c2af1da",
+            "label": "Planta",
+            "name": "planta",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66c259abf6129",
+                    "label": "Sufixo da planta",
+                    "name": "sufixo_da_planta",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Será exibido o nome da tipologia + sufixo. Ex: Rooftop I",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 8,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c25749af1d8",
+                    "label": "Quantidade de quartos",
+                    "name": "quantidade_de_quartos",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "1": "1",
+                        "2": "2",
+                        "3": "3",
+                        "4": "4",
+                        "5": "5",
+                        "6": "6"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "layout": "horizontal",
+                    "save_other_choice": 0,
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c25781af1d9",
+                    "label": "Metragem",
+                    "name": "metragem_planta",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c25809af1dc",
+                    "label": "Lista de características",
+                    "name": "lista_de_caracteristicas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66c25821af1dd",
+                            "label": "Características",
+                            "name": "caracteristicas",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66c25809af1dc"
+                        }
+                    ],
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c2585aaf1de",
+                    "label": "Quantidade de pavimentos",
+                    "name": "quantidade_de_pavimentos",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "unico": "Pavimento único",
+                        "dois": "2 pavimentos"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c258a0af1df",
+                    "label": "Cômodos do pavimento",
+                    "name": "comodos_do_pavimento",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66c2585aaf1de",
+                                "operator": "==",
+                                "value": "unico"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c258e2af1e0",
+                    "label": "Cômodos do primeiro pavimento",
+                    "name": "comodos_do_primeiro_pavimento",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66c2585aaf1de",
+                                "operator": "==",
+                                "value": "dois"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c258f1af1e1",
+                    "label": "Cômodos do segundo pavimento",
+                    "name": "comodos_do_segundo_pavimento",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66c2585aaf1de",
+                                "operator": "==",
+                                "value": "dois"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66c2593daf1e2",
+                    "label": "Imagens da planta",
+                    "name": "imagens_da_planta",
+                    "aria-label": "",
+                    "type": "gallery",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min": "",
+                    "max": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "insert": "append",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66c257c2af1da"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tipo_single_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724013260
+}

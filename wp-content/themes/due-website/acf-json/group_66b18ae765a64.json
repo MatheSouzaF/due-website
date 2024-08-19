@@ -1,0 +1,338 @@
+{
+    "key": "group_66b18ae765a64",
+    "title": "Ficha técnica da tipologia",
+    "fields": [
+        {
+            "key": "field_66b18ae766cb8",
+            "label": "Nome",
+            "name": "nome_da_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Nome da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b18b1766cb9",
+            "label": "Pertence a qual empreendimento",
+            "name": "pertence_a_qual_empreendimento",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Insira a qual empreendimento pertence essa tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "273": "Praia X",
+                "244": "Cais Eco"
+            },
+            "default_value": false,
+            "return_format": "label",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66bbadb89514b",
+            "label": "Localização",
+            "name": "localizacao",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66b18b1766cb9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66bbb17e285fa",
+            "label": "Estágio da obra",
+            "name": "estagio_da_obra",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66b18b1766cb9",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66bbb24b285fe",
+            "label": "É um Studio?",
+            "name": "e_um_studio",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marque se a tipologia é um Studio",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_66bbb1db285fb",
+            "label": "Quantidade de quartos",
+            "name": "quantidade_de_quartos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bbb1e9285fc",
+                    "label": "Mínimo de quartos",
+                    "name": "minimo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": 10,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                },
+                {
+                    "key": "field_66bbb221285fd",
+                    "label": "Máximo de quartos",
+                    "name": "maximo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": 10,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                }
+            ]
+        },
+        {
+            "key": "field_66bbb27c285ff",
+            "label": "Metragem",
+            "name": "metragem",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a metragem da tipologia, será exibido assim: 50 a 100m²",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bbb2ac28600",
+                    "label": "Metragem mínima",
+                    "name": "metragem_minima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb27c285ff"
+                },
+                {
+                    "key": "field_66bbb2c728601",
+                    "label": "Metragem máxima",
+                    "name": "metragem_maxima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb27c285ff"
+                }
+            ]
+        },
+        {
+            "key": "field_66bbb3345e98e",
+            "label": "Diferenciais",
+            "name": "diferenciais",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Selecione os diferenciais do empreendimento",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "piscina_privativa": "Piscina Privativa",
+                "beira_mar": "Beira-mar",
+                "jardim_integrado": "Jardim Integrado",
+                "sala_ampliada": "Sala Ampliada"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Adicionar nova escolha"
+        },
+        {
+            "key": "field_66bbb5b16a371",
+            "label": "Foto da tipologia",
+            "name": "foto_da_tipologia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Insira uma foto da tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": 738,
+            "min_height": 768,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tipologias"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1724007756
+}

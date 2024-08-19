@@ -132,3 +132,4 @@ function add_query_var_extract_acf()
   $wp->add_query_var('page_id_to_extract');
 }
 // END
+

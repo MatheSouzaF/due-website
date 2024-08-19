@@ -1,0 +1,315 @@
+{
+    "key": "group_66b1150cc2c57",
+    "title": "Ficha técnica do empreendimento",
+    "fields": [
+        {
+            "key": "field_66b116f82385c",
+            "label": "Nome",
+            "name": "empreendimento_nome",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Insira o nome do empreendimento.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Nome do Empreendimento",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b116d72385b",
+            "label": "Localização",
+            "name": "localizacao_emprendimento",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Insira a localização do empreendimento.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "Localização",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66bb9c5be1639",
+            "label": "É um Studio?",
+            "name": "e_um_studio",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marque se o empreendimento é um Studio",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_66bb988fe1637",
+            "label": "Quantidade de quartos",
+            "name": "quantidade_de_quartos",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bb9e7263e13",
+                    "label": "Mínimo de quartos",
+                    "name": "minimo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bb988fe1637"
+                },
+                {
+                    "key": "field_66bb9e8863e14",
+                    "label": "Máximo de quartos",
+                    "name": "maximo_de_quartos",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bb988fe1637"
+                }
+            ]
+        },
+        {
+            "key": "field_66c0df9749b46",
+            "label": "Metragem",
+            "name": "metragem",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66c0df9749b47",
+                    "label": "Metragem mínima",
+                    "name": "metragem_minima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c0df9749b46"
+                },
+                {
+                    "key": "field_66c0df9749b48",
+                    "label": "Metragem máxima",
+                    "name": "metragem_maxima",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c0df9749b46"
+                }
+            ]
+        },
+        {
+            "key": "field_66b18a48a9423",
+            "label": "Estágio da Obra",
+            "name": "estagio_da_obra",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecione o status atual do empreendimento",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "lancamento": "Lançamento",
+                "obra": "Em obra",
+                "ultimas": "Últimas unidades",
+                "vendido": "100% vendido"
+            },
+            "default_value": "pronto",
+            "return_format": "label",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66bba1f5beaa8",
+            "label": "Oferta",
+            "name": "oferta",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 60,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b115df23857",
+            "label": "Foto",
+            "name": "foto_empreendimento",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Adicione uma imagem representativa do empreendimento.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": 405,
+            "min_height": 528,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66b1160b23858",
+            "label": "Vídeo",
+            "name": "video_empreendimento",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Insira a URL do vídeo para hover do empreendimento.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "URL do Vídeo"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "empreendimentos"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1723916369
+}

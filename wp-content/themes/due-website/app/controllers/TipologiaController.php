@@ -20,13 +20,13 @@ class TipologiaController
     }
 
     /**
-     * Obtém todos os dados de um empreendimento específico.
+     * Obtém todos os dados de uma tipologia específico.
      * 
-     * @return array Um array associativo contendo as informações de um único empreendimento.
+     * @return array Um array associativo contendo as informações de um único tipologia.
      */
     public function getTipologiaByID($tipologiaId)
     {
-        // Define os argumentos para a consulta de um único empreendimento pelo ID
+        // Define os argumentos para a consulta de um único tipologia pelo ID
         $args = array(
             'post_type' => 'tipologias',
             'post__in' => array($tipologiaId), // Busca apenas pelo ID fornecido
@@ -36,23 +36,22 @@ class TipologiaController
         // Executa a consulta
         $query = new WP_Query($args);
 
-        $tipologia = null; // Variável para armazenar o projeto encontrado
+        $tipologia = null;
 
         // Se houver posts, percorre todos eles
         if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
 
-                // Obtém os campos ACF
-                $name = get_field('nome_da_tipologia');
-                $project = get_field('pertence_a_qual_empreendimento');
-                $location = get_field('localizacao');
-                $status = get_field('estagio_da_obra');
-                $isStudio = get_field('e_um_studio');
-                $rooms = get_field('quantidade_de_quartos');
-                $size = get_field('metragem');
-                $diffs = get_field('diferenciais');
-                $photo = get_field('foto_empreendimento');
+                $name = get_field('nome_da_tipologia', $tipologiaId);
+                $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
+                $location = get_field('localizacao_tipologia', $tipologiaId);
+                $status = get_field('estagio_da_obra_tipologia', $tipologiaId);
+                $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
+                $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
+                $size = get_field('metragem_tipologia', $tipologiaId);
+                $diffs = get_field('diferenciais_tipologia', $tipologiaId);
+                $photo = get_field('foto_da_tipologia', $tipologiaId);
 
                 // Adiciona os dados ao array de projeto
                 $tipologia = array(

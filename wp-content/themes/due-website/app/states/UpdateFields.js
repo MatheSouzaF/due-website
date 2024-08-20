@@ -61,11 +61,11 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    var minRooms = response.data.rooms[0].minimo_de_quartos
-                    var maxRooms = response.data.rooms[0].maximo_de_quartos
+                    var minRooms = response.data.rooms[0].minimo_de_quartos_tipologia
+                    var maxRooms = response.data.rooms[0].maximo_de_quartos_tipologia
 
-                    var minSize = response.data.size[0].metragem_minima
-                    var maxSize = response.data.size[0].metragem_maxima
+                    var minSize = response.data.size[0].metragem_minima_tipologia
+                    var maxSize = response.data.size[0].metragem_maxima_tipologia
 
                     //Empreendimento
                     $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);

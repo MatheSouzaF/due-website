@@ -91,15 +91,15 @@ class EmpreendimentoController
                 $query->the_post();
 
                 // Obtém os campos ACF
-                $name = get_field('empreendimento_nome');
-                $location = get_field('localizacao_emprendimento');
-                $isStudio = get_field('e_um_studio');
-                $rooms = get_field('quantidade_de_quartos');
-                $size = get_field('metragem');
-                $status = get_field('estagio_da_obra');
-                $offer = get_field('oferta');
-                $photo = get_field('foto_empreendimento');
-                $video = get_field('video_empreendimento');
+                $name = get_field('empreendimento_nome', $projectId);
+                $location = get_field('localizacao_emprendimento', $projectId);
+                $isStudio = get_field('e_um_studio', $projectId);
+                $rooms = get_field('quantidade_de_quartos', $projectId);
+                $size = get_field('metragem', $projectId);
+                $status = get_field('estagio_da_obra', $projectId);
+                $offer = get_field('oferta', $projectId);
+                $photo = get_field('foto_empreendimento', $projectId);
+                $video = get_field('video_empreendimento', $projectId);
 
                 // Adiciona os dados ao array de projeto
                 $project = array(

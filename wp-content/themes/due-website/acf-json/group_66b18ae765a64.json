@@ -37,6 +37,7 @@
                 "id": ""
             },
             "choices": {
+                "393": "Empreendimento 3",
                 "273": "Praia X",
                 "244": "Cais Eco"
             },
@@ -51,7 +52,7 @@
         {
             "key": "field_66bbadb89514b",
             "label": "Localização",
-            "name": "localizacao",
+            "name": "localizacao_tipologia",
             "aria-label": "",
             "type": "text",
             "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
@@ -78,7 +79,7 @@
         {
             "key": "field_66bbb17e285fa",
             "label": "Estágio da obra",
-            "name": "estagio_da_obra",
+            "name": "estagio_da_obra_tipologia",
             "aria-label": "",
             "type": "text",
             "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
@@ -105,7 +106,7 @@
         {
             "key": "field_66bbb24b285fe",
             "label": "É um Studio?",
-            "name": "e_um_studio",
+            "name": "e_um_studio_tipologia",
             "aria-label": "",
             "type": "true_false",
             "instructions": "Marque se a tipologia é um Studio",
@@ -125,7 +126,7 @@
         {
             "key": "field_66bbb1db285fb",
             "label": "Quantidade de quartos",
-            "name": "quantidade_de_quartos",
+            "name": "quantidade_de_quartos_tipologia",
             "aria-label": "",
             "type": "repeater",
             "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
@@ -147,7 +148,7 @@
                 {
                     "key": "field_66bbb1e9285fc",
                     "label": "Mínimo de quartos",
-                    "name": "minimo_de_quartos",
+                    "name": "minimo_de_quartos_tipologia",
                     "aria-label": "",
                     "type": "number",
                     "instructions": "",
@@ -170,7 +171,7 @@
                 {
                     "key": "field_66bbb221285fd",
                     "label": "Máximo de quartos",
-                    "name": "maximo_de_quartos",
+                    "name": "maximo_de_quartos_tipologia",
                     "aria-label": "",
                     "type": "number",
                     "instructions": "",
@@ -195,7 +196,7 @@
         {
             "key": "field_66bbb27c285ff",
             "label": "Metragem",
-            "name": "metragem",
+            "name": "metragem_tipologia",
             "aria-label": "",
             "type": "repeater",
             "instructions": "Insira a metragem da tipologia, será exibido assim: 50 a 100m²",
@@ -217,7 +218,7 @@
                 {
                     "key": "field_66bbb2ac28600",
                     "label": "Metragem mínima",
-                    "name": "metragem_minima",
+                    "name": "metragem_minima_tipologia",
                     "aria-label": "",
                     "type": "number",
                     "instructions": "",
@@ -240,7 +241,7 @@
                 {
                     "key": "field_66bbb2c728601",
                     "label": "Metragem máxima",
-                    "name": "metragem_maxima",
+                    "name": "metragem_maxima_tipologia",
                     "aria-label": "",
                     "type": "number",
                     "instructions": "",
@@ -265,7 +266,7 @@
         {
             "key": "field_66bbb3345e98e",
             "label": "Diferenciais",
-            "name": "diferenciais",
+            "name": "diferenciais_tipologia",
             "aria-label": "",
             "type": "checkbox",
             "instructions": "Selecione os diferenciais do empreendimento",
@@ -334,5 +335,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724007756
+    "modified": 1724157029
 }

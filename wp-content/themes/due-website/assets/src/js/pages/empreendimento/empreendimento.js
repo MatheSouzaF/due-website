@@ -93,6 +93,14 @@ async function empreendimentoPage() {
       return value.length > 0 ? value : null;
     }
 
+    function getFilterLabel(selector) {
+      const value = $(selector).find('input:checked').map(function () {
+        return this.value;
+      }).get();
+
+      return value.length > 0 ? value : null;
+    }
+
     function filterEmpreendimentos(empreendimentos) {
       const locationFilter = getFilterValue('#filter-location');
       const statusFilter = getFilterValue('#filter-status');
@@ -115,9 +123,52 @@ async function empreendimentoPage() {
       });
     }
 
+    function generateBadge(filterValue, filterType) {
+      const badgeTemplate = `
+        <span class="badge ${filterType}">
+          ${filterValue} ${filterType === 'rooms' ? " qto" : ""}
+          <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
+        </span>
+      `;
+
+      $('.filters-applied').append(badgeTemplate);
+    }
+
+    function updateBadges() {
+      $('.filters-applied').html(''); // Limpa os badges atuais
+
+      // Gerar badges para os filtros selecionados
+      const locationFilter = getFilterLabel('#filter-location');
+      const statusFilter = getFilterLabel('#filter-status');
+      const roomsFilter = getFilterLabel('#filter-rooms');
+
+      if (locationFilter) {
+        locationFilter.forEach(value => generateBadge(value, 'location'));
+      }
+
+      if (statusFilter) {
+        statusFilter.forEach(value => generateBadge(value, 'status'));
+      }
+
+      if (roomsFilter) {
+        roomsFilter.forEach(value => generateBadge(value, 'rooms'));
+      }
+
+      // Adiciona evento de clique nos botões de remoção dos badges
+      $('.remove-badge').on('click', function () {
+        const filterType = $(this).data('filter');
+        const filterValue = $(this).data('value');
+
+        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false); // Desmarca o filtro
+        updateBadges(); // Atualiza os badges
+        filterAndRender(); // Filtra e renderiza os empreendimentos
+      });
+    }
+
     function filterAndRender() {
       const filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
       renderEmpreendimentos(filteredEmpreendimentos);
+      updateBadges(); // Atualiza os badges ao filtrar
     }
 
     renderEmpreendimentos(empreendimentosData);

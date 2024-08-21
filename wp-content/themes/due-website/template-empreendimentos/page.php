@@ -59,10 +59,6 @@ wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
             <button class="form-control toggle-next ellipsis">Destino</button>
             <div class="checkboxes" id="filter-location">
               <div class="inner-wrap">
-                <label>
-                  <input type="checkbox" value="" class="ckkBox val" />
-                  <span></span>
-                </label><br>
               </div>
             </div>
           </div>
@@ -73,10 +69,6 @@ wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
             <button class="form-control toggle-next ellipsis">Estágio</button>
             <div class="checkboxes" id="filter-status">
               <div class="inner-wrap">
-                <label>
-                  <input type="checkbox" value="" class="ckkBox val" />
-                  <span></span>
-                </label><br>
               </div>
             </div>
           </div>
@@ -87,15 +79,16 @@ wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
             <button class="form-control toggle-next ellipsis">Nº de quartos</button>
             <div class="checkboxes" id="filter-rooms">
               <div class="inner-wrap">
-                <label>
-                  <input type="checkbox" value="" class="ckkBox val" />
-                  <span></span>
-                </label><br>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="empreendimentos-results">
+      <p class="results-text"></p>
+      <div class="filters-applied"></div>
     </div>
 
     <!-- Cards -->

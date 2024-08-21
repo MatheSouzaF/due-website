@@ -36,11 +36,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "393": "Empreendimento 3",
-                "273": "Praia X",
-                "244": "Cais Eco"
-            },
+            "choices": [],
             "default_value": false,
             "return_format": "label",
             "multiple": 0,
@@ -161,7 +157,7 @@
                     },
                     "default_value": "",
                     "min": 1,
-                    "max": 10,
+                    "max": 6,
                     "placeholder": "",
                     "step": "",
                     "prepend": "",
@@ -184,7 +180,7 @@
                     },
                     "default_value": "",
                     "min": 1,
-                    "max": 10,
+                    "max": 6,
                     "placeholder": "",
                     "step": "",
                     "prepend": "",
@@ -335,5 +331,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724157029
+    "modified": 1724262765
 }

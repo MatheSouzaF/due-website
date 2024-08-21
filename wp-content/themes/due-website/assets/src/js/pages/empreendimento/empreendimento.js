@@ -11,8 +11,9 @@ async function empreendimentoPage() {
 
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
+      const $resultsLength = $('.results-length');
+      $resultsLength.text(empreendimentos.length)
       $container.html('');
-      console.log("Container limpo.");
 
       if (empreendimentos.length === 0) {
         console.log("Nenhum empreendimento para exibir.");
@@ -135,9 +136,8 @@ async function empreendimentoPage() {
     }
 
     function updateBadges() {
-      $('.filters-applied').html(''); // Limpa os badges atuais
+      $('.filters-applied').html('');
 
-      // Gerar badges para os filtros selecionados
       const locationFilter = getFilterLabel('#filter-location');
       const statusFilter = getFilterLabel('#filter-status');
       const roomsFilter = getFilterLabel('#filter-rooms');
@@ -154,28 +154,100 @@ async function empreendimentoPage() {
         roomsFilter.forEach(value => generateBadge(value, 'rooms'));
       }
 
-      // Adiciona evento de clique nos botões de remoção dos badges
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-
-        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false); // Desmarca o filtro
-        updateBadges(); // Atualiza os badges
-        filterAndRender(); // Filtra e renderiza os empreendimentos
+      
+        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false);
+      
+        updateBadges();
+        buildFilterUrl();
+        filterAndRender();
       });
     }
+
+    function buildFilterUrl() {
+      const locationFilter = getFilterLabel('#filter-location');
+      const statusFilter = getFilterLabel('#filter-status');
+      const roomsFilter = getFilterLabel('#filter-rooms');
+    
+      const params = new URLSearchParams();
+    
+      if (locationFilter) {
+        const formattedLocation = locationFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        params.set('localizacao', formattedLocation);
+      }
+    
+      if (statusFilter) {
+        const formattedStatus = statusFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        params.set('estagio', formattedStatus);
+      }
+    
+      if (roomsFilter) {
+        const formattedRooms = roomsFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        params.set('qtos', formattedRooms);
+      }
+    
+      const newUrl = `${window.location.pathname}${params.toString().length ? "?" : ""}${params.toString()}`;
+      window.history.pushState({}, '', newUrl);
+    }
+
+    function applyFiltersFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+    
+      const locationFilter = params.get('localizacao');
+      const statusFilter = params.get('estagio');
+      const roomsFilter = params.get('qtos');
+    
+      if (locationFilter) {
+        locationFilter.split(',').forEach(value => {
+          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          $(`#filter-location input[value="${formattedValue}"]`).click();
+        });
+      }
+    
+      if (statusFilter) {
+        statusFilter.split(',').forEach(value => {
+          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          $(`#filter-status input[value="${formattedValue}"]`).click();
+        });
+      }
+    
+      if (roomsFilter) {
+        roomsFilter.split(',').forEach(value => {
+          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          $(`#filter-rooms input[value="${formattedValue}"]`).click();
+        });
+      }
+    
+      filterAndRender();
+    }
+    
 
     function filterAndRender() {
       const filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
       renderEmpreendimentos(filteredEmpreendimentos);
-      updateBadges(); // Atualiza os badges ao filtrar
+      updateBadges();
     }
 
     renderEmpreendimentos(empreendimentosData);
 
-    $('#filter-location input.ckkBox').on('change', filterAndRender);
-    $('#filter-status input.ckkBox').on('change', filterAndRender);
-    $('#filter-rooms input.ckkBox').on('change', filterAndRender);
+    $('#filter-location input.ckkBox').on('change', function () {
+      filterAndRender();
+      buildFilterUrl();
+    });
+
+    $('#filter-status input.ckkBox').on('change', function () {
+      filterAndRender();
+      buildFilterUrl();
+    });
+
+    $('#filter-rooms input.ckkBox').on('change', function () {
+      filterAndRender();
+      buildFilterUrl();
+    });
+
+    applyFiltersFromUrl();
 
   } catch (error) {
     console.error('Erro ao carregar os empreendimentos:', error);

@@ -37,20 +37,28 @@ function setCheckboxSelectLabels(filters) {
     const checkboxes = $(wrapper).find('.ckkBox');
     const label = $(wrapper).find('.checkboxes').attr('id');
     let prevText = '';
-    
+
     checkboxes.each(function () {
       const button = $(wrapper).find('button');
+      const numberOfChecked = $(wrapper).find('input.val:checkbox:checked').length;
+
       if ($(this).prop('checked')) {
         const text = $(this).next().html();
         let btnText = prevText + text;
-        const numberOfChecked = $(wrapper).find('input.val:checkbox:checked').length;
+
         if (numberOfChecked >= 4) {
           btnText = numberOfChecked + ' ' + label + ' selected';
         }
-        $(button).text(btnText);
+
+        $(this).text(btnText);
         prevText = btnText + ', ';
+
+        $(this).addClass('show-after');
+      } else {
+        $(this).removeClass('show-after');
       }
     });
+
   });
 }
 

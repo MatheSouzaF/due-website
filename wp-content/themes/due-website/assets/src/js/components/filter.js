@@ -3,7 +3,7 @@ export function renderFilters(filters, options) {
   setCheckboxSelectLabels(filters);
 
   $('.toggle-next').click(function () {
-    $('.checkboxes').hide();
+    $('.checkboxes').not($(this).next('.checkboxes')).hide();
     $(this).next('.checkboxes').slideToggle(400);
   });
 
@@ -27,7 +27,7 @@ function populateFilters(filters, options) {
       const span = $('<span>').text(option.label);
 
       checkboxLabel.append(checkbox).append(span);
-      innerWrap.append(checkboxLabel).append('<br>');
+      innerWrap.append(checkboxLabel);
     });
   });
 }

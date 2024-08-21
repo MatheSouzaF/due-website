@@ -3,6 +3,7 @@ export function renderFilters(filters, options) {
   setCheckboxSelectLabels(filters);
 
   $('.toggle-next').click(function () {
+    $('.checkboxes').hide();
     $(this).next('.checkboxes').slideToggle(400);
   });
 

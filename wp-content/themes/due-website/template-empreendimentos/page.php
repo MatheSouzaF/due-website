@@ -42,51 +42,63 @@ wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
 
 <main class="page-empreendimentos-tipologia">
   <div class="wrapper">
-    <div class="filter-container">
-      <hr>
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control toggle-next ellipsis">Destino</button>
-          <div class="checkboxes" id="filter-location">
-            <div class="inner-wrap">
-              <label>
-                <input type="checkbox" value="" class="ckkBox val" />
-                <span></span>
-              </label><br>
+    <div class="empreendimentos-header">
+      <div class="empreendimento-tabs">
+        <a rel="stylesheet" href="#">
+          <h2 class="active">EMPREENDIMENTOS</h2>
+        </a>
+        <a rel="stylesheet" href="#">
+          <h2>TIPOLOGIAS</h2>
+        </a>
+      </div>
+
+      <div class="filter-container">
+        <hr>
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control toggle-next ellipsis">Destino</button>
+            <div class="checkboxes" id="filter-location">
+              <div class="inner-wrap">
+                <label>
+                  <input type="checkbox" value="" class="ckkBox val" />
+                  <span></span>
+                </label><br>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control toggle-next ellipsis">Estágio</button>
-          <div class="checkboxes" id="filter-status">
-            <div class="inner-wrap">
-              <label>
-                <input type="checkbox" value="" class="ckkBox val" />
-                <span></span>
-              </label><br>
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control toggle-next ellipsis">Estágio</button>
+            <div class="checkboxes" id="filter-status">
+              <div class="inner-wrap">
+                <label>
+                  <input type="checkbox" value="" class="ckkBox val" />
+                  <span></span>
+                </label><br>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control toggle-next ellipsis">Nº de quartos</button>
-          <div class="checkboxes" id="filter-rooms">
-            <div class="inner-wrap">
-              <label>
-                <input type="checkbox" value="" class="ckkBox val" />
-                <span></span>
-              </label><br>
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control toggle-next ellipsis">Nº de quartos</button>
+            <div class="checkboxes" id="filter-rooms">
+              <div class="inner-wrap">
+                <label>
+                  <input type="checkbox" value="" class="ckkBox val" />
+                  <span></span>
+                </label><br>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Cards -->
     <section class="empreendimentos cards">
       <!-- Template do card de empreendimento -->
     </section>
@@ -122,8 +134,8 @@ wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
                         <path
                           d="M7.91185 5.14562C7.91185 6.75052 6.17451 7.7535 4.78455 6.95116C4.13951 6.5787 3.74219 5.89054 3.74219 5.14562C3.74219 3.54072 5.47953 2.53752 6.86949 3.34008C7.51453 3.71254 7.91185 4.4007 7.91185 5.14562Z"
                           stroke="white" stroke-width="1.03125" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M0.613281 1.3833V10.1129" stroke="white" stroke-width="1.03125"
-                          stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M0.613281 1.3833V10.1129" stroke="white" stroke-width="1.03125" stroke-linecap="round"
+                          stroke-linejoin="round" />
                         <path d="M20.0173 13.3042V10.1133H0.613281V13.3042" stroke="white" stroke-width="1.03125"
                           stroke-linecap="round" stroke-linejoin="round" />
                         <path

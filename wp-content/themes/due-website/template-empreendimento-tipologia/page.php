@@ -7,6 +7,51 @@ get_header();
 
 <main class="page-empreendimentos-tipologia">
   <div class="wrapper">
+    <div class="filter-container">
+      <hr>
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control toggle-next ellipsis">Destino</button>
+          <div class="checkboxes" id="filter-location">
+            <div class="inner-wrap">
+              <label>
+                <input type="checkbox" value="" class="ckkBox val" />
+                <span></span>
+              </label><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control toggle-next ellipsis">Estágio</button>
+          <div class="checkboxes" id="filter-status">
+            <div class="inner-wrap">
+              <label>
+                <input type="checkbox" value="" class="ckkBox val" />
+                <span></span>
+              </label><br>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control toggle-next ellipsis">Nº de quartos</button>
+          <div class="checkboxes" id="filter-rooms">
+            <div class="inner-wrap">
+              <label>
+                <input type="checkbox" value="" class="ckkBox val" />
+                <span></span>
+              </label><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <section class="empreendimentos cards">
       <!-- Template do card de empreendimento -->
       <template id="empreendimento-template">

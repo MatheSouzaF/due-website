@@ -1,15 +1,19 @@
 <?php
 
-// CPT
+// Models
 include('app/models/Empreendimento.php');
 include('app/models/SingleEmpreendimento.php');
 include('app/models/Tipologia.php');
 include('app/models/SingleTipologia.php');
 
+// Controllers
 include('app/controllers/EmpreendimentoController.php');
 include('app/controllers/TipologiaController.php');
 include('app/controllers/EmpreendimentoSinglePageController.php');
 include('app/controllers/TipologiaSinglePageController.php');
+
+// API
+include('app/api/EmpreendimentosRestController.php');
 
 include('app/services/EmpreendimentoDetails.php');
 include('app/services/AcfHooks.php');

@@ -8,41 +8,6 @@
  */
 class EmpreendimentoController
 {
-    private $projectDetails;
-
-    /**
-     * Construtor da classe EmpreendimentoController.
-     * 
-     * Inicializa a classe ProjectDetails para permitir o acesso aos dados dos empreendimentos.
-     */
-    public function __construct()
-    {
-        $this->projectDetails = new ProjectDetails();
-    }
-
-    /**
-     * Obtém todos os detalhes de um empreendimento com base no ID.
-     * 
-     * @param int $projectId ID do post do empreendimento.
-     * @return array Um array associativo contendo todos os campos e seus valores.
-     */
-    public function getProjectDetailsById($projectId)
-    {
-        return $this->projectDetails->getAllDetails($projectId);
-    }
-
-    /**
-     * Obtém um campo específico de um empreendimento.
-     * 
-     * @param int $projectId ID do post do empreendimento.
-     * @param string $fieldName Nome do campo ACF que se deseja obter.
-     * @return mixed O valor do campo solicitado.
-     */
-    public function getSpecificField($projectId, $fieldName)
-    {
-        return $this->projectDetails->getField($fieldName, $projectId);
-    }
-
     /**
      * Obtém todos os dados de todos os empreendimentos disponíveis.
      * 
@@ -75,6 +40,7 @@ class EmpreendimentoController
                 $location = get_field('localizacao_emprendimento');
                 $isStudio = get_field('e_um_studio');
                 $rooms = get_field('quantidade_de_quartos');
+                $size = get_field('metragem');
                 $status = get_field('estagio_da_obra');
                 $offer = get_field('oferta');
                 $photo = get_field('foto_empreendimento');
@@ -87,6 +53,7 @@ class EmpreendimentoController
                     'location' => $location,
                     'isStudio' => $isStudio,
                     'rooms' => $rooms,
+                    'size' => $size,
                     'status' => $status,
                     'offer' => $offer,
                     'photo' => $photo,
@@ -124,15 +91,15 @@ class EmpreendimentoController
                 $query->the_post();
 
                 // Obtém os campos ACF
-                $name = get_field('empreendimento_nome');
-                $location = get_field('localizacao_emprendimento');
-                $isStudio = get_field('e_um_studio');
-                $rooms = get_field('quantidade_de_quartos');
-                $size = get_field('metragem');
-                $status = get_field('estagio_da_obra');
-                $offer = get_field('oferta');
-                $photo = get_field('foto_empreendimento');
-                $video = get_field('video_empreendimento');
+                $name = get_field('empreendimento_nome', $projectId);
+                $location = get_field('localizacao_emprendimento', $projectId);
+                $isStudio = get_field('e_um_studio', $projectId);
+                $rooms = get_field('quantidade_de_quartos', $projectId);
+                $size = get_field('metragem', $projectId);
+                $status = get_field('estagio_da_obra', $projectId);
+                $offer = get_field('oferta', $projectId);
+                $photo = get_field('foto_empreendimento', $projectId);
+                $video = get_field('video_empreendimento', $projectId);
 
                 // Adiciona os dados ao array de projeto
                 $project = array(

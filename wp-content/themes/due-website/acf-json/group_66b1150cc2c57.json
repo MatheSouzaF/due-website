@@ -27,20 +27,28 @@
             "label": "Localização",
             "name": "localizacao_emprendimento",
             "aria-label": "",
-            "type": "text",
+            "type": "select",
             "instructions": "Insira a localização do empreendimento.",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "Localização",
-            "prepend": "",
-            "append": ""
+            "choices": {
+                "Muro Alto (PE)": "Muro Alto (PE)",
+                "Praia dos Carneiros (PE)": "Praia dos Carneiros (PE)",
+                "Praia do Cupe (PE)": "Praia do Cupe (PE)",
+                "Poço da Panela (PE)": "Poço da Panela (PE)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_66bb9c5be1639",
@@ -99,8 +107,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": "",
-                    "max": "",
+                    "min": 1,
+                    "max": 6,
                     "placeholder": "",
                     "step": "",
                     "prepend": "",
@@ -122,8 +130,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": "",
-                    "max": "",
+                    "min": 1,
+                    "max": 6,
                     "placeholder": "",
                     "step": "",
                     "prepend": "",
@@ -138,7 +146,7 @@
             "name": "metragem",
             "aria-label": "",
             "type": "repeater",
-            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 20 a 80m²",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -311,5 +319,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723916369
+    "modified": 1724263080
 }

@@ -31,10 +31,8 @@ if ($query->have_posts()) {
   wp_reset_postdata();
 }
 
-wp_enqueue_script('empreendimento-script', get_template_directory_uri() . '/assets/src/js/pages/empreendimento/empreendimento.js', ['jquery'], ASSETS_VERSION, true);
-
 // Passar os dados para o JavaScript
-wp_localize_script('empreendimento-script', 'EmpreendimentosData', array(
+wp_localize_script('main', 'EmpreendimentosData', array(
   'empreendimentos' => $empreendimentos,
 ));
 

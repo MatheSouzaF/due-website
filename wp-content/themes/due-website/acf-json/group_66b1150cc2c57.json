@@ -239,6 +239,26 @@
             "placeholder": ""
         },
         {
+            "key": "field_66ce0abe08f6c",
+            "label": "Título Oferta",
+            "name": "tituloOferta",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66bba1f5beaa8",
             "label": "Oferta",
             "name": "oferta",
@@ -274,8 +294,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": 405,
-            "min_height": 528,
+            "min_width": "",
+            "min_height": "",
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -288,7 +308,7 @@
             "label": "Vídeo",
             "name": "video_empreendimento",
             "aria-label": "",
-            "type": "url",
+            "type": "file",
             "instructions": "Insira a URL do vídeo para hover do empreendimento.",
             "required": 0,
             "conditional_logic": 0,
@@ -297,8 +317,11 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "placeholder": "URL do Vídeo"
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
@@ -319,5 +342,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724263080
+    "modified": 1724854388
 }

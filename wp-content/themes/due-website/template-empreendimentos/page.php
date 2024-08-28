@@ -24,6 +24,7 @@ if ($query->have_posts()) {
       'size' => get_field('metragem'),
       'status' => get_field('estagio_da_obra'),
       'offer' => get_field('oferta'),
+      'tituloOffer' => get_field('tituloOferta'),
       'photo' => get_field('foto_empreendimento'),
       'video' => get_field('video_empreendimento'),
     );
@@ -35,7 +36,6 @@ if ($query->have_posts()) {
 wp_localize_script('main', 'EmpreendimentosData', array(
   'empreendimentos' => $empreendimentos,
 ));
-
 ?>
 
 <main class="page-empreendimentos-tipologia">
@@ -162,7 +162,7 @@ wp_localize_script('main', 'EmpreendimentosData', array(
         </a>
         <div class="box-valores">
           <div class="valores">
-            <p class="entradas founders-grotesk">Entradas a partir de</p>
+            <p class="entradas founders-grotesk"></p>
             <p class="valor founders-grotesk"></p>
           </div>
           <div class="fale-com-time">
@@ -175,7 +175,12 @@ wp_localize_script('main', 'EmpreendimentosData', array(
         </div>
       </div>
     </template>
+
   </div>
+
+  <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
+  <?php get_template_part('template-invista/invista'); ?>
+
 </main>
 
 <?php

@@ -301,9 +301,12 @@ function cardHover() {
   });
 }
 
+
 async function initEmpreendimento() {
   await empreendimentoPage();
   cardHover();
+  swiperDiferenciais();
+  swiperGaleria();
 }
 
 export {initEmpreendimento};

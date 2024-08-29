@@ -1,4 +1,4 @@
-<section class="invista sections-spacing">
+<section class="invista sections-spacing" id="invistaSwiper">
     <div class="wrapper">
         <div class="label-invista">
             <p class="terminal-test"><?php echo get_field('label_invista', 'options'); ?></p>

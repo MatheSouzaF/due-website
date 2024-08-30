@@ -16,8 +16,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -34,7 +34,14 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -137,8 +144,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -215,8 +222,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -273,8 +280,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -336,8 +343,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -468,8 +475,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -560,8 +567,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -590,6 +597,58 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_66cf25f3f199e",
+            "label": "Tipologia",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "choices": {
+                "443": "Térreo"
+            }
+        },
+        {
+            "key": "field_66cf2682bab33",
+            "label": "",
+            "name": "",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "tipologias"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "return_format": "object",
+            "min": "",
+            "max": "",
+            "elements": "",
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_66c0d947ca8e4",
             "label": "Diferenciais do empreendimento",
             "name": "",
@@ -603,8 +662,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -692,5 +751,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723915393
+    "modified": 1724852184
 }

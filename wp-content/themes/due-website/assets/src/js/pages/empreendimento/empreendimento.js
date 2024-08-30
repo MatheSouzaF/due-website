@@ -1,22 +1,21 @@
-import { getEmpreendimentos } from "../../services/EmpreendimentoService";
-import { renderFilters } from "../../components/filter";
+import {getEmpreendimentos} from '../../services/EmpreendimentoService';
+import {renderFilters} from '../../components/filter';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
 
   try {
-
     // Empreendimentos passados via wp_localize
     const empreendimentosData = EmpreendimentosData.empreendimentos;
 
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
       const $resultsLength = $('.results-length');
-      $resultsLength.text(empreendimentos.length)
+      $resultsLength.text(empreendimentos.length);
       $container.html('');
 
       if (empreendimentos.length === 0) {
-        console.log("Nenhum empreendimento para exibir.");
+        console.log('Nenhum empreendimento para exibir.');
         return;
       }
 
@@ -24,17 +23,32 @@ async function empreendimentoPage() {
         const template = document.getElementById('empreendimento-template');
         const cardTemplate = template.content.cloneNode(true);
 
-        $(cardTemplate).find('.nome-empreendimento').text(empreendimento.name || 'N/A');
-        $(cardTemplate).find('.localizacao-empreendimento').text(empreendimento.location || 'N/A');
-        $(cardTemplate).find('.label-informativo').text(empreendimento.status || 'N/A');
+        $(cardTemplate)
+          .find('.nome-empreendimento')
+          .text(empreendimento.name || 'N/A');
+        $(cardTemplate)
+          .find('.localizacao-empreendimento')
+          .text(empreendimento.location || 'N/A');
+        $(cardTemplate)
+          .find('.label-informativo')
+          .text(empreendimento.status || 'N/A');
 
         const quartos = empreendimento.rooms && empreendimento.rooms[0];
-        $(cardTemplate).find('.info-quartos').text(quartos ? `${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} quartos` : 'N/A');
+        $(cardTemplate)
+          .find('.info-quartos')
+          .text(quartos ? `${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} quartos` : 'N/A');
 
         const tamanho = empreendimento.size && empreendimento.size[0];
-        $(cardTemplate).find('.info-tamanho').text(tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A');
+        $(cardTemplate)
+          .find('.info-tamanho')
+          .text(tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A');
 
-        $(cardTemplate).find('.valor').text(empreendimento.offer || 'N/A');
+        $(cardTemplate)
+          .find('.valor')
+          .text(empreendimento.offer || 'N/A');
+        $(cardTemplate)
+          .find('.entradas')
+          .text(empreendimento.tituloOffer || 'N/A');
 
         if (empreendimento.photo && empreendimento.photo.url) {
           $(cardTemplate).find('.imagem-empreendimento').attr('src', empreendimento.photo.url);
@@ -53,11 +67,11 @@ async function empreendimentoPage() {
     }
 
     function populateFilterOptions() {
-      const locationOptions = [...new Set(empreendimentosData.map(e => e.location))];
-      const statusOptions = [...new Set(empreendimentosData.map(e => e.status))];
+      const locationOptions = [...new Set(empreendimentosData.map((e) => e.location))];
+      const statusOptions = [...new Set(empreendimentosData.map((e) => e.status))];
 
       const roomsOptions = new Set();
-      empreendimentosData.forEach(e => {
+      empreendimentosData.forEach((e) => {
         const minimo = parseInt(e.rooms[0].minimo_de_quartos);
         const maximo = parseInt(e.rooms[0].maximo_de_quartos);
 
@@ -67,37 +81,45 @@ async function empreendimentoPage() {
       });
 
       const options = {
-        'filter-location': Array.from(locationOptions).map(location => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map(status => ({ value: status, label: status })),
-        'filter-rooms': Array.from(roomsOptions).sort().map(room => ({ value: room, label: `${room} Quartos` }))
+        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
+        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        'filter-rooms': Array.from(roomsOptions)
+          .sort()
+          .map((room) => ({value: room, label: `${room} Quartos`})),
       };
 
-      return options
+      return options;
     }
 
-    populateFilterOptions()
+    populateFilterOptions();
 
     const filters = {
       'filter-location': $('#filter-location'),
       'filter-status': $('#filter-status'),
-      'filter-rooms': $('#filter-rooms')
+      'filter-rooms': $('#filter-rooms'),
     };
 
-    const options = populateFilterOptions()
+    const options = populateFilterOptions();
     renderFilters(filters, options);
 
     function getFilterValue(selector) {
-      const value = $(selector).find('input:checked').map(function () {
-        return this.value.toLowerCase();
-      }).get();
+      const value = $(selector)
+        .find('input:checked')
+        .map(function () {
+          return this.value.toLowerCase();
+        })
+        .get();
 
       return value.length > 0 ? value : null;
     }
 
     function getFilterLabel(selector) {
-      const value = $(selector).find('input:checked').map(function () {
-        return this.value;
-      }).get();
+      const value = $(selector)
+        .find('input:checked')
+        .map(function () {
+          return this.value;
+        })
+        .get();
 
       return value.length > 0 ? value : null;
     }
@@ -111,13 +133,15 @@ async function empreendimentoPage() {
         return empreendimentos;
       }
 
-      return empreendimentos.filter(empreendimento => {
+      return empreendimentos.filter((empreendimento) => {
         const matchLocation = !locationFilter || locationFilter.includes(empreendimento.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(empreendimento.status.toLowerCase());
-        const matchRooms = !roomsFilter ||
-          empreendimento.rooms.some(room =>
-            roomsFilter.includes(room.minimo_de_quartos.toString()) ||
-            roomsFilter.includes(room.maximo_de_quartos.toString())
+        const matchRooms =
+          !roomsFilter ||
+          empreendimento.rooms.some(
+            (room) =>
+              roomsFilter.includes(room.minimo_de_quartos.toString()) ||
+              roomsFilter.includes(room.maximo_de_quartos.toString())
           );
 
         return matchLocation && matchStatus && matchRooms;
@@ -127,7 +151,7 @@ async function empreendimentoPage() {
     function generateBadge(filterValue, filterType) {
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterType === 'rooms' ? " qto" : ""}
+          ${filterValue} ${filterType === 'rooms' ? ' qto' : ''}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
@@ -143,23 +167,23 @@ async function empreendimentoPage() {
       const roomsFilter = getFilterLabel('#filter-rooms');
 
       if (locationFilter) {
-        locationFilter.forEach(value => generateBadge(value, 'location'));
+        locationFilter.forEach((value) => generateBadge(value, 'location'));
       }
 
       if (statusFilter) {
-        statusFilter.forEach(value => generateBadge(value, 'status'));
+        statusFilter.forEach((value) => generateBadge(value, 'status'));
       }
 
       if (roomsFilter) {
-        roomsFilter.forEach(value => generateBadge(value, 'rooms'));
+        roomsFilter.forEach((value) => generateBadge(value, 'rooms'));
       }
 
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-      
+
         $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false);
-      
+
         updateBadges();
         buildFilterUrl();
         filterAndRender();
@@ -170,59 +194,58 @@ async function empreendimentoPage() {
       const locationFilter = getFilterLabel('#filter-location');
       const statusFilter = getFilterLabel('#filter-status');
       const roomsFilter = getFilterLabel('#filter-rooms');
-    
+
       const params = new URLSearchParams();
-    
+
       if (locationFilter) {
-        const formattedLocation = locationFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('localizacao', formattedLocation);
       }
-    
+
       if (statusFilter) {
-        const formattedStatus = statusFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('estagio', formattedStatus);
       }
-    
+
       if (roomsFilter) {
-        const formattedRooms = roomsFilter.map(value => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('qtos', formattedRooms);
       }
-    
-      const newUrl = `${window.location.pathname}${params.toString().length ? "?" : ""}${params.toString()}`;
+
+      const newUrl = `${window.location.pathname}${params.toString().length ? '?' : ''}${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
-    
+
       const locationFilter = params.get('localizacao');
       const statusFilter = params.get('estagio');
       const roomsFilter = params.get('qtos');
-    
+
       if (locationFilter) {
-        locationFilter.split(',').forEach(value => {
+        locationFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
           $(`#filter-location input[value="${formattedValue}"]`).click();
         });
       }
-    
+
       if (statusFilter) {
-        statusFilter.split(',').forEach(value => {
+        statusFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }
-    
+
       if (roomsFilter) {
-        roomsFilter.split(',').forEach(value => {
+        roomsFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
           $(`#filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
-    
+
       filterAndRender();
     }
-    
 
     function filterAndRender() {
       const filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
@@ -248,14 +271,39 @@ async function empreendimentoPage() {
     });
 
     applyFiltersFromUrl();
-
   } catch (error) {
     console.error('Erro ao carregar os empreendimentos:', error);
   }
 }
+function cardHover() {
+  $(document).ready(function () {
+    $('.card-empreendimentos').hover(
+      function () {
+        // Mouse enter
+        const video = $(this).find('.video-empreendimento');
+        if (video.length) {
+          video.css('opacity', 1);
+          video[0].play();
+        }
+        $(this).addClass('hover-card');
+      },
+      function () {
+        // Mouse leave
+        const video = $(this).find('.video-empreendimento');
+        if (video.length) {
+          video.css('opacity', 0);
+          video[0].pause();
+          video[0].currentTime = 0;
+        }
+        $(this).removeClass('hover-card');
+      }
+    );
+  });
+}
 
 async function initEmpreendimento() {
   await empreendimentoPage();
+  cardHover();
 }
 
-export { initEmpreendimento };
+export {initEmpreendimento};

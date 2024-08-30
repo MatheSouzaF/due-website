@@ -36,7 +36,15 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "553": "teste",
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
+            },
             "default_value": false,
             "return_format": "label",
             "multiple": 0,
@@ -303,8 +311,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": 738,
-            "min_height": 768,
+            "min_width": "",
+            "min_height": "",
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -331,5 +339,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724262765
+    "modified": 1724854316
 }

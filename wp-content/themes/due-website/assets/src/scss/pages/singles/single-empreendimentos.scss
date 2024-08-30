@@ -633,6 +633,30 @@ body.single-empre_single_page {
             background: #fdfcfc;
             border: 1px solid #e9e3dd;
             position: relative;
+            transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+            &::before,
+            &::after {
+              position: absolute;
+              content: '';
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border-radius: 100%;
+            }
+
+            &::before {
+              background: #fdfcfc;
+              clip-path: inset(0 0 0 0);
+            }
+            &::after {
+              background: #003b4b;
+              clip-path: var(--clip-path-value, inset(0 0 0 0)); /* Valor padrão */
+           
+              
+            }
+           
+
             .line {
               &::before,
               &::after {
@@ -653,7 +677,7 @@ body.single-empre_single_page {
                 display: none;
               }
             }
-            }
+          }
           .titulo-estagio {
             font-size: 14px;
             font-style: normal;

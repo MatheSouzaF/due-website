@@ -277,6 +277,7 @@ get_header();
         </div>
 
     </div>
+
     <div class="diferenciais" id="diferencias">
         <div class="wrapper">
 
@@ -342,7 +343,7 @@ get_header();
             if (have_rows('estagio_obra')) :
                 while (have_rows('estagio_obra')) : the_row(); ?>
                     <div class="row-estagio">
-                        <div class="bullet">
+                        <div class="bullet" data-fill="<?php echo get_sub_field('porcentagem_da_obra') ?>">
                             <div class="line"></div>
                         </div>
                         <p class="titulo-estagio founders-grotesk"><?php echo get_sub_field('titulo_estagio'); ?></p>
@@ -378,6 +379,7 @@ get_header();
     </div>
 
 </section>
+
 <?php
 get_footer();
 ?>

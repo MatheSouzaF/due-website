@@ -141,7 +141,7 @@ class TipologiaController
      * 
      * Este método é usado para trazer todas as tpologias que pertencem a um empreendimento.
      * 
-     * @param array $empreendimentoName O nome do empreendimento selecionado.
+     * @param string $empreendimentoName O nome do empreendimento selecionado.
      * @return array O array do campo atualizado com as tipologias do empreendimento.
      */
     public function getTipologiasByEmpreendimentoID($empreendimentoName)

@@ -39,7 +39,7 @@ function ajax_get_tipologia_by_id() {
 
 function ajax_get_tipologias_by_empreendimento() {
     if (isset($_POST['empreendimento_name'])) {
-        $empreendimentoName = intval($_POST['empreendimento_name']);
+        $empreendimentoName = $_POST['empreendimento_name'];
 
         $tipologiaController = new TipologiaController();
         

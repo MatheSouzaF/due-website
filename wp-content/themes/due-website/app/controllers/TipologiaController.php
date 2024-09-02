@@ -153,13 +153,6 @@ class TipologiaController
             'post_type' => 'tipologias',
             'posts_per_page' => -1,
             'post_status' => 'publish',
-            'meta_query' => array(
-                array(
-                    'key' => 'pertence_a_qual_empreendimento',
-                    'value' => $empreendimentoName,
-                    'compare' => '='
-                )
-            )
         );
 
         // Executa a consulta
@@ -168,7 +161,8 @@ class TipologiaController
         if ($query->have_posts()) {
             while ($query->have_posts()) {
                 $query->the_post();
-
+                
+                $projectId = get_the_ID();
                 $name = get_field('nome_da_tipologia');
                 $project = get_field('pertence_a_qual_empreendimento');
                 $location = get_field('localizacao_tipologia');
@@ -179,23 +173,27 @@ class TipologiaController
                 $diffs = get_field('diferenciais_tipologia');
                 $photo = get_field('foto_da_tipologia');
 
-                // Adiciona os dados ao array de projeto
-                $tipologia = array(
-                    'name' => $name,
-                    'project' => $project,
-                    'location' => $location,
-                    'isStudio' => $isStudio,
-                    'rooms' => $rooms,
-                    'size' => $size,
-                    'status' => $status,
-                    'diffs' => $diffs,
-                    'photo' => $photo,
-                );
+                // Verifica se o empreendimento corresponde ao nome fornecido
+                if ($project === $empreendimentoName) {
+                    // Adiciona os dados ao array de tipologias
+                    $tipologias[] = array(
+                        'name' => $name,
+                        'id' => $projectId,
+                        'project' => $project,
+                        'location' => $location,
+                        'isStudio' => $isStudio,
+                        'rooms' => $rooms,
+                        'size' => $size,
+                        'status' => $status,
+                        'diffs' => $diffs,
+                        'photo' => $photo,
+                    );
+                }
             }
             wp_reset_postdata(); // Reseta os dados globais do post
         }
 
-        return $tipologia; // Retorna o projeto encontrado
+        return $tipologias; // Retorna as tipologias encontradas
     }
 }
 

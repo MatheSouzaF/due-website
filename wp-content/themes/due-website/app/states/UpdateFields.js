@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('select[name="acf[field_66c23ba4e141f]"').on('change', function () {
+    $('select[name="acf[field_66c23ba4e141f]"').on('input', function () {
         var tipologiaId = $(this).val();
 
         $.ajax({
@@ -86,10 +86,9 @@ jQuery(document).ready(function ($) {
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
     $('select[name="acf[field_66d1f9caec8ba]"]').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
-        console.log("🚀 ~ empreendimentoId:", empreendimentoNome)
-
+    
         $.ajax({
-            url:  ajax_object.ajax_url,
+            url: ajax_object.ajax_url,
             type: 'POST',
             data: {
                 action: 'get_tipologias_by_empreendimento',
@@ -97,9 +96,26 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    console.log(response.data);
+                    var tipologias = response.data;
+    
+                    // Atualiza o campo ACF com as novas opções
+                    var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
+                    selectField.empty(); // Limpa as opções existentes
+                    selectField.append($('<option>', {
+                        value: undefined,
+                        text: '- Selecionar -',
+                        selected: true
+                    }));
+    
+                    $.each(tipologias, function (id, tipologia) {
+                        console.log("🚀 ~ name:", tipologia.name)
+                        selectField.append($('<option>', {
+                            value: tipologia.id,
+                            text: tipologia.name
+                        }));
+                    });
                 } else {
-                    console.error(response.data);
+                    console.error('Erro ao obter tipologias:', response.data);
                 }
             },
             error: function () {
@@ -107,5 +123,4 @@ jQuery(document).ready(function ($) {
             }
         });
     });
-
 });

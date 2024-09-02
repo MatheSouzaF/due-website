@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('select[name="acf[field_66c23ba4e141f]"').on('input', function () {
+    $('select[name="acf[field_66c23ba4e141f]"').on('change', function () {
         var tipologiaId = $(this).val();
 
         $.ajax({
@@ -86,7 +86,8 @@ jQuery(document).ready(function ($) {
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
     $('select[name="acf[field_66d1f9caec8ba]"]').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
-    
+        var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
+
         $.ajax({
             url: ajax_object.ajax_url,
             type: 'POST',
@@ -97,25 +98,27 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     var tipologias = response.data;
-    
-                    // Atualiza o campo ACF com as novas opções
-                    var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
-                    selectField.empty(); // Limpa as opções existentes
+
+                    selectField.empty();
                     selectField.append($('<option>', {
                         value: undefined,
                         text: '- Selecionar -',
                         selected: true
                     }));
-    
+
                     $.each(tipologias, function (id, tipologia) {
-                        console.log("🚀 ~ name:", tipologia.name)
                         selectField.append($('<option>', {
                             value: tipologia.id,
                             text: tipologia.name
                         }));
                     });
                 } else {
-                    console.error('Erro ao obter tipologias:', response.data);
+                    selectField.empty();
+                    selectField.append($('<option>', {
+                        value: undefined,
+                        text: '- Selecionar -',
+                        selected: true
+                    }));
                 }
             },
             error: function () {

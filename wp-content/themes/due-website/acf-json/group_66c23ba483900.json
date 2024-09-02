@@ -541,7 +541,7 @@
                     "name": "outras_caracteristicas",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "Escreva aqui características adicionais",
+                    "instructions": "Escreva aqui características adicionais separadas por vírgula.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -720,5 +720,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725301986
+    "modified": 1725302312
 }

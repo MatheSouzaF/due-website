@@ -172,12 +172,32 @@
             "append": ""
         },
         {
+            "key": "field_66d5f8a8e0708",
+            "label": "Diferenciais",
+            "name": "diferenciais",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66c23ca1e1426",
-            "label": "Diferenciais e Características",
-            "name": "diferenciais_e_caracteristicas_select",
+            "label": "Diferenciais adicionais",
+            "name": "diferenciais_adicionais",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "",
+            "instructions": "Selecione até 6 diferenciais adicionais.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -617,5 +637,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725037127
+    "modified": 1725298897
 }

@@ -49,45 +49,11 @@ jQuery(document).ready(function ($) {
         });
     });
 
-    $('select[name="acf[field_66c23ba4e141f]"').on('change', function () {
-        var tipologiaId = $(this).val();
-
-        $.ajax({
-            url: ajax_object.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'get_tipologia_by_id',
-                tipologia_id: tipologiaId
-            },
-            success: function (response) {
-                if (response.success) {
-                    var minRooms = response.data.rooms[0].minimo_de_quartos_tipologia
-                    var maxRooms = response.data.rooms[0].maximo_de_quartos_tipologia
-
-                    var minSize = response.data.size[0].metragem_minima_tipologia
-                    var maxSize = response.data.size[0].metragem_maxima_tipologia
-
-                    //Empreendimento
-                    $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);
-
-                    //Localização
-                    $('input[name="acf[field_66c23c09e1422]"]').val(response.data.location);
-
-                    // Quantidade de quartos
-                    $('input[name="acf[field_66c23c37e1424]"]').val(minRooms + ' a ' + maxRooms + ' qtos');
-
-                    //Metragem
-                    $('input[name="acf[field_66c23c3fe1425]"]').val(minSize + ' a ' + maxSize + 'm²');
-                }
-            }
-        });
-    });
-
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
     $('select[name="acf[field_66d1f9caec8ba]"]').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
         var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
-
+        
         $.ajax({
             url: ajax_object.ajax_url,
             type: 'POST',
@@ -98,14 +64,14 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     var tipologias = response.data;
-
+                    
                     selectField.empty();
                     selectField.append($('<option>', {
                         value: undefined,
                         text: '- Selecionar -',
                         selected: true
                     }));
-
+                    
                     $.each(tipologias, function (id, tipologia) {
                         selectField.append($('<option>', {
                             value: tipologia.id,
@@ -123,6 +89,47 @@ jQuery(document).ready(function ($) {
             },
             error: function () {
                 console.error('Erro na requisição AJAX');
+            }
+        });
+    });
+
+    // [Singlepage da Tipologia] Seletor para buscar os dados da tipologia selecionada 
+    $('select[name="acf[field_66c23ba4e141f]"').on('change', function () {
+        var tipologiaId = $(this).val();
+        
+        $.ajax({
+            url: ajax_object.ajax_url,
+            type: 'POST',
+            data: {
+                action: 'get_tipologia_by_id',
+                tipologia_id: tipologiaId
+            },
+            success: function (response) {
+                if (response.success) {
+                    var minRooms = response.data.rooms[0].minimo_de_quartos_tipologia
+                    var maxRooms = response.data.rooms[0].maximo_de_quartos_tipologia
+
+                    var minSize = response.data.size[0].metragem_minima_tipologia
+                    var maxSize = response.data.size[0].metragem_maxima_tipologia
+
+                    var diffs = response.data.diffs
+                    console.log("🚀 ~ diffs:", diffs)
+
+                    //Empreendimento
+                    $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);
+
+                    //Localização
+                    $('input[name="acf[field_66c23c09e1422]"]').val(response.data.location);
+
+                    // Quantidade de quartos
+                    $('input[name="acf[field_66c23c37e1424]"]').val(minRooms + ' a ' + maxRooms + ' qtos');
+
+                    //Metragem
+                    $('input[name="acf[field_66c23c3fe1425]"]').val(minSize + ' a ' + maxSize + 'm²');
+
+                    //Diferenciais
+                    $('input[name="acf[field_66d5f8a8e0708]"]').val(diffs.join(", "));
+                }
             }
         });
     });

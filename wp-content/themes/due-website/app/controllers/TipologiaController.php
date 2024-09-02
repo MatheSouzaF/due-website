@@ -135,5 +135,65 @@ class TipologiaController
 
         return $projects; // Retorna o array de tipologias
     }
+
+    /**
+     * Carrega as tipologias pertencentes a um determinado empreendimento.
+     * 
+     * Este método é usado para trazer todas as tpologias que pertencem a um empreendimento.
+     * 
+     * @param string $empreendimentoName O nome do empreendimento selecionado.
+     * @return array O array do campo atualizado com as tipologias do empreendimento.
+     */
+    public function getTipologiasByEmpreendimentoID($empreendimentoName)
+    {
+        $tipologias = [];
+
+        // Define os argumentos para a consulta de tipologias com base no empreendimento
+        $args = array(
+            'post_type' => 'tipologias',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+
+        // Executa a consulta
+        $query = new WP_Query($args);
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                
+                $projectId = get_the_ID();
+                $name = get_field('nome_da_tipologia');
+                $project = get_field('pertence_a_qual_empreendimento');
+                $location = get_field('localizacao_tipologia');
+                $status = get_field('estagio_da_obra_tipologia');
+                $isStudio = get_field('e_um_studio_tipologia');
+                $rooms = get_field('quantidade_de_quartos_tipologia');
+                $size = get_field('metragem_tipologia');
+                $diffs = get_field('diferenciais_tipologia');
+                $photo = get_field('foto_da_tipologia');
+
+                // Verifica se o empreendimento corresponde ao nome fornecido
+                if ($project === $empreendimentoName) {
+                    // Adiciona os dados ao array de tipologias
+                    $tipologias[] = array(
+                        'name' => $name,
+                        'id' => $projectId,
+                        'project' => $project,
+                        'location' => $location,
+                        'isStudio' => $isStudio,
+                        'rooms' => $rooms,
+                        'size' => $size,
+                        'status' => $status,
+                        'diffs' => $diffs,
+                        'photo' => $photo,
+                    );
+                }
+            }
+            wp_reset_postdata(); // Reseta os dados globais do post
+        }
+
+        return $tipologias; // Retorna as tipologias encontradas
+    }
 }
 

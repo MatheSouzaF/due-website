@@ -37,5 +37,25 @@ function ajax_get_tipologia_by_id() {
   wp_die();
 }
 
+function ajax_get_tipologias_by_empreendimento() {
+    if (isset($_POST['empreendimento_name'])) {
+        $empreendimentoName = $_POST['empreendimento_name'];
+
+        $tipologiaController = new TipologiaController();
+        
+        $tipologias = $tipologiaController->getTipologiasByEmpreendimentoID($empreendimentoName);
+
+        if ($tipologias) {
+            wp_send_json_success($tipologias);
+        } else {
+            wp_send_json_error('Nenhuma tipologia encontrada para esse empreendimento');
+        }
+    } else {
+        wp_send_json_error('ID do empreendimento não fornecido');
+    }
+    wp_die();
+}
+
 add_action('wp_ajax_get_project_by_id', 'ajax_get_project_by_id');
 add_action('wp_ajax_get_tipologia_by_id', 'ajax_get_tipologia_by_id');
+add_action('wp_ajax_get_tipologias_by_empreendimento', 'ajax_get_tipologias_by_empreendimento');

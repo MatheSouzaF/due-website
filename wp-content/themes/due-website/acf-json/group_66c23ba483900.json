@@ -21,6 +21,34 @@
             "selected": 0
         },
         {
+            "key": "field_66d1f9caec8ba",
+            "label": "Empreendimento",
+            "name": "empreendimento_tipologia",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecione qual o empreendimento da tipologia que deseja criar.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "422": "Praia Exclusive",
+                "420": "Tropí Eco Residência",
+                "418": "Naturê Eco Residência",
+                "412": "Cais Eco Residência"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_66c23ba4e141f",
             "label": "Tipologia",
             "name": "tipologia",
@@ -35,8 +63,9 @@
                 "id": ""
             },
             "choices": {
-                "551": "Teste",
-                "443": "Térreo"
+                "505": "Tipologia Praia Exclusive 2",
+                "441": "Tipologia Cais Eco",
+                "436": "Tipologia Praia Exclusive"
             },
             "default_value": false,
             "return_format": "value",
@@ -91,7 +120,7 @@
             "label": "Foto da tipologia",
             "name": "foto_da_tipologia",
             "aria-label": "",
-            "type": "image",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -100,16 +129,87 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66d5fe171421b",
+                    "label": "Foto da tipologia",
+                    "name": "foto_da_tipologia",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": 736,
+                    "min_height": 768,
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66c23c21e1423"
+                },
+                {
+                    "key": "field_66d6049dc6818",
+                    "label": "Legendas",
+                    "name": "legendas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 1,
+                    "max": 10,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66d5fe601421c",
+                            "label": "Legenda",
+                            "name": "legenda_texto",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66d6049dc6818"
+                        }
+                    ],
+                    "parent_repeater": "field_66c23c21e1423"
+                }
+            ]
         },
         {
             "key": "field_66c23c37e1424",
@@ -152,12 +252,32 @@
             "append": ""
         },
         {
+            "key": "field_66d5f8a8e0708",
+            "label": "Diferenciais",
+            "name": "diferenciais",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66c23ca1e1426",
-            "label": "Diferenciais e Características",
-            "name": "diferenciais_e_caracteristicas_select",
+            "label": "Diferenciais adicionais",
+            "name": "diferenciais_adicionais",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "",
+            "instructions": "Selecione até 6 diferenciais adicionais.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -328,7 +448,7 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "maxlength": "",
+                    "maxlength": 8,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -392,7 +512,7 @@
                     "label": "Lista de características",
                     "name": "lista_de_caracteristicas",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "checkbox",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -401,37 +521,40 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 0,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Adicionar linha",
-                    "rows_per_page": 20,
-                    "parent_repeater": "field_66c257c2af1da",
-                    "sub_fields": [
-                        {
-                            "key": "field_66c25821af1dd",
-                            "label": "Características",
-                            "name": "caracteristicas",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_66c25809af1dc"
-                        }
-                    ]
+                    "choices": {
+                        "característica 1": "característica 1",
+                        "característica 2": "característica 2",
+                        "característica 3": "característica 3"
+                    },
+                    "default_value": [],
+                    "return_format": "label",
+                    "allow_custom": 0,
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "save_custom": 0,
+                    "custom_choice_button_text": "Adicionar nova escolha",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66d604561421d",
+                    "label": "Outras características",
+                    "name": "outras_caracteristicas",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Escreva aqui características adicionais separadas por vírgula.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
                 },
                 {
                     "key": "field_66c2585aaf1de",
@@ -597,5 +720,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724855005
+    "modified": 1725302312
 }

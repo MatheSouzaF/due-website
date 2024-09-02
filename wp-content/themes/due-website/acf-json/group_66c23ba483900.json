@@ -34,7 +34,12 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "422": "Praia Exclusive",
+                "420": "Tropí Eco Residência",
+                "418": "Naturê Eco Residência",
+                "412": "Cais Eco Residência"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -57,7 +62,11 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
+            "choices": {
+                "505": "Tipologia Praia Exclusive 2",
+                "441": "Tipologia Cais Eco",
+                "436": "Tipologia Praia Exclusive"
+            },
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -111,7 +120,7 @@
             "label": "Foto da tipologia",
             "name": "foto_da_tipologia",
             "aria-label": "",
-            "type": "image",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -120,16 +129,87 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "library": "all",
-            "min_width": 736,
-            "min_height": 768,
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66d5fe171421b",
+                    "label": "Foto da tipologia",
+                    "name": "foto_da_tipologia",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": 736,
+                    "min_height": 768,
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66c23c21e1423"
+                },
+                {
+                    "key": "field_66d6049dc6818",
+                    "label": "Legendas",
+                    "name": "legendas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 1,
+                    "max": 10,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66d5fe601421c",
+                            "label": "Legenda",
+                            "name": "legenda_texto",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66d6049dc6818"
+                        }
+                    ],
+                    "parent_repeater": "field_66c23c21e1423"
+                }
+            ]
         },
         {
             "key": "field_66c23c37e1424",
@@ -432,7 +512,7 @@
                     "label": "Lista de características",
                     "name": "lista_de_caracteristicas",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "checkbox",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -441,36 +521,39 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 0,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Adicionar linha",
-                    "rows_per_page": 20,
-                    "sub_fields": [
-                        {
-                            "key": "field_66c25821af1dd",
-                            "label": "Características",
-                            "name": "caracteristicas",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_66c25809af1dc"
-                        }
-                    ],
+                    "choices": {
+                        "característica 1": "característica 1",
+                        "característica 2": "característica 2",
+                        "característica 3": "característica 3"
+                    },
+                    "default_value": [],
+                    "return_format": "label",
+                    "allow_custom": 0,
+                    "layout": "vertical",
+                    "toggle": 0,
+                    "save_custom": 0,
+                    "custom_choice_button_text": "Adicionar nova escolha",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66d604561421d",
+                    "label": "Outras características",
+                    "name": "outras_caracteristicas",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Escreva aqui características adicionais",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_66c257c2af1da"
                 },
                 {
@@ -637,5 +720,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725298897
+    "modified": 1725301986
 }

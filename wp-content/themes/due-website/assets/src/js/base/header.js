@@ -10,6 +10,7 @@ function scrollsmooth() {
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000);
   });
+  
 }
 
 function menuSticy() {

@@ -50,7 +50,7 @@ function initDynamicModules() {
       moduleFunction: 'initHeader',
     },
     {
-      selector: 'body',
+      selector: '#invistaSwiper',
       modulePath: './base/invista.js',
       moduleFunction: 'initInvista',
     },
@@ -63,6 +63,11 @@ function initDynamicModules() {
       selector: '.page-empreendimentos-tipologia',
       modulePath: './pages/empreendimento/empreendimento.js',
       moduleFunction: 'initEmpreendimento',
+    },
+    {
+      selector: '.single-empre_single_page',
+      modulePath: './pages/singles/single-empreendimentos.js',
+      moduleFunction: 'initSingleEmpreendimentos',
     },
   ];
 

@@ -504,6 +504,34 @@ body.single-empre_single_page {
         }
       }
     }
+    .explore-empreendimento {
+      padding: 120px 0;
+      .wrapper {
+        .titulo-explore {
+          font-size: 32px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.64px;
+          margin-bottom: 32px;
+          color: $due-tertiary;
+        }
+        .drag_element {
+          width: 25px;
+          height: 25px;
+          .point_style {
+            width: 25px;
+            height: 25px;
+
+            .pins_image {
+              top: initial !important;
+              left: initial !important;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
     .diferenciais {
       background: $due-secondary;
       padding: 120px 0;
@@ -611,21 +639,40 @@ body.single-empre_single_page {
         overflow-x: scroll;
         overflow-y: hidden;
         padding-left: 20px;
+        padding-right: 20px;
         transition: 0.6s;
+        margin-bottom: 56px;
         @include media-breakpoint-up(md) {
           padding-left: 48px;
+          padding-right: 48px;
         }
 
         @include media-breakpoint-up(lg) {
-          padding: 0 80px;
+          padding: 0 80px 20px;
           max-width: 2000px;
-          margin: 0 auto;
+        }
+        @media (min-width: 1370px) {
           overflow-x: hidden;
+        }
+        &::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          border-radius: 10px;
+          background-color: #f5f5f5;
+        }
+
+        &::-webkit-scrollbar {
+          height: 8px;
+          background-color: #f5f5f5;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          background-color: $due-secondary;
         }
         .row-estagio {
           display: flex;
           flex-direction: column;
-          gap: 24px;
           .bullet {
             width: 72px;
             height: 72px;
@@ -633,6 +680,7 @@ body.single-empre_single_page {
             background: #fdfcfc;
             border: 1px solid #e9e3dd;
             position: relative;
+            margin-bottom: 12px;
             transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
             &::before,
             &::after {
@@ -652,10 +700,7 @@ body.single-empre_single_page {
             &::after {
               background: #003b4b;
               clip-path: var(--clip-path-value, inset(0 0 0 0)); /* Valor padrão */
-           
-              
             }
-           
 
             .line {
               &::before,
@@ -678,6 +723,16 @@ body.single-empre_single_page {
               }
             }
           }
+          .porcentagem {
+            color: #cb9e6c;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            letter-spacing: 0.28px;
+            text-align: center;
+            margin-bottom: 12px;
+          }
           .titulo-estagio {
             font-size: 14px;
             font-style: normal;
@@ -687,6 +742,42 @@ body.single-empre_single_page {
             max-width: 88px;
             text-align: center;
             color: #000;
+          }
+        }
+      }
+
+      .box-portal-cliente {
+        background: rgba(233, 227, 221, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 20px;
+        transition: 0.6s;
+        padding: 40px 48px;
+        flex-direction: column;
+        gap: 20px;
+        @include media-breakpoint-up(sm) {
+          margin: 0 48px;
+        }
+        @include media-breakpoint-up(md) {
+          flex-direction: row;
+        }
+        @include media-breakpoint-up(lg) {
+          margin: 0 80px;
+          max-width: 2000px;
+        }
+
+        .titulo-portal-cliente {
+          color: $due-tertiary;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+          letter-spacing: -0.2px;
+          text-align: center;
+          font-size: 16px;
+          @include media-breakpoint-up(md) {
+            font-size: 20px;
+            text-align: start;
           }
         }
       }

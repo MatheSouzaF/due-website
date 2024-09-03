@@ -15,7 +15,6 @@
   left: 0;
   transition: background-color 0.5s, padding 1s;
   height: 72px;
- 
 
   .box-navbar {
     display: flex;
@@ -24,7 +23,7 @@
     gap: 20px;
     width: 100%;
     justify-content: space-between;
-   
+
     .box-svg-header {
       cursor: pointer;
       height: 32px;
@@ -36,83 +35,110 @@
         }
       }
     }
-    .navlinks {
-      flex-direction: row;
-      align-items: center;
-      gap: 32px;
-      display: none;
-      @include media-breakpoint-up(md) {
-        display: flex;
-      }
-      .button-menu {
-        color: $grey-0;
-      }
-    }
-    .navigation__menu-label {
-      // user-select: none;
-      cursor: pointer;
+    .box-sidebar {
       display: flex;
-      flex-flow: column nowrap;
       align-items: center;
-      justify-content: space-between;
-      width: 30px;
-      height: 12px;
-      position: relative;
-      z-index: 3;
-      transition: 0.6s ease;
-      // @include media-breakpoint-up(md) {
-      //   display: none;
-      // }
-      .navigation__label-bar {
-        width: 100%;
-        height: 3px;
-        position: relative;
-        transition: 0.6s ease;
-        background-color: #000;
-      }
-    }
-
-    .sidebar {
-      position: absolute;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      background: $grey-0;
-      width: 80%;
-      right: 0;
-      top: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0 24px;
-      gap: 24px;
-      transform: translateX(100%);
-      transition: 0.6s ease;
-      z-index: 2;
-      .desktop-header {
-        font-size: 24px;
-      }
-      .btn-proposito {
-        color: #fff;
-        .link-btn {
-          gap: 12px;
+      gap: 20px;
+      transition: 0.6s;
+      &.active-sidebar {
+        gap: 0;
+        background-color: #003b4b;
+        .navlinks {
+          padding: 24px;
+          background: #faf2eb;
+          .btn-menu-navlink {
+            .button-menu {
+              color: #003b4b;
+              font-weight: 600;
+            }
+          }
+        }
+        .navigation__menu-label {
+          margin: 24px 16px;
         }
       }
-    }
-    .active-btn {
-      .navigation__label-bar1 {
-        top: 6px;
-        transform: rotate(45deg);
+      .navlinks {
+        flex-direction: row;
+        align-items: center;
+        gap: 32px;
+        display: none;
+        transition: 0.6s;
+        position: relative;
+        @include media-breakpoint-up(md) {
+          display: flex;
+        }
+        .button-menu {
+          color: $grey-0;
+          transition: 0.6s;
+        }
+        .btn-menu-navlink {
+          transition: all 0.5s ease;
+        }
       }
 
-
-      .navigation__label-bar3 {
-        bottom: 3.85px;
-        transform: rotate(-45deg);
+      .navigation__menu-label {
+        cursor: pointer;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 30px;
+        height: 12px;
+        position: relative;
+        z-index: 3;
+        transition: 0.6s ease;
+        position: absolute;
+        opacity: 0;
+        .navigation__label-bar {
+          width: 100%;
+          height: 3px;
+          position: relative;
+          transition: 0.6s ease;
+          background-color: #fff;
+        }
       }
-    }
-    .active-sidebar {
-      transform: translateX(0);
+
+      .sidebar {
+        position: absolute;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background: $grey-0;
+        width: 80%;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 24px;
+        gap: 24px;
+        transform: translateX(100%);
+        transition: 0.6s ease;
+        z-index: 2;
+        .desktop-header {
+          font-size: 24px;
+        }
+        .btn-proposito {
+          color: #fff;
+          .link-btn {
+            gap: 12px;
+          }
+        }
+      }
+      .active-btn {
+        .navigation__label-bar1 {
+          top: 6px;
+          transform: rotate(45deg);
+        }
+
+        .navigation__label-bar3 {
+          bottom: 3.85px;
+          transform: rotate(-45deg);
+        }
+      }
+      .active-sidebar {
+        transform: translateX(0);
+      }
     }
   }
 }

@@ -1,5 +1,5 @@
 function swiperInvista() {
-  const swiper = new Swiper('.swiper-container', {
+  const swiper = new Swiper('.swiper-invista', {
     slidesPerView: 1.05,
     spaceBetween: 16,
     draggable: true,

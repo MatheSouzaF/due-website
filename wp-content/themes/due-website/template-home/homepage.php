@@ -3,6 +3,100 @@
 wp_enqueue_style('home', get_template_directory_uri() . '/assets/dist/css/home/home.css', ['main'], ASSETS_VERSION);
 get_header();
 ?>
+
+<section class="banner-hero">
+    <div class="swiper-container swiper-banner">
+        <div class="swiper-wrapper">
+            <?php
+            if (have_rows('banner_repetidor')) :
+                while (have_rows('banner_repetidor')) : the_row(); ?>
+                    <div class="swiper-slide">
+                        <div class="box-banner">
+                            <div class="box-images-videos">
+                                <?php if (have_rows('video_ou_imagem')): ?>
+                                    <?php while (have_rows('video_ou_imagem')) : the_row(); ?>
+                                        <?php if (get_row_layout() == 'video_banner'): ?>
+                                            <video class="video-banner-hero" autoplay="autoplay" src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
+                                        <?php elseif (get_row_layout() == 'imagem_banner'): ?>
+                                            <?php
+                                            $image = get_sub_field('imagem_banner_hero');
+                                            if ($image):
+                                                $image_url = $image['url'];
+                                                $image_alt = $image['alt'];
+                                            ?>
+                                                <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endwhile; ?>
+                                <?php endif; ?>
+                            </div>
+                            <div class="box-conteudo">
+                                <div class="wrapper-hero">
+                                    <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
+                                    <p class="subtitulo-banner-hero"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
+
+                                    <?php if (get_sub_field('botao_video')): ?>
+                                        <?php
+                                        $modalVideo = get_sub_field('video_modal_botao');
+                                        ?>
+                                        <div class="button-play js-modal-open-banner" id="video-modal" data-src="<?php echo htmlspecialchars($modalVideo); ?>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                                <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
+                                                <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
+                                            </svg>
+                                            <p><?php echo get_sub_field('botao_video'); ?></p>
+                                        </div>
+                                        <div class="modal js-modal">
+                                            <div class="modal__bg js-modal-close"></div>
+                                            <div class="modal__content">
+                                                <div class="video-container"></div>
+
+                                            </div>
+                                            <span class="js-modal-close-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none">
+                                                    <g clip-path="url(#clip0_2145_7167)">
+                                                        <path class="hover-line" d="M1 1L30.1161 28.983" stroke="white" stroke-width="2" />
+                                                        <path class="hover-line" d="M1 28.9835L30.1161 1.0005" stroke="white" stroke-width="2" />
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_2145_7167">
+                                                            <rect width="31" height="30" fill="white" />
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            <?php endwhile;
+            endif; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <?php
+    $titulos_banners = [];
+    if (have_rows('banner_repetidor')) :
+        while (have_rows('banner_repetidor')) : the_row();
+            $titulo = get_sub_field('titulo_banner_hero');
+            if ($titulo) {
+                $titulos_banners[] = $titulo;
+            }
+        endwhile;
+    endif;
+    ?>
+
+    <script type="text/javascript">
+        var listArray = <?php echo json_encode($titulos_banners); ?>;
+    </script>
+
+</section>
+
 <section class="nossos-club-resorts">
     <div class="wrapper">
         <div class="box-titulo_link">
@@ -287,6 +381,8 @@ get_header();
 </section>
 
 <?php get_template_part('template-invista/invista'); ?>
+
+
 
 <?php /** 
 <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>

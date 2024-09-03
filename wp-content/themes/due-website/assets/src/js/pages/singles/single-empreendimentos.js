@@ -26,7 +26,7 @@ function swiperGaleria() {
 function colorBullet() {
   const bullets = document.querySelectorAll('.bullet');
 
-  bullets.forEach(bullet => {
+  bullets.forEach((bullet) => {
     const fillPercent = bullet.getAttribute('data-fill');
     const calculatedClipPath = `inset(0 calc(100% - ${fillPercent}) 0 0)`;
 
@@ -34,8 +34,25 @@ function colorBullet() {
     bullet.style.setProperty('--clip-path-value', calculatedClipPath);
   });
 
+  $('.link-ancora').on('click', function (e) {
+    var target = this.hash;
+    if (target && $(target).length) {
+      e.preventDefault();
+      var $target = $(target);
+      $('html, body')
+        .stop()
+        .animate(
+          {
+            scrollTop: $target.offset().top - 100,
+          },
+          900,
+          'swing'
+        );
+    } else {
+      window.location.href = this.href;
+    }
+  });
 }
-
 
 function initSingleEmpreendimentos() {
   swiperDiferenciais();

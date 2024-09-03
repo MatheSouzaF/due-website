@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="swiper swiper-container">
+    <div class="swiper swiper-container swiper-invista">
         <div class="swiper-wrapper">
             <?php
             if (have_rows('repetidor_card_invista', 'options')) :

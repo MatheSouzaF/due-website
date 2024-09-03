@@ -1,7 +1,7 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 
-main.page-empreendimentos-tipologia {
+main.page-tipologias {
   padding: 120px 0;
 
   .cards {
@@ -11,17 +11,17 @@ main.page-empreendimentos-tipologia {
     padding: 0;
   }
 
-  .card-empreendimentos {
+  .card-tipologias {
     flex-basis: calc(33% - 8px);
     padding: 0;
   }
 
-  .empreendimentos-header {
+  .tipologias-header {
     display: flex;
     justify-content: space-between;
   }
 
-  .empreendimento-tabs {
+  .tipologia-tabs {
     display: flex;
     gap: 16px;
 
@@ -112,7 +112,7 @@ main.page-empreendimentos-tipologia {
     }
   }
 
-  .empreendimentos-results {
+  .tipologias-results {
     display: flex;
     flex-direction: column;
     gap: 16px;

@@ -17,21 +17,21 @@ if ($query->have_posts()) {
   while ($query->have_posts()) {
     $query->the_post();
 
-    $projectId = get_the_ID();
-    $name = get_field('nome_da_tipologia');
-    $project = get_field('pertence_a_qual_empreendimento');
-    $location = get_field('localizacao_tipologia');
-    $status = get_field('estagio_da_obra_tipologia');
-    $isStudio = get_field('e_um_studio_tipologia');
-    $rooms = get_field('quantidade_de_quartos_tipologia');
-    $size = get_field('metragem_tipologia');
-    $diffs = get_field('diferenciais_tipologia');
-    $photo = get_field('foto_da_tipologia');
+    $tipologia_id = get_the_ID();
+    $name = get_field('nome_da_tipologia', $tipologia_id);
+    $project = get_field('pertence_a_qual_empreendimento', $tipologia_id);
+    $location = get_field('localizacao_tipologia', $tipologia_id);
+    $status = get_field('estagio_da_obra_tipologia', $tipologia_id);
+    $isStudio = get_field('e_um_studio_tipologia', $tipologia_id);
+    $rooms = get_field('quantidade_de_quartos_tipologia', $tipologia_id);
+    $size = get_field('metragem_tipologia', $tipologia_id);
+    $diffs = get_field('diferenciais_tipologia', $tipologia_id);
+    $photo = get_field('foto_da_tipologia', $tipologia_id);
 
 
     $tipologias[] = array(
       'name' => $name,
-      'id' => $projectId,
+      'id' => $tipologia_id,
       'project' => $project,
       'location' => $location,
       'isStudio' => $isStudio,

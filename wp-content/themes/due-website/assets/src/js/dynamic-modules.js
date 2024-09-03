@@ -69,6 +69,11 @@ function initDynamicModules() {
       modulePath: './pages/singles/single-empreendimentos.js',
       moduleFunction: 'initSingleEmpreendimentos',
     },
+    {
+      selector: '.page-tipologias',
+      modulePath: './pages/tipologia/tipologia.js',
+      moduleFunction: 'initTipologia',
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

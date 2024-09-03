@@ -27,6 +27,9 @@ async function tipologiaPage() {
           .find('.nome-tipologia')
           .text(tipologia.name || 'N/A');
         $(cardTemplate)
+          .find('.nome-empreendimento')
+          .text(tipologia.project || 'N/A');
+        $(cardTemplate)
           .find('.localizacao-tipologia')
           .text(tipologia.location || 'N/A');
         $(cardTemplate)
@@ -36,12 +39,12 @@ async function tipologiaPage() {
         const quartos = tipologia.rooms && tipologia.rooms[0];
         $(cardTemplate)
           .find('.info-quartos')
-          .text(quartos ? `${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} quartos` : 'N/A');
+          .text(quartos ? `${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A');
 
         const tamanho = tipologia.size && tipologia.size[0];
         $(cardTemplate)
           .find('.info-tamanho')
-          .text(tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A');
+          .text(tamanho ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²` : 'N/A');
 
         $(cardTemplate)
           .find('.valor')
@@ -74,8 +77,8 @@ async function tipologiaPage() {
 
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
+        const minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia);
+        const maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia);
 
         for (let i = minimo; i <= maximo; i++) {
           roomsOptions.add(i);
@@ -150,8 +153,8 @@ async function tipologiaPage() {
           !roomsFilter ||
           tipologia.rooms.some(
             (room) =>
-              roomsFilter.includes(room.minimo_de_quartos.toString()) ||
-              roomsFilter.includes(room.maximo_de_quartos.toString())
+              roomsFilter.includes(room.minimo_de_quartos_tipologia.toString()) ||
+              roomsFilter.includes(room.maximo_de_quartos_tipologia.toString())
           );
 
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;

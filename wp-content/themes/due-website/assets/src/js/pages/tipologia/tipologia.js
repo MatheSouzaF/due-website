@@ -6,7 +6,6 @@ async function tipologiaPage() {
   try {
     // Tipologias passados via wp_localize
     const tipologiasData = TipologiasData.tipologias;
-    console.log("🚀 ~ tipologiasData:", tipologiasData)
 
     function renderTipologias(tipologias) {
       const $container = $('.cards.container-tipologias');
@@ -73,30 +72,32 @@ async function tipologiaPage() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
       const statusOptions = [...new Set(tipologiasData.map((e) => e.status))];
       const empreendimentoOptions = [...new Set(tipologiasData.map((e) => e.project))];
-      const diferenciaisOptions = [...new Set(tipologiasData.map((e) => e.diffs.map(diff => diff)))];
-
+    
+      const diferenciaisOptions = [...new Set(tipologiasData.flatMap((e) => e.diffs))];
+    
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
         const minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia);
         const maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia);
-
+    
         for (let i = minimo; i <= maximo; i++) {
           roomsOptions.add(i);
         }
       });
-
+    
       const options = {
         'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
         'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
-        'filter-diferenciais': Array.from(diferenciaisOptions).map((diferenciais) => ({ value: diferenciais, label: diferenciais })),
+        'filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         'filter-rooms': Array.from(roomsOptions)
           .sort()
           .map((room) => ({ value: room, label: `${room} Quartos` })),
       };
-
+    
       return options;
     }
+    
 
     populateFilterOptions();
 
@@ -139,11 +140,11 @@ async function tipologiaPage() {
       const empreendimentoFilter = getFilterValue('#filter-empreendimento');
       const diferenciaisFilter = getFilterValue('#filter-diferenciais');
       const roomsFilter = getFilterValue('#filter-rooms');
-
+    
       if (!locationFilter && !statusFilter && !empreendimentoFilter && !diferenciaisFilter && !roomsFilter) {
         return tipologias;
       }
-
+    
       return tipologias.filter((tipologia) => {
         const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
@@ -151,17 +152,20 @@ async function tipologiaPage() {
         const matchRooms =
           !roomsFilter ||
           tipologia.rooms.some(
-            (room) =>
-              roomsFilter.includes(room.minimo_de_quartos_tipologia.toString()) ||
-              roomsFilter.includes(room.maximo_de_quartos_tipologia.toString())
+            (room) => {
+              const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
+              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
+              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
+            }
           );
         const matchDiferenciais =
           !diferenciaisFilter ||
-          tipologia.diffs.map(diff => diff)
-
+          diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
+    
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;
       });
     }
+    
 
     function generateBadge(filterValue, filterType) {
       const badgeTemplate = `

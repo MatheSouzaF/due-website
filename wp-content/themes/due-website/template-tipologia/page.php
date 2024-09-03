@@ -108,7 +108,7 @@ wp_localize_script('main', 'TipologiasData', array(
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control toggle-next ellipsis">Diferenciais</button>
-            <div class="checkboxes" id="filter-rooms">
+            <div class="checkboxes" id="filter-diferenciais">
               <div class="inner-wrap">
               </div>
             </div>

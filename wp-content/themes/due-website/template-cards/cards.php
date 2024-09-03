@@ -79,9 +79,6 @@
 
 
         <div class="container-tipologias">
-
-
-
             <div class="card-tipologias">
                 <?php
                 $link = get_sub_field('link_empreendimento');

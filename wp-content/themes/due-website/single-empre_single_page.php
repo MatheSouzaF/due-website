@@ -70,7 +70,7 @@ get_header();
                                 $link_url = $link['url'];
                                 $link_title = $link['title'];
                                 $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                <a class="link-ancora" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                                     <p class=""><?php echo esc_html($link_title); ?></p>
                                 </a>
                             <?php endif; ?>
@@ -278,7 +278,21 @@ get_header();
 
     </div>
 
-    <div class="diferenciais" id="diferencias">
+    <div class="explore-empreendimento">
+        <div class="wrapper">
+<h3 class="titulo-explore terminal-test"><?php echo get_field('titulo_explore_empreendimentos'); ?></h3>
+            <?php
+            $selected_post = get_field('imagem_do_empreendimento');
+            if ($selected_post) {
+                $post_id = $selected_post->ID;
+                $shortcode = '[devvn_ihotspot id="' . $post_id . '"]';
+                echo do_shortcode($shortcode);
+            }
+            ?>
+        </div>
+    </div>
+
+    <div class="diferenciais" id="diferenciais">
         <div class="wrapper">
 
             <h3 class="titulo-diferenciais terminal-test"><?php echo get_field('titulo_diferencias'); ?></h3>
@@ -346,10 +360,25 @@ get_header();
                         <div class="bullet" data-fill="<?php echo get_sub_field('porcentagem_da_obra') ?>">
                             <div class="line"></div>
                         </div>
+                        <p class="porcentagem founders-grotesk"><?php echo get_sub_field('porcentagem_da_obra'); ?></p>
                         <p class="titulo-estagio founders-grotesk"><?php echo get_sub_field('titulo_estagio'); ?></p>
                     </div>
             <?php endwhile;
             endif; ?>
+        </div>
+        <div class="box-portal-cliente">
+
+            <h4 class="titulo-portal-cliente"><?php echo get_field('titulo_portal_do_cliente'); ?></h4>
+            <?php
+            $link = get_field('acessar_o_portal');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -377,6 +406,8 @@ get_header();
             </div>
         </div>
     </div>
+
+
 
 </section>
 

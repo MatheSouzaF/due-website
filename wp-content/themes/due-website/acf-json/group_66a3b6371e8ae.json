@@ -21,6 +21,197 @@
             "selected": 0
         },
         {
+            "key": "field_66d5b41e88d93",
+            "label": "Banner Repetidor",
+            "name": "banner_repetidor",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66d5b47688d94",
+                    "label": "Vídeo ou Imagem",
+                    "name": "video_ou_imagem",
+                    "aria-label": "",
+                    "type": "flexible_content",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layouts": {
+                        "layout_66d5b4d824d5c": {
+                            "key": "layout_66d5b4d824d5c",
+                            "name": "video_banner",
+                            "label": "Vídeo Banner",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_66d5b4ec88d95",
+                                    "label": "Vídeo Youtube",
+                                    "name": "video_youtube",
+                                    "aria-label": "",
+                                    "type": "file",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "url",
+                                    "library": "all",
+                                    "min_size": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        },
+                        "layout_66d5b54688d96": {
+                            "key": "layout_66d5b54688d96",
+                            "name": "imagem_banner",
+                            "label": "Imagem Banner",
+                            "display": "block",
+                            "sub_fields": [
+                                {
+                                    "key": "field_66d5bea19fb17",
+                                    "label": "Imagem Banner Hero",
+                                    "name": "imagem_banner_hero",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": "",
+                                    "preview_size": "medium"
+                                }
+                            ],
+                            "min": "",
+                            "max": ""
+                        }
+                    },
+                    "min": "",
+                    "max": "",
+                    "button_label": "Adicionar linha",
+                    "parent_repeater": "field_66d5b41e88d93"
+                },
+                {
+                    "key": "field_66d5b59c88d98",
+                    "label": "Título Banner Hero",
+                    "name": "titulo_banner_hero",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66d5b41e88d93"
+                },
+                {
+                    "key": "field_66d5b61388d99",
+                    "label": "SubTítulo Banner Hero",
+                    "name": "subtitulo_banner_hero",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66d5b41e88d93"
+                },
+                {
+                    "key": "field_66d5b62188d9a",
+                    "label": "Botão Vídeo",
+                    "name": "botao_video",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66d5b41e88d93"
+                },
+                {
+                    "key": "field_66d5ea235e125",
+                    "label": "Vídeo Modal Botão",
+                    "name": "video_modal_botao",
+                    "aria-label": "",
+                    "type": "oembed",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "width": "",
+                    "height": "",
+                    "parent_repeater": "field_66d5b41e88d93"
+                }
+            ]
+        },
+        {
             "key": "field_66a3b6b97450e",
             "label": "Nossos Club Resorts",
             "name": "",
@@ -674,5 +865,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722451165
+    "modified": 1725295166
 }

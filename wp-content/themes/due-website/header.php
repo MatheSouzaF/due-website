@@ -16,6 +16,9 @@
 function generate_menu_links()
 {
 	if (have_rows('links_menu', 'options')) {
+		$total_rows = count(get_field('links_menu', 'options')); // Conta o total de links
+		$counter = 1; // Inicia um contador para verificar o último item
+
 		while (have_rows('links_menu', 'options')) {
 			the_row();
 
@@ -26,11 +29,15 @@ function generate_menu_links()
 				$link_title = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
 
+				// Verifica se é o último item e adiciona a classe 'last-item'
+				$class = $counter === $total_rows ? 'btn-menu-navlink last-item' : 'btn-menu-navlink';
+
 				// Adicione qualquer condição adicional necessária aqui
 				if (!empty($link_url) && !empty($link_title)) {
-					echo '<li class=""><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
+					echo '<li class="' . esc_attr($class) . '"><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
 				}
 			}
+			$counter++;
 		}
 	}
 }
@@ -99,20 +106,20 @@ function generate_navbar()
 						} ?>
 					</div>
 				</a>
-				<ul class="navlinks">
-					<?php generate_menu_links(); ?>
-				</ul>
-				<label for="menu-toggle" id="btn-navbar" class="navigation__menu-label">
-					<span class="navigation__label-bar navigation__label-bar1 "></span>
-					<span class="navigation__label-bar navigation__label-bar3"></span>
-				</label>
+				<div class="box-sidebar">
 
-				<ul class="sidebar">
-					<?php generate_navbar(); ?>
-				</ul>
+					<ul class="navlinks">
+						<?php generate_menu_links(); ?>
+					</ul>
+					<label for="menu-toggle" id="btn-navbar" class="navigation__menu-label">
+						<span class="navigation__label-bar navigation__label-bar1 "></span>
+						<span class="navigation__label-bar navigation__label-bar3"></span>
+					</label>
 
+					<ul class="sidebar">
+						<?php generate_navbar(); ?>
+					</ul>
+
+				</div>
 			</nav>
 		</header>
-
-
-		

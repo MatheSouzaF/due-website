@@ -50,6 +50,11 @@ function initDynamicModules() {
       moduleFunction: 'initHeader',
     },
     {
+      selector: 'body',
+      modulePath: './base/footer.js',
+      moduleFunction: 'initFooter',
+    },
+    {
       selector: '#invistaSwiper',
       modulePath: './base/invista.js',
       moduleFunction: 'initInvista',

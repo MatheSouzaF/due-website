@@ -106,11 +106,11 @@
         },
         {
             "key": "field_66bbb24b285fe",
-            "label": "É um Studio?",
+            "label": "Esta tipologia possui opção de Studio?",
             "name": "e_um_studio_tipologia",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "Marque se a tipologia é um Studio",
+            "instructions": "Marque se a tipologia tem opção de Studio",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -270,7 +270,7 @@
             "name": "diferenciais_tipologia",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "Selecione os diferenciais do empreendimento",
+            "instructions": "Selecione até 4 diferenciais da tipologia",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -336,5 +336,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725298793
+    "modified": 1725391824
 }

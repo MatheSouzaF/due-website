@@ -73,7 +73,7 @@ async function tipologiaPage() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
       const statusOptions = [...new Set(tipologiasData.map((e) => e.status))];
       const empreendimentoOptions = [...new Set(tipologiasData.map((e) => e.project))];
-      const diferenciaisOptions = [...new Set(tipologiasData.map((e) => e.diffs))];
+      const diferenciaisOptions = [...new Set(tipologiasData.map((e) => e.diffs.map(diff => diff)))];
 
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
@@ -147,8 +147,7 @@ async function tipologiaPage() {
       return tipologias.filter((tipologia) => {
         const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
-        const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.empreendimento.toLowerCase());
-        const matchDiferenciais = !diferenciaisFilter || diferenciaisFilter.includes(tipologia.diferenciais.toLowerCase());
+        const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
         const matchRooms =
           !roomsFilter ||
           tipologia.rooms.some(
@@ -156,6 +155,9 @@ async function tipologiaPage() {
               roomsFilter.includes(room.minimo_de_quartos_tipologia.toString()) ||
               roomsFilter.includes(room.maximo_de_quartos_tipologia.toString())
           );
+        const matchDiferenciais =
+          !diferenciaisFilter ||
+          tipologia.diffs.map(diff => diff)
 
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;
       });

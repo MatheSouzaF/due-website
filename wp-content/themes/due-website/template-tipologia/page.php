@@ -123,27 +123,52 @@ wp_localize_script('main', 'TipologiasData', array(
       <div class="filters-applied"></div>
     </div>
 
-     <!-- Cards -->
-     <section class="tipologias cards">
+    <!-- Cards -->
+    <section class="cards container-tipologias">
       <!-- Template do card de tipologia -->
     </section>
     <template id="tipologia-template">
       <div class="card-tipologias">
-        <a class="box-card" href="#">
+        <a class="box-card" href="#" target="_self">
           <div class="box-midia">
-            <img class="imagem-tipologias" src="#" alt="">
+            <img class="imagem-tipologia" src="" alt="">
           </div>
 
-          <div class="box-label" style="background-color: #f0f0f0;">
-            <p class="terminal-test label-informativo">Label Informativo</p>
+          <div class="box-label">
+            <p class="terminal-test label-informativo"></p>
           </div>
         </a>
-        <div class="box-textos-tipologias">
+
+        <div class="box-textos-tipologia">
           <div class="container-text">
-            <h4 class="nome-tipologias founders-grotesk">Nome da Tipologia</h4>
-            <div class="localizacao-text">
-              <p class="localizacao-titulo founders-grotesk">Localização</p>
+            <div class="box-container-svg">
+              <p class="localizacao-tipologia terminal-test"></p>
+              <div class="fale-com-time">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="5" fill="#861D1D" />
+                  <circle cx="10" cy="10" r="9.5" stroke="#861D1D" />
+                </svg>
+                <p class="texto-fale founders-grotesk"></p>
+              </div>
             </div>
+            <h4 class="nome-tipologia founders-grotesk"></h4>
+            <div class="localizacao-text">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
+                <path
+                  d="M9.93329 7.39984C9.93329 8.0788 9.66436 8.72994 9.18565 9.21004C8.70695 9.69013 8.05769 9.95984 7.38071 9.95984C6.70372 9.95984 6.05446 9.69013 5.57576 9.21004C5.09706 8.72994 4.82812 8.0788 4.82812 7.39984C4.82812 6.72089 5.09706 6.06974 5.57576 5.58965C6.05446 5.10956 6.70372 4.83984 7.38071 4.83984C8.05769 4.83984 8.70695 5.10956 9.18565 5.58965C9.66436 6.06974 9.93329 6.72089 9.93329 7.39984Z"
+                  stroke="#003B4B" stroke-width="0.842105" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M13.7629 7.4C13.7629 13.4945 7.38145 17 7.38145 17C7.38145 17 1 13.4945 1 7.4C1 5.70261 1.67233 4.07475 2.86908 2.87452C4.06584 1.67428 5.68899 1 7.38145 1C9.07392 1 10.6971 1.67428 11.8938 2.87452C13.0906 4.07475 13.7629 5.70261 13.7629 7.4Z"
+                  stroke="#003B4B" stroke-width="0.842105" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <p class="localizacao-titulo founders-grotesk"></p>
+            </div>
+          </div>
+          <div class="box-informacoes">
+            <!-- Informações do empreendimento serão injetadas aqui -->
+          </div>
+          <div class="box-tipos">
+            <!-- Tipos de comodidades serão injetados aqui -->
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ async function tipologiaPage() {
     console.log("🚀 ~ tipologiasData:", tipologiasData)
 
     function renderTipologias(tipologias) {
-      const $container = $('.tipologias.cards');
+      const $container = $('.cards.container-tipologias');
       const $resultsLength = $('.results-length');
       $resultsLength.text(tipologias.length);
       $container.html('');

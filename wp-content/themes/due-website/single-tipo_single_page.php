@@ -100,8 +100,59 @@ get_header();
     </div>
 
     <div class="carrossel-tipologia">
-        <div class="wrapper">
+        <?php
+        
+        $tipologiasDoEmpreendimento = [];
 
+        $args = array(
+            'post_type' => 'tipologias',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+
+        // Executa a consulta
+        $query = new WP_Query($args);
+        $empreendimentoName = get_field('nome_do_empreendimento_que_pertence');
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                
+                $tipologiaId = get_the_ID();
+                $name = get_field('nome_da_tipologia', $tipologiaId);
+                $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
+                $location = get_field('localizacao_tipologia', $tipologiaId);
+                $status = get_field('estagio_da_obra_tipologia', $tipologiaId);
+                $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
+                $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
+                $size = get_field('metragem_tipologia', $tipologiaId);
+                $diffs = get_field('diferenciais_tipologia', $tipologiaId);
+                $photo = get_field('foto_da_tipologia', $tipologiaId);
+
+                if ($project === $empreendimentoName) {
+                    $tipologiasDoEmpreendimento[] = array(
+                        'name' => $name,
+                        'id' => $tipologiaId,
+                        'project' => $project,
+                        'location' => $location,
+                        'isStudio' => $isStudio,
+                        'rooms' => $rooms,
+                        'size' => $size,
+                        'status' => $status,
+                        'diffs' => $diffs,
+                        'photo' => $photo,
+                    );
+                }
+            }
+            wp_reset_postdata();
+        }
+
+        // usar essa variável para renderizar as tipologias no frontend
+        var_dump($tipologiasDoEmpreendimento);
+
+        ?>
+
+        <div class="wrapper">
             <div class="box-localizacao-carrossel">
                 <div class="box-svg">
                     <?php $svg_file = get_field('svg_localizacao_carrossel_tipologia');

@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
     });
 
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
-    $('select[name="acf[field_66d1f9caec8ba]"]').on('change', function () {
+    $('select[name="acf[field_66d88704efa32]"').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
         var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
         
@@ -113,7 +113,6 @@ jQuery(document).ready(function ($) {
                     var maxSize = response.data.size[0].metragem_maxima_tipologia
 
                     var diffs = response.data.diffs
-                    console.log("🚀 ~ diffs:", diffs)
 
                     //Empreendimento
                     $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);

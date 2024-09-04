@@ -47,6 +47,34 @@
             "placeholder": ""
         },
         {
+            "key": "field_66d88704efa32",
+            "label": "Empreendimento",
+            "name": "empreendimento_tipologia",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Selecione qual o empreendimento da tipologia que deseja criar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "422": "Praia Exclusive",
+                "420": "Tropí Eco Residência",
+                "418": "Naturê Eco Residência",
+                "412": "Cais Eco Residência"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_66c23bf0e1421",
             "label": "Nome do empreendimento que pertence",
             "name": "nome_do_empreendimento_que_pertence",

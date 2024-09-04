@@ -16,37 +16,9 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
-        },
-        {
-            "key": "field_66d1f9caec8ba",
-            "label": "Empreendimento",
-            "name": "empreendimento_tipologia",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Selecione qual o empreendimento da tipologia que deseja criar.",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "422": "Praia Exclusive",
-                "420": "Tropí Eco Residência",
-                "418": "Naturê Eco Residência",
-                "412": "Cais Eco Residência"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
         },
         {
             "key": "field_66c23ba4e141f",
@@ -63,9 +35,8 @@
                 "id": ""
             },
             "choices": {
-                "505": "Tipologia Praia Exclusive 2",
-                "441": "Tipologia Cais Eco",
-                "436": "Tipologia Praia Exclusive"
+                "551": "Teste",
+                "443": "Térreo"
             },
             "default_value": false,
             "return_format": "value",
@@ -116,12 +87,12 @@
             "append": ""
         },
         {
-            "key": "field_66c23c21e1423",
-            "label": "Foto da tipologia",
-            "name": "foto_da_tipologia",
+            "key": "field_66d7488d394ab",
+            "label": "Descrição Tipologia Hero",
+            "name": "descricao_tipologia_hero",
             "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
+            "type": "text",
+            "instructions": "Preenchido automaticamente ao escolher a tipologia",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -129,87 +100,11 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 1,
-            "max": 1,
-            "collapsed": "",
-            "button_label": "Adicionar linha",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66d5fe171421b",
-                    "label": "Foto da tipologia",
-                    "name": "foto_da_tipologia",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": 736,
-                    "min_height": 768,
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium",
-                    "parent_repeater": "field_66c23c21e1423"
-                },
-                {
-                    "key": "field_66d6049dc6818",
-                    "label": "Legendas",
-                    "name": "legendas",
-                    "aria-label": "",
-                    "type": "repeater",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 1,
-                    "max": 10,
-                    "collapsed": "",
-                    "button_label": "Adicionar linha",
-                    "rows_per_page": 20,
-                    "sub_fields": [
-                        {
-                            "key": "field_66d5fe601421c",
-                            "label": "Legenda",
-                            "name": "legenda_texto",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_66d6049dc6818"
-                        }
-                    ],
-                    "parent_repeater": "field_66c23c21e1423"
-                }
-            ]
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_66c23c37e1424",
@@ -252,12 +147,103 @@
             "append": ""
         },
         {
-            "key": "field_66d5f8a8e0708",
-            "label": "Diferenciais",
-            "name": "diferenciais",
+            "key": "field_66c23ca1e1426",
+            "label": "Diferenciais e Características",
+            "name": "diferenciais_e_caracteristicas_select",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66d71f24078a4",
+                    "label": "SVG Características",
+                    "name": "svg_caracteristicas",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_66c23ca1e1426"
+                },
+                {
+                    "key": "field_66d71f4a078a5",
+                    "label": "Título Características",
+                    "name": "titulo_caracteristicas",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c23ca1e1426"
+                }
+            ]
+        },
+        {
+            "key": "field_66c23c21e1423",
+            "label": "Foto da tipologia",
+            "name": "foto_da_tipologia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66d750dd51334",
+            "label": "Título Imagem",
+            "name": "titulo_imagem",
             "aria-label": "",
             "type": "text",
-            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -272,12 +258,12 @@
             "append": ""
         },
         {
-            "key": "field_66c23ca1e1426",
-            "label": "Diferenciais adicionais",
-            "name": "diferenciais_adicionais",
+            "key": "field_66d7513051335",
+            "label": "Descrição Imagem",
+            "name": "descricao_imagem",
             "aria-label": "",
-            "type": "checkbox",
-            "instructions": "Selecione até 6 diferenciais adicionais.",
+            "type": "text",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -285,21 +271,11 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "2 vagas na garagem": "2 vagas na garagem",
-                "cozinha gourmet": "cozinha gourmet",
-                "sala ampliada": "sala ampliada",
-                "3 opções de plantas": "3 opções de plantas",
-                "2 pavimentos": "2 pavimentos",
-                "varanda": "varanda"
-            },
-            "default_value": [],
-            "return_format": "value",
-            "allow_custom": 0,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Adicionar nova escolha"
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_66c23e5ae1427",
@@ -315,8 +291,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -361,8 +337,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -407,8 +383,8 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
-            "endpoint": 1,
+            "placement": "left",
+            "endpoint": 0,
             "selected": 0
         },
         {
@@ -512,7 +488,7 @@
                     "label": "Lista de características",
                     "name": "lista_de_caracteristicas",
                     "aria-label": "",
-                    "type": "checkbox",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -521,40 +497,37 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "característica 1": "característica 1",
-                        "característica 2": "característica 2",
-                        "característica 3": "característica 3"
-                    },
-                    "default_value": [],
-                    "return_format": "label",
-                    "allow_custom": 0,
-                    "layout": "vertical",
-                    "toggle": 0,
-                    "save_custom": 0,
-                    "custom_choice_button_text": "Adicionar nova escolha",
-                    "parent_repeater": "field_66c257c2af1da"
-                },
-                {
-                    "key": "field_66d604561421d",
-                    "label": "Outras características",
-                    "name": "outras_caracteristicas",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Escreva aqui características adicionais separadas por vírgula.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66c257c2af1da"
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
+                    "sub_fields": [
+                        {
+                            "key": "field_66c25821af1dd",
+                            "label": "Características",
+                            "name": "caracteristicas",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66c25809af1dc"
+                        }
+                    ]
                 },
                 {
                     "key": "field_66c2585aaf1de",
@@ -671,11 +644,11 @@
                     "parent_repeater": "field_66c257c2af1da"
                 },
                 {
-                    "key": "field_66d61282fb604",
-                    "label": "Galeria da planta",
-                    "name": "galeria_da_planta",
+                    "key": "field_66c2593daf1e2",
+                    "label": "Imagens da planta",
+                    "name": "imagens_da_planta",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "gallery",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -684,65 +657,190 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "table",
-                    "pagination": 0,
-                    "min": 0,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Adicionar linha",
-                    "rows_per_page": 20,
-                    "sub_fields": [
-                        {
-                            "key": "field_66c2593daf1e2",
-                            "label": "Imagem da planta",
-                            "name": "imagem_da_planta",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "library": "all",
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "preview_size": "medium",
-                            "parent_repeater": "field_66d61282fb604"
-                        },
-                        {
-                            "key": "field_66d612a0fb605",
-                            "label": "Legenda da imagem",
-                            "name": "legenda_da_imagem",
-                            "aria-label": "",
-                            "type": "text",
-                            "instructions": "Essa legenda aparecerá no topo da imagem da planta.",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "default_value": "",
-                            "maxlength": "",
-                            "placeholder": "",
-                            "prepend": "",
-                            "append": "",
-                            "parent_repeater": "field_66d61282fb604"
-                        }
-                    ],
+                    "return_format": "array",
+                    "library": "all",
+                    "min": "",
+                    "max": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "insert": "append",
+                    "preview_size": "medium",
                     "parent_repeater": "field_66c257c2af1da"
                 }
             ]
+        },
+        {
+            "key": "field_66d75746cd53e",
+            "label": "Entre em Contato",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_66d7576bcd53f",
+            "label": "Título Entre em Contato",
+            "name": "titulo_entre_em_contato",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66d757a4cd540",
+            "label": "Descrição Entre em Contato",
+            "name": "descricao_entre_em_contato",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66d7586a2f5e6",
+            "label": "Entre em contato",
+            "name": "entre_em_contato",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_66d7587a2f5e7",
+            "label": "Atendimento Ao Cliente",
+            "name": "atendimento_ao_cliente",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_66d75f20295cd",
+            "label": "Carrossel Tipologia",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_66d75f40f605e",
+            "label": "SVG Localização Carrossel Tipologia",
+            "name": "svg_localizacao_carrossel_tipologia",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_66d75f83f605f",
+            "label": "Texto Localização Carrossel Tipologia",
+            "name": "texto_localizacao_carrossel_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66d7607a87e0e",
+            "label": "Título Carrossel Tipologia",
+            "name": "titulo_carrossel_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -763,5 +861,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725305639
+    "modified": 1725390991
 }

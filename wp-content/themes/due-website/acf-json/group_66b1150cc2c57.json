@@ -52,11 +52,11 @@
         },
         {
             "key": "field_66bb9c5be1639",
-            "label": "É um Studio?",
+            "label": "Este empreendimento possui tipologias em formato Studio?",
             "name": "e_um_studio",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "Marque se o empreendimento é um Studio",
+            "instructions": "Marque se o empreendimento tem tipologias Studios",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -217,7 +217,7 @@
             "aria-label": "",
             "type": "select",
             "instructions": "Selecione o status atual do empreendimento",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -266,7 +266,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66b18a48a9423",
+                        "operator": "!=",
+                        "value": "vendido"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -311,7 +319,15 @@
             "type": "file",
             "instructions": "Insira a URL do vídeo para hover do empreendimento.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66b18a48a9423",
+                        "operator": "!=",
+                        "value": "vendido"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -342,5 +358,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724854388
+    "modified": 1725539052
 }

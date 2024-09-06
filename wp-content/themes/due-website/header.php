@@ -16,8 +16,8 @@
 function generate_menu_links()
 {
 	if (have_rows('links_menu', 'options')) {
-		$total_rows = count(get_field('links_menu', 'options')); // Conta o total de links
-		$counter = 1; // Inicia um contador para verificar o último item
+		$total_rows = count(get_field('links_menu', 'options'));
+		$counter = 1;
 
 		while (have_rows('links_menu', 'options')) {
 			the_row();
@@ -29,12 +29,12 @@ function generate_menu_links()
 				$link_title = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
 
-				// Verifica se é o último item e adiciona a classe 'last-item'
+				$id = strtolower(str_replace(' ', '-', $link_title));
+
 				$class = $counter === $total_rows ? 'btn-menu-navlink last-item' : 'btn-menu-navlink';
 
-				// Adicione qualquer condição adicional necessária aqui
 				if (!empty($link_url) && !empty($link_title)) {
-					echo '<li class="' . esc_attr($class) . '"><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
+					echo '<li id="' . esc_attr($id) . '" class="' . esc_attr($class) . '"><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
 				}
 			}
 			$counter++;
@@ -47,6 +47,41 @@ function generate_menu_links()
 <?php
 function generate_navbar()
 {
+	echo '<div class="box-navbar-numeros">';
+
+	if (have_rows('numeros_repetidor', 'options')) {
+		while (have_rows('numeros_repetidor', 'options')) {
+			the_row();
+
+			$link = get_sub_field('numeros_menu_lateral', 'options');
+
+			if ($link) {
+				$link_url = $link['url'];
+				$link_title = $link['title'];
+				$link_target = $link['target'] ? $link['target'] : '_self';
+
+				// Adicione qualquer condição adicional necessária aqui
+				if (!empty($link_url) && !empty($link_title)) {
+					echo '<li class="link-numero">';
+					echo '<a class="button-menu-numero" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">';
+
+					// Adiciona o SVG dentro do link
+					$svg_file = get_sub_field('svg_numeros', 'options');
+					if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+						echo '<i class="element">';
+						echo file_get_contents($svg_file['url']);
+						echo '</i>';
+					}
+
+					echo esc_html($link_title);
+					echo '</a>';
+					echo '</li>';
+				}
+			}
+		}
+	}
+	echo '</div>';
+
 	echo '<div class="box-navbar-menu">';
 
 	if (have_rows('link_navbar', 'options')) {
@@ -62,7 +97,7 @@ function generate_navbar()
 
 				// Adicione qualquer condição adicional necessária aqui
 				if (!empty($link_url) && !empty($link_title)) {
-					echo '<li class=""><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
+					echo '<li class="links-menu"><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
 				}
 			}
 		}
@@ -88,6 +123,41 @@ function generate_navbar()
 			}
 		}
 	}
+	echo '</div>';
+
+	echo '<div class="box-navbar-redes-sociais">';
+
+	if (have_rows('repetidor_rede_sociais', 'options')) {
+		while (have_rows('repetidor_rede_sociais', 'options')) {
+			the_row();
+
+			$link = get_sub_field('link_rede_sociais', 'options');
+
+			if ($link) {
+				$link_url = $link['url'];
+				$link_target = $link['target'] ? $link['target'] : '_self';
+
+				if (!empty($link_url)) {
+					echo '<li class="link-numero">';
+					echo '<a class="button-menu-numero" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">';
+
+					$svg_file = get_sub_field('svg_rede_sociais', 'options');
+					if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+						echo '<i class="element">';
+						echo file_get_contents($svg_file['url']);
+						echo '</i>';
+					}
+
+					echo '</a>';
+					echo '</li>';
+				}
+			}
+		}
+	}
+	$descubra = get_field('botao_label_newsletter', 'options');
+	echo '<p class="receba-novidades">';
+	echo $descubra;
+	echo '</p>';
 	echo '</div>';
 }
 ?>
@@ -121,5 +191,65 @@ function generate_navbar()
 					</ul>
 
 				</div>
+
+
 			</nav>
+			<div class="box-video-destinos">
+				<?php
+				if (have_rows('videos_destino', 'options')) :
+					while (have_rows('videos_destino', 'options')) : the_row(); ?>
+						<?php
+						$link = get_sub_field('link_descubra', 'options');
+						if ($link) :
+							$link_url = $link['url'];
+							$link_title = $link['title'];
+							$link_target = $link['target'] ? $link['target'] : '_self'; ?>
+							<a class="row-videos" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+								<div class="box-imagem-destino">
+
+									<?php
+									$image = get_sub_field('imagem_background', 'options');
+									if ($image) :
+										$image_url = $image['url'];
+										$image_alt = $image['alt']; ?>
+										<img class="imagem-background" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+									<?php endif; ?>
+								</div>
+								<div class="box-conteudo">
+									<div class="box-svg">
+										<?php $svg_file = get_sub_field('svg_destino', 'options');
+										if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+											echo '<i class="element">';
+											echo file_get_contents($svg_file['url']);
+											echo '</i>';
+										} ?>
+									</div>
+									<h3 class="titulo-videos-destinos founders-grotesk"><?php echo get_sub_field('titulo_video_destino', 'options'); ?></h3>
+									<p class="subtitulo-videos-destinos terminal-test"><?php echo get_sub_field('subtitulo_video_destino', 'options'); ?></p>
+
+									<p class="text-link"><?php echo esc_html($link_title); ?></p>
+
+								</div>
+								<div class="box-cards-praia">
+									<?php
+									if (have_rows('cards_premios', 'options')) :
+										$counter = 1;
+										while (have_rows('cards_premios', 'options')) : the_row();
+											$extra_class = ($counter === 2) ? 'bg-blue' : '';
+									?>
+											<div class="box-infos-cards <?php echo $extra_class; ?>">
+												<p class="founders-grotesk titulo-infos-praia"><?php echo get_sub_field('titulo_card'); ?></p>
+												<p class="founders-grotesk premio-infos-praia"><?php echo get_sub_field('titulo_premio'); ?></p>
+											</div>
+									<?php
+											$counter++;
+										endwhile;
+									endif;
+									?>
+								</div>
+							</a>
+						<?php endif; ?>
+				<?php endwhile;
+				endif; ?>
+			</div>
 		</header>

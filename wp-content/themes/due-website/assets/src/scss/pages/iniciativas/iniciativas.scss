@@ -1,6 +1,11 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-iniciativas {
+  header {
+    .button-menu {
+      color: $due-tertiary !important;
+    }
+  }
   .banner-iniciativas {
     display: flex;
     flex-direction: column;

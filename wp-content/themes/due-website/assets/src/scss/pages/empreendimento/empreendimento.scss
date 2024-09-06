@@ -1,9 +1,13 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
-
+header {
+  .button-menu {
+    color: $due-tertiary !important;
+  }
+}
 main.page-empreendimentos-tipologia {
   padding: 120px 0;
-
+ 
   .cards {
     display: flex;
     flex-wrap: wrap;
@@ -44,7 +48,7 @@ main.page-empreendimentos-tipologia {
       cursor: pointer;
 
       button {
-        border: 1px solid #51848C66;
+        border: 1px solid #51848c66;
         padding: 8px 18px;
         border-radius: 32px;
         max-width: fit-content;
@@ -79,10 +83,10 @@ main.page-empreendimentos-tipologia {
         border-radius: 2px;
         position: relative;
         top: 2px;
-        border: 1px solid #51848C66;
+        border: 1px solid #51848c66;
 
         &:after {
-          content: "";
+          content: '';
           width: 100%;
           height: 100%;
           background-color: $due-secondary;
@@ -97,11 +101,11 @@ main.page-empreendimentos-tipologia {
     }
 
     .toggle-next {
-      border-radius: 0
+      border-radius: 0;
     }
 
     label {
-      cursor: pointer
+      cursor: pointer;
     }
 
     .ellipsis {
@@ -119,7 +123,7 @@ main.page-empreendimentos-tipologia {
     margin: 16px 0;
 
     .badge {
-      border: 1px solid #51848C66;
+      border: 1px solid #51848c66;
       color: $due-secondary;
       padding: 8px;
       border-radius: 4px;

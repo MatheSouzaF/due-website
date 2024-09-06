@@ -141,8 +141,34 @@
             "sub_fields": [
                 {
                     "key": "field_66db37b1a71a6",
-                    "label": "Vídeo Background",
-                    "name": "video_background",
+                    "label": "Imagem Background",
+                    "name": "imagem_background",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66db3757a71a5"
+                },
+                {
+                    "key": "field_66db494e642c2",
+                    "label": "SVG Destino",
+                    "name": "svg_destino",
                     "aria-label": "",
                     "type": "file",
                     "instructions": "",
@@ -285,24 +311,6 @@
                         }
                     ],
                     "parent_repeater": "field_66db3757a71a5"
-                },
-                {
-                    "key": "field_66db3905a71ad",
-                    "label": "Embed Vídeo",
-                    "name": "embed_video_",
-                    "aria-label": "",
-                    "type": "oembed",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "width": "",
-                    "height": "",
-                    "parent_repeater": "field_66db3757a71a5"
                 }
             ]
         },
@@ -405,6 +413,170 @@
                     "parent_repeater": "field_669fb35eb2402"
                 }
             ]
+        },
+        {
+            "key": "field_66deed4c37dba",
+            "label": "Números Repetidor",
+            "name": "numeros_repetidor",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66deed6837dbb",
+                    "label": "SVG Números",
+                    "name": "svg_numeros",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_66deed4c37dba"
+                },
+                {
+                    "key": "field_66deed7737dbc",
+                    "label": "Números Menu Lateral",
+                    "name": "numeros_menu_lateral",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_66deed4c37dba"
+                }
+            ]
+        },
+        {
+            "key": "field_66def50ef2fbf",
+            "label": "Repetidor Rede Sociais",
+            "name": "repetidor_rede_sociais",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66def613f2fc0",
+                    "label": "SVG Rede Sociais",
+                    "name": "svg_rede_sociais",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_66def50ef2fbf"
+                },
+                {
+                    "key": "field_66def624f2fc1",
+                    "label": "Link Rede Sociais",
+                    "name": "link_rede_sociais",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_66def50ef2fbf"
+                }
+            ]
+        },
+        {
+            "key": "field_66def71a11357",
+            "label": "Botão Label Newsletter",
+            "name": "botao_label_newsletter",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66def77f45f24",
+            "label": "RD Newsletter",
+            "name": "rd_newsletter",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -425,5 +597,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725643059
+    "modified": 1725891999
 }

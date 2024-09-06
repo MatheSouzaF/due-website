@@ -1,6 +1,18 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.single-empre_single_page {
+  header {
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+
   .single-empreendimentos {
     .hero-single-empreendimentos {
       width: 100%;
@@ -477,6 +489,12 @@ body.single-empre_single_page {
             display: flex;
             flex-direction: column;
             gap: 16px;
+            .column-right {
+              width: 100%;
+            }
+            .column-left {
+              width: 100%;
+            }
             .img {
               display: flex;
               .imgGrow {

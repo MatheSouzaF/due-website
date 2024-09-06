@@ -37,10 +37,13 @@
                 "id": ""
             },
             "choices": {
-                "422": "Praia Exclusive",
-                "420": "Tropí Eco Residência",
-                "418": "Naturê Eco Residência",
-                "412": "Cais Eco Residência"
+                "553": "teste",
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
             },
             "default_value": false,
             "return_format": "label",
@@ -106,11 +109,11 @@
         },
         {
             "key": "field_66bbb24b285fe",
-            "label": "Esta tipologia possui opção de Studio?",
+            "label": "É um Studio?",
             "name": "e_um_studio_tipologia",
             "aria-label": "",
             "type": "true_false",
-            "instructions": "Marque se a tipologia tem opção de Studio",
+            "instructions": "Marque se a tipologia é um Studio",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -270,7 +273,7 @@
             "name": "diferenciais_tipologia",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "Selecione até 4 diferenciais da tipologia",
+            "instructions": "Selecione os diferenciais do empreendimento",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -285,7 +288,7 @@
                 "sala_ampliada": "Sala Ampliada"
             },
             "default_value": [],
-            "return_format": "label",
+            "return_format": "value",
             "allow_custom": 0,
             "layout": "vertical",
             "toggle": 0,
@@ -308,8 +311,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": 738,
-            "min_height": 768,
+            "min_width": 0,
+            "min_height": 0,
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -336,5 +339,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725391824
+    "modified": 1725542811
 }

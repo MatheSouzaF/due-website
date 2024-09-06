@@ -35,36 +35,12 @@
                 "id": ""
             },
             "choices": {
-                "551": "Teste",
+                "697": "Beach House",
+                "695": "Rooftop Poesia 02",
+                "693": "Rooftop Poesia",
+                "690": "Beach House Garden",
+                "688": "Rooftop",
                 "443": "Térreo"
-            },
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 1,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_66d88704efa32",
-            "label": "Empreendimento",
-            "name": "empreendimento_tipologia",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Selecione qual o empreendimento da tipologia que deseja criar.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "422": "Praia Exclusive",
-                "420": "Tropí Eco Residência",
-                "418": "Naturê Eco Residência",
-                "412": "Cais Eco Residência"
             },
             "default_value": false,
             "return_format": "value",
@@ -416,6 +392,46 @@
             "selected": 0
         },
         {
+            "key": "field_66d9f3b2879d4",
+            "label": "Título Plantas",
+            "name": "titulo_plantas",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66d9f9416b633",
+            "label": "Subtitulo Plantas",
+            "name": "subtitulo_plantas",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66c257c2af1da",
             "label": "Planta",
             "name": "planta",
@@ -429,7 +445,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -459,42 +475,12 @@
                     "parent_repeater": "field_66c257c2af1da"
                 },
                 {
-                    "key": "field_66c25749af1d8",
-                    "label": "Quantidade de quartos",
-                    "name": "quantidade_de_quartos",
+                    "key": "field_66da00fa5fb3a",
+                    "label": "Quartos + Metragem",
+                    "name": "quartos_+_metragem",
                     "aria-label": "",
-                    "type": "radio",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "1": "1",
-                        "2": "2",
-                        "3": "3",
-                        "4": "4",
-                        "5": "5",
-                        "6": "6"
-                    },
-                    "default_value": "",
-                    "return_format": "value",
-                    "allow_null": 0,
-                    "other_choice": 0,
-                    "layout": "horizontal",
-                    "save_other_choice": 0,
-                    "parent_repeater": "field_66c257c2af1da"
-                },
-                {
-                    "key": "field_66c25781af1d9",
-                    "label": "Metragem",
-                    "name": "metragem_planta",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
+                    "type": "text",
+                    "instructions": "Será exibido o nome da tipologia + sufixo. Ex: Rooftop I",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -503,10 +489,8 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": "",
-                    "max": "",
+                    "maxlength": "",
                     "placeholder": "",
-                    "step": "",
                     "prepend": "",
                     "append": "",
                     "parent_repeater": "field_66c257c2af1da"
@@ -535,6 +519,27 @@
                     "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
+                            "key": "field_66da04bb8a953",
+                            "label": "SVG Caraterísticas",
+                            "name": "svg_carateristicas",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "parent_repeater": "field_66c25809af1dc"
+                        },
+                        {
                             "key": "field_66c25821af1dd",
                             "label": "Características",
                             "name": "caracteristicas",
@@ -558,11 +563,11 @@
                     ]
                 },
                 {
-                    "key": "field_66c2585aaf1de",
-                    "label": "Quantidade de pavimentos",
-                    "name": "quantidade_de_pavimentos",
+                    "key": "field_66da139a3d650",
+                    "label": "Título Coluna Pavimento I",
+                    "name": "titulo_coluna_pavimento_i",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -571,41 +576,6 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "unico": "Pavimento único",
-                        "dois": "2 pavimentos"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "parent_repeater": "field_66c257c2af1da"
-                },
-                {
-                    "key": "field_66c258a0af1df",
-                    "label": "Cômodos do pavimento",
-                    "name": "comodos_do_pavimento",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_66c2585aaf1de",
-                                "operator": "==",
-                                "value": "unico"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
@@ -614,69 +584,11 @@
                     "parent_repeater": "field_66c257c2af1da"
                 },
                 {
-                    "key": "field_66c258e2af1e0",
-                    "label": "Cômodos do primeiro pavimento",
-                    "name": "comodos_do_primeiro_pavimento",
+                    "key": "field_66da13ea3d652",
+                    "label": "Lista Pavimento I",
+                    "name": "lista_pavimento_i",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_66c2585aaf1de",
-                                "operator": "==",
-                                "value": "dois"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66c257c2af1da"
-                },
-                {
-                    "key": "field_66c258f1af1e1",
-                    "label": "Cômodos do segundo pavimento",
-                    "name": "comodos_do_segundo_pavimento",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Separe os cômodos por vírgula, na página será exibido no formato de lista",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_66c2585aaf1de",
-                                "operator": "==",
-                                "value": "dois"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66c257c2af1da"
-                },
-                {
-                    "key": "field_66c2593daf1e2",
-                    "label": "Imagens da planta",
-                    "name": "imagens_da_planta",
-                    "aria-label": "",
-                    "type": "gallery",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -685,19 +597,174 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "library": "all",
-                    "min": "",
-                    "max": "",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "insert": "append",
-                    "preview_size": "medium",
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66da14083d653",
+                            "label": "Pavimentos Coluna I",
+                            "name": "pavimentos_coluna_i",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66da13ea3d652"
+                        }
+                    ],
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66da13d73d651",
+                    "label": "Título Coluna Pavimento II",
+                    "name": "titulo_coluna_pavimento_ii",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66da142f3d654",
+                    "label": "Lista Pavimento II",
+                    "name": "lista_pavimento_ii",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66da142f3d655",
+                            "label": "Pavimentos Coluna II",
+                            "name": "pavimentos_coluna_ii",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66da142f3d654"
+                        }
+                    ],
+                    "parent_repeater": "field_66c257c2af1da"
+                },
+                {
+                    "key": "field_66dafb439bac1",
+                    "label": "Repetidor Imagens Plantas",
+                    "name": "repetidor_imagens_plantas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66dafb23661c4",
+                            "label": "Título da Planta",
+                            "name": "titulo_da_planta",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66dafb439bac1"
+                        },
+                        {
+                            "key": "field_66c2593daf1e2",
+                            "label": "Imagens da planta",
+                            "name": "imagens_da_planta",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium",
+                            "parent_repeater": "field_66dafb439bac1"
+                        }
+                    ],
                     "parent_repeater": "field_66c257c2af1da"
                 }
             ]
@@ -889,5 +956,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725390991
+    "modified": 1725628486
 }

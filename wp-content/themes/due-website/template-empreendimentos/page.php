@@ -85,7 +85,7 @@ wp_localize_script('main', 'EmpreendimentosData', array(
     </div>
 
     <div class="empreendimentos-results">
-      <p class="results-text">Selecionamos <strong><span class="results-length"></span> imóvel(eis)</strong> para você</p>
+      <p class="results-text"></p>
       <div class="filters-applied"></div>
     </div>
 

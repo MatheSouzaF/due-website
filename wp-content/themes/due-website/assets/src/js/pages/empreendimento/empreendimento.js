@@ -1,5 +1,5 @@
-import {getEmpreendimentos} from '../../services/EmpreendimentoService';
-import {renderFilters} from '../../components/filter';
+import { getEmpreendimentos } from '../../services/EmpreendimentoService';
+import { renderFilters } from '../../components/filter';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -10,8 +10,8 @@ async function empreendimentoPage() {
 
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
-      const $resultsLength = $('.results-length');
-      $resultsLength.text(empreendimentos.length);
+      const $resultsText = $('.results-text');
+      $resultsText.text(empreendimentos.length === 1 ? `Selecionamos ${empreendimentos.length} imóvel para você` : `Selecionamos ${empreendimentos.length} imóveis para você`);
       $container.html('');
 
       if (empreendimentos.length === 0) {
@@ -81,11 +81,11 @@ async function empreendimentoPage() {
       });
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-rooms': Array.from(roomsOptions)
           .sort()
-          .map((room) => ({value: room, label: `${room} Quartos`})),
+          .map((room) => ({ value: room, label: `${room} Quartos` })),
       };
 
       return options;
@@ -139,9 +139,11 @@ async function empreendimentoPage() {
         const matchRooms =
           !roomsFilter ||
           empreendimento.rooms.some(
-            (room) =>
-              roomsFilter.includes(room.minimo_de_quartos.toString()) ||
-              roomsFilter.includes(room.maximo_de_quartos.toString())
+            (room) => {
+              const minQuartos = parseInt(room.minimo_de_quartos);
+              const maxQuartos = parseInt(room.maximo_de_quartos);
+              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
+            }
           );
 
         return matchLocation && matchStatus && matchRooms;
@@ -151,7 +153,7 @@ async function empreendimentoPage() {
     function generateBadge(filterValue, filterType) {
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterType === 'rooms' ? ' qto' : ''}
+          ${filterValue} ${filterType === 'rooms' ? Number(filterValue) === 1 ? ' qto' : ' qtos' : ''}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
@@ -309,4 +311,4 @@ async function initEmpreendimento() {
   swiperGaleria();
 }
 
-export {initEmpreendimento};
+export { initEmpreendimento };

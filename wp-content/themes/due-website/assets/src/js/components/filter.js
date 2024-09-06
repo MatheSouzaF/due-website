@@ -3,8 +3,12 @@ export function renderFilters(filters, options) {
   setCheckboxSelectLabels(filters);
 
   $('.toggle-next').click(function () {
-    $('.checkboxes').not($(this).next('.checkboxes')).hide();
-    $(this).next('.checkboxes').slideToggle(400);
+    $('.checkboxes').not($(this).next('.checkboxes')).hide(); 
+    $(this).next('.checkboxes').slideToggle(400); 
+  });
+
+  $('.checkboxes').parent().on('mouseleave', function () {
+    $(this).find('.checkboxes').slideUp(400); 
   });
 
   $('.ckkBox').change(function () {
@@ -12,6 +16,7 @@ export function renderFilters(filters, options) {
     setCheckboxSelectLabels(filters);
   });
 }
+
 
 function populateFilters(filters, options) {
   $.each(filters, function (key, wrapper) {

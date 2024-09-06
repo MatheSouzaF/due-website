@@ -141,8 +141,34 @@
             "sub_fields": [
                 {
                     "key": "field_66db37b1a71a6",
-                    "label": "Vídeo Background",
-                    "name": "video_background",
+                    "label": "Imagem Background",
+                    "name": "imagem_background",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_66db3757a71a5"
+                },
+                {
+                    "key": "field_66db494e642c2",
+                    "label": "SVG Destino",
+                    "name": "svg_destino",
                     "aria-label": "",
                     "type": "file",
                     "instructions": "",
@@ -285,24 +311,6 @@
                         }
                     ],
                     "parent_repeater": "field_66db3757a71a5"
-                },
-                {
-                    "key": "field_66db3905a71ad",
-                    "label": "Embed Vídeo",
-                    "name": "embed_video_",
-                    "aria-label": "",
-                    "type": "oembed",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "width": "",
-                    "height": "",
-                    "parent_repeater": "field_66db3757a71a5"
                 }
             ]
         },
@@ -425,5 +433,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725643059
+    "modified": 1725647198
 }

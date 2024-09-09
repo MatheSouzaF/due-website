@@ -301,10 +301,10 @@
         },
         {
             "key": "field_66c23e70e1428",
-            "label": "Imagens 360",
-            "name": "imagens_360",
+            "label": "Panaroma imagem",
+            "name": "panaroma_imagem",
             "aria-label": "",
-            "type": "gallery",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -313,10 +313,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "url",
             "library": "all",
-            "min": "",
-            "max": "",
             "min_width": "",
             "min_height": "",
             "min_size": "",
@@ -324,7 +322,6 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
-            "insert": "append",
             "preview_size": "medium"
         },
         {
@@ -956,5 +953,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725628486
+    "modified": 1725910505
 }

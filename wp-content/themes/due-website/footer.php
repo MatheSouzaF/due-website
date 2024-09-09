@@ -188,6 +188,7 @@
 <script>
     Fancybox.bind('[data-fancybox]', {});
 </script>
+
 </body>
 
 </html>

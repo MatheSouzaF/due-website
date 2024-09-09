@@ -9,8 +9,8 @@ async function tipologiaPage() {
 
     function renderTipologias(tipologias) {
       const $container = $('.cards.container-tipologias');
-      const $resultsLength = $('.results-length');
-      $resultsLength.text(tipologias.length);
+      const $resultsText = $('.results-text');
+      $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
       $container.html('');
 
       if (tipologias.length === 0) {
@@ -19,6 +19,7 @@ async function tipologiaPage() {
       }
 
       tipologias.forEach(function (tipologia) {
+        console.log("🚀 ~ tipologia:", tipologia)
         const template = document.getElementById('tipologia-template');
         const cardTemplate = template.content.cloneNode(true);
 

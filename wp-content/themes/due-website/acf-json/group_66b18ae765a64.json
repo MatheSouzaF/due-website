@@ -37,13 +37,10 @@
                 "id": ""
             },
             "choices": {
-                "553": "teste",
-                "469": "Habitá",
-                "436": "Tropí Eco Residência",
-                "434": "Naturê Eco Residência",
-                "432": "Orla Carneiros",
-                "430": "Habitá",
-                "418": "Cais Eco Residência"
+                "422": "Praia Exclusive",
+                "420": "Tropí Eco Residência",
+                "418": "Naturê Eco Residência",
+                "412": "Cais Eco Residência"
             },
             "default_value": false,
             "return_format": "label",
@@ -54,58 +51,32 @@
             "placeholder": ""
         },
         {
-            "key": "field_66bbadb89514b",
-            "label": "Localização",
-            "name": "localizacao_tipologia",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66b18b1766cb9",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66bbb17e285fa",
+            "key": "field_66df0ab8f7caa",
             "label": "Estágio da obra",
-            "name": "estagio_da_obra_tipologia",
+            "name": "estagio_da_obra",
             "aria-label": "",
-            "type": "text",
-            "instructions": "Informação trazida da ficha técnica do empreendimento selecionado",
+            "type": "select",
+            "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_66b18b1766cb9",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "choices": {
+                "Lançamento": "Lançamento",
+                "Em obra": "Em obra",
+                "Últimas unidades": "Últimas unidades",
+                "100% vendido": "100% vendido"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_66bbb24b285fe",
@@ -339,5 +310,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725542811
+    "modified": 1725905611
 }

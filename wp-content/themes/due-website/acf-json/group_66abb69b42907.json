@@ -61,11 +61,11 @@
             "append": ""
         },
         {
-            "key": "field_66abb9d4d971a",
-            "label": "Imagem Jeito DUE",
-            "name": "imagem_jeito_due",
+            "key": "field_66df5826ecd4e",
+            "label": "Vídeo Jeito DUE",
+            "name": "video_jeito_due",
             "aria-label": "",
-            "type": "image",
+            "type": "file",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -74,16 +74,11 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "url",
             "library": "all",
-            "min_width": "",
-            "min_height": "",
             "min_size": "",
-            "max_width": "",
-            "max_height": "",
             "max_size": "",
-            "mime_types": "",
-            "preview_size": "medium"
+            "mime_types": ""
         },
         {
             "key": "field_66abc2fe061b6",
@@ -548,5 +543,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722607837
+    "modified": 1725913581
 }

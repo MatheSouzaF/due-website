@@ -1,8 +1,8 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-jeito-due {
-  header{
-    .button-menu{
+  header {
+    .button-menu {
       color: $due-tertiary !important;
     }
   }
@@ -46,7 +46,7 @@ body.page-template-jeito-due {
           }
         }
       }
-      .box-image-banner {
+      .box-video {
         height: 720px;
         display: flex;
         align-items: center;
@@ -60,7 +60,7 @@ body.page-template-jeito-due {
           margin-bottom: 48px;
         }
         width: 100%;
-        img {
+        video {
           max-height: 720px;
           height: 100%;
           object-fit: cover;
@@ -279,6 +279,7 @@ body.page-template-jeito-due {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         gap: 40px;
         padding: 64px 0 180px;
         @include media-breakpoint-up(md) {
@@ -359,7 +360,10 @@ body.page-template-jeito-due {
     }
 
     .card-repetidor {
-      padding: 0 0 120px;
+      padding: 0 0 64px;
+      @include media-breakpoint-up(sm) {
+        padding: 0 0 120px;
+      }
       margin-top: -90px;
       .box-repetidor {
         display: flex;
@@ -372,12 +376,12 @@ body.page-template-jeito-due {
           flex-direction: row;
         }
         .lista-card {
-          height: 415px;
           position: relative;
-          width: 100%;
-
+          width: 317px;
+          height: 317px;
           @include media-breakpoint-up(sm) {
             background-color: $due-primary;
+            height: 415px;
             width: 49%;
           }
           .box-texto {
@@ -406,6 +410,7 @@ body.page-template-jeito-due {
               text-transform: uppercase;
               color: $grey-0;
               max-width: 310px;
+              transition: 0.6s;
             }
           }
 
@@ -439,7 +444,9 @@ body.page-template-jeito-due {
           @include media-breakpoint-up(sm) {
             &:hover {
               .box-texto {
-                justify-content: space-between;
+                .titulo-card {
+                  margin-bottom: 200px;
+                }
               }
 
               .img-hover {
@@ -466,7 +473,10 @@ body.page-template-jeito-due {
     }
 
     .big-numeros {
-      padding: 120px 0;
+      padding: 0 0 64px;
+      @include media-breakpoint-up(md) {
+        padding: 0 0 120px;
+      }
       display: flex;
       flex-direction: row;
       position: relative;
@@ -583,7 +593,6 @@ body.page-template-jeito-due {
           }
         }
       }
-     
     }
   }
 }

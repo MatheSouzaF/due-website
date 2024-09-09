@@ -347,21 +347,31 @@ get_header();
                     </a>
                 <?php endif; ?>
             </div>
-            <div class="box-conteudo-right">
-                <div class="svg-caribe">
-                    <?php $svg_file = get_field('svg_caribe');
-                    if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                        echo '<i class="element">';
-                        echo file_get_contents($svg_file['url']);
-                        echo '</i>';
-                    } ?>
-                </div>
-                <?php
-                if (have_rows('comentarios_encante-se')) :
+            <?php
+            if (have_rows('comentarios_encante-se')) :
+
+                $total_comentarios = count(get_field('comentarios_encante-se'));
+
+                $extra_class = ($total_comentarios > 4) ? 'more-space' : '';
+            ?>
+
+                <div class="box-conteudo-right <?php echo $extra_class; ?>">
+                    <div class="svg-caribe">
+                        <?php
+                        $svg_file = get_field('svg_caribe');
+                        if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                            echo '<i class="element">';
+                            echo file_get_contents($svg_file['url']);
+                            echo '</i>';
+                        } ?>
+                    </div>
+
+                    <?php
                     while (have_rows('comentarios_encante-se')) : the_row(); ?>
                         <div class="lista-comentarios">
                             <div class="box-svg">
-                                <?php $svg_file = get_sub_field('svg_comentarios_encante-se');
+                                <?php
+                                $svg_file = get_sub_field('svg_comentarios_encante-se');
                                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                                     echo '<i class="element">';
                                     echo file_get_contents($svg_file['url']);
@@ -370,11 +380,11 @@ get_header();
                             </div>
                             <p class="titulo-comentarios founders-grotesk"><?php echo get_sub_field('texto_comentarios_encante-se'); ?></p>
                         </div>
-                <?php endwhile;
-                endif; ?>
+                    <?php endwhile; ?>
+                </div> 
 
+            <?php endif; ?>
 
-            </div>
         </div>
     </div>
 

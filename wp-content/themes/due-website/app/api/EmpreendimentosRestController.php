@@ -26,7 +26,7 @@ class EmpreendimentoRestController
     public function register_routes()
     {
         // Rota para obter todos os empreendimentos
-        register_rest_route('empreendimentos/v1', '/all', array(
+        register_rest_route('v1', '/empreendimentos', array(
             'methods' => 'GET',
             'callback' => array($this, 'get_all_projects'),
             'permission_callback' => '__return_true',

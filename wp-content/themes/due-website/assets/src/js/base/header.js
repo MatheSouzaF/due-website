@@ -24,9 +24,9 @@ function menuMove() {
   const $navigaton = $('.navigation__menu-label');
   const $boxSidebar = $('.box-sidebar');
   const $headerSticky = $('header');
+  const $logoMenu = $('.link-logo-menu');
   const tl = gsap.timeline();
 
-  // Primeira animação: move os links para a direita e diminui a opacidade
   $navLinks.each(function (index, link) {
     tl.to(link, {
       duration: 0.2,
@@ -39,28 +39,27 @@ function menuMove() {
     });
   });
 
-  // Após a animação, oculta os links com display: none
   $navLinks.each(function (index, link) {
     tl.set(link, {
       display: 'none',
     });
   });
 
-  // Animação para o último link
   tl.to($lastLink, {
     duration: 0.2,
     opacity: 1,
     ease: 'power1.inOut',
   });
 
-  // Animação para o elemento de navegação e adicionar a classe no box-sidebar
-  tl.to($navigaton, {
+  tl.to([$navigaton, $logoMenu], {
     position: 'relative',
     opacity: 1,
     onComplete: function () {
       $boxSidebar.addClass('active-sidebar');
+      $logoMenu.addClass('logo-sticky');
     },
   });
+
   tl.to($headerSticky, {
     height: '100px',
   });
@@ -70,6 +69,7 @@ function menuSticky() {
   const $boxSidebar = $('.box-sidebar');
   const $navigaton = $('.navigation__menu-label');
   const $headerSticky = $('header');
+  const $logoMenu = $('.link-logo-menu');
 
   window.onscroll = function () {
     var header = document.querySelector('header');
@@ -80,11 +80,8 @@ function menuSticky() {
       }
     } else {
       header.classList.remove('sticky');
-
-      // Remove a classe 'active-sidebar' do $boxSidebar primeiro
       $boxSidebar.removeClass('active-sidebar');
 
-      // Remove as classes e estilos dos links com um atraso
       gsap.to($('.btn-menu-navlink'), {
         onComplete: function () {
           $(this.targets()).removeClass('fade-out move-right').css({
@@ -95,15 +92,16 @@ function menuSticky() {
         },
       });
 
-      // Reverte os estilos do $navigaton
-
       gsap.to($navigaton, {
         position: '',
         opacity: '',
       });
+
       gsap.to($headerSticky, {
         height: '',
       });
+
+      $logoMenu.removeClass('logo-sticky');
     }
   };
 
@@ -123,10 +121,59 @@ function menuSticky() {
   });
 }
 
+
+
+function hoverDestinos() {
+  var tl = gsap.timeline({paused: true});
+  tl.to('header', {
+    duration: 0.5,
+    height: '560px',
+    backgroundColor: '#f4f4f4',
+    ease: 'power1.inOut',
+    onStart: function () {
+      $('header').addClass('hover-destinos'); // Adiciona a classe no início da animação
+    },
+    onReverseComplete: function () {
+      $('header').removeClass('hover-destinos'); // Remove a classe quando a animação reverte
+    },
+  });
+  tl.to('.box-video-destinos', {
+    duration: 0.3,
+    zIndex: 1, // Aumenta o z-index para 1
+    ease: 'power1.inOut',
+    pointerEvents: 'initial',
+  });
+  tl.to('.row-videos', {
+    duration: 0.6,
+    clipPath: 'inset(0 0 -100px -100px)',
+    stagger: 0.2,
+    ease: 'power1.inOut',
+  });
+
+  function revertAnimation() {
+    tl.reverse();
+  }
+
+  $('#destinos').hover(function () {
+    tl.play();
+  });
+
+  $('header').mouseleave(function () {
+    revertAnimation();
+  });
+
+  $('.btn-menu-navlink')
+    .not('#destinos')
+    .hover(function () {
+      revertAnimation();
+    });
+}
+
 function initHeader() {
   menuSticky();
   scrollsmooth();
   navbar();
+  hoverDestinos();
 }
 
 export {initHeader};

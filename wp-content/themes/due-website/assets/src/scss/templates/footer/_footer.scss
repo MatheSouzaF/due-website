@@ -140,6 +140,9 @@
       background-color: transparent !important;
       .rd-column {
         div {
+          @include media-breakpoint-down(sm) {
+            padding: 0 !important;
+          }
           background-color: transparent !important;
           .bricks-form__field {
             .bricks-form__input {
@@ -175,7 +178,9 @@
             }
           }
           .bricks-form__submit {
+          @include media-breakpoint-up(sm) {
             width: fit-content !important;
+          }
             .rd-button {
               background-color: transparent !important;
               padding: 20px 40px !important;

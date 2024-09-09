@@ -10,15 +10,9 @@ get_header();
             <h1 class="titulo-jeito-due terminal-test"><?php echo get_field('titulo_jeito_due'); ?></h1>
             <p class="descricao-jeito-due founders-grotesk"><?php echo get_field('descricao_jeito_due'); ?></p>
         </div>
-        <div class="box-image-banner">
+        <div class="box-video">
+            <video class="imgGrow" autoplay="autoplay" src="<?php echo get_field('video_jeito_due') ?>" muted loop play></video>
 
-            <?php
-            $image = get_field('imagem_jeito_due');
-            if ($image) :
-                $image_url = $image['url'];
-                $image_alt = $image['alt']; ?>
-                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-            <?php endif; ?>
         </div>
         <div class="wrapper-mobile">
 
@@ -166,20 +160,33 @@ get_header();
     </section>
 
     <section class="big-numeros">
-        <div class="shape-bg-due"><svg xmlns="http://www.w3.org/2000/svg" width="473" height="627" viewBox="0 0 473 627" fill="none">
-                <path d="M322.574 572.353L322.858 572.217V571.902V0.5H472.415V6.77321V384.076V384.38C472.415 517.887 366.543 626.5 236.458 626.5C106.373 626.5 0.5 517.887 0.5 384.38V0.5H150.142V571.902V572.217L150.426 572.353L152.415 573.308L152.418 573.31C179.1 585.889 207.355 592.245 236.5 592.245C265.645 592.245 293.9 585.889 320.582 573.31L320.585 573.308L322.574 572.353ZM116.009 551.45L116.825 552.113V551.062V35.2555V34.7555H116.325H34.4446H33.9446V35.2555V384.38C33.9446 448.048 61.8537 507.327 110.508 546.977L110.508 546.978L116.009 551.45ZM439.14 386.251V386.247V35.2555V34.7555H438.64H356.76H356.26V35.2555V551.062V552.113L357.075 551.45L362.576 546.978L362.577 546.977C410.679 507.762 438.589 449.224 439.14 386.251Z" stroke="#E9E3DD" />
-            </svg></div>
+        <?php
+        // Verifica se há conteúdo em 'image_big_numeros' ou 'card_big_numeros'
+        $image = get_field('image_big_numeros');
+        $has_card_content = have_rows('card_big_numeros');
+
+        // Exibe a div .shape-bg-due apenas se houver conteúdo
+        if ($image || $has_card_content): ?>
+            <div class="shape-bg-due">
+                <svg xmlns="http://www.w3.org/2000/svg" width="473" height="627" viewBox="0 0 473 627" fill="none">
+                    <path d="M322.574 572.353L322.858 572.217V571.902V0.5H472.415V6.77321V384.076V384.38C472.415 517.887 366.543 626.5 236.458 626.5C106.373 626.5 0.5 517.887 0.5 384.38V0.5H150.142V571.902V572.217L150.426 572.353L152.415 573.308L152.418 573.31C179.1 585.889 207.355 592.245 236.5 592.245C265.645 592.245 293.9 585.889 320.582 573.31L320.585 573.308L322.574 572.353ZM116.009 551.45L116.825 552.113V551.062V35.2555V34.7555H116.325H34.4446H33.9446V35.2555V384.38C33.9446 448.048 61.8537 507.327 110.508 546.977L110.508 546.978L116.009 551.45ZM439.14 386.251V386.247V35.2555V34.7555H438.64H356.76H356.26V35.2555V551.062V552.113L357.075 551.45L362.576 546.978L362.577 546.977C410.679 507.762 438.589 449.224 439.14 386.251Z" stroke="#E9E3DD" />
+                </svg>
+            </div>
+        <?php endif; ?>
+
         <div class="box-image-big-numeros">
             <?php
-            $image = get_field('image_big_numeros');
+            // Verifica e exibe a imagem
             if ($image) :
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
                 <img class="img-path-big-numeros" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
+
             <div class="box-card-big-numeros">
                 <?php
-                if (have_rows('card_big_numeros')) :
+                // Loop para exibir os cartões de números, se houver
+                if ($has_card_content) :
                     while (have_rows('card_big_numeros')) : the_row(); ?>
                         <div class="lista-big-numeros">
                             <h4 class="titulo-card-big-numeros terminal-test"><?php echo get_sub_field('titulo_big_numeros'); ?></h4>
@@ -190,8 +197,8 @@ get_header();
             </div>
         </div>
         <div class="box-empyt"></div>
-
     </section>
+
 </div>
 
 

@@ -11,6 +11,7 @@ body.page-template-iniciativas {
     flex-direction: column;
     padding: 134px 0 0;
     transition: 0.6s;
+    position: relative;
 
     @include media-breakpoint-up(sm) {
       padding: 192px 48px 120px;
@@ -19,6 +20,16 @@ body.page-template-iniciativas {
       padding: 192px 80px 120px;
       max-width: 2000px;
       margin: 0 auto;
+    }
+    .logo-shape-due {
+      position: absolute;
+      top: 138px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      display: none;
+      @include media-breakpoint-up(md) {
+        display: flex;
+      }
     }
     .container-banner {
       display: flex;
@@ -66,6 +77,10 @@ body.page-template-iniciativas {
           margin-right: -80px;
           transition: 0.6s;
           display: none;
+          height: 412px;
+          img {
+            width: 296px;
+          }
 
           @include media-breakpoint-up(md) {
             display: flex;
@@ -80,6 +95,8 @@ body.page-template-iniciativas {
       .box-imagem {
         clip-path: inset(0 0 100% 0);
         transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+        width: 515px;
+        height: 432px;
         &.imgPath {
           clip-path: inset(0 0 -100px -100px);
         }
@@ -99,8 +116,10 @@ body.page-template-iniciativas {
     flex-direction: column;
     gap: 40px;
     padding: 48px 0;
-    margin-top: -170px;
     transition: 0.6s;
+    @include media-breakpoint-up(md) {
+      margin-top: -170px;
+    }
     &.background-open {
       background-color: $background;
     }
@@ -131,10 +150,6 @@ body.page-template-iniciativas {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
-        }
-        svg {
-          width: 157px;
-          height: 49px;
         }
       }
       .titulo-associacao-superacao {
@@ -206,13 +221,17 @@ body.page-template-iniciativas {
       width: 100%;
       min-height: 660px;
       .image-associacao-superacao {
-        height: 100%;
         width: 100%;
         object-fit: cover;
         clip-path: inset(0 0 100% 0);
         transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
         &.imgPath {
           clip-path: inset(0 0 -100px -100px);
+        }
+        height: 314px;
+
+        @include media-breakpoint-up(md) {
+          height: 660px;
         }
       }
 
@@ -229,6 +248,11 @@ body.page-template-iniciativas {
         gap: 40px;
         padding: 0 20px;
         align-items: center;
+      }
+      .button {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
       }
     }
   }
@@ -268,10 +292,6 @@ body.page-template-iniciativas {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
-        }
-        svg {
-          width: 157px;
-          height: 49px;
         }
       }
       .titulo-escola-formacao-due {
@@ -330,6 +350,10 @@ body.page-template-iniciativas {
       min-height: 660px;
       clip-path: inset(0 0 100% 0);
       transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+      height: 314px;
+      @include media-breakpoint-up(md) {
+        height: 660px;
+      }
       &.imgPath {
         clip-path: inset(0 0 -100px -100px);
       }
@@ -390,10 +414,6 @@ body.page-template-iniciativas {
             transform: translateX(0);
           }
         }
-        svg {
-          width: 157px;
-          height: 49px;
-        }
       }
       .titulo-incentivo-empreendedorismo {
         color: $due-tertiary;
@@ -453,7 +473,11 @@ body.page-template-iniciativas {
         clip-path: inset(0 0 -100px -100px);
       }
       width: 100%;
-      min-height: 660px;
+
+      height: 314px;
+      @include media-breakpoint-up(md) {
+        height: 660px;
+      }
       img {
         height: 100%;
         width: 100%;
@@ -504,10 +528,6 @@ body.page-template-iniciativas {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
-        }
-        svg {
-          width: 157px;
-          height: 49px;
         }
       }
       .titulo-proposito {
@@ -582,7 +602,10 @@ body.page-template-iniciativas {
         clip-path: inset(0 0 -100px -100px);
       }
       width: 100%;
-      min-height: 660px;
+      height: 314px;
+      @include media-breakpoint-up(md) {
+        height: 660px;
+      }
       img {
         height: 100%;
         width: 100%;
@@ -602,11 +625,15 @@ body.page-template-iniciativas {
         padding: 0 20px;
         align-items: center;
       }
+      .button{
+        @include media-breakpoint-down(sm) {
+        width: 100%;
+        }}
     }
   }
 
   .selos-certificados {
-    padding: 0 0 80px;
+    padding: 80px 0 80px;
     .titulo-selos {
       color: $due-tertiary;
       font-style: normal;

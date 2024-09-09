@@ -126,6 +126,7 @@ function generate_navbar()
 	echo '</div>';
 
 	echo '<div class="box-navbar-redes-sociais">';
+	echo '<div class="box-redes">';
 
 	if (have_rows('repetidor_rede_sociais', 'options')) {
 		while (have_rows('repetidor_rede_sociais', 'options')) {
@@ -154,6 +155,7 @@ function generate_navbar()
 			}
 		}
 	}
+	echo '</div>';
 	$descubra = get_field('botao_label_newsletter', 'options');
 	echo '<p class="receba-novidades">';
 	echo $descubra;

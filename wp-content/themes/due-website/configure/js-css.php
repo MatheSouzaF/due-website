@@ -25,6 +25,7 @@ function _add_stylesheets()
   wp_dequeue_style('global-styles');
   wp_dequeue_style('classic-theme-styles');
   wp_enqueue_style('AOS', get_template_directory_uri() . '/assets/dist/vendor/AOS/aos.min.css');
+  wp_enqueue_style('photo-sphere', get_template_directory_uri() . '/node_modules/@photo-sphere-viewer/core/index.css', ['main'], ASSETS_VERSION);
 
   wp_enqueue_style('main', get_template_directory_uri() . '/assets/dist/css/main.css');
 }

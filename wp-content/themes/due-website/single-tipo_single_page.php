@@ -58,6 +58,12 @@ get_header();
             <?php endif; ?>
         </div>
     </div>
+    <div class="panorama">
+        <div class="wrapper">
+
+            <div class="viewer" id="viewer"></div>
+        </div>
+    </div>
 
     <div class="plantas">
         <div class="wrapper">

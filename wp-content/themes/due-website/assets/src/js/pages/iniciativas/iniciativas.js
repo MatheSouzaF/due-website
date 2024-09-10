@@ -126,6 +126,7 @@ function animationEscola() {
   const logoSVG = document.querySelector('.box-svg-escola');
   const tituloEscola = document.querySelector('.titulo-escola-formacao-due');
   const descricaoEscola = document.querySelector('.descricao-escola-formacao-due');
+  const linkEscola = document.querySelector('.link-escola-desktop');
   const imgEscola = document.querySelector('.box-conteudo-right-escola');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
@@ -157,7 +158,15 @@ function animationEscola() {
       },
       '-=0.7'
     )
-
+    .from(
+      linkEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => linkEscola.classList.add('fade-right'),
+      },
+      '-=0.7'
+    )
     .from(
       imgEscola,
       {
@@ -173,6 +182,7 @@ function animationIncentivo() {
   const logoSVG = document.querySelector('.box-svg-incentivo-empreendedorismo');
   const tituloincentivo = document.querySelector('.titulo-incentivo-empreendedorismo');
   const descricaoincentivo = document.querySelector('.descricao-incentivo-empreendedorismo');
+  const linkEmpreendedorismo = document.querySelector('.link-empreendedorismo-desktop');
   const imgincentivo = document.querySelector('.box-conteudo-right-incentivo-empreendedorismo');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
@@ -205,6 +215,15 @@ function animationIncentivo() {
       '-=0.7'
     )
 
+    .from(
+      linkEmpreendedorismo,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => linkEmpreendedorismo.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
     .from(
       imgincentivo,
       {

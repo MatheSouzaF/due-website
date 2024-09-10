@@ -9,6 +9,26 @@ function swiperTipologia() {
         slidesPerView: 3,
       },
     },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+}
+
+function swiperGaleria() {
+  var swiper = new Swiper('.swiper-galeria', {
+    slidesPerView: 1.2,
+    spaceBetween: 24,
+    navigation: {
+      nextEl: '.swiper-button-next-galeria',
+      prevEl: '.swiper-button-prev-galeria',
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 3,
+      },
+    },
   });
 }
 // function swiperPlantas() {
@@ -78,7 +98,7 @@ function swiperTipologia() {
 // }
 
 function panorama() {
-  const imagePath = '/wp-content/themes/due-website/assets/src/img/teste.jpg';
+  const imagePath = image.url;
 
   new Viewer({
     container: 'viewer',
@@ -88,7 +108,7 @@ function panorama() {
 
 function initSingleTipologia() {
   swiperTipologia();
-  // swiperPlantas();
+  swiperGaleria();
   // swiperImagensPlantas();
   panorama();
 }

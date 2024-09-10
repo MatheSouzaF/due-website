@@ -58,6 +58,7 @@
     "@babel/plugin-transform-runtime": "^7.24.3",
     "@babel/preset-env": "^7.24.5",
     "@barba/core": "^2.9.7",
+    "@photo-sphere-viewer/core": "^5.10.0",
     "cypress": "~12.17.0",
     "gsap": "^3.12.5",
     "gulp-babel": "^8.0.0",

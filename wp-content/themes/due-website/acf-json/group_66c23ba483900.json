@@ -35,12 +35,8 @@
                 "id": ""
             },
             "choices": {
-                "697": "Beach House",
-                "695": "Rooftop Poesia 02",
-                "693": "Rooftop Poesia",
-                "690": "Beach House Garden",
-                "688": "Rooftop",
-                "443": "Térreo"
+                "662": "Tipologia Exclusive",
+                "660": "Tipologia Cais Eco"
             },
             "default_value": false,
             "return_format": "value",
@@ -89,6 +85,34 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66e03b3c5a9d9",
+            "label": "Estágio da obra",
+            "name": "estagio_da_obra_tipologia",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Lançamento": "Lançamento",
+                "Em obra": "Em obra",
+                "Últimas unidades": "Últimas unidades",
+                "100% vendido": "100% vendido"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
         },
         {
             "key": "field_66d7488d394ab",
@@ -519,6 +543,27 @@
                     "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
+                            "key": "field_66c25821af1dd",
+                            "label": "Características",
+                            "name": "caracteristicas",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66c25809af1dc"
+                        },
+                        {
                             "key": "field_66da04bb8a953",
                             "label": "SVG Caraterísticas",
                             "name": "svg_carateristicas",
@@ -604,6 +649,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66da14083d653",
@@ -626,8 +672,7 @@
                             "append": "",
                             "parent_repeater": "field_66da13ea3d652"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 },
                 {
                     "key": "field_66da13d73d651",
@@ -671,6 +716,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66da142f3d655",
@@ -693,8 +739,7 @@
                             "append": "",
                             "parent_repeater": "field_66da142f3d654"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 },
                 {
                     "key": "field_66dafb439bac1",
@@ -716,6 +761,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66dafb23661c4",
@@ -764,8 +810,7 @@
                             "preview_size": "medium",
                             "parent_repeater": "field_66dafb439bac1"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 }
             ]
         },
@@ -956,5 +1001,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725628486
+    "modified": 1725971365
 }

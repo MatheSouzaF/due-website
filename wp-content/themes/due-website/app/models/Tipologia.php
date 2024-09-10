@@ -23,7 +23,7 @@ function register_custom_post_type_tipologia() {
         'supports'            => array('title', 'editor', 'thumbnail', 'revisions'),
         'public'              => true,
         'has_archive'         => true,
-        'rewrite'             => array('slug' => 'tipologias'),
+        'rewrite'             => array('slug' => 'tipologias-ficha'),
         'show_in_rest'        => true,
         'menu_icon'           => 'dashicons-admin-home',
     );

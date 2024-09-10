@@ -45,7 +45,7 @@ wp_localize_script('main', 'EmpreendimentosData', array(
         <a rel="stylesheet" href="#">
           <h2 class="active">EMPREENDIMENTOS</h2>
         </a>
-        <a rel="stylesheet" href="#">
+        <a rel="stylesheet" href="/tipologias">
           <h2>TIPOLOGIAS</h2>
         </a>
       </div>

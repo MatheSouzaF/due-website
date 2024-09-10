@@ -90,6 +90,10 @@ body.page-template-iniciativas {
               clip-path: inset(0 0 -100px -100px);
             }
           }
+          img {
+            width: 296px;
+            object-fit: cover;
+          }
         }
       }
       .box-imagem {

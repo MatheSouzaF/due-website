@@ -188,6 +188,7 @@
 <script>
     Fancybox.bind('[data-fancybox]', {});
 </script>
+<script src="https://unpkg.com/photo-sphere-viewer@latest/dist/photo-sphere-viewer.min.js"></script>
 
 </body>
 

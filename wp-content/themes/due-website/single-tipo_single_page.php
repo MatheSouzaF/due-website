@@ -63,8 +63,8 @@ get_header();
     </div>
     <div class="panorama">
         <div class="wrapper">
-
             <div class="viewer" id="viewer"></div>
+            
         </div>
     </div>
 

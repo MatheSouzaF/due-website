@@ -169,6 +169,26 @@
             ]
         },
         {
+            "key": "field_66e03e60ab7a1",
+            "label": "Últimas unidades",
+            "name": "ultimas_unidades",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Adicione aqui se a tipologia está nas últimas unidades",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66bbb27c285ff",
             "label": "Metragem",
             "name": "metragem_tipologia",
@@ -259,7 +279,7 @@
                 "sala_ampliada": "Sala Ampliada"
             },
             "default_value": [],
-            "return_format": "value",
+            "return_format": "label",
             "allow_custom": 0,
             "layout": "vertical",
             "toggle": 0,
@@ -310,5 +330,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725905611
+    "modified": 1725972229
 }

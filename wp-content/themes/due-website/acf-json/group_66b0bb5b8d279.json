@@ -308,6 +308,22 @@
             "delay": 0
         },
         {
+            "key": "field_66e0d206ac325",
+            "label": "Link Escola de formação DUE",
+            "name": "link_escola_de_formacao_due",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
             "key": "field_66b0e4618c268",
             "label": "Imagem Escola de formação DUE",
             "name": "imagem_escola_de_formacao_due",
@@ -409,6 +425,22 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_66e0d226ac326",
+            "label": "Link Incentivo ao Empreendedorismo",
+            "name": "link_incentivo_ao_empreendedorismo",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         },
         {
             "key": "field_66b0f9a4a4064",
@@ -698,5 +730,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1722877263
+    "modified": 1726009992
 }

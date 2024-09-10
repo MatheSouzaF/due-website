@@ -1,7 +1,7 @@
 function bannerJeitoDUE() {
   const tituloJeito = document.querySelector('.titulo-jeito-due');
   const descricaoJeito = document.querySelector('.descricao-jeito-due');
-  const imgBanner = document.querySelector('.box-image-banner');
+  const imgBanner = document.querySelector('.box-video');
   
   let TLFADE = gsap.timeline();
 
@@ -38,7 +38,7 @@ function imagemGrow() {
     '(min-width: 1024px)': function () {
       let tl = gsap.timeline({
         scrollTrigger: {
-          trigger: '.box-image-banner',
+          trigger: '.box-video',
           scrub: 2,
           start: 'top+=350 center',
           end: 'bottom+=500 center',

@@ -11,13 +11,13 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    $('input[name="acf[field_66bbadb89514b]"]').val(response.data.location);
-                    $('input[name="acf[field_66bbb17e285fa]"]').val(response.data.status);
+                    $('select[name="acf[field_66df0ab8f7caa]"').val(response.data.status).change();
                 }
             }
         });
     });
-
+    
+    // [Singlepage do Empreendimento] Seletor para buscar os dados do empreendimento selecionado 
     $('select[name="acf[field_66c0d4ddca8c7]"').on('change', function () {
         var projectId = $(this).val();
 

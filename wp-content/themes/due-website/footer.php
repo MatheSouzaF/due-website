@@ -102,7 +102,7 @@
         <div class="box-links">
             <div class="copyright">
                 <?php $ano_atual = date('Y'); ?>
-                <p class="terminal-test">© <?php echo $ano_atual ?> <?php echo __('DUE  • Todos os direitos reservados ', 'due-website') ?> </p>
+                <p class="founders-grotesk">© <?php echo $ano_atual ?> <?php echo __('DUE  • Todos os direitos reservados ', 'due-website') ?> </p>
             </div>
 
             <div class="box-link-paginas">

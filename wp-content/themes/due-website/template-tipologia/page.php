@@ -19,7 +19,7 @@ if ($query->have_posts()) {
 
     $tipologia_id = get_the_ID();
     $name = get_field('nome_da_tipologia', $tipologia_id);
-    $project = get_field('pertence_a_qual_empreendimento', $tipologia_id);
+    $project = get_field('pertence_a_qual_empreendimento', $tipologia_id); // Retorna o nome do projeto
     $location = get_field('localizacao_tipologia', $tipologia_id);
     $status = get_field('estagio_da_obra_tipologia', $tipologia_id);
     $isStudio = get_field('e_um_studio_tipologia', $tipologia_id);
@@ -28,22 +28,44 @@ if ($query->have_posts()) {
     $diffs = get_field('diferenciais_tipologia', $tipologia_id);
     $photo = get_field('foto_da_tipologia', $tipologia_id);
 
+    // Agora fazemos uma query para obter o ID do empreendimento baseado no nome
+    $project_id = null;
+    if ($project) {
+      $project_query = new WP_Query(array(
+        'post_type' => 'empreendimentos', // Substitua pelo seu post type de empreendimentos
+        'title' => $project, // Busca pelo título que corresponde ao nome do projeto
+        'posts_per_page' => 1
+      ));
+
+      if ($project_query->have_posts()) {
+        $project_query->the_post();
+        $project_id = get_the_ID(); // Obtém o ID do empreendimento
+      }
+      wp_reset_postdata();
+    }
+
+    // Puxa os campos do empreendimento baseado no ID encontrado
+    if ($project_id) {
+      $project_location = get_field('localizacao_emprendimento', $project_id);
+      $project_status = get_field('estagio_da_obra', $project_id);
+    }
 
     $tipologias[] = array(
       'name' => $name,
       'id' => $tipologia_id,
-      'project' => $project,
-      'location' => $location,
+      'project' => $project, // Nome do projeto
+      'location' => isset($project_location) ? $project_location : '',
+      'status' => isset($project_status) ? $project_status : '',
       'isStudio' => $isStudio,
       'rooms' => $rooms,
       'size' => $size,
-      'status' => $status,
       'diffs' => $diffs,
       'photo' => $photo,
     );
   }
   wp_reset_postdata();
 }
+
 
 // Passar os dados para o JavaScript
 wp_localize_script('main', 'TipologiasData', array(
@@ -118,8 +140,7 @@ wp_localize_script('main', 'TipologiasData', array(
     </div>
 
     <div class="tipologias-results">
-      <p class="results-text">Selecionamos <strong><span class="results-length"></span> tipologia(s)</strong> para você
-      </p>
+      <p class="results-text"></p>
       <div class="filters-applied"></div>
     </div>
 

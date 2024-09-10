@@ -4,6 +4,7 @@ wp_enqueue_style('jeito-due', get_template_directory_uri() . '/assets/dist/css/j
 get_header();
 ?>
 <div class="page-jeito-due">
+    
     <section class="banner-jeito-due">
         <div class="wrapper">
 
@@ -98,7 +99,6 @@ get_header();
         </div>
     </section>
 
-
     <section class="reducao-social">
         <div class="container-social">
 
@@ -192,6 +192,7 @@ get_header();
         <div class="box-empyt"></div>
 
     </section>
+
 </div>
 
 

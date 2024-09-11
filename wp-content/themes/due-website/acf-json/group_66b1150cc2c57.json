@@ -246,7 +246,15 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66b18a48a9423",
+                        "operator": "!=",
+                        "value": "vendido"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -358,5 +366,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725539052
+    "modified": 1726069205
 }

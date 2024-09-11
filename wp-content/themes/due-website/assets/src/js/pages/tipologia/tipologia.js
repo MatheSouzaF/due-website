@@ -10,6 +10,7 @@ async function tipologiaPage() {
     function renderTipologias(tipologias) {
       const $container = $('.cards.container-tipologias');
       const $resultsText = $('.results-text');
+
       $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
       $container.html('');
 
@@ -19,9 +20,20 @@ async function tipologiaPage() {
       }
 
       tipologias.forEach(function (tipologia) {
-        console.log("🚀 ~ tipologia:", tipologia)
         const template = document.getElementById('tipologia-template');
         const cardTemplate = template.content.cloneNode(true);
+        const $boxCard = $(cardTemplate).find('.box-card');
+        
+        const statusMap = {
+          'Em obra': 'em_obra',
+          'Lançamento': 'lancamento',
+          '100% vendido': 'vendido',
+          'Últimas unidades': 'ultimas_unidades'
+        };
+        
+        const statusClass = statusMap[tipologia.status] || tipologia.status;
+        
+        $boxCard.addClass(statusClass);
 
         $(cardTemplate)
           .find('.nome-tipologia')
@@ -101,16 +113,21 @@ async function tipologiaPage() {
         }
       });
 
+      const isStudio = tipologiasData.map(t => t.isStudio)
+
       const options = {
         'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
         'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
         'filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
-        'filter-rooms': Array.from(roomsOptions)
-          .sort()
-          .map((room) => ({ value: room, label: `${room} Quartos` })),
+        'filter-rooms': [
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []), 
+          ...Array.from(roomsOptions)
+            .sort()
+            .map((room) => ({ value: room, label: `${room} Quartos` })),
+        ],
       };
-
+      
       return options;
     }
 
@@ -166,14 +183,18 @@ async function tipologiaPage() {
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
         const matchRooms =
-          !roomsFilter ||
-          tipologia.rooms.some(
-            (room) => {
-              const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
-              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
-              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
-            }
-          );
+        !roomsFilter ||
+        tipologia.isStudio && roomsFilter.includes('studio') || 
+        tipologia.rooms.some(
+          (room) => {
+            const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
+            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
+            return roomsFilter.some(
+              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+            );
+          }
+        );
+      
         const matchDiferenciais =
           !diferenciaisFilter ||
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -184,13 +205,19 @@ async function tipologiaPage() {
 
 
     function generateBadge(filterValue, filterType) {
+      let badgeLabel = filterValue;
+    
+      if (filterType === 'rooms' && filterValue !== 'studio') {
+        badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
+      }
+    
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterType === 'rooms' ? ' qto' : ''}
+          ${badgeLabel}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
-
+    
       $('.filters-applied').append(badgeTemplate);
     }
 

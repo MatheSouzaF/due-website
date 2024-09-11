@@ -42,6 +42,31 @@ main.page-tipologias {
           z-index: 0;
         }
 
+        &.lancamento {
+          .label-informativo {
+            background-color: #cb9e6c;
+          }
+        }
+        &.em_obra {
+          .label-informativo {
+            background-color: #003b4b;
+          }
+        }
+        &.ultimas_unidades {
+          .label-informativo {
+            background-color: #861d1d;
+          }
+        }
+        &.vendido {
+          .label-informativo {
+            background-color: #e9e3dd;
+            color: $due-tertiary;
+          }
+          .imagem-tipologia {
+            filter: grayscale(1);
+          }
+        }
+
         .box-midia {
           width: 100%;
 
@@ -69,7 +94,6 @@ main.page-tipologias {
           width: 100%;
           top: 0;
           left: 0;
-          padding: 10px 0;
 
           .label-informativo {
             text-align: center;
@@ -79,6 +103,8 @@ main.page-tipologias {
             font-weight: 500;
             line-height: 100%;
             letter-spacing: 0.48px;
+            padding: 10px 0;
+            text-transform: uppercase;
           }
         }
 

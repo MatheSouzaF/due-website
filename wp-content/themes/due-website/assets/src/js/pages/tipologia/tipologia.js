@@ -10,6 +10,7 @@ async function tipologiaPage() {
     function renderTipologias(tipologias) {
       const $container = $('.cards.container-tipologias');
       const $resultsText = $('.results-text');
+
       $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
       $container.html('');
 
@@ -19,9 +20,20 @@ async function tipologiaPage() {
       }
 
       tipologias.forEach(function (tipologia) {
-        console.log("🚀 ~ tipologia:", tipologia)
         const template = document.getElementById('tipologia-template');
         const cardTemplate = template.content.cloneNode(true);
+        const $boxCard = $(cardTemplate).find('.box-card');
+        
+        const statusMap = {
+          'Em obra': 'em_obra',
+          'Lançamento': 'lancamento',
+          '100% vendido': 'vendido',
+          'Últimas unidades': 'ultimas_unidades'
+        };
+        
+        const statusClass = statusMap[tipologia.status] || tipologia.status;
+        
+        $boxCard.addClass(statusClass);
 
         $(cardTemplate)
           .find('.nome-tipologia')

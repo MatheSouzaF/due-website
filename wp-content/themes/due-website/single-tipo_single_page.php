@@ -263,22 +263,22 @@ get_header();
                                             </div>
 
                                             <div class="gallery-thumbs-plantas">
-                                                    <?php if (have_rows('repetidor_imagens_plantas')):
-                                                        while (have_rows('repetidor_imagens_plantas')):
-                                                            the_row(); ?>
-                                                            <div class="row-thumbs-plantas">
-                                                                <?php
-                                                                $image = get_sub_field('imagens_da_planta');
-                                                                if ($image):
-                                                                    $image_url = $image['url'];
-                                                                    $image_alt = $image['alt']; ?>
-                                                                    <img class="plantas-repetidor-thumb"
-                                                                        src="<?php echo esc_url($image_url); ?>"
-                                                                        alt="<?php echo esc_attr($image_alt); ?>">
-                                                                <?php endif; ?>
-                                                            </div>
-                                                    <?php endwhile;
-                                                    endif; ?>
+                                                <?php if (have_rows('repetidor_imagens_plantas')):
+                                                    while (have_rows('repetidor_imagens_plantas')):
+                                                        the_row(); ?>
+                                                        <div class="row-thumbs-plantas">
+                                                            <?php
+                                                            $image = get_sub_field('imagens_da_planta');
+                                                            if ($image):
+                                                                $image_url = $image['url'];
+                                                                $image_alt = $image['alt']; ?>
+                                                                <img class="plantas-repetidor-thumb"
+                                                                    src="<?php echo esc_url($image_url); ?>"
+                                                                    alt="<?php echo esc_attr($image_alt); ?>">
+                                                            <?php endif; ?>
+                                                        </div>
+                                                <?php endwhile;
+                                                endif; ?>
                                             </div>
                                         </div>
 
@@ -356,6 +356,7 @@ get_header();
                 $query->the_post();
 
                 $tipologiaId = get_the_ID();
+                $linkPost = get_permalink($tipologiaId);
                 $name = get_field('nome_da_tipologia', $tipologiaId);
                 $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
                 $location = get_field('localizacao_tipologia', $tipologiaId);
@@ -446,7 +447,7 @@ get_header();
 
                             $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
                             ?>
-                            <div class="swiper-slide <?php echo esc_html($statusClass) ?>">
+                            <a href="<?php echo esc_url($linkPost); ?>" class="swiper-slide <?php echo esc_html($statusClass); ?>">
                                 <div class="tipologia-card ">
                                     <span class="estado-tipologia terminal-test">
                                         <?php echo esc_html($tipologia['status']) ?>
@@ -511,12 +512,12 @@ get_header();
                                                         d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
                                                         stroke="white" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-                                                <p class="diifs-names"><?php echo esc_html($diff); ?></p>
+                                                <p class="diifs-names founders-grotesk"><?php echo esc_html($diff); ?></p>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                     <div class="box-buttons">

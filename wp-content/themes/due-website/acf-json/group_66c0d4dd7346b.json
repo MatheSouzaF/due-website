@@ -823,6 +823,26 @@
             "selected": 0
         },
         {
+            "key": "field_66e1c52432b33",
+            "label": "Título Espaços",
+            "name": "titulo_espacos",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66e08ebea323a",
             "label": "Categoria (aba)",
             "name": "categoria_aba",
@@ -886,6 +906,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66e08ebea323a",
                     "sub_fields": [
                         {
                             "key": "field_66c0d871ca8df",
@@ -934,8 +955,7 @@
                             "preview_size": "medium",
                             "parent_repeater": "field_66c0d7e9ca8de"
                         }
-                    ],
-                    "parent_repeater": "field_66e08ebea323a"
+                    ]
                 }
             ]
         },
@@ -976,6 +996,26 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_66e2013640dc5",
+            "label": "SVG Orientação",
+            "name": "svg_orientacao",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
         },
         {
             "key": "field_66c0d8a9ca8e1",
@@ -1026,6 +1066,26 @@
                 "551": "Teste",
                 "443": "Térreo"
             }
+        },
+        {
+            "key": "field_66e1e3605b5e8",
+            "label": "Título Tipologias do Empreendimento",
+            "name": "titulo_tipologias_do_empreendimento",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_66cf2682bab33",
@@ -1423,6 +1483,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar Autor",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66d0846ffc768",
                     "sub_fields": [
                         {
                             "key": "field_66d084b0fc76b",
@@ -1445,8 +1506,7 @@
                             "append": "",
                             "parent_repeater": "field_66d0849cfc76a"
                         }
-                    ],
-                    "parent_repeater": "field_66d0846ffc768"
+                    ]
                 }
             ]
         }
@@ -1469,5 +1529,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726064956
+    "modified": 1726087511
 }

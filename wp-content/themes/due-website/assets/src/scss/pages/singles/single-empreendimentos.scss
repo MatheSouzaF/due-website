@@ -522,34 +522,373 @@ body.single-empre_single_page {
         }
       }
     }
+
+    .experiencia-resort {
+      .titulo-espaco {
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 56px */
+        letter-spacing: 0.8px;
+        color: $due-tertiary;
+        margin-bottom: 40px;
+        font-size: 24px;
+        @include media-breakpoint-up(sm) {
+          font-size: 40px;
+        }
+      }
+
+      .box-lista-rota {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+        margin-bottom: 24px;
+        .lista-rota {
+          .item-rota {
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%; /* 14px */
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            color: $due-tertiary;
+            cursor: pointer;
+            position: relative;
+            &::after {
+              content: '';
+              bottom: -6px;
+              width: 0;
+              height: 2px;
+              transition: 0.6s;
+              left: 0;
+              position: absolute;
+              background-color: $due-tertiary;
+            }
+            &:hover {
+              &::after {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      .box-aba-galeria {
+        .card-rota {
+          width: 280px;
+          height: 548px;
+          position: relative;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            position: relative;
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgb(0, 0, 0);
+              background: linear-gradient(90deg, rgba(0, 0, 0, 0.1) 100%, rgba(247, 247, 247, 0) 100%);
+              z-index: 1;
+            }
+          }
+          .card-rota-content {
+            position: absolute;
+            z-index: 2;
+            bottom: 24px;
+            left: 0;
+            width: 100%;
+            .card-rota-title {
+              text-align: center;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 140%;
+              letter-spacing: 0.56px;
+              text-transform: uppercase;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
     .explore-empreendimento {
-      padding: 120px 0;
+      padding: 32px 0 64px;
+      @include media-breakpoint-up(sm) {
+        padding: 120px 0;
+      }
       .wrapper {
         .titulo-explore {
-          font-size: 32px;
           font-style: normal;
           font-weight: 300;
           line-height: 140%;
           letter-spacing: 0.64px;
           margin-bottom: 32px;
           color: $due-tertiary;
+          font-size: 24px;
+          @include media-breakpoint-up(sm) {
+            font-size: 32px;
+          }
         }
-        .drag_element {
-          width: 25px;
-          height: 25px;
-          .point_style {
-            width: 25px;
-            height: 25px;
+      }
+      .box-image-mapa {
+        @include media-breakpoint-up(sm) {
+          padding: 0 48px;
+        }
 
-            .pins_image {
-              top: initial !important;
-              left: initial !important;
-              cursor: pointer;
+        @include media-breakpoint-up(lg) {
+          padding: 0 80px;
+        }
+        position: relative;
+        .shape-orientacao {
+          position: absolute;
+          transition: 0.6s;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 2;
+          @include media-breakpoint-down(sm) {
+            display: none;
+          }
+        }
+        &:hover {
+          .shape-orientacao {
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
+          }
+        }
+      }
+      .wrap_svl_center {
+        height: 500px;
+        @include media-breakpoint-down(sm) {
+          overflow: scroll;
+        }
+        .wrap_svl_center_box {
+          width: 100%;
+          height: 500px;
+          .wrap_svl {
+            width: 100%;
+            height: 500px;
+            .images_wrap {
+              height: 500px;
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                @include media-breakpoint-down(sm) {
+                  max-inline-size: initial;
+                  max-block-size: initial;
+                  width: initial;
+                }
+              }
             }
           }
         }
       }
+      .drag_element {
+        width: 25px;
+        height: 25px;
+        .point_style {
+          width: 25px;
+          height: 25px;
+
+          .pins_image {
+            top: initial !important;
+            left: initial !important;
+            cursor: pointer;
+          }
+        }
+      }
     }
+
+    .tipologias-do-empreendimento {
+      padding: 0 0 120px;
+
+      .titulo-tipologia-do-empreendimento {
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 56px */
+        letter-spacing: 0.8px;
+        margin-bottom: 24px;
+        font-size: 24px;
+        text-align: center;
+        color: $due-tertiary;
+        @include media-breakpoint-up(sm) {
+          font-size: 40px;
+        }
+      }
+      .box-swiper {
+        position: relative;
+        .swiper-wrapper {
+          .swiper-slide {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #002b36;
+            height: 510px;
+            .tipologia-card {
+              position: relative;
+              .estado-tipologia {
+                position: absolute;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+                color: #fff;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 100%;
+                letter-spacing: 0.48px;
+                text-transform: uppercase;
+              }
+              .tipologia-photo {
+                height: 300px;
+                width: 100%;
+                object-fit: cover;
+                margin-bottom: 20px;
+              }
+              .tipologia-name {
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 140%; /* 39.2px */
+                letter-spacing: 0.56px;
+                color: $due-tertiary;
+                margin-bottom: 20px;
+              }
+              .box-quartos-metragem {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 20px;
+                gap: 16px;
+                .box-quarto {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 8px;
+                  .quartos {
+                    color: $due-tertiary;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; /* 25.2px */
+                    letter-spacing: 0.36px;
+                  }
+                }
+                .box-metragem {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 8px;
+                  .metragem {
+                    color: $due-tertiary;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 140%; /* 25.2px */
+                    letter-spacing: 0.36px;
+                  }
+                }
+              }
+              .container-diferencias {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 12px;
+                .box-diferencias {
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  width: 48%;
+
+                  gap: 8px;
+                  .diifs-names {
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 140%; /* 22.4px */
+                    letter-spacing: 0.32px;
+                    color: $due-tertiary;
+                  }
+                }
+              }
+            }
+
+            &.lancamento {
+              .estado-tipologia {
+                background-color: #cb9e6c;
+              }
+            }
+            &.em_obra {
+              .estado-tipologia {
+                background-color: #003b4b;
+              }
+            }
+            &.ultimas_unidades {
+              .estado-tipologia {
+                background-color: #861d1d;
+              }
+            }
+            &.vendido {
+              .estado-tipologia {
+                background-color: #e9e3dd;
+                color: $due-tertiary;
+              }
+              .tipologia-photo {
+                filter: grayscale(1);
+              }
+            }
+          }
+        }
+        .box-buttons {
+          display: none;
+          flex-direction: row-reverse;
+          position: absolute;
+          right: 3px;
+          top: 42%;
+          width: 100%;
+          height: 74px;
+          gap: 16px;
+          justify-content: space-between;
+          transform: translateY(-50%);
+          z-index: 1;
+          pointer-events: none;
+          padding: 0 20px;
+          cursor: pointer;
+          svg {
+            filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+            transition: 0.6s;
+            width: 80px;
+            height: 80px;
+            pointer-events: auto;
+            circle {
+              transition: 0.6s;
+            }
+            &:hover {
+              scale: 1.02;
+              circle {
+                stroke-width: 2;
+              }
+            }
+          }
+          @include media-breakpoint-up(sm) {
+            display: flex;
+          }
+
+          .swiper-button-disabled {
+            opacity: 0;
+          }
+        }
+      }
+    }
+
     .diferenciais {
       background: $due-secondary;
       padding: 120px 0;

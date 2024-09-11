@@ -51,7 +51,7 @@ async function tipologiaPage() {
         const quartos = tipologia.rooms && tipologia.rooms[0];
         $(cardTemplate)
           .find('.info-quartos')
-          .text(quartos ? `${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A');
+          .text(quartos ? `${tipologia.isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A');
 
         const tamanho = tipologia.size && tipologia.size[0];
         $(cardTemplate)

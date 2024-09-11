@@ -217,7 +217,8 @@ get_header();
                                     } ?>
                                 </div>
                                 <p class="texto-caracteristica founders-grotesk">
-                                    <?php echo get_sub_field('texto_da_caracteristica'); ?></p>
+                                    <?php echo get_sub_field('texto_da_caracteristica'); ?>
+                                </p>
                             </div>
                         <?php endwhile;
                     endif; ?>
@@ -312,9 +313,9 @@ get_header();
 
                 $nome_categoria = get_sub_field('nome_da_categoria_aba');
                 $categoria_slug = sanitize_title($nome_categoria);
-        
+
                 echo "<h2 data-value='$categoria_slug' class='item-rota'>$nome_categoria</h2>";
-        
+
                 echo '<div id="swiper-' . esc_attr($categoria_slug) . '" class="swiper swiper-rota-destino" style="display:none;">';
                 echo '<div class="swiper-wrapper">';
 
@@ -365,6 +366,101 @@ get_header();
         </div>
     </div>
 
+    <div class="tipologias-do-empreendimento">
+        <?php
+
+        $empreendimentoID = get_field('empreendimento_single_page');
+        $empreendimentoName = '';
+        $argsEmpreendimento = array(
+            'post_type' => 'empreendimentos',
+            'post__in' => array($empreendimentoID),
+            'post_status' => 'publish'
+        );
+        
+        $queryEmpreendimento = new WP_Query($argsEmpreendimento);
+        
+        if ($queryEmpreendimento->have_posts()) {
+            while ($queryEmpreendimento->have_posts()) {
+                $queryEmpreendimento->the_post();
+                $empreendimentoName = get_field('empreendimento_nome', $empreendimentoID);
+            }
+            wp_reset_postdata();
+        }
+
+        $tipologiasDoEmpreendimento = [];
+        $argsTipologia = array(
+            'post_type' => 'tipologias',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+        $queryTipologia = new WP_Query($argsTipologia);
+        if ($queryTipologia->have_posts()) {
+            while ($queryTipologia->have_posts()) {
+                $queryTipologia->the_post();
+
+                $tipologiaId = get_the_ID();
+                $name = get_field('nome_da_tipologia', $tipologiaId);
+                $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
+                $location = get_field('localizacao_tipologia', $tipologiaId);
+                $status = get_field('estagio_da_obra', $tipologiaId);
+                $ultimas_unidades = get_field('ultimas_unidades', $tipologiaId);
+                $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
+                $rooms = '';
+                if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
+                    while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
+                        the_row();
+                        $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
+                        $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
+
+                        if ($min_rooms && $max_rooms) {
+                            $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
+                        } elseif ($min_rooms) {
+                            $rooms = $min_rooms . ' quartos';
+                        }
+                    endwhile;
+                }
+                ;
+                $size = '';
+                if (have_rows('metragem_tipologia', $tipologiaId)) {
+                    while (have_rows('metragem_tipologia', $tipologiaId)):
+                        the_row();
+                        $min_size = get_sub_field('metragem_minima_tipologia');
+                        $max_size = get_sub_field('metragem_maxima_tipologia');
+
+                        if ($min_size && $max_size) {
+                            $size = $min_size . ' a ' . $max_size . 'm²';
+                        } elseif ($min_size) {
+                            $size = $min_size . ' m²';
+                        }
+                    endwhile;
+                }
+                $diffs = get_field('diferenciais_tipologia', $tipologiaId);
+                $photo = get_field('foto_da_tipologia', $tipologiaId);
+
+                if ($project === $empreendimentoName) {
+                    $tipologiasDoEmpreendimento[] = array(
+                        'name' => $name,
+                        'id' => $tipologiaId,
+                        'project' => $project,
+                        'location' => $location,
+                        'isStudio' => $isStudio,
+                        'rooms' => $rooms,
+                        'size' => $size,
+                        'status' => $status,
+                        'diffs' => $diffs,
+                        'photo' => $photo,
+                    );
+                }
+            }
+            wp_reset_postdata();
+        }
+
+        // usar essa variável para renderizar as tipologias no frontend
+        var_dump($tipologiasDoEmpreendimento);
+
+        ?>
+    </div>
+
     <div class="diferenciais" id="diferenciais">
         <div class="wrapper">
 
@@ -406,7 +502,8 @@ get_header();
                                             } ?>
                                         </div>
                                         <p class="text-repeater founders-grotesk">
-                                            <?php echo get_sub_field('texto_do_diferencial'); ?></p>
+                                            <?php echo get_sub_field('texto_do_diferencial'); ?>
+                                        </p>
                                     </div>
                                 </div>
                             <?php endwhile;
@@ -463,9 +560,11 @@ get_header();
         <div class="wrapper">
             <div class="box-infos-obra box-titulos">
                 <h3 class="titulo-infos-obra terminal-test">
-                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?></h3>
+                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?>
+                </h3>
                 <p class="descricao-infos-obra founders-grotesk">
-                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?></p>
+                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?>
+                </p>
             </div>
             <div class="box-infos-obra box-autores">
                 <?php
@@ -474,13 +573,15 @@ get_header();
                         the_row(); ?>
                         <div class="row-autores">
                             <h4 class="titulo-autores founders-grotesk">
-                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?></h4>
+                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?>
+                            </h4>
                             <?php
                             if (have_rows('autor_informacoes_tecnicas_da_obra')):
                                 while (have_rows('autor_informacoes_tecnicas_da_obra')):
                                     the_row(); ?>
                                     <p class="text-autor founders-grotesk">
-                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?></p>
+                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?>
+                                    </p>
                                 <?php endwhile;
                             endif; ?>
                         </div>

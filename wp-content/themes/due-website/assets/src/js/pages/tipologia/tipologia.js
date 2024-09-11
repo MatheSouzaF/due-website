@@ -149,7 +149,7 @@ async function tipologiaPage() {
       const value = $(selector)
         .find('input:checked')
         .map(function () {
-          return this.value.toLowerCase();
+          return selector === '#filter-diferenciais' ? this.value : this.value.toLowerCase();
         })
         .get();
 
@@ -252,7 +252,7 @@ async function tipologiaPage() {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false);
+        $(`#filter-${filterType} input[value="${filterValue}"]`).click();
 
         updateBadges();
         buildFilterUrl();
@@ -412,6 +412,7 @@ function cardHover() {
 
 async function initTipologia() {
   await tipologiaPage();
+  cardHover()
 }
 
 export { initTipologia };

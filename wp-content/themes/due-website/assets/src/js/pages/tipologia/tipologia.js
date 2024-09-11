@@ -149,7 +149,7 @@ async function tipologiaPage() {
       const value = $(selector)
         .find('input:checked')
         .map(function () {
-          return this.value.toLowerCase();
+          return selector === '#filter-diferenciais' ? this.value : this.value.toLowerCase();
         })
         .get();
 

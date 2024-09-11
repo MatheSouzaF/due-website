@@ -182,27 +182,25 @@ async function tipologiaPage() {
         const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
-        const matchRooms =
-        !roomsFilter ||
-        tipologia.isStudio && roomsFilter.includes('studio') || 
-        tipologia.rooms.some(
-          (room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
-            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
+      
+        const matchRooms = !roomsFilter || 
+          (roomsFilter.includes('studio') ? tipologia.isStudio : 
+          tipologia.rooms.some((room) => {
+            const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
+            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
             return roomsFilter.some(
               (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
             );
-          }
+          })
         );
       
         const matchDiferenciais =
-          !diferenciaisFilter ||
+          !diferenciaisFilter || 
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
-
+      
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;
-      });
+      });      
     }
-
 
     function generateBadge(filterValue, filterType) {
       let badgeLabel = filterValue;

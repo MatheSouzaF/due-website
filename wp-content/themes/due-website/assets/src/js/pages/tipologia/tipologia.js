@@ -101,16 +101,21 @@ async function tipologiaPage() {
         }
       });
 
+      const isStudio = tipologiasData.map(t => t.isStudio)
+
       const options = {
         'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
         'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
         'filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
-        'filter-rooms': Array.from(roomsOptions)
-          .sort()
-          .map((room) => ({ value: room, label: `${room} Quartos` })),
+        'filter-rooms': [
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []), 
+          ...Array.from(roomsOptions)
+            .sort()
+            .map((room) => ({ value: room, label: `${room} Quartos` })),
+        ],
       };
-
+      
       return options;
     }
 
@@ -166,14 +171,14 @@ async function tipologiaPage() {
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
         const matchRooms =
-          !roomsFilter ||
-          tipologia.rooms.some(
-            (room) => {
-              const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
-              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
-              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
-            }
-          );
+        !roomsFilter ||
+        tipologia.rooms.some(
+          (room) => {
+            const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
+            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
+            return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
+          }
+        );
         const matchDiferenciais =
           !diferenciaisFilter ||
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -186,7 +191,7 @@ async function tipologiaPage() {
     function generateBadge(filterValue, filterType) {
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterType === 'rooms' ? ' qto' : ''}
+          ${filterValue} ${filterValue !== 'studio' ?? filterType === 'rooms' ? Number(filterValue) === 1 ? ' qto' : ' qtos' : ''}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;

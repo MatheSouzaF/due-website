@@ -22,6 +22,18 @@ async function empreendimentoPage() {
       empreendimentos.forEach(function (empreendimento) {
         const template = document.getElementById('empreendimento-template');
         const cardTemplate = template.content.cloneNode(true);
+        const $boxCard = $(cardTemplate).find('.box-card');
+
+        const statusMap = {
+          'Em obra': 'em_obra',
+          'Lançamento': 'lancamento',
+          '100% vendido': 'vendido',
+          'Últimas unidades': 'ultimas_unidades'
+        };
+
+        const statusClass = statusMap[empreendimento.status] || empreendimento.status;
+
+        $boxCard.addClass(statusClass);
 
         $(cardTemplate)
           .find('.nome-empreendimento')
@@ -86,7 +98,7 @@ async function empreendimentoPage() {
         'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
         'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []), 
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({ value: room, label: `${room} Quartos` })),

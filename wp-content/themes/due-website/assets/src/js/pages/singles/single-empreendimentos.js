@@ -112,13 +112,28 @@ function swiperInit() {
     },
   });
 }
-
+function swiperTipologia() {
+  var swiper = new Swiper('.tipologias-swiper', {
+    slidesPerView: 1.2,
+    spaceBetween: 24,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+}
 function initSingleEmpreendimentos() {
-  swiperInit()
+  swiperInit();
   swiperDiferenciais();
   swiperGaleria();
   colorBullet();
-  filterExperiencias()
+  filterExperiencias();
+  swiperTipologia();
 }
 
-export { initSingleEmpreendimentos };
+export {initSingleEmpreendimentos};

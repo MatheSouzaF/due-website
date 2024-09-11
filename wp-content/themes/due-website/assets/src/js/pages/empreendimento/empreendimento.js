@@ -22,6 +22,18 @@ async function empreendimentoPage() {
       empreendimentos.forEach(function (empreendimento) {
         const template = document.getElementById('empreendimento-template');
         const cardTemplate = template.content.cloneNode(true);
+        const $boxCard = $(cardTemplate).find('.box-card');
+
+        const statusMap = {
+          'Em obra': 'em_obra',
+          'Lançamento': 'lancamento',
+          '100% vendido': 'vendido',
+          'Últimas unidades': 'ultimas_unidades'
+        };
+
+        const statusClass = statusMap[empreendimento.status] || empreendimento.status;
+
+        $boxCard.addClass(statusClass);
 
         $(cardTemplate)
           .find('.nome-empreendimento')
@@ -36,7 +48,7 @@ async function empreendimentoPage() {
         const quartos = empreendimento.rooms && empreendimento.rooms[0];
         $(cardTemplate)
           .find('.info-quartos')
-          .text(quartos ? `${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} quartos` : 'N/A');
+          .text(quartos ? `${empreendimento.isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} qtos` : 'N/A');
 
         const tamanho = empreendimento.size && empreendimento.size[0];
         $(cardTemplate)
@@ -80,12 +92,17 @@ async function empreendimentoPage() {
         }
       });
 
+      const isStudio = empreendimentosData.map(e => e.isStudio)
+
       const options = {
         'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
         'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
-        'filter-rooms': Array.from(roomsOptions)
-          .sort()
-          .map((room) => ({ value: room, label: `${room} Quartos` })),
+        'filter-rooms': [
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...Array.from(roomsOptions)
+            .sort()
+            .map((room) => ({ value: room, label: `${room} Quartos` })),
+        ],
       };
 
       return options;
@@ -136,14 +153,16 @@ async function empreendimentoPage() {
       return empreendimentos.filter((empreendimento) => {
         const matchLocation = !locationFilter || locationFilter.includes(empreendimento.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(empreendimento.status.toLowerCase());
-        const matchRooms =
-          !roomsFilter ||
-          empreendimento.rooms.some(
-            (room) => {
-              const minQuartos = parseInt(room.minimo_de_quartos);
-              const maxQuartos = parseInt(room.maximo_de_quartos);
-              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
-            }
+
+        const matchRooms = !roomsFilter ||
+          (roomsFilter.includes('studio') ? empreendimento.isStudio :
+            empreendimento.rooms.some((room) => {
+              const minQuartos = parseInt(room.minimo_de_quartos, 10);
+              const maxQuartos = parseInt(room.maximo_de_quartos, 10);
+              return roomsFilter.some(
+                (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+              );
+            })
           );
 
         return matchLocation && matchStatus && matchRooms;
@@ -151,9 +170,15 @@ async function empreendimentoPage() {
     }
 
     function generateBadge(filterValue, filterType) {
+      let badgeLabel = filterValue;
+
+      if (filterType === 'rooms' && filterValue !== 'studio') {
+        badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
+      }
+
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterType === 'rooms' ? Number(filterValue) === 1 ? ' qto' : ' qtos' : ''}
+          ${badgeLabel}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;

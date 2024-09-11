@@ -217,7 +217,8 @@ get_header();
                                     } ?>
                                 </div>
                                 <p class="texto-caracteristica founders-grotesk">
-                                    <?php echo get_sub_field('texto_da_caracteristica'); ?></p>
+                                    <?php echo get_sub_field('texto_da_caracteristica'); ?>
+                                </p>
                             </div>
                     <?php endwhile;
                     endif; ?>
@@ -395,6 +396,17 @@ get_header();
     <div class="explore-empreendimento">
         <div class="wrapper">
             <h3 class="titulo-explore terminal-test"><?php echo get_field('titulo_explore_empreendimentos'); ?></h3>
+        </div>
+
+        <div class="box-image-mapa">
+            <div class="shape-orientacao">
+                <?php $svg_file = get_field('svg_orientacao');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
             <?php
             $selected_post = get_field('imagem_do_empreendimento');
             if ($selected_post) {
@@ -403,6 +415,213 @@ get_header();
                 echo do_shortcode($shortcode);
             }
             ?>
+        </div>
+    </div>
+
+    <div class="tipologias-do-empreendimento">
+        <?php
+
+        $empreendimentoID = get_field('empreendimento_single_page');
+        $empreendimentoName = '';
+        $argsEmpreendimento = array(
+            'post_type' => 'empreendimentos',
+            'post__in' => array($empreendimentoID),
+            'post_status' => 'publish'
+        );
+
+        $queryEmpreendimento = new WP_Query($argsEmpreendimento);
+
+        if ($queryEmpreendimento->have_posts()) {
+            while ($queryEmpreendimento->have_posts()) {
+                $queryEmpreendimento->the_post();
+                $empreendimentoName = get_field('empreendimento_nome', $empreendimentoID);
+            }
+            wp_reset_postdata();
+        }
+
+        $tipologiasDoEmpreendimento = [];
+        $argsTipologia = array(
+            'post_type' => 'tipologias',
+            'posts_per_page' => -1,
+            'post_status' => 'publish',
+        );
+        $queryTipologia = new WP_Query($argsTipologia);
+        if ($queryTipologia->have_posts()) {
+            while ($queryTipologia->have_posts()) {
+                $queryTipologia->the_post();
+                $tipologiaId = get_the_ID();
+                $linkPost = get_permalink($tipologiaId);
+                $name = get_field('nome_da_tipologia', $tipologiaId);
+                $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
+                $location = get_field('localizacao_tipologia', $tipologiaId);
+                $status = get_field('estagio_da_obra', $tipologiaId);
+                $ultimas_unidades = get_field('ultimas_unidades', $tipologiaId);
+                $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
+                $rooms = '';
+                if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
+                    while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
+                        the_row();
+                        $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
+                        $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
+
+                        if ($min_rooms && $max_rooms) {
+                            $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
+                        } elseif ($min_rooms) {
+                            $rooms = $min_rooms . ' quartos';
+                        }
+                    endwhile;
+                };
+                $size = '';
+                if (have_rows('metragem_tipologia', $tipologiaId)) {
+                    while (have_rows('metragem_tipologia', $tipologiaId)):
+                        the_row();
+                        $min_size = get_sub_field('metragem_minima_tipologia');
+                        $max_size = get_sub_field('metragem_maxima_tipologia');
+
+                        if ($min_size && $max_size) {
+                            $size = $min_size . ' a ' . $max_size . 'm²';
+                        } elseif ($min_size) {
+                            $size = $min_size . ' m²';
+                        }
+                    endwhile;
+                }
+                $diffs = get_field('diferenciais_tipologia', $tipologiaId);
+                $photo = get_field('foto_da_tipologia', $tipologiaId);
+
+                if ($project === $empreendimentoName) {
+                    $tipologiasDoEmpreendimento[] = array(
+                        'name' => $name,
+                        'id' => $tipologiaId,
+                        'project' => $project,
+                        'location' => $location,
+                        'isStudio' => $isStudio,
+                        'rooms' => $rooms,
+                        'size' => $size,
+                        'status' => $status,
+                        'diffs' => $diffs,
+                        'photo' => $photo,
+                    );
+                }
+            }
+            wp_reset_postdata();
+        }
+
+        // usar essa variável para renderizar as tipologias no frontend
+        // var_dump($tipologiasDoEmpreendimento);
+
+        ?>
+        <div class="wrapper">
+            <h3 class="titulo-tipologia-do-empreendimento">
+                <?php echo get_field('titulo_tipologias_do_empreendimento'); ?>
+            </h3>
+            <div class="box-swiper">
+                <div class="swiper-container tipologias-swiper">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($tipologiasDoEmpreendimento as $tipologia): ?>
+                            <?php
+                            // var_dump($tipologia);
+
+                            $statusMap = [
+                                'Em obra' => 'em_obra',
+                                'Lançamento' => 'lancamento',
+                                '100% vendido' => 'vendido',
+                                'Últimas unidades' => 'ultimas_unidades'
+                            ];
+
+                            $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
+                            ?>
+                            <a href="<?php echo esc_url($linkPost); ?>" class="swiper-slide <?php echo esc_html($statusClass); ?>">
+                                <div class="tipologia-card ">
+                                    <span class="estado-tipologia terminal-test">
+                                        <?php echo esc_html($tipologia['status']) ?>
+                                    </span>
+                                    <span class="">
+                                        <?php echo esc_html($tipologia['ultimas_unidades']) ?>
+                                    </span>
+                                    <img class="tipologia-photo" src="<?php echo esc_url($tipologia['photo']['url']); ?>"
+                                        alt="<?php echo esc_attr($tipologia['name']); ?>">
+                                    <h3 class="tipologia-name founders-grotesk"><?php echo esc_html($tipologia['name']); ?>
+                                    </h3>
+                                    <div class="box-quartos-metragem">
+                                        <div class="box-quarto">
+
+                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="30" height="30" rx="15" fill="#FAF2EB" fill-opacity="0.7" />
+                                                <g clip-path="url(#clip0_3049_5595)">
+                                                    <path
+                                                        d="M13.0365 13.4828C13.0365 14.7959 11.6151 15.6165 10.4778 14.96C9.95008 14.6553 9.625 14.0923 9.625 13.4828C9.625 12.1697 11.0465 11.3489 12.1837 12.0055C12.7115 12.3103 13.0365 12.8733 13.0365 13.4828Z"
+                                                        stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M7.0625 10.4044V17.5468" stroke="#003B4B"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M22.9385 20.1579V17.5472H7.0625V20.1579" stroke="#003B4B"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path
+                                                        d="M22.9424 17.5471V15.3068C22.9424 13.3585 21.3627 11.779 19.4144 11.7788H15.6094V17.5471"
+                                                        stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_3049_5595">
+                                                        <rect width="16.875" height="10.6875" fill="white"
+                                                            transform="translate(6.5625 9.65625)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+
+                                            <p class="quartos founders-grotesk"><?php echo esc_html($tipologia['rooms']); ?>
+                                            </p>
+                                        </div>
+                                        <div class="box-metragem">
+                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <circle opacity="0.7" cx="15" cy="15" r="15" fill="#FAF2EB" />
+                                                <path
+                                                    d="M12.3333 9H10.3333C9.97971 9 9.64057 9.14048 9.39052 9.39052C9.14048 9.64057 9 9.97971 9 10.3333V12.3333M21 12.3333V10.3333C21 9.97971 20.8595 9.64057 20.6095 9.39052C20.3594 9.14048 20.0203 9 19.6667 9H17.6667M17.6667 21H19.6667C20.0203 21 20.3594 20.8595 20.6095 20.6095C20.8595 20.3594 21 20.0203 21 19.6667V17.6667M9 17.6667V19.6667C9 20.0203 9.14048 20.3594 9.39052 20.6095C9.64057 20.8595 9.97971 21 10.3333 21H12.3333"
+                                                    stroke="#002B36" stroke-width="1.2" stroke-linecap="round"
+                                                    stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="metragem founders-grotesk"><?php echo esc_html($tipologia['size']); ?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <div class="container-diferencias">
+
+                                        <?php foreach ($tipologia['diffs'] as $diff): ?>
+                                            <div class="box-diferencias">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                                    fill="none">
+                                                    <path
+                                                        d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
+                                                        stroke="#002B36" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <p class="diifs-names founders-grotesk"><?php echo esc_html($diff); ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="box-buttons">
+                        <svg class="swiper-button-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                            viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="40" r="40" fill="white" />
+                            <path
+                                d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z"
+                                fill="#003B4B" />
+                        </svg>
+
+                        <svg class="swiper-button-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                            viewBox="0 0 80 80" fill="none">
+                            <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                            <path
+                                d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
+                                fill="#003B4B" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -447,7 +666,8 @@ get_header();
                                             } ?>
                                         </div>
                                         <p class="text-repeater founders-grotesk">
-                                            <?php echo get_sub_field('texto_do_diferencial'); ?></p>
+                                            <?php echo get_sub_field('texto_do_diferencial'); ?>
+                                        </p>
                                     </div>
                                 </div>
                         <?php endwhile;
@@ -504,9 +724,11 @@ get_header();
         <div class="wrapper">
             <div class="box-infos-obra box-titulos">
                 <h3 class="titulo-infos-obra terminal-test">
-                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?></h3>
+                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?>
+                </h3>
                 <p class="descricao-infos-obra founders-grotesk">
-                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?></p>
+                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?>
+                </p>
             </div>
             <div class="box-infos-obra box-autores">
                 <?php
@@ -515,7 +737,8 @@ get_header();
                         the_row(); ?>
                         <div class="row-autores">
                             <h4 class="titulo-autores founders-grotesk">
-                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?></h4>
+                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?>
+                            </h4>
                             <?php
                             if (have_rows('autor_informacoes_tecnicas_da_obra')):
                                 while (have_rows('autor_informacoes_tecnicas_da_obra')):

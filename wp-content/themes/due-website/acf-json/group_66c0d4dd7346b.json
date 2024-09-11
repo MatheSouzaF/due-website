@@ -998,6 +998,26 @@
             "append": ""
         },
         {
+            "key": "field_66e2013640dc5",
+            "label": "SVG Orientação",
+            "name": "svg_orientacao",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_66c0d8a9ca8e1",
             "label": "Imagem do empreendimento",
             "name": "imagem_do_empreendimento",
@@ -1046,6 +1066,26 @@
                 "551": "Teste",
                 "443": "Térreo"
             }
+        },
+        {
+            "key": "field_66e1e3605b5e8",
+            "label": "Título Tipologias do Empreendimento",
+            "name": "titulo_tipologias_do_empreendimento",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_66cf2682bab33",
@@ -1489,5 +1529,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726072123
+    "modified": 1726087511
 }

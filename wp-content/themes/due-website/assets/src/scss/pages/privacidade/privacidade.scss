@@ -1,0 +1,48 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+body.page-template-page-politicas {
+  .privacidade-termos {
+    padding: 200px 0;
+
+    .title-privacidade {
+      color: $due-tertiary;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: 1.28px;
+      font-size: 32px;
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        font-size: 64px;
+      }
+    }
+
+    .description-termos {
+      h2 {
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: 1.28px;
+        font-size: 32px;
+      }
+      h3{
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 1.28px;
+        font-size: 24px;
+      }
+
+      p{
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 1.28px;
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -17,6 +17,19 @@ get_header();
                     <h1 class="titulo-banner-inciativas terminal-test"><?php echo get_field('titulo_banner_iniciativas'); ?></h1>
                     <p class="descricao-banner-inciativas founders-grotesk"><?php echo get_field('descricao_banner_iniciativas'); ?></p>
                 </div>
+
+            </div>
+            <div class="container-image">
+
+                <div class="box-imagem">
+                    <?php
+                    $image = get_field('imagem_banner_iniciativas');
+                    if ($image) :
+                        $image_url = $image['url'];
+                        $image_alt = $image['alt']; ?>
+                        <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                    <?php endif; ?>
+                </div>
                 <div class="box-imagem-banner-iniciativas">
                     <?php
                     $image = get_field('imagem_banner_iniciativas_02');
@@ -27,20 +40,11 @@ get_header();
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="box-imagem">
-                <?php
-                $image = get_field('imagem_banner_iniciativas');
-                if ($image) :
-                    $image_url = $image['url'];
-                    $image_alt = $image['alt']; ?>
-                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                <?php endif; ?>
-            </div>
         </div>
 
     </section>
 
-    <section class="associacao-superacao">
+    <section class="associacao-superacao" id="iniciativas1">
 
 
         <div class="box-conteudo-left">
@@ -91,7 +95,7 @@ get_header();
         </div>
     </section>
 
-    <section class="escola-formacao-due">
+    <section class="escola-formacao-due" id="iniciativas2">
 
 
         <div class="box-conteudo-left">
@@ -106,6 +110,16 @@ get_header();
             </div>
             <h2 class="titulo-escola-formacao-due terminal-test"><?php echo get_field('titulo_escola_de_formacao_due'); ?></h2>
             <div class="descricao-escola-formacao-due"><?php echo get_field('descricao_escola_de_formacao_due'); ?></div>
+            <?php
+            $link = get_field('link_escola_de_formacao_due');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button link-escola-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
         </div>
         <div class="box-conteudo-right box-conteudo-right-escola">
             <?php
@@ -115,10 +129,20 @@ get_header();
                 $image_alt = $image['alt']; ?>
                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
+            <?php
+            $link = get_field('link_escola_de_formacao_due');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button link-escola-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="incentivo-empreendedorismo">
+    <section class="incentivo-empreendedorismo" id="iniciativas3">
 
 
         <div class="box-conteudo-left">
@@ -133,6 +157,16 @@ get_header();
             </div>
             <h2 class="titulo-incentivo-empreendedorismo terminal-test"><?php echo get_field('titulo_incentivo_ao_empreendedorismo'); ?></h2>
             <div class="descricao-incentivo-empreendedorismo"><?php echo get_field('descricao_incentivo_ao_empreendedorismo'); ?></div>
+            <?php
+            $link = get_field('link_incentivo_ao_empreendedorismo');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button link-empreendedorismo-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
         </div>
         <div class="box-conteudo-right box-conteudo-right-incentivo-empreendedorismo">
             <?php
@@ -142,10 +176,20 @@ get_header();
                 $image_alt = $image['alt']; ?>
                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
+            <?php
+            $link = get_field('link_incentivo_ao_empreendedorismo');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button link-empreendedorismo-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="proposito">
+    <section class="proposito" id="iniciativas4">
 
 
         <div class="box-conteudo-left">

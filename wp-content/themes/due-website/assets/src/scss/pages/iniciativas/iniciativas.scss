@@ -36,11 +36,14 @@ body.page-template-iniciativas {
       justify-content: space-between;
       flex-direction: column;
       gap: 20px;
+      min-height: 700px;
       @include media-breakpoint-up(md) {
-        gap: 175px;
+        gap: 85px;
         flex-direction: row;
       }
       .box-titulo {
+        width: 100%;
+
         .container-text {
           @include media-breakpoint-down(sm) {
             padding: 0 20px;
@@ -71,6 +74,30 @@ body.page-template-iniciativas {
             }
           }
         }
+      }
+      .container-image {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 515px;
+        .box-imagem {
+          clip-path: inset(0 0 100% 0);
+          transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+          width: 100%;
+          height: 432px;
+          &.imgPath {
+            clip-path: inset(0 0 -100px -100px);
+          }
+          @include media-breakpoint-down(md) {
+            img {
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+            }
+          }
+        }
         .box-imagem-banner-iniciativas {
           justify-content: flex-end;
           padding-top: 40px;
@@ -78,6 +105,9 @@ body.page-template-iniciativas {
           transition: 0.6s;
           display: none;
           height: 412px;
+          position: absolute;
+          left: -327px;
+          bottom: -300px;
           img {
             width: 296px;
           }
@@ -92,22 +122,6 @@ body.page-template-iniciativas {
           }
           img {
             width: 296px;
-            object-fit: cover;
-          }
-        }
-      }
-      .box-imagem {
-        clip-path: inset(0 0 100% 0);
-        transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
-        width: 515px;
-        height: 432px;
-        &.imgPath {
-          clip-path: inset(0 0 -100px -100px);
-        }
-        @include media-breakpoint-down(md) {
-          img {
-            height: 100%;
-            width: 100%;
             object-fit: cover;
           }
         }
@@ -348,25 +362,42 @@ body.page-template-iniciativas {
           }
         }
       }
+      .link-escola-desktop {
+        transition: 0.6s;
+        @include media-breakpoint-up(md) {
+          transform: translateX(300%);
+        }
+        &.fade-right {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
+      }
     }
     .box-conteudo-right {
-      width: 100%;
-      min-height: 660px;
       clip-path: inset(0 0 100% 0);
       transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
-      height: 314px;
-      @include media-breakpoint-up(md) {
-        height: 660px;
-      }
       &.imgPath {
         clip-path: inset(0 0 -100px -100px);
       }
+      width: 100%;
       img {
-        height: 100%;
         width: 100%;
+        height: 314px;
+        @include media-breakpoint-up(md) {
+          height: 660px;
+        }
         object-fit: cover;
       }
-
+      .link-escola-mobile {
+        display: none;
+        @include media-breakpoint-down(md) {
+          display: flex;
+        }
+      }
       @include media-breakpoint-down(md) {
         min-height: initial;
         display: flex;
@@ -374,6 +405,11 @@ body.page-template-iniciativas {
         gap: 40px;
         padding: 0 20px;
         align-items: center;
+      }
+      .button {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
       }
     }
   }
@@ -469,25 +505,45 @@ body.page-template-iniciativas {
           }
         }
       }
+      .link-empreendedorismo-desktop {
+        transition: 0.6s;
+        display: none;
+
+        @include media-breakpoint-up(md) {
+          transform: translateX(-180%);
+          display: flex;
+        }
+        &.fade-left {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+      }
     }
     .box-conteudo-right {
       clip-path: inset(0 0 100% 0);
       transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+      width: 100%;
       &.imgPath {
         clip-path: inset(0 0 -100px -100px);
       }
-      width: 100%;
-
-      height: 314px;
-      @include media-breakpoint-up(md) {
-        height: 660px;
-      }
       img {
+        width: 100%;
+
+        height: 314px;
+        @include media-breakpoint-up(md) {
+          height: 660px;
+        }
         height: 100%;
         width: 100%;
         object-fit: cover;
       }
-
+      .link-empreendedorismo-mobile {
+        display: none;
+        @include media-breakpoint-down(md) {
+          display: flex;
+        }
+      }
       @include media-breakpoint-down(md) {
         min-height: initial;
         display: flex;
@@ -629,15 +685,16 @@ body.page-template-iniciativas {
         padding: 0 20px;
         align-items: center;
       }
-      .button{
+      .button {
         @include media-breakpoint-down(sm) {
-        width: 100%;
-        }}
+          width: 100%;
+        }
+      }
     }
   }
 
   .selos-certificados {
-    padding: 80px 0 80px;
+    padding: 80px 0 120px;
     .titulo-selos {
       color: $due-tertiary;
       font-style: normal;
@@ -666,6 +723,7 @@ body.page-template-iniciativas {
         align-items: center;
         width: 100%;
         overflow: hidden;
+        gap: 32px;
         cursor: pointer;
         justify-content: center;
         transition: 0.6s;
@@ -676,7 +734,7 @@ body.page-template-iniciativas {
         }
         @include media-breakpoint-up(md) {
           padding: 0 60px;
-          min-height: 320px;
+          height: 400px;
           &:not(:last-child) {
             border-right: 2px solid #e9e3dd;
           }
@@ -700,6 +758,7 @@ body.page-template-iniciativas {
             font-weight: 500;
             line-height: 140%;
             letter-spacing: 0.4px;
+            text-align: center;
           }
         }
 

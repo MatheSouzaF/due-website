@@ -217,8 +217,7 @@ get_header();
                                     } ?>
                                 </div>
                                 <p class="texto-caracteristica founders-grotesk">
-                                    <?php echo get_sub_field('texto_da_caracteristica'); ?>
-                                </p>
+                                    <?php echo get_sub_field('texto_da_caracteristica'); ?></p>
                             </div>
                         <?php endwhile;
                     endif; ?>
@@ -307,26 +306,22 @@ get_header();
 
     <div class="experiencia-resort">
         <?php
-        // Verifica se há o campo repetidor no ACF
         if (have_rows('categoria_aba')):
             while (have_rows('categoria_aba')):
                 the_row();
 
-                // Pega o nome da categoria dentro do repetidor
                 $nome_categoria = get_sub_field('nome_da_categoria_aba');
-                $categoria_slug = sanitize_title($nome_categoria); // Cria um slug para o ID do swiper
+                $categoria_slug = sanitize_title($nome_categoria);
         
-                echo "<h2 data-value='$categoria_slug' class='item-rota'>$nome_categoria</h2>"; // Adiciona a classe e data-value
+                echo "<h2 data-value='$categoria_slug' class='item-rota'>$nome_categoria</h2>";
         
                 echo '<div id="swiper-' . esc_attr($categoria_slug) . '" class="swiper swiper-rota-destino" style="display:none;">';
                 echo '<div class="swiper-wrapper">';
 
-                // Verifica se há um subcampo repetidor chamado 'rotas'
                 if (have_rows('espaco')):
                     while (have_rows('espaco')):
                         the_row();
 
-                        // Pega os dados da rota (título e imagem)
                         $nome_do_espaco = get_sub_field('nome_do_espaco');
                         $imagens_do_espaco = get_sub_field('imagens_do_espaco');
 
@@ -343,7 +338,7 @@ get_header();
                     echo '<p>Nenhuma rota encontrada para ' . esc_html($nome_categoria) . '.</p>';
                 endif;
 
-                echo '</div>'; // swiper-wrapper
+                echo '</div>';
                 echo '<div class="box-buttons-swiper">
                   <svg class="swiper-btn-destino-prev"></svg>
                   <svg class="swiper-btn-destino-next"></svg>';
@@ -355,39 +350,6 @@ get_header();
         endif;
         ?>
     </div>
-
-    <style>
-        .conteudo-aba {
-            display: none;
-            /* Esconde todos os conteúdos inicialmente */
-        }
-
-        .conteudo-aba.active {
-            display: block;
-            /* Exibe o conteúdo da aba ativa */
-        }
-    </style>
-
-    <script>
-        // Script para alternar entre abas
-        document.querySelectorAll('.abas a').forEach((tab, index) => {
-            tab.addEventListener('click', (event) => {
-                event.preventDefault();
-
-                // Esconde todos os conteúdos de abas
-                document.querySelectorAll('.conteudo-aba').forEach(content => {
-                    content.classList.remove('active');
-                });
-
-                // Mostra o conteúdo da aba correspondente
-                document.querySelector(`#aba-${index}`).classList.add('active');
-            });
-        });
-
-        // Exibe a primeira aba por padrão
-        document.querySelector('.conteudo-aba').classList.add('active');
-    </script>
-
 
     <div class="explore-empreendimento">
         <div class="wrapper">
@@ -444,8 +406,7 @@ get_header();
                                             } ?>
                                         </div>
                                         <p class="text-repeater founders-grotesk">
-                                            <?php echo get_sub_field('texto_do_diferencial'); ?>
-                                        </p>
+                                            <?php echo get_sub_field('texto_do_diferencial'); ?></p>
                                     </div>
                                 </div>
                             <?php endwhile;
@@ -502,11 +463,9 @@ get_header();
         <div class="wrapper">
             <div class="box-infos-obra box-titulos">
                 <h3 class="titulo-infos-obra terminal-test">
-                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?>
-                </h3>
+                    <?php echo get_field('titulo_informacoes_tecnicas_da_obra'); ?></h3>
                 <p class="descricao-infos-obra founders-grotesk">
-                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?>
-                </p>
+                    <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?></p>
             </div>
             <div class="box-infos-obra box-autores">
                 <?php
@@ -515,15 +474,13 @@ get_header();
                         the_row(); ?>
                         <div class="row-autores">
                             <h4 class="titulo-autores founders-grotesk">
-                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?>
-                            </h4>
+                                <?php echo get_sub_field('titulo_autores_informacoes_tecnicas_da_obra'); ?></h4>
                             <?php
                             if (have_rows('autor_informacoes_tecnicas_da_obra')):
                                 while (have_rows('autor_informacoes_tecnicas_da_obra')):
                                     the_row(); ?>
                                     <p class="text-autor founders-grotesk">
-                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?>
-                                    </p>
+                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?></p>
                                 <?php endwhile;
                             endif; ?>
                         </div>

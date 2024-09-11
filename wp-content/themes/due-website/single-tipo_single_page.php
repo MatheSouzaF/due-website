@@ -47,7 +47,7 @@ get_header();
                             <p class="titulo-diferencias founders-grotesk">
                                 <?php echo get_sub_field('titulo_caracteristicas'); ?></p>
                         </div>
-                    <?php endwhile;
+                <?php endwhile;
                 endif; ?>
             </div>
         </div>
@@ -61,12 +61,89 @@ get_header();
             <?php endif; ?>
         </div>
     </div>
+
+
     <div class="panorama">
         <div class="wrapper">
             <div class="viewer" id="viewer"></div>
-            
+            <?php
+            $imagePanorama =  get_field('panaroma_imagem');
+
+            wp_localize_script('main', 'image', array(
+                'url' => $imagePanorama,
+            ));
+            ?>
         </div>
     </div>
+
+    <div class="galeria">
+        <div class="wrapper">
+            <h3 class="titulo-galeria"><?php echo get_field('titulo_galeria'); ?></h3>
+            <div class="swiper-container swiper-galeria">
+                <div class="swiper-wrapper">
+                    <?php if (have_rows('imagens_e_videos')): ?>
+                        <?php while (have_rows('imagens_e_videos')) : the_row(); ?>
+                            <?php if (get_row_layout() == 'video_galeria'): ?>
+                                <div class="swiper-slide slide-video">
+                                    <?php
+                                    $image = get_sub_field('imagem_background_video');
+                                    if ($image):
+                                        $image_url = $image['url'];
+                                        $image_alt = $image['alt'];
+                                    ?>
+                                        <!-- Link para o vídeo no Fancybox -->
+                                        <a class="box-video" href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
+                                            <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                                <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+
+                            <?php elseif (get_row_layout() == 'imagem_galeria'): ?>
+                                <div class="swiper-slide slide-image">
+                                    <?php
+                                    $image = get_sub_field('imagem');
+                                    if ($image):
+                                        $image_url = $image['url'];
+                                        $image_alt = $image['alt'];
+                                    ?>
+                                        <!-- Link para a imagem no Fancybox -->
+                                        <a class="box-img" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                            <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Adicione botões de navegação -->
+                <div class="box-buttons">
+                    <svg class="swiper-button-next-galeria" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                        viewBox="0 0 80 80" fill="none">
+                        <circle cx="40" cy="40" r="40" fill="white" />
+                        <path
+                            d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z"
+                            fill="#003B4B" />
+                    </svg>
+
+                    <svg class="swiper-button-prev-galeria" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                        viewBox="0 0 80 80" fill="none">
+                        <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                        <path
+                            d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
+                            fill="#003B4B" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <div class="plantas">
         <div class="wrapper">
@@ -88,7 +165,7 @@ get_header();
                                         <p class="quartos-metragem-planta founders-grotesk">
                                             <?php echo get_sub_field('quartos_+_metragem'); ?></p>
                                     </div>
-                                <?php endwhile;
+                            <?php endwhile;
                             endif; ?>
                         </div>
                     </div>
@@ -123,7 +200,7 @@ get_header();
                                                             <p class="titulo-caracteristicas">
                                                                 <?php echo get_sub_field('caracteristicas'); ?></p>
                                                         </div>
-                                                    <?php endwhile;
+                                                <?php endwhile;
                                                 endif; ?>
                                             </div>
                                             <div class="box-pavimentos">
@@ -143,7 +220,7 @@ get_header();
                                                                     <p class="titulo-pavimento founders-grotesk">
                                                                         <?php echo get_sub_field('pavimentos_coluna_i'); ?></p>
                                                                 </div>
-                                                            <?php endwhile;
+                                                        <?php endwhile;
                                                         endif; ?>
                                                     </div>
                                                 </div>
@@ -163,7 +240,7 @@ get_header();
                                                                     <p class="titulo-pavimento founders-grotesk">
                                                                         <?php echo get_sub_field('pavimentos_coluna_ii'); ?></p>
                                                                 </div>
-                                                            <?php endwhile;
+                                                        <?php endwhile;
                                                         endif; ?>
                                                     </div>
                                                 </div>
@@ -187,7 +264,7 @@ get_header();
                                                                         alt="<?php echo esc_attr($image_alt); ?>">
                                                                 <?php endif; ?>
                                                             </div>
-                                                        <?php endwhile;
+                                                    <?php endwhile;
                                                     endif; ?>
                                                 </div>
                                             </div>
@@ -208,14 +285,14 @@ get_header();
                                                                         alt="<?php echo esc_attr($image_alt); ?>">
                                                                 <?php endif; ?>
                                                             </div>
-                                                        <?php endwhile;
+                                                    <?php endwhile;
                                                     endif; ?>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
-                                <?php endwhile;
+                            <?php endwhile;
                             endif; ?>
                         </div>
                     </div>
@@ -307,8 +384,7 @@ get_header();
                             $rooms = $min_rooms . ' quartos';
                         }
                     endwhile;
-                }
-                ;
+                };
                 $size = '';
                 if (have_rows('metragem_tipologia', $tipologiaId)) {
                     while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -346,7 +422,7 @@ get_header();
 
         // usar essa variável para renderizar as tipologias no frontend
         // var_dump($tipologiasDoEmpreendimento);
-        
+
         ?>
 
         <div class="wrapper">
@@ -368,7 +444,7 @@ get_header();
                     <div class="swiper-wrapper">
                         <?php foreach ($tipologiasDoEmpreendimento as $tipologia): ?>
                             <?php
-                            var_dump($tipologia);
+                            // var_dump($tipologia);
 
                             $statusMap = [
                                 'Em obra' => 'em_obra',
@@ -379,9 +455,9 @@ get_header();
 
                             $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
                             ?>
-                            <div class="swiper-slide">
-                                <div class="tipologia-card">
-                                    <span class="estado-tipologia <?php echo esc_html($statusClass) ?>">
+                            <div class="swiper-slide <?php echo esc_html($statusClass) ?>">
+                                <div class="tipologia-card ">
+                                    <span class="estado-tipologia terminal-test">
                                         <?php echo esc_html($tipologia['status']) ?>
                                     </span>
                                     <span class="">
@@ -434,17 +510,20 @@ get_header();
 
                                         </div>
                                     </div>
-                                    <?php foreach ($tipologia['diffs'] as $diff): ?>
-                                        <div class="box-diferencias">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
-                                                fill="none">
-                                                <path
-                                                    d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
-                                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-                                            <p class="diifs-names"><?php echo esc_html($diff); ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
+                                    <div class="container-diferencias">
+
+                                        <?php foreach ($tipologia['diffs'] as $diff): ?>
+                                            <div class="box-diferencias">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                                                    fill="none">
+                                                    <path
+                                                        d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
+                                                        stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <p class="diifs-names"><?php echo esc_html($diff); ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>

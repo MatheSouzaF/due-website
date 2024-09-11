@@ -77,7 +77,7 @@ wp_localize_script('main', 'TipologiasData', array(
   <div class="wrapper">
     <div class="tipologias-header">
       <div class="tipologia-tabs">
-        <a rel="stylesheet" href="#">
+        <a rel="stylesheet" href="/empreendimentos">
           <h2>EMPREENDIMENTOS</h2>
         </a>
         <a rel="stylesheet" href="#">

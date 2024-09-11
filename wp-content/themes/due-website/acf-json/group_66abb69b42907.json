@@ -183,11 +183,11 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_66abc736061ba",
-                    "label": "SVG Repetidor Propósito Jeito DUE",
-                    "name": "svg_repetidor_proposito_jeito_due",
+                    "key": "field_66e0c38d7af77",
+                    "label": "Título Repetidor Propósito Jeito DUE",
+                    "name": "titulo_repetidor_proposito_jeito_due",
                     "aria-label": "",
-                    "type": "file",
+                    "type": "text",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -196,11 +196,11 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": "",
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
                     "parent_repeater": "field_66abc70f061b9"
                 },
                 {
@@ -225,6 +225,46 @@
                     "parent_repeater": "field_66abc70f061b9"
                 }
             ]
+        },
+        {
+            "key": "field_66e0c55658251",
+            "label": "Nosso Proposito Título WYSIWYG",
+            "name": "nosso_proposito_titulo_wysiwyg",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66e0c50758250",
+            "label": "Nosso Proposito WYSIWYG",
+            "name": "nosso_proposito_wysiwyg",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_66abe8850af1e",
@@ -543,5 +583,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725913581
+    "modified": 1726006638
 }

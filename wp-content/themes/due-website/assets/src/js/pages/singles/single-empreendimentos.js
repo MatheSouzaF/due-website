@@ -54,45 +54,45 @@ function colorBullet() {
   });
 }
 
-function filterRota() {
+function filterExperiencias() {
   jQuery(document).ready(function ($) {
-      // Inicialize todos os swipers
-      var swipers = {};
-      $('.swiper').each(function () {
-          var id = $(this).attr('id');
-          swipers[id] = new Swiper('#' + id, {
-              slidesPerView: 1.2,
-              spaceBetween: 24,
+    // Inicialize todos os swipers
+    var swipers = {};
+    $('.swiper').each(function () {
+      var id = $(this).attr('id');
+      swipers[id] = new Swiper('#' + id, {
+        slidesPerView: 1.2,
+        spaceBetween: 24,
 
-              navigation: {
-                  nextEl: '.swiper-btn-destino-next',
-                  prevEl: '.swiper-btn-destino-prev',
-              },
-              breakpoints: {
-                  767: {
-                      slidesPerView: 3.4,
-                  },
-              },
-          });
+        navigation: {
+          nextEl: '.swiper-btn-destino-next',
+          prevEl: '.swiper-btn-destino-prev',
+        },
+        breakpoints: {
+          767: {
+            slidesPerView: 3.4,
+          },
+        },
       });
+    });
 
-      // Mostrar o primeiro swiper
-      $('#swiper-todos').show();
+    // Mostrar o primeiro swiper
+    $('#swiper-todos').show();
 
-      // Clique nas categorias
-      $('.item-rota').click(function () {
-          var value = $(this).data('value'); // Pega o slug da categoria
+    // Clique nas categorias
+    $('.item-rota').click(function () {
+      var value = $(this).data('value'); // Pega o slug da categoria
 
-          // Atualiza a classe ativa
-          $('.item-rota').removeClass('item-rota-active');
-          $(this).addClass('item-rota-active');
+      // Atualiza a classe ativa
+      $('.item-rota').removeClass('item-rota-active');
+      $(this).addClass('item-rota-active');
 
-          // Esconde todos os swipers
-          $('.swiper-rota-destino').hide();
+      // Esconde todos os swipers
+      $('.swiper-rota-destino').hide();
 
-          // Mostra o swiper correspondente
-          $('#swiper-' + value).show();
-      });
+      // Mostra o swiper correspondente
+      $('#swiper-' + value).show();
+    });
   });
 }
 
@@ -118,7 +118,7 @@ function initSingleEmpreendimentos() {
   swiperDiferenciais();
   swiperGaleria();
   colorBullet();
-  filterRota()
+  filterExperiencias()
 }
 
-export {initSingleEmpreendimentos};
+export { initSingleEmpreendimentos };

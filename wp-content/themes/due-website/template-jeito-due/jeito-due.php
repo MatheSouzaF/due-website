@@ -4,7 +4,7 @@ wp_enqueue_style('jeito-due', get_template_directory_uri() . '/assets/dist/css/j
 get_header();
 ?>
 <div class="page-jeito-due">
-    
+
     <section class="banner-jeito-due">
         <div class="wrapper">
 
@@ -38,7 +38,7 @@ get_header();
                             <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
                             <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
                         </svg>
-                        <p>ASSISTA E CONHECA</p>
+                        <p><?php echo __('ASSISTA E CONHECA', 'due-website'); ?> </p>
                     </div>
 
                     <?php
@@ -70,24 +70,23 @@ get_header();
                         </span>
                     </div>
                 </div>
-                <div class="box-svg-text">
+                <div class="container-text">
 
-                    <?php
-                    if (have_rows('repetidor_proposito_jeito_due')) :
-                        while (have_rows('repetidor_proposito_jeito_due')) : the_row(); ?>
-                            <div class="box-repeater">
-                                <div class="box-svg">
-                                    <?php $svg_file = get_sub_field('svg_repetidor_proposito_jeito_due');
-                                    if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                        echo '<i class="element">';
-                                        echo file_get_contents($svg_file['url']);
-                                        echo '</i>';
-                                    } ?>
+                    <div class="box-svg-text">
+                        <?php
+                        if (have_rows('repetidor_proposito_jeito_due')) :
+                            while (have_rows('repetidor_proposito_jeito_due')) : the_row(); ?>
+                                <div class="box-repeater">
+                                    <h3 class="titulo-repetidor"><?php echo get_sub_field('titulo_repetidor_proposito_jeito_due'); ?></h3>
+                                    <p class="text-box-repeater founders-grotesk"><?php echo get_sub_field('descricao_repetidor_proposito_jeito_due'); ?></p>
                                 </div>
-                                <p class="text-box-repeater founders-grotesk"><?php echo get_sub_field('descricao_repetidor_proposito_jeito_due'); ?></p>
-                            </div>
-                    <?php endwhile;
-                    endif; ?>
+                        <?php endwhile;
+                        endif; ?>
+                    </div>
+                    <div class="box-wysiwyg">
+                        <h3 class="titulo-repetidor"><?php echo get_field('nosso_proposito_titulo_wysiwyg'); ?></h3>
+                        <div class="descricao-wysiwyg"><?php echo get_field('nosso_proposito_wysiwyg'); ?></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,9 +120,7 @@ get_header();
                 if (have_rows('repetidor_cards')) :
                     $i = 0; // Inicializa o contador
                     while (have_rows('repetidor_cards')) : the_row();
-                        // Incrementa o contador
                         $i++;
-                        // Determina a classe baseada na posição
                         $card_class = ($i % 2 == 0) ? 'lista-card-right' : 'lista-card-left';
                 ?>
                         <div class="lista-card <?php echo $card_class; ?>">

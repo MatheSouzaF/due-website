@@ -142,15 +142,10 @@ get_header();
         </div>
     </div>
 
-
-
-
     <div class="plantas">
         <div class="wrapper">
             <h3 class="titulo-plantas"><?php echo get_field('titulo_plantas'); ?></h3>
             <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
-
-
             <div class="slider-plantas">
                 <div class="box-thumb-titulo">
                     <div class="swiper-container gallery-thumbs">
@@ -247,34 +242,31 @@ get_header();
                                             </div>
                                         </div>
                                         <div class="box-gallery">
-                                            <div class="swiper-container gallery-planta">
-                                                <div class="swiper-wrapper">
-                                                    <?php if (have_rows('repetidor_imagens_plantas')):
-                                                        while (have_rows('repetidor_imagens_plantas')):
-                                                            the_row(); ?>
-                                                            <div class="swiper-slide row-imagem-plantas">
-                                                                <p class="titulo-row-imagem-plantas">
-                                                                    <?php echo get_sub_field('titulo_da_planta'); ?></p>
-                                                                <?php
-                                                                $image = get_sub_field('imagens_da_planta');
-                                                                if ($image):
-                                                                    $image_url = $image['url'];
-                                                                    $image_alt = $image['alt']; ?>
-                                                                    <img class="plantas-repetidor" src="<?php echo esc_url($image_url); ?>"
-                                                                        alt="<?php echo esc_attr($image_alt); ?>">
-                                                                <?php endif; ?>
-                                                            </div>
-                                                    <?php endwhile;
-                                                    endif; ?>
-                                                </div>
+                                            <div class="gallery-planta">
+                                                <?php if (have_rows('repetidor_imagens_plantas')):
+                                                    while (have_rows('repetidor_imagens_plantas')):
+                                                        the_row(); ?>
+                                                        <div class="row-imagem-plantas">
+                                                            <p class="titulo-row-imagem-plantas">
+                                                                <?php echo get_sub_field('titulo_da_planta'); ?></p>
+                                                            <?php
+                                                            $image = get_sub_field('imagens_da_planta');
+                                                            if ($image):
+                                                                $image_url = $image['url'];
+                                                                $image_alt = $image['alt']; ?>
+                                                                <img class="plantas-repetidor" src="<?php echo esc_url($image_url); ?>"
+                                                                    alt="<?php echo esc_attr($image_alt); ?>">
+                                                            <?php endif; ?>
+                                                        </div>
+                                                <?php endwhile;
+                                                endif; ?>
                                             </div>
 
-                                            <div class="swiper-container gallery-thumbs-plantas">
-                                                <div class="swiper-wrapper">
+                                            <div class="gallery-thumbs-plantas">
                                                     <?php if (have_rows('repetidor_imagens_plantas')):
                                                         while (have_rows('repetidor_imagens_plantas')):
                                                             the_row(); ?>
-                                                            <div class="swiper-slide row-thumbs-plantas">
+                                                            <div class="row-thumbs-plantas">
                                                                 <?php
                                                                 $image = get_sub_field('imagens_da_planta');
                                                                 if ($image):
@@ -287,7 +279,6 @@ get_header();
                                                             </div>
                                                     <?php endwhile;
                                                     endif; ?>
-                                                </div>
                                             </div>
                                         </div>
 

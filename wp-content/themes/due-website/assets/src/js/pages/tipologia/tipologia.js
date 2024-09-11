@@ -172,13 +172,17 @@ async function tipologiaPage() {
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
         const matchRooms =
         !roomsFilter ||
+        tipologia.isStudio && roomsFilter.includes('studio') || 
         tipologia.rooms.some(
           (room) => {
             const minQuartos = parseInt(room.minimo_de_quartos_tipologia);
             const maxQuartos = parseInt(room.maximo_de_quartos_tipologia);
-            return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
+            return roomsFilter.some(
+              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+            );
           }
         );
+      
         const matchDiferenciais =
           !diferenciaisFilter ||
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -189,13 +193,19 @@ async function tipologiaPage() {
 
 
     function generateBadge(filterValue, filterType) {
+      let badgeLabel = filterValue;
+    
+      if (filterType === 'rooms' && filterValue !== 'studio') {
+        badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
+      }
+    
       const badgeTemplate = `
         <span class="badge ${filterType}">
-          ${filterValue} ${filterValue !== 'studio' ?? filterType === 'rooms' ? Number(filterValue) === 1 ? ' qto' : ' qtos' : ''}
+          ${badgeLabel}
           <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
-
+    
       $('.filters-applied').append(badgeTemplate);
     }
 

@@ -54,7 +54,7 @@
   </div>
 
   <div class="tipologias-results">
-    <p class="results-text"></p>
+    <p class="tipologia-results-text"></p>
     <div class="tipologia-filters-applied"></div>
   </div>
 

@@ -9,7 +9,7 @@ async function tipologiaPage() {
 
     function renderTipologias(tipologias) {
       const $container = $('.cards-tipologia.cards');
-      const $resultsText = $('.results-text');
+      const $resultsText = $('.tipologia-results-text');
 
       $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
       $container.html('');

@@ -629,14 +629,17 @@ get_header();
         <div class="wrapper">
 
             <h3 class="titulo-diferenciais terminal-test"><?php echo get_field('titulo_diferencias'); ?></h3>
-            <div class="box-cards-diferenciais">
+            <div class="box-cards-diferenciais <?php if (have_rows('diferenciais') && count(get_field('diferenciais')) <= 3) {
+                                                    echo 'center-rows';
+                                                } ?>">
                 <?php
                 if (have_rows('diferenciais')):
                     while (have_rows('diferenciais')):
                         the_row(); ?>
                         <div class="row-cards">
                             <div class="box-svg">
-                                <?php $svg_file = get_sub_field('icone');
+                                <?php
+                                $svg_file = get_sub_field('icone');
                                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                                     echo '<i class="element">';
                                     echo file_get_contents($svg_file['url']);
@@ -648,6 +651,7 @@ get_header();
                 <?php endwhile;
                 endif; ?>
             </div>
+
             <div class="box-cards-swiper">
                 <div class="swiper-container swiper-diferenciais">
                     <div class="swiper-wrapper">
@@ -715,6 +719,23 @@ get_header();
                 $link_target = $link['target'] ? $link['target'] : '_self'; ?>
                 <a class="button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_3369_6909)">
+                            <circle cx="12" cy="12.5" r="12" fill="#E9E3DD" />
+                            <g clip-path="url(#clip1_3369_6909)">
+                                <path d="M7.1137 9.79766C7.1137 12.5179 9.32742 14.7317 12.0477 14.7317C14.768 14.7317 16.9817 12.5179 16.9817 9.79766C16.9817 7.07737 14.768 4.86365 12.0477 4.86365C9.32742 4.86365 7.1137 7.07737 7.1137 9.79766ZM20.8193 24.5H21.9157V23.4036C21.9157 19.1724 18.9852 15.7284 15.1576 15.7284C15.1576 15.7284 13.4831 16.2115 12.0477 16.2115C10.6124 16.2115 8.93779 15.7284 8.93779 15.7284C5.11019 15.7284 2.17969 19.1724 2.17969 23.4036V24.5H20.8193Z" fill="#003B4B" />
+                            </g>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_3369_6909">
+                                <rect y="0.5" width="24" height="24" rx="12" fill="white" />
+                            </clipPath>
+                            <clipPath id="clip1_3369_6909">
+                                <rect width="24" height="24" fill="white" transform="translate(0 0.5)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
                 </a>
             <?php endif; ?>
         </div>

@@ -1,10 +1,30 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-homepage {
+  overflow: hidden;
+  transition: 0.6s;
+  cursor: none;
   header {
+    background: #003b4b;
+    position: relative;
+    height: 100vh;
+    .box-navbar {
+      height: 64px;
+      .btn-menu-navlink {
+        opacity: 0;
+        transition: initial !important;
+      }
+    }
     .link-logo-menu {
+      position: inherit;
       .box-svg-header {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         svg {
+          width: 265px;
+          height: 137px;
           path {
             fill: #fff;
           }
@@ -67,6 +87,7 @@ body.page-template-homepage {
                 @include media-breakpoint-up(sm) {
                   font-size: 64px;
                 }
+                
               }
               .subtitulo-banner-hero {
                 color: $grey-0;
@@ -81,6 +102,9 @@ body.page-template-homepage {
                   font-size: 48px;
                   max-width: initial;
                 }
+              }
+              .button-play{
+                transition: initial;
               }
 
               .modal {
@@ -410,7 +434,7 @@ body.page-template-homepage {
                     line-height: 140%;
                     letter-spacing: 0.32px;
                   }
-                  svg{
+                  svg {
                     width: 20px;
                     height: 20px;
                   }
@@ -743,10 +767,10 @@ body.page-template-homepage {
           max-width: 463px;
           margin-bottom: 40px;
         }
-        .button{
-        @include media-breakpoint-down(sm) {
-        width: 100%;
-        }
+        .button {
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+          }
         }
       }
       .box-proposito-right {

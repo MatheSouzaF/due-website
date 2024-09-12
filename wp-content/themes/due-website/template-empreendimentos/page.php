@@ -84,12 +84,12 @@ wp_localize_script('main', 'TipologiasData', array(
   <div class="wrapper">
     <div class="empreendimentos-header">
       <div class="empreendimento-tabs">
-        <a rel="stylesheet" href="#">
-          <h2 class="active">EMPREENDIMENTOS</h2>
-        </a>
-        <a rel="stylesheet" href="/tipologias">
+        <div rel="stylesheet" class="show-empreendimentos">
+          <h2>EMPREENDIMENTOS</h2>
+        </div>
+        <div rel="stylesheet" class="show-tipologias">
           <h2>TIPOLOGIAS</h2>
-        </a>
+        </div>
       </div>
     </div>
 
@@ -97,7 +97,7 @@ wp_localize_script('main', 'TipologiasData', array(
       <?php get_template_part('/template-empreendimentos/aba-empreendimento'); ?>
     </div>
 
-    <div class="aba-tipologias">
+    <div style="display: none;" class="aba-tipologias">
       <?php get_template_part('/template-empreendimentos/aba-tipologia'); ?>
     </div>
 

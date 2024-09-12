@@ -115,6 +115,7 @@ main.page-empreendimentos-tipologia {
     .filter-container {
       display: flex;
       gap: 8px;
+      justify-content: end;
 
       .filter-wrapper {
         position: relative;

@@ -212,7 +212,7 @@ async function tipologiaPage() {
       const badgeTemplate = `
         <span class="badge ${filterType}">
           ${badgeLabel}
-          <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
+          <button type="button" class="tipologia-remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
     
@@ -248,7 +248,7 @@ async function tipologiaPage() {
         roomsFilter.forEach((value) => generateBadge(value, 'rooms'));
       }
 
-      $('.remove-badge').on('click', function () {
+      $('.tipologia-remove-badge').on('click', function () {
         const filterType = $(this).data('tipologia-filter');
         const filterValue = $(this).data('value');
 
@@ -294,7 +294,7 @@ async function tipologiaPage() {
         params.set('qtos', formattedRooms);
       }
 
-      const newUrl = `${window.location.pathname}${params.toString().length ? '?' : ''}${params.toString()}`;
+      const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''}${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 

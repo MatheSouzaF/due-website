@@ -84,6 +84,11 @@ function initDynamicModules() {
       modulePath: './pages/singles/single-tipologia.js',
       moduleFunction: 'initSingleTipologia',
     },
+    {
+      selector: '.page-empreendimentos-tipologia',
+      modulePath: './pages/empreendimento/tab-toggle.js',
+      moduleFunction: 'initTabToggle',
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

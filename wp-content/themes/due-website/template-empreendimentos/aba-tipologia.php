@@ -51,7 +51,6 @@
       </div>
     </div>
   </div>
-  </div>
 
   <div class="tipologias-results">
     <p class="tipologia-results-text"></p>

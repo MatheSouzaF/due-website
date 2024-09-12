@@ -65,7 +65,7 @@ function initDynamicModules() {
       moduleFunction: 'initModal',
     },
     {
-      selector: '.page-empreendimentos-tipologia',
+      selector: '.aba-empreendimentos',
       modulePath: './pages/empreendimento/empreendimento.js',
       moduleFunction: 'initEmpreendimento',
     },
@@ -75,7 +75,7 @@ function initDynamicModules() {
       moduleFunction: 'initSingleEmpreendimentos',
     },
     {
-      selector: '.page-tipologias',
+      selector: '.aba-tipologias',
       modulePath: './pages/tipologia/tipologia.js',
       moduleFunction: 'initTipologia',
     },

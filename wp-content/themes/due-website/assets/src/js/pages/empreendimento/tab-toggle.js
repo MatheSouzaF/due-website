@@ -9,7 +9,9 @@ function initTabToggle() {
 
   function resetCheckboxes() {
     $(".ckkBox").each(function() {
-      $(this).prop('checked', false);
+      if($(this).prop('checked', true)) {
+        $(this).click();
+      }
     });
   }
 

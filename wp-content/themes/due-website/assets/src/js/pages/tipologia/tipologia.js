@@ -23,16 +23,16 @@ async function tipologiaPage() {
         const template = document.getElementById('tipologia-template');
         const cardTemplate = template.content.cloneNode(true);
         const $boxCard = $(cardTemplate).find('.box-card');
-        
+
         const statusMap = {
           'Em obra': 'em_obra',
           'Lançamento': 'lancamento',
           '100% vendido': 'vendido',
           'Últimas unidades': 'ultimas_unidades'
         };
-        
+
         const statusClass = statusMap[tipologia.status] || tipologia.status;
-        
+
         $boxCard.addClass(statusClass);
 
         $(cardTemplate)
@@ -121,13 +121,13 @@ async function tipologiaPage() {
         'tipologia-filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
         'tipologia-filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         'tipologia-filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []), 
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({ value: room, label: `${room} Quartos` })),
         ],
       };
-      
+
       return options;
     }
 
@@ -182,40 +182,40 @@ async function tipologiaPage() {
         const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
-      
-        const matchRooms = !roomsFilter || 
-          (roomsFilter.includes('studio') ? tipologia.isStudio : 
-          tipologia.rooms.some((room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
-            return roomsFilter.some(
-              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
-            );
-          })
-        );
-      
+
+        const matchRooms = !roomsFilter ||
+          (roomsFilter.includes('studio') ? tipologia.isStudio :
+            tipologia.rooms.some((room) => {
+              const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
+              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+              return roomsFilter.some(
+                (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+              );
+            })
+          );
+
         const matchDiferenciais =
-          !diferenciaisFilter || 
+          !diferenciaisFilter ||
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
-      
+
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;
-      });      
+      });
     }
 
     function generateBadge(filterValue, filterType) {
       let badgeLabel = filterValue;
-    
+
       if (filterType === 'rooms' && filterValue !== 'studio') {
         badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
       }
-    
+
       const badgeTemplate = `
         <span class="badge ${filterType}">
           ${badgeLabel}
           <button type="button" class="tipologia-remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
-    
+
       $('.tipologia-filters-applied').append(badgeTemplate);
     }
 
@@ -249,7 +249,7 @@ async function tipologiaPage() {
       }
 
       $('.tipologia-remove-badge').on('click', function () {
-        const filterType = $(this).data('tipologia-filter');
+        const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
         $(`#tipologia-filter-${filterType} input[value="${filterValue}"]`).click();
@@ -268,30 +268,40 @@ async function tipologiaPage() {
       const roomsFilter = getFilterLabel('#tipologia-filter-rooms');
 
       const params = new URLSearchParams();
+      let hasFilters = false
 
       if (locationFilter) {
         const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('localizacao', formattedLocation);
+        hasFilters = true;
       }
 
       if (statusFilter) {
         const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('estagio', formattedStatus);
+        hasFilters = true;
       }
 
       if (empreendimentoFilter) {
         const formattedEmpreendimento = empreendimentoFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('empreendimento', formattedEmpreendimento);
+        hasFilters = true;
       }
 
       if (diferenciaisFilter) {
         const formattedDiferenciais = diferenciaisFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('diferenciais', formattedDiferenciais);
+        hasFilters = true;
       }
 
       if (roomsFilter) {
         const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
         params.set('qtos', formattedRooms);
+        hasFilters = true;
+      }
+
+      if (hasFilters) {
+        params.set('tipologia', 'true');
       }
 
       const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''}${params.toString()}`;

@@ -104,20 +104,15 @@ function initTabToggle() {
     $showTipologia.find('h2').addClass('active');
     $showEmpreendimento.find('h2').removeClass('active');
 
-    const params = new URLSearchParams(window.location.search);
-    const currentHash = '#tipologias';
-
-    const newUrl = `${window.location.pathname}${currentHash}${params.toString() ? '?' + params.toString() : ''}`;
-
     if (tabRender) {
-      history.pushState("", document.title, newUrl);
+      history.pushState("", document.title, window.location.pathname);
     }
-
-    window.location.hash = currentHash;
   }
 
+  const params = new URLSearchParams(window.location.search);
+  const isTipologia = params.get('tipologia');
 
-  if (window.location.hash.includes('#tipologias')) {
+  if (isTipologia) {
     showTipologia({ tabRender: false });
   } else {
     showEmpreendimento({ tabRender: false });

@@ -81,19 +81,21 @@ function initTabToggle() {
     });
   }
 
-  function showEmpreendimento({ firstRender }) {
+  function showEmpreendimento({ tabRender }) {
     resetCheckboxesEmpreendimentos();
+
     $abaEmpreendimento.show();
     $abaTipologia.hide();
+    
     $showEmpreendimento.find('h2').addClass('active');
     $showTipologia.find('h2').removeClass('active');
 
-    if (!firstRender) {
+    if (tabRender) {
       history.pushState("", document.title, window.location.pathname);
     }
   }
 
-  function showTipologia({ firstRender }) {
+  function showTipologia({ tabRender }) {
     resetCheckboxesTipologia();
 
     $abaEmpreendimento.hide();
@@ -107,8 +109,7 @@ function initTabToggle() {
 
     const newUrl = `${window.location.pathname}${currentHash}${params.toString() ? '?' + params.toString() : ''}`;
 
-    console.log("🚀 ~ newUrl:", newUrl)
-    if (!firstRender) {
+    if (tabRender) {
       history.pushState("", document.title, newUrl);
     }
 
@@ -117,17 +118,17 @@ function initTabToggle() {
 
 
   if (window.location.hash.includes('#tipologias')) {
-    showTipologia({ firstRender: true });
+    showTipologia({ tabRender: false });
   } else {
-    showEmpreendimento({ firstRender: true });
+    showEmpreendimento({ tabRender: false });
   }
 
   $showEmpreendimento.on('click', function () {
-    showEmpreendimento({ firstRender: false });
+    showEmpreendimento({ tabRender: true });
   })
 
   $showTipologia.on('click', function () {
-    showTipologia({ firstRender: false });
+    showTipologia({ tabRender: true });
   })
 }
 

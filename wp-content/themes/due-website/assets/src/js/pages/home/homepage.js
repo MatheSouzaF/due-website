@@ -74,7 +74,11 @@ function cardHover() {
           video[0].pause();
           video[0].currentTime = 0;
         }
-        $(this).removeClass('hover-card');
+
+        // Adicionando o delay de 500ms
+        setTimeout(() => {
+          $(this).removeClass('hover-card');
+        }, 500);
       }
     );
   });
@@ -250,8 +254,6 @@ function scrollsmooth() {
     lenis.raf(time * 1000);
   });
 }
-
-
 
 function initPage() {
   swiperEmpreendimento();

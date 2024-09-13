@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 80px 0;
   align-items: center;
   background-color: transparent;
   width: 100%;
@@ -16,7 +15,10 @@
   height: 72px;
   gap: 40px;
   transition: background-color 0.3s ease;
-
+  padding: 24px;
+  @include media-breakpoint-up(md) {
+    padding: 24px 80px 0;
+  }
   .box-navbar {
     display: flex;
     flex-direction: row;
@@ -34,7 +36,10 @@
       }
     }
     .box-sidebar {
-      display: flex;
+      display: none;
+      @include media-breakpoint-up(md) {
+        display: flex;
+      }
       align-items: center;
       gap: 20px;
       transition: 0.6s;
@@ -79,13 +84,15 @@
       }
     }
     .box-menu-lateral {
-      display: none;
-
+      display: flex;
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
       align-items: center;
       justify-content: center;
       background-color: $due-tertiary;
       .box-link-invista {
-        padding: 24px;
+        padding: 25px 24px 24px;
         background-color: $background;
         .btn-menu-navlink {
           display: none;
@@ -554,13 +561,47 @@
   }
 
   &.sticky {
-    .box-sidebar {
-      .navlinks {
-        display: none;
+    @include media-breakpoint-up(md) {
+      .box-sidebar {
+        .navlinks {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          z-index: -1;
+          transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s 0.5s; // z-index troca após a transição
+        }
+      }
+
+      .box-menu-lateral {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        z-index: 1;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s; // z-index troca imediatamente
       }
     }
-    .box-menu-lateral {
-      display: flex;
+  }
+
+  .box-sidebar .navlinks {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s; // z-index troca imediatamente
+  }
+
+  .box-menu-lateral {
+    @include media-breakpoint-up(md) {
+      opacity: 0;
+      visibility: hidden;
+      display: none;
+      z-index: -1;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s 0.5s; // z-index troca após a transição
+
+      &.sticky {
+        display: flex;
+        z-index: 1;
+      }
     }
   }
 }

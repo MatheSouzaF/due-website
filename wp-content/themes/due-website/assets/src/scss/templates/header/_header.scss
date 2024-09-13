@@ -115,7 +115,7 @@
         @include media-breakpoint-up(md) {
           width: 50%;
         }
-        .shape-mapa{
+        .shape-mapa {
           position: absolute;
           bottom: 0;
           right: 0;
@@ -212,7 +212,7 @@
             flex-direction: row;
             align-items: center;
             gap: 22px;
-            svg{
+            svg {
               width: 20px;
             }
           }
@@ -513,6 +513,8 @@
   }
 
   &.hover-destinos {
+    padding: 24px 80px 30px;
+    gap: 0;
     .navlinks {
       .button-menu {
         color: $due-tertiary !important;
@@ -523,6 +525,7 @@
       }
     }
   }
+
   &.sticky {
     padding: 24px 32px 0;
   }

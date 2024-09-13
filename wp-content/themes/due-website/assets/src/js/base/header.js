@@ -151,8 +151,8 @@ function hoverDestinos() {
   var tl = gsap.timeline({paused: true});
   tl.to('header', {
     duration: 0.5,
-    height: '560px',
-    backgroundColor: '#f4f4f4',
+    height: '590px',
+    backgroundColor: '#faf2eb',
     ease: 'power1.inOut',
     onStart: function () {
       $('header').addClass('hover-destinos'); // Adiciona a classe no início da animação

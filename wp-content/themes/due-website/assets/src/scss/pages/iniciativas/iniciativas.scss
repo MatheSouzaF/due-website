@@ -5,6 +5,13 @@ body.page-template-iniciativas {
     .button-menu {
       color: $due-tertiary !important;
     }
+    .link-logo-menu {
+      .due-logo {
+        path {
+          fill: $due-tertiary;
+        }
+      }
+    }
     .incorporadora {
       display: none;
     }

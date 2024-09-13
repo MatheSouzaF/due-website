@@ -28,7 +28,7 @@ class EmpreendimentoRestController
         // Rota para obter todos os empreendimentos
         register_rest_route('v1', '/empreendimentos', array(
             'methods' => 'GET',
-            'callback' => array($this, 'get_all_projects'),
+            'callback' => array($this, 'get_all_available_projects'),
             'permission_callback' => '__return_true',
         ));
 
@@ -47,9 +47,9 @@ class EmpreendimentoRestController
      * 
      * @return WP_REST_Response Um array associativo contendo os dados de todos os empreendimentos.
      */
-    public function get_all_projects()
+    public function get_all_available_projects()
     {
-        $projects = $this->empreendimentoController->getAllProjects();
+        $projects = $this->empreendimentoController->getAllAvailableProjects();
 
         if (!empty($projects)) {
             return new WP_REST_Response($projects, 200);

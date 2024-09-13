@@ -209,7 +209,7 @@ async function empreendimentoPage() {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false);
+        $(`#filter-${filterType} input[value="${filterValue}"]`).click();
 
         updateBadges();
         buildFilterUrl();

@@ -1,15 +1,18 @@
 function scrollsmooth() {
-  gsap.registerPlugin(ScrollTrigger);
+  // Verifica se o usuário não está na home
+  if (window.location.pathname !== '/') {
+    gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({
-    lerp: 0.07,
-  });
+    const lenis = new Lenis({
+      lerp: 0.07,
+    });
 
-  lenis.on('scroll', ScrollTrigger.update);
+    lenis.on('scroll', ScrollTrigger.update);
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+  }
 }
 function navbar() {
   $('#btn-navbar').click(function () {
@@ -17,7 +20,6 @@ function navbar() {
     $('.sidebar').toggleClass('active-sidebar');
   });
 }
-
 function menuMove() {
   const $navLinks = $('.btn-menu-navlink').not('.last-item');
   const $lastLink = $('.last-item');
@@ -51,14 +53,30 @@ function menuMove() {
     ease: 'power1.inOut',
   });
 
-  tl.to([$navigaton, $logoMenu], {
-    position: 'relative',
-    opacity: 1,
-    onComplete: function () {
-      $boxSidebar.addClass('active-sidebar');
-      $logoMenu.addClass('logo-sticky');
-    },
-  });
+  if (window.location.pathname !== '/') {
+    tl.to([$navigaton, $logoMenu], {
+      position: 'relative',
+      opacity: 1,
+      onComplete: function () {
+        $boxSidebar.addClass('active-sidebar');
+        $logoMenu.addClass('logo-sticky');
+      },
+    });
+  } else {
+    tl.to([$navigaton], {
+      opacity: 1,
+      position: 'relative',
+      onComplete: function () {
+        $boxSidebar.addClass('active-sidebar');
+      },
+    });
+    tl.to([$logoMenu], {
+      opacity: 1,
+      onComplete: function () {
+        $logoMenu.addClass('logo-sticky');
+      },
+    });
+  }
 
   tl.to($headerSticky, {
     height: '100px',
@@ -120,8 +138,6 @@ function menuSticky() {
       );
   });
 }
-
-
 
 function hoverDestinos() {
   var tl = gsap.timeline({paused: true});

@@ -29,9 +29,7 @@
       svg {
         width: 98px;
         height: 40px;
-        .incorporadora {
-          display: none;
-        }
+       
       }
     }
     .box-sidebar {
@@ -163,11 +161,14 @@
           .links-menu {
             .button-menu {
               color: $due-tertiary;
-              font-size: 36px;
               font-style: normal;
               font-weight: 400;
               line-height: 140%;
               letter-spacing: 0.72px;
+              font-size: 20px;
+              @include media-breakpoint-up(md) {
+                font-size: 36px;
+              }
               &:hover {
                 &::after {
                   background-color: $due-tertiary;

@@ -5,31 +5,31 @@ body.page-template-homepage {
   // overflow: hidden;
   // cursor: none;
   header {
-    background: #003b4b;
-    height: 100vh;
-    .box-navbar {
-      height: 64px;
-      .btn-menu-navlink {
-        opacity: 0;
-        transition: initial !important;
-      }
-    }
-    .link-logo-menu {
-      position: inherit;
-      .box-svg-header {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        svg {
-          width: 265px;
-          height: 137px;
-          path {
-            fill: #fff;
-          }
-        }
-      }
-    }
+    // background: #003b4b;
+    // height: 100vh;
+    // .box-navbar {
+    //   height: 64px;
+    //   .btn-menu-navlink {
+    //     opacity: 0;
+    //     transition: initial !important;
+    //   }
+    // }
+    // .link-logo-menu {
+    //   position: inherit;
+    //   .box-svg-header {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     svg {
+    //       width: 265px;
+    //       height: 137px;
+    //       path {
+    //         fill: #fff;
+    //       }
+    //     }
+    //   }
+    // }
   }
   .banner-hero {
     height: 100vh;

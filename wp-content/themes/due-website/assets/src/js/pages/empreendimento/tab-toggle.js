@@ -88,7 +88,9 @@ function initTabToggle() {
     $showEmpreendimento.find('h2').addClass('active');
     $showTipologia.find('h2').removeClass('active');
 
-    !firstRender ?? history.pushState("", document.title, window.location.pathname);
+    if (!firstRender) {
+      history.pushState("", document.title, window.location.pathname);
+    }
   }
 
   function showTipologia({ firstRender }) {

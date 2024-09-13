@@ -185,6 +185,13 @@ function generate_navbar()
 					<ul class="navlinks">
 						<?php generate_menu_links(); ?>
 					</ul>
+
+				</div>
+				<div class="box-menu-lateral">
+					<div class="box-link-invista">
+						<?php generate_menu_links(); ?>
+					</div>
+
 					<label for="menu-toggle" id="btn-navbar" class="navigation__menu-label">
 						<span class="navigation__label-bar navigation__label-bar1 "></span>
 						<span class="navigation__label-bar navigation__label-bar3"></span>
@@ -232,9 +239,7 @@ function generate_navbar()
 							</div>
 						</div>
 					</ul>
-
 				</div>
-
 
 			</nav>
 			<div class="box-video-destinos">
@@ -275,9 +280,9 @@ function generate_navbar()
 								</div>
 								<div class="box-cards-praia">
 									<?php
-									if (have_rows('cards_premios','options')) :
+									if (have_rows('cards_premios', 'options')) :
 										$counter = 1;
-										while (have_rows('cards_premios','options')) : the_row();
+										while (have_rows('cards_premios', 'options')) : the_row();
 											$extra_class = ($counter === 2) ? 'bg-blue' : '';
 									?>
 											<div class="box-infos-cards <?php echo $extra_class; ?>">

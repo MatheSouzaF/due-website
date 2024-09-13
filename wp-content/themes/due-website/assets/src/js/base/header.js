@@ -19,6 +19,14 @@ function navbar() {
     $('#btn-navbar').toggleClass('active-btn');
     $('.sidebar').toggleClass('active-sidebar');
   });
+  $('#newsletter').click(function () {
+    $('.box-newsletter').addClass('active-newsletter');
+    $('#btn-navbar').addClass('index-sidebar');
+  });
+  $('#close-newsletter').click(function () {
+    $('.box-newsletter').removeClass('active-newsletter');
+    $('#btn-navbar').removeClass('index-sidebar');
+  });
 }
 function menuMove() {
   const $navLinks = $('.btn-menu-navlink').not('.last-item');

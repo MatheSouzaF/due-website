@@ -2,7 +2,7 @@ function bannerJeitoDUE() {
   const tituloJeito = document.querySelector('.titulo-jeito-due');
   const descricaoJeito = document.querySelector('.descricao-jeito-due');
   const imgBanner = document.querySelector('.box-video');
-  
+
   let TLFADE = gsap.timeline();
 
   TLFADE.from(tituloJeito, {
@@ -224,6 +224,25 @@ function bigNumero() {
   });
 }
 
+function modalJeitoDue() {
+  $('.js-modal-jeito-due').on('click', function (e) {
+    $('.box-img-repeater').addClass('modal-open-box-img');
+
+    e.preventDefault();
+    var msrc = $(this).data('src');
+    $('.js-modal').find('.video-container').html(msrc);
+    $('.js-modal').fadeIn();
+  });
+
+  $('.js-modal-close-jeito-due, .js-modal-close-btn-jeito-due').on('click', function (e) {
+    $('.box-img-repeater').removeClass('modal-open-box-img');
+
+    e.preventDefault();
+    $('.js-modal').fadeOut(function () {
+      $('.js-modal').find('.video-container').html('');
+    });
+  });
+}
 function initJeitoDUE() {
   bannerJeitoDUE();
   imagemGrow();
@@ -232,6 +251,7 @@ function initJeitoDUE() {
   reducaoSocial();
   cardRepetidor();
   bigNumero();
+  modalJeitoDue();
 }
 
 export {initJeitoDUE};

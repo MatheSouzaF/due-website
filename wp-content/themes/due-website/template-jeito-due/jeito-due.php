@@ -33,7 +33,7 @@ get_header();
                     <?php
                     $modalVideo = get_field('video_proposito_jeito_due');
                     ?>
-                    <div class="button-play js-modal-open" data-src="<?php echo htmlspecialchars($modalVideo); ?>">
+                    <div class="button-play js-modal-jeito-due" data-src="<?php echo htmlspecialchars($modalVideo); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
                             <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
                             <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
@@ -50,12 +50,12 @@ get_header();
                     <?php endif; ?>
 
                     <div class="modal js-modal">
-                        <div class="modal__bg js-modal-close"></div>
+                        <div class="modal__bg js-modal-close-jeito-due"></div>
                         <div class="modal__content">
                             <div class="video-container"></div>
 
                         </div>
-                        <span class="js-modal-close-btn">
+                        <span class="js-modal-close-btn-jeito-due">
                             <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none">
                                 <g clip-path="url(#clip0_2145_7167)">
                                     <path class="hover-line" d="M1 1L30.1161 28.983" stroke="white" stroke-width="2" />

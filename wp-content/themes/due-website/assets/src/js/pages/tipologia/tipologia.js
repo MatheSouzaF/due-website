@@ -272,31 +272,31 @@ async function tipologiaPage() {
 
       if (locationFilter) {
         const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('localizacao', formattedLocation);
+        params.set('tipo-localizacao', formattedLocation);
         hasFilters = true;
       }
 
       if (statusFilter) {
         const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('estagio', formattedStatus);
+        params.set('tipo-estagio', formattedStatus);
         hasFilters = true;
       }
 
       if (empreendimentoFilter) {
         const formattedEmpreendimento = empreendimentoFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('empreendimento', formattedEmpreendimento);
+        params.set('tipo-empreendimento', formattedEmpreendimento);
         hasFilters = true;
       }
 
       if (diferenciaisFilter) {
         const formattedDiferenciais = diferenciaisFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('diferenciais', formattedDiferenciais);
+        params.set('tipo-diferenciais', formattedDiferenciais);
         hasFilters = true;
       }
 
       if (roomsFilter) {
         const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('qtos', formattedRooms);
+        params.set('tipo-qtos', formattedRooms);
         hasFilters = true;
       }
 
@@ -311,11 +311,11 @@ async function tipologiaPage() {
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
 
-      const locationFilter = params.get('localizacao');
-      const statusFilter = params.get('estagio');
-      const empreendimentoFilter = params.get('empreendimento');
-      const diferenciaisFilter = params.get('diferenciais');
-      const roomsFilter = params.get('qtos');
+      const locationFilter = params.get('tipo-localizacao');
+      const statusFilter = params.get('tipo-estagio');
+      const empreendimentoFilter = params.get('tipo-empreendimento');
+      const diferenciaisFilter = params.get('tipo-diferenciais');
+      const roomsFilter = params.get('tipo-qtos');
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {

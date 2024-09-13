@@ -146,12 +146,13 @@ body.page-template-jeito-due {
           }
 
           .img-video {
-            position: sticky;
-            top: 100px;
             clip-path: inset(0 0 100% 0);
             transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
-
             height: 655px;
+            @include media-breakpoint-up(md) {
+              position: sticky;
+              top: 100px;
+            }
             &.imgPath {
               clip-path: inset(0 0 -100px -100px);
             }

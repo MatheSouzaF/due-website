@@ -86,7 +86,6 @@ body.page-template-homepage {
                 @include media-breakpoint-up(sm) {
                   font-size: 64px;
                 }
-                
               }
               .subtitulo-banner-hero {
                 color: $grey-0;
@@ -102,7 +101,7 @@ body.page-template-homepage {
                   max-width: initial;
                 }
               }
-              .button-play{
+              .button-play {
                 transition: initial;
               }
 
@@ -305,13 +304,22 @@ body.page-template-homepage {
     }
 
     .box-cards-empreendimentos-desktop {
-      @include media-breakpoint-down(sm) {
-        display: none;
-      }
       .swiper-empreendimento {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+        padding: 0 20px 0 20px;
+        transition: 0.6s;
+        @include media-breakpoint-up(sm) {
+          padding: 0 48px 0 48px;
+        }
+
+        @include media-breakpoint-up(md) {
+          padding: 0 80px 0 80px;
+        }
         .card-empreendimentos {
           cursor: pointer;
-
+          transition: 0.6s;
           .box-card {
             position: relative;
             display: flex;
@@ -322,7 +330,7 @@ body.page-template-homepage {
             }
             &::after {
               content: '';
-              background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+              background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
               position: absolute;
               top: 0;
               left: 0;
@@ -336,9 +344,11 @@ body.page-template-homepage {
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
+                transition: 1s;
               }
 
               .video-empreendimento {
+                transition: 1s;
                 position: absolute;
                 left: 0;
                 top: 0;
@@ -346,7 +356,6 @@ body.page-template-homepage {
                 height: 100%;
                 object-fit: cover;
                 opacity: 0;
-                transition: opacity 0.3s ease-in-out;
               }
             }
 

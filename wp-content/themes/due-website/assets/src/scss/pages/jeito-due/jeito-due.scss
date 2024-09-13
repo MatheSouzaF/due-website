@@ -8,6 +8,13 @@ body.page-template-jeito-due {
     .incorporadora {
       display: none;
     }
+    .link-logo-menu {
+      .due-logo {
+        path {
+          fill: $due-tertiary;
+        }
+      }
+    }
   }
   .page-jeito-due {
     .banner-jeito-due {

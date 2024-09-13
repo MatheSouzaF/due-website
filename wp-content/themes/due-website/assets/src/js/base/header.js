@@ -19,6 +19,14 @@ function navbar() {
     $('#btn-navbar').toggleClass('active-btn');
     $('.sidebar').toggleClass('active-sidebar');
   });
+  $('#newsletter').click(function () {
+    $('.box-newsletter').addClass('active-newsletter');
+    $('#btn-navbar').addClass('index-sidebar');
+  });
+  $('#close-newsletter').click(function () {
+    $('.box-newsletter').removeClass('active-newsletter');
+    $('#btn-navbar').removeClass('index-sidebar');
+  });
 }
 function menuMove() {
   const $navLinks = $('.btn-menu-navlink').not('.last-item');
@@ -143,8 +151,8 @@ function hoverDestinos() {
   var tl = gsap.timeline({paused: true});
   tl.to('header', {
     duration: 0.5,
-    height: '560px',
-    backgroundColor: '#f4f4f4',
+    height: '590px',
+    backgroundColor: '#faf2eb',
     ease: 'power1.inOut',
     onStart: function () {
       $('header').addClass('hover-destinos'); // Adiciona a classe no início da animação

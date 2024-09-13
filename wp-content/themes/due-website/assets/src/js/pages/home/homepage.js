@@ -1,3 +1,37 @@
+function animationBanner() {
+  const header = document.querySelector('.header');
+  const logo = document.querySelector('.box-svg-header');
+  const logoMenu = document.querySelector('.link-logo-menu');
+  const svgLogo = document.querySelector('.due-logo');
+  const incorporadora = document.querySelector('.incorporadora');
+  const body = document.querySelector('body');
+  const boxbotões = document.querySelectorAll('.btn-menu-navlink');
+  const tituloBanner = document.querySelector('.titulo-banner-hero');
+  const subtituloBanner = document.querySelector('.subtitulo-banner-hero');
+  const btnBanner = document.querySelector('.button-play');
+
+  let TLFADE = gsap.timeline();
+  TLFADE.to(logo, {top: '24px', transform: 'translate(-50%, 0)', duration: 0.7, deplay: 0.8, ease: 'power1.inOut'});
+  TLFADE.to(svgLogo, {width: '70px', height: '64px', duration: 0.7, ease: 'power1.inOut'}, '-=0.7');
+  TLFADE.to(logo, {left: '80px', transform: 'translate(0, 0)', duration: 0.7, ease: 'power1.inOut'});
+  TLFADE.to(incorporadora, {opacity: '0', ease: 'power1.inOut'});
+  TLFADE.to(incorporadora, {display: 'none'});
+  TLFADE.to(header, {height: '72px', position: 'fixed', duration: 0.7}, '-=0.6');
+  TLFADE.to(header, {background: 'transparent', duration: 0.4}, '-=0.6');
+  TLFADE.to(boxbotões, {duration: 0.2, opacity: 1, stagger: 0.2});
+  TLFADE.from(tituloBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=1');
+  TLFADE.from(subtituloBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=.5');
+  TLFADE.from(btnBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=.8');
+  TLFADE.to(body, {overflowY: 'auto', cursor: 'initial', duration: 0.4});
+  TLFADE.to(logoMenu, {
+    position: 'initial',
+    onComplete: function () {
+      // Ativa a função scrollsmooth ao final da animação
+      scrollsmooth();
+      swiperBanner();
+    },
+  });
+}
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
     spaceBetween: 16,
@@ -216,40 +250,7 @@ function scrollsmooth() {
   });
 }
 
-function animationBanner() {
-  const header = document.querySelector('.header');
-  const logo = document.querySelector('.box-svg-header');
-  const logoMenu = document.querySelector('.link-logo-menu');
-  const svgLogo = document.querySelector('.due-logo');
-  const incorporadora = document.querySelector('.incorporadora');
-  const body = document.querySelector('body');
-  const boxbotões = document.querySelectorAll('.btn-menu-navlink');
-  const tituloBanner = document.querySelector('.titulo-banner-hero');
-  const subtituloBanner = document.querySelector('.subtitulo-banner-hero');
-  const btnBanner = document.querySelector('.button-play');
 
-  let TLFADE = gsap.timeline();
-  TLFADE.to(logo, {top: '24px', transform: 'translate(-50%, 0)', duration: 0.7, deplay: 0.8, ease: 'power1.inOut'});
-  TLFADE.to(svgLogo, {width: '70px', height: '64px', duration: 0.7, ease: 'power1.inOut'}, '-=0.7');
-  TLFADE.to(logo, {left: '80px', transform: 'translate(0, 0)', duration: 0.7, ease: 'power1.inOut'});
-  TLFADE.to(incorporadora, {opacity: '0', ease: 'power1.inOut'});
-  TLFADE.to(incorporadora, {display: 'none'});
-  TLFADE.to(header, {height: '72px', position: 'fixed', duration: 0.7}, '-=0.6');
-  TLFADE.to(header, {background: 'transparent', duration: 0.4}, '-=0.6');
-  TLFADE.to(boxbotões, {duration: 0.2, opacity: 1, stagger: 0.2});
-  TLFADE.from(tituloBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=1');
-  TLFADE.from(subtituloBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=.5');
-  TLFADE.from(btnBanner, {autoAlpha: 0, duration: '1', x: '-200%'}, '-=.8');
-  TLFADE.to(body, {overflow: 'hidden', cursor: 'initial', duration: 0.4});
-  TLFADE.to(logoMenu, {
-    position: 'initial',
-    onComplete: function () {
-      // Ativa a função scrollsmooth ao final da animação
-      scrollsmooth();
-      swiperBanner();
-    },
-  });
-}
 
 function initPage() {
   swiperEmpreendimento();

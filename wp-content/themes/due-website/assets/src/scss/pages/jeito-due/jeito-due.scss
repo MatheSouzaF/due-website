@@ -17,19 +17,36 @@ body.page-template-jeito-due {
     }
   }
   .page-jeito-due {
+    background-color: $grey-0;
     .banner-jeito-due {
-      margin: 134px 0 74px;
+      padding: 151px 0 74px;
       @include media-breakpoint-up(md) {
-        margin: 212px 0 120px;
+        padding: 212px 0 120px;
       }
       .wrapper {
         display: flex;
-        flex-direction: row;
-        align-items: flex-end;
         justify-content: space-between;
         margin-bottom: 120px;
-        gap: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        @include media-breakpoint-up(md) {
+          gap: 20px;
+          align-items: flex-end;
+          flex-direction: row;
+        }
 
+        .label-jeito-due {
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 12px */
+          letter-spacing: 0.24px;
+          color: $due-tertiary;
+          @include media-breakpoint-up(md) {
+            display: none;
+          }
+        }
         .titulo-jeito-due {
           font-style: normal;
           font-weight: 400;
@@ -38,6 +55,8 @@ body.page-template-jeito-due {
           font-size: 22px;
           color: $due-tertiary;
           max-width: 645px;
+          opacity: 0;
+          transform: translateX(-200%);
           @include media-breakpoint-up(sm) {
             font-size: 32px;
           }
@@ -52,6 +71,8 @@ body.page-template-jeito-due {
           letter-spacing: 0.36px;
           margin-bottom: 30px;
           display: none;
+          opacity: 0;
+          transform: translateX(200%);
           @include media-breakpoint-up(sm) {
             display: flex;
           }

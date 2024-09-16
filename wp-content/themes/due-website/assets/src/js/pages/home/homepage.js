@@ -32,6 +32,60 @@
 //     },
 //   });
 // }
+function swiperBanner() {
+  var mySwiper = new Swiper('.swiper-banner', {
+    // loop: true,
+    autoplayDisableOnInteraction: false,
+    slidesPerView: 1,
+    autoHeight: true,
+    autoplay: {
+      delay: 3000, // Match the animation time
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      type: 'bullets',
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-btn-banner-next',
+      prevEl: '.swiper-btn-banner-prev',
+    },
+  });
+
+  function modalBanner() {
+    $('.js-modal-open-banner').on('click', function (e) {
+      e.preventDefault();
+      var msrc = $(this).data('src');
+      $('.js-modal').find('.video-container').html(msrc);
+      $('.js-modal').fadeIn();
+
+      // Pausa o Swiper quando o modal é aberto
+      mySwiper.autoplay.stop();
+    });
+
+    $('.js-modal-close, .js-modal-close-btn').on('click', function (e) {
+      e.preventDefault();
+      $('.js-modal').fadeOut(function () {
+        $('.js-modal').find('.video-container').html('');
+
+        // Retoma o Swiper quando o modal é fechado
+        setTimeout(function () {
+          mySwiper.autoplay.start();
+        }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
+      });
+    });
+  }
+
+  // Chama a função do modal
+  modalBanner();
+}
 
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
@@ -187,60 +241,7 @@ function encantese() {
     },
   });
 }
-function swiperBanner() {
-  var mySwiper = new Swiper('.swiper-banner', {
-    loop: true,
-    autoplayDisableOnInteraction: false,
-    slidesPerView: 1,
-    autoHeight: true,
-    autoplay: {
-      delay: 3000, // Match the animation time
-    },
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      type: 'bullets',
-      renderBullet: function (index, className) {
-        return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
-      },
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  });
 
-  function modalBanner() {
-    $('.js-modal-open-banner').on('click', function (e) {
-      e.preventDefault();
-      var msrc = $(this).data('src');
-      $('.js-modal').find('.video-container').html(msrc);
-      $('.js-modal').fadeIn();
-
-      // Pausa o Swiper quando o modal é aberto
-      mySwiper.autoplay.stop();
-    });
-
-    $('.js-modal-close, .js-modal-close-btn').on('click', function (e) {
-      e.preventDefault();
-      $('.js-modal').fadeOut(function () {
-        $('.js-modal').find('.video-container').html('');
-
-        // Retoma o Swiper quando o modal é fechado
-        setTimeout(function () {
-          mySwiper.autoplay.start();
-        }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
-      });
-    });
-  }
-
-  // Chama a função do modal
-  modalBanner();
-}
 function scrollsmooth() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -262,7 +263,7 @@ function initPage() {
   encantese();
   nossoProposito();
   scrollsmooth();
-  // animationBanner();
+  swiperBanner();
 }
 
 export {initPage};

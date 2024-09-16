@@ -5,19 +5,18 @@ function banner() {
   const imgBanner = document.querySelector('.container-image');
   let TLFADE = gsap.timeline();
 
-  TLFADE.from(tituloJeito, {
+  TLFADE.to(tituloJeito, {
     duration: 1,
-    autoAlpha: 0,
-    delay: 0.7,
-    x: -100,
+    opacity: 1,
+    x: 0,
+
   });
-  TLFADE.from(
+  TLFADE.to(
     descricaoJeito,
     {
       duration: 1,
-      autoAlpha: 0,
-      delay: 0.7,
-      x: -100,
+      opacity: 1,
+      x: 0,
     },
     '-=.8'
   );

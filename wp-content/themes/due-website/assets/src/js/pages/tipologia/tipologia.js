@@ -1,6 +1,6 @@
 import { renderFilters } from '../../components/filter';
 
-async function tipologiaPage() {
+function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
 
   try {
@@ -8,93 +8,112 @@ async function tipologiaPage() {
     const tipologiasData = TipologiasData.tipologias;
 
     function renderTipologias(tipologias) {
-      const $container = $('.cards.container-tipologias');
-      const $resultsText = $('.results-text');
+      const $container = $('.cards-tipologia.cards');
+      const $resultsText = $('.tipologia-results-text');
 
-      $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
-      $container.html('');
+      updateResultsText($resultsText, tipologias.length);
+      clearContainer($container);
 
       if (tipologias.length === 0) {
-        console.log('Nenhum tipologia para exibir.');
+        console.log('Nenhuma tipologia para exibir.');
         return;
       }
 
-      tipologias.forEach(function (tipologia) {
-        const template = document.getElementById('tipologia-template');
-        const cardTemplate = template.content.cloneNode(true);
-        const $boxCard = $(cardTemplate).find('.box-card');
-        
-        const statusMap = {
-          'Em obra': 'em_obra',
-          'Lançamento': 'lancamento',
-          '100% vendido': 'vendido',
-          'Últimas unidades': 'ultimas_unidades'
-        };
-        
-        const statusClass = statusMap[tipologia.status] || tipologia.status;
-        
-        $boxCard.addClass(statusClass);
-
-        $(cardTemplate)
-          .find('.nome-tipologia')
-          .text(tipologia.name || 'N/A');
-        $(cardTemplate)
-          .find('.nome-empreendimento')
-          .text(tipologia.project || 'N/A');
-        $(cardTemplate)
-          .find('.localizacao-tipologia')
-          .text(tipologia.location || 'N/A');
-        $(cardTemplate)
-          .find('.label-informativo')
-          .text(tipologia.status || 'N/A');
-
-        const quartos = tipologia.rooms && tipologia.rooms[0];
-        $(cardTemplate)
-          .find('.info-quartos')
-          .text(quartos ? `${tipologia.isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A');
-
-        const tamanho = tipologia.size && tipologia.size[0];
-        $(cardTemplate)
-          .find('.info-tamanho')
-          .text(tamanho ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²` : 'N/A');
-
-        $(cardTemplate)
-          .find('.valor')
-          .text(tipologia.offer || 'N/A');
-        $(cardTemplate)
-          .find('.entradas')
-          .text(tipologia.tituloOffer || 'N/A');
-
-        if (tipologia.photo && tipologia.photo.url) {
-          $(cardTemplate).find('.imagem-tipologia').attr('src', tipologia.photo.url);
-        } else {
-          $(cardTemplate).find('.imagem-tipologia').hide();
-        }
-
-        if (tipologia.video) {
-          $(cardTemplate).find('.video-tipologia').attr('src', tipologia.video);
-        } else {
-          $(cardTemplate).find('.video-tipologia').hide();
-        }
-
-        const diffsContainer = $(cardTemplate).find('.box-tipos');
-        tipologia.diffs.forEach((diff) => {
-          const diffTemplate = `
-              <div class="linha-tipos">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
-                    stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p class="titulo-tipos founders-grotesk">${diff}</p>
-              </div>`;
-          diffsContainer.append(diffTemplate);
-        });
-
+      tipologias.forEach(tipologia => {
+        const cardTemplate = createTipologiaCard(tipologia);
         $container.append(cardTemplate);
       });
     }
 
+    function updateResultsText($element, tipologiaCount) {
+      const text = tipologiaCount === 1 ? `Selecionamos ${tipologiaCount} tipologia para você` : `Selecionamos ${tipologiaCount} tipologias para você`;
+      $element.text(text);
+    }
+
+    function clearContainer($container) {
+      $container.html('');
+    }
+
+    function createTipologiaCard(tipologia) {
+      const template = document.getElementById('tipologia-template');
+      const cardTemplate = template.content.cloneNode(true);
+      const $boxCard = $(cardTemplate).find('.box-card');
+
+      addStatusClass($boxCard, tipologia.status);
+      updateCardContent(cardTemplate, tipologia);
+
+      return cardTemplate;
+    }
+
+    function addStatusClass($boxCard, status) {
+      const statusMap = {
+        'Em obra': 'em_obra',
+        'Lançamento': 'lancamento',
+        '100% vendido': 'vendido',
+        'Últimas unidades': 'ultimas_unidades'
+      };
+
+      const statusClass = statusMap[status] || status;
+      $boxCard.addClass(statusClass);
+    }
+
+    function updateCardContent(cardTemplate, tipologia) {
+      $(cardTemplate).find('.nome-tipologia').text(tipologia.name || 'N/A');
+      $(cardTemplate).find('.nome-empreendimento').text(tipologia.project || 'N/A');
+      $(cardTemplate).find('.localizacao-tipologia').text(tipologia.location || 'N/A');
+      $(cardTemplate).find('.label-informativo').text(tipologia.status || 'N/A');
+
+      updateRooms(cardTemplate, tipologia.rooms, tipologia.isStudio);
+      updateSize(cardTemplate, tipologia.size);
+      updateOffer(cardTemplate, tipologia.offer, tipologia.tituloOffer);
+      updateMedia(cardTemplate, tipologia.photo, tipologia.video);
+      updateDiffs(cardTemplate, tipologia.diffs);
+    }
+
+    function updateRooms(cardTemplate, rooms, isStudio) {
+      const quartos = rooms && rooms[0];
+      const roomsText = quartos ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A';
+      $(cardTemplate).find('.info-quartos').text(roomsText);
+    }
+
+    function updateSize(cardTemplate, size) {
+      const tamanho = size && size[0];
+      const sizeText = tamanho ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²` : 'N/A';
+      $(cardTemplate).find('.info-tamanho').text(sizeText);
+    }
+
+    function updateOffer(cardTemplate, offer, tituloOffer) {
+      $(cardTemplate).find('.valor').text(offer || 'N/A');
+      $(cardTemplate).find('.entradas').text(tituloOffer || 'N/A');
+    }
+
+    function updateMedia(cardTemplate, photo, video) {
+      if (photo && photo.url) {
+        $(cardTemplate).find('.imagem-tipologia').attr('src', photo.url);
+      } else {
+        $(cardTemplate).find('.imagem-tipologia').hide();
+      }
+
+      if (video) {
+        $(cardTemplate).find('.video-tipologia').attr('src', video);
+      } else {
+        $(cardTemplate).find('.video-tipologia').hide();
+      }
+    }
+
+    function updateDiffs(cardTemplate, diffs) {
+      const diffsContainer = $(cardTemplate).find('.box-tipos');
+      diffs.forEach(diff => {
+        const diffTemplate = `
+          <div class="linha-tipos">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z" stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="titulo-tipos founders-grotesk">${diff}</p>
+          </div>`;
+        diffsContainer.append(diffTemplate);
+      });
+    }
 
     function populateFilterOptions() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
@@ -116,32 +135,28 @@ async function tipologiaPage() {
       const isStudio = tipologiasData.map(t => t.isStudio)
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
-        'filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
-        'filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
-        'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []), 
+        'tipologia-filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'tipologia-filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
+        'tipologia-filter-empreendimento': Array.from(empreendimentoOptions).map((empreendimento) => ({ value: empreendimento, label: empreendimento })),
+        'tipologia-filter-diferenciais': Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
+        'tipologia-filter-rooms': [
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({ value: room, label: `${room} Quartos` })),
         ],
       };
-      
+
       return options;
     }
 
-
-    populateFilterOptions();
-
     const filters = {
-      'filter-location': $('#filter-location'),
-      'filter-status': $('#filter-status'),
-      'filter-empreendimento': $('#filter-empreendimento'),
-      'filter-diferenciais': $('#filter-diferenciais'),
-      'filter-rooms': $('#filter-rooms'),
+      'tipologia-filter-location': $('#tipologia-filter-location'),
+      'tipologia-filter-status': $('#tipologia-filter-status'),
+      'tipologia-filter-empreendimento': $('#tipologia-filter-empreendimento'),
+      'tipologia-filter-diferenciais': $('#tipologia-filter-diferenciais'),
+      'tipologia-filter-rooms': $('#tipologia-filter-rooms'),
     };
-
     const options = populateFilterOptions();
     renderFilters(filters, options);
 
@@ -149,7 +164,7 @@ async function tipologiaPage() {
       const value = $(selector)
         .find('input:checked')
         .map(function () {
-          return selector === '#filter-diferenciais' ? this.value : this.value.toLowerCase();
+          return selector === '#tipologia-filter-diferenciais' ? this.value : this.value.toLowerCase();
         })
         .get();
 
@@ -168,11 +183,11 @@ async function tipologiaPage() {
     }
 
     function filterTipologias(tipologias) {
-      const locationFilter = getFilterValue('#filter-location');
-      const statusFilter = getFilterValue('#filter-status');
-      const empreendimentoFilter = getFilterValue('#filter-empreendimento');
-      const diferenciaisFilter = getFilterValue('#filter-diferenciais');
-      const roomsFilter = getFilterValue('#filter-rooms');
+      const locationFilter = getFilterValue('#tipologia-filter-location');
+      const statusFilter = getFilterValue('#tipologia-filter-status');
+      const empreendimentoFilter = getFilterValue('#tipologia-filter-empreendimento');
+      const diferenciaisFilter = getFilterValue('#tipologia-filter-diferenciais');
+      const roomsFilter = getFilterValue('#tipologia-filter-rooms');
 
       if (!locationFilter && !statusFilter && !empreendimentoFilter && !diferenciaisFilter && !roomsFilter) {
         return tipologias;
@@ -182,51 +197,51 @@ async function tipologiaPage() {
         const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
         const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
-      
-        const matchRooms = !roomsFilter || 
-          (roomsFilter.includes('studio') ? tipologia.isStudio : 
-          tipologia.rooms.some((room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-            const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
-            return roomsFilter.some(
-              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
-            );
-          })
-        );
-      
+
+        const matchRooms = !roomsFilter ||
+          (roomsFilter.includes('studio') ? tipologia.isStudio :
+            tipologia.rooms.some((room) => {
+              const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
+              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+              return roomsFilter.some(
+                (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+              );
+            })
+          );
+
         const matchDiferenciais =
-          !diferenciaisFilter || 
+          !diferenciaisFilter ||
           diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
-      
+
         return matchLocation && matchStatus && matchEmpreendimento && matchDiferenciais && matchRooms;
-      });      
+      });
     }
 
     function generateBadge(filterValue, filterType) {
       let badgeLabel = filterValue;
-    
+
       if (filterType === 'rooms' && filterValue !== 'studio') {
         badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
       }
-    
+
       const badgeTemplate = `
         <span class="badge ${filterType}">
           ${badgeLabel}
-          <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
+          <button type="button" class="tipologia-remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
         </span>
       `;
-    
-      $('.filters-applied').append(badgeTemplate);
+
+      $('.tipologia-filters-applied').append(badgeTemplate);
     }
 
     function updateBadges() {
-      $('.filters-applied').html('');
+      $('.tipologia-filters-applied').html('');
 
-      const locationFilter = getFilterLabel('#filter-location');
-      const statusFilter = getFilterLabel('#filter-status');
-      const empreendimentoFilter = getFilterLabel('#filter-empreendimento');
-      const diferenciaisFilter = getFilterLabel('#filter-diferenciais');
-      const roomsFilter = getFilterLabel('#filter-rooms');
+      const locationFilter = getFilterLabel('#tipologia-filter-location');
+      const statusFilter = getFilterLabel('#tipologia-filter-status');
+      const empreendimentoFilter = getFilterLabel('#tipologia-filter-empreendimento');
+      const diferenciaisFilter = getFilterLabel('#tipologia-filter-diferenciais');
+      const roomsFilter = getFilterLabel('#tipologia-filter-rooms');
 
       if (locationFilter) {
         locationFilter.forEach((value) => generateBadge(value, 'location'));
@@ -248,11 +263,11 @@ async function tipologiaPage() {
         roomsFilter.forEach((value) => generateBadge(value, 'rooms'));
       }
 
-      $('.remove-badge').on('click', function () {
+      $('.tipologia-remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        $(`#filter-${filterType} input[value="${filterValue}"]`).click();
+        $(`#tipologia-filter-${filterType} input[value="${filterValue}"]`).click();
 
         updateBadges();
         buildFilterUrl();
@@ -261,84 +276,97 @@ async function tipologiaPage() {
     }
 
     function buildFilterUrl() {
-      const locationFilter = getFilterLabel('#filter-location');
-      const statusFilter = getFilterLabel('#filter-status');
-      const empreendimentoFilter = getFilterLabel('#filter-empreendimento');
-      const diferenciaisFilter = getFilterLabel('#filter-diferenciais');
-      const roomsFilter = getFilterLabel('#filter-rooms');
+      const locationFilter = getFilterLabel('#tipologia-filter-location');
+      const statusFilter = getFilterLabel('#tipologia-filter-status');
+      const empreendimentoFilter = getFilterLabel('#tipologia-filter-empreendimento');
+      const diferenciaisFilter = getFilterLabel('#tipologia-filter-diferenciais');
+      const roomsFilter = getFilterLabel('#tipologia-filter-rooms');
 
       const params = new URLSearchParams();
+      let hasFilters = false
 
       if (locationFilter) {
         const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('localizacao', formattedLocation);
+        params.set('tipo-localizacao', formattedLocation);
+        hasFilters = true;
       }
 
       if (statusFilter) {
         const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('estagio', formattedStatus);
+        params.set('tipo-estagio', formattedStatus);
+        hasFilters = true;
       }
 
       if (empreendimentoFilter) {
         const formattedEmpreendimento = empreendimentoFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('empreendimento', formattedEmpreendimento);
+        params.set('tipo-empreendimento', formattedEmpreendimento);
+        hasFilters = true;
       }
 
       if (diferenciaisFilter) {
         const formattedDiferenciais = diferenciaisFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('diferenciais', formattedDiferenciais);
+        params.set('tipo-diferenciais', formattedDiferenciais);
+        hasFilters = true;
       }
 
       if (roomsFilter) {
         const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
-        params.set('qtos', formattedRooms);
+        params.set('tipo-qtos', formattedRooms);
+        hasFilters = true;
       }
 
-      const newUrl = `${window.location.pathname}${params.toString().length ? '?' : ''}${params.toString()}`;
+      if (hasFilters) {
+        params.set('tipologia', 'true');
+      }
+
+      const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''}${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
 
-      const locationFilter = params.get('localizacao');
-      const statusFilter = params.get('estagio');
-      const empreendimentoFilter = params.get('empreendimento');
-      const diferenciaisFilter = params.get('diferenciais');
-      const roomsFilter = params.get('qtos');
+      const locationFilter = params.get('tipo-localizacao');
+      const statusFilter = params.get('tipo-estagio');
+      const empreendimentoFilter = params.get('tipo-empreendimento');
+      const diferenciaisFilter = params.get('tipo-diferenciais');
+      const roomsFilter = params.get('tipo-qtos');
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-location input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-location input[value="${formattedValue}"]`).click();
         });
       }
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-status input[value="${formattedValue}"]`).click();
+          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+
+          formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
+
+          $(`#tipologia-filter-status input[value="${formattedValue}"]`).click();
         });
       }
 
       if (empreendimentoFilter) {
         empreendimentoFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-empreendimento input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-empreendimento input[value="${formattedValue}"]`).click();
         });
       }
 
       if (diferenciaisFilter) {
         diferenciaisFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-diferenciais input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-diferenciais input[value="${formattedValue}"]`).click();
         });
       }
 
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-rooms input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -353,27 +381,27 @@ async function tipologiaPage() {
 
     renderTipologias(tipologiasData);
 
-    $('#filter-location input.ckkBox').on('change', function () {
+    $('#tipologia-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
     });
 
-    $('#filter-status input.ckkBox').on('change', function () {
+    $('#tipologia-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
     });
 
-    $('#filter-empreendimento input.ckkBox').on('change', function () {
+    $('#tipologia-filter-empreendimento input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
     });
 
-    $('#filter-diferenciais input.ckkBox').on('change', function () {
+    $('#tipologia-filter-diferenciais input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
     });
 
-    $('#filter-rooms input.ckkBox').on('change', function () {
+    $('#tipologia-filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
     });
@@ -410,8 +438,8 @@ function cardHover() {
 }
 
 
-async function initTipologia() {
-  await tipologiaPage();
+function initTipologia() {
+  tipologiaPage();
   cardHover()
 }
 

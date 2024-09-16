@@ -3,8 +3,7 @@ export function renderFilters(filters, options) {
   setCheckboxSelectLabels(filters);
 
   $('.toggle-next').click(function () {
-    $('.checkboxes').not($(this).next('.checkboxes')).hide(); 
-    $(this).next('.checkboxes').slideToggle(400); 
+    $(this).next('.checkboxes').slideDown(400); 
   });
 
   $('.checkboxes').parent().on('mouseleave', function () {
@@ -16,7 +15,6 @@ export function renderFilters(filters, options) {
     setCheckboxSelectLabels(filters);
   });
 }
-
 
 function populateFilters(filters, options) {
   $.each(filters, function (key, wrapper) {

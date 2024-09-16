@@ -20,69 +20,6 @@ header {
 main.page-empreendimentos-tipologia {
   padding: 120px 0;
 
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 0;
-  }
-
-  .card-empreendimentos {
-    flex-basis: calc(33% - 8px);
-    padding: 0;
-
-    .box-card {
-      &.lancamento {
-        .label-informativo {
-          background-color: #cb9e6c;
-        }
-      }
-
-      &.em_obra {
-        .label-informativo {
-          background-color: #003b4b;
-        }
-      }
-
-      &.ultimas_unidades {
-        .label-informativo {
-          background-color: #861d1d;
-        }
-      }
-
-      &.vendido {
-        .label-informativo {
-          background-color: #e9e3dd;
-          color: $due-tertiary;
-        }
-
-        .imagem-empreendimento {
-          filter: grayscale(1);
-        }
-      }
-
-      .box-label {
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        padding: 0;
-
-        .label-informativo {
-          text-align: center;
-          color: $grey-0;
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 100%;
-          letter-spacing: 0.48px;
-          padding: 10px 0;
-          text-transform: uppercase;
-        }
-      }
-    }
-  }
-
   .empreendimentos-header {
     display: flex;
     justify-content: space-between;
@@ -102,102 +39,187 @@ main.page-empreendimentos-tipologia {
     }
   }
 
-  .filter-container {
-    display: flex;
-    gap: 8px;
-
-    .filter-wrapper {
-      position: relative;
-      cursor: pointer;
-
-      button {
-        border: 1px solid #51848c66;
-        padding: 8px 18px;
-        border-radius: 32px;
-        max-width: fit-content;
-      }
+  .aba-empreendimentos {
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 0;
     }
 
-    .checkboxes {
-      margin: 0;
-      display: none;
-      border-top: 0;
-      padding: 16px;
-      border-radius: 8px;
-      box-shadow: 0px 2px 4px 0px #00000014;
-      position: absolute;
-      z-index: 10;
-      background: white;
-      width: max-content;
+    .card-empreendimentos {
+      flex-basis: calc(33% - 8px);
+      padding: 0;
 
-      .inner-wrap {
-        padding: 4px 0;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
+      .box-card {
+        &.lancamento {
+          .label-informativo {
+            background-color: #cb9e6c;
+          }
+        }
 
-      .ckkBox {
-        margin-top: auto;
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-        border-radius: 2px;
-        position: relative;
-        top: 2px;
-        border: 1px solid #51848c66;
+        &.em_obra {
+          .label-informativo {
+            background-color: #003b4b;
+          }
+        }
 
-        &:after {
-          content: '';
-          width: 100%;
-          height: 100%;
-          background-color: $due-secondary;
-          display: none;
+        &.ultimas_unidades {
+          .label-informativo {
+            background-color: #861d1d;
+          }
+        }
+
+        &.vendido {
+          .label-informativo {
+            background-color: #e9e3dd;
+            color: $due-tertiary;
+          }
+
+          .imagem-empreendimento {
+            filter: grayscale(1);
+          }
+        }
+
+        .box-label {
           position: absolute;
-        }
+          width: 100%;
+          top: 0;
+          left: 0;
+          padding: 0;
 
-        &.show-after:after {
-          display: block;
+          .label-informativo {
+            text-align: center;
+            color: $grey-0;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%;
+            letter-spacing: 0.48px;
+            padding: 10px 0;
+            text-transform: uppercase;
+          }
         }
       }
     }
 
-    .toggle-next {
-      border-radius: 0;
+    .empreendimentos-header {
+      display: flex;
+      justify-content: space-between;
     }
 
-    label {
-      cursor: pointer;
+    .empreendimento-tabs {
+      display: flex;
+      gap: 16px;
+
+      h2 {
+        padding-block: 4px;
+        cursor: pointer;
+
+        &.active {
+          border-bottom: 2px solid $due-secondary;
+        }
+      }
     }
 
-    .ellipsis {
-      text-overflow: ellipsis;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
+    .filter-container {
+      display: flex;
+      gap: 8px;
+      justify-content: end;
+
+      .filter-wrapper {
+        position: relative;
+        cursor: pointer;
+
+        button {
+          border: 1px solid #51848c66;
+          padding: 8px 18px;
+          border-radius: 32px;
+          max-width: fit-content;
+        }
+      }
+
+      .checkboxes {
+        margin: 0;
+        display: none;
+        border-top: 0;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px 0px #00000014;
+        position: absolute;
+        z-index: 10;
+        background: white;
+        width: max-content;
+
+        .inner-wrap {
+          padding: 4px 0;
+          overflow: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+
+        .ckkBox {
+          margin-top: auto;
+          width: 16px;
+          height: 16px;
+          margin-right: 6px;
+          border-radius: 2px;
+          position: relative;
+          top: 2px;
+          border: 1px solid #51848c66;
+
+          &:after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: $due-secondary;
+            display: none;
+            position: absolute;
+          }
+
+          &.show-after:after {
+            display: block;
+          }
+        }
+      }
+
+      .toggle-next {
+        border-radius: 0;
+      }
+
+      label {
+        cursor: pointer;
+      }
+
+      .ellipsis {
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
-  }
 
-  .empreendimentos-results {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 16px 0;
+    .empreendimentos-results {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 16px 0;
 
-    .badge {
-      border: 1px solid #51848c66;
-      color: $due-secondary;
-      padding: 8px;
-      border-radius: 4px;
-      margin-right: 8px;
-      font-size: 14px;
-    }
+      .badge {
+        border: 1px solid #51848c66;
+        color: $due-secondary;
+        padding: 8px;
+        border-radius: 4px;
+        margin-right: 8px;
+        font-size: 14px;
+      }
 
-    .remove-badge {
-      font-size: 14px;
-      cursor: pointer;
-      margin-left: 4px;
+      .remove-badge {
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 4px;
+      }
     }
   }
 }

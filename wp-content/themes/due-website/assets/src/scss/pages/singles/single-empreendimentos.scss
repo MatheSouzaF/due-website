@@ -609,6 +609,9 @@ body.single-empre_single_page {
       }
 
       .box-aba-galeria {
+        .swiper-slide{
+          max-width: 280px;
+        }
         .card-rota {
           width: 280px;
           height: 548px;

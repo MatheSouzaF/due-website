@@ -47,30 +47,6 @@ jQuery(document).ready(function ($) {
                 }
             }
         });
-
-        var permalink = $('#sample-permalink a').attr('href');
-
-        if (projectId) {
-            $.ajax({
-                url: ajax_object.ajax_url, 
-                type: 'POST',
-                data: {
-                    action: 'atualizar_ficha_empreendimento',  // Nome da ação AJAX
-                    empreendimento_id: projectId,  // ID do empreendimento
-                    current_url: permalink  // URL atual da página
-                },
-                success: function (response) {
-                    if (response.success) {
-                        console.log('Campo atualizado com sucesso!');
-                    } else {
-                        console.log('Erro ao atualizar o campo:', response.data);
-                    }
-                },
-                error: function (error) {
-                    console.log('Erro ao fazer a requisição AJAX:', error);
-                }
-            });
-        }
     });
 
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 

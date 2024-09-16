@@ -108,6 +108,7 @@ function swiperEmpreendimento() {
     },
   });
 }
+
 function cardHover() {
   $(document).ready(function () {
     $('.card-empreendimentos').hover(
@@ -256,6 +257,10 @@ function scrollsmooth() {
   });
 }
 
+function lottie() {
+  
+}
+
 function initPage() {
   swiperEmpreendimento();
   cardHover();
@@ -264,6 +269,7 @@ function initPage() {
   nossoProposito();
   scrollsmooth();
   swiperBanner();
+  lottie();
 }
 
 export {initPage};

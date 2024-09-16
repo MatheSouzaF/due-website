@@ -10,6 +10,7 @@
 	<?php wp_head(); ?>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
 
 </head>
 
@@ -235,7 +236,9 @@ function generate_navbar()
 							<div class="box-conteudo">
 								<p class="label-newsletter"><?php echo get_field('label_newsletter', 'options'); ?></p>
 								<p class="titulo-newsletter"><?php echo get_field('titulo_newsletter', 'options'); ?></p>
-
+								<div class="box-newsletter-rd">
+									<?php echo get_field('rd_newsletter','options'); ?>
+								</div>
 							</div>
 						</div>
 					</ul>

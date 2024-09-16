@@ -565,6 +565,10 @@ body.single-tipo_single_page {
           padding-bottom: 20px;
           border-bottom: 1px solid #fff;
           height: 510px;
+          @include media-breakpoint-up(md) {
+            height: 560px;
+            width: 296px !important;
+          }
           .tipologia-card {
             position: relative;
             .estado-tipologia {
@@ -642,7 +646,7 @@ body.single-tipo_single_page {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                width: 48%;
+                width: 47%;
 
                 gap: 8px;
                 .diifs-names {

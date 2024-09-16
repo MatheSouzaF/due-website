@@ -7,6 +7,9 @@ html {
 body{
   overflow-x: hidden;
 }
+main {
+  background-color: $grey-0;
+}
 .lenis {
   &.lenis-smooth {
     scroll-behavior: auto;

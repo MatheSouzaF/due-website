@@ -21,6 +21,26 @@
             "selected": 0
         },
         {
+            "key": "field_66e83662fa4c8",
+            "label": "Label Jeito DUE Mobile",
+            "name": "label_jeito_due_mobile",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_66abb869d9718",
             "label": "Título Jeito DUE",
             "name": "titulo_jeito_due",
@@ -583,5 +603,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726006638
+    "modified": 1726494327
 }

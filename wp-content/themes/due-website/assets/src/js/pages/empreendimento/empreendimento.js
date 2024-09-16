@@ -5,7 +5,6 @@ async function empreendimentoPage() {
 
   try {
     const empreendimentosData = EmpreendimentosData.empreendimentos;
-    console.log("🚀 ~ empreendimentosData:", empreendimentosData)
 
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');

@@ -38,6 +38,7 @@ function tipologiaPage() {
       const template = document.getElementById('tipologia-template');
       const cardTemplate = template.content.cloneNode(true);
       const $boxCard = $(cardTemplate).find('.box-card');
+      $boxCard.attr('href', tipologia.link)
 
       addStatusClass($boxCard, tipologia.status);
       updateCardContent(cardTemplate, tipologia);

@@ -37,6 +37,7 @@ if ($queryTipologia->have_posts()) {
     $size = get_field('metragem_tipologia', $tipologia_id);
     $diffs = get_field('diferenciais_tipologia', $tipologia_id);
     $photo = get_field('foto_da_tipologia', $tipologia_id);
+    $link = get_field('link_para_a_pagina_dessa_tipologia', $tipologia_id);
 
     $project_id = null;
     if ($project) {
@@ -69,6 +70,7 @@ if ($queryTipologia->have_posts()) {
       'size' => $size,
       'diffs' => $diffs,
       'photo' => $photo,
+      'link' => $link,
     );
   }
   wp_reset_postdata();

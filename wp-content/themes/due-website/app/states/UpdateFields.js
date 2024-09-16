@@ -16,9 +16,9 @@ jQuery(document).ready(function ($) {
             }
         });
     });
-    
+
     // [Singlepage do Empreendimento] Seletor para buscar os dados do empreendimento selecionado 
-    $('select[name="acf[field_66c0d4ddca8c7]"').on('change', function () {
+    $('select[name="acf[field_66c0d4ddca8c7]"]').on('change', function () {
         var projectId = $(this).val();
 
         $.ajax({
@@ -30,30 +30,54 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    var minRooms = response.data.rooms[0].minimo_de_quartos
-                    var maxRooms = response.data.rooms[0].maximo_de_quartos
+                    var minRooms = response.data.rooms[0].minimo_de_quartos;
+                    var maxRooms = response.data.rooms[0].maximo_de_quartos;
 
-                    var minSize = response.data.size[0].metragem_minima
-                    var maxSize = response.data.size[0].metragem_maxima
+                    var minSize = response.data.size[0].metragem_minima;
+                    var maxSize = response.data.size[0].metragem_maxima;
 
-                    //Localização
+                    // Localização
                     $('input[name="acf[field_66c0d5e5ca8c9]"]').val(response.data.location);
 
                     // Quantidade de quartos
                     $('input[name="acf[field_66c0d5f4ca8ca]"]').val(minRooms + ' a ' + maxRooms + ' qtos');
 
-                    //Metragem
+                    // Metragem
                     $('input[name="acf[field_66c0d608ca8cb]"]').val(minSize + ' a ' + maxSize + 'm²');
                 }
             }
         });
+
+        var permalink = $('#sample-permalink a').attr('href');
+
+        if (projectId) {
+            $.ajax({
+                url: ajax_object.ajax_url, 
+                type: 'POST',
+                data: {
+                    action: 'atualizar_ficha_empreendimento',  // Nome da ação AJAX
+                    empreendimento_id: projectId,  // ID do empreendimento
+                    current_url: permalink  // URL atual da página
+                },
+                success: function (response) {
+                    if (response.success) {
+                        console.log('Campo atualizado com sucesso!');
+                    } else {
+                        console.log('Erro ao atualizar o campo:', response.data);
+                    }
+                },
+                error: function (error) {
+                    console.log('Erro ao fazer a requisição AJAX:', error);
+                }
+            });
+        }
     });
 
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
     $('select[name="acf[field_66d88704efa32]"').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
         var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
-        
+
         $.ajax({
             url: ajax_object.ajax_url,
             type: 'POST',
@@ -64,14 +88,14 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     var tipologias = response.data;
-                    
+
                     selectField.empty();
                     selectField.append($('<option>', {
                         value: undefined,
                         text: '- Selecionar -',
                         selected: true
                     }));
-                    
+
                     $.each(tipologias, function (id, tipologia) {
                         selectField.append($('<option>', {
                             value: tipologia.id,
@@ -96,7 +120,7 @@ jQuery(document).ready(function ($) {
     // [Singlepage da Tipologia] Seletor para buscar os dados da tipologia selecionada 
     $('select[name="acf[field_66c23ba4e141f]"').on('change', function () {
         var tipologiaId = $(this).val();
-        
+
         $.ajax({
             url: ajax_object.ajax_url,
             type: 'POST',

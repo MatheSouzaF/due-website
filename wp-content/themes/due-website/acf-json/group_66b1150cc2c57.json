@@ -346,6 +346,26 @@
             "min_size": "",
             "max_size": "",
             "mime_types": ""
+        },
+        {
+            "key": "field_66e87fb1d008a",
+            "label": "Link da página desse empreendimento",
+            "name": "link_da_pagina_desse_empreendimento",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Link da singlepage desse empreendimento",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -366,5 +386,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726069205
+    "modified": 1726513251
 }

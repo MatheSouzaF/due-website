@@ -37,6 +37,7 @@ async function empreendimentoPage() {
       const template = document.getElementById('empreendimento-template');
       const cardTemplate = template.content.cloneNode(true);
       const $boxCard = $(cardTemplate).find('.box-card');
+      $boxCard.attr('href', empreendimento.link)
 
       addStatusClass($boxCard, empreendimento.status);
       updateCardContent(cardTemplate, empreendimento);

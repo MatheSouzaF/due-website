@@ -1,6 +1,6 @@
 import { renderFilters } from '../../components/filter';
 
-async function tipologiaPage() {
+function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
 
   try {
@@ -11,90 +11,109 @@ async function tipologiaPage() {
       const $container = $('.cards-tipologia.cards');
       const $resultsText = $('.tipologia-results-text');
 
-      $resultsText.text(tipologias.length === 1 ? `Selecionamos ${tipologias.length} tipologia para você` : `Selecionamos ${tipologias.length} tipologias para você`);
-      $container.html('');
+      updateResultsText($resultsText, tipologias.length);
+      clearContainer($container);
 
       if (tipologias.length === 0) {
-        console.log('Nenhum tipologia para exibir.');
+        console.log('Nenhuma tipologia para exibir.');
         return;
       }
 
-      tipologias.forEach(function (tipologia) {
-        const template = document.getElementById('tipologia-template');
-        const cardTemplate = template.content.cloneNode(true);
-        const $boxCard = $(cardTemplate).find('.box-card');
-
-        const statusMap = {
-          'Em obra': 'em_obra',
-          'Lançamento': 'lancamento',
-          '100% vendido': 'vendido',
-          'Últimas unidades': 'ultimas_unidades'
-        };
-
-        const statusClass = statusMap[tipologia.status] || tipologia.status;
-
-        $boxCard.addClass(statusClass);
-
-        $(cardTemplate)
-          .find('.nome-tipologia')
-          .text(tipologia.name || 'N/A');
-        $(cardTemplate)
-          .find('.nome-empreendimento')
-          .text(tipologia.project || 'N/A');
-        $(cardTemplate)
-          .find('.localizacao-tipologia')
-          .text(tipologia.location || 'N/A');
-        $(cardTemplate)
-          .find('.label-informativo')
-          .text(tipologia.status || 'N/A');
-
-        const quartos = tipologia.rooms && tipologia.rooms[0];
-        $(cardTemplate)
-          .find('.info-quartos')
-          .text(quartos ? `${tipologia.isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A');
-
-        const tamanho = tipologia.size && tipologia.size[0];
-        $(cardTemplate)
-          .find('.info-tamanho')
-          .text(tamanho ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²` : 'N/A');
-
-        $(cardTemplate)
-          .find('.valor')
-          .text(tipologia.offer || 'N/A');
-        $(cardTemplate)
-          .find('.entradas')
-          .text(tipologia.tituloOffer || 'N/A');
-
-        if (tipologia.photo && tipologia.photo.url) {
-          $(cardTemplate).find('.imagem-tipologia').attr('src', tipologia.photo.url);
-        } else {
-          $(cardTemplate).find('.imagem-tipologia').hide();
-        }
-
-        if (tipologia.video) {
-          $(cardTemplate).find('.video-tipologia').attr('src', tipologia.video);
-        } else {
-          $(cardTemplate).find('.video-tipologia').hide();
-        }
-
-        const diffsContainer = $(cardTemplate).find('.box-tipos');
-        tipologia.diffs.forEach((diff) => {
-          const diffTemplate = `
-              <div class="linha-tipos">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path
-                    d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
-                    stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p class="titulo-tipos founders-grotesk">${diff}</p>
-              </div>`;
-          diffsContainer.append(diffTemplate);
-        });
-
+      tipologias.forEach(tipologia => {
+        const cardTemplate = createTipologiaCard(tipologia);
         $container.append(cardTemplate);
       });
     }
 
+    function updateResultsText($element, tipologiaCount) {
+      const text = tipologiaCount === 1 ? `Selecionamos ${tipologiaCount} tipologia para você` : `Selecionamos ${tipologiaCount} tipologias para você`;
+      $element.text(text);
+    }
+
+    function clearContainer($container) {
+      $container.html('');
+    }
+
+    function createTipologiaCard(tipologia) {
+      const template = document.getElementById('tipologia-template');
+      const cardTemplate = template.content.cloneNode(true);
+      const $boxCard = $(cardTemplate).find('.box-card');
+
+      addStatusClass($boxCard, tipologia.status);
+      updateCardContent(cardTemplate, tipologia);
+
+      return cardTemplate;
+    }
+
+    function addStatusClass($boxCard, status) {
+      const statusMap = {
+        'Em obra': 'em_obra',
+        'Lançamento': 'lancamento',
+        '100% vendido': 'vendido',
+        'Últimas unidades': 'ultimas_unidades'
+      };
+
+      const statusClass = statusMap[status] || status;
+      $boxCard.addClass(statusClass);
+    }
+
+    function updateCardContent(cardTemplate, tipologia) {
+      $(cardTemplate).find('.nome-tipologia').text(tipologia.name || 'N/A');
+      $(cardTemplate).find('.nome-empreendimento').text(tipologia.project || 'N/A');
+      $(cardTemplate).find('.localizacao-tipologia').text(tipologia.location || 'N/A');
+      $(cardTemplate).find('.label-informativo').text(tipologia.status || 'N/A');
+
+      updateRooms(cardTemplate, tipologia.rooms, tipologia.isStudio);
+      updateSize(cardTemplate, tipologia.size);
+      updateOffer(cardTemplate, tipologia.offer, tipologia.tituloOffer);
+      updateMedia(cardTemplate, tipologia.photo, tipologia.video);
+      updateDiffs(cardTemplate, tipologia.diffs);
+    }
+
+    function updateRooms(cardTemplate, rooms, isStudio) {
+      const quartos = rooms && rooms[0];
+      const roomsText = quartos ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia} qtos` : 'N/A';
+      $(cardTemplate).find('.info-quartos').text(roomsText);
+    }
+
+    function updateSize(cardTemplate, size) {
+      const tamanho = size && size[0];
+      const sizeText = tamanho ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²` : 'N/A';
+      $(cardTemplate).find('.info-tamanho').text(sizeText);
+    }
+
+    function updateOffer(cardTemplate, offer, tituloOffer) {
+      $(cardTemplate).find('.valor').text(offer || 'N/A');
+      $(cardTemplate).find('.entradas').text(tituloOffer || 'N/A');
+    }
+
+    function updateMedia(cardTemplate, photo, video) {
+      if (photo && photo.url) {
+        $(cardTemplate).find('.imagem-tipologia').attr('src', photo.url);
+      } else {
+        $(cardTemplate).find('.imagem-tipologia').hide();
+      }
+
+      if (video) {
+        $(cardTemplate).find('.video-tipologia').attr('src', video);
+      } else {
+        $(cardTemplate).find('.video-tipologia').hide();
+      }
+    }
+
+    function updateDiffs(cardTemplate, diffs) {
+      const diffsContainer = $(cardTemplate).find('.box-tipos');
+      diffs.forEach(diff => {
+        const diffTemplate = `
+          <div class="linha-tipos">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z" stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="titulo-tipos founders-grotesk">${diff}</p>
+          </div>`;
+        diffsContainer.append(diffTemplate);
+      });
+    }
 
     function populateFilterOptions() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
@@ -131,9 +150,6 @@ async function tipologiaPage() {
       return options;
     }
 
-
-    populateFilterOptions();
-
     const filters = {
       'tipologia-filter-location': $('#tipologia-filter-location'),
       'tipologia-filter-status': $('#tipologia-filter-status'),
@@ -141,7 +157,6 @@ async function tipologiaPage() {
       'tipologia-filter-diferenciais': $('#tipologia-filter-diferenciais'),
       'tipologia-filter-rooms': $('#tipologia-filter-rooms'),
     };
-
     const options = populateFilterOptions();
     renderFilters(filters, options);
 
@@ -327,9 +342,9 @@ async function tipologiaPage() {
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
           let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-          
+
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-          
+
           $(`#tipologia-filter-status input[value="${formattedValue}"]`).click();
         });
       }
@@ -423,8 +438,8 @@ function cardHover() {
 }
 
 
-async function initTipologia() {
-  await tipologiaPage();
+function initTipologia() {
+  tipologiaPage();
   cardHover()
 }
 

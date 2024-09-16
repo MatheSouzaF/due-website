@@ -10,34 +10,33 @@ function initTabToggle() {
   const $showTipologia = $(".show-tipologias")
 
   function showEmpreendimento({ tabRender }) {
-    resetCheckboxesEmpreendimentos();
-
     $abaEmpreendimento.show();
     $abaTipologia.hide();
     
     $showEmpreendimento.find('h2').addClass('active');
     $showTipologia.find('h2').removeClass('active');
-
+    
     if (tabRender) {
+      resetCheckboxesEmpreendimentos();
       history.pushState("", document.title, window.location.pathname);
     }
   }
 
   function showTipologia({ tabRender }) {
-    resetCheckboxesTipologia();
     
     let url = new URL(window.location.href);
     let params = new URLSearchParams(url.search);
     
     params.set('tipologia', 'true')
-
+    
     $abaEmpreendimento.hide();
     $abaTipologia.show();
-
+    
     $showTipologia.find('h2').addClass('active');
     $showEmpreendimento.find('h2').removeClass('active');
-
+    
     if (tabRender) {
+      resetCheckboxesTipologia();
       history.pushState("", document.title, window.location.pathname);
     }
   }

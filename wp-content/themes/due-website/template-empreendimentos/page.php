@@ -55,7 +55,7 @@ if ($queryTipologia->have_posts()) {
 
     if ($project_id) {
       $project_location = get_field('localizacao_emprendimento', $project_id);
-      $project_status = get_field('estagio_da_obra', $project_id);
+      $project_status = get_field('estagio_da_obra', $tipologia_id);
     }
 
     $tipologias[] = array(

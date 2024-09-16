@@ -324,65 +324,80 @@ get_header();
                 endif; ?>
             </div>
             <div class="box-aba-galeria">
-                <?php
-                if (have_rows('categoria_aba')):
-                    while (have_rows('categoria_aba')):
+            <?php
+if (have_rows('categoria_aba')):
+    while (have_rows('categoria_aba')):
+        the_row();
+
+        $nome_categoria = get_sub_field('nome_da_categoria_aba');
+        $categoria_slug = sanitize_title($nome_categoria);
+
+        echo '<div id="swiper-' . esc_attr($categoria_slug) . '" class="swiper swiper-rota-destino" style="display:none;">';
+        echo '<div class="swiper-wrapper">';
+
+        if (have_rows('espaco')):
+            while (have_rows('espaco')):
+                the_row();
+
+                $nome_do_espaco = get_sub_field('nome_do_espaco');
+
+                // Cria um identificador único para o conjunto de imagens deste espaco
+                $espaco_id = uniqid('espaco_'); 
+
+                echo '<div class="swiper-slide">';
+                echo '<div class="card-rota">';
+
+                // Novo repetidor de imagens
+                if (have_rows('imagens_do_espaco')):
+                    $first_image = true; // Variável para verificar se é a primeira imagem
+                    
+                    while (have_rows('imagens_do_espaco')):
                         the_row();
+                        $imagem = get_sub_field('imagem'); // Supondo que este seja o campo de imagem
 
-                        $nome_categoria = get_sub_field('nome_da_categoria_aba');
-                        $categoria_slug = sanitize_title($nome_categoria);
+                        if ($imagem):
+                            $url_imagem = esc_url($imagem['url']);
+                            $alt_imagem = esc_attr($nome_do_espaco);
 
-                        echo '<div id="swiper-' . esc_attr($categoria_slug) . '" class="swiper swiper-rota-destino" style="display:none;">';
-                        echo '<div class="swiper-wrapper">';
+                            // Exibe a primeira imagem como destaque
+                            if ($first_image):
+                                echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '">';
+                                echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
+                                echo '</a>';
+                                $first_image = false; // Agora a primeira imagem já foi exibida
+                            else:
+                                // Exibe as outras imagens na galeria, mas ocultas
+                                echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '" style="display:none;">';
+                                echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
+                                echo '</a>';
+                            endif;
 
-                        if (have_rows('espaco')):
-                            while (have_rows('espaco')):
-                                the_row();
-
-                                $nome_do_espaco = get_sub_field('nome_do_espaco');
-
-                                // Novo repetidor de imagens, mas apenas a primeira será usada como destaque
-                                if (have_rows('imagens_do_espaco')):
-                                    the_row(); // Pega a primeira imagem do repetidor
-                                    $imagem = get_sub_field('imagem'); // Supondo que este seja o campo de imagem
-                
-                                    if ($imagem):
-                                        $url_imagem = esc_url($imagem['url']);
-                                        $alt_imagem = esc_attr($nome_do_espaco);
-
-                                        echo '<div class="swiper-slide">';
-                                        echo '<div class="card-rota">';
-
-                                        // Exibe a primeira imagem como thumbnail
-                                        echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($categoria_slug) . '" data-caption="' . $alt_imagem . '">';
-                                        echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
-                                        echo '</a>';
-
-                                        echo '<div class="card-rota-content">';
-                                        echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
-                                        echo '</div></div></div>';
-
-                                    endif;
-
-                                endif;
-
-                            endwhile;
-                        else:
-                            echo '<p>Nenhuma rota encontrada para ' . esc_html($nome_categoria) . '.</p>';
                         endif;
-
-                        echo '</div>';
-                        echo '<div class="box-buttons-swiper">';
-                        echo '<svg class="swiper-btn-destino-prev"></svg>';
-                        echo '<svg class="swiper-btn-destino-next"></svg>';
-                        echo '</div></div>';
-
                     endwhile;
-                else:
-                    echo '<p>Nenhuma categoria encontrada.</p>';
+
                 endif;
-                ?>
-            </div>
+
+                echo '<div class="card-rota-content">';
+                echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
+                echo '</div></div></div>'; // Fecha o card-rota e swiper-slide
+
+            endwhile;
+        else:
+            echo '<p>Nenhuma rota encontrada para ' . esc_html($nome_categoria) . '.</p>';
+        endif;
+
+        echo '</div>'; // Fecha swiper-wrapper
+        echo '<div class="box-buttons-swiper">';
+        echo '<svg class="swiper-btn-destino-prev"></svg>';
+        echo '<svg class="swiper-btn-destino-next"></svg>';
+        echo '</div></div>'; // Fecha swiper
+
+    endwhile;
+else:
+    echo '<p>Nenhuma categoria encontrada.</p>';
+endif;
+?>
+ </div>
         </div>
     </div>
 

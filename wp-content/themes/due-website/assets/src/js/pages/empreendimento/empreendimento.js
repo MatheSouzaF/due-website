@@ -1,4 +1,3 @@
-import { getEmpreendimentos } from '../../services/EmpreendimentoService';
 import { renderFilters } from '../../components/filter';
 
 async function empreendimentoPage() {

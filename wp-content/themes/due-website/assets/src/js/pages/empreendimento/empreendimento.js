@@ -1,81 +1,101 @@
-import { getEmpreendimentos } from '../../services/EmpreendimentoService';
 import { renderFilters } from '../../components/filter';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
 
   try {
-    // Empreendimentos passados via wp_localize
     const empreendimentosData = EmpreendimentosData.empreendimentos;
 
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
       const $resultsText = $('.results-text');
-      $resultsText.text(empreendimentos.length === 1 ? `Selecionamos ${empreendimentos.length} imóvel para você` : `Selecionamos ${empreendimentos.length} imóveis para você`);
-      $container.html('');
+
+      updateResultsText($resultsText, empreendimentos.length);
+      clearContainer($container);
 
       if (empreendimentos.length === 0) {
         console.log('Nenhum empreendimento para exibir.');
         return;
       }
 
-      empreendimentos.forEach(function (empreendimento) {
-        const template = document.getElementById('empreendimento-template');
-        const cardTemplate = template.content.cloneNode(true);
-        const $boxCard = $(cardTemplate).find('.box-card');
-
-        const statusMap = {
-          'Em obra': 'em_obra',
-          'Lançamento': 'lancamento',
-          '100% vendido': 'vendido',
-          'Últimas unidades': 'ultimas_unidades'
-        };
-
-        const statusClass = statusMap[empreendimento.status] || empreendimento.status;
-
-        $boxCard.addClass(statusClass);
-
-        $(cardTemplate)
-          .find('.nome-empreendimento')
-          .text(empreendimento.name || 'N/A');
-        $(cardTemplate)
-          .find('.localizacao-empreendimento')
-          .text(empreendimento.location || 'N/A');
-        $(cardTemplate)
-          .find('.label-informativo')
-          .text(empreendimento.status || 'N/A');
-
-        const quartos = empreendimento.rooms && empreendimento.rooms[0];
-        $(cardTemplate)
-          .find('.info-quartos')
-          .text(quartos ? `${empreendimento.isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} qtos` : 'N/A');
-
-        const tamanho = empreendimento.size && empreendimento.size[0];
-        $(cardTemplate)
-          .find('.info-tamanho')
-          .text(tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A');
-
-        $(cardTemplate)
-          .find('.valor')
-          .text(empreendimento.offer || 'N/A');
-        $(cardTemplate)
-          .find('.entradas')
-          .text(empreendimento.tituloOffer || 'N/A');
-
-        if (empreendimento.photo && empreendimento.photo.url) {
-          $(cardTemplate).find('.imagem-empreendimento').attr('src', empreendimento.photo.url);
-        } else {
-          $(cardTemplate).find('.imagem-empreendimento').hide();
-        }
-
-        if (empreendimento.video) {
-          $(cardTemplate).find('.video-empreendimento').attr('src', empreendimento.video);
-        } else {
-          $(cardTemplate).find('.video-empreendimento').hide();
-        }
-
+      empreendimentos.forEach(empreendimento => {
+        const cardTemplate = createEmpreendimentoCard(empreendimento);
         $container.append(cardTemplate);
       });
+    }
+
+    function updateResultsText($element, empreendimentoCount) {
+      const text = empreendimentoCount === 1 ? `Selecionamos ${empreendimentoCount} imóvel para você` : `Selecionamos ${empreendimentoCount} imóveis para você`;
+      $element.text(text);
+    }
+
+    function clearContainer($container) {
+      $container.html('');
+    }
+
+    function createEmpreendimentoCard(empreendimento) {
+      const template = document.getElementById('empreendimento-template');
+      const cardTemplate = template.content.cloneNode(true);
+      const $boxCard = $(cardTemplate).find('.box-card');
+
+      addStatusClass($boxCard, empreendimento.status);
+      updateCardContent(cardTemplate, empreendimento);
+
+      return cardTemplate;
+    }
+
+    function addStatusClass($boxCard, status) {
+      const statusMap = {
+        'Em obra': 'em_obra',
+        'Lançamento': 'lancamento',
+        '100% vendido': 'vendido',
+        'Últimas unidades': 'ultimas_unidades'
+      };
+
+      const statusClass = statusMap[status] || status;
+      $boxCard.addClass(statusClass);
+    }
+
+    function updateCardContent(cardTemplate, empreendimento) {
+      $(cardTemplate).find('.nome-empreendimento').text(empreendimento.name || 'N/A');
+      $(cardTemplate).find('.localizacao-empreendimento').text(empreendimento.location || 'N/A');
+      $(cardTemplate).find('.label-informativo').text(empreendimento.status || 'N/A');
+
+      updateRooms(cardTemplate, empreendimento.rooms, empreendimento.isStudio);
+      updateSize(cardTemplate, empreendimento.size);
+      updateOffer(cardTemplate, empreendimento.offer, empreendimento.tituloOffer);
+      updateMedia(cardTemplate, empreendimento.photo, empreendimento.video);
+    }
+
+    function updateRooms(cardTemplate, rooms, isStudio) {
+      const quartos = rooms && rooms[0];
+      const roomsText = quartos ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} qtos` : 'N/A';
+      $(cardTemplate).find('.info-quartos').text(roomsText);
+    }
+
+    function updateSize(cardTemplate, size) {
+      const tamanho = size && size[0];
+      const sizeText = tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A';
+      $(cardTemplate).find('.info-tamanho').text(sizeText);
+    }
+
+    function updateOffer(cardTemplate, offer, tituloOffer) {
+      $(cardTemplate).find('.valor').text(offer || 'N/A');
+      $(cardTemplate).find('.entradas').text(tituloOffer || 'N/A');
+    }
+
+    function updateMedia(cardTemplate, photo, video) {
+      if (photo && photo.url) {
+        $(cardTemplate).find('.imagem-empreendimento').attr('src', photo.url);
+      } else {
+        $(cardTemplate).find('.imagem-empreendimento').hide();
+      }
+
+      if (video) {
+        $(cardTemplate).find('.video-empreendimento').attr('src', video);
+      } else {
+        $(cardTemplate).find('.video-empreendimento').hide();
+      }
     }
 
     function populateFilterOptions() {
@@ -107,8 +127,6 @@ async function empreendimentoPage() {
 
       return options;
     }
-
-    populateFilterOptions();
 
     const filters = {
       'filter-location': $('#filter-location'),
@@ -209,7 +227,7 @@ async function empreendimentoPage() {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        $(`#filter-${filterType} input[value="${filterValue}"]`).prop('checked', false);
+        $(`#filter-${filterType} input[value="${filterValue}"]`).click();
 
         updateBadges();
         buildFilterUrl();
@@ -259,7 +277,11 @@ async function empreendimentoPage() {
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+
+          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+
+          formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
+
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }

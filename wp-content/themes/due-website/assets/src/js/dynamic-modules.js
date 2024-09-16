@@ -65,7 +65,7 @@ function initDynamicModules() {
       moduleFunction: 'initModal',
     },
     {
-      selector: '.page-empreendimentos-tipologia',
+      selector: '.aba-empreendimentos',
       modulePath: './pages/empreendimento/empreendimento.js',
       moduleFunction: 'initEmpreendimento',
     },
@@ -75,7 +75,7 @@ function initDynamicModules() {
       moduleFunction: 'initSingleEmpreendimentos',
     },
     {
-      selector: '.page-tipologias',
+      selector: '.aba-tipologias',
       modulePath: './pages/tipologia/tipologia.js',
       moduleFunction: 'initTipologia',
     },
@@ -83,6 +83,11 @@ function initDynamicModules() {
       selector: '.single-tipo_single_page',
       modulePath: './pages/singles/single-tipologia.js',
       moduleFunction: 'initSingleTipologia',
+    },
+    {
+      selector: '.page-empreendimentos-tipologia',
+      modulePath: './pages/empreendimento/tab-toggle.js',
+      moduleFunction: 'initTabToggle',
     },
   ];
 

@@ -32,6 +32,7 @@
       height: 32px;
       svg {
         width: 98px;
+        padding-top: 12px;
         height: 40px;
       }
     }
@@ -77,10 +78,6 @@
         .btn-menu-navlink {
           transition: all 0.5s ease;
         }
-      }
-
-      .index-sidebar {
-        z-index: 2;
       }
     }
     .box-menu-lateral {
@@ -130,7 +127,9 @@
           background-color: #fff;
         }
       }
-
+      .index-sidebar {
+        z-index: 0;
+      }
       .sidebar {
         position: absolute;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;

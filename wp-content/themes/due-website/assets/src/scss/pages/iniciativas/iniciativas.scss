@@ -1,6 +1,7 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-iniciativas {
+  
   header {
     .button-menu {
       color: $due-tertiary !important;
@@ -67,11 +68,14 @@ body.page-template-iniciativas {
             max-width: 592px;
             font-size: 24px;
             margin-bottom: 32px;
+            opacity: 0;
+            transform: translateX(-200%);
             @include media-breakpoint-up(md) {
               font-size: 32px;
             }
           }
           .descricao-banner-inciativas {
+            opacity: 0;
             max-width: 592px;
             color: $due-tertiary;
             font-style: normal;
@@ -79,6 +83,8 @@ body.page-template-iniciativas {
             line-height: 140%;
             letter-spacing: 0.44px;
             font-size: 20px;
+            transform: translateX(-200%);
+
             @include media-breakpoint-up(md) {
               font-size: 22px;
             }
@@ -711,7 +717,7 @@ body.page-template-iniciativas {
     .titulo-selos {
       color: $due-tertiary;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 300;
       line-height: 140%;
       letter-spacing: 0.64px;
       font-size: 24px;
@@ -794,8 +800,6 @@ body.page-template-iniciativas {
         }
         @include media-breakpoint-up(md) {
           &:hover {
-            justify-content: space-between;
-
             .hover-descricao {
               opacity: 1;
               height: auto;

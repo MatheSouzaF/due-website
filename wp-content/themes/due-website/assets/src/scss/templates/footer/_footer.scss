@@ -5,6 +5,11 @@
   padding: 80px 0 27px;
   position: relative;
   overflow: hidden;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
   .titulo-footer-mobile {
     font-style: normal;
     font-weight: 300;
@@ -178,9 +183,9 @@
             }
           }
           .bricks-form__submit {
-          @include media-breakpoint-up(sm) {
-            width: fit-content !important;
-          }
+            @include media-breakpoint-up(sm) {
+              width: fit-content !important;
+            }
             .rd-button {
               background-color: transparent !important;
               padding: 20px 40px !important;

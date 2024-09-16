@@ -7,7 +7,7 @@ get_header();
 
     <section class="banner-jeito-due">
         <div class="wrapper">
-
+            <p class="label-jeito-due"><?php echo get_field('label_jeito_due_mobile'); ?></p>
             <h1 class="titulo-jeito-due terminal-test"><?php echo get_field('titulo_jeito_due'); ?></h1>
             <p class="descricao-jeito-due founders-grotesk"><?php echo get_field('descricao_jeito_due'); ?></p>
         </div>

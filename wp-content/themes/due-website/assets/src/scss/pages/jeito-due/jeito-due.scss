@@ -31,7 +31,7 @@ body.page-template-jeito-due {
         align-items: flex-start;
         gap: 12px;
         @include media-breakpoint-up(md) {
-          gap: 20px;
+          gap: 80px;
           align-items: flex-end;
           flex-direction: row;
         }
@@ -58,7 +58,10 @@ body.page-template-jeito-due {
           opacity: 0;
           transform: translateX(-200%);
           @include media-breakpoint-up(sm) {
-            font-size: 32px;
+            font-size: calc(1rem + 0.9vw);
+          }
+          @include media-breakpoint-up(md) {
+            max-width: 700px;
           }
         }
         .descricao-jeito-due {
@@ -75,6 +78,10 @@ body.page-template-jeito-due {
           transform: translateX(200%);
           @include media-breakpoint-up(sm) {
             display: flex;
+            font-size: calc(1rem + 0.3vw);
+          }
+          @include media-breakpoint-up(md) {
+            max-width: 547px;
           }
         }
       }
@@ -386,13 +393,14 @@ body.page-template-jeito-due {
         gap: 40px;
         padding: 64px 0 180px;
         @include media-breakpoint-up(md) {
+          gap: 100px;
           padding: 120px 0 180px;
           flex-direction: row;
         }
         .box-texto-reducao-social {
           transition: 0.6s;
-          max-width: 520px;
           padding: 0 20px;
+          width: 100%;
           @include media-breakpoint-up(sm) {
             padding: 0 0 0 48px;
           }
@@ -401,7 +409,6 @@ body.page-template-jeito-due {
             padding: 0 0 0 80px;
           }
           @include media-breakpoint-up(xxl) {
-            max-width: 650px;
           }
 
           .titulo-reducao-social {
@@ -414,7 +421,7 @@ body.page-template-jeito-due {
             transition: 0.6s;
             margin-bottom: 24px;
             @include media-breakpoint-up(sm) {
-              font-size: 32px;
+              font-size: calc(1rem + 1.6vw);
             }
             @include media-breakpoint-up(md) {
               transform: translateX(-180%);
@@ -424,12 +431,10 @@ body.page-template-jeito-due {
                 transform: translateX(0);
               }
             }
-            @include media-breakpoint-up(xxl) {
-              font-size: 40px;
-            }
           }
           .descricao-reducao-social {
             transition: 0.6s;
+            max-width: 740px;
             p {
               color: $due-tertiary;
               font-style: normal;
@@ -453,11 +458,19 @@ body.page-template-jeito-due {
           }
         }
         .box-img-reducao-social {
+          width: 100%;
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
-          height: 314px;
-          @include media-breakpoint-up(md) {
-            height: 660px;
+          @include media-breakpoint-down(md) {
+            height: 315px;
+          }
+          @include media-breakpoint-up(desk) {
+            height: 70vh;
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
           }
           &.imgPath {
             clip-path: inset(0 0 -100px -100px);
@@ -603,8 +616,9 @@ body.page-template-jeito-due {
       .box-image-big-numeros {
         width: 100%;
         height: 100%;
+        transition: 0.6s;
         @include media-breakpoint-up(md) {
-          max-width: 813px;
+          max-width: 55%;
         }
         position: relative;
         .img-path-big-numeros {
@@ -632,14 +646,15 @@ body.page-template-jeito-due {
           position: relative;
           clip-path: inset(100% 0 0 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+          transition: 0.6s;
           &.imgPath {
             clip-path: inset(0 0 -100px -100px);
           }
           @include media-breakpoint-up(sm) {
-            max-width: 70%;
             margin: -70px auto 0;
           }
           @include media-breakpoint-up(md) {
+            max-width: 70%;
             padding: 64px;
             position: absolute;
             right: 0;
@@ -647,19 +662,17 @@ body.page-template-jeito-due {
             transform: translate(30%, -50%);
           }
           @include media-breakpoint-up(desk) {
+            right: -20%;
             transform: translate(50%, -50%);
-          }
-          @include media-breakpoint-up(xxl) {
             width: 100%;
           }
+          
           .lista-big-numeros {
             width: 100%;
             @include media-breakpoint-up(md) {
-              width: 341px;
-            }
-            @include media-breakpoint-up(xxl) {
               width: 100%;
             }
+          
             &:not(:first-of-type):not(:last-of-type) {
               padding: 32px 0;
             }

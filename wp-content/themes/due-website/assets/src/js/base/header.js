@@ -206,12 +206,14 @@ function hoverDestinos() {
 
 function animationFooter() {
   $(document).ready(function () {
-    // INITIATE THE FOOTER
-    siteFooter();
-    // COULD BE SIMPLIFIED FOR THIS PEN BUT I WANT TO MAKE IT AS EASY TO PUT INTO YOUR SITE AS POSSIBLE
-    $(window).resize(function () {
+    if ($(window).width() > 1024) {
       siteFooter();
-    });
+      $(window).resize(function () {
+        if ($(window).width() > 1024) {
+          siteFooter();
+        }
+      });
+    }
 
     function siteFooter() {
       var siteContent = $('main');

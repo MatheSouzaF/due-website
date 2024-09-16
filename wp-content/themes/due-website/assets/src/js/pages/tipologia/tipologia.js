@@ -143,7 +143,10 @@ function tipologiaPage() {
           ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
-            .map((room) => ({ value: room, label: `${room} Quartos` })),
+            .map((room) => ({ 
+              value: room, 
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}` 
+            }))
         ],
       };
 

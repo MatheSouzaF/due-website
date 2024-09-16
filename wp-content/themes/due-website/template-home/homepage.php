@@ -113,90 +113,95 @@ get_header();
                 </a>
             <?php endif; ?>
         </div>
-        <div class="box-cards-empreendimentos-desktop">
-            <div class="swiper swiper-empreendimento">
-                <div class="swiper-wrapper">
-                    <?php if (have_rows('cards_nossos_club_resorts')) : ?>
-                        <?php while (have_rows('cards_nossos_club_resorts')) : the_row(); ?>
-                            <div class="card-empreendimentos swiper-slide">
-                                <?php
-                                $link = get_sub_field('link_empreendimento');
-                                if ($link) :
-                                    $link_url = $link['url'];
-                                    $link_title = $link['title'];
-                                    $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                    <a class="box-card" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                                        <div class="box-midia">
+    </div>
+
+    <div class="box-cards-empreendimentos-desktop">
+
+        <div class="swiper swiper-empreendimento">
+            <div class="swiper-wrapper">
+                <?php if (have_rows('cards_nossos_club_resorts')) : ?>
+                    <?php while (have_rows('cards_nossos_club_resorts')) : the_row(); ?>
+                        <div class="card-empreendimentos swiper-slide">
+                            <?php
+                            $link = get_sub_field('link_empreendimento');
+                            if ($link) :
+                                $link_url = $link['url'];
+                                $link_title = $link['title'];
+                                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                                <a class="box-card" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                    <div class="box-midia">
+                                        <?php
+                                        $image = get_sub_field('imagem_nossos_club_resorts');
+                                        if ($image) :
+                                            $image_url = $image['url'];
+                                            $image_alt = $image['alt'];
+                                        ?>
+                                            <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                        <?php endif; ?>
+
+                                        <video class="video-empreendimento" src="<?php echo get_sub_field('video_hover_empreendimento') ?>" muted loop playsinline></video>
+                                    </div>
+
+                                    <div class="box-label" style="background-color: <?php echo get_sub_field('background_label_card'); ?>;">
+                                        <p class="terminal-test label-informativo"><?php echo get_sub_field('label_informativo_card'); ?></p>
+                                    </div>
+
+                                    <div class="box-textos-empreendimentos">
+                                        <div class="container-text">
+
+                                            <div class="box-titulos">
+                                                <p class="localizacao-empreendimento terminal-test"><?php echo get_sub_field('localizacao_emprendimento'); ?></p>
+                                                <h4 class="nome-empreendimento founders-grotesk"><?php echo get_sub_field('nome_empreendimento'); ?></h4>
+                                            </div>
+                                            <div class="box-svg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="43" height="26" viewBox="0 0 43 26" fill="none">
+                                                    <path d="M-5.24537e-07 13L41.5 13M41.5 13L29.5 25M41.5 13L29.5 0.999999" stroke="white" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="box-informacoes">
                                             <?php
-                                            $image = get_sub_field('imagem_nossos_club_resorts');
-                                            if ($image) :
-                                                $image_url = $image['url'];
-                                                $image_alt = $image['alt'];
-                                            ?>
-                                                <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                                            <?php endif; ?>
+                                            if (have_rows('informacoes_empreendimento')) :
+                                                while (have_rows('informacoes_empreendimento')) : the_row(); ?>
 
-                                            <video class="video-empreendimento" src="<?php echo get_sub_field('video_hover_empreendimento') ?>" muted loop playsinline></video>
-                                        </div>
-
-                                        <div class="box-label" style="background-color: <?php echo get_sub_field('background_label_card'); ?>;">
-                                            <p class="terminal-test label-informativo"><?php echo get_sub_field('label_informativo_card'); ?></p>
-                                        </div>
-
-                                        <div class="box-textos-empreendimentos">
-                                            <div class="container-text">
-
-                                                <div class="box-titulos">
-                                                    <p class="localizacao-empreendimento terminal-test"><?php echo get_sub_field('localizacao_emprendimento'); ?></p>
-                                                    <h4 class="nome-empreendimento founders-grotesk"><?php echo get_sub_field('nome_empreendimento'); ?></h4>
-                                                </div>
-                                                <div class="box-svg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="43" height="26" viewBox="0 0 43 26" fill="none">
-                                                        <path d="M-5.24537e-07 13L41.5 13M41.5 13L29.5 25M41.5 13L29.5 0.999999" stroke="white" />
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="box-informacoes">
-                                                <?php
-                                                if (have_rows('informacoes_empreendimento')) :
-                                                    while (have_rows('informacoes_empreendimento')) : the_row(); ?>
-
-                                                        <div class="informacoes">
-                                                            <div class="box-svg">
-                                                                <?php $svg_file = get_sub_field('svg_informacao_empreendimento');
-                                                                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                                                    echo '<i class="element">';
-                                                                    echo file_get_contents($svg_file['url']);
-                                                                    echo '</i>';
-                                                                } ?>
-                                                            </div>
-                                                            <p class="founders-grotesk"><?php echo get_sub_field('texto_informacao_empreendimento'); ?></p>
+                                                    <div class="informacoes">
+                                                        <div class="box-svg">
+                                                            <?php $svg_file = get_sub_field('svg_informacao_empreendimento');
+                                                            if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                                                                echo '<i class="element">';
+                                                                echo file_get_contents($svg_file['url']);
+                                                                echo '</i>';
+                                                            } ?>
                                                         </div>
-                                                <?php endwhile;
-                                                endif; ?>
-                                            </div>
+                                                        <p class="founders-grotesk"><?php echo get_sub_field('texto_informacao_empreendimento'); ?></p>
+                                                    </div>
+                                            <?php endwhile;
+                                            endif; ?>
                                         </div>
-                                    </a>
-                                <?php endif; ?>
-                            </div>
-                        <?php endwhile; ?>
-                    <?php endif; ?>
-                </div>
+                                    </div>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
 
-                <div class="box-buttons">
-                    <svg class="swiper-btn-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                        <circle cx="40" cy="40" r="40" fill="white" />
-                        <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
-                    </svg>
+            <div class="box-buttons">
+                <svg class="swiper-btn-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="40" fill="white" />
+                    <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
+                </svg>
 
-                    <svg class="swiper-btn-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                        <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
-                        <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
-                    </svg>
-                </div>
+                <svg class="swiper-btn-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                    <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
+                </svg>
             </div>
         </div>
+    </div>
+    <div class="wrapper">
         <div class="box-cards-empreendimentos-mobile">
+
             <?php
             if (have_rows('cards_nossos_club_resorts')) :
                 $count = 0; // Inicia a contagem
@@ -274,8 +279,8 @@ get_header();
                 </svg>
             </a>
         <?php endif; ?>
-
     </div>
+
 </section>
 
 <section class="nosso-proposito">
@@ -381,7 +386,7 @@ get_header();
                             <p class="titulo-comentarios founders-grotesk"><?php echo get_sub_field('texto_comentarios_encante-se'); ?></p>
                         </div>
                     <?php endwhile; ?>
-                </div> 
+                </div>
 
             <?php endif; ?>
 

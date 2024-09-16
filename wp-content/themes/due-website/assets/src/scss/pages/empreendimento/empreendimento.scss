@@ -8,6 +8,13 @@ header {
   .incorporadora {
     display: none;
   }
+  .link-logo-menu {
+    .due-logo {
+      path {
+        fill: $due-tertiary;
+      }
+    }
+  }
 }
 
 main.page-empreendimentos-tipologia {

@@ -77,7 +77,7 @@ get_header();
                                     <p class=""><?php echo esc_html($link_title); ?></p>
                                 </a>
                             <?php endif; ?>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
 
@@ -100,7 +100,7 @@ get_header();
                                 <p class="subtitulo-valores founders-grotesk"><?php echo get_sub_field('subtitulo_valores'); ?>
                                 </p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
 
@@ -117,7 +117,7 @@ get_header();
                                 </svg>
                                 <p class="founders-grotesk"><?php echo get_sub_field('titulo_destaque'); ?></p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
                 <div class="box-link">
@@ -183,12 +183,12 @@ get_header();
                     while (have_rows('cards_infos_praia')):
                         the_row();
                         $extra_class = ($counter === 2) ? 'bg-blue' : '';
-                ?>
+                        ?>
                         <div class="box-infos-cards <?php echo $extra_class; ?>">
                             <p class="founders-grotesk titulo-infos-praia"><?php echo get_sub_field('titulo_card'); ?></p>
                             <p class="founders-grotesk premio-infos-praia"><?php echo get_sub_field('titulo_premio'); ?></p>
                         </div>
-                <?php
+                        <?php
                         $counter++;
                     endwhile;
                 endif;
@@ -220,7 +220,7 @@ get_header();
                                     <?php echo get_sub_field('texto_da_caracteristica'); ?>
                                 </p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
             </div>
@@ -242,7 +242,7 @@ get_header();
                                         <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
                                             alt="<?php echo esc_attr($image_alt); ?>">
                                     </a>
-                    <?php endif;
+                                <?php endif;
                             endif;
                             $index++;
                         endwhile;
@@ -266,7 +266,7 @@ get_header();
                                         <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
                                             alt="<?php echo esc_attr($image_alt); ?>">
                                     </a>
-                    <?php endif;
+                                <?php endif;
                             endif;
                             $index++;
                         endwhile;
@@ -294,7 +294,7 @@ get_header();
                                         </a>
                                     <?php endif; ?>
                                 </div>
-                        <?php endwhile;
+                            <?php endwhile;
                         endif; ?>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -324,7 +324,6 @@ get_header();
                 endif; ?>
             </div>
             <div class="box-aba-galeria">
-
                 <?php
                 if (have_rows('categoria_aba')):
                     while (have_rows('categoria_aba')):
@@ -337,39 +336,34 @@ get_header();
                         echo '<div class="swiper-wrapper">';
 
                         if (have_rows('espaco')):
-                            // Definindo a galeria única com base na categoria
-                            $gallery_identifier = 'gallery-' . esc_attr($categoria_slug);
-                            $image_counter = 0; // Contador de imagens
-
                             while (have_rows('espaco')):
                                 the_row();
 
                                 $nome_do_espaco = get_sub_field('nome_do_espaco');
-                                $imagens_do_espaco = get_sub_field('imagens_do_espaco');
 
-                                if ($imagens_do_espaco):
-                                    $url_imagem = esc_url($imagens_do_espaco['url']);
-                                    $alt_imagem = esc_attr($nome_do_espaco);
+                                // Novo repetidor de imagens, mas apenas a primeira será usada como destaque
+                                if (have_rows('imagens_do_espaco')):
+                                    the_row(); // Pega a primeira imagem do repetidor
+                                    $imagem = get_sub_field('imagem'); // Supondo que este seja o campo de imagem
+                
+                                    if ($imagem):
+                                        $url_imagem = esc_url($imagem['url']);
+                                        $alt_imagem = esc_attr($nome_do_espaco);
 
-                                    echo '<div class="swiper-slide">';
-                                    echo '<div class="card-rota">';
+                                        echo '<div class="swiper-slide">';
+                                        echo '<div class="card-rota">';
 
-                                    // Exibe a primeira imagem como thumbnail
-                                    if ($image_counter === 0):
-                                        echo '<a href="' . $url_imagem . '" data-fancybox="' . esc_attr($gallery_identifier) . '" data-caption="' . $alt_imagem . '">';
+                                        // Exibe a primeira imagem como thumbnail
+                                        echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($categoria_slug) . '" data-caption="' . $alt_imagem . '">';
                                         echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
                                         echo '</a>';
-                                    else:
-                                        // Outras imagens vão para a galeria do Fancybox, sem exibir thumbnail
-                                        echo '<a href="' . $url_imagem . '" data-fancybox="' . esc_attr($gallery_identifier) . '" data-caption="' . $alt_imagem . '" style="display:none;"></a>';
+
+                                        echo '<div class="card-rota-content">';
+                                        echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
+                                        echo '</div></div></div>';
+
                                     endif;
 
-                                    echo '<div class="card-rota-content">';
-                                    echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
-                                    echo '</div></div></div>';
-
-                                    // Incrementa o contador de imagens
-                                    $image_counter++;
                                 endif;
 
                             endwhile;
@@ -389,7 +383,6 @@ get_header();
                 endif;
                 ?>
             </div>
-
         </div>
     </div>
 
@@ -470,7 +463,8 @@ get_header();
                             $rooms = $min_rooms . ' quartos';
                         }
                     endwhile;
-                };
+                }
+                ;
                 $size = '';
                 if (have_rows('metragem_tipologia', $tipologiaId)) {
                     while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -508,7 +502,7 @@ get_header();
 
         // usar essa variável para renderizar as tipologias no frontend
         // var_dump($tipologiasDoEmpreendimento);
-
+        
         ?>
         <div class="wrapper">
             <h3 class="titulo-tipologia-do-empreendimento">
@@ -520,7 +514,7 @@ get_header();
                         <?php foreach ($tipologiasDoEmpreendimento as $tipologia): ?>
                             <?php
                             // var_dump($tipologia);
-
+                        
                             $statusMap = [
                                 'Em obra' => 'em_obra',
                                 'Lançamento' => 'lancamento',
@@ -530,7 +524,8 @@ get_header();
 
                             $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
                             ?>
-                            <a href="<?php echo esc_url($linkPost); ?>" class="swiper-slide <?php echo esc_html($statusClass); ?>">
+                            <a href="<?php echo esc_url($linkPost); ?>"
+                                class="swiper-slide <?php echo esc_html($statusClass); ?>">
                                 <div class="tipologia-card ">
                                     <span class="estado-tipologia terminal-test">
                                         <?php echo esc_html($tipologia['status']) ?>
@@ -589,8 +584,8 @@ get_header();
 
                                         <?php foreach ($tipologia['diffs'] as $diff): ?>
                                             <div class="box-diferencias">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
-                                                    fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                    viewBox="0 0 18 18" fill="none">
                                                     <path
                                                         d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z"
                                                         stroke="#002B36" stroke-linecap="round" stroke-linejoin="round" />
@@ -630,8 +625,8 @@ get_header();
 
             <h3 class="titulo-diferenciais terminal-test"><?php echo get_field('titulo_diferencias'); ?></h3>
             <div class="box-cards-diferenciais <?php if (have_rows('diferenciais') && count(get_field('diferenciais')) <= 3) {
-                                                    echo 'center-rows';
-                                                } ?>">
+                echo 'center-rows';
+            } ?>">
                 <?php
                 if (have_rows('diferenciais')):
                     while (have_rows('diferenciais')):
@@ -648,7 +643,7 @@ get_header();
                             </div>
                             <p class="text-repeater founders-grotesk"><?php echo get_sub_field('texto_do_diferencial'); ?></p>
                         </div>
-                <?php endwhile;
+                    <?php endwhile;
                 endif; ?>
             </div>
 
@@ -674,7 +669,7 @@ get_header();
                                         </p>
                                     </div>
                                 </div>
-                        <?php endwhile;
+                            <?php endwhile;
                         endif; ?>
 
                     </div>
@@ -705,7 +700,7 @@ get_header();
                         <p class="porcentagem founders-grotesk"><?php echo get_sub_field('porcentagem_da_obra'); ?></p>
                         <p class="titulo-estagio founders-grotesk"><?php echo get_sub_field('titulo_estagio'); ?></p>
                     </div>
-            <?php endwhile;
+                <?php endwhile;
             endif; ?>
         </div>
         <div class="box-portal-cliente">
@@ -723,7 +718,9 @@ get_header();
                         <g clip-path="url(#clip0_3369_6909)">
                             <circle cx="12" cy="12.5" r="12" fill="#E9E3DD" />
                             <g clip-path="url(#clip1_3369_6909)">
-                                <path d="M7.1137 9.79766C7.1137 12.5179 9.32742 14.7317 12.0477 14.7317C14.768 14.7317 16.9817 12.5179 16.9817 9.79766C16.9817 7.07737 14.768 4.86365 12.0477 4.86365C9.32742 4.86365 7.1137 7.07737 7.1137 9.79766ZM20.8193 24.5H21.9157V23.4036C21.9157 19.1724 18.9852 15.7284 15.1576 15.7284C15.1576 15.7284 13.4831 16.2115 12.0477 16.2115C10.6124 16.2115 8.93779 15.7284 8.93779 15.7284C5.11019 15.7284 2.17969 19.1724 2.17969 23.4036V24.5H20.8193Z" fill="#003B4B" />
+                                <path
+                                    d="M7.1137 9.79766C7.1137 12.5179 9.32742 14.7317 12.0477 14.7317C14.768 14.7317 16.9817 12.5179 16.9817 9.79766C16.9817 7.07737 14.768 4.86365 12.0477 4.86365C9.32742 4.86365 7.1137 7.07737 7.1137 9.79766ZM20.8193 24.5H21.9157V23.4036C21.9157 19.1724 18.9852 15.7284 15.1576 15.7284C15.1576 15.7284 13.4831 16.2115 12.0477 16.2115C10.6124 16.2115 8.93779 15.7284 8.93779 15.7284C5.11019 15.7284 2.17969 19.1724 2.17969 23.4036V24.5H20.8193Z"
+                                    fill="#003B4B" />
                             </g>
                         </g>
                         <defs>
@@ -765,11 +762,12 @@ get_header();
                                 while (have_rows('autor_informacoes_tecnicas_da_obra')):
                                     the_row(); ?>
                                     <p class="text-autor founders-grotesk">
-                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?></p>
-                            <?php endwhile;
+                                        <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?>
+                                    </p>
+                                <?php endwhile;
                             endif; ?>
                         </div>
-                <?php endwhile;
+                    <?php endwhile;
                 endif; ?>
             </div>
         </div>

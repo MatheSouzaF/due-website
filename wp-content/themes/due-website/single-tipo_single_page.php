@@ -19,11 +19,11 @@ get_header();
                     <?php echo __('tipologia', 'due-website') ?>
                 </p>
                 <?php
-                $empreendimento_id = get_field('tipologia');
+                $tipologia_id = get_field('tipologia');
 
-                if ($empreendimento_id) {
-                    $titulo_empreendimento = get_the_title($empreendimento_id);
-                    echo '<h1 class="terminal-test titulo-hero">' . $titulo_empreendimento . '</h1>';
+                if ($tipologia_id) {
+                    $titulo_tipologia = get_field('nome_da_tipologia', $tipologia_id);
+                    echo '<h1 class="terminal-test titulo-hero">' . $titulo_tipologia . '</h1>';
                 }
                 ?>
             </div>

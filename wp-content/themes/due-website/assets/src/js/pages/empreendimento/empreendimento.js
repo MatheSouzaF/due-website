@@ -259,11 +259,15 @@ async function empreendimentoPage() {
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+      
+          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          
+          formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
+      
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }
-
+      
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
           const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');

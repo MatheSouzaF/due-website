@@ -50,7 +50,6 @@ function wordAnimation() {
 // Adiciona um delay de 1 segundo antes de iniciar a animação
 setTimeout(wordAnimation, 1000);
 
-
 function cardHover() {
   $(document).ready(function () {
     $('.card-empreendimentos').hover(
@@ -96,7 +95,7 @@ function nossoProposito() {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.to('.img-proposito', {
-      yPercent: 30,
+      yPercent: 0.2,
       ease: 'none',
       scrollTrigger: {
         trigger: '.nosso-proposito',

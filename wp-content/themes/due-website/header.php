@@ -89,6 +89,7 @@ function generate_navbar()
 	echo '<p class="label-descrubra">' . __('descubra', 'due-website') . '</p>';
 
 
+	echo '<div class="conjunto-links">';
 	echo '<div class="box-navbar-menu">';
 
 	if (have_rows('link_navbar', 'options')) {
@@ -130,6 +131,7 @@ function generate_navbar()
 			}
 		}
 	}
+	echo '</div>';
 	echo '</div>';
 
 	echo '<div class="box-navbar-redes-sociais">';

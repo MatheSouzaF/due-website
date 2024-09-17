@@ -33,7 +33,7 @@
         },
         {
             "key": "field_66e97c5dd60c9",
-            "label": "Foto ou vídeo do destino",
+            "label": "Foto do destino",
             "name": "foto_ou_video_do_destino",
             "aria-label": "",
             "type": "file",
@@ -232,5 +232,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726598214
+    "modified": 1726599335
 }

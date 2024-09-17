@@ -1,4 +1,5 @@
 import { renderFilters } from '../../components/filter';
+import { initBanner } from '../empreendimento/banner';
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -388,7 +389,15 @@ function tipologiaPage() {
     $('#tipologia-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+
+      const selectedLocations = $('#tipologia-filter-location input.ckkBox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      initBanner({ location: selectedLocations });
     });
+
+    initBanner({ location: 'Rota DUE' })
 
     $('#tipologia-filter-status input.ckkBox').on('change', function () {
       filterAndRender();

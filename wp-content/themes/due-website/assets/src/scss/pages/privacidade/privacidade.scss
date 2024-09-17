@@ -26,7 +26,7 @@ body.page-template-page-politicas {
         letter-spacing: 1.28px;
         font-size: 32px;
       }
-      h3{
+      h3 {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 400;
@@ -35,13 +35,25 @@ body.page-template-page-politicas {
         font-size: 24px;
       }
 
-      p{
+      p {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
         letter-spacing: 1.28px;
         font-size: 16px;
+      }
+      ul {
+        padding-left: 40px;
+        list-style: initial;
+        li {
+          color: $due-tertiary;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          letter-spacing: 1.28px;
+          font-size: 16px;
+        }
       }
     }
   }

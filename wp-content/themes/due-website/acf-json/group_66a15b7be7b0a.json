@@ -63,6 +63,27 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_66ea0364091e1",
+                    "label": "SVG Número",
+                    "name": "svg_numero",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_66a15c66318a4"
+                },
+                {
                     "key": "field_66a254b463357",
                     "label": "Link Número",
                     "name": "link_numero",
@@ -345,5 +366,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725367675
+    "modified": 1726612373
 }

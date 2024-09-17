@@ -49,7 +49,7 @@ get_header();
 
         <div class="box-conteudo-left">
 
-            <div class="box-svg">
+            <div class="box-svg-associacao-superacao">
                 <?php $svg_file = get_field('svg_associacao_superacao');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                     echo '<i class="element">';

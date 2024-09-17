@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_66e97d344f2a1",
+    "title": "Banner de Destino",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Banner de Destino",
+    "menu_slug": "banner-de-destino",
+    "parent_slug": "configuracoes-gerais",
+    "advanced_configuration": false,
+    "icon_url": "",
+    "menu_title": "",
+    "position": null,
+    "redirect": false,
+    "description": "",
+    "menu_icon": [],
+    "update_button": "Atualizar",
+    "updated_message": "Opções atualizadas",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": false,
+    "modified": 1726577972
+}

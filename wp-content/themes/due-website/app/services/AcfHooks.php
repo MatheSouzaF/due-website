@@ -8,6 +8,8 @@
 class ACFIntegration
 {
     private $tipologiaController;
+    private $tipologiaSinglePageController;
+    private $empreendimentoController;
     private $empreendimentoSinglePageController;
 
     /**
@@ -18,6 +20,7 @@ class ACFIntegration
     public function __construct()
     {
         $this->tipologiaController = new TipologiaController();
+        $this->empreendimentoController = new EmpreendimentoController();
         $this->empreendimentoSinglePageController = new EmpreendimentoSinglePageController();
         $this->tipologiaSinglePageController = new TipologiaSinglePageController();
     }
@@ -32,6 +35,7 @@ class ACFIntegration
     {
         // Registra o filtro para carregar os empreendimentos no campo ACF
         add_filter('acf/load_field/name=pertence_a_qual_empreendimento', [$this->tipologiaController, 'loadProjectsForACF']);
+        add_filter('acf/load_field/name=banner_do_destino', [$this->empreendimentoController, 'loadBannerDestinos']);
         add_filter('acf/load_field/name=empreendimento_single_page', [$this->empreendimentoSinglePageController, 'loadProjectsSingleForACF']);
         add_filter('acf/load_field/name=empreendimento_tipologia', [$this->empreendimentoSinglePageController, 'loadProjectsSingleForACF']);
         add_filter('acf/load_field/name=tipologia', [$this->tipologiaSinglePageController, 'loadTipologiaSingleForACF']);

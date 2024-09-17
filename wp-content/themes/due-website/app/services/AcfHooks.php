@@ -35,7 +35,6 @@ class ACFIntegration
     {
         // Registra o filtro para carregar os empreendimentos no campo ACF
         add_filter('acf/load_field/name=pertence_a_qual_empreendimento', [$this->tipologiaController, 'loadProjectsForACF']);
-        add_filter('acf/load_field/name=banner_do_destino', [$this->empreendimentoController, 'loadBannerDestinos']);
         add_filter('acf/load_field/name=empreendimento_single_page', [$this->empreendimentoSinglePageController, 'loadProjectsSingleForACF']);
         add_filter('acf/load_field/name=empreendimento_tipologia', [$this->empreendimentoSinglePageController, 'loadProjectsSingleForACF']);
         add_filter('acf/load_field/name=tipologia', [$this->tipologiaSinglePageController, 'loadTipologiaSingleForACF']);

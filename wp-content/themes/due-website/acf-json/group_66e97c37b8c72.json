@@ -3,9 +3,134 @@
     "title": "Banner de Destino",
     "fields": [
         {
-            "key": "field_66e97c37d60c7",
-            "label": "Banner de Destino",
-            "name": "banner_de_destino",
+            "key": "field_66e97c4fd60c8",
+            "label": "Nome do destino",
+            "name": "nome_do_destino",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Rota DUE": "Rota DUE",
+                "Muro Alto (PE)": "Muro Alto (PE)",
+                "Praia dos Carneiros (PE)": "Praia dos Carneiros (PE)",
+                "Praia do Cupe (PE)": "Praia do Cupe (PE)",
+                "Poço da Panela (PE)": "Poço da Panela (PE)"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66e97c5dd60c9",
+            "label": "Foto ou vídeo do destino",
+            "name": "foto_ou_video_do_destino",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_66e9b0fb5a2bf",
+            "label": "Titulo do banner",
+            "name": "titulo_do_banner",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66e9b99b8ea38",
+            "label": "SVG Rota Due",
+            "name": "svg_rota_due",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_66e9b1105a2c0",
+            "label": "Descrição do banner",
+            "name": "descricao_do_banner",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66e9b9e78ea39",
+            "label": "Link",
+            "name": "link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_66e9ba018ea3a",
+            "label": "Comentários do banner",
+            "name": "comentarios_do_banner",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -25,9 +150,30 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_66e97c4fd60c8",
-                    "label": "Nome do destino",
-                    "name": "nome_do_destino",
+                    "key": "field_66e9ba218ea3b",
+                    "label": "SVG Comentário Banner",
+                    "name": "svg_comentario_banner",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_66e9ba018ea3a"
+                },
+                {
+                    "key": "field_66e9ba318ea3c",
+                    "label": "Texto Comentário Banner",
+                    "name": "texto_comentario_banner",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -43,38 +189,37 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_66e97c37d60c7"
-                },
-                {
-                    "key": "field_66e97c5dd60c9",
-                    "label": "Foto ou vídeo do destino",
-                    "name": "foto_ou_video_do_destino",
-                    "aria-label": "",
-                    "type": "file",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "url",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "parent_repeater": "field_66e97c37d60c7"
+                    "parent_repeater": "field_66e9ba018ea3a"
                 }
             ]
+        },
+        {
+            "key": "field_66e9ba478ea3d",
+            "label": "SVG Caribe",
+            "name": "svg_caribe",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
         }
     ],
     "location": [
         [
             {
-                "param": "options_page",
+                "param": "post_type",
                 "operator": "==",
-                "value": "banner-de-destino"
+                "value": "banner"
             }
         ]
     ],
@@ -87,5 +232,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726577980
+    "modified": 1726598214
 }

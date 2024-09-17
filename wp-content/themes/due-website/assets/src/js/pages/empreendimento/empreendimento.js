@@ -122,9 +122,9 @@ async function empreendimentoPage() {
           ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
-            .map((room) => ({ 
-              value: room, 
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}` 
+            .map((room) => ({
+              value: room,
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
             }))
         ],
       };
@@ -311,7 +311,15 @@ async function empreendimentoPage() {
     $('#filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+
+      const selectedLocations = $('#filter-location input.ckkBox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      initBanner({ location: selectedLocations });
     });
+
+    initBanner({ location: 'Rota DUE' })
 
     $('#filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -322,6 +330,65 @@ async function empreendimentoPage() {
       filterAndRender();
       buildFilterUrl();
     });
+
+    function getBannerToShow(banners, location) {
+      if (!location || location.length !== 1) {
+        return banners.find(banner => banner.location === "Rota DUE");
+      }
+      return banners.find(banner => banner.location === location[0]);
+    }
+
+    function updateBannerContent(banner) {
+      $('#image-inject').attr('src', banner.media.url || 'N/A').attr('alt', banner.media.alt || banner.media.title || 'N/A');
+      $('#titulo-do-banner').text(banner.title || 'N/A');
+      $('#descricao-do-banner').text(banner.description || 'N/A');
+
+      if (banner.link) {
+        $('#link-banner').attr('href', banner.link);
+        $('#link-text').text('Saiba mais');
+      } else {
+        $('#link-banner').hide();
+      }
+    }
+
+    function updateBannerImages(banner) {
+      $('#svg-rota-due').html(`<img src="${banner.svg_rota.url || 'N/A'}" alt="${banner.svg_rota.title || 'N/A'}">`);
+      $('#svg-caribe').html(`<img src="${banner.svg_caribe.url || 'N/A'}" alt="${banner.svg_caribe.title || 'N/A'}">`);
+    }
+
+    function updateBannerComments(banner) {
+      $('#comentarios-container').empty();
+      if (banner.comments && banner.comments.length > 0) {
+        banner.comments.forEach(function (comment) {
+          var commentHTML = `
+            <div class="comment">
+              <img src="${comment.svg_comentario_banner.url || 'N/A'}" alt="${comment.svg_comentario_banner.title || 'N/A'}">
+              <p>${comment.texto_comentario_banner || 'N/A'}</p>
+            </div>
+          `;
+          $('#comentarios-container').append(commentHTML);
+        });
+      } else {
+        $('#comentarios-container').append('<p>Sem comentários</p>');
+      }
+    }
+
+    function initBanner({ location }) {
+      const banners = BannersData.banners;
+
+      const bannerToShow = getBannerToShow(banners, location);
+
+      if (bannerToShow) {
+        updateBannerContent(bannerToShow);
+        updateBannerImages(bannerToShow);
+        updateBannerComments(bannerToShow);
+      } else {
+        console.log('Nenhum banner encontrado para a localização especificada.');
+        updateBannerContent({ title: 'N/A', description: 'N/A', media: { url: 'N/A', alt: 'N/A', title: 'N/A' }, link: null });
+        updateBannerImages({ svg_rota: { url: 'N/A', title: 'N/A' }, svg_caribe: { url: 'N/A', title: 'N/A' } });
+        updateBannerComments({ comments: [] });
+      }
+    }
 
     applyFiltersFromUrl();
   } catch (error) {
@@ -358,8 +425,6 @@ function cardHover() {
 async function initEmpreendimento() {
   await empreendimentoPage();
   cardHover();
-  swiperDiferenciais();
-  swiperGaleria();
 }
 
 export { initEmpreendimento };

@@ -197,38 +197,5 @@ class EmpreendimentoController
 
         return $projects; // Retorna o array de empreendimentos
     }
-
-    public function getBannerOptions()
-    {
-        $projects = [];
-
-        $banners = get_field('banner_de_destino', 'option'); // Substitua 'banners_de_destinos' pelo nome do campo ACF correto
-
-        if (!empty($banners)) {
-            foreach ($banners as $banner) {
-                $name = $banner['nome_do_destino']; 
-                $mediaKey = $banner['foto_ou_video_do_destino'];
-
-                if (!empty($name) && !empty($mediaKey)) {
-                    $projects[$mediaKey] = $name;
-                }
-            }
-        }
-
-        return $projects; 
-    }
-
-    public function loadBannerDestinos($field)
-    {
-        $field['choices'] = array();
-
-        $projects = $this->getBannerOptions();
-
-        foreach ($projects as $projectId => $name) {
-            $field['choices'][$projectId] = $name;
-        }
-
-        return $field;
-    }
 }
 

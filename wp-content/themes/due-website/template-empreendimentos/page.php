@@ -103,6 +103,68 @@ wp_localize_script('main', 'TipologiasData', array(
       <?php get_template_part('/template-empreendimentos/aba-tipologia'); ?>
     </div>
 
+    <?php
+    $argsBanner = array(
+      'post_type' => 'banner',
+      'posts_per_page' => -1,
+    );
+
+    $queryBanner = new WP_Query($argsBanner);
+    $banners = array();
+
+    if ($queryBanner->have_posts()) {
+      while ($queryBanner->have_posts()) {
+        $queryBanner->the_post();
+
+        $bannerId = get_the_ID();
+        $banners[] = array(
+          'location' => get_field('nome_do_destino'),
+          'media' => get_field('foto_ou_video_do_destino'),
+          'title' => get_field('titulo_do_banner'),
+          'svg_rota' => get_field('svg_rota_due'),
+          'description' => get_field('descricao_do_banner'),
+          'link' => get_field('link'),
+          'comments' => get_field('comentarios_do_banner'),
+          'svg_caribe' => get_field('svg_caribe'),
+        );
+      }
+      wp_reset_postdata();
+    }
+
+    wp_localize_script('main', 'BannersData', array(
+      'banners' => $banners,
+    ));
+    ?>
+    <section class="encante-se">
+      <div class="container-encante-se">
+        <div class="wrapper">
+          <div class="box-img-encante-se">
+            <img id="image-inject" src="" alt="">
+          </div>
+
+          <div class="box-conteudo-left">
+            <div class="box-svg fade-left" data-aos="fade-right">
+              <i class="element" id="svg-rota-due"></i>
+            </div>
+
+            <h2 class="titulo-encante-se terminal-test fade-left" data-aos="fade-right" id="titulo-do-banner"></h2>
+            <p class="descricao-encante-se founders-grotesk fade-left" data-aos="fade-right" id="descricao-do-banner">
+            </p>
+
+            <a class="link-encante-se button-v2 fade-left" data-aos="fade-right" id="link-banner" href=""
+              target="_self">
+              <p id="link-text"></p>
+            </a>
+          </div>
+
+          <div class="box-conteudo-right" id="comentarios-container">
+            <div class="svg-caribe">
+              <i class="element" id="svg-caribe"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>

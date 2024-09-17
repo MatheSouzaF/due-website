@@ -492,17 +492,26 @@ body.page-template-jeito-due {
         margin: 0 auto;
         gap: 12px;
         flex-direction: column;
+        transition: 0.6s;
         @include media-breakpoint-up(sm) {
           flex-direction: row;
+        }
+        @include media-breakpoint-up(xxl) {
+          max-width: 1280px;
         }
         .lista-card {
           position: relative;
           width: 317px;
           height: 317px;
+          transition: 0.6s;
           @include media-breakpoint-up(sm) {
             background-color: $due-primary;
             height: 415px;
             width: 49%;
+          }
+          @include media-breakpoint-up(xxl) {
+            max-width: 554px;
+            height: 500px;
           }
           .box-texto {
             width: 100%;
@@ -666,13 +675,13 @@ body.page-template-jeito-due {
             transform: translate(50%, -50%);
             width: 100%;
           }
-          
+
           .lista-big-numeros {
             width: 100%;
             @include media-breakpoint-up(md) {
               width: 100%;
             }
-          
+
             &:not(:first-of-type):not(:last-of-type) {
               padding: 32px 0;
             }

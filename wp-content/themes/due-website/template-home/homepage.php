@@ -6,28 +6,6 @@ get_header();
 <section class="logo">
     <div id="dotLottie-canvas"></div>
 
-    <script>
-        var canvas = document.getElementById('dotLottie-canvas');
-        var lottieAnimation = lottie.loadAnimation({
-            container: canvas,
-            path: '/wp-content/themes/due-website/assets/src/lottie/logo.json',
-            autoplay: true,
-            loop: false,
-        });
-        lottieAnimation.addEventListener('complete', function() {
-            // Iniciar o GSAP Timeline após o Lottie terminar
-            gsap.timeline()
-            gsap.to(".logo", {
-                height: 0,
-                duration: 1,
-                zIndex: -1,
-            });
-            gsap.to("#dotLottie-canvas", {
-                opacity: 0,
-                duration: 1
-            });
-        });
-    </script>
 </section>
 <section class="banner-hero">
     <div class="swiper-container swiper-banner">
@@ -58,8 +36,15 @@ get_header();
                             <div class="box-conteudo">
                                 <div class="wrapper-hero">
                                     <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
-                                    <p class="subtitulo-banner-hero"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
+                                    <div class="box-repetidor-subtitulo">
 
+                                        <?php
+                                        if (have_rows('repetidor_subtitulo_banner')) :
+                                            while (have_rows('repetidor_subtitulo_banner')) : the_row(); ?>
+                                                <p class="subtitulo-banner-hero word"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
+                                        <?php endwhile;
+                                        endif; ?>
+                                    </div>
                                     <?php if (get_sub_field('botao_video')): ?>
                                         <?php
                                         $modalVideo = get_sub_field('video_modal_botao');
@@ -132,7 +117,6 @@ get_header();
     </script>
 
 </section>
-
 
 <section class="nossos-club-resorts">
     <div class="wrapper">
@@ -433,12 +417,83 @@ get_header();
 </section>
 
 <?php get_template_part('template-invista/invista'); ?>
+<script>
+    function swiperBanner() {
+        var mySwiper = new Swiper('.swiper-banner', {
+            // loop: true,
+            autoplayDisableOnInteraction: false,
+            slidesPerView: 1,
+            autoHeight: true,
+            autoplay: {
+                delay: 6000, // Match the animation time
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                type: 'bullets',
+                renderBullet: function(index, className) {
+                    return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
+                },
+            },
+            navigation: {
+                nextEl: '.swiper-btn-banner-next',
+                prevEl: '.swiper-btn-banner-prev',
+            },
+        });
 
+        function modalBanner() {
+            $('.js-modal-open-banner').on('click', function(e) {
+                e.preventDefault();
+                var msrc = $(this).data('src');
+                $('.js-modal').find('.video-container').html(msrc);
+                $('.js-modal').fadeIn();
 
+                // Pausa o Swiper quando o modal é aberto
+                mySwiper.autoplay.stop();
+            });
 
-<?php /** 
-<?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
-<?php get_template_part('template-cards/cards'); ?>
- **/ ?>
+            $('.js-modal-close, .js-modal-close-btn').on('click', function(e) {
+                e.preventDefault();
+                $('.js-modal').fadeOut(function() {
+                    $('.js-modal').find('.video-container').html('');
+
+                    // Retoma o Swiper quando o modal é fechado
+                    setTimeout(function() {
+                        mySwiper.autoplay.start();
+                    }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
+                });
+            });
+        }
+        modalBanner();
+    }
+
+ canvas = document.getElementById('dotLottie-canvas');
+    var lottieAnimation = lottie.loadAnimation({
+        container: canvas,
+        path: '/wp-content/themes/due-website/assets/src/lottie/logo.json',
+        autoplay: true,
+        loop: false,
+    });
+    lottieAnimation.addEventListener('complete', function() {
+        // Iniciar o GSAP Timeline após o Lottie terminar
+        gsap.timeline()
+        gsap.to(".logo", {
+            height: 0,
+            duration: 1,
+            zIndex: -1,
+        });
+        gsap.to("#dotLottie-canvas", {
+            opacity: 0,
+            duration: 1,
+            onComplete: function() {
+                swiperBanner(); 
+            }
+        });
+    });
+</script>
 
 <?php get_footer() ?>

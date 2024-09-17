@@ -151,10 +151,10 @@
                 },
                 {
                     "key": "field_66d5b61388d99",
-                    "label": "SubTítulo Banner Hero",
-                    "name": "subtitulo_banner_hero",
+                    "label": "Repetidor Subtítulo Banner",
+                    "name": "repetidor_subtitulo_banner",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "repeater",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -163,11 +163,36 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66e99612affc2",
+                            "label": "SubTítulo Banner Hero",
+                            "name": "subtitulo_banner_hero",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_66d5b61388d99"
+                        }
+                    ],
                     "parent_repeater": "field_66d5b41e88d93"
                 },
                 {
@@ -865,5 +890,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1725295166
+    "modified": 1726584364
 }

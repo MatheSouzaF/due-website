@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
@@ -84,6 +85,9 @@ function generate_navbar()
 		}
 	}
 	echo '</div>';
+
+	echo '<p class="label-descrubra">' . __('descubra', 'due-website') . '</p>';
+
 
 	echo '<div class="box-navbar-menu">';
 
@@ -237,7 +241,7 @@ function generate_navbar()
 								<p class="label-newsletter"><?php echo get_field('label_newsletter', 'options'); ?></p>
 								<p class="titulo-newsletter"><?php echo get_field('titulo_newsletter', 'options'); ?></p>
 								<div class="box-newsletter-rd">
-									<?php echo get_field('rd_newsletter','options'); ?>
+									<?php echo get_field('rd_newsletter', 'options'); ?>
 								</div>
 							</div>
 						</div>

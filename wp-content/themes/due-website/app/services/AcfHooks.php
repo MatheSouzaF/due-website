@@ -8,6 +8,8 @@
 class ACFIntegration
 {
     private $tipologiaController;
+    private $tipologiaSinglePageController;
+    private $empreendimentoController;
     private $empreendimentoSinglePageController;
 
     /**
@@ -18,6 +20,7 @@ class ACFIntegration
     public function __construct()
     {
         $this->tipologiaController = new TipologiaController();
+        $this->empreendimentoController = new EmpreendimentoController();
         $this->empreendimentoSinglePageController = new EmpreendimentoSinglePageController();
         $this->tipologiaSinglePageController = new TipologiaSinglePageController();
     }

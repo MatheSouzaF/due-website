@@ -1,4 +1,5 @@
 import { renderFilters } from '../../components/filter';
+import { initBanner } from './banner'
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -122,9 +123,9 @@ async function empreendimentoPage() {
           ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
-            .map((room) => ({ 
-              value: room, 
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}` 
+            .map((room) => ({
+              value: room,
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
             }))
         ],
       };
@@ -311,7 +312,15 @@ async function empreendimentoPage() {
     $('#filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+
+      const selectedLocations = $('#filter-location input.ckkBox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      initBanner({ location: selectedLocations });
     });
+
+    initBanner({ location: 'Rota DUE' })
 
     $('#filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -358,8 +367,6 @@ function cardHover() {
 async function initEmpreendimento() {
   await empreendimentoPage();
   cardHover();
-  swiperDiferenciais();
-  swiperGaleria();
 }
 
 export { initEmpreendimento };

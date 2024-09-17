@@ -331,14 +331,7 @@ function animationSelosCertificados() {
     });
   });
 
-  gsap.from('.selos-certificados', {
-    scrollTrigger: {
-      trigger: '.selos-certificados',
-      ease: 'power2.out', // Adiciona um easer para suavizar a
-      start: 'top-=300',
-      onEnter: pathCard,
-    },
-  });
+
 }
 
 function initIniciativas() {

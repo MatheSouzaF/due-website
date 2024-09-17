@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
@@ -10,6 +11,7 @@
 	<?php wp_head(); ?>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
 
 </head>
 
@@ -83,6 +85,9 @@ function generate_navbar()
 		}
 	}
 	echo '</div>';
+
+	echo '<p class="label-descrubra">' . __('descubra', 'due-website') . '</p>';
+
 
 	echo '<div class="box-navbar-menu">';
 
@@ -235,7 +240,9 @@ function generate_navbar()
 							<div class="box-conteudo">
 								<p class="label-newsletter"><?php echo get_field('label_newsletter', 'options'); ?></p>
 								<p class="titulo-newsletter"><?php echo get_field('titulo_newsletter', 'options'); ?></p>
-
+								<div class="box-newsletter-rd">
+									<?php echo get_field('rd_newsletter', 'options'); ?>
+								</div>
 							</div>
 						</div>
 					</ul>

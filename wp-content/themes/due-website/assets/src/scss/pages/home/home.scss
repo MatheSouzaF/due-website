@@ -2,35 +2,30 @@
 @import '../../global/colors';
 body.page-template-homepage {
   transition: 0.6s;
-  // overflow: hidden;
-  // cursor: none;
+
   header {
-    // background: #003b4b;
-    // height: 100vh;
-    // .box-navbar {
-    //   height: 64px;
-    //   .btn-menu-navlink {
-    //     opacity: 0;
-    //     transition: initial !important;
-    //   }
-    // }
-    // .link-logo-menu {
-    //   position: inherit;
-    //   .box-svg-header {
-    //     position: absolute;
-    //     top: 50%;
-    //     left: 50%;
-    //     transform: translate(-50%, -50%);
-    //     svg {
-    //       width: 265px;
-    //       height: 137px;
-    //       path {
-    //         fill: #fff;
-    //       }
-    //     }
-    //   }
-    // }
   }
+  .logo {
+    background-color: $due-tertiary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    height: 100vh;
+    width: 100%;
+    #dotLottie-canvas {
+      width: 450px;
+      height: 300px;
+      @include media-breakpoint-down(sm) {
+        width: 250px;
+        height: 100px;
+      }
+    }
+  }
+
   .banner-hero {
     height: 100vh;
     .swiper-container {
@@ -87,18 +82,24 @@ body.page-template-homepage {
                   font-size: 64px;
                 }
               }
-              .subtitulo-banner-hero {
-                color: $grey-0;
-                font-style: normal;
-                font-weight: 300;
-                line-height: 140%;
-                letter-spacing: 0.96px;
+              .box-repetidor-subtitulo {
+                position: relative;
+                height: 60px;
                 margin-bottom: 64px;
-                font-size: 28px;
-                max-width: 310px;
-                @include media-breakpoint-up(sm) {
-                  font-size: 48px;
-                  max-width: initial;
+                .subtitulo-banner-hero {
+                  color: $grey-0;
+                  font-style: normal;
+                  font-weight: 300;
+                  line-height: 140%;
+                  letter-spacing: 0.96px;
+                  font-size: 28px;
+                  position: absolute;
+                  opacity: 0;
+
+                  @include media-breakpoint-up(sm) {
+                    font-size: 48px;
+                    max-width: initial;
+                  }
                 }
               }
               .button-play {
@@ -206,6 +207,7 @@ body.page-template-homepage {
         }
         @include media-breakpoint-up(sm) {
           display: flex;
+          opacity: 0;
         }
 
         .swiper-button-disabled {
@@ -271,7 +273,7 @@ body.page-template-homepage {
           background-color: transparent;
           b {
             animation-name: countingBar;
-            animation-duration: 3s; //autopaly 시간과 맞춰주기
+            animation-duration: 6s; //autopaly 시간과 맞춰주기
             animation-timing-function: ease-in;
             animation-iteration-count: 1;
             animation-direction: alternate;

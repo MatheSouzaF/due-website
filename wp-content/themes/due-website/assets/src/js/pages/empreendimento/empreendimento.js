@@ -200,10 +200,9 @@ async function empreendimentoPage() {
       filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
       renderEmpreendimentos(filteredEmpreendimentos);
       updateBadges();
-      hideOptions();
     }
 
-    function hideOptions() {
+    function hideOptions(changedFilter) {
       const isOptionVisible = (value, key) => {
         return filteredEmpreendimentos.some((empreendimento) => {
           if (key === 'filter-location') return empreendimento.location === value;
@@ -222,16 +221,20 @@ async function empreendimentoPage() {
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);
           const value = $checkbox.val();
-    
-          if (isOptionVisible(value, key)) {
+          
+          if (key === changedFilter) {
             $checkbox.closest('label').show();
           } else {
-            $checkbox.closest('label').hide();
+            if (isOptionVisible(value, key)) {
+              $checkbox.closest('label').show();
+            } else {
+              $checkbox.closest('label').hide();
+            }
           }
         });
       });
-    }    
-
+    }
+    
     renderEmpreendimentos(empreendimentosData);
 
     $('#filter-location input.ckkBox').on('change', function () {
@@ -243,6 +246,7 @@ async function empreendimentoPage() {
       }).get();
 
       initBanner({ location: selectedLocations });
+      hideOptions('filter-location');
     });
 
     initBanner({ location: 'Rota DUE' })
@@ -250,11 +254,13 @@ async function empreendimentoPage() {
     $('#filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('filter-status');
     });
 
     $('#filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('filter-rooms');
     });
 
     applyFiltersFromUrl();

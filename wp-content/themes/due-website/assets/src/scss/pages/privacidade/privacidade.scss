@@ -1,6 +1,44 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-page-politicas {
+  header {
+    .button-menu {
+      color: $due-tertiary !important;
+    }
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: $due-tertiary;
+          }
+        }
+      }
+    }
+
+    .box-sidebar {
+      .navlinks {
+        .btn-menu-navlink {
+          .button-menu {
+            color: $due-tertiary;
+            &::after {
+              background-color: $due-tertiary;
+            }
+          }
+        }
+      }
+    }
+    &.sticky {
+      .link-logo-menu {
+        .box-svg-header {
+          svg {
+            path {
+              fill: $grey-0;
+            }
+          }
+        }
+      }
+    }
+  }
   .privacidade-termos {
     padding: 200px 0;
 

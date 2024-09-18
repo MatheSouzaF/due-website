@@ -66,6 +66,7 @@ function hoverDestinos() {
   });
 
   function revertAnimation() {
+    tl.timeScale(3); // Aumenta a velocidade da animação reversa
     tl.reverse();
   }
 

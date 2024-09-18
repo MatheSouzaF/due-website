@@ -67,11 +67,24 @@ function panorama() {
   });
 }
 
+function irFooter() {
+  $('#irFooter').on('click', function (e) {
+    e.preventDefault(); // Impede a ação padrão do link
+    $('html, body').animate(
+      {
+        scrollTop: $(document).height(),
+      },
+      'slow'
+    );
+  });
+}
+
 function initSingleTipologia() {
   swiperTipologia();
   swiperGaleria();
   swiperPlantas();
   panorama();
+  irFooter();
 }
 
 export {initSingleTipologia};

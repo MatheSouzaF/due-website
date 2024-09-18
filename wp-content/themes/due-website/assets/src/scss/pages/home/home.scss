@@ -3,7 +3,6 @@
 body.page-template-homepage {
   transition: 0.6s;
 
- 
   .logo {
     background-color: $due-tertiary;
     display: flex;
@@ -42,25 +41,35 @@ body.page-template-homepage {
               width: 100%;
               top: 0;
               left: 0;
-              &::after {
-                content: '';
+              .box-video-hero {
                 position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
                 height: 100%;
-                background: rgba(0, 59, 75, 0.35);
-                z-index: 1;
+                width: 100%;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background: rgba(0, 59, 75, 0.5);
+                  z-index: 1;
+                }
+                .video-banner-hero {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
+                }
               }
-              .video-banner-hero {
+              .box-imagem-hero {
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
-              }
-              .image-banner-hero {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
+
+                .image-banner-hero {
+                  height: 100%;
+                  width: 100%;
+                  object-fit: cover;
+                }
               }
             }
             .box-conteudo {
@@ -191,8 +200,8 @@ body.page-template-homepage {
         svg {
           filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
           transition: 0.6s;
-          width: 80px;
-          height: 80px;
+          width: 50px;
+          height: 50px;
           pointer-events: auto;
           circle {
             transition: 0.6s;
@@ -292,7 +301,7 @@ body.page-template-homepage {
 
   .nossos-club-resorts {
     padding: 120px 0;
-    .wrapper{
+    .wrapper {
       max-width: initial;
     }
     .box-titulo_link {
@@ -851,6 +860,7 @@ body.page-template-homepage {
           bottom: -75px;
           transition: 0.6s;
           width: 275px;
+          object-fit: cover;
           height: 470px;
           @include media-breakpoint-down(md) {
             left: initial;

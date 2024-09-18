@@ -1,6 +1,6 @@
 </main>
 
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="shape-coral-svg">
         <svg width="578" height="534" viewBox="0 0 578 534" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.1" clip-path="url(#clip0_1240_1204)">

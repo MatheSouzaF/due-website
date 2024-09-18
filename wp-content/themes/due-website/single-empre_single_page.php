@@ -133,7 +133,7 @@ get_header();
                                 <circle cx="10" cy="10" r="5" fill="#8AC550" />
                                 <circle cx="10" cy="10" r="9.5" stroke="#89C550" />
                             </svg>
-                            <p class=""><?php echo esc_html($link_title); ?></p>
+                            <p class="founders-grotesk"><?php echo esc_html($link_title); ?></p>
                         </a>
                     <?php endif; ?>
                 </div>
@@ -147,7 +147,7 @@ get_header();
                 </div>
 
                 <div class="receita-bruta">
-                    <p class="founders-grotesk"><?php echo __('*Receita bruta', 'due-website') ?></p>
+                    <p class="founders-grotesk"><?php echo get_field('label_receita_bruta'); ?></p>
                 </div>
             </div>
         </div>

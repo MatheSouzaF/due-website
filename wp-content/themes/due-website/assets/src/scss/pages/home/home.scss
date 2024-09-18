@@ -3,8 +3,7 @@
 body.page-template-homepage {
   transition: 0.6s;
 
-  header {
-  }
+ 
   .logo {
     background-color: $due-tertiary;
     display: flex;
@@ -293,6 +292,9 @@ body.page-template-homepage {
 
   .nossos-club-resorts {
     padding: 120px 0;
+    .wrapper{
+      max-width: initial;
+    }
     .box-titulo_link {
       margin-bottom: 40px;
       display: flex;

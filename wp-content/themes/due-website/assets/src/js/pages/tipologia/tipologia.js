@@ -199,9 +199,9 @@ function tipologiaPage() {
       }
 
       return tipologias.filter((tipologia) => {
-        const matchLocation = !locationFilter || locationFilter.includes(tipologia.location.toLowerCase());
-        const matchStatus = !statusFilter || statusFilter.includes(tipologia.status.toLowerCase());
-        const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project.toLowerCase());
+        const matchLocation = !locationFilter || locationFilter.includes(tipologia.location);
+        const matchStatus = !statusFilter || statusFilter.includes(tipologia.status);
+        const matchEmpreendimento = !empreendimentoFilter || empreendimentoFilter.includes(tipologia.project);
 
         const matchRooms = !roomsFilter ||
           (roomsFilter.includes('studio') ? tipologia.isStudio :

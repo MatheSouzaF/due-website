@@ -200,7 +200,37 @@ async function empreendimentoPage() {
       filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
       renderEmpreendimentos(filteredEmpreendimentos);
       updateBadges();
+      hideOptions();
     }
+
+    function hideOptions() {
+      const isOptionVisible = (value, key) => {
+        return filteredEmpreendimentos.some((empreendimento) => {
+          if (key === 'filter-location') return empreendimento.location === value;
+          if (key === 'filter-status') return empreendimento.status === value;
+          if (key === 'filter-rooms') {
+            const minimo = parseInt(empreendimento.rooms[0].minimo_de_quartos);
+            const maximo = parseInt(empreendimento.rooms[0].maximo_de_quartos);
+            return (empreendimento.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
+          }
+          return false;
+        });
+      };
+    
+      Object.keys(filters).forEach((key) => {
+        const $filter = filters[key];
+        $filter.find('input.ckkBox').each(function () {
+          const $checkbox = $(this);
+          const value = $checkbox.val();
+    
+          if (isOptionVisible(value, key)) {
+            $checkbox.closest('label').show();
+          } else {
+            $checkbox.closest('label').hide();
+          }
+        });
+      });
+    }    
 
     renderEmpreendimentos(empreendimentosData);
 

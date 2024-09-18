@@ -378,45 +378,99 @@ function tipologiaPage() {
       filterAndRender();
     }
 
+    let filteredTipologias = []
+
     function filterAndRender() {
-      const filteredTipologias = filterTipologias(tipologiasData);
+      filteredTipologias = filterTipologias(tipologiasData);
       renderTipologias(filteredTipologias);
       updateBadges();
     }
 
     renderTipologias(tipologiasData);
 
+    function hideOptions(changedFilter) {
+      const isOptionVisible = (value, key) => {
+        return filteredTipologias.some((tipologia) => {
+          console.log("🚀 ~ tipologia:", tipologia)
+          if (key === 'tipologia-filter-location') return tipologia.location === value;
+          if (key === 'tipologia-filter-status') return tipologia.status === value;
+          if (key === 'tipologia-filter-rooms') {
+            const minimo = parseInt(tipologia.rooms[0].minimo_de_quartos_tipologia);
+            const maximo = parseInt(tipologia.rooms[0].maximo_de_quartos_tipologia);
+            return (tipologia.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
+          }
+          if (key === 'tipologia-filter-empreendimento') return tipologia.project === value;
+          if (key === 'tipologia-filter-diferenciais') return tipologia.diffs.includes(value);
+          return false;
+        });
+      };
+    
+      const isAnyFilterApplied = () => {
+        return Object.keys(filters).some((key) => {
+          return filters[key].find('input.ckkBox:checked').length > 0;
+        });
+      };
+    
+      // Se nenhum filtro estiver aplicado, exibir todas as opções
+      if (!isAnyFilterApplied()) {
+        Object.keys(filters).forEach((key) => {
+          filters[key].find('input.ckkBox').each(function () {
+            $(this).closest('label').show();
+          });
+        });
+        return;
+      }
+    
+      // Caso contrário, aplicar a lógica de ocultar opções
+      Object.keys(filters).forEach((key) => {
+        const $filter = filters[key];
+        $filter.find('input.ckkBox').each(function () {
+          const $checkbox = $(this);
+          const value = $checkbox.val();
+          
+          if (key !== changedFilter) {
+            if (isOptionVisible(value, key)) {
+              $checkbox.closest('label').show();
+            } else {
+              $checkbox.closest('label').hide();
+            }
+          }
+        });
+      });
+    }
+
     $('#tipologia-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
-
+      hideOptions('tipologia-filter-location');
       const selectedLocations = $('#tipologia-filter-location input.ckkBox:checked').map(function () {
         return $(this).val();
       }).get();
-
       initBanner({ location: selectedLocations });
     });
-
-    initBanner({ location: 'Rota DUE' })
-
+    
     $('#tipologia-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('tipologia-filter-status');
     });
-
+    
     $('#tipologia-filter-empreendimento input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('tipologia-filter-empreendimento');
     });
-
+    
     $('#tipologia-filter-diferenciais input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('tipologia-filter-diferenciais');
     });
-
+    
     $('#tipologia-filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('tipologia-filter-rooms');
     });
 
     applyFiltersFromUrl();

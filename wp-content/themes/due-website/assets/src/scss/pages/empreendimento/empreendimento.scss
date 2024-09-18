@@ -5,15 +5,35 @@ header {
   .button-menu {
     color: $due-tertiary !important;
   }
-
-  .incorporadora {
-    display: none;
+  .link-logo-menu {
+    .box-svg-header {
+      svg {
+        path {
+          fill: $due-tertiary;
+        }
+      }
+    }
   }
 
-  .link-logo-menu {
-    .due-logo {
-      path {
-        fill: $due-tertiary;
+  .box-sidebar {
+    .navlinks {
+      .btn-menu-navlink {
+        .button-menu {
+          &::after {
+            background-color: $due-tertiary;
+          }
+        }
+      }
+    }
+  }
+  &.sticky {
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: $grey-0;
+          }
+        }
       }
     }
   }

@@ -5,8 +5,37 @@ body.single-tipo_single_page {
     .button-menu {
       color: $due-tertiary !important;
     }
-    .incorporadora {
-      display: none;
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: $due-tertiary;
+          }
+        }
+      }
+    }
+
+    .box-sidebar {
+      .navlinks {
+        .btn-menu-navlink {
+          .button-menu {
+            &::after {
+              background-color: $due-tertiary;
+            }
+          }
+        }
+      }
+    }
+    &.sticky {
+      .link-logo-menu {
+        .box-svg-header {
+          svg {
+            path {
+              fill: $grey-0;
+            }
+          }
+        }
+      }
     }
   }
   .banner-hero-single-tipologia {

@@ -43,6 +43,9 @@ class EmpreendimentoController
                     'tituloOffer' => get_field('tituloOferta'),
                     'photo' => get_field('foto_empreendimento'),
                     'video' => get_field('video_empreendimento'),
+                    'link' => get_field('link_da_pagina_desse_empreendimento'),
+                    'banner' => get_field('banner_do_destino')
+
                 );
             }
             wp_reset_postdata(); // Reseta os dados globais do post

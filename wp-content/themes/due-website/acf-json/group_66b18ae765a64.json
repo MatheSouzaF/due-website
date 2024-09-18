@@ -37,6 +37,7 @@
                 "id": ""
             },
             "choices": {
+                "741": "Praia Exclusive 2",
                 "422": "Praia Exclusive",
                 "420": "Tropí Eco Residência",
                 "418": "Naturê Eco Residência",
@@ -310,6 +311,26 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium"
+        },
+        {
+            "key": "field_66e88f7bce98b",
+            "label": "Link para a página dessa tipologia",
+            "name": "link_para_a_pagina_dessa_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Link da singlepage dessa tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -330,5 +351,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726068539
+    "modified": 1726517163
 }

@@ -1,4 +1,5 @@
 import { renderFilters } from '../../components/filter';
+import { initBanner } from '../empreendimento/banner';
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -38,6 +39,7 @@ function tipologiaPage() {
       const template = document.getElementById('tipologia-template');
       const cardTemplate = template.content.cloneNode(true);
       const $boxCard = $(cardTemplate).find('.box-card');
+      $boxCard.attr('href', tipologia.link)
 
       addStatusClass($boxCard, tipologia.status);
       updateCardContent(cardTemplate, tipologia);
@@ -387,7 +389,15 @@ function tipologiaPage() {
     $('#tipologia-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+
+      const selectedLocations = $('#tipologia-filter-location input.ckkBox:checked').map(function () {
+        return $(this).val();
+      }).get();
+
+      initBanner({ location: selectedLocations });
     });
+
+    initBanner({ location: 'Rota DUE' })
 
     $('#tipologia-filter-status input.ckkBox').on('change', function () {
       filterAndRender();

@@ -471,7 +471,7 @@ get_header();
             while ($queryTipologia->have_posts()) {
                 $queryTipologia->the_post();
                 $tipologiaId = get_the_ID();
-                $linkPost = get_permalink($tipologiaId);
+                $linkPost = get_field('link_para_a_pagina_dessa_tipologia', $tipologiaId);
                 $name = get_field('nome_da_tipologia', $tipologiaId);
                 $project = get_field('pertence_a_qual_empreendimento', $tipologiaId);
                 $location = get_field('localizacao_tipologia', $tipologiaId);
@@ -521,6 +521,7 @@ get_header();
                         'status' => $status,
                         'diffs' => $diffs,
                         'photo' => $photo,
+                        'link' => $linkPost,
                     );
                 }
             }
@@ -551,7 +552,7 @@ get_header();
 
                             $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
                             ?>
-                            <a href="<?php echo esc_url($linkPost); ?>"
+                            <a href="<?php echo $tipologia['link']; ?>"
                                 class="swiper-slide <?php echo esc_html($statusClass); ?>">
                                 <div class="tipologia-card ">
                                     <span class="estado-tipologia terminal-test">

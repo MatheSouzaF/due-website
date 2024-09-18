@@ -216,15 +216,28 @@ async function empreendimentoPage() {
         });
       };
     
+      const isAnyFilterApplied = () => {
+        return Object.keys(filters).some((key) => {
+          return filters[key].find('input.ckkBox:checked').length > 0;
+        });
+      };
+    
+      if (!isAnyFilterApplied()) {
+        Object.keys(filters).forEach((key) => {
+          filters[key].find('input.ckkBox').each(function () {
+            $(this).closest('label').show();
+          });
+        });
+        return;
+      }
+    
       Object.keys(filters).forEach((key) => {
         const $filter = filters[key];
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);
           const value = $checkbox.val();
           
-          if (key === changedFilter) {
-            $checkbox.closest('label').show();
-          } else {
+          if (key !== changedFilter) {
             if (isOptionVisible(value, key)) {
               $checkbox.closest('label').show();
             } else {
@@ -233,7 +246,7 @@ async function empreendimentoPage() {
           }
         });
       });
-    }
+    }    
     
     renderEmpreendimentos(empreendimentosData);
 

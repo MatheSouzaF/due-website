@@ -89,6 +89,10 @@ async function empreendimentoPage() {
       });
     }
 
+    function removeAccents(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
     function buildFilterUrl() {
       const locationFilter = getFilterLabel('#filter-location');
       const statusFilter = getFilterLabel('#filter-status');
@@ -97,17 +101,29 @@ async function empreendimentoPage() {
       const params = new URLSearchParams();
 
       if (locationFilter) {
-        const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedLocation = locationFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('localizacao', formattedLocation);
       }
 
       if (statusFilter) {
-        const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedStatus = statusFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('estagio', formattedStatus);
       }
 
       if (roomsFilter) {
-        const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedRooms = roomsFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('qtos', formattedRooms);
       }
 
@@ -124,25 +140,30 @@ async function empreendimentoPage() {
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#filter-location input[value="${formattedValue}"]`).click();
         });
       }
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-
-          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-
+          let formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
+          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-
+          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }
 
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
@@ -215,13 +236,13 @@ async function empreendimentoPage() {
           return false;
         });
       };
-    
+
       const isAnyFilterApplied = () => {
         return Object.keys(filters).some((key) => {
           return filters[key].find('input.ckkBox:checked').length > 0;
         });
       };
-    
+
       if (!isAnyFilterApplied()) {
         Object.keys(filters).forEach((key) => {
           filters[key].find('input.ckkBox').each(function () {
@@ -230,13 +251,13 @@ async function empreendimentoPage() {
         });
         return;
       }
-    
+
       Object.keys(filters).forEach((key) => {
         const $filter = filters[key];
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);
           const value = $checkbox.val();
-          
+
           if (key !== changedFilter) {
             if (isOptionVisible(value, key)) {
               $checkbox.closest('label').show();
@@ -246,8 +267,8 @@ async function empreendimentoPage() {
           }
         });
       });
-    }    
-    
+    }
+
     renderEmpreendimentos(empreendimentosData);
 
     $('#filter-location input.ckkBox').on('change', function () {

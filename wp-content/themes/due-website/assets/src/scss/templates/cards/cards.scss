@@ -182,8 +182,9 @@
           // height: 16px;
         }
         .texto-fale {
-          font-size: 18px;
+          font-size: 15px;
           font-style: normal;
+          white-space: nowrap;
           font-weight: 400;
           line-height: 140%;
           color: #8ac550;
@@ -195,7 +196,7 @@
     &.hover-card {
       .box-card {
         &::after {
-          background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+          background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
         }
       }
       .box-textos-empreendimentos {
@@ -352,7 +353,6 @@
               text-transform: uppercase;
             }
           }
-       
 
           .nome-tipologias {
             color: $due-tertiary;
@@ -449,7 +449,7 @@
     &.hover-card {
       .box-card {
         &::after {
-          background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
+          background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
         }
       }
       .box-textos- tipologias {

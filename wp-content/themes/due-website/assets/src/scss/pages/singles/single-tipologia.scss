@@ -5,8 +5,37 @@ body.single-tipo_single_page {
     .button-menu {
       color: $due-tertiary !important;
     }
-    .incorporadora {
-      display: none;
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: $due-tertiary;
+          }
+        }
+      }
+    }
+
+    .box-sidebar {
+      .navlinks {
+        .btn-menu-navlink {
+          .button-menu {
+            &::after {
+              background-color: $due-tertiary;
+            }
+          }
+        }
+      }
+    }
+    &.sticky {
+      .link-logo-menu {
+        .box-svg-header {
+          svg {
+            path {
+              fill: $grey-0;
+            }
+          }
+        }
+      }
     }
   }
   .banner-hero-single-tipologia {
@@ -492,9 +521,10 @@ body.single-tipo_single_page {
         letter-spacing: 0.8px;
         margin-bottom: 8px;
         font-size: 32px;
+        transition: 0.6s;
         text-align: center;
         @include media-breakpoint-up(md) {
-          font-size: 40px;
+          font-size: calc(1rem + 1.6vw);
         }
       }
       .subtitulo-entre-contato {
@@ -504,9 +534,10 @@ body.single-tipo_single_page {
         letter-spacing: 0.64px;
         color: $due-tertiary;
         margin-bottom: 64px;
+        transition: 0.6s;
         font-size: 20px;
         @include media-breakpoint-up(md) {
-          font-size: 32px;
+          font-size: calc(1rem + 1.1vw);
         }
       }
       .box-entre-contato {
@@ -546,6 +577,10 @@ body.single-tipo_single_page {
         letter-spacing: 0.44px;
         text-transform: uppercase;
         color: $grey-0;
+        transition: 0.6s;
+        @include media-breakpoint-up(md) {
+          font-size: calc(0.6rem + 0.2vw);
+        }
       }
     }
     .titulo-carrossel {
@@ -554,8 +589,12 @@ body.single-tipo_single_page {
       font-weight: 300;
       line-height: 140%; /* 44.8px */
       letter-spacing: 0.64px;
+      transition: 0.6s;
       color: $grey-0;
       margin-bottom: 60px;
+      @include media-breakpoint-up(md) {
+        font-size: calc(1rem + 1.3vw);
+      }
     }
 
     .box-swiper {
@@ -565,6 +604,10 @@ body.single-tipo_single_page {
           padding-bottom: 20px;
           border-bottom: 1px solid #fff;
           height: 510px;
+          @include media-breakpoint-up(md) {
+            height: 560px;
+            width: 296px !important;
+          }
           .tipologia-card {
             position: relative;
             .estado-tipologia {
@@ -642,7 +685,7 @@ body.single-tipo_single_page {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                width: 48%;
+                width: 47%;
 
                 gap: 8px;
                 .diifs-names {

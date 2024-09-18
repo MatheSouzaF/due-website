@@ -35,7 +35,7 @@ body.single-empre_single_page {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(180deg, rgba(0, 59, 75, 0.70) 0%, rgba(0, 59, 75, 0.00) 100%);
+          background: linear-gradient(180deg, rgba(0, 59, 75, 0.7) 0%, rgba(0, 59, 75, 0.2) 100%);
         }
         img {
           height: 100%;
@@ -57,8 +57,7 @@ body.single-empre_single_page {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(180deg, rgba(0, 59, 75, 0.70) 0%, rgba(0, 59, 75, 0.00) 100%);
-          
+          background: linear-gradient(180deg, rgba(0, 59, 75, 0.7) 0%, rgba(0, 59, 75, 0) 100%);
         }
         video {
           height: 100%;
@@ -96,7 +95,7 @@ body.single-empre_single_page {
           font-size: 40px;
           transition: 0.6s;
           @include media-breakpoint-up(md) {
-            font-size: 64px;
+            font-size: calc(1rem + 3vw);
           }
         }
         .localizacao-hero {
@@ -107,6 +106,10 @@ body.single-empre_single_page {
           letter-spacing: 0.48px;
           text-transform: uppercase;
           color: $grey-0;
+          transition: 0.6s;
+          @include media-breakpoint-up(md) {
+            font-size: calc(0.6rem + 0.3vw);
+          }
         }
         .box-infos {
           display: flex;
@@ -125,9 +128,16 @@ body.single-empre_single_page {
               font-weight: 400;
               line-height: 140%; /* 25.2px */
               letter-spacing: 0.36px;
+              transition: 0.6s;
+              @include media-breakpoint-up(md) {
+                font-size: calc(0.6rem + 0.7vw);
+              }
             }
-            .element{
+            .element {
               height: 20px;
+              svg {
+                height: 20px;
+              }
             }
           }
         }
@@ -190,7 +200,11 @@ body.single-empre_single_page {
             }
           }
           .box-textos-introducao {
-            max-width: 458px;
+            max-width: 428px;
+            transition: 0.6s;
+            @include media-breakpoint-up(xxl) {
+              max-width: 800px;
+            }
             .titulo-introducao {
               font-size: 32px;
               font-style: normal;
@@ -199,6 +213,10 @@ body.single-empre_single_page {
               letter-spacing: 0.64px;
               margin-bottom: 16px;
               color: $due-tertiary;
+              transition: 0.6s;
+              @include media-breakpoint-up(md) {
+                font-size: calc(1rem + 0.9vw);
+              }
             }
             .subtitulo-introducao {
               font-size: 18px;
@@ -207,6 +225,10 @@ body.single-empre_single_page {
               line-height: 140%; /* 25.2px */
               letter-spacing: 0.36px;
               color: $due-tertiary;
+              transition: 0.6s;
+              @include media-breakpoint-up(md) {
+                font-size: calc(1rem + 0.2vw);
+              }
             }
           }
         }
@@ -226,6 +248,9 @@ body.single-empre_single_page {
             letter-spacing: 0.32px;
             color: $due-tertiary;
             margin-bottom: 56px;
+            @include media-breakpoint-up(md) {
+              font-size: calc(0.8rem + 0.3vw);
+            }
           }
           .repetidor-valores {
             display: flex;
@@ -374,15 +399,16 @@ body.single-empre_single_page {
             padding: 0 0 40px;
           }
           h3 {
-            @include media-breakpoint-up(sm) {
-              font-size: 40px;
-            }
             font-style: normal;
             font-weight: 300;
             line-height: 140%;
             letter-spacing: 0.8px;
             color: $grey-0;
             font-size: 24px;
+            transition: 0.6s;
+            @include media-breakpoint-up(sm) {
+              font-size: calc(1rem + 1.6vw);
+            }
           }
         }
         .box-cards-praia {
@@ -567,15 +593,16 @@ body.single-empre_single_page {
         color: $due-tertiary;
         margin-bottom: 40px;
         font-size: 24px;
+        transition: 0.6s;
         @include media-breakpoint-up(sm) {
-          font-size: 40px;
+          font-size: calc(1rem + 1.6vw);
         }
       }
 
       .box-lista-rota {
         display: flex;
         flex-direction: row;
-        gap: 24px;
+        gap: 12x;
         align-items: center;
         margin-bottom: 24px;
         .lista-rota {
@@ -589,6 +616,10 @@ body.single-empre_single_page {
             color: $due-tertiary;
             cursor: pointer;
             position: relative;
+            transition: 0.6s;
+            @include media-breakpoint-up(md) {
+              font-size: calc(0.3rem + 0.4vw);
+            }
             &::after {
               content: '';
               bottom: -6px;
@@ -609,7 +640,7 @@ body.single-empre_single_page {
       }
 
       .box-aba-galeria {
-        .swiper-slide{
+        .swiper-slide {
           max-width: 280px;
         }
         .card-rota {
@@ -668,8 +699,27 @@ body.single-empre_single_page {
           margin-bottom: 32px;
           color: $due-tertiary;
           font-size: 24px;
+          transition: 0.6s;
           @include media-breakpoint-up(sm) {
-            font-size: 32px;
+            font-size: calc(1rem + 1.1vw);
+          }
+        }
+        .box-mobli-legenda {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 30px;
+          @include media-breakpoint-up(md) {
+            display: none;
+          }
+          .label-legenda {
+            color: $due-tertiary;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 16px */
+            letter-spacing: 0.32px;
           }
         }
       }
@@ -756,8 +806,9 @@ body.single-empre_single_page {
         font-size: 24px;
         text-align: center;
         color: $due-tertiary;
+        transition: 0.6s;
         @include media-breakpoint-up(sm) {
-          font-size: 40px;
+          font-size: calc(1rem + 1.6vw);
         }
       }
       .box-swiper {
@@ -930,7 +981,7 @@ body.single-empre_single_page {
     .diferenciais {
       background: $due-secondary;
       height: 100%;
-      padding: 64px 0;
+      padding: 64px 0 128px;
       @include media-breakpoint-up(md) {
         padding: 120px 0;
       }
@@ -942,10 +993,12 @@ body.single-empre_single_page {
         color: $grey-0;
         text-align: center;
         margin-bottom: 80px;
-
         font-size: 24px;
+        transition: 0.6s;
+        margin-bottom: 64px;
         @include media-breakpoint-up(sm) {
-          font-size: 40px;
+          margin-bottom: 80px;
+          font-size: calc(1rem + 1.6vw);
         }
       }
       .box-cards-diferenciais {
@@ -986,6 +1039,9 @@ body.single-empre_single_page {
             letter-spacing: 0.36px;
             text-align: center;
             max-width: 260px;
+            @include media-breakpoint-up(md) {
+              font-size: calc(0.7rem + 0.4vw);
+            }
           }
         }
         &.center-rows {
@@ -1005,6 +1061,8 @@ body.single-empre_single_page {
             align-items: center;
             padding-bottom: 32px;
             border-bottom: 1px solid #fff;
+            gap: 24px;
+
             .box-svg {
               display: flex;
               align-items: center;
@@ -1022,7 +1080,8 @@ body.single-empre_single_page {
             }
           }
           .swiper-pagination {
-            bottom: -30px;
+            bottom: -64px;
+
             .swiper-pagination-bullet {
               background-color: #fff;
             }
@@ -1045,6 +1104,10 @@ body.single-empre_single_page {
         letter-spacing: -0.32px;
         color: $due-tertiary;
         margin-bottom: 56px;
+        transition: 0.6s;
+        @include media-breakpoint-up(sm) {
+          font-size: calc(1rem + 1.1vw);
+        }
       }
       .box-estagio-obra {
         display: flex;
@@ -1191,8 +1254,9 @@ body.single-empre_single_page {
           letter-spacing: -0.2px;
           text-align: center;
           font-size: 16px;
+          transition: 0.6s;
           @include media-breakpoint-up(md) {
-            font-size: 20px;
+            font-size: calc(0.8rem + 0.6vw);
             text-align: start;
           }
         }
@@ -1227,6 +1291,9 @@ body.single-empre_single_page {
           flex-direction: column;
           width: 100%;
           max-width: 600px;
+          @include media-breakpoint-up(xxl) {
+            max-width: 800px;
+          }
           .titulo-infos-obra {
             font-size: 24px;
             font-style: normal;
@@ -1235,6 +1302,10 @@ body.single-empre_single_page {
             letter-spacing: 0.48px;
             margin-bottom: 20px;
             color: $due-tertiary;
+            transition: 0.6s;
+            @include media-breakpoint-up(sm) {
+              font-size: calc(1rem + 0.8vw);
+            }
           }
           .descricao-infos-obra {
             font-size: 18px;
@@ -1243,11 +1314,15 @@ body.single-empre_single_page {
             line-height: 140%;
             letter-spacing: 0.36px;
             color: $due-tertiary;
+            transition: 0.6s;
+            @include media-breakpoint-up(md) {
+              font-size: calc(0.7rem + 0.6vw);
+            }
           }
         }
         .box-autores {
           width: 100%;
-          max-width: 377px;
+          max-width: 450px;
           .row-autores {
             margin-bottom: 40px;
             .titulo-autores {
@@ -1258,6 +1333,10 @@ body.single-empre_single_page {
               letter-spacing: 0.36px;
               margin-bottom: 16px;
               color: $due-tertiary;
+              transition: 0.6s;
+              @include media-breakpoint-up(md) {
+                font-size: calc(0.7rem + 0.6vw);
+              }
             }
             .text-autor {
               font-size: 18px;
@@ -1266,6 +1345,10 @@ body.single-empre_single_page {
               line-height: 140%; /* 25.2px */
               letter-spacing: 0.36px;
               color: $due-tertiary;
+              transition: 0.6s;
+              @include media-breakpoint-up(md) {
+                font-size: calc(0.7rem + 0.6vw);
+              }
             }
           }
         }

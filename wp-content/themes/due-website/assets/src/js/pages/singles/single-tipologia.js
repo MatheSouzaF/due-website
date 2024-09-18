@@ -2,11 +2,11 @@ import {Viewer} from '@photo-sphere-viewer/core';
 
 function swiperTipologia() {
   var swiper = new Swiper('.tipologias-swiper', {
-    slidesPerView: 1.2,
+    slidesPerView: 1.1,
     spaceBetween: 24,
     breakpoints: {
       1024: {
-        slidesPerView: 3,
+        slidesPerView: 3.8,
       },
     },
     navigation: {

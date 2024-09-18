@@ -66,7 +66,7 @@ function backgroundAssociacaoSuperacao() {
   });
 }
 function animationAssociacaoSuperacao() {
-  const logoSVG = document.querySelector('.box-svg');
+  const logoSVG = document.querySelector('.box-svg-associacao-superacao');
   const tituloAssociacao = document.querySelector('.titulo-associacao-superacao');
   const descricaoAssociacao = document.querySelector('.descricao-associacao-superacao');
   const linkAssociacao = document.querySelector('.link-associacao-superacao-desktop');
@@ -331,14 +331,7 @@ function animationSelosCertificados() {
     });
   });
 
-  gsap.from('.selos-certificados', {
-    scrollTrigger: {
-      trigger: '.selos-certificados',
-      ease: 'power2.out', // Adiciona um easer para suavizar a
-      start: 'top-=300',
-      onEnter: pathCard,
-    },
-  });
+
 }
 
 function initIniciativas() {

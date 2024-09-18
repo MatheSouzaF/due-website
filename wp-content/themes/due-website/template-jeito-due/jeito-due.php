@@ -38,7 +38,7 @@ get_header();
                             <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
                             <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
                         </svg>
-                        <p><?php echo __('ASSISTA E CONHECA', 'due-website'); ?> </p>
+                        <p><?php echo __('ASSISTA E CONHEÇA', 'due-website'); ?> </p>
                     </div>
 
                     <?php

@@ -116,7 +116,7 @@
           <circle cx="10" cy="10" r="5" fill="#8AC550" />
           <circle cx="10" cy="10" r="9.5" stroke="#89C550" />
         </svg>
-        <p class="texto-fale founders-grotesk">Fale com nosso time</p>
+        <p class="texto-fale founders-grotesk"><?php echo __('Contato comercial', 'due-website') ?></p>
       </div>
     </div>
   </div>

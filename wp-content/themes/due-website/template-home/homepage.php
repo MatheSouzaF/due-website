@@ -3,7 +3,10 @@
 wp_enqueue_style('home', get_template_directory_uri() . '/assets/dist/css/home/home.css', ['main'], ASSETS_VERSION);
 get_header();
 ?>
+<section class="logo">
+    <div id="dotLottie-canvas"></div>
 
+</section>
 <section class="banner-hero">
     <div class="swiper-container swiper-banner">
         <div class="swiper-wrapper">
@@ -33,8 +36,15 @@ get_header();
                             <div class="box-conteudo">
                                 <div class="wrapper-hero">
                                     <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
-                                    <p class="subtitulo-banner-hero"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
+                                    <div class="box-repetidor-subtitulo">
 
+                                        <?php
+                                        if (have_rows('repetidor_subtitulo_banner')) :
+                                            while (have_rows('repetidor_subtitulo_banner')) : the_row(); ?>
+                                                <p class="subtitulo-banner-hero word"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
+                                        <?php endwhile;
+                                        endif; ?>
+                                    </div>
                                     <?php if (get_sub_field('botao_video')): ?>
                                         <?php
                                         $modalVideo = get_sub_field('video_modal_botao');
@@ -77,16 +87,16 @@ get_header();
             endif; ?>
         </div>
         <div class="box-buttons">
-                <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                    <circle cx="40" cy="40" r="40" fill="white" />
-                    <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
-                </svg>
+            <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" fill="white" />
+                <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
+            </svg>
 
-                <svg class="swiper-btn-banner-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
-                    <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
-                    <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
-                </svg>
-            </div>
+            <svg class="swiper-btn-banner-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
+            </svg>
+        </div>
         <div class="swiper-pagination"></div>
     </div>
 
@@ -407,12 +417,83 @@ get_header();
 </section>
 
 <?php get_template_part('template-invista/invista'); ?>
+<script>
+    function swiperBanner() {
+        var mySwiper = new Swiper('.swiper-banner', {
+            // loop: true,
+            autoplayDisableOnInteraction: false,
+            slidesPerView: 1,
+            autoHeight: true,
+            autoplay: {
+                delay: 6000, // Match the animation time
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                type: 'bullets',
+                renderBullet: function(index, className) {
+                    return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
+                },
+            },
+            navigation: {
+                nextEl: '.swiper-btn-banner-next',
+                prevEl: '.swiper-btn-banner-prev',
+            },
+        });
 
+        function modalBanner() {
+            $('.js-modal-open-banner').on('click', function(e) {
+                e.preventDefault();
+                var msrc = $(this).data('src');
+                $('.js-modal').find('.video-container').html(msrc);
+                $('.js-modal').fadeIn();
 
+                // Pausa o Swiper quando o modal é aberto
+                mySwiper.autoplay.stop();
+            });
 
-<?php /** 
-<?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
-<?php get_template_part('template-cards/cards'); ?>
- **/ ?>
+            $('.js-modal-close, .js-modal-close-btn').on('click', function(e) {
+                e.preventDefault();
+                $('.js-modal').fadeOut(function() {
+                    $('.js-modal').find('.video-container').html('');
+
+                    // Retoma o Swiper quando o modal é fechado
+                    setTimeout(function() {
+                        mySwiper.autoplay.start();
+                    }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
+                });
+            });
+        }
+        modalBanner();
+    }
+
+ canvas = document.getElementById('dotLottie-canvas');
+    var lottieAnimation = lottie.loadAnimation({
+        container: canvas,
+        path: '/wp-content/themes/due-website/assets/src/lottie/logo.json',
+        autoplay: true,
+        loop: false,
+    });
+    lottieAnimation.addEventListener('complete', function() {
+        // Iniciar o GSAP Timeline após o Lottie terminar
+        gsap.timeline()
+        gsap.to(".logo", {
+            height: 0,
+            duration: 1,
+            zIndex: -1,
+        });
+        gsap.to("#dotLottie-canvas", {
+            opacity: 0,
+            duration: 1,
+            onComplete: function() {
+                swiperBanner(); 
+            }
+        });
+    });
+</script>
 
 <?php get_footer() ?>

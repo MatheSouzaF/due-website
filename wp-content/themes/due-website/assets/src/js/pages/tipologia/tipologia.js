@@ -1,5 +1,5 @@
 import { renderFilters } from '../../components/filter';
-import { initBanner } from '../empreendimento/banner';
+import { initBanner } from '../../components/banner'
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');

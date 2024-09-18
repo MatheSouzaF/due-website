@@ -1,4 +1,4 @@
-import { resetCheckboxesEmpreendimentos, resetCheckboxesTipologia } from "./reset-filters"
+import { resetCheckboxesEmpreendimentos, resetCheckboxesTipologia } from "../utils/reset-filters"
 
 function initTabToggle() {
   console.log('Init tab toggle')

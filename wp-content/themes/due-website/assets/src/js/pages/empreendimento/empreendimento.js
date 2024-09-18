@@ -1,5 +1,5 @@
 import { renderFilters } from '../../components/filter';
-import { initBanner } from './banner'
+import { initBanner } from '../../components/banner'
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');

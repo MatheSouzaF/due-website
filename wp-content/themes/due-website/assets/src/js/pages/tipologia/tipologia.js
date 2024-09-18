@@ -145,9 +145,9 @@ function tipologiaPage() {
           ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
-            .map((room) => ({ 
-              value: room, 
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}` 
+            .map((room) => ({
+              value: room,
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
             }))
         ],
       };
@@ -169,7 +169,7 @@ function tipologiaPage() {
       const value = $(selector)
         .find('input:checked')
         .map(function () {
-          return selector === '#tipologia-filter-diferenciais' ? this.value : this.value.toLowerCase();
+          return selector === '#tipologia-filter-diferenciais' ? this.value : this.value;
         })
         .get();
 
@@ -280,6 +280,10 @@ function tipologiaPage() {
       });
     }
 
+    function removeAccents(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
     function buildFilterUrl() {
       const locationFilter = getFilterLabel('#tipologia-filter-location');
       const statusFilter = getFilterLabel('#tipologia-filter-status');
@@ -288,34 +292,54 @@ function tipologiaPage() {
       const roomsFilter = getFilterLabel('#tipologia-filter-rooms');
 
       const params = new URLSearchParams();
-      let hasFilters = false
+      let hasFilters = false;
 
       if (locationFilter) {
-        const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedLocation = locationFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('tipo-localizacao', formattedLocation);
         hasFilters = true;
       }
 
       if (statusFilter) {
-        const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedStatus = statusFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('tipo-estagio', formattedStatus);
         hasFilters = true;
       }
 
       if (empreendimentoFilter) {
-        const formattedEmpreendimento = empreendimentoFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedEmpreendimento = empreendimentoFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('tipo-empreendimento', formattedEmpreendimento);
         hasFilters = true;
       }
 
       if (diferenciaisFilter) {
-        const formattedDiferenciais = diferenciaisFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedDiferenciais = diferenciaisFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('tipo-diferenciais', formattedDiferenciais);
         hasFilters = true;
       }
 
       if (roomsFilter) {
-        const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedRooms = roomsFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('tipo-qtos', formattedRooms);
         hasFilters = true;
       }
@@ -339,16 +363,23 @@ function tipologiaPage() {
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#tipologia-filter-location input[value="${formattedValue}"]`).click();
         });
       }
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          let formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
 
+          // Condição para transformar 'ultimas_unidades' em 'Últimas unidades'
+          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
+          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
 
           $(`#tipologia-filter-status input[value="${formattedValue}"]`).click();
         });
@@ -356,21 +387,27 @@ function tipologiaPage() {
 
       if (empreendimentoFilter) {
         empreendimentoFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#tipologia-filter-empreendimento input[value="${formattedValue}"]`).click();
         });
       }
 
       if (diferenciaisFilter) {
         diferenciaisFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#tipologia-filter-diferenciais input[value="${formattedValue}"]`).click();
         });
       }
 
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#tipologia-filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
@@ -382,6 +419,7 @@ function tipologiaPage() {
 
     function filterAndRender() {
       filteredTipologias = filterTipologias(tipologiasData);
+      console.log("🚀 ~ filteredTipologias:", filteredTipologias)
       renderTipologias(filteredTipologias);
       updateBadges();
     }
@@ -391,7 +429,6 @@ function tipologiaPage() {
     function hideOptions(changedFilter) {
       const isOptionVisible = (value, key) => {
         return filteredTipologias.some((tipologia) => {
-          console.log("🚀 ~ tipologia:", tipologia)
           if (key === 'tipologia-filter-location') return tipologia.location === value;
           if (key === 'tipologia-filter-status') return tipologia.status === value;
           if (key === 'tipologia-filter-rooms') {
@@ -404,13 +441,13 @@ function tipologiaPage() {
           return false;
         });
       };
-    
+
       const isAnyFilterApplied = () => {
         return Object.keys(filters).some((key) => {
           return filters[key].find('input.ckkBox:checked').length > 0;
         });
       };
-    
+
       // Se nenhum filtro estiver aplicado, exibir todas as opções
       if (!isAnyFilterApplied()) {
         Object.keys(filters).forEach((key) => {
@@ -420,14 +457,14 @@ function tipologiaPage() {
         });
         return;
       }
-    
+
       // Caso contrário, aplicar a lógica de ocultar opções
       Object.keys(filters).forEach((key) => {
         const $filter = filters[key];
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);
           const value = $checkbox.val();
-          
+
           if (key !== changedFilter) {
             if (isOptionVisible(value, key)) {
               $checkbox.closest('label').show();
@@ -448,25 +485,25 @@ function tipologiaPage() {
       }).get();
       initBanner({ location: selectedLocations });
     });
-    
+
     $('#tipologia-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
       hideOptions('tipologia-filter-status');
     });
-    
+
     $('#tipologia-filter-empreendimento input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
       hideOptions('tipologia-filter-empreendimento');
     });
-    
+
     $('#tipologia-filter-diferenciais input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
       hideOptions('tipologia-filter-diferenciais');
     });
-    
+
     $('#tipologia-filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();

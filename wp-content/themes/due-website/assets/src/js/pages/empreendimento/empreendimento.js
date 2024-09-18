@@ -103,7 +103,7 @@ async function empreendimentoPage() {
       if (locationFilter) {
         const formattedLocation = locationFilter.map((value) =>
           encodeURIComponent(
-            removeAccents(value.toLowerCase()).replace(/ /g, '_').replace(/%/g, '')
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
           )
         ).join(',');
         params.set('localizacao', formattedLocation);
@@ -112,7 +112,7 @@ async function empreendimentoPage() {
       if (statusFilter) {
         const formattedStatus = statusFilter.map((value) =>
           encodeURIComponent(
-            removeAccents(value.toLowerCase()).replace(/ /g, '_').replace(/%/g, '')
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
           )
         ).join(',');
         params.set('estagio', formattedStatus);
@@ -121,7 +121,7 @@ async function empreendimentoPage() {
       if (roomsFilter) {
         const formattedRooms = roomsFilter.map((value) =>
           encodeURIComponent(
-            removeAccents(value.toLowerCase()).replace(/ /g, '_').replace(/%/g, '')
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
           )
         ).join(',');
         params.set('qtos', formattedRooms);
@@ -152,9 +152,9 @@ async function empreendimentoPage() {
           let formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          formattedValue = formattedValue === 'ultimas unidades' ? 'Últimas unidades' : formattedValue;
+          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-          formattedValue = formattedValue === 'lancamento' ? 'Lançamento' : formattedValue;
+          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }

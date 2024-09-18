@@ -86,7 +86,7 @@ function initDynamicModules() {
     },
     {
       selector: '.page-empreendimentos-tipologia',
-      modulePath: './pages/empreendimento/tab-toggle.js',
+      modulePath: './components/tab-toggle.js',
       moduleFunction: 'initTabToggle',
     },
   ];

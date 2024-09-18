@@ -62,6 +62,9 @@
         transition: 0.6s;
         pointer-events: none;
         height: 470px;
+        @include media-breakpoint-up(xxl) {
+         height: 700px;  
+        }
         &::after {
           transition: 0.6s;
           position: absolute;
@@ -90,7 +93,7 @@
           transition: 0.6s;
           max-height: 470px;
           @include media-breakpoint-up(xxl) {
-            max-height: 570px;
+            max-height: 700px;
           }
         }
         .box-list-hover {

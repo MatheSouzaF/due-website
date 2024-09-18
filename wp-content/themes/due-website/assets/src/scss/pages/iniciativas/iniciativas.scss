@@ -294,9 +294,9 @@ body.page-template-iniciativas {
           width: 100%;
           object-fit: cover;
         }
-      }
-      @include media-breakpoint-up(md) {
-        height: 90vh;
+        @include media-breakpoint-up(md) {
+          height: 90vh;
+        }
       }
 
       .link-associacao-superacao-mobile {

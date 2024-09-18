@@ -301,7 +301,7 @@ get_header();
         <div class="wrapper">
 
             <h3 class="titulo-entre-contato"><?php echo get_field('titulo_entre_em_contato'); ?></h3>
-            <p class="subtitulo-entre-contato"><?php echo get_field('descricao_entre_em_contato'); ?></p>
+            <p class="subtitulo-entre-contato founders-grotesk"><?php echo get_field('descricao_entre_em_contato'); ?></p>
             <div class="box-entre-contato">
 
                 <?php
@@ -311,8 +311,7 @@ get_header();
                     $link_title = $link['title'];
                     $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
-                    <a class="button-fixed-whatsapp" href="<?php echo esc_url($link_url); ?>"
-                        target="<?php echo esc_attr($link_target); ?>">
+                    <a class="button-fixed-whatsapp" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
                         <p class=""><?php echo esc_html($link_title); ?></p>
                     </a>
                 <?php endif; ?>

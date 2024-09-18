@@ -19,7 +19,10 @@ get_header();
                                 <?php if (have_rows('video_ou_imagem')): ?>
                                     <?php while (have_rows('video_ou_imagem')) : the_row(); ?>
                                         <?php if (get_row_layout() == 'video_banner'): ?>
-                                            <video class="video-banner-hero" autoplay="autoplay" src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
+                                            <div class="box-video-hero">
+                                                <video class="video-banner-hero" autoplay="autoplay" src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
+                                            </div>
+
                                         <?php elseif (get_row_layout() == 'imagem_banner'): ?>
                                             <?php
                                             $image = get_sub_field('imagem_banner_hero');
@@ -27,7 +30,10 @@ get_header();
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
                                             ?>
-                                                <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                <div class="box-imagem-hero">
+
+                                                    <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                </div>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     <?php endwhile; ?>
@@ -471,7 +477,7 @@ get_header();
         modalBanner();
     }
 
- canvas = document.getElementById('dotLottie-canvas');
+    canvas = document.getElementById('dotLottie-canvas');
     var lottieAnimation = lottie.loadAnimation({
         container: canvas,
         path: '/wp-content/themes/due-website/assets/src/lottie/logo.json',
@@ -490,7 +496,7 @@ get_header();
             opacity: 0,
             duration: 1,
             onComplete: function() {
-                swiperBanner(); 
+                swiperBanner();
             }
         });
     });

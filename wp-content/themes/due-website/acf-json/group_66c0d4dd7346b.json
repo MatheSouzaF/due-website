@@ -35,11 +35,13 @@
                 "id": ""
             },
             "choices": {
-                "741": "Praia Exclusive 2",
-                "422": "Praia Exclusive",
-                "420": "Tropí Eco Residência",
-                "418": "Naturê Eco Residência",
-                "412": "Cais Eco Residência"
+                "553": "teste",
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
             },
             "default_value": false,
             "return_format": "value",
@@ -277,6 +279,26 @@
             "key": "field_66c0d690ca8d3",
             "label": "Parágrafo Introdução",
             "name": "paragrafo_introducao",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66eae280636a0",
+            "label": "Label Receita Bruta",
+            "name": "label_receita_bruta",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -854,7 +876,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -898,13 +920,11 @@
                         "id": ""
                     },
                     "layout": "table",
-                    "pagination": 0,
                     "min": 0,
                     "max": 0,
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
-                    "parent_repeater": "field_66e08ebea323a",
                     "sub_fields": [
                         {
                             "key": "field_66c0d871ca8df",
@@ -932,7 +952,7 @@
                             "label": "Imagens do espaço",
                             "name": "imagens_do_espaco",
                             "aria-label": "",
-                            "type": "repeater",
+                            "type": "image",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -941,44 +961,20 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "layout": "table",
-                            "pagination": 0,
-                            "min": 0,
-                            "max": 0,
-                            "collapsed": "",
-                            "button_label": "Adicionar linha",
-                            "rows_per_page": 20,
-                            "sub_fields": [
-                                {
-                                    "key": "field_66e8390949ce7",
-                                    "label": "Imagem",
-                                    "name": "imagem",
-                                    "aria-label": "",
-                                    "type": "image",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "return_format": "array",
-                                    "library": "all",
-                                    "min_width": "",
-                                    "min_height": "",
-                                    "min_size": "",
-                                    "max_width": "",
-                                    "max_height": "",
-                                    "max_size": "",
-                                    "mime_types": "",
-                                    "preview_size": "medium",
-                                    "parent_repeater": "field_66c0d87bca8e0"
-                                }
-                            ],
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium",
                             "parent_repeater": "field_66c0d7e9ca8de"
                         }
-                    ]
+                    ],
+                    "parent_repeater": "field_66e08ebea323a"
                 }
             ]
         },
@@ -1552,5 +1548,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726495066
+    "modified": 1726669488
 }

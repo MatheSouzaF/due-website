@@ -428,6 +428,7 @@
               #rd-column-lwt99dk3 {
                 div {
                   background-color: transparent;
+                  padding: 0;
                   .bricks-form__fieldset {
                     .bricks-form__input {
                       background-color: transparent;
@@ -602,18 +603,17 @@
           letter-spacing: 0.33px;
           text-transform: uppercase;
           opacity: 0;
-          display: none;
+          height: 0;
           transition: 0.6s;
-          padding-bottom: 14px;
           border-bottom: 1px solid #fff;
-          margin-top: 56px;
         }
       }
 
       &:hover {
         .text-link {
           opacity: 1;
-          display: flex;
+          height: 20px;
+          margin-top: 56px;
         }
       }
 

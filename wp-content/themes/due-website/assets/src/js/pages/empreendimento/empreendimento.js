@@ -1,5 +1,10 @@
 import { renderFilters } from '../../components/filter';
-import { initBanner } from './banner'
+import { initBanner } from '../../components/banner'
+import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
+import { generateBadge } from '../../components/badge';
+import { getFilterValue } from '../../utils/get-filter-value';
+import { getFilterLabel } from '../../utils/get-filter-label';
+import { cardHover } from '../../components/card-hover'
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -23,145 +28,6 @@ async function empreendimentoPage() {
         const cardTemplate = createEmpreendimentoCard(empreendimento);
         $container.append(cardTemplate);
       });
-    }
-
-    function updateResultsText($element, empreendimentoCount) {
-      const text = empreendimentoCount === 1 ? `Selecionamos ${empreendimentoCount} imóvel para você` : `Selecionamos ${empreendimentoCount} imóveis para você`;
-      $element.text(text);
-    }
-
-    function clearContainer($container) {
-      $container.html('');
-    }
-
-    function createEmpreendimentoCard(empreendimento) {
-      const template = document.getElementById('empreendimento-template');
-      const cardTemplate = template.content.cloneNode(true);
-      const $boxCard = $(cardTemplate).find('.box-card');
-      $boxCard.attr('href', empreendimento.link)
-
-      addStatusClass($boxCard, empreendimento.status);
-      updateCardContent(cardTemplate, empreendimento);
-
-      return cardTemplate;
-    }
-
-    function addStatusClass($boxCard, status) {
-      const statusMap = {
-        'Em obra': 'em_obra',
-        'Lançamento': 'lancamento',
-        '100% vendido': 'vendido',
-        'Últimas unidades': 'ultimas_unidades'
-      };
-
-      const statusClass = statusMap[status] || status;
-      $boxCard.addClass(statusClass);
-    }
-
-    function updateCardContent(cardTemplate, empreendimento) {
-      $(cardTemplate).find('.nome-empreendimento').text(empreendimento.name || 'N/A');
-      $(cardTemplate).find('.localizacao-empreendimento').text(empreendimento.location || 'N/A');
-      $(cardTemplate).find('.label-informativo').text(empreendimento.status || 'N/A');
-
-      updateRooms(cardTemplate, empreendimento.rooms, empreendimento.isStudio);
-      updateSize(cardTemplate, empreendimento.size);
-      updateOffer(cardTemplate, empreendimento.offer, empreendimento.tituloOffer);
-      updateMedia(cardTemplate, empreendimento.photo, empreendimento.video);
-    }
-
-    function updateRooms(cardTemplate, rooms, isStudio) {
-      const quartos = rooms && rooms[0];
-      const roomsText = quartos ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} qtos` : 'N/A';
-      $(cardTemplate).find('.info-quartos').text(roomsText);
-    }
-
-    function updateSize(cardTemplate, size) {
-      const tamanho = size && size[0];
-      const sizeText = tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A';
-      $(cardTemplate).find('.info-tamanho').text(sizeText);
-    }
-
-    function updateOffer(cardTemplate, offer, tituloOffer) {
-      $(cardTemplate).find('.valor').text(offer || 'N/A');
-      $(cardTemplate).find('.entradas').text(tituloOffer || 'N/A');
-    }
-
-    function updateMedia(cardTemplate, photo, video) {
-      if (photo && photo.url) {
-        $(cardTemplate).find('.imagem-empreendimento').attr('src', photo.url);
-      } else {
-        $(cardTemplate).find('.imagem-empreendimento').hide();
-      }
-
-      if (video) {
-        $(cardTemplate).find('.video-empreendimento').attr('src', video);
-      } else {
-        $(cardTemplate).find('.video-empreendimento').hide();
-      }
-    }
-
-    function populateFilterOptions() {
-      const locationOptions = [...new Set(empreendimentosData.map((e) => e.location))];
-      const statusOptions = [...new Set(empreendimentosData.map((e) => e.status))];
-
-      const roomsOptions = new Set();
-      empreendimentosData.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
-
-        for (let i = minimo; i <= maximo; i++) {
-          roomsOptions.add(i);
-        }
-      });
-
-      const isStudio = empreendimentosData.map(e => e.isStudio)
-
-      const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
-        'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
-          ...Array.from(roomsOptions)
-            .sort()
-            .map((room) => ({
-              value: room,
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
-            }))
-        ],
-      };
-
-      return options;
-    }
-
-    const filters = {
-      'filter-location': $('#filter-location'),
-      'filter-status': $('#filter-status'),
-      'filter-rooms': $('#filter-rooms'),
-    };
-
-    const options = populateFilterOptions();
-    renderFilters(filters, options);
-
-    function getFilterValue(selector) {
-      const value = $(selector)
-        .find('input:checked')
-        .map(function () {
-          return this.value.toLowerCase();
-        })
-        .get();
-
-      return value.length > 0 ? value : null;
-    }
-
-    function getFilterLabel(selector) {
-      const value = $(selector)
-        .find('input:checked')
-        .map(function () {
-          return this.value;
-        })
-        .get();
-
-      return value.length > 0 ? value : null;
     }
 
     function filterEmpreendimentos(empreendimentos) {
@@ -190,23 +56,6 @@ async function empreendimentoPage() {
 
         return matchLocation && matchStatus && matchRooms;
       });
-    }
-
-    function generateBadge(filterValue, filterType) {
-      let badgeLabel = filterValue;
-
-      if (filterType === 'rooms' && filterValue !== 'studio') {
-        badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
-      }
-
-      const badgeTemplate = `
-        <span class="badge ${filterType}">
-          ${badgeLabel}
-          <button type="button" class="remove-badge" data-filter="${filterType}" data-value="${filterValue}">x</button>
-        </span>
-      `;
-
-      $('.filters-applied').append(badgeTemplate);
     }
 
     function updateBadges() {
@@ -240,6 +89,10 @@ async function empreendimentoPage() {
       });
     }
 
+    function removeAccents(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
     function buildFilterUrl() {
       const locationFilter = getFilterLabel('#filter-location');
       const statusFilter = getFilterLabel('#filter-status');
@@ -248,17 +101,29 @@ async function empreendimentoPage() {
       const params = new URLSearchParams();
 
       if (locationFilter) {
-        const formattedLocation = locationFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedLocation = locationFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('localizacao', formattedLocation);
       }
 
       if (statusFilter) {
-        const formattedStatus = statusFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedStatus = statusFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('estagio', formattedStatus);
       }
 
       if (roomsFilter) {
-        const formattedRooms = roomsFilter.map((value) => value.replace(/ /g, '_').replace(/%/g, '')).join(',');
+        const formattedRooms = roomsFilter.map((value) =>
+          encodeURIComponent(
+            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
+          )
+        ).join(',');
         params.set('qtos', formattedRooms);
       }
 
@@ -275,25 +140,30 @@ async function empreendimentoPage() {
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#filter-location input[value="${formattedValue}"]`).click();
         });
       }
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-
-          let formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
-
+          let formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
+          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-
+          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
           $(`#filter-status input[value="${formattedValue}"]`).click();
         });
       }
 
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
-          const formattedValue = value.replace(/_/g, ' ').replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value)
+            .replace(/_/g, ' ')
+            .replace(/%/g, '');
           $(`#filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
@@ -301,10 +171,102 @@ async function empreendimentoPage() {
       filterAndRender();
     }
 
+    let filteredEmpreendimentos = []
+
+    function populateFilterOptions() {
+      const empreendimentos = filteredEmpreendimentos.length ? filteredEmpreendimentos : empreendimentosData
+
+      const locationOptions = [...new Set(empreendimentos.map((e) => e.location))];
+      const statusOptions = [...new Set(empreendimentos.map((e) => e.status))];
+
+      const roomsOptions = new Set();
+      empreendimentos.forEach((e) => {
+        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
+        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
+
+        for (let i = minimo; i <= maximo; i++) {
+          roomsOptions.add(i);
+        }
+      });
+
+      const isStudio = empreendimentos.map(e => e.isStudio)
+
+      const options = {
+        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
+        'filter-rooms': [
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...Array.from(roomsOptions)
+            .sort()
+            .map((room) => ({
+              value: room,
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
+            }))
+        ],
+      };
+
+      return options;
+    }
+
+    const filters = {
+      'filter-location': $('#filter-location'),
+      'filter-status': $('#filter-status'),
+      'filter-rooms': $('#filter-rooms'),
+    };
+
+    const options = populateFilterOptions();
+    renderFilters(filters, options);
+
     function filterAndRender() {
-      const filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
+      filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
       renderEmpreendimentos(filteredEmpreendimentos);
       updateBadges();
+    }
+
+    function hideOptions(changedFilter) {
+      const isOptionVisible = (value, key) => {
+        return filteredEmpreendimentos.some((empreendimento) => {
+          if (key === 'filter-location') return empreendimento.location === value;
+          if (key === 'filter-status') return empreendimento.status === value;
+          if (key === 'filter-rooms') {
+            const minimo = parseInt(empreendimento.rooms[0].minimo_de_quartos);
+            const maximo = parseInt(empreendimento.rooms[0].maximo_de_quartos);
+            return (empreendimento.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
+          }
+          return false;
+        });
+      };
+
+      const isAnyFilterApplied = () => {
+        return Object.keys(filters).some((key) => {
+          return filters[key].find('input.ckkBox:checked').length > 0;
+        });
+      };
+
+      if (!isAnyFilterApplied()) {
+        Object.keys(filters).forEach((key) => {
+          filters[key].find('input.ckkBox').each(function () {
+            $(this).closest('label').show();
+          });
+        });
+        return;
+      }
+
+      Object.keys(filters).forEach((key) => {
+        const $filter = filters[key];
+        $filter.find('input.ckkBox').each(function () {
+          const $checkbox = $(this);
+          const value = $checkbox.val();
+
+          if (key !== changedFilter) {
+            if (isOptionVisible(value, key)) {
+              $checkbox.closest('label').show();
+            } else {
+              $checkbox.closest('label').hide();
+            }
+          }
+        });
+      });
     }
 
     renderEmpreendimentos(empreendimentosData);
@@ -318,6 +280,7 @@ async function empreendimentoPage() {
       }).get();
 
       initBanner({ location: selectedLocations });
+      hideOptions('filter-location');
     });
 
     initBanner({ location: 'Rota DUE' })
@@ -325,11 +288,13 @@ async function empreendimentoPage() {
     $('#filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('filter-status');
     });
 
     $('#filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      hideOptions('filter-rooms');
     });
 
     applyFiltersFromUrl();

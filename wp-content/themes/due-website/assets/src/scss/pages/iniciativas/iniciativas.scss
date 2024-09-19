@@ -24,6 +24,13 @@ body.page-template-iniciativas {
             }
           }
         }
+        #iniciativas {
+          .button-menu {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
       }
     }
     &.sticky {

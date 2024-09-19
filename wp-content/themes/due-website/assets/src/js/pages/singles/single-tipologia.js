@@ -16,45 +16,49 @@ function swiperTipologia() {
   });
 }
 
-function swiperGaleria() {
-  var swiper = new Swiper('.swiper-galeria', {
-    slidesPerView: 1.2,
-    spaceBetween: 24,
-    navigation: {
-      nextEl: '.swiper-button-next-galeria',
-      prevEl: '.swiper-button-prev-galeria',
-    },
-    breakpoints: {
-      1024: {
-        slidesPerView: 3,
-      },
-    },
+function plantas() {
+  jQuery(document).ready(function ($) {
+    // Função para iniciar mostrando a row 1 nas duas listas
+    $('.slider-plantas li[data-row="1"]').addClass('active');
+    $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+
+    // Evento de clique na row do slider-plantas
+    $('.slider-plantas li').on('click', function () {
+      var rowNumber = $(this).data('row'); // Obtem o número da row
+
+      // Remove a classe 'active' de todas as rows na slider-plantas sem fade
+      $('.slider-plantas li').removeClass('active');
+      $(this).addClass('active');
+
+      // Primeiro faz o fadeOut da row ativa em slider-conteudo
+      $('.slider-conteudo li.active').fadeOut(300, function () {
+        // Remove a classe 'active' após o fadeOut
+        $(this).removeClass('active');
+
+        // Só então faz o fadeIn da nova row correspondente
+        $('.slider-conteudo li[data-row="' + rowNumber + '"]')
+          .addClass('active')
+          .fadeIn(300);
+      });
+    });
   });
 }
-function swiperPlantas() {
-  var galleryTop = new Swiper('.gallery-top', {
-    spaceBetween: 10,
-    effect: 'fade',
-    allowTouchMove: false,
-    fadeEffect: {
-      crossFade: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next-top',
-      prevEl: '.swiper-button-prev-top',
-    },
-    slidesPerView: 1,
-  });
 
-  var galleryThumbs = new Swiper('.gallery-thumbs', {
-    spaceBetween: 32,
-    slidesPerView: 4,
-    centeredSlides: true,
-    slideToClickedSlide: true,
-    speed: 300,
-    thumbs: {
-      swiper: galleryTop,
-    },
+function swiperGaleria() {
+  $('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav',
+  });
+  $('.slider-nav').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: true,
+    centerMode: true,
+    focusOnSelect: true,
   });
 }
 
@@ -82,7 +86,7 @@ function irFooter() {
 function initSingleTipologia() {
   swiperTipologia();
   swiperGaleria();
-  swiperPlantas();
+  plantas();
   panorama();
   irFooter();
 }

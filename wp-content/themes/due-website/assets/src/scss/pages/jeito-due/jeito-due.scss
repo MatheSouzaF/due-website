@@ -24,6 +24,13 @@ body.page-template-jeito-due {
             }
           }
         }
+        #jeito-due {
+          .button-menu {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
       }
     }
     &.sticky {
@@ -137,7 +144,7 @@ body.page-template-jeito-due {
         .descricao-jeito-due-mobile {
           color: $due-tertiary;
           max-width: 447px;
-          font-size: 18px;
+          font-size: 22px;
           font-style: normal;
           font-weight: 300;
           line-height: 140%;

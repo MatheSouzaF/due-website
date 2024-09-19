@@ -114,6 +114,16 @@ function animationFooter() {
     }
   });
 }
+function relaod() {
+  let windowWidth = $(window).width();
+
+  $(window).resize(function () {
+    let newWindowWidth = $(window).width()
+    if ((windowWidth > 768 && newWindowWidth <= 768) || (windowWidth <= 768 && newWindowWidth > 768)) {
+      location.reload();
+    }
+  });
+}
 
 function initHeader() {
   menuSticky();
@@ -121,6 +131,7 @@ function initHeader() {
   navbar();
   hoverDestinos();
   animationFooter();
+  relaod();
 }
 
 export {initHeader};

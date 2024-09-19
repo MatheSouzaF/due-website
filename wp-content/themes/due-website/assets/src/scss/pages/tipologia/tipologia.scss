@@ -2,17 +2,29 @@
 @import '../../global/colors';
 
 main.page-empreendimentos-tipologia {
-  padding: 120px 0;
+  padding: 154px 0;
 
   .aba-tipologias {
-    .cards {
+    .container-filtros {
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      padding: 0;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 30px;
     }
 
     .cards-tipologia {
+      display: grid;
+      gap: 16px;
+      transition: 0.6s;
+      grid-template-columns: 1fr; // Padrão para telas menores que 1024px
+      @media (min-width: 768px) and (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (min-width: 1025px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
       .card-tipologias {
         display: flex;
         flex-direction: column;
@@ -64,7 +76,7 @@ main.page-empreendimentos-tipologia {
           &.vendido {
             .label-informativo {
               background-color: #e9e3dd;
-              color: $due-tertiary;
+              color: $due-tertiary !important;
             }
 
             .imagem-tipologia {
@@ -325,10 +337,38 @@ main.page-empreendimentos-tipologia {
         cursor: pointer;
 
         button {
-          border: 1px solid #51848C66;
+          border: 1px solid #51848c66;
           padding: 8px 18px;
           border-radius: 32px;
           max-width: fit-content;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 100%; /* 16px */
+          letter-spacing: 0.32px;
+          color: $due-tertiary;
+          display: flex;
+          flex-direction: row;
+          gap: 4px;
+          align-items: center;
+          transition: 0.6s;
+          .arrow-svg {
+            transition: 0.6s;
+            path {
+              transition: 0.6s;
+            }
+          }
+        }
+        &:hover {
+          button {
+            background-color: #003b4b;
+            color: #fff;
+            .arrow-svg {
+              path {
+                stroke: white;
+              }
+            }
+          }
         }
       }
 
@@ -350,6 +390,22 @@ main.page-empreendimentos-tipologia {
           display: flex;
           flex-direction: column;
           gap: 16px;
+          label {
+            transition: 0.6s;
+            span {
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 100%; /* 16px */
+              letter-spacing: 0.32px;
+              font-family: 'founders-grotesk', sans-serif;
+              transition: 0.6s;
+              &:hover {
+                text-shadow: 0.02px 0 0 #000, -0.02px 0 0 #000, 0 0.02px 0 #000, 0 -0.02px 0 #000,
+                  0 0 2px rgba(0, 0, 0, 0.1);
+              }
+            }
+          }
         }
 
         .ckkBox {
@@ -360,10 +416,10 @@ main.page-empreendimentos-tipologia {
           border-radius: 2px;
           position: relative;
           top: 2px;
-          border: 1px solid #51848C66;
+          border: 1px solid #51848c66;
 
           &:after {
-            content: "";
+            content: '';
             width: 100%;
             height: 100%;
             background-color: $due-secondary;
@@ -378,11 +434,11 @@ main.page-empreendimentos-tipologia {
       }
 
       .toggle-next {
-        border-radius: 0
+        border-radius: 0;
       }
 
       label {
-        cursor: pointer
+        cursor: pointer;
       }
 
       .ellipsis {
@@ -396,18 +452,25 @@ main.page-empreendimentos-tipologia {
     .tipologias-results {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin: 16px 0;
-
+      gap: 20px;
       .badge {
-        border: 1px solid #51848C66;
+        border: 1px solid #51848c66;
         color: $due-secondary;
         padding: 8px;
         border-radius: 4px;
         margin-right: 8px;
         font-size: 14px;
+        font-family: 'founders-grotesk', sans-serif;
+        letter-spacing: 0.28px;
       }
-
+      .tipologia-results-text {
+        color: $due-tertiary;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.32px;
+      }
       .tipologia-remove-badge {
         font-size: 14px;
         cursor: pointer;

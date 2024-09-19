@@ -39,7 +39,7 @@ function imagemGrow() {
         scrollTrigger: {
           trigger: '.box-video',
           scrub: 2,
-          start: 'top+=350 center',
+          start: '.box-video',
           end: 'bottom+=500 center',
           pin: true,
         },

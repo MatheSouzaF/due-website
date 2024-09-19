@@ -254,7 +254,6 @@ async function empreendimentoPage() {
       }
 
       Object.keys(filters).forEach((key) => {
-        console.log("🚀 ~ key:", key)
         const $filter = filters[key];
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);

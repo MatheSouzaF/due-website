@@ -80,13 +80,14 @@ async function empreendimentoPage() {
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-
-        $(`#filter-${filterType} input[value="${filterValue}"], #mobile-filter-${filterType} input[value="${filterValue}"]`).click();
-
+      
+        $(`#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`).click();
+      
         updateBadges();
         buildFilterUrl();
         filterAndRender();
       });
+      
     }
 
     function removeAccents(str) {

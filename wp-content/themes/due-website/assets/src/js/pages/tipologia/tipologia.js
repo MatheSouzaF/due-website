@@ -274,7 +274,7 @@ function tipologiaPage() {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        filters[filterType].find(`input[value="${filterValue}"]`).click();
+        $(`#tipologia-filter-${filterType} input[value="${filterValue}"]:checked, #mobile-tipologia-filter-${filterType} input[value="${filterValue}"]:checked`).click();
 
         updateBadges();
         buildFilterUrl();

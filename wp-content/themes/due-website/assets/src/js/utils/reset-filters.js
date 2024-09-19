@@ -52,18 +52,18 @@ export function resetCheckboxesTipologia() {
     const value = $checkbox.val();
     const isChecked = $checkbox.prop('checked');
 
-    const isLocationFilter = $checkbox.closest('#tipologia-filter-location').length && locationFilter.includes(value);
-    const isStatusFilter = $checkbox.closest('#tipologia-filter-status').length && statusFilter.includes(value);
-    const isEmpreendimentoFilter = $checkbox.closest('#tipologia-filter-empreendimento').length && empreendimentoFilter.includes(value);
-    const isDiferenciaisFilter = $checkbox.closest('#tipologia-filter-diferenciais').length && diferenciaisFilter.includes(value);
-    const isRoomsFilter = $checkbox.closest('#tipologia-filter-rooms').length && roomsFilter.includes(value);
+    const isLocationFilter = $checkbox.closest('#tipologia-filter-location, #mobile-tipologia-filter-location').length && locationFilter.includes(value);
+    const isStatusFilter = $checkbox.closest('#tipologia-filter-status, #mobile-tipologia-filter-status').length && statusFilter.includes(value);
+    const isEmpreendimentoFilter = $checkbox.closest('#tipologia-filter-empreendimento, #mobile-tipologia-filter-empreendimento').length && empreendimentoFilter.includes(value);
+    const isDiferenciaisFilter = $checkbox.closest('#tipologia-filter-diferenciais, #mobile-tipologia-filter-diferenciais').length && diferenciaisFilter.includes(value);
+    const isRoomsFilter = $checkbox.closest('#tipologia-filter-rooms, #mobile-tipologia-filter-rooms').length && roomsFilter.includes(value);
 
     if (
-      (!isLocationFilter && $checkbox.closest('#tipologia-filter-location').length) ||
-      (!isStatusFilter && $checkbox.closest('#tipologia-filter-status').length) ||
-      (!isEmpreendimentoFilter && $checkbox.closest('#tipologia-filter-empreendimento').length) ||
-      (!isDiferenciaisFilter && $checkbox.closest('#tipologia-filter-diferenciais').length) ||
-      (!isRoomsFilter && $checkbox.closest('#tipologia-filter-rooms').length)
+      (!isLocationFilter && $checkbox.closest('#tipologia-filter-location, #mobile-tipologia-filter-location').length) ||
+      (!isStatusFilter && $checkbox.closest('#tipologia-filter-status, #mobile-tipologia-filter-status').length) ||
+      (!isEmpreendimentoFilter && $checkbox.closest('#tipologia-filter-empreendimento, #mobile-tipologia-filter-empreendimento').length) ||
+      (!isDiferenciaisFilter && $checkbox.closest('#tipologia-filter-diferenciais, #mobile-tipologia-filter-diferenciais').length) ||
+      (!isRoomsFilter && $checkbox.closest('#tipologia-filter-rooms, #mobile-tipologia-filter-rooms').length)
     ) {
       if (isChecked) {
         $checkbox.click();

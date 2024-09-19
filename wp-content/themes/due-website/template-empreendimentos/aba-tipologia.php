@@ -14,7 +14,7 @@
           <!-- Destino -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">Destino</button>
-            <div class="tipologia-category-content" id="tipologia-filter-location">
+            <div class="tipologia-category-content" id="mobile-tipologia-filter-location">
               <div class="inner-wrap">
               </div>
             </div>
@@ -23,7 +23,7 @@
           <!-- Estágio -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">Estágio</button>
-            <div class="tipologia-category-content" id="tipologia-filter-status">
+            <div class="tipologia-category-content" id="mobile-tipologia-filter-status">
               <div class="inner-wrap">
               </div>
             </div>
@@ -32,7 +32,7 @@
           <!-- Empreendimento -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">Empreendimento</button>
-            <div class="tipologia-category-content" id="tipologia-filter-empreendimento">
+            <div class="tipologia-category-content" id="mobile-tipologia-filter-empreendimento">
               <div class="inner-wrap">
               </div>
             </div>
@@ -41,7 +41,7 @@
           <!-- Nº de quartos -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">Nº de quartos</button>
-            <div class="tipologia-category-content" id="tipologia-filter-rooms">
+            <div class="tipologia-category-content" id="mobile-tipologia-filter-rooms">
               <div class="inner-wrap">
               </div>
             </div>
@@ -50,7 +50,7 @@
           <!-- Diferenciais -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">Diferenciais</button>
-            <div class="tipologia-category-content" id="tipologia-filter-diferenciais">
+            <div class="tipologia-category-content" id="mobile-tipologia-filter-diferenciais">
               <div class="inner-wrap">
               </div>
             </div>

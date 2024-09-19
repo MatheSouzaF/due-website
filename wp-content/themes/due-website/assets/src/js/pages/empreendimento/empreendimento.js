@@ -144,7 +144,7 @@ async function empreendimentoPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          $(`#filter-location input[value="${formattedValue}"], #mobile-filter-location input[value="${formattedValue}"]`).prop('checked', true);
+          $(`#filter-location input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
@@ -156,7 +156,7 @@ async function empreendimentoPage() {
           formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
           formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
-          $(`#filter-status input[value="${formattedValue}"], #mobile-filter-status input[value="${formattedValue}"]`).prop('checked', true);
+          $(`#filter-status input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
@@ -165,7 +165,7 @@ async function empreendimentoPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          $(`#filter-rooms input[value="${formattedValue}"], #mobile-filter-rooms input[value="${formattedValue}"]`).prop('checked', true);
+          $(`#filter-rooms input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 

@@ -368,7 +368,7 @@ function tipologiaPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          filters['location'].find(`input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-location input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -383,7 +383,7 @@ function tipologiaPage() {
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
           formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
 
-          filters['status'].find(`input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-status input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -392,7 +392,7 @@ function tipologiaPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          filters['empreendimento'].find(`input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-empreendimento input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -401,7 +401,7 @@ function tipologiaPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          filters['diferenciais'].find(`input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-diferenciais input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -410,7 +410,7 @@ function tipologiaPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          filters['rooms'].find(`input[value="${formattedValue}"]`).click();
+          $(`#tipologia-filter-rooms input[value="${formattedValue}"]`).click();
         });
       }
 
@@ -461,6 +461,7 @@ function tipologiaPage() {
 
       // Caso contrário, aplicar a lógica de ocultar opções
       Object.keys(filters).forEach((key) => {
+        console.log("🚀 ~ key:", key)
         const $filter = filters[key];
         $filter.find('input.ckkBox').each(function () {
           const $checkbox = $(this);

@@ -5,6 +5,7 @@ header {
   .button-menu {
     color: $due-tertiary !important;
   }
+
   .link-logo-menu {
     .box-svg-header {
       svg {
@@ -26,6 +27,7 @@ header {
       }
     }
   }
+
   &.sticky {
     .link-logo-menu {
       .box-svg-header {
@@ -37,6 +39,21 @@ header {
       }
     }
   }
+}
+
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+body.drawer-open .drawer-overlay {
+  display: block;
 }
 
 main.page-empreendimentos-tipologia {
@@ -61,10 +78,13 @@ main.page-empreendimentos-tipologia {
       line-height: 140%;
       letter-spacing: 0.56px;
       text-transform: uppercase;
+
       @include media-breakpoint-up(md) {
         font-size: calc(0.6rem + 0.3vw);
       }
+
       position: relative;
+
       &::after {
         content: '';
         bottom: -2px;
@@ -75,24 +95,30 @@ main.page-empreendimentos-tipologia {
         position: absolute;
         background-color: $due-secondary;
       }
+
       &:hover {
         &::after {
           width: 100%;
         }
       }
+
       &.active {
         border-bottom: 2px solid $due-secondary;
       }
     }
   }
+
   .titulo-empreendimentos {
     margin-bottom: 40px;
+
     .titulo-ouse {
       font-size: 24px;
       font-style: normal;
       font-weight: 300;
-      line-height: 140%; /* 33.6px */
+      line-height: 140%;
+      /* 33.6px */
       letter-spacing: 0.48px;
+
       @include media-breakpoint-up(md) {
         font-size: calc(1rem + 1.1vw);
       }
@@ -107,14 +133,17 @@ main.page-empreendimentos-tipologia {
       justify-content: space-between;
       margin-bottom: 30px;
     }
+
     .cards {
       display: grid;
       gap: 16px;
       transition: 0.6s;
       grid-template-columns: 1fr; // Padrão para telas menores que 1024px
+
       @media (min-width: 768px) and (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
       }
+
       @media (min-width: 1025px) and (max-width: 1600px) {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -199,6 +228,10 @@ main.page-empreendimentos-tipologia {
       }
     }
 
+    .filter-desktop {
+      display: none;
+    }
+
     .filter-container {
       display: flex;
       gap: 8px;
@@ -208,6 +241,7 @@ main.page-empreendimentos-tipologia {
         position: relative;
         cursor: pointer;
         transition: 0.6s;
+
         button {
           border: 1px solid #51848c66;
           padding: 8px 18px;
@@ -216,7 +250,8 @@ main.page-empreendimentos-tipologia {
           font-size: 16px;
           font-style: normal;
           font-weight: 400;
-          line-height: 100%; /* 16px */
+          line-height: 100%;
+          /* 16px */
           letter-spacing: 0.32px;
           color: $due-tertiary;
           transition: 0.6s;
@@ -224,20 +259,25 @@ main.page-empreendimentos-tipologia {
           flex-direction: row;
           align-items: center;
           gap: 4px;
+
           p {
             height: 18px;
           }
+
           .arrow-svg {
             transition: 0.6s;
+
             path {
               transition: 0.6s;
             }
           }
         }
+
         &:hover {
           button {
             background-color: #003b4b;
             color: #fff;
+
             .arrow-svg {
               path {
                 stroke: white;
@@ -265,16 +305,20 @@ main.page-empreendimentos-tipologia {
           display: flex;
           flex-direction: column;
           gap: 16px;
+
           label {
             transition: 0.6s;
+
             span {
               font-size: 16px;
               font-style: normal;
               font-weight: 300;
-              line-height: 100%; /* 16px */
+              line-height: 100%;
+              /* 16px */
               letter-spacing: 0.32px;
               font-family: 'founders-grotesk', sans-serif;
               transition: 0.6s;
+
               &:hover {
                 text-shadow: 0.02px 0 0 #000, -0.02px 0 0 #000, 0 0.02px 0 #000, 0 -0.02px 0 #000,
                   0 0 2px rgba(0, 0, 0, 0.1);
@@ -322,6 +366,147 @@ main.page-empreendimentos-tipologia {
         white-space: nowrap;
         overflow: hidden;
       }
+
+      /* Filter Button */
+      .filter-button {
+        display: none;
+        /* Hidden by default, will show on mobile */
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        background-color: #003b4b;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 12px;
+        z-index: 1001;
+        cursor: pointer;
+      }
+
+      .filter-button .filter-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Filter Drawer */
+      .filter-drawer {
+        display: block;
+        /* Hidden by default */
+        position: fixed;
+        border-radius: 32px;
+        top: 40%;
+        right: 0;
+        width: 100%;
+        /* Full-screen on mobile */
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        overflow-y: auto;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .filter-drawer.open {
+        transform: translateX(0);
+      }
+
+      .drawer-header h2 {
+        margin: 0;
+      }
+
+      .close-drawer {
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .drawer-content {
+        padding: 16px;
+      }
+
+      .filter-category {
+        margin-bottom: 16px;
+      }
+
+      .category-toggle {
+        border: 1px solid #51848c66;
+        padding: 16px 12px;
+        border-radius: 32px;
+        width: 100%;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        /* 16px */
+        letter-spacing: 0.32px;
+        color: $due-tertiary;
+        transition: 0.6s;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+
+        p {
+          height: 18px;
+        }
+
+        .arrow-svg {
+          transition: 0.6s;
+
+          path {
+            transition: 0.6s;
+          }
+        }
+      }
+
+      .category-content {
+        display: none;
+        padding: 12px;
+        border: 1px solid #f5f5f5;
+      }
+
+      .category-content.open {
+        display: block;
+      }
+
+      .inner-wrap label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .drawer-footer {
+        padding: 16px;
+        border-top: 1px solid #ccc;
+      }
+
+      .apply-filters {
+        width: 100%;
+        color: white;
+        padding: 16px;
+        background: #CB9F6C;
+        border-radius: 4000px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      /* Mobile-specific styles */
+      @media (max-width: 768px) {
+        .filter-button {
+          display: block;
+        }
+
+        /* Hide existing filter container on mobile */
+        .filter-container {
+          display: none;
+        }
+      }
+
+      /* Prevent background scrolling when drawer is open */
+      body.drawer-open {
+        overflow: hidden;
+      }
+
     }
 
     .empreendimentos-results {
@@ -339,12 +524,14 @@ main.page-empreendimentos-tipologia {
         font-family: 'founders-grotesk', sans-serif;
         letter-spacing: 0.28px;
       }
+
       .results-text {
         color: $due-tertiary;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 22.4px */
+        line-height: 140%;
+        /* 22.4px */
         letter-spacing: 0.32px;
       }
 
@@ -358,21 +545,26 @@ main.page-empreendimentos-tipologia {
 
   .encante-se {
     padding-bottom: 294px;
+
     @include media-breakpoint-up(sm) {
       padding-bottom: 0;
     }
+
     overflow: hidden;
     transition: 0.6s;
+
     .container-encante-se {
       padding: 80px 0;
       position: relative;
       transition: 0.6s;
+
       @include media-breakpoint-up(md) {
         height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
       .wrapper {
         display: flex;
         justify-content: space-between;
@@ -380,9 +572,11 @@ main.page-empreendimentos-tipologia {
         flex-direction: column;
         align-items: center;
         transition: 0.6s;
+
         @include media-breakpoint-up(md) {
           flex-direction: row;
         }
+
         .box-img-encante-se {
           position: absolute;
           top: 0;
@@ -391,6 +585,7 @@ main.page-empreendimentos-tipologia {
           height: 100%;
           z-index: 1;
           transition: 1.5s;
+
           &::after {
             content: '';
             position: absolute;
@@ -402,12 +597,14 @@ main.page-empreendimentos-tipologia {
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 31%, rgba(247, 247, 247, 0) 100%);
             z-index: 1;
           }
+
           img {
             height: 100%;
             width: 100%;
             object-fit: cover;
           }
         }
+
         .box-conteudo-left {
           position: relative;
           z-index: 2;
@@ -415,11 +612,14 @@ main.page-empreendimentos-tipologia {
           .box-svg {
             margin-bottom: 32px;
           }
+
           .titulo-encante-se {
             font-size: 32px;
+
             @include media-breakpoint-up(sm) {
               font-size: 40px;
             }
+
             font-style: normal;
             font-weight: 300;
             line-height: 140%;
@@ -428,11 +628,14 @@ main.page-empreendimentos-tipologia {
             color: $grey-0;
             margin-bottom: 16px;
           }
+
           .descricao-encante-se {
             font-size: 20px;
+
             @include media-breakpoint-up(sm) {
               font-size: 28px;
             }
+
             max-width: 640px;
             color: $grey-0;
             font-style: normal;
@@ -442,25 +645,31 @@ main.page-empreendimentos-tipologia {
             margin-bottom: 40px;
             transition: 0.6s;
           }
+
           .link-encante-se {
             transition: 0.6s !important;
+
             @include media-breakpoint-up(xxl) {
               font-size: 14px;
             }
           }
+
           @include media-breakpoint-down(sm) {
             display: flex;
             flex-direction: column;
             align-items: center;
+
             .titulo-encante-se {
               text-align: center;
             }
+
             .descricao-encante-se {
               max-width: 300px;
               text-align: center;
             }
           }
         }
+
         .box-conteudo-right {
           position: relative;
           z-index: 2;
@@ -471,25 +680,31 @@ main.page-empreendimentos-tipologia {
           padding: 48px 40px;
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
           &.clipPath {
             clip-path: inset(0 0 -100px -100px);
           }
+
           @include media-breakpoint-down(sm) {
             padding: 40px 30px;
             margin-bottom: -300px;
             box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
           }
+
           @include media-breakpoint-up(xxl) {
             max-width: 850px;
             width: 100%;
           }
+
           &.more-space {
             max-width: 530px;
+
             @include media-breakpoint-up(xxl) {
               max-width: 850px;
               width: 100%;
             }
           }
+
           .comment {
             display: flex;
             flex-direction: row;
@@ -499,9 +714,11 @@ main.page-empreendimentos-tipologia {
             &:not(:first-of-type):not(:last-of-type) {
               padding: 20px 0;
             }
+
             &:not(:last-of-type) {
               border-bottom: 1px solid #e9e3dd;
             }
+
             &:first-of-type {
               padding-top: 0;
               padding-bottom: 20px;
@@ -511,6 +728,7 @@ main.page-empreendimentos-tipologia {
               padding-top: 20px;
               padding-bottom: 30px;
             }
+
             .titulo-comentarios {
               font-size: 20px;
               font-style: normal;
@@ -520,13 +738,16 @@ main.page-empreendimentos-tipologia {
               color: $due-tertiary;
             }
           }
+
           .svg-caribe {
             position: absolute;
             bottom: -50px;
             left: -60px;
+
             @include media-breakpoint-down(md) {
               display: none;
             }
+
             svg {
               width: 140px;
               filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));

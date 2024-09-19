@@ -1,53 +1,101 @@
 <div class="container-filtros">
 
+  <button class="filter-button"><svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <circle cx="23" cy="23" r="23" fill="#FAF2EB" />
+      <path d="M33 14H13L21 23.46V30L25 32V23.46L33 14Z" stroke="#003B4B" stroke-linecap="round"
+        stroke-linejoin="round" />
+    </svg>
+  </button>
   <div class="filter-container">
-    <hr>
-    <div class="col-md-4">
-      <div class="filter-wrapper">
-        <button class="form-control founders-grotesk toggle-next ellipsis">
-          <p class="">Destino</p>
-          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <div class="checkboxes" id="filter-location">
-          <div class="inner-wrap">
+    <!-- Filter Drawer -->
+    <div class="filter-drawer">
+      <div class="drawer-content">
+        <!-- Filter Categories -->
+        <div class="filter-category">
+          <button class="category-toggle">Destino</button>
+          <div class="category-content" id="filter-location">
+            <div class="inner-wrap">
+              <!-- Options will be populated here -->
+            </div>
           </div>
         </div>
+        <div class="filter-category">
+          <button class="category-toggle">Estágio</button>
+          <div class="category-content" id="filter-status">
+            <div class="inner-wrap">
+              <!-- Options will be populated here -->
+            </div>
+          </div>
+        </div>
+        <div class="filter-category">
+          <button class="category-toggle">Nº de quartos</button>
+          <div class="category-content" id="filter-rooms">
+            <div class="inner-wrap">
+              <!-- Options will be populated here -->
+            </div>
+          </div>
+        </div>
+        <!-- Add more categories as needed -->
+      </div>
+      <div class="drawer-footer">
+        <button class="apply-filters">Buscar</button>
       </div>
     </div>
 
-    <div class="col-md-4">
-      <div class="filter-wrapper">
-        <button class="form-control founders-grotesk toggle-next ellipsis">
-          <p class="">Estágio</p>
-          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <div class="checkboxes" id="filter-status">
-          <div class="inner-wrap">
+    <div class="filter-desktop">
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control founders-grotesk toggle-next ellipsis">
+            <p class="">Destino</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="checkboxes" id="filter-location">
+            <div class="inner-wrap">
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-md-4">
-      <div class="filter-wrapper">
-        <button class="form-control founders-grotesk toggle-next ellipsis">
-          <p class="">Nº de quartos</p>
-          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-        <div class="checkboxes" id="filter-rooms">
-          <div class="inner-wrap">
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control founders-grotesk toggle-next ellipsis">
+            <p class="">Estágio</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="checkboxes" id="filter-status">
+            <div class="inner-wrap">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="filter-wrapper">
+          <button class="form-control founders-grotesk toggle-next ellipsis">
+            <p class="">Nº de quartos</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
+          <div class="checkboxes" id="filter-rooms">
+            <div class="inner-wrap">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="empreendimentos-results">
     <p class="results-text founders-grotesk"></p>
     <div class="filters-applied"></div>

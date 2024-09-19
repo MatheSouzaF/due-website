@@ -173,11 +173,11 @@ wp_localize_script('main', 'TipologiasData', array(
       </div>
     </div>
   </section>
-
+  
   <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
   <?php get_template_part('template-invista/invista'); ?>
-
 </main>
+<div class="drawer-overlay"></div>
 
 <?php
 get_footer();

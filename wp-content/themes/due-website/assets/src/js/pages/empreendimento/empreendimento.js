@@ -298,12 +298,47 @@ async function empreendimentoPage() {
     });
 
     applyFiltersFromUrl();
+
+    $('.filter-button').click(function () {
+      $('.filter-drawer').addClass('open');
+      $('body').addClass('drawer-open');
+    });
+
+    // Close the filter drawer
+    $('.close-drawer').click(function () {
+      $('.filter-drawer').removeClass('open');
+      $('body').removeClass('drawer-open');
+    });
+
+    // Toggle filter categories
+    $('.drawer-content').on('click', '.category-toggle', function () {
+      $(this).next('.category-content').toggleClass('open');
+    });
+
+    $('.apply-filters').click(function () {
+      // Collect selected filters
+      const selectedFilters = {};
+      $('.filter-category').each(function () {
+        const categoryId = $(this).find('.category-content').attr('id');
+        const selectedOptions = [];
+        $(this).find('.ckkBox:checked').each(function () {
+          selectedOptions.push($(this).val());
+        });
+        selectedFilters[categoryId] = selectedOptions;
+      });
+      // Do something with selectedFilters, e.g., make an AJAX request
+      console.log(selectedFilters);
+
+      // Close the drawer
+      $('.filter-drawer').removeClass('open');
+      $('body').removeClass('drawer-open');
+    });
   } catch (error) {
     console.error('Erro ao carregar os empreendimentos:', error);
   }
 }
+
 function encanteSe() {
- 
   gsap.registerPlugin(ScrollTrigger);
   const encanteseZoom = document.querySelector('.encante-se');
 

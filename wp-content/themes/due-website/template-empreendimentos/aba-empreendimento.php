@@ -12,21 +12,21 @@
       <div class="drawer-content">
         <div class="filter-category">
           <button class="category-toggle">Destino</button>
-          <div class="category-content" id="filter-location">
+          <div class="category-content" id="mobile-filter-location">
             <div class="inner-wrap">
             </div>
           </div>
         </div>
         <div class="filter-category">
           <button class="category-toggle">Estágio</button>
-          <div class="category-content" id="filter-status">
+          <div class="category-content" id="mobile-filter-status">
             <div class="inner-wrap">
             </div>
           </div>
         </div>
         <div class="filter-category">
           <button class="category-toggle">Nº de quartos</button>
-          <div class="category-content" id="filter-rooms">
+          <div class="category-content" id="mobile-filter-rooms">
             <div class="inner-wrap">
             </div>
           </div>

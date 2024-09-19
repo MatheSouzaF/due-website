@@ -11,21 +11,42 @@
     <div class="filter-drawer">
       <div class="drawer-content">
         <div class="filter-category">
-          <button class="category-toggle">Destino</button>
+          <button class="category-toggle">
+            <p class="">Destino</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
           <div class="category-content" id="mobile-filter-location">
             <div class="inner-wrap">
             </div>
           </div>
         </div>
         <div class="filter-category">
-          <button class="category-toggle">Estágio</button>
+          <button class="category-toggle">
+            <p class="">Estágio</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
           <div class="category-content" id="mobile-filter-status">
             <div class="inner-wrap">
             </div>
           </div>
         </div>
         <div class="filter-category">
-          <button class="category-toggle">Nº de quartos</button>
+          <button class="category-toggle">
+            <p class="">Nº de quartos</p>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+              fill="none">
+              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </button>
           <div class="category-content" id="mobile-filter-rooms">
             <div class="inner-wrap">
             </div>

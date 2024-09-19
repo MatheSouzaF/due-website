@@ -13,7 +13,14 @@
         <div class="tipologia-drawer-content">
           <!-- Destino -->
           <div class="tipologia-filter-category">
-            <button class="tipologia-category-toggle">Destino</button>
+            <button class="tipologia-category-toggle">
+              <p class="">Destino</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
             <div class="tipologia-category-content" id="mobile-tipologia-filter-location">
               <div class="inner-wrap">
               </div>
@@ -22,7 +29,14 @@
 
           <!-- Estágio -->
           <div class="tipologia-filter-category">
-            <button class="tipologia-category-toggle">Estágio</button>
+            <button class="tipologia-category-toggle">
+              <p class="">Estágio</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
             <div class="tipologia-category-content" id="mobile-tipologia-filter-status">
               <div class="inner-wrap">
               </div>
@@ -31,7 +45,14 @@
 
           <!-- Empreendimento -->
           <div class="tipologia-filter-category">
-            <button class="tipologia-category-toggle">Empreendimento</button>
+            <button class="tipologia-category-toggle">
+              <p class="">Empreendimento</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
             <div class="tipologia-category-content" id="mobile-tipologia-filter-empreendimento">
               <div class="inner-wrap">
               </div>
@@ -40,7 +61,14 @@
 
           <!-- Nº de quartos -->
           <div class="tipologia-filter-category">
-            <button class="tipologia-category-toggle">Nº de quartos</button>
+            <button class="tipologia-category-toggle">
+              <p class="">Nº de quartos</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
             <div class="tipologia-category-content" id="mobile-tipologia-filter-rooms">
               <div class="inner-wrap">
               </div>
@@ -49,7 +77,14 @@
 
           <!-- Diferenciais -->
           <div class="tipologia-filter-category">
-            <button class="tipologia-category-toggle">Diferenciais</button>
+            <button class="tipologia-category-toggle">
+              <p class="">Diferenciais</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
             <div class="tipologia-category-content" id="mobile-tipologia-filter-diferenciais">
               <div class="inner-wrap">
               </div>

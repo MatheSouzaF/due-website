@@ -513,6 +513,33 @@ function tipologiaPage() {
     });
 
     applyFiltersFromUrl();
+
+    $('.tipologia-filter-button').click(function () {
+      $('.tipologia-filter-drawer').addClass('tipologia-open');
+      $('body').addClass('tipologia-drawer-open');
+    });
+  
+    // Toggle filter categories
+    $('.tipologia-drawer-content').on('click', '.category-toggle', function () {
+      $(this).next('.tipologia-category-content').toggleClass('tipologia-open');
+    });
+  
+    $('.tipologia-apply-filters').click(function () {
+      // Collect selected filters
+      const selectedFilters = {};
+      $('.tipologia-filter-category').each(function () {
+        const categoryId = $(this).find('.tipologia-category-content').attr('id');
+        const selectedOptions = [];
+        $(this).find('.ckkBox:checked').each(function () {
+          selectedOptions.push($(this).val());
+        });
+        selectedFilters[categoryId] = selectedOptions;
+      });
+  
+      // Close the drawer
+      $('.tipologia-filter-drawer').removeClass('tipologia-open');
+      $('body').removeClass('tipologia-drawer-open');
+    });
   } catch (error) {
     console.error('Erro no módulo de Tipologias:', error);
   }
@@ -542,7 +569,6 @@ function cardHover() {
     );
   });
 }
-
 
 function initTipologia() {
   tipologiaPage();

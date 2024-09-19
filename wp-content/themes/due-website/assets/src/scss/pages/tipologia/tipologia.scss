@@ -327,6 +327,14 @@ main.page-empreendimentos-tipologia {
       }
     }
 
+    .filter-desktop {
+      display: none;
+      
+      @include media-breakpoint-up(sm) {
+        display: flex;
+      }
+    }
+
     .filter-container {
       display: flex;
       gap: 8px;
@@ -445,6 +453,138 @@ main.page-empreendimentos-tipologia {
         text-overflow: ellipsis;
         width: 100%;
         white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .tipologia-filter-button {
+        display: none;
+        /* Hidden by default, will show on mobile */
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+        background-color: #003b4b;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        padding: 12px;
+        z-index: 1001;
+        cursor: pointer;
+      }
+    
+      .tipologia-filter-button .filter-icon {
+        width: 24px;
+        height: 24px;
+      }
+    
+      /* Filter Drawer */
+      .tipologia-filter-drawer {
+        display: block;
+        /* Hidden by default */
+        position: fixed;
+        border-radius: 32px;
+        top: 40%;
+        right: 0;
+        width: 100%;
+        /* Full-screen on mobile */
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        overflow-y: auto;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+    
+      .tipologia-filter-drawer.tipologia-open {
+        transform: translateX(0);
+      }
+    
+      .tipologia-drawer-header h2 {
+        margin: 0;
+      }
+    
+      .tipologia-drawer-content {
+        padding: 16px;
+      }
+    
+      .tipologia-filter-category {
+        margin-bottom: 16px;
+      }
+    
+      .tipologia-category-toggle {
+        border: 1px solid #51848c66;
+        padding: 16px 12px;
+        border-radius: 32px;
+        width: 100%;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        /* 16px */
+        letter-spacing: 0.32px;
+        color: $due-tertiary;
+        transition: 0.6s;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+    
+        p {
+          height: 18px;
+        }
+    
+        .arrow-svg {
+          transition: 0.6s;
+    
+          path {
+            transition: 0.6s;
+          }
+        }
+      }
+    
+      .tipologia-category-content {
+        display: none;
+        padding: 12px;
+        border: 1px solid #f5f5f5;
+      }
+    
+      .tipologia-category-content.tipologia-open {
+        display: block;
+      }
+    
+      .inner-wrap label {
+        display: block;
+        margin-bottom: 8px;
+      }
+    
+      .drawer-footer {
+        padding: 16px;
+        border-top: 1px solid #ccc;
+      }
+    
+      .tipologia-apply-filters {
+        width: 100%;
+        color: white;
+        padding: 16px;
+        background: #CB9F6C;
+        border-radius: 4000px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+    
+      @include media-breakpoint-down(sm) {
+        .filter-button {
+          display: block;
+        }
+    
+        /* Hide existing filter container on mobile */
+        .filter-container {
+          display: none;
+        }
+      }
+    
+      /* Prevent background scrolling when drawer is open */
+      body.drawer-open {
         overflow: hidden;
       }
     }

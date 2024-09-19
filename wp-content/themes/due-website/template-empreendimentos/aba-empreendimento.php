@@ -8,15 +8,12 @@
     </svg>
   </button>
   <div class="filter-container">
-    <!-- Filter Drawer -->
     <div class="filter-drawer">
       <div class="drawer-content">
-        <!-- Filter Categories -->
         <div class="filter-category">
           <button class="category-toggle">Destino</button>
           <div class="category-content" id="filter-location">
             <div class="inner-wrap">
-              <!-- Options will be populated here -->
             </div>
           </div>
         </div>
@@ -24,7 +21,6 @@
           <button class="category-toggle">Estágio</button>
           <div class="category-content" id="filter-status">
             <div class="inner-wrap">
-              <!-- Options will be populated here -->
             </div>
           </div>
         </div>
@@ -32,11 +28,9 @@
           <button class="category-toggle">Nº de quartos</button>
           <div class="category-content" id="filter-rooms">
             <div class="inner-wrap">
-              <!-- Options will be populated here -->
             </div>
           </div>
         </div>
-        <!-- Add more categories as needed -->
       </div>
       <div class="drawer-footer">
         <button class="apply-filters">Buscar</button>

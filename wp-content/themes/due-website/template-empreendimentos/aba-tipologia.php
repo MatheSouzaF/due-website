@@ -1,77 +1,149 @@
 <section>
   <div class="container-filtros">
+    <button class="tipologia-filter-button"><svg width="46" height="46" viewBox="0 0 46 46" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="23" cy="23" r="23" fill="#FAF2EB" />
+        <path d="M33 14H13L21 23.46V30L25 32V23.46L33 14Z" stroke="#003B4B" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </button>
+
     <div class="filter-container">
-      <hr>
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control founders-grotesk toggle-next ellipsis">
-            <p class="">Destino</p>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <div class="checkboxes" id="tipologia-filter-location">
-            <div class="inner-wrap">
+      <div class="tipologia-filter-drawer">
+        <div class="tipologia-drawer-content">
+          <!-- Destino -->
+          <div class="tipologia-filter-category">
+            <button class="tipologia-category-toggle">Destino</button>
+            <div class="tipologia-category-content" id="tipologia-filter-location">
+              <div class="inner-wrap">
+              </div>
             </div>
           </div>
+
+          <!-- Estágio -->
+          <div class="tipologia-filter-category">
+            <button class="tipologia-category-toggle">Estágio</button>
+            <div class="tipologia-category-content" id="tipologia-filter-status">
+              <div class="inner-wrap">
+              </div>
+            </div>
+          </div>
+
+          <!-- Empreendimento -->
+          <div class="tipologia-filter-category">
+            <button class="tipologia-category-toggle">Empreendimento</button>
+            <div class="tipologia-category-content" id="tipologia-filter-empreendimento">
+              <div class="inner-wrap">
+              </div>
+            </div>
+          </div>
+
+          <!-- Nº de quartos -->
+          <div class="tipologia-filter-category">
+            <button class="tipologia-category-toggle">Nº de quartos</button>
+            <div class="tipologia-category-content" id="tipologia-filter-rooms">
+              <div class="inner-wrap">
+              </div>
+            </div>
+          </div>
+
+          <!-- Diferenciais -->
+          <div class="tipologia-filter-category">
+            <button class="tipologia-category-toggle">Diferenciais</button>
+            <div class="tipologia-category-content" id="tipologia-filter-diferenciais">
+              <div class="inner-wrap">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tipologia-drawer-footer">
+          <button class="tipologia-apply-filters">Buscar</button>
         </div>
       </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control founders-grotesk toggle-next ellipsis">
-            <p class="">Estágio</p>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <div class="checkboxes" id="tipologia-filter-status">
-            <div class="inner-wrap">
+      <div class="filter-desktop">
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control founders-grotesk toggle-next ellipsis">
+              <p class="">Destino</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="checkboxes" id="tipologia-filter-location">
+              <div class="inner-wrap">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control founders-grotesk toggle-next ellipsis">
-            <p class="">Empreendimento</p>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <div class="checkboxes" id="tipologia-filter-empreendimento">
-            <div class="inner-wrap">
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control founders-grotesk toggle-next ellipsis">
+              <p class="">Estágio</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="checkboxes" id="tipologia-filter-status">
+              <div class="inner-wrap">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control founders-grotesk toggle-next ellipsis">
-            <p class="">Nº de quartos</p>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <div class="checkboxes" id="tipologia-filter-rooms">
-            <div class="inner-wrap">
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control founders-grotesk toggle-next ellipsis">
+              <p class="">Empreendimento</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="checkboxes" id="tipologia-filter-empreendimento">
+              <div class="inner-wrap">
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-4">
-        <div class="filter-wrapper">
-          <button class="form-control founders-grotesk toggle-next ellipsis">
-            <p class="">Diferenciais</p>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <div class="checkboxes" id="tipologia-filter-diferenciais">
-            <div class="inner-wrap">
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control founders-grotesk toggle-next ellipsis">
+              <p class="">Nº de quartos</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="checkboxes" id="tipologia-filter-rooms">
+              <div class="inner-wrap">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="filter-wrapper">
+            <button class="form-control founders-grotesk toggle-next ellipsis">
+              <p class="">Diferenciais</p>
+              <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                fill="none">
+                <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="checkboxes" id="tipologia-filter-diferenciais">
+              <div class="inner-wrap">
+              </div>
             </div>
           </div>
         </div>

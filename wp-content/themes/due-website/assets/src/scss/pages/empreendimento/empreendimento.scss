@@ -230,6 +230,10 @@ main.page-empreendimentos-tipologia {
 
     .filter-desktop {
       display: none;
+      
+      @include media-breakpoint-up(sm) {
+        display: flex;
+      }
     }
 
     .filter-container {
@@ -490,15 +494,9 @@ main.page-empreendimentos-tipologia {
         text-align: center;
       }
 
-      /* Mobile-specific styles */
-      @media (max-width: 768px) {
+      @include media-breakpoint-up(sm) {
         .filter-button {
           display: block;
-        }
-
-        /* Hide existing filter container on mobile */
-        .filter-container {
-          display: none;
         }
       }
 

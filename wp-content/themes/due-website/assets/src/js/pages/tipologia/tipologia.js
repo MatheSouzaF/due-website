@@ -421,7 +421,6 @@ function tipologiaPage() {
 
     function filterAndRender() {
       filteredTipologias = filterTipologias(tipologiasData);
-      console.log("🚀 ~ filteredTipologias:", filteredTipologias);
       renderTipologias(filteredTipologias);
       updateBadges();
     }

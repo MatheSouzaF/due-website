@@ -134,6 +134,18 @@ main.page-empreendimentos-tipologia {
       margin-bottom: 30px;
     }
 
+    /* Filter Button */
+    .filter-button {
+      display: none;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
+    }
+
     .cards {
       display: grid;
       gap: 16px;
@@ -230,9 +242,10 @@ main.page-empreendimentos-tipologia {
 
     .filter-desktop {
       display: none;
-      
+
       @include media-breakpoint-up(sm) {
         display: flex;
+        gap: 8px;
       }
     }
 
@@ -371,22 +384,6 @@ main.page-empreendimentos-tipologia {
         overflow: hidden;
       }
 
-      /* Filter Button */
-      .filter-button {
-        display: none;
-        /* Hidden by default, will show on mobile */
-        position: fixed;
-        bottom: 16px;
-        right: 16px;
-        background-color: #003b4b;
-        color: #fff;
-        border: none;
-        border-radius: 50%;
-        padding: 12px;
-        z-index: 1001;
-        cursor: pointer;
-      }
-
       .filter-button .filter-icon {
         width: 24px;
         height: 24px;
@@ -492,12 +489,6 @@ main.page-empreendimentos-tipologia {
         border: none;
         cursor: pointer;
         text-align: center;
-      }
-
-      @include media-breakpoint-up(sm) {
-        .filter-button {
-          display: block;
-        }
       }
 
       /* Prevent background scrolling when drawer is open */

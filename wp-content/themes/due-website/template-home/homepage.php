@@ -21,21 +21,30 @@ get_header();
                                         <?php if (get_row_layout() == 'video_banner'): ?>
                                             <div class="box-video-hero">
                                                 <video class="video-banner-hero" autoplay="autoplay" src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
+                                                <video class="video-banner-hero-mobile" autoplay="autoplay" src="<?php echo get_sub_field('video_mobile'); ?>" muted loop playsinline></video>
                                             </div>
 
                                         <?php elseif (get_row_layout() == 'imagem_banner'): ?>
                                             <?php
                                             $image = get_sub_field('imagem_banner_hero');
+                                            $imageMobile = get_sub_field('imagem_banner_hero_mobile');
+
                                             if ($image):
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
                                             ?>
                                                 <div class="box-imagem-hero">
-
                                                     <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                    <?php if ($imageMobile):
+                                                        $image_mobile_url = $imageMobile['url'];
+                                                        $image_mobile_alt = $imageMobile['alt'];
+                                                    ?>
+                                                        <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>" alt="<?php echo esc_attr($image_mobile_alt); ?>">
+                                                    <?php endif; ?>
                                                 </div>
                                             <?php endif; ?>
                                         <?php endif; ?>
+
                                     <?php endwhile; ?>
                                 <?php endif; ?>
                             </div>
@@ -461,6 +470,8 @@ get_header();
                 $('.js-modal').fadeIn();
 
                 // Pausa o Swiper quando o modal é aberto
+                $('header').addClass('modal-active-video');
+                $('.banner-hero').addClass('modal-active-video-banner');
                 mySwiper.autoplay.stop();
             });
 
@@ -473,6 +484,8 @@ get_header();
                     setTimeout(function() {
                         mySwiper.autoplay.start();
                     }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
+                    $('header').removeClass('modal-active-video');
+                    $('.banner-hero').removeClass('modal-active-video-banner');
                 });
             });
         }

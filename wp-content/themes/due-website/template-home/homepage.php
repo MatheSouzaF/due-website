@@ -42,15 +42,17 @@ get_header();
                             <div class="box-conteudo">
                                 <div class="wrapper-hero">
                                     <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
-                                    <div class="box-repetidor-subtitulo">
-
-                                        <?php
-                                        if (have_rows('repetidor_subtitulo_banner')) :
+                                    <?php
+                                    $has_rows = have_rows('repetidor_subtitulo_banner');
+                                    ?>
+                                    <div class="box-repetidor-subtitulo<?php echo !$has_rows ? ' d-none' : ''; ?>">
+                                        <?php if ($has_rows) :
                                             while (have_rows('repetidor_subtitulo_banner')) : the_row(); ?>
                                                 <p class="subtitulo-banner-hero word"><?php echo get_sub_field('subtitulo_banner_hero'); ?></p>
                                         <?php endwhile;
                                         endif; ?>
                                     </div>
+
                                     <?php if (get_sub_field('botao_video')): ?>
                                         <?php
                                         $modalVideo = get_sub_field('video_modal_botao');

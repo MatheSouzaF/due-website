@@ -23,7 +23,7 @@ body.page-template-homepage {
       }
     }
   }
-
+  
   .banner-hero {
     height: 100vh;
     .swiper-container {
@@ -224,7 +224,6 @@ body.page-template-homepage {
       .swiper-pagination {
         bottom: 48px;
         right: 0;
-        width: fit-content;
         z-index: 2;
         left: 50%;
         transform: translateX(-50%);
@@ -232,6 +231,7 @@ body.page-template-homepage {
         @include media-breakpoint-up(sm) {
           left: 48px;
           transform: initial;
+          width: fit-content;
         }
         @include media-breakpoint-up(md) {
           left: 80px;
@@ -300,7 +300,10 @@ body.page-template-homepage {
   }
 
   .nossos-club-resorts {
-    padding: 120px 0;
+    padding: 48px 0 0;
+    @include media-breakpoint-up(md) {
+      padding: 120px 0;
+    }
     .wrapper {
       max-width: initial;
     }
@@ -989,15 +992,18 @@ body.page-template-homepage {
           max-width: 530px;
           background-color: $grey-0;
           padding: 48px 40px;
-          clip-path: inset(0 0 100% 0);
-          transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
-          &.clipPath {
-            clip-path: inset(0 0 -100px -100px);
-          }
+
           @include media-breakpoint-down(sm) {
             padding: 40px 30px;
             margin-bottom: -300px;
             box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+          }
+          @include media-breakpoint-up(md) {
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+            &.clipPath {
+              clip-path: inset(0 0 -100px -100px);
+            }
           }
           @include media-breakpoint-up(xxl) {
             max-width: 850px;
@@ -1060,6 +1066,15 @@ body.page-template-homepage {
   .zoom {
     .box-img-encante-se {
       scale: 1.1;
+    }
+  }
+
+  .modal-active-video {
+    z-index: 0;
+    .banner-hero {
+      .swiper-pagination {
+        z-index: 0;
+      }
     }
   }
 }

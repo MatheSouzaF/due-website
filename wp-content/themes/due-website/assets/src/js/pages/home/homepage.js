@@ -133,53 +133,58 @@ function nossoProposito() {
 }
 function encantese() {
   gsap.registerPlugin(ScrollTrigger);
-  const encanteseZoom = document.querySelector('.encante-se');
+  ScrollTrigger.matchMedia({
+    // This function will be called when the viewport width is greater than or equal to 1024px
+    '(min-width: 1024px)': function () {
+      const encanteseZoom = document.querySelector('.encante-se');
 
-  const btnAppears = document.querySelector('.box-conteudo-right');
-  const showSvg = document.querySelector('.svg-caribe');
+      const btnAppears = document.querySelector('.box-conteudo-right');
+      const showSvg = document.querySelector('.svg-caribe');
 
-  function bgOpen() {
-    if (btnAppears) {
-      btnAppears.classList.add('clipPath'); // Adiciona a classe 'background-open'
-    }
-  }
+      function bgOpen() {
+        if (btnAppears) {
+          btnAppears.classList.add('clipPath'); // Adiciona a classe 'background-open'
+        }
+      }
 
-  let TLFADE = gsap.timeline({
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.encante-se',
-      start: 'top center',
-      onEnter: bgOpen,
-    },
-  });
+      let TLFADE = gsap.timeline({
+        duration: 1,
+        scrollTrigger: {
+          trigger: '.encante-se',
+          start: 'top center',
+          onEnter: bgOpen,
+        },
+      });
 
-  TLFADE.from(
-    showSvg,
-    {
-      autoAlpha: 0,
-      duration: 0.6,
-    },
-    '-=.2'
-  );
+      TLFADE.from(
+        showSvg,
+        {
+          autoAlpha: 0,
+          duration: 0.6,
+        },
+        '-=.2'
+      );
 
-  function zommOpen() {
-    if (encanteseZoom) {
-      encanteseZoom.classList.add('zoom'); // Adiciona a classe 'background-open'
-    }
-  }
-  function bgClose() {
-    if (encanteseZoom) {
-      encanteseZoom.classList.remove('zoom'); // Remove a classe 'background-open'
-    }
-  }
-  gsap.from('.encante-se', {
-    scrollTrigger: {
-      trigger: '.encante-se',
-      start: 'top-=500',
-      end: 'bottom-=400 ',
-      scrub: true,
-      onEnter: zommOpen,
-      onLeave: bgClose,
+      function zommOpen() {
+        if (encanteseZoom) {
+          encanteseZoom.classList.add('zoom'); // Adiciona a classe 'background-open'
+        }
+      }
+      function bgClose() {
+        if (encanteseZoom) {
+          encanteseZoom.classList.remove('zoom'); // Remove a classe 'background-open'
+        }
+      }
+      gsap.from('.encante-se', {
+        scrollTrigger: {
+          trigger: '.encante-se',
+          start: 'top-=500',
+          end: 'bottom-=400 ',
+          scrub: true,
+          onEnter: zommOpen,
+          onLeave: bgClose,
+        },
+      });
     },
   });
 }

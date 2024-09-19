@@ -1,39 +1,57 @@
-<div class="filter-container">
-  <hr>
-  <div class="col-md-4">
-    <div class="filter-wrapper">
-      <button class="form-control toggle-next ellipsis">Destino</button>
-      <div class="checkboxes" id="filter-location">
-        <div class="inner-wrap">
+<div class="container-filtros">
+
+  <div class="filter-container">
+    <hr>
+    <div class="col-md-4">
+      <div class="filter-wrapper">
+        <button class="form-control founders-grotesk toggle-next ellipsis">
+          <p class="">Destino</p>
+          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="checkboxes" id="filter-location">
+          <div class="inner-wrap">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="filter-wrapper">
+        <button class="form-control founders-grotesk toggle-next ellipsis">
+          <p class="">Estágio</p>
+          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="checkboxes" id="filter-status">
+          <div class="inner-wrap">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="filter-wrapper">
+        <button class="form-control founders-grotesk toggle-next ellipsis">
+          <p class="">Nº de quartos</p>
+          <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <div class="checkboxes" id="filter-rooms">
+          <div class="inner-wrap">
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="col-md-4">
-    <div class="filter-wrapper">
-      <button class="form-control toggle-next ellipsis">Estágio</button>
-      <div class="checkboxes" id="filter-status">
-        <div class="inner-wrap">
-        </div>
-      </div>
-    </div>
+  <div class="empreendimentos-results">
+    <p class="results-text founders-grotesk"></p>
+    <div class="filters-applied"></div>
   </div>
-
-  <div class="col-md-4">
-    <div class="filter-wrapper">
-      <button class="form-control toggle-next ellipsis">Nº de quartos</button>
-      <div class="checkboxes" id="filter-rooms">
-        <div class="inner-wrap">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="empreendimentos-results">
-  <p class="results-text"></p>
-  <div class="filters-applied"></div>
 </div>
 
 <!-- Cards -->

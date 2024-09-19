@@ -1,9 +1,11 @@
 <?php
 
+//Template Name: Empreendimentos
+
 wp_enqueue_style('empreendimento', get_template_directory_uri() . '/assets/dist/css/empreendimento/empreendimento.css', ['main'], ASSETS_VERSION);
 wp_enqueue_style('tipologia', get_template_directory_uri() . '/assets/dist/css/tipologia/tipologia.css', ['main'], ASSETS_VERSION);
-
 get_header();
+
 
 $empreendimentosController = new EmpreendimentoController();
 $empreendimentos = $empreendimentosController->getAllProjects();
@@ -84,6 +86,11 @@ wp_localize_script('main', 'TipologiasData', array(
 
 <main class="page-empreendimentos-tipologia">
   <div class="wrapper">
+    <section class="titulo-empreendimentos">
+      <div class="titulo-ouse"><?php echo get_field('titulo_empreendimentos'); ?></div>
+    </section>
+
+
     <div class="empreendimentos-header">
       <div class="empreendimento-tabs">
         <div rel="stylesheet" class="show-empreendimentos">

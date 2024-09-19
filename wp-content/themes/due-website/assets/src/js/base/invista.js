@@ -38,26 +38,30 @@ function hoverCard() {
 
 function animationCards() {
   gsap.registerPlugin(ScrollTrigger);
-  
-  const cardsInvista = document.querySelectorAll('.card-invista');
-  
-  function pathCard() {
-    cardsInvista.forEach((card, i) => {
-      gsap.to(card, {
-        delay: i * 0.3,
-        duration: 1.5,
-        ease: "power2.out", // Adiciona um easer para suavizar a animação
-        onStart: () => card.classList.add('clipPath-invista'),
+  ScrollTrigger.matchMedia({
+    // This function will be called when the viewport width is greater than or equal to 1024px
+    '(min-width: 1024px)': function () {
+      const cardsInvista = document.querySelectorAll('.card-invista');
+
+      function pathCard() {
+        cardsInvista.forEach((card, i) => {
+          gsap.to(card, {
+            delay: i * 0.3,
+            duration: 1.5,
+            ease: 'power2.out', // Adiciona um easer para suavizar a animação
+            onStart: () => card.classList.add('clipPath-invista'),
+          });
+        });
+      }
+
+      gsap.from('.invista', {
+        scrollTrigger: {
+          trigger: '.invista',
+          ease: 'power2.out', // Adiciona um easer para suavizar a
+          start: 'top-=500',
+          onEnter: pathCard,
+        },
       });
-    });
-  }
-  
-  gsap.from('.invista', {
-    scrollTrigger: {
-      trigger: '.invista',
-      ease: "power2.out", // Adiciona um easer para suavizar a 
-      start: 'top-=500',
-      onEnter: pathCard,
     },
   });
 }

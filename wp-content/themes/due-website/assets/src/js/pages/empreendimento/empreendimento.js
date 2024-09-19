@@ -31,9 +31,9 @@ async function empreendimentoPage() {
     }
 
     function filterEmpreendimentos(empreendimentos) {
-      const locationFilter = getFilterValue('#filter-location');
-      const statusFilter = getFilterValue('#filter-status');
-      const roomsFilter = getFilterValue('#filter-rooms');
+      const locationFilter = getFilterValue('#filter-location, #mobile-filter-location');
+      const statusFilter = getFilterValue('#filter-status, #mobile-filter-status');
+      const roomsFilter = getFilterValue('#filter-rooms, #mobile-filter-rooms');
 
       if (!locationFilter && !statusFilter && !roomsFilter) {
         return empreendimentos;
@@ -61,9 +61,9 @@ async function empreendimentoPage() {
     function updateBadges() {
       $('.filters-applied').html('');
 
-      const locationFilter = getFilterLabel('#filter-location');
-      const statusFilter = getFilterLabel('#filter-status');
-      const roomsFilter = getFilterLabel('#filter-rooms');
+      const locationFilter = getFilterLabel('#filter-location, #mobile-filter-location');
+      const statusFilter = getFilterLabel('#filter-status, #mobile-filter-status');
+      const roomsFilter = getFilterLabel('#filter-rooms, #mobile-filter-rooms');
 
       if (locationFilter) {
         locationFilter.forEach((value) => generateBadge(value, 'location'));
@@ -80,13 +80,14 @@ async function empreendimentoPage() {
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-
-        $(`#filter-${filterType} input[value="${filterValue}"]`).click();
-
+      
+        $(`#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`).click();
+      
         updateBadges();
         buildFilterUrl();
         filterAndRender();
       });
+      
     }
 
     function removeAccents(str) {
@@ -94,9 +95,9 @@ async function empreendimentoPage() {
     }
 
     function buildFilterUrl() {
-      const locationFilter = getFilterLabel('#filter-location');
-      const statusFilter = getFilterLabel('#filter-status');
-      const roomsFilter = getFilterLabel('#filter-rooms');
+      const locationFilter = getFilterLabel('#filter-location, #mobile-filter-location');
+      const statusFilter = getFilterLabel('#filter-status, #mobile-filter-status');
+      const roomsFilter = getFilterLabel('#filter-rooms, #mobile-filter-rooms');
 
       const params = new URLSearchParams();
 
@@ -143,7 +144,7 @@ async function empreendimentoPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          $(`#filter-location input[value="${formattedValue}"]`).click();
+          $(`#filter-location input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
@@ -155,7 +156,7 @@ async function empreendimentoPage() {
           formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
           formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
-          $(`#filter-status input[value="${formattedValue}"]`).click();
+          $(`#filter-status input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
@@ -164,7 +165,7 @@ async function empreendimentoPage() {
           const formattedValue = decodeURIComponent(value)
             .replace(/_/g, ' ')
             .replace(/%/g, '');
-          $(`#filter-rooms input[value="${formattedValue}"]`).click();
+          $(`#filter-rooms input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
@@ -209,9 +210,9 @@ async function empreendimentoPage() {
     }
 
     const filters = {
-      'filter-location': $('#filter-location'),
-      'filter-status': $('#filter-status'),
-      'filter-rooms': $('#filter-rooms'),
+      'filter-location': $('#filter-location, #mobile-filter-location'),
+      'filter-status': $('#filter-status, #mobile-filter-status'),
+      'filter-rooms': $('#filter-rooms, #mobile-filter-rooms'),
     };
 
     const options = populateFilterOptions();
@@ -271,11 +272,12 @@ async function empreendimentoPage() {
 
     renderEmpreendimentos(empreendimentosData);
 
-    $('#filter-location input.ckkBox').on('change', function () {
+    // Atualiza os eventos para considerar os filtros móveis e desktop
+    $('#filter-location input.ckkBox, #mobile-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
 
-      const selectedLocations = $('#filter-location input.ckkBox:checked').map(function () {
+      const selectedLocations = $('#filter-location input.ckkBox:checked, #mobile-filter-location input.ckkBox:checked').map(function () {
         return $(this).val();
       }).get();
 
@@ -285,25 +287,52 @@ async function empreendimentoPage() {
 
     initBanner({ location: 'Rota DUE' })
 
-    $('#filter-status input.ckkBox').on('change', function () {
+    $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
       hideOptions('filter-status');
     });
 
-    $('#filter-rooms input.ckkBox').on('change', function () {
+    $('#filter-rooms input.ckkBox, #mobile-filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
       hideOptions('filter-rooms');
     });
 
     applyFiltersFromUrl();
+
+    // Eventos para o drawer do filtro mobile
+    $('.filter-button').click(function () {
+      $('.filter-drawer').addClass('open');
+      $('body').addClass('drawer-open');
+    });
+
+    $('.close-drawer').click(function () {
+      $('.filter-drawer').removeClass('open');
+      $('body').removeClass('drawer-open');
+    });
+
+    // Toggle das categorias no filtro mobile
+    $('.drawer-content').on('click', '.category-toggle', function () {
+      $(this).next('.category-content').toggleClass('open');
+    });
+
+    $('.apply-filters').click(function () {
+      // Fechar o drawer
+      $('.filter-drawer').removeClass('open');
+      $('body').removeClass('drawer-open');
+
+      // Aplicar os filtros selecionados
+      filterAndRender();
+      buildFilterUrl();
+      updateBadges();
+    });
   } catch (error) {
     console.error('Erro ao carregar os empreendimentos:', error);
   }
 }
+
 function encanteSe() {
- 
   gsap.registerPlugin(ScrollTrigger);
   const encanteseZoom = document.querySelector('.encante-se');
 

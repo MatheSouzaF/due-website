@@ -1,6 +1,21 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+body.tipologia-drawer-open .drawer-overlay {
+  display: block;
+}
+
 main.page-empreendimentos-tipologia {
   padding: 154px 0;
 
@@ -17,14 +32,28 @@ main.page-empreendimentos-tipologia {
       margin-bottom: 60px;
     }
 
+    /* Filter Button */
+    .tipologia-filter-button {
+      display: none;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
+    }
+
     .cards-tipologia {
       display: grid;
       gap: 16px;
       transition: 0.6s;
       grid-template-columns: 1fr; // Padrão para telas menores que 1024px
+
       @media (min-width: 768px) and (max-width: 1024px) {
         grid-template-columns: repeat(2, 1fr);
       }
+
       @media (min-width: 1025px) {
         grid-template-columns: repeat(4, 1fr);
       }
@@ -330,6 +359,15 @@ main.page-empreendimentos-tipologia {
       }
     }
 
+    .filter-desktop {
+      display: none;
+
+      @include media-breakpoint-up(sm) {
+        display: flex;
+        gap: 8px;
+      }
+    }
+
     .filter-container {
       display: flex;
       gap: 8px;
@@ -347,7 +385,8 @@ main.page-empreendimentos-tipologia {
           font-size: 16px;
           font-style: normal;
           font-weight: 400;
-          line-height: 100%; /* 16px */
+          line-height: 100%;
+          /* 16px */
           letter-spacing: 0.32px;
           color: $due-tertiary;
           display: flex;
@@ -355,17 +394,21 @@ main.page-empreendimentos-tipologia {
           gap: 4px;
           align-items: center;
           transition: 0.6s;
+
           .arrow-svg {
             transition: 0.6s;
+
             path {
               transition: 0.6s;
             }
           }
         }
+
         &:hover {
           button {
             background-color: #003b4b;
             color: #fff;
+
             .arrow-svg {
               path {
                 stroke: white;
@@ -393,16 +436,20 @@ main.page-empreendimentos-tipologia {
           display: flex;
           flex-direction: column;
           gap: 16px;
+
           label {
             transition: 0.6s;
+
             span {
               font-size: 16px;
               font-style: normal;
               font-weight: 300;
-              line-height: 100%; /* 16px */
+              line-height: 100%;
+              /* 16px */
               letter-spacing: 0.32px;
               font-family: 'founders-grotesk', sans-serif;
               transition: 0.6s;
+
               &:hover {
                 text-shadow: 0.02px 0 0 #000, -0.02px 0 0 #000, 0 0.02px 0 #000, 0 -0.02px 0 #000,
                   0 0 2px rgba(0, 0, 0, 0.1);
@@ -450,12 +497,125 @@ main.page-empreendimentos-tipologia {
         white-space: nowrap;
         overflow: hidden;
       }
+
+      .tipologia-filter-button .filter-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      /* Filter Drawer */
+      .tipologia-filter-drawer {
+        display: block;
+        /* Hidden by default */
+        position: fixed;
+        border-radius: 32px;
+        top: 40%;
+        right: 0;
+        width: 100%;
+        /* Full-screen on mobile */
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        overflow-y: auto;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .tipologia-filter-drawer.tipologia-open {
+        transform: translateX(0);
+      }
+
+      .tipologia-drawer-header h2 {
+        margin: 0;
+      }
+
+      .tipologia-drawer-content {
+        padding: 16px;
+      }
+
+      .tipologia-filter-category {
+        margin-bottom: 16px;
+      }
+
+      .tipologia-category-toggle {
+        border: 1px solid #51848c66;
+        padding: 16px 12px;
+        border-radius: 32px;
+        width: 100%;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        /* 16px */
+        letter-spacing: 0.32px;
+        color: $due-tertiary;
+        transition: 0.6s;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+
+        p {
+          height: 18px;
+        }
+
+        .arrow-svg {
+          transition: 0.6s;
+
+          path {
+            transition: 0.6s;
+          }
+        }
+      }
+
+      .tipologia-category-content {
+        display: none;
+        padding: 12px;
+        border: 1px solid #f5f5f5;
+      }
+
+      .tipologia-category-content.tipologia-open {
+        display: block;
+      }
+
+      .inner-wrap label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .drawer-footer {
+        padding: 16px;
+        border-top: 1px solid #ccc;
+      }
+
+      .tipologia-apply-filters {
+        width: 100%;
+        color: white;
+        padding: 16px;
+        background: #CB9F6C;
+        border-radius: 4000px;
+        border: none;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      @include media-breakpoint-up(sm) {
+        .filter-button {
+          display: block;
+        }
+      }
+
+      /* Prevent background scrolling when drawer is open */
+      body.drawer-open {
+        overflow: hidden;
+      }
     }
 
     .tipologias-results {
       display: flex;
       flex-direction: column;
       gap: 20px;
+
       .badge {
         border: 1px solid #51848c66;
         color: $due-secondary;
@@ -466,14 +626,17 @@ main.page-empreendimentos-tipologia {
         font-family: 'founders-grotesk', sans-serif;
         letter-spacing: 0.28px;
       }
+
       .tipologia-results-text {
         color: $due-tertiary;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
-        line-height: 140%; /* 22.4px */
+        line-height: 140%;
+        /* 22.4px */
         letter-spacing: 0.32px;
       }
+
       .tipologia-remove-badge {
         font-size: 14px;
         cursor: pointer;

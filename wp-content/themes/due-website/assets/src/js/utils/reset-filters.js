@@ -10,7 +10,7 @@ export function resetCheckboxesEmpreendimentos() {
     const isChecked = $checkbox.prop('checked');
 
     if (
-      $checkbox.closest('#filter-location').length &&
+      $checkbox.closest('#filter-location, #mobile-filter-location').length &&
       locationFilter.indexOf(value) === -1
     ) {
       if (isChecked) {
@@ -19,7 +19,7 @@ export function resetCheckboxesEmpreendimentos() {
     }
 
     if (
-      $checkbox.closest('#filter-status').length &&
+      $checkbox.closest('#filter-status, #mobile-filter-status').length &&
       statusFilter.indexOf(value) === -1
     ) {
       if (isChecked) {
@@ -28,7 +28,7 @@ export function resetCheckboxesEmpreendimentos() {
     }
 
     if (
-      $checkbox.closest('#filter-rooms').length &&
+      $checkbox.closest('#filter-rooms, #mobile-filter-rooms').length &&
       roomsFilter.indexOf(value) === -1
     ) {
       if (isChecked) {

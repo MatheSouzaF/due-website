@@ -7,6 +7,7 @@ function tipologiaPage() {
   try {
     // Tipologias passadas via wp_localize
     const tipologiasData = TipologiasData.tipologias;
+    console.log("🚀 ~ tipologiasData:", tipologiasData)
 
     function renderTipologias(tipologias) {
       const $container = $('.cards-tipologia.cards');
@@ -85,10 +86,19 @@ function tipologiaPage() {
 
     function updateRooms(cardTemplate, rooms, isStudio) {
       const quartos = rooms && rooms[0];
-      const roomsText = quartos
-        ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia
-        } qtos`
-        : 'N/A';
+      let roomsText = 'N/A';
+    
+      if (quartos) {
+        const minQuartos = parseInt(quartos.minimo_de_quartos_tipologia, 10);
+        let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
+    
+        if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
+          roomsText = `${isStudio ? 'Studio e ' : ''} 1 qto`;
+        } else {
+          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
+        }
+      }
+    
       $(cardTemplate).find('.info-quartos').text(roomsText);
     }
 
@@ -234,7 +244,11 @@ function tipologiaPage() {
             && tipologia.isStudio
             || tipologia.rooms.some((room) => {
               const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+              let maxQuartos = parseInt(room.maximo_de_quartos, 10);
+
+              if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
+                maxQuartos = 1;
+              }
               return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
             }));
 

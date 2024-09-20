@@ -43,16 +43,16 @@ async function empreendimentoPage() {
         const matchLocation = !locationFilter || locationFilter.includes(empreendimento.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(empreendimento.status.toLowerCase());
 
-        const matchRooms = !roomsFilter ||
-          (roomsFilter.includes('studio') ? empreendimento.isStudio :
-            empreendimento.rooms.some((room) => {
-              const minQuartos = parseInt(room.minimo_de_quartos, 10);
-              const maxQuartos = parseInt(room.maximo_de_quartos, 10);
-              return roomsFilter.some(
-                (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
-              );
-            })
-          );
+        const matchRooms = !roomsFilter || (
+          (roomsFilter.includes('studio') && empreendimento.isStudio) ||
+          empreendimento.rooms.some((room) => {
+            const minQuartos = parseInt(room.minimo_de_quartos, 10);
+            const maxQuartos = parseInt(room.maximo_de_quartos, 10);
+            return roomsFilter.some(
+              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+            );
+          })
+        );
 
         return matchLocation && matchStatus && matchRooms;
       });
@@ -80,15 +80,15 @@ async function empreendimentoPage() {
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-      
+
         $(`#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`).click();
-      
+
         updateBadges();
         buildFilterUrl();
         updateFilterNumberIndicador();
         filterAndRender();
       });
-      
+
     }
 
     function removeAccents(str) {
@@ -133,8 +133,8 @@ async function empreendimentoPage() {
       window.history.pushState({}, '', newUrl);
     }
 
-    function updateFilterNumberIndicador(){
-      $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function(){
+    function updateFilterNumberIndicador() {
+      $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
         const current_filter = $(this);
         const checked_count = $(current_filter).find('.checkboxes input:checked, .category-content input:checked').length;
         const filter_count_el = $(current_filter).find('.filter_count');

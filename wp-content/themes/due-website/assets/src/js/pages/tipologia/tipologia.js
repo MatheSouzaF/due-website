@@ -232,8 +232,8 @@ function tipologiaPage() {
         const matchRooms =
           !roomsFilter ||
           (roomsFilter.includes('studio')
-            ? tipologia.isStudio
-            : tipologia.rooms.some((room) => {
+            && tipologia.isStudio
+            || tipologia.rooms.some((room) => {
                 const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
                 const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
                 return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);

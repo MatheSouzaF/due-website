@@ -85,7 +85,7 @@ main.page-empreendimentos-tipologia {
       line-height: 140%;
       letter-spacing: 0.56px;
       text-transform: uppercase;
-
+      color: $due-tertiary;
       @include media-breakpoint-up(md) {
         font-size: calc(0.6rem + 0.3vw);
       }
@@ -328,7 +328,7 @@ main.page-empreendimentos-tipologia {
         position: absolute;
         z-index: 10;
         background: white;
-        width: 100%;
+        width: max-content;
 
         .inner-wrap {
           padding: 4px 0;
@@ -600,7 +600,6 @@ main.page-empreendimentos-tipologia {
         line-height: 140%;
         /* 22.4px */
         letter-spacing: 0.32px;
-
       }
       .filters-applied {
         display: flex;

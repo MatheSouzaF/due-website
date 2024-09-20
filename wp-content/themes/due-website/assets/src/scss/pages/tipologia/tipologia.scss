@@ -429,7 +429,7 @@ main.page-empreendimentos-tipologia {
         position: absolute;
         z-index: 10;
         background: white;
-        width: 100%;
+        width: max-content;
 
         .inner-wrap {
           padding: 4px 0;
@@ -705,7 +705,7 @@ main.page-empreendimentos-tipologia {
         /* 22.4px */
         letter-spacing: 0.32px;
       }
-      .tipologia-filters-applied{
+      .tipologia-filters-applied {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;

@@ -65,6 +65,7 @@ get_header();
 
     <div class="panorama">
         <div class="wrapper">
+
             <div class="viewer" id="viewer"></div>
             <?php
             $imagePanorama =  get_field('panaroma_imagem');
@@ -73,6 +74,14 @@ get_header();
                 'url' => $imagePanorama,
             ));
             ?>
+            <div class="box-svg">
+                <?php $svg_file = get_field('svg_tour_360');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
         </div>
     </div>
 
@@ -295,7 +304,7 @@ get_header();
 
 
     <section class="plantas">
-        
+
         <div class="wrapper">
             <h3 class="titulo-plantas"><?php echo get_field('titulo_plantas'); ?></h3>
             <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>

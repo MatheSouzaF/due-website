@@ -44,23 +44,23 @@ function plantas() {
   });
 }
 
-function swiperGaleria() {
-  $('.slider-for').slick({
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    fade: true,
-    asNavFor: '.slider-nav',
-  });
-  $('.slider-nav').slick({
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    asNavFor: '.slider-for',
-    dots: true,
-    centerMode: true,
-    focusOnSelect: true,
-  });
-}
+// function swiperGaleria() {
+//   $('.slider-for').slick({
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     arrows: false,
+//     fade: true,
+//     asNavFor: '.slider-nav',
+//   });
+//   $('.slider-nav').slick({
+//     slidesToShow: 3,
+//     slidesToScroll: 1,
+//     asNavFor: '.slider-for',
+//     dots: true,
+//     centerMode: true,
+//     focusOnSelect: true,
+//   });
+// }
 
 function panorama() {
   const imagePath = image.url;
@@ -85,7 +85,7 @@ function irFooter() {
 
 function initSingleTipologia() {
   swiperTipologia();
-  swiperGaleria();
+  // swiperGaleria();
   plantas();
   panorama();
   irFooter();

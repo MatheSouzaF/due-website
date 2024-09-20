@@ -24,11 +24,6 @@ function initTabToggle() {
 
   function showTipologia({ tabRender }) {
     
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-    
-    params.set('tipologia', 'true')
-    
     $abaEmpreendimento.hide();
     $abaTipologia.show();
     
@@ -37,7 +32,9 @@ function initTabToggle() {
     
     if (tabRender) {
       resetCheckboxesTipologia();
-      history.pushState("", document.title, window.location.pathname);
+      
+      const newUrl = `${window.location.pathname}${window.location.hash}?tipologia=true`;
+      window.history.pushState({}, document.title, newUrl);
     }
   }
 

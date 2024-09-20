@@ -304,6 +304,7 @@ function tipologiaPage() {
 
         updateBadges();
         buildFilterUrl();
+        updateFilterNumberIndicador();
         filterAndRender();
       });
     }
@@ -370,6 +371,21 @@ function tipologiaPage() {
         params.toString().length ? '?' : ''
       }${params.toString()}`;
       window.history.pushState({}, '', newUrl);
+    }
+
+    function updateFilterNumberIndicador(){
+      $('.filter-desktop .filter-wrapper, .tipologia-drawer-content .tipologia-filter-category').each(function(){
+        const current_filter = $(this);
+        const checked_count = $(current_filter).find('.checkboxes input:checked, .tipologia-category-content input:checked').length;
+        const filter_count_el = $(current_filter).find('.filter_count');
+
+        if (checked_count > 0) {
+          $(filter_count_el).html(`(${checked_count})`)
+        } else {
+          $(filter_count_el).html('')
+        }
+
+      })
     }
 
     function applyFiltersFromUrl() {
@@ -490,6 +506,7 @@ function tipologiaPage() {
     filters['location'].find('input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('location');
       const selectedLocations = filters['location']
         .find('input.ckkBox:checked')
@@ -503,24 +520,28 @@ function tipologiaPage() {
     filters['status'].find('input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('status');
     });
 
     filters['empreendimento'].find('input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('empreendimento');
     });
 
     filters['diferenciais'].find('input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('diferenciais');
     });
 
     filters['rooms'].find('input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('rooms');
     });
 

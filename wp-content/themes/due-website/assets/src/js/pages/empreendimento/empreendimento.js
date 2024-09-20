@@ -203,8 +203,20 @@ async function empreendimentoPage() {
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
+        let minimo = parseInt(e.rooms[0].minimo_de_quartos);
+        let maximo = parseInt(e.rooms[0].maximo_de_quartos);
+
+        if (isNaN(minimo) || minimo <= 1) {
+          minimo = 1;
+        }
+
+        if (isNaN(maximo) || maximo <= 1) {
+          maximo = 1;
+        }
+
+        if (maximo < minimo) {
+          maximo = minimo;
+        }
 
         for (let i = minimo; i <= maximo; i++) {
           roomsOptions.add(i);

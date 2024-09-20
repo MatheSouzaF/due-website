@@ -87,18 +87,18 @@ function tipologiaPage() {
     function updateRooms(cardTemplate, rooms, isStudio) {
       const quartos = rooms && rooms[0];
       let roomsText = 'N/A';
-    
+
       if (quartos) {
         const minQuartos = parseInt(quartos.minimo_de_quartos_tipologia, 10);
         let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
-    
+
         if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
           roomsText = `${isStudio ? 'Studio e ' : ''} 1 qto`;
         } else {
           roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
         }
       }
-    
+
       $(cardTemplate).find('.info-quartos').text(roomsText);
     }
 
@@ -156,11 +156,25 @@ function tipologiaPage() {
 
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia);
+        if (e.rooms && e.rooms.length > 0) {
+          let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
+          let maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia, 10);
 
-        for (let i = minimo; i <= maximo; i++) {
-          roomsOptions.add(i);
+          if (isNaN(minimo) || minimo <= 1) {
+            minimo = 1;
+          }
+
+          if (isNaN(maximo) || maximo <= 1) {
+            maximo = 1;
+          }
+
+          if (maximo < minimo) {
+            maximo = minimo;
+          }
+
+          for (let i = minimo; i <= maximo; i++) {
+            roomsOptions.add(i);
+          }
         }
       });
 

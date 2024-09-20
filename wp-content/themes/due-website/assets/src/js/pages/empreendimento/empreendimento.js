@@ -303,7 +303,7 @@ async function empreendimentoPage() {
               const $checkbox = $(this);
               const value = $checkbox.val();
 
-              if (isOptionVisible(value, key)) {
+              if (isOptionVisible(value, key) || $checkbox.is(':checked')) {
                 $checkbox.closest('label').show();
               } else {
                 $checkbox.closest('label').hide();

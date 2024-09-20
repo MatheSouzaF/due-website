@@ -14,6 +14,7 @@ get_header();
             if (have_rows('banner_repetidor')) :
                 while (have_rows('banner_repetidor')) : the_row(); ?>
                     <div class="swiper-slide">
+
                         <div class="box-banner">
                             <div class="box-images-videos">
                                 <?php if (have_rows('video_ou_imagem')): ?>
@@ -49,7 +50,15 @@ get_header();
                                 <?php endif; ?>
                             </div>
                             <div class="box-conteudo">
+
                                 <div class="wrapper-hero">
+                                    <?php
+                                    // Verifica se o título está preenchido
+                                    $titulo_banner_hero = get_sub_field('titulo_banner_hero');
+                                    if (!empty($titulo_banner_hero)) {
+                                        echo '<div class="mask-banner"></div>';
+                                    }
+                                    ?>
                                     <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
                                     <?php
                                     $has_rows = have_rows('repetidor_subtitulo_banner');
@@ -103,6 +112,7 @@ get_header();
             <?php endwhile;
             endif; ?>
         </div>
+
         <div class="box-buttons">
             <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
                 <circle cx="40" cy="40" r="40" fill="white" />
@@ -177,7 +187,7 @@ get_header();
                                             <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                         <?php endif; ?>
 
-                                        <video class="video-empreendimento" src="<?php echo get_sub_field('video_hover_empreendimento') ?>" muted loop playsinline></video>
+                                        <video class="video-empreendimento" autoplay="autoplay" src="<?php echo get_sub_field('video_hover_empreendimento') ?>" muted loop playsinline></video>
                                     </div>
 
                                     <div class="box-label" style="background-color: <?php echo get_sub_field('background_label_card'); ?>;">
@@ -434,6 +444,7 @@ get_header();
 </section>
 
 <?php get_template_part('template-invista/invista'); ?>
+<div class="call-form" id="call-form"></div>
 <script>
     function swiperBanner() {
         var mySwiper = new Swiper('.swiper-banner', {

@@ -150,159 +150,6 @@ get_header();
             </div>
         </div>
     </div>
-    <!-- 
-    <div class="plantas">
-        <div class="wrapper">
-            <h3 class="titulo-plantas"><?php echo get_field('titulo_plantas'); ?></h3>
-            <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
-            <div class="slider-plantas">
-                <div class="box-thumb-titulo">
-                    <div class="swiper-container gallery-thumbs">
-                        <div class="swiper-wrapper">
-                            <?php
-                            if (have_rows('planta')):
-                                while (have_rows('planta')):
-                                    the_row(); ?>
-                                    <div class="row-slide-thumbs swiper-slide">
-                                        <p class="sufix-planta founders-grotesk">
-                                            <?php echo get_sub_field('sufixo_da_planta'); ?></p>
-                                        <p class="quartos-metragem-planta founders-grotesk">
-                                            <?php echo get_sub_field('quartos_+_metragem'); ?></p>
-                                    </div>
-                            <?php endwhile;
-                            endif; ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="box-slides-plantas">
-                    <div class="swiper-container gallery-top">
-                        <div class="swiper-wrapper">
-                            <?php
-                            if (have_rows('planta')):
-                                while (have_rows('planta')):
-                                    the_row(); ?>
-                                    <div class="row-slide-gallery-top swiper-slide">
-                                        <div class="box-conteudo">
-                                            <p class="sufix-planta founders-grotesk">
-                                                <?php echo get_sub_field('sufixo_da_planta'); ?></p>
-                                            <p class="quartos-metragem-planta founders-grotesk">
-                                                <?php echo get_sub_field('quartos_+_metragem'); ?></p>
-                                            <div class="box-repetidor-caracteristicas">
-                                                <?php
-                                                if (have_rows('lista_de_caracteristicas')):
-                                                    while (have_rows('lista_de_caracteristicas')):
-                                                        the_row(); ?>
-                                                        <div class="row-caracteristicas">
-                                                            <div class="box-svg">
-                                                                <?php $svg_file = get_sub_field('svg_carateristicas');
-                                                                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                                                    echo '<i class="element">';
-                                                                    echo file_get_contents($svg_file['url']);
-                                                                    echo '</i>';
-                                                                } ?>
-                                                            </div>
-                                                            <p class="titulo-caracteristicas">
-                                                                <?php echo get_sub_field('caracteristicas'); ?></p>
-                                                        </div>
-                                                <?php endwhile;
-                                                endif; ?>
-                                            </div>
-                                            <div class="box-pavimentos">
-                                                <div class="pavimentos-coluna-I">
-                                                    <h4 class="titulo-coluna-pavimento-i">
-                                                        <?php echo get_sub_field('titulo_coluna_pavimento_i'); ?></h4>
-                                                    <div class="box-lista">
-                                                        <?php
-                                                        if (have_rows('lista_pavimento_i')):
-                                                            while (have_rows('lista_pavimento_i')):
-                                                                the_row(); ?>
-                                                                <div class="row-lista">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="5"
-                                                                        viewBox="0 0 4 5" fill="none">
-                                                                        <circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />
-                                                                    </svg>
-                                                                    <p class="titulo-pavimento founders-grotesk">
-                                                                        <?php echo get_sub_field('pavimentos_coluna_i'); ?></p>
-                                                                </div>
-                                                        <?php endwhile;
-                                                        endif; ?>
-                                                    </div>
-                                                </div>
-                                                <div class="pavimentos-coluna-II">
-                                                    <h4 class="titulo-coluna-pavimento-ii">
-                                                        <?php echo get_sub_field('titulo_coluna_pavimento_ii'); ?></h4>
-                                                    <div class="box-lista">
-                                                        <?php
-                                                        if (have_rows('lista_pavimento_ii')):
-                                                            while (have_rows('lista_pavimento_ii')):
-                                                                the_row(); ?>
-                                                                <div class="row-lista">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="5"
-                                                                        viewBox="0 0 4 5" fill="none">
-                                                                        <circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />
-                                                                    </svg>
-                                                                    <p class="titulo-pavimento founders-grotesk">
-                                                                        <?php echo get_sub_field('pavimentos_coluna_ii'); ?></p>
-                                                                </div>
-                                                        <?php endwhile;
-                                                        endif; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="box-gallery">
-                                            <div class="gallery-planta">
-                                                <?php if (have_rows('repetidor_imagens_plantas')):
-                                                    while (have_rows('repetidor_imagens_plantas')):
-                                                        the_row(); ?>
-                                                        <div class="row-imagem-plantas">
-                                                            <p class="titulo-row-imagem-plantas">
-                                                                <?php echo get_sub_field('titulo_da_planta'); ?></p>
-                                                            <?php
-                                                            $image = get_sub_field('imagens_da_planta');
-                                                            if ($image):
-                                                                $image_url = $image['url'];
-                                                                $image_alt = $image['alt']; ?>
-                                                                <img class="plantas-repetidor" src="<?php echo esc_url($image_url); ?>"
-                                                                    alt="<?php echo esc_attr($image_alt); ?>">
-                                                            <?php endif; ?>
-                                                        </div>
-                                                <?php endwhile;
-                                                endif; ?>
-                                            </div>
-
-                                            <div class="gallery-thumbs-plantas">
-                                                <?php if (have_rows('repetidor_imagens_plantas')):
-                                                    while (have_rows('repetidor_imagens_plantas')):
-                                                        the_row(); ?>
-                                                        <div class="row-thumbs-plantas">
-                                                            <?php
-                                                            $image = get_sub_field('imagens_da_planta');
-                                                            if ($image):
-                                                                $image_url = $image['url'];
-                                                                $image_alt = $image['alt']; ?>
-                                                                <img class="plantas-repetidor-thumb"
-                                                                    src="<?php echo esc_url($image_url); ?>"
-                                                                    alt="<?php echo esc_attr($image_alt); ?>">
-                                                            <?php endif; ?>
-                                                        </div>
-                                                <?php endwhile;
-                                                endif; ?>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                            <?php endwhile;
-                            endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-
-
     <section class="plantas">
 
         <div class="wrapper">
@@ -511,6 +358,7 @@ get_header();
             'post_type' => 'tipologias',
             'posts_per_page' => -1,
             'post_status' => 'publish',
+            'post__not_in' => array(get_the_ID()),
         );
 
         // Executa a consulta
@@ -706,6 +554,7 @@ get_header();
 
         </div>
     </div>
+    <div class="call-form" id="call-form"></div>
 
 </section>
 <?php

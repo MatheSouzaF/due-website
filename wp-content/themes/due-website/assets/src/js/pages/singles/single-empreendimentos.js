@@ -127,6 +127,22 @@ function swiperTipologia() {
     },
   });
 }
+
+function btnFixed() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.informacoes-obra',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
+  });
+}
 function initSingleEmpreendimentos() {
   swiperInit();
   swiperDiferenciais();
@@ -134,6 +150,7 @@ function initSingleEmpreendimentos() {
   colorBullet();
   filterExperiencias();
   swiperTipologia();
+  btnFixed();
 }
 
 export {initSingleEmpreendimentos};

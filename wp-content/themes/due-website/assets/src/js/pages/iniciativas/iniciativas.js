@@ -9,7 +9,6 @@ function banner() {
     duration: 1,
     opacity: 1,
     x: 0,
-
   });
   TLFADE.to(
     descricaoJeito,
@@ -330,8 +329,22 @@ function animationSelosCertificados() {
       onStart: () => card.classList.add('clipPath-selos-certificados'),
     });
   });
+}
 
+function btnFixed() {
+  gsap.registerPlugin(ScrollTrigger);
 
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.selos-certificados',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
+  });
 }
 
 function initIniciativas() {
@@ -343,6 +356,7 @@ function initIniciativas() {
   animationProposito();
   backgroundIncentivo();
   animationSelosCertificados();
+  btnFixed();
 }
 
 export {initIniciativas};

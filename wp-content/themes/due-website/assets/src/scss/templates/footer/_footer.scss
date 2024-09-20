@@ -294,16 +294,7 @@
       }
     }
   }
-  .botoes-fixed {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-    @include media-breakpoint-down(sm) {
-      display: none;
-    }
-  }
+  
   .box-formulario-feedback {
     position: absolute;
     z-index: 1;

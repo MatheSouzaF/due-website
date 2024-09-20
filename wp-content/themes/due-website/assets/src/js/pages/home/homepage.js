@@ -188,18 +188,19 @@ function encantese() {
     },
   });
 }
-
-function scrollsmooth() {
+function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({
-    lerp: 0.07,
-  });
-
-  lenis.on('scroll', ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.invista',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
   });
 }
 
@@ -209,8 +210,8 @@ function initPage() {
   fadeConteudoEncantese();
   encantese();
   nossoProposito();
-  scrollsmooth();
   wordAnimation();
+  btnFixed();
 }
 
 export {initPage};

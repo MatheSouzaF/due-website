@@ -152,21 +152,30 @@
         z-index: 2;
         width: 100%;
         padding: 32px 20px;
+        min-height: 600px;
         justify-content: space-between;
         @include media-breakpoint-up(md) {
           padding: 40px 40px 40px 92px;
           width: 50%;
         }
+        @media (max-height: 600px) {
+          justify-content: flex-start;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
         .shape-mapa {
           position: absolute;
           bottom: 0;
           right: 0;
+          @media (max-height: 600px) {
+            display: none;
+          }
         }
         .box-navbar-numeros {
           display: flex;
           gap: 12px;
           flex-direction: column;
-          // margin-bottom: 64px;
+          margin-bottom: 64px;
           align-items: flex-start;
           @include media-breakpoint-up(md) {
             align-items: center;
@@ -207,66 +216,69 @@
             }
           }
         }
-        .label-descrubra {
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 100%; /* 12px */
-          letter-spacing: 0.48px;
-          text-transform: uppercase;
-          color: #bc9467;
-          margin-bottom: 50px;
-          @include media-breakpoint-down(md) {
-            display: none;
+        .conjunto-links {
+          margin-bottom: 77px;
+          .label-descrubra {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%; /* 12px */
+            letter-spacing: 0.48px;
+            text-transform: uppercase;
+            color: #bc9467;
+            margin-bottom: 50px;
+            @include media-breakpoint-down(md) {
+              display: none;
+            }
           }
-        }
-        .box-navbar-menu {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          margin-bottom: 44px;
-          .links-menu {
+          .box-navbar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 44px;
+            .links-menu {
+              .button-menu {
+                color: $due-tertiary;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 140%;
+                letter-spacing: 0.72px;
+                font-size: 22px;
+                transition: 0.6s;
+                @include media-breakpoint-up(md) {
+                  font-size: calc(1rem + 1.1vw);
+                }
+                &:hover {
+                  &::after {
+                    background-color: $due-tertiary;
+                  }
+                }
+              }
+            }
+          }
+          .box-opcionais {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+            @include media-breakpoint-up(md) {
+              gap: 34px;
+            }
             .button-menu {
               color: $due-tertiary;
+              font-size: 12px;
               font-style: normal;
-              font-weight: 400;
-              line-height: 140%;
-              letter-spacing: 0.72px;
-              font-size: 22px;
+              font-weight: 500;
+              line-height: 100%;
+              letter-spacing: 0.48px;
+              text-transform: uppercase;
               transition: 0.6s;
               @include media-breakpoint-up(md) {
-                font-size: calc(1rem + 1.1vw);
+                font-size: calc(0.5rem + 0.3vw);
               }
               &:hover {
                 &::after {
                   background-color: $due-tertiary;
                 }
-              }
-            }
-          }
-        }
-        .box-opcionais {
-          display: flex;
-          flex-direction: column;
-          gap: 28px;
-          @include media-breakpoint-up(md) {
-            gap: 34px;
-          }
-          .button-menu {
-            color: $due-tertiary;
-            font-size: 12px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 100%;
-            letter-spacing: 0.48px;
-            text-transform: uppercase;
-            transition: 0.6s;
-            @include media-breakpoint-up(md) {
-              font-size: calc(0.5rem + 0.3vw);
-            }
-            &:hover {
-              &::after {
-                background-color: $due-tertiary;
               }
             }
           }
@@ -682,7 +694,13 @@
       }
     }
     .link-logo-menu {
-      fill: $due-tertiary;
+      .box-svg-header {
+        svg {
+          path {
+            fill: $due-tertiary;
+          }
+        }
+      }
     }
   }
 

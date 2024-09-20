@@ -6,11 +6,21 @@ html {
 }
 body{
   overflow-x: hidden;
+  .botoes-fixed {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
 }
 main {
   background-color: $grey-0;
 }
-.lenis {
+body.lenis {
   &.lenis-smooth {
     scroll-behavior: auto;
 
@@ -28,6 +38,10 @@ main {
   }
 }
 
+.active-sidebar-body{
+  
+  overflow: hidden;
+}
 .smooth-scroll {
   width: 100vw;
 }

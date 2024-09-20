@@ -242,6 +242,23 @@ function modalJeitoDue() {
     });
   });
 }
+
+function btnFixed() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.big-numeros',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
+  });
+}
+
 function initJeitoDUE() {
   bannerJeitoDUE();
   imagemGrow();
@@ -251,6 +268,7 @@ function initJeitoDUE() {
   cardRepetidor();
   bigNumero();
   modalJeitoDue();
+  btnFixed();
 }
 
 export {initJeitoDUE};

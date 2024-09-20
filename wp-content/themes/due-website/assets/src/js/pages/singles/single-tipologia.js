@@ -44,23 +44,22 @@ function plantas() {
   });
 }
 
-// function swiperGaleria() {
-//   $('.slider-for').slick({
-//     slidesToShow: 1,
-//     slidesToScroll: 1,
-//     arrows: false,
-//     fade: true,
-//     asNavFor: '.slider-nav',
-//   });
-//   $('.slider-nav').slick({
-//     slidesToShow: 3,
-//     slidesToScroll: 1,
-//     asNavFor: '.slider-for',
-//     dots: true,
-//     centerMode: true,
-//     focusOnSelect: true,
-//   });
-// }
+function swiperGaleria() {
+  var swiper = new Swiper('.swiper-galeria', {
+    slidesPerView: 1.2,
+    spaceBetween: 24,
+    navigation: {
+      nextEl: '.swiper-button-next-galeria',
+      prevEl: '.swiper-button-prev-galeria',
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 3,
+      },
+    },
+  });
+}
+
 
 function panorama() {
   const imagePath = image.url;
@@ -83,12 +82,29 @@ function irFooter() {
   });
 }
 
+function btnFixed() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.carrossel-tipologia',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
+  });
+}
+
 function initSingleTipologia() {
   swiperTipologia();
-  // swiperGaleria();
+  swiperGaleria();
   plantas();
   panorama();
   irFooter();
+  btnFixed();
 }
 
 export {initSingleTipologia};

@@ -1,6 +1,5 @@
 function scrollsmooth() {
   // Verifica se o usuário não está na home
-  if (window.location.pathname !== '/') {
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
@@ -12,7 +11,6 @@ function scrollsmooth() {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-  }
 }
 function navbar() {
   $('#btn-navbar').click(function () {

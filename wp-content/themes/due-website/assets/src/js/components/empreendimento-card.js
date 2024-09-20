@@ -29,9 +29,19 @@ function updateCardContent(cardTemplate, empreendimento) {
 
 function updateRooms(cardTemplate, rooms, isStudio) {
   const quartos = rooms && rooms[0];
-  const roomsText = quartos
-    ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos} a ${quartos.maximo_de_quartos} qtos`
-    : 'N/A';
+  let roomsText = 'N/A';
+
+  if (quartos) {
+    const minQuartos = parseInt(quartos.minimo_de_quartos, 10);
+    let maxQuartos = parseInt(quartos.maximo_de_quartos, 10);
+
+    if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
+      roomsText = 'Studio e 1 qto';
+    } else {
+      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
+    }
+  }
+
   $(cardTemplate).find('.info-quartos').text(roomsText);
 }
 

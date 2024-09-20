@@ -47,7 +47,12 @@ async function empreendimentoPage() {
           (roomsFilter.includes('studio') && empreendimento.isStudio) ||
           empreendimento.rooms.some((room) => {
             const minQuartos = parseInt(room.minimo_de_quartos, 10);
-            const maxQuartos = parseInt(room.maximo_de_quartos, 10);
+            let maxQuartos = parseInt(room.maximo_de_quartos, 10);
+
+            if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
+              maxQuartos = 1;
+            }
+
             return roomsFilter.some(
               (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
             );
@@ -198,8 +203,20 @@ async function empreendimentoPage() {
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
+        let minimo = parseInt(e.rooms[0].minimo_de_quartos);
+        let maximo = parseInt(e.rooms[0].maximo_de_quartos);
+
+        if (isNaN(minimo) || minimo <= 1) {
+          minimo = 1;
+        }
+
+        if (isNaN(maximo) || maximo <= 1) {
+          maximo = 1;
+        }
+
+        if (maximo < minimo) {
+          maximo = minimo;
+        }
 
         for (let i = minimo; i <= maximo; i++) {
           roomsOptions.add(i);
@@ -254,13 +271,15 @@ async function empreendimentoPage() {
         });
       };
 
-      const isAnyFilterApplied = () => {
-        return Object.keys(filters).some((key) => {
+      const getAppliedFilterCategories = () => {
+        return Object.keys(filters).filter((key) => {
           return filters[key].find('input.ckkBox:checked').length > 0;
         });
       };
 
-      if (!isAnyFilterApplied()) {
+      const appliedFilterCategories = getAppliedFilterCategories();
+
+      if (appliedFilterCategories.length === 0) {
         Object.keys(filters).forEach((key) => {
           filters[key].find('input.ckkBox').each(function () {
             $(this).closest('label').show();
@@ -269,20 +288,29 @@ async function empreendimentoPage() {
         return;
       }
 
-      Object.keys(filters).forEach((key) => {
-        const $filter = filters[key];
-        $filter.find('input.ckkBox').each(function () {
-          const $checkbox = $(this);
-          const value = $checkbox.val();
-
-          if (key !== changedFilter) {
-            if (isOptionVisible(value, key)) {
-              $checkbox.closest('label').show();
-            } else {
-              $checkbox.closest('label').hide();
-            }
-          }
+      if (appliedFilterCategories.length === 1) {
+        const lastFilterCategory = appliedFilterCategories[0];
+        filters[lastFilterCategory].find('input.ckkBox').each(function () {
+          $(this).closest('label').show();
         });
+      }
+
+      Object.keys(filters).forEach((key) => {
+        if (key !== changedFilter) {
+          const $filter = filters[key];
+          if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
+            $filter.find('input.ckkBox').each(function () {
+              const $checkbox = $(this);
+              const value = $checkbox.val();
+
+              if (isOptionVisible(value, key) || $checkbox.is(':checked')) {
+                $checkbox.closest('label').show();
+              } else {
+                $checkbox.closest('label').hide();
+              }
+            });
+          }
+        }
       });
     }
 

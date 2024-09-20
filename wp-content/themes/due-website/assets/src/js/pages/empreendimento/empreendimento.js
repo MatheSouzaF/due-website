@@ -134,9 +134,9 @@ async function empreendimentoPage() {
     }
 
     function updateFilterNumberIndicador(){
-      $('.filter-desktop .filter-wrapper').each(function(){
+      $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function(){
         const current_filter = $(this);
-        const checked_count = $(current_filter).find('.checkboxes input:checked').length;
+        const checked_count = $(current_filter).find('.checkboxes input:checked, .category-content input:checked').length;
         const filter_count_el = $(current_filter).find('.filter_count');
 
         if (checked_count > 0) {

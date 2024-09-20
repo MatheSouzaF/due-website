@@ -14,7 +14,7 @@
           <!-- Destino -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">
-              <p class="">Destino</p>
+              <p class="">Destino <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -30,7 +30,7 @@
           <!-- Estágio -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">
-              <p class="">Estágio</p>
+              <p class="">Estágio <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -46,7 +46,7 @@
           <!-- Empreendimento -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">
-              <p class="">Empreendimento</p>
+              <p class="">Empreendimento <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -62,7 +62,7 @@
           <!-- Nº de quartos -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">
-              <p class="">Nº de quartos</p>
+              <p class="">Nº de quartos <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -78,7 +78,7 @@
           <!-- Diferenciais -->
           <div class="tipologia-filter-category">
             <button class="tipologia-category-toggle">
-              <p class="">Diferenciais</p>
+              <p class="">Diferenciais <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -101,7 +101,7 @@
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control founders-grotesk toggle-next ellipsis">
-              <p class="">Destino</p>
+              <p class="">Destino <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -118,7 +118,7 @@
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control founders-grotesk toggle-next ellipsis">
-              <p class="">Estágio</p>
+              <p class="">Estágio <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -135,7 +135,7 @@
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control founders-grotesk toggle-next ellipsis">
-              <p class="">Empreendimento</p>
+              <p class="">Empreendimento <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -152,7 +152,7 @@
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control founders-grotesk toggle-next ellipsis">
-              <p class="">Nº de quartos</p>
+              <p class="">Nº de quartos <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
@@ -169,7 +169,7 @@
         <div class="col-md-4">
           <div class="filter-wrapper">
             <button class="form-control founders-grotesk toggle-next ellipsis">
-              <p class="">Diferenciais</p>
+              <p class="">Diferenciais <span class="filter_count"></span></p>
               <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
                 fill="none">
                 <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"

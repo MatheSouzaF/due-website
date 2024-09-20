@@ -404,11 +404,26 @@ function encanteSe() {
     },
   });
 }
+function btnFixed() {
+  gsap.registerPlugin(ScrollTrigger);
 
+  gsap.to('.botoes-fixed', {
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power1.out',
+    scrollTrigger: {
+      trigger: '.invista',
+      start: 'center center',
+      end: 'bottom center',
+      toggleActions: 'play none none reverse',
+    },
+  });
+}
 
 async function initEmpreendimento() {
   await empreendimentoPage();
   encanteSe();
+  btnFixed();
 }
 
 export { initEmpreendimento };

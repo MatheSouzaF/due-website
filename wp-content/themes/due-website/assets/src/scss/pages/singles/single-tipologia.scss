@@ -200,6 +200,9 @@ body.single-tipo_single_page {
       .viewer {
         width: 100%;
         height: 550px;
+        @include media-breakpoint-up(md) {
+          height: 650px;
+        }
       }
       .shape-panorama-off {
         position: absolute;

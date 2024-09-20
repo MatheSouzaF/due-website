@@ -126,7 +126,7 @@
     <a class="box-card" href="#">
       <div class="box-midia">
         <img class="imagem-empreendimento" src="" alt="">
-        <video class="video-empreendimento" src="" muted loop playsinline></video>
+        <video class="video-empreendimento" src="" autoplay="autoplay" muted loop playsinline></video>
       </div>
       <div class="box-label">
         <p class="terminal-test label-informativo"></p>

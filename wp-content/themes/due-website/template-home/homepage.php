@@ -437,7 +437,7 @@ get_header();
 <script>
     function swiperBanner() {
         var mySwiper = new Swiper('.swiper-banner', {
-            // loop: true,
+            loop: true,
             autoplayDisableOnInteraction: false,
             slidesPerView: 1,
             autoHeight: true,

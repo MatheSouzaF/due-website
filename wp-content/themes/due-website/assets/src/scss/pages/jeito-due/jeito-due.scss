@@ -211,7 +211,6 @@ body.page-template-jeito-due {
             clip-path: inset(0 0 100% 0);
             transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
             height: 655px;
-            width: 60%;
             position: relative;
             &::after {
               content: '';
@@ -227,6 +226,7 @@ body.page-template-jeito-due {
             @include media-breakpoint-up(md) {
               position: sticky;
               top: 100px;
+              width: 60%;
             }
             &.imgPath {
               clip-path: inset(0 0 -100px -100px);
@@ -319,9 +319,12 @@ body.page-template-jeito-due {
             margin-bottom: 8px;
           }
           .container-text {
-            width: 40%;
             display: flex;
             flex-direction: column;
+            @include media-breakpoint-up(md) {
+            width: 40%;
+               
+            }
             .box-svg-text {
               display: flex;
               flex-direction: column;

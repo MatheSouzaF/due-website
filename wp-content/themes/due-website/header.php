@@ -86,10 +86,10 @@ function generate_navbar()
 	}
 	echo '</div>';
 
-	echo '<p class="label-descrubra">' . __('descubra', 'due-website') . '</p>';
-
-
+	
+	
 	echo '<div class="conjunto-links">';
+	echo '<p class="label-descrubra">' . __('descubra', 'due-website') . '</p>';
 	echo '<div class="box-navbar-menu">';
 
 	if (have_rows('link_navbar', 'options')) {

@@ -23,7 +23,10 @@ function wordAnimation() {
   var words = document.getElementsByClassName('word');
   var currentWord = 0;
 
-  words[currentWord].style.opacity = 1;
+  // Inicializa todos os elementos com opacity 0, exceto o primeiro
+  for (var i = 0; i < words.length; i++) {
+    words[i].style.opacity = i === 0 ? 1 : 0;
+  }
 
   function changeWord() {
     var cw = words[currentWord];
@@ -36,49 +39,47 @@ function wordAnimation() {
   }
 
   function animateWordOut(cw) {
-    cw.style.opacity = 0; // Pode ajustar com uma animação de transição
+    cw.style.opacity = 0; // Sai de cena
   }
 
   function animateWordIn(nw) {
-    nw.style.opacity = 1; // Pode ajustar com uma animação de transição
+    nw.style.opacity = 1; // Entra em cena
   }
 
-  changeWord();
   setInterval(changeWord, 2000);
 }
 
-// Adiciona um delay de 1 segundo antes de iniciar a animação
 setTimeout(wordAnimation, 1000);
 
-function cardHover() {
-  $(document).ready(function () {
-    $('.card-empreendimentos').hover(
-      function () {
-        // Mouse enter
-        const video = $(this).find('.video-empreendimento');
-        if (video.length) {
-          video.css('opacity', 1);
-          video[0].play();
-        }
-        $(this).addClass('hover-card');
-      },
-      function () {
-        // Mouse leave
-        const video = $(this).find('.video-empreendimento');
-        if (video.length) {
-          video.css('opacity', 0);
-          video[0].pause();
-          video[0].currentTime = 0;
-        }
+// function cardHover() {
+//   $(document).ready(function () {
+//     $('.card-empreendimentos').hover(
+//       function () {
+//         // Mouse enter
+//         const video = $(this).find('.video-empreendimento');
+//         if (video.length) {
+//           video.css('opacity', 1);
+//           video[0].play();
+//         }
+//         $(this).addClass('hover-card');
+//       },
+//       function () {
+//         // Mouse leave
+//         const video = $(this).find('.video-empreendimento');
+//         if (video.length) {
+//           video.css('opacity', 0);
+//           video[0].pause();
+//           video[0].currentTime = 0;
+//         }
 
-        // Adicionando o delay de 500ms
-        setTimeout(() => {
-          $(this).removeClass('hover-card');
-        }, 500);
-      }
-    );
-  });
-}
+//         // Adicionando o delay de 500ms
+//         setTimeout(() => {
+//           $(this).removeClass('hover-card');
+//         });
+//       }
+//     );
+//   });
+// }
 
 function fadeConteudoEncantese() {
   $('.slide-effect')
@@ -206,7 +207,7 @@ function btnFixed() {
 
 function initPage() {
   swiperEmpreendimento();
-  cardHover();
+  // cardHover();
   fadeConteudoEncantese();
   encantese();
   nossoProposito();

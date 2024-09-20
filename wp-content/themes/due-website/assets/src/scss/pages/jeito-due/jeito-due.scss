@@ -322,8 +322,7 @@ body.page-template-jeito-due {
             display: flex;
             flex-direction: column;
             @include media-breakpoint-up(md) {
-            width: 40%;
-               
+              width: 40%;
             }
             .box-svg-text {
               display: flex;
@@ -558,7 +557,16 @@ body.page-template-jeito-due {
           height: 317px;
           transition: 0.6s;
           @include media-breakpoint-up(sm) {
-            background-color: $due-primary;
+            &::after {
+              transition: 0.6s;
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 59, 75, 0.7);
+            }
             height: 415px;
             width: 49%;
           }
@@ -603,9 +611,7 @@ body.page-template-jeito-due {
             height: 100%;
             width: 100%;
             z-index: 0;
-            @include media-breakpoint-up(sm) {
-              opacity: 0;
-            }
+           
             transition: opacity 0.8s ease-in-out;
             &::before {
               content: '';
@@ -625,15 +631,16 @@ body.page-template-jeito-due {
           }
           @include media-breakpoint-up(sm) {
             &:hover {
+              &::after{
+                height: 0;
+              }
               .box-texto {
                 .titulo-card {
                   margin-bottom: 200px;
                 }
               }
 
-              .img-hover {
-                opacity: 1;
-              }
+              
             }
           }
         }

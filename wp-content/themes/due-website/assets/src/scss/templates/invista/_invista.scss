@@ -229,7 +229,7 @@
       @include media-breakpoint-up(sm) {
         .box-img {
           &::after {
-            height: 99.5%;
+            height: 100%;
           }
           .svg-numeros {
             .box-svg {

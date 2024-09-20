@@ -100,7 +100,7 @@
         }
 
         .nome-empreendimento {
-          color: $grey-0;
+          color: $due-tertiary;
           font-size: 28px;
           font-style: normal;
           font-weight: 300;
@@ -137,7 +137,7 @@
       align-items: center;
       flex-direction: row;
       justify-content: space-between;
-      padding: 24px 0;
+      padding: 14px 0 44px;
       .valores {
         .entradas {
           color: $due-tertiary;
@@ -309,6 +309,9 @@
             align-items: center;
             margin-bottom: 13px;
             justify-content: space-between;
+            .nome-empreendimento{
+              color: $due-tertiary;
+            }
             .fale-com-time {
               display: flex;
               flex-direction: row;

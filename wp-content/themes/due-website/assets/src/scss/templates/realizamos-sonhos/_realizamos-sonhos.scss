@@ -204,6 +204,10 @@
         position: absolute;
         top: 24px;
         right: 24px;
+        svg{
+          width: 130px;
+          height: 30px;
+        }
         @include media-breakpoint-up(md) {
           display: none;
         }

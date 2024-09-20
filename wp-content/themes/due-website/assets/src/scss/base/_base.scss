@@ -4,7 +4,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'terminal-test', sans-serif;
 }
-body{
+body {
   overflow-x: hidden;
   .botoes-fixed {
     display: flex;
@@ -14,6 +14,99 @@ body{
     z-index: 9;
     @include media-breakpoint-down(sm) {
       display: none;
+    }
+    a {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+  .box-fab {
+    display: flex;
+    position: fixed;
+    z-index: 9;
+    bottom: 20px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+    @include media-breakpoint-up(sm) {
+      display: none;
+    }
+    .fab {
+      --fab-easing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+      --fab-animation-speed: 0.25s;
+    }
+    .fab__toggle {
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+    }
+    .fab__nav {
+      position: absolute;
+      bottom: calc(100% + 0.5rem);
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 0.5rem;
+      background-color: transparent;
+    }
+    .fab__link {
+      white-space: nowrap;
+      color: white;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 0.5rem;
+      width: fit-content;
+      opacity: 0;
+      transform: translateX(100%);
+      display: flex;
+      background: white;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      align-items: center;
+      gap: 8px;
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+      .text-fab {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%; /* 16px */
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: $due-tertiary;
+      }
+    }
+    .fab__link:nth-last-child(1) {
+      transition-delay: 0.25s;
+    }
+    .fab__link {
+      transition: all var(--fab-animation-speed) var(--fab-easing-function);
+    }
+    .fab[is-open] .fab__link:nth-last-child(1) {
+      transition-delay: 0s;
+    }
+
+    .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
+
+    .fab[is-open] .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
+
+    .fab__link:nth-last-child(3) {
+      transition-delay: 0s;
+    }
+
+    .fab[is-open] .fab__link:nth-last-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .fab[is-open] .fab__link {
+      transform: translateX(0);
+      opacity: 1;
     }
   }
 }
@@ -38,8 +131,7 @@ body.lenis {
   }
 }
 
-.active-sidebar-body{
-  
+.active-sidebar-body {
   overflow: hidden;
 }
 .smooth-scroll {

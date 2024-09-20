@@ -176,6 +176,8 @@ wp_localize_script('main', 'TipologiasData', array(
   
   <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
   <?php get_template_part('template-invista/invista'); ?>
+  <div class="call-form" id="call-form"></div>
+
 </main>
 <div class="drawer-overlay"></div>
 

@@ -6,10 +6,12 @@ body.single-tipo_single_page {
       color: $due-tertiary !important;
     }
     .link-logo-menu {
-      .box-svg-header {
-        svg {
-          path {
-            fill: $due-tertiary;
+      @include media-breakpoint-up(md) {
+        .box-svg-header {
+          svg {
+            path {
+              fill: $due-tertiary;
+            }
           }
         }
       }
@@ -248,7 +250,7 @@ body.single-tipo_single_page {
       .swiper-wrapper {
         .slide-image {
           width: 310px;
-          height: 400px;
+          height: 500px;
           .box-img {
             position: relative;
             height: 100%;
@@ -274,7 +276,7 @@ body.single-tipo_single_page {
         }
         .slide-video {
           width: 556px !important;
-          height: 400px;
+          height: 500px;
 
           .box-video {
             position: relative;

@@ -1,16 +1,16 @@
 function scrollsmooth() {
   // Verifica se o usuário não está na home
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({
-      lerp: 0.07,
-    });
+  const lenis = new Lenis({
+    lerp: 0.07,
+  });
 
-    lenis.on('scroll', ScrollTrigger.update);
+  lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
 }
 function navbar() {
   $('#btn-navbar').click(function () {
@@ -116,13 +116,66 @@ function relaod() {
   let windowWidth = $(window).width();
 
   $(window).resize(function () {
-    let newWindowWidth = $(window).width()
+    let newWindowWidth = $(window).width();
     if ((windowWidth > 768 && newWindowWidth <= 768) || (windowWidth <= 768 && newWindowWidth > 768)) {
       location.reload();
     }
   });
 }
 
+function callForm() {
+  $('.ancora-footer').on('click', function (e) {
+    var target = this.hash;
+    if (target && $(target).length) {
+      e.preventDefault();
+      var $target = $(target);
+      $('html, body')
+        .stop()
+        .animate(
+          {
+            scrollTop: $target.offset().top - 100,
+          },
+          900,
+          'swing'
+        );
+    } else {
+      window.location.href = this.href;
+    }
+  });
+}
+
+function fabFixed() {
+  class FabButton extends HTMLElement {
+    isOpenAttribute = 'is-open';
+
+    constructor() {
+      super();
+
+      this.toggleButton = this.querySelector('.fab__toggle');
+      this.isOpen = false;
+
+      this.toggleButton.addEventListener('click', this._onToggleClick);
+    }
+
+    set isOpen(value) {
+      this._isOpen = value;
+      console.log('click', this._isOpen);
+      this._isOpen ? this.setAttribute(this.isOpenAttribute, '') : this.removeAttribute(this.isOpenAttribute);
+    }
+
+    get isOpen() {
+      return this._isOpen;
+    }
+
+    _onToggleClick = () => {
+      this.isOpen = !this.isOpen;
+    };
+  }
+
+  if ('customElements' in window) {
+    customElements.define('fab-button', FabButton);
+  }
+}
 function initHeader() {
   menuSticky();
   scrollsmooth();
@@ -130,6 +183,8 @@ function initHeader() {
   hoverDestinos();
   animationFooter();
   relaod();
+  callForm();
+  fabFixed();
 }
 
 export {initHeader};

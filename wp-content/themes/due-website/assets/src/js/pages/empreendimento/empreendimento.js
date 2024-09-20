@@ -43,16 +43,16 @@ async function empreendimentoPage() {
         const matchLocation = !locationFilter || locationFilter.includes(empreendimento.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(empreendimento.status.toLowerCase());
 
-        const matchRooms = !roomsFilter ||
-          (roomsFilter.includes('studio') ? empreendimento.isStudio :
-            empreendimento.rooms.some((room) => {
-              const minQuartos = parseInt(room.minimo_de_quartos, 10);
-              const maxQuartos = parseInt(room.maximo_de_quartos, 10);
-              return roomsFilter.some(
-                (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
-              );
-            })
-          );
+        const matchRooms = !roomsFilter || (
+          (roomsFilter.includes('studio') && empreendimento.isStudio) ||
+          empreendimento.rooms.some((room) => {
+            const minQuartos = parseInt(room.minimo_de_quartos, 10);
+            const maxQuartos = parseInt(room.maximo_de_quartos, 10);
+            return roomsFilter.some(
+              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+            );
+          })
+        );
 
         return matchLocation && matchStatus && matchRooms;
       });
@@ -80,14 +80,15 @@ async function empreendimentoPage() {
       $('.remove-badge').on('click', function () {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
-      
+
         $(`#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`).click();
-      
+
         updateBadges();
         buildFilterUrl();
+        updateFilterNumberIndicador();
         filterAndRender();
       });
-      
+
     }
 
     function removeAccents(str) {
@@ -130,6 +131,21 @@ async function empreendimentoPage() {
 
       const newUrl = `${window.location.pathname}${params.toString().length ? '?' : ''}${params.toString()}`;
       window.history.pushState({}, '', newUrl);
+    }
+
+    function updateFilterNumberIndicador() {
+      $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
+        const current_filter = $(this);
+        const checked_count = $(current_filter).find('.checkboxes input:checked, .category-content input:checked').length;
+        const filter_count_el = $(current_filter).find('.filter_count');
+
+        if (checked_count > 0) {
+          $(filter_count_el).html(`(${checked_count})`)
+        } else {
+          $(filter_count_el).html('')
+        }
+
+      })
     }
 
     function applyFiltersFromUrl() {
@@ -276,6 +292,7 @@ async function empreendimentoPage() {
     $('#filter-location input.ckkBox, #mobile-filter-location input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
 
       const selectedLocations = $('#filter-location input.ckkBox:checked, #mobile-filter-location input.ckkBox:checked').map(function () {
         return $(this).val();
@@ -290,12 +307,14 @@ async function empreendimentoPage() {
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('filter-status');
     });
 
     $('#filter-rooms input.ckkBox, #mobile-filter-rooms input.ckkBox').on('change', function () {
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       hideOptions('filter-rooms');
     });
 
@@ -325,6 +344,7 @@ async function empreendimentoPage() {
       // Aplicar os filtros selecionados
       filterAndRender();
       buildFilterUrl();
+      updateFilterNumberIndicador();
       updateBadges();
     });
   } catch (error) {

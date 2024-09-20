@@ -47,7 +47,12 @@ async function empreendimentoPage() {
           (roomsFilter.includes('studio') && empreendimento.isStudio) ||
           empreendimento.rooms.some((room) => {
             const minQuartos = parseInt(room.minimo_de_quartos, 10);
-            const maxQuartos = parseInt(room.maximo_de_quartos, 10);
+            let maxQuartos = parseInt(room.maximo_de_quartos, 10);
+
+            if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
+              maxQuartos = 1;
+            }
+
             return roomsFilter.some(
               (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
             );
@@ -198,8 +203,20 @@ async function empreendimentoPage() {
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {
-        const minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        const maximo = parseInt(e.rooms[0].maximo_de_quartos);
+        let minimo = parseInt(e.rooms[0].minimo_de_quartos);
+        let maximo = parseInt(e.rooms[0].maximo_de_quartos);
+
+        if (isNaN(minimo) || minimo <= 1) {
+          minimo = 1;
+        }
+
+        if (isNaN(maximo) || maximo <= 1) {
+          maximo = 1;
+        }
+
+        if (maximo < minimo) {
+          maximo = minimo;
+        }
 
         for (let i = minimo; i <= maximo; i++) {
           roomsOptions.add(i);

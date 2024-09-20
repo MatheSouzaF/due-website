@@ -254,13 +254,15 @@ async function empreendimentoPage() {
         });
       };
 
-      const isAnyFilterApplied = () => {
-        return Object.keys(filters).some((key) => {
+      const getAppliedFilterCategories = () => {
+        return Object.keys(filters).filter((key) => {
           return filters[key].find('input.ckkBox:checked').length > 0;
         });
       };
 
-      if (!isAnyFilterApplied()) {
+      const appliedFilterCategories = getAppliedFilterCategories();
+
+      if (appliedFilterCategories.length === 0) {
         Object.keys(filters).forEach((key) => {
           filters[key].find('input.ckkBox').each(function () {
             $(this).closest('label').show();
@@ -269,20 +271,29 @@ async function empreendimentoPage() {
         return;
       }
 
-      Object.keys(filters).forEach((key) => {
-        const $filter = filters[key];
-        $filter.find('input.ckkBox').each(function () {
-          const $checkbox = $(this);
-          const value = $checkbox.val();
-
-          if (key !== changedFilter) {
-            if (isOptionVisible(value, key)) {
-              $checkbox.closest('label').show();
-            } else {
-              $checkbox.closest('label').hide();
-            }
-          }
+      if (appliedFilterCategories.length === 1) {
+        const lastFilterCategory = appliedFilterCategories[0];
+        filters[lastFilterCategory].find('input.ckkBox').each(function () {
+          $(this).closest('label').show();
         });
+      }
+
+      Object.keys(filters).forEach((key) => {
+        if (key !== changedFilter) {
+          const $filter = filters[key];
+          if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
+            $filter.find('input.ckkBox').each(function () {
+              const $checkbox = $(this);
+              const value = $checkbox.val();
+
+              if (isOptionVisible(value, key)) {
+                $checkbox.closest('label').show();
+              } else {
+                $checkbox.closest('label').hide();
+              }
+            });
+          }
+        }
       });
     }
 

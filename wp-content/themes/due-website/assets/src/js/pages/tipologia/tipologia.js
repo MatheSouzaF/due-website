@@ -1,5 +1,5 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -86,9 +86,8 @@ function tipologiaPage() {
     function updateRooms(cardTemplate, rooms, isStudio) {
       const quartos = rooms && rooms[0];
       const roomsText = quartos
-        ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${
-            quartos.maximo_de_quartos_tipologia
-          } qtos`
+        ? `${isStudio ? 'Studio e ' : ''}${quartos.minimo_de_quartos_tipologia} a ${quartos.maximo_de_quartos_tipologia
+        } qtos`
         : 'N/A';
       $(cardTemplate).find('.info-quartos').text(roomsText);
     }
@@ -158,15 +157,15 @@ function tipologiaPage() {
       const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
 
       const options = {
-        location: Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        status: Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        location: Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        status: Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         empreendimento: Array.from(empreendimentoOptions).map((empreendimento) => ({
           value: empreendimento,
           label: empreendimento,
         })),
-        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({value: diferencial, label: diferencial})),
+        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         rooms: [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -234,10 +233,10 @@ function tipologiaPage() {
           (roomsFilter.includes('studio')
             && tipologia.isStudio
             || tipologia.rooms.some((room) => {
-                const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-                const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
-                return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
-              }));
+              const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
+              const maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+              return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
+            }));
 
         const matchDiferenciais =
           !diferenciaisFilter || diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -367,14 +366,13 @@ function tipologiaPage() {
         params.set('tipologia', 'true');
       }
 
-      const newUrl = `${window.location.pathname}${window.location.hash}${
-        params.toString().length ? '?' : ''
-      }${params.toString()}`;
+      const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''
+        }${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 
-    function updateFilterNumberIndicador(){
-      $('.filter-desktop .filter-wrapper, .tipologia-drawer-content .tipologia-filter-category').each(function(){
+    function updateFilterNumberIndicador() {
+      $('.filter-desktop .filter-wrapper, .tipologia-drawer-content .tipologia-filter-category').each(function () {
         const current_filter = $(this);
         const checked_count = $(current_filter).find('.checkboxes input:checked, .tipologia-category-content input:checked').length;
         const filter_count_el = $(current_filter).find('.filter_count');
@@ -467,14 +465,15 @@ function tipologiaPage() {
         });
       };
 
-      const isAnyFilterApplied = () => {
-        return Object.keys(filters).some((key) => {
+      const getAppliedFilterCategories = () => {
+        return Object.keys(filters).filter((key) => {
           return filters[key].find('input.ckkBox:checked').length > 0;
         });
       };
 
-      // Se nenhum filtro estiver aplicado, exibir todas as opções
-      if (!isAnyFilterApplied()) {
+      const appliedFilterCategories = getAppliedFilterCategories();
+
+      if (appliedFilterCategories.length === 0) {
         Object.keys(filters).forEach((key) => {
           filters[key].find('input.ckkBox').each(function () {
             $(this).closest('label').show();
@@ -483,22 +482,29 @@ function tipologiaPage() {
         return;
       }
 
-      // Caso contrário, aplicar a lógica de ocultar opções
-      Object.keys(filters).forEach((key) => {
-        console.log('🚀 ~ key:', key);
-        const $filter = filters[key];
-        $filter.find('input.ckkBox').each(function () {
-          const $checkbox = $(this);
-          const value = $checkbox.val();
-
-          if (key !== changedFilter) {
-            if (isOptionVisible(value, key)) {
-              $checkbox.closest('label').show();
-            } else {
-              $checkbox.closest('label').hide();
-            }
-          }
+      if (appliedFilterCategories.length === 1) {
+        const lastFilterCategory = appliedFilterCategories[0];
+        filters[lastFilterCategory].find('input.ckkBox').each(function () {
+          $(this).closest('label').show();
         });
+      }
+
+      Object.keys(filters).forEach((key) => {
+        if (key !== changedFilter) {
+          const $filter = filters[key];
+          if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
+            $filter.find('input.ckkBox').each(function () {
+              const $checkbox = $(this);
+              const value = $checkbox.val();
+
+              if (isOptionVisible(value, key)) {
+                $checkbox.closest('label').show();
+              } else {
+                $checkbox.closest('label').hide();
+              }
+            });
+          }
+        }
       });
     }
 
@@ -514,7 +520,7 @@ function tipologiaPage() {
           return $(this).val();
         })
         .get();
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
     });
 
     filters['status'].find('input.ckkBox').on('change', function () {
@@ -611,4 +617,4 @@ function initTipologia() {
   cardHover();
 }
 
-export {initTipologia};
+export { initTipologia };

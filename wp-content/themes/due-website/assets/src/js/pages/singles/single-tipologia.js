@@ -1,7 +1,7 @@
 import { Viewer } from '@photo-sphere-viewer/core';
 
 // Inicializa o Swiper para Tipologias
-const initializeTipologiasSwiper = () => {
+function initializeTipologiasSwiper() {
   new Swiper('.tipologias-swiper', {
     slidesPerView: 1.1,
     spaceBetween: 24,
@@ -18,7 +18,7 @@ const initializeTipologiasSwiper = () => {
 };
 
 // Inicializa o Swiper para Galeria
-const initializeGaleriaSwiper = () => {
+function initializeGaleriaSwiper() {
   new Swiper('.swiper-galeria', {
     slidesPerView: 1.2,
     spaceBetween: 24,
@@ -34,7 +34,7 @@ const initializeGaleriaSwiper = () => {
   });
 };
 
-const setupPlantSliders = () => {
+function setupPlantSliders() {
   $('.slider-plantas li[data-row="1"]').addClass('active');
   $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
   
@@ -83,7 +83,7 @@ const setupPlantSliders = () => {
 };
 
 // Inicializa o Visualizador de Panorama
-const initializePanoramaViewer = () => {
+function initializePanoramaViewer() {
   const imagePath = image.url; // Certifique-se de que 'image' está definido no escopo
 
   new Viewer({
@@ -93,7 +93,7 @@ const initializePanoramaViewer = () => {
 };
 
 // Configura o Scroll para o Footer
-const setupFooterScroll = () => {
+function setupFooterScroll() {
   $('#irFooter').on('click', function (e) {
     e.preventDefault();
     $('html, body').animate(
@@ -106,7 +106,7 @@ const setupFooterScroll = () => {
 };
 
 // Configura a Animação dos Botões Fixos com GSAP
-const setupFixedButtonsAnimation = () => {
+function setupFixedButtonsAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {

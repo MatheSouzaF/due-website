@@ -373,7 +373,7 @@ body.page-template-jeito-due {
               }
             }
 
-            .box-wysiwyg {
+            .repetidor-accordion {
               .titulo-repetidor {
                 font-size: 24px;
                 font-style: normal;
@@ -383,39 +383,63 @@ body.page-template-jeito-due {
                 color: #cb9e6c;
                 margin-bottom: 48px;
               }
-              .descricao-wysiwyg {
-                ul {
-                  list-style: none;
 
-                  li {
-                    position: relative;
-                    padding-left: 20px;
-                    font-size: 18px;
+              .box-card-faq {
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid #e4e7e8;
+                position: relative;
+                .title-svg {
+                  gap: 80px;
+                  // padding-bottom: 16px;
+                  cursor: pointer;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  h4 {
+                    transition: 0.6s;
+                    line-height: 140%;
+                    font-size: 20px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 140%; /* 25.2px */
-                    letter-spacing: 0.36px;
+                    line-height: 140%; /* 28px */
+                    letter-spacing: 0.4px;
                     color: $due-tertiary;
-                    font-family: 'founders-grotesk', sans-serif;
-                    &::before {
-                      content: '•';
-                      color: #cb9e6c;
-                      position: absolute;
-                      left: 0;
-                      top: 0;
+                  }
+                  .svg-proposito {
+                    svg {
+                      transition: 0.6s;
+                      path {
+                        transition: 0.6s;
+                      }
+                      circle {
+                        transition: 0.6s;
+                      }
                     }
                   }
                 }
-                p {
-                  font-family: 'founders-grotesk', sans-serif;
-                  color: $due-tertiary;
-                  font-size: 18px;
-                  font-style: normal;
-                  font-weight: 300;
-                  line-height: 140%; /* 25.2px */
-                  letter-spacing: 0.36px;
-                  strong {
-                    font-weight: 500;
+
+                &.active {
+                  h4 {
+                    color: $due-tertiary;
+                  }
+                  .svg-proposito {
+                    svg {
+                      transform: rotate(180deg);
+                    }
+                  }
+                }
+
+                .desWrapper {
+                  display: none;
+                  max-width: 95%;
+                  .description-off {
+                    font-size: 18px;
+                    color: $due-tertiary;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 140%; /* 25.2px */
+                    letter-spacing: 0.36px;
                   }
                 }
               }
@@ -611,7 +635,7 @@ body.page-template-jeito-due {
             height: 100%;
             width: 100%;
             z-index: 0;
-           
+
             transition: opacity 0.8s ease-in-out;
             &::before {
               content: '';
@@ -631,7 +655,7 @@ body.page-template-jeito-due {
           }
           @include media-breakpoint-up(sm) {
             &:hover {
-              &::after{
+              &::after {
                 height: 0;
               }
               .box-texto {
@@ -639,8 +663,6 @@ body.page-template-jeito-due {
                   margin-bottom: 200px;
                 }
               }
-
-              
             }
           }
         }

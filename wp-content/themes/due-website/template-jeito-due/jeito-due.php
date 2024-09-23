@@ -83,9 +83,30 @@ get_header();
                         <?php endwhile;
                         endif; ?>
                     </div>
-                    <div class="box-wysiwyg">
+                    <div class="repetidor-accordion">
                         <h3 class="titulo-repetidor"><?php echo get_field('nosso_proposito_titulo_wysiwyg'); ?></h3>
-                        <div class="descricao-wysiwyg"><?php echo get_field('nosso_proposito_wysiwyg'); ?></div>
+
+                        <?php
+                        if (have_rows('repetidor_accordion')) :
+                            while (have_rows('repetidor_accordion')) : the_row(); ?>
+                                <div class="box-card-faq">
+                                    <div class="title-svg">
+                                        <h4 class="founders-grotesk"><?php echo get_sub_field('titulo_accordion') ?></h4>
+                                        <i class="svg-proposito">
+                                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="12.5" cy="12.5" r="12.5" fill="#E5EBED" fill-opacity="0.5" />
+                                                <path d="M8.70768 10.604L12.4993 14.3957L16.291 10.604" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                        </i>
+                                    </div>
+                                    <div id="descwrapper" class="desWrapper">
+                                        <div class="description-off founders-grotesk"><?php echo get_sub_field('descricao_accordion') ?></div>
+
+                                    </div>
+                                </div>
+                        <?php endwhile;
+                        endif; ?>
                     </div>
                 </div>
             </div>

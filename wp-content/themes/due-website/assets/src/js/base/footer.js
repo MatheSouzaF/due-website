@@ -9,6 +9,7 @@ function formRD() {
       $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val(''); // Adiciona a limpeza do input type="tel"
       $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
       $boxSucesso.addClass('visible');
+      
     });
   });
 }

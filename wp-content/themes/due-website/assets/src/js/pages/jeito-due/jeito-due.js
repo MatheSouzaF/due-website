@@ -258,6 +258,24 @@ function btnFixed() {
     },
   });
 }
+function faq() {
+  // Deixa o primeiro desWrapper com display block
+  jQuery('.desWrapper').first().css('display', 'block');
+  jQuery('.title-svg').first().parent().addClass('active');
+
+  jQuery('.title-svg').click(function () {
+    var parent = jQuery(this).parent();
+    var toggle = parent.find('.desWrapper');
+
+    toggle.slideToggle('slow');
+    parent.toggleClass('active');
+    parent.find('.svg-faq').toggleClass('hover-svg-faq');
+  });
+
+  jQuery('.inactive').click(function () {
+    jQuery(this).toggleClass('inactive active');
+  });
+}
 
 function initJeitoDUE() {
   bannerJeitoDUE();
@@ -269,6 +287,7 @@ function initJeitoDUE() {
   bigNumero();
   modalJeitoDue();
   btnFixed();
+  faq();
 }
 
 export {initJeitoDUE};

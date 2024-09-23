@@ -34,48 +34,52 @@ const initializeGaleriaSwiper = () => {
   });
 };
 
-// Configura os Sliders de Plantas e Conteúdo
 const setupPlantSliders = () => {
-  $(document).ready(() => {
-    // Define a row 1 como ativa inicialmente
-    $('.slider-plantas li[data-row="1"]').addClass('active');
-    $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+  $('.slider-plantas li[data-row="1"]').addClass('active');
+  $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+  
+  initializeSlick($('.slider-conteudo li[data-row="1"]'));
 
-    // Evento de clique nas rows do slider de plantas
-    $('.slider-plantas li').on('click', function () {
-      const rowNumber = $(this).data('row');
+  $('.slider-plantas li').on('click', function () {
+    const rowNumber = $(this).data('row');
 
-      // Atualiza a classe 'active' no slider de plantas
-      $('.slider-plantas li').removeClass('active');
-      $(this).addClass('active');
+    $('.slider-plantas li').removeClass('active');
+    $(this).addClass('active');
 
-      // Transição de fade entre conteúdos
-      $('.slider-conteudo li.active').fadeOut(300, function () {
-        $(this).removeClass('active');
-        $(`.slider-conteudo li[data-row="${rowNumber}"]`)
-          .addClass('active')
-          .fadeIn(300);
+    $('.slider-conteudo li.active').fadeOut(300, function () {
+      $(this).removeClass('active');
+      const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
+      newContent.addClass('active').fadeIn(300, function() {
+        initializeSlick(newContent);
       });
     });
-
-    // Inicializa os sliders Slick
-    $('.slider-for').slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      asNavFor: '.slider-nav',
-    });
-
-    $('.slider-nav').slick({
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      asNavFor: '.slider-for',
-      dots: true,
-      centerMode: true,
-      focusOnSelect: true,
-    });
   });
+
+  function initializeSlick(contentElement) {
+    const sliderFor = contentElement.find('.slider-for');
+    const sliderNav = contentElement.find('.slider-nav');
+
+    if (!sliderFor.hasClass('slick-initialized')) {
+      sliderFor.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: sliderNav,
+      });
+    }
+
+    if (!sliderNav.hasClass('slick-initialized')) {
+      sliderNav.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: sliderFor,
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true,
+      });
+    }
+  };
 };
 
 // Inicializa o Visualizador de Panorama

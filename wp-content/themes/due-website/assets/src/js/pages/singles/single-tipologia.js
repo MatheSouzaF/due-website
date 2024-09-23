@@ -1,7 +1,8 @@
-import {Viewer} from '@photo-sphere-viewer/core';
+import { Viewer } from '@photo-sphere-viewer/core';
 
-function swiperTipologia() {
-  var swiper = new Swiper('.tipologias-swiper', {
+// Inicializa o Swiper para Tipologias
+function initializeTipologiasSwiper() {
+  new Swiper('.tipologias-swiper', {
     slidesPerView: 1.1,
     spaceBetween: 24,
     breakpoints: {
@@ -14,38 +15,11 @@ function swiperTipologia() {
       prevEl: '.swiper-button-prev',
     },
   });
-}
+};
 
-function plantas() {
-  jQuery(document).ready(function ($) {
-    // Função para iniciar mostrando a row 1 nas duas listas
-    $('.slider-plantas li[data-row="1"]').addClass('active');
-    $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
-
-    // Evento de clique na row do slider-plantas
-    $('.slider-plantas li').on('click', function () {
-      var rowNumber = $(this).data('row'); // Obtem o número da row
-
-      // Remove a classe 'active' de todas as rows na slider-plantas sem fade
-      $('.slider-plantas li').removeClass('active');
-      $(this).addClass('active');
-
-      // Primeiro faz o fadeOut da row ativa em slider-conteudo
-      $('.slider-conteudo li.active').fadeOut(300, function () {
-        // Remove a classe 'active' após o fadeOut
-        $(this).removeClass('active');
-
-        // Só então faz o fadeIn da nova row correspondente
-        $('.slider-conteudo li[data-row="' + rowNumber + '"]')
-          .addClass('active')
-          .fadeIn(300);
-      });
-    });
-  });
-}
-
-function swiperGaleria() {
-  var swiper = new Swiper('.swiper-galeria', {
+// Inicializa o Swiper para Galeria
+function initializeGaleriaSwiper() {
+  new Swiper('.swiper-galeria', {
     slidesPerView: 1.2,
     spaceBetween: 24,
     navigation: {
@@ -58,21 +32,70 @@ function swiperGaleria() {
       },
     },
   });
-}
+};
 
+function setupPlantSliders() {
+  $('.slider-plantas li[data-row="1"]').addClass('active');
+  $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+  
+  initializeSlick($('.slider-conteudo li[data-row="1"]'));
 
-function panorama() {
-  const imagePath = image.url;
+  $('.slider-plantas li').on('click', function () {
+    const rowNumber = $(this).data('row');
+
+    $('.slider-plantas li').removeClass('active');
+    $(this).addClass('active');
+
+    $('.slider-conteudo li.active').fadeOut(300, function () {
+      $(this).removeClass('active');
+      const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
+      newContent.addClass('active').fadeIn(300, function() {
+        initializeSlick(newContent);
+      });
+    });
+  });
+
+  function initializeSlick(contentElement) {
+    const sliderFor = contentElement.find('.slider-for');
+    const sliderNav = contentElement.find('.slider-nav');
+
+    if (!sliderFor.hasClass('slick-initialized')) {
+      sliderFor.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        asNavFor: sliderNav,
+      });
+    }
+
+    if (!sliderNav.hasClass('slick-initialized')) {
+      sliderNav.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: sliderFor,
+        dots: true,
+        centerMode: true,
+        focusOnSelect: true,
+      });
+    }
+  };
+};
+
+// Inicializa o Visualizador de Panorama
+function initializePanoramaViewer() {
+  const imagePath = image.url; // Certifique-se de que 'image' está definido no escopo
 
   new Viewer({
     container: 'viewer',
     panorama: imagePath,
   });
-}
+};
 
-function irFooter() {
+// Configura o Scroll para o Footer
+function setupFooterScroll() {
   $('#irFooter').on('click', function (e) {
-    e.preventDefault(); // Impede a ação padrão do link
+    e.preventDefault();
     $('html, body').animate(
       {
         scrollTop: $(document).height(),
@@ -80,9 +103,10 @@ function irFooter() {
       'slow'
     );
   });
-}
+};
 
-function btnFixed() {
+// Configura a Animação dos Botões Fixos com GSAP
+function setupFixedButtonsAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
@@ -96,15 +120,16 @@ function btnFixed() {
       toggleActions: 'play none none reverse',
     },
   });
-}
+};
 
+// Função de Inicialização Geral
 function initSingleTipologia() {
-  swiperTipologia();
-  swiperGaleria();
-  plantas();
-  panorama();
-  irFooter();
-  btnFixed();
-}
+  initializeTipologiasSwiper();
+  initializeGaleriaSwiper();
+  setupPlantSliders();
+  initializePanoramaViewer();
+  setupFooterScroll();
+  setupFixedButtonsAnimation();
+};
 
-export {initSingleTipologia};
+export { initSingleTipologia };

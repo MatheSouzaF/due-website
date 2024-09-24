@@ -397,6 +397,35 @@
     animation: pulse 1.5s infinite;
   }
 }
+.button-fixed-atendimento-v2 {
+  display: flex;
+  width: 268px;
+  height: 64px;
+  padding: 20px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: $grey-0;
+  transition: 0.6s;
+  cursor: pointer;
+  p {
+    color: $due-tertiary;
+    font-family: 'terminal-test', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0.44px;
+    text-transform: uppercase;
+    transition: 0.6s;
+  }
+  &:hover {
+    background-color: $due-tertiary;
+    p {
+      color: $grey-0;
+    }
+  }
+}
 .button-fixed-whatsapp {
   display: flex;
   width: 268px;

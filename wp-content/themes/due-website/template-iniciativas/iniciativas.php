@@ -247,7 +247,7 @@ get_header();
                 if (have_rows('repetidor_selos_certificacoes')) :
                     while (have_rows('repetidor_selos_certificacoes')) : the_row(); ?>
 
-                        <div class="lista-selos">
+                        <div class="lista-selos-desktop">
                             <div class="box-titulo-svg">
                                 <div class="box-svg">
                                     <?php $svg_file = get_sub_field('svg_selos_e_certificacoes');
@@ -262,10 +262,25 @@ get_header();
                             <div class="hover-descricao">
                                 <p class="founders-grotesk"><?php echo get_sub_field('descricoes_selos_e_certificacoes'); ?></p>
                             </div>
+                            <div class="lista-selos-mobile">
+                                <div class="box-titulo-accordion">
+                                    <h3 class="titulo-card terminal-test"><?php echo get_sub_field('titulo_card_selos_certificacoes'); ?></h3>
+                                    <svg class="svg-faq" width="19" height="10" viewBox="0 0 19 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="Arrow - Up 2">
+                                            <path id="Stroke 1" d="M1.91927 1.2085L9.5026 8.79183L17.0859 1.2085" stroke="#002B36" stroke-width="1.95" stroke-linecap="round" stroke-linejoin="round" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="hover-descricao-mobile">
+                                    <p class="founders-grotesk"><?php echo get_sub_field('descricoes_selos_e_certificacoes'); ?></p>
+                                </div>
+                            </div>
                         </div>
                 <?php endwhile;
                 endif; ?>
             </div>
+
+
         </div>
     </div>
     <div class="call-form" id="call-form"></div>

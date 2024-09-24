@@ -18,6 +18,33 @@ body {
     a {
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
+    .button-fixed-atendimento-v2 {
+      svg {
+        path {
+          stroke: $due-tertiary;
+          transition: 0.6s;
+        }
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: $grey-0;
+          }
+        }
+      }
+    }
+    .button-fixed-whatsapp {
+      svg {
+        path {
+          transition: 0.6s;
+          fill: $due-tertiary;
+          @include media-breakpoint-up(md) {
+            fill: $grey-0;
+             
+          }
+        }
+      }
+    }
   }
   .box-fab {
     display: flex;

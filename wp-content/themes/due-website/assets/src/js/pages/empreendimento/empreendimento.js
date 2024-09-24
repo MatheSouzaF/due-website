@@ -4,7 +4,6 @@ import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../
 import { generateBadge } from '../../components/badge';
 import { getFilterValue } from '../../utils/get-filter-value';
 import { getFilterLabel } from '../../utils/get-filter-label';
-import { cardHover } from '../../components/card-hover'
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -50,11 +49,11 @@ async function empreendimentoPage() {
             let maxQuartos = parseInt(room.maximo_de_quartos, 10);
 
             if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-              maxQuartos = 1;
+              maxQuartos = minQuartos;
             }
 
             return roomsFilter.some(
-              (selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos
+              (selectedRoom) => (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || (selectedRoom === minQuartos)
             );
           })
         );

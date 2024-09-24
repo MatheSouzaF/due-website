@@ -261,8 +261,9 @@ function tipologiaPage() {
               let maxQuartos = parseInt(room.maximo_de_quartos, 10);
 
               if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-                maxQuartos = 1;
+                maxQuartos = minQuartos;
               }
+              
               return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
             }));
 

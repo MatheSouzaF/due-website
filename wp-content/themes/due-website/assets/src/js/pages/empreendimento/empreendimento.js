@@ -4,7 +4,6 @@ import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../
 import { generateBadge } from '../../components/badge';
 import { getFilterValue } from '../../utils/get-filter-value';
 import { getFilterLabel } from '../../utils/get-filter-label';
-import { cardHover } from '../../components/card-hover'
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');

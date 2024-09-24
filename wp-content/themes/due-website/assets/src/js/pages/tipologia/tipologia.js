@@ -93,7 +93,7 @@ function tipologiaPage() {
         let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
 
         if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''} 1 qto`;
+          roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'qto' : 'qtos'}`;
         } else {
           roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
         }

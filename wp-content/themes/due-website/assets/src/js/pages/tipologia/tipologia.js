@@ -71,11 +71,18 @@ function tipologiaPage() {
         .find('.nome-empreendimento')
         .text(tipologia.project || 'N/A');
       $(cardTemplate)
+          .find('.fale-com-time')
+          .append(tipologia.lastUnits.length ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="5" fill="#861D1D" /><circle cx="10" cy="10" r="9.5" stroke="#861D1D" /></svg>` : '')
+      $(cardTemplate)
+        .find('.texto-fale')
+        .text(tipologia.lastUnits || '');
+      $(cardTemplate)
         .find('.localizacao-tipologia')
         .text(tipologia.location || 'N/A');
       $(cardTemplate)
         .find('.label-informativo')
         .text(tipologia.status || 'N/A');
+
 
       updateRooms(cardTemplate, tipologia.rooms, tipologia.isStudio);
       updateSize(cardTemplate, tipologia.size);
@@ -105,10 +112,10 @@ function tipologiaPage() {
     function updateSize(cardTemplate, size) {
       const tamanho = size && size[0];
       const sizeText = tamanho
-      ? tamanho.metragem_minima_tipologia === tamanho.metragem_maxima_tipologia
-        ? `${tamanho.metragem_maxima_tipologia}m²`
-        : `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
-      : 'N/A';    
+        ? tamanho.metragem_minima_tipologia === tamanho.metragem_maxima_tipologia
+          ? `${tamanho.metragem_maxima_tipologia}m²`
+          : `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
+        : 'N/A';
       $(cardTemplate).find('.info-tamanho').text(sizeText);
     }
 

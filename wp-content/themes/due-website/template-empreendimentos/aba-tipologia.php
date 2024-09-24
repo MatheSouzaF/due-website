@@ -212,10 +212,6 @@
           <div class="box-container-svg">
             <p class="nome-empreendimento terminal-test"></p>
             <div class="fale-com-time">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <circle cx="10" cy="10" r="5" fill="#861D1D" />
-                <circle cx="10" cy="10" r="9.5" stroke="#861D1D" />
-              </svg>
               <p class="texto-fale founders-grotesk"></p>
             </div>
           </div>

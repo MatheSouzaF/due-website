@@ -93,7 +93,7 @@ function tipologiaPage() {
         let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
 
         if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''} 1 qto`;
+          roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'qto' : 'qtos'}`;
         } else {
           roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
         }
@@ -105,8 +105,10 @@ function tipologiaPage() {
     function updateSize(cardTemplate, size) {
       const tamanho = size && size[0];
       const sizeText = tamanho
-        ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
-        : 'N/A';
+      ? tamanho.metragem_minima_tipologia === tamanho.metragem_maxima_tipologia
+        ? `${tamanho.metragem_maxima_tipologia}m²`
+        : `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
+      : 'N/A';    
       $(cardTemplate).find('.info-tamanho').text(sizeText);
     }
 
@@ -261,8 +263,9 @@ function tipologiaPage() {
               let maxQuartos = parseInt(room.maximo_de_quartos, 10);
 
               if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-                maxQuartos = 1;
+                maxQuartos = minQuartos;
               }
+
               return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
             }));
 

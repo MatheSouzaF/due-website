@@ -105,8 +105,10 @@ function tipologiaPage() {
     function updateSize(cardTemplate, size) {
       const tamanho = size && size[0];
       const sizeText = tamanho
-        ? `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
-        : 'N/A';
+      ? tamanho.metragem_minima_tipologia === tamanho.metragem_maxima_tipologia
+        ? `${tamanho.metragem_maxima_tipologia}m²`
+        : `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
+      : 'N/A';    
       $(cardTemplate).find('.info-tamanho').text(sizeText);
     }
 
@@ -263,7 +265,7 @@ function tipologiaPage() {
               if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
                 maxQuartos = minQuartos;
               }
-              
+
               return roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos);
             }));
 

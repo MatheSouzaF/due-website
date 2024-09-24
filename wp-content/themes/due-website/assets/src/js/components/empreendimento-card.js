@@ -47,7 +47,11 @@ function updateRooms(cardTemplate, rooms, isStudio) {
 
 function updateSize(cardTemplate, size) {
   const tamanho = size && size[0];
-  const sizeText = tamanho ? `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²` : 'N/A';
+  const sizeText = tamanho
+  ? tamanho.metragem_minima === tamanho.metragem_maxima
+    ? `${tamanho.metragem_maxima}m²`
+    : `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²`
+  : 'N/A';  
   $(cardTemplate).find('.info-tamanho').text(sizeText);
 }
 

@@ -186,7 +186,7 @@ function generate_navbar()
 					$link_target = $link['target'] ? $link['target'] : '_self';
 
 					// Definir a classe com base na ordem
-					$link_class = ($count == 1) ? 'button-fixed-atendimento ancora-footer' : 'button-fixed-whatsapp';
+					$link_class = ($count == 1) ? 'button-fixed-atendimento-v2 ancora-footer' : 'button-fixed-whatsapp';
 		?>
 					<a class="<?php echo $link_class; ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
 						<div class="box-svg">

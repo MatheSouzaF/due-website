@@ -319,7 +319,7 @@ function animationProposito() {
 function animationSelosCertificados() {
   gsap.registerPlugin(ScrollTrigger);
 
-  const listaSelos = document.querySelectorAll('.lista-selos');
+  const listaSelos = document.querySelectorAll('.lista-selos-desktop');
 
   listaSelos.forEach((card, i) => {
     gsap.to(card, {
@@ -347,6 +347,24 @@ function btnFixed() {
   });
 }
 
+function selosAccordion() {
+  // Deixa o primeiro desWrapper com display block
+  jQuery('.hover-descricao-mobile').first().css('display', 'block');
+  jQuery('.box-titulo-accordion').first().parent().addClass('active');
+
+  jQuery('.box-titulo-accordion').click(function () {
+    var parent = jQuery(this).parent();
+    var toggle = parent.find('.hover-descricao-mobile');
+
+    toggle.slideToggle('slow');
+    parent.toggleClass('active');
+  });
+
+  jQuery('.inactive').click(function () {
+    jQuery(this).toggleClass('inactive active');
+  });
+}
+
 function initIniciativas() {
   banner();
   backgroundAssociacaoSuperacao();
@@ -357,6 +375,7 @@ function initIniciativas() {
   backgroundIncentivo();
   animationSelosCertificados();
   btnFixed();
+  selosAccordion();
 }
 
 export {initIniciativas};

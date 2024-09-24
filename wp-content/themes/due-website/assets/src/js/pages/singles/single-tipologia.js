@@ -1,4 +1,4 @@
-import { Viewer } from '@photo-sphere-viewer/core';
+import {Viewer} from '@photo-sphere-viewer/core';
 
 // Inicializa o Swiper para Tipologias
 function initializeTipologiasSwiper() {
@@ -15,7 +15,7 @@ function initializeTipologiasSwiper() {
       prevEl: '.swiper-button-prev',
     },
   });
-};
+}
 
 // Inicializa o Swiper para Galeria
 function initializeGaleriaSwiper() {
@@ -32,12 +32,12 @@ function initializeGaleriaSwiper() {
       },
     },
   });
-};
+}
 
 function setupPlantSliders() {
   $('.slider-plantas li[data-row="1"]').addClass('active');
   $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
-  
+
   initializeSlick($('.slider-conteudo li[data-row="1"]'));
 
   $('.slider-plantas li').on('click', function () {
@@ -49,11 +49,36 @@ function setupPlantSliders() {
     $('.slider-conteudo li.active').fadeOut(300, function () {
       $(this).removeClass('active');
       const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
-      newContent.addClass('active').fadeIn(300, function() {
+      newContent.addClass('active').fadeIn(300, function () {
         initializeSlick(newContent);
       });
     });
   });
+
+  // Marcar o primeiro item como ativo e inicializar o slider
+$('.slider-plantas-mobile').find('option[data-row="1"]').addClass('active');
+$('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+
+initializeSlick($('.slider-conteudo li[data-row="1"]'));
+
+// Evento de mudança no select ao invés de click no option
+$('.slider-plantas-mobile').on('change', function () {
+    const rowNumber = $(this).find('option:selected').data('row');
+
+    // Remove a classe 'active' de todas as opções e adiciona na selecionada
+    $('.slider-plantas-mobile option').removeClass('active');
+    $(this).find('option:selected').addClass('active');
+
+    // Faz o fadeOut do conteúdo ativo atual e ativa o novo conteúdo
+    $('.slider-conteudo li.active').fadeOut(300, function () {
+        $(this).removeClass('active');
+        const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
+        newContent.addClass('active').fadeIn(300, function () {
+            initializeSlick(newContent);
+        });
+    });
+});
+
 
   function initializeSlick(contentElement) {
     const sliderFor = contentElement.find('.slider-for');
@@ -79,8 +104,8 @@ function setupPlantSliders() {
         focusOnSelect: true,
       });
     }
-  };
-};
+  }
+}
 
 // Inicializa o Visualizador de Panorama
 function initializePanoramaViewer() {
@@ -90,7 +115,7 @@ function initializePanoramaViewer() {
     container: 'viewer',
     panorama: imagePath,
   });
-};
+}
 
 // Configura o Scroll para o Footer
 function setupFooterScroll() {
@@ -103,7 +128,7 @@ function setupFooterScroll() {
       'slow'
     );
   });
-};
+}
 
 // Configura a Animação dos Botões Fixos com GSAP
 function setupFixedButtonsAnimation() {
@@ -120,7 +145,7 @@ function setupFixedButtonsAnimation() {
       toggleActions: 'play none none reverse',
     },
   });
-};
+}
 
 // Função de Inicialização Geral
 function initSingleTipologia() {
@@ -130,6 +155,6 @@ function initSingleTipologia() {
   initializePanoramaViewer();
   setupFooterScroll();
   setupFixedButtonsAnimation();
-};
+}
 
-export { initSingleTipologia };
+export {initSingleTipologia};

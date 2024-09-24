@@ -298,6 +298,14 @@ body.single-empre_single_page {
               align-items: center;
               gap: 16px;
               padding-bottom: 16px;
+              p {
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 140%; /* 25.2px */
+                letter-spacing: 0.36px;
+                color: $due-tertiary;
+              }
               &:not(:first-child) {
                 padding-top: 16px;
               }
@@ -552,6 +560,7 @@ body.single-empre_single_page {
           flex-direction: row;
           gap: 14px;
           display: none;
+          width: 100%;
           @include media-breakpoint-up(md) {
             display: flex;
           }
@@ -625,7 +634,7 @@ body.single-empre_single_page {
       .box-lista-rota {
         display: flex;
         flex-direction: row;
-        gap: 12x;
+        gap: 12px;
         align-items: center;
         margin-bottom: 24px;
         .lista-rota {
@@ -810,7 +819,7 @@ body.single-empre_single_page {
 
           .pins_image {
             top: initial !important;
-            left: initial !important;
+            left: -40px !important;
             cursor: pointer;
           }
         }

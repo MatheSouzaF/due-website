@@ -152,158 +152,184 @@ get_header();
     </div>
     <section class="plantas">
 
-        <div class="wrapper">
-            <h3 class="titulo-plantas"><?php echo get_field('titulo_plantas'); ?></h3>
-            <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
-            <div class="box-titulo-plantas">
+        <h3 class="titulo-plantas"><?php echo get_field('titulo_plantas'); ?></h3>
+        <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
+        <div class="box-titulo-plantas">
 
-                <?php
-                if (have_rows('planta')):
-                    $row_number = 1;
+            <?php
+            if (have_rows('planta')):
+                $row_number = 1;
 
-                    echo '<ul class="slider-plantas">';
+                echo '<ul class="slider-plantas slider-plantas-desktop">';
 
-                    while (have_rows('planta')) : the_row();
-                        $sufixo_da_planta = get_sub_field('sufixo_da_planta');
-                        $sufixo_da_metragem = get_sub_field('quartos_+_metragem');
+                while (have_rows('planta')) : the_row();
+                    $sufixo_da_planta = get_sub_field('sufixo_da_planta');
+                    $sufixo_da_metragem = get_sub_field('quartos_+_metragem');
 
-                        echo '<li class="row-slide-thumbs" data-row="' . $row_number . '">';
-                        echo '<p class="sufix-planta founders-grotesk">' . esc_html($sufixo_da_planta) . '</p>';
-                        echo '<p class="quartos-metragem-planta founders-grotesk">' . esc_html($sufixo_da_metragem) . '</p>';
-                        echo '</li>';
+                    echo '<li class="row-slide-thumbs" data-row="' . $row_number . '">';
+                    echo '<p class="sufix-planta founders-grotesk">' . esc_html($sufixo_da_planta) . '</p>';
+                    echo '<p class="quartos-metragem-planta founders-grotesk">' . esc_html($sufixo_da_metragem) . '</p>';
+                    echo '</li>';
 
-                        $row_number++;
-                    endwhile;
+                    $row_number++;
+                endwhile;
 
-                    echo '</ul>';
-                else:
-                    echo 'Nenhuma planta cadastrada.';
-                endif;
-                ?>
+            else:
+                echo 'Nenhuma planta cadastrada.';
+            endif;
+            
+            echo '</ul>';
 
-            </div>
-            <div class="box-conteudo-planta">
-                <?php
-                if (have_rows('planta')):
-                    $row_number = 1;
+            
+            if (have_rows('planta')):
+                $row_number = 1;
+                echo '<div class="select-container">';
+                echo '<select class="slider-plantas select slider-plantas-mobile founders-grotesk">';
 
-                    echo '<ul class="slider-conteudo">';
+                while (have_rows('planta')) : the_row();
+                    $sufixo_da_planta = get_sub_field('sufixo_da_planta');
+                    $sufixo_da_metragem = get_sub_field('quartos_+_metragem');
+                    echo '<option class="row-slide-thumbs select_option" value="' . esc_attr($sufixo_da_planta) . '" data-row="' . esc_attr($row_number) . '">';
+                    echo esc_html($sufixo_da_planta) . ' ' . esc_html($sufixo_da_metragem);
+                    echo '</option>';
 
-                    while (have_rows('planta')) : the_row();
-                        $sufixo_da_planta = get_sub_field('sufixo_da_planta');
-                        $sufixo_da_metragem = get_sub_field('quartos_+_metragem');
-                        $titulo_coluna_pavimento_i = get_sub_field('titulo_coluna_pavimento_i');
-                        $titulo_coluna_pavimento_ii = get_sub_field('titulo_coluna_pavimento_ii');
-                        echo '<li class="conteudo-tipologias" data-row="' . $row_number . '">';
-                        echo '<div class="container-text">';
-                        echo '<p class="sufix-planta founders-grotesk">' . esc_html($sufixo_da_planta) . '</p>';
-                        echo '<p class="quartos-metragem-planta founders-grotesk">' . esc_html($sufixo_da_metragem) . '</p>';
-                        echo '<div class="box-repetidor-caracteristicas">';
-                        if (have_rows('lista_de_caracteristicas')) :
-                            while (have_rows('lista_de_caracteristicas')) : the_row();
-                                echo '<div class="row-caracteristicas">';
 
-                                // SVG
-                                echo '<div class="box-svg">';
-                                $svg_file = get_sub_field('svg_carateristicas');
-                                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                    echo '<i class="element">' . file_get_contents($svg_file['url']) . '</i>';
-                                }
-                                echo '</div>';
+                    $row_number++;
+                endwhile;
+                echo '</select>';
 
-                                // Título da característica
-                                echo '<p class="titulo-caracteristicas">' . esc_html(get_sub_field('caracteristicas')) . '</p>';
 
-                                echo '</div>'; // Fim da div row-caracteristicas
-                            endwhile;
-                        endif;
-                        echo '</div>';
-                        echo '<div class="box-pavimentos">';
-                        echo '<div class="pavimentos-coluna-I">';
-                        echo '<p class="titulo-coluna-pavimento-i">' . esc_html($titulo_coluna_pavimento_i) . '</p>';
-                        echo '<div class="box-lista">';
-                        if (have_rows('lista_pavimento_i')):
-                            while (have_rows('lista_pavimento_i')): the_row();
-                                $pavimentos_coluna_i = get_sub_field('pavimentos_coluna_i');
-                                echo '<div class="row-lista">';
-                                echo '<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">';
-                                echo '<circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />';
-                                echo '</svg>';
-                                echo '<p class="titulo-pavimento founders-grotesk">' . esc_html($pavimentos_coluna_i) . '</p>';
-                                echo '</div>';
-                            endwhile;
-                        endif;
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="pavimentos-coluna-II">';
-                        echo '<p class="titulo-coluna-pavimento-ii">' . esc_html($titulo_coluna_pavimento_ii) . '</p>';
-                        echo '<div class="box-lista">';
-                        if (have_rows('lista_pavimento_ii')):
-                            while (have_rows('lista_pavimento_ii')): the_row();
-                                $pavimentos_coluna_i = get_sub_field('pavimentos_coluna_ii');
-                                echo '<div class="row-lista">';
-                                echo '<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">';
-                                echo '<circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />';
-                                echo '</svg>';
-                                echo '<p class="titulo-pavimento founders-grotesk">' . esc_html($pavimentos_coluna_i) . '</p>';
-                                echo '</div>';
-                            endwhile;
-                        endif;
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="box-gallery">';
-                        echo '<div class="gallery-planta">';
-                        echo '<div class="slider slider-for">';
-                        if (have_rows('repetidor_imagens_plantas')):
-                            while (have_rows('repetidor_imagens_plantas')):
-                                the_row();
-                                $titulo_da_planta = get_sub_field('titulo_da_planta');
-                                $image = get_sub_field('imagens_da_planta');
-                                if ($image):
-                                    $image_url = $image['url'];
-                                    $image_alt = $image['alt'];
-                                    echo '<div class="row-imagem-plantas ">';
-                                    echo '<p class="titulo-row-imagem-plantas">' . esc_html($titulo_da_planta) . '</p>';
-                                    echo '<img class="plantas-repetidor" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
-                                    echo '</div>';
-                                endif;
-                            endwhile;
-                        endif;
-                        echo '</div>';
-                        echo '</div>';
-                        echo '<div class="gallery-thumbs-plantas">';
-                        echo '<div class="slider slider-nav ">';
-                        if (have_rows('repetidor_imagens_plantas')):
-                            while (have_rows('repetidor_imagens_plantas')):
-                                the_row();
-                                $image = get_sub_field('imagens_da_planta');
-                                if ($image):
-                                    $image_url = $image['url'];
-                                    $image_alt = $image['alt'];
-                                    echo '<div class="row-thumbs-plantas">';
-                                    echo '<img class="plantas-repetidor-thumb" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
-                                    echo '</div>';
-                                endif;
-                            endwhile;
-                        endif;
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</li>';
-                        $row_number++;
-                    endwhile;
-
-                    echo '</ul>';
-                else:
-                    echo 'Nenhuma planta cadastrada.';
-                endif;
-                ?>
-
-            </div>
+            else:
+                echo 'Nenhuma planta cadastrada.';
+            endif;
+            echo '<svg class="svg-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">';
+            echo '<path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="white" stroke-linecap="round" stroke-linejoin="round" />';
+            echo '</svg>';
+            echo '</div>';
+            ?>
 
         </div>
+        <div class="box-conteudo-planta">
+            <?php
+            if (have_rows('planta')):
+                $row_number = 1;
+
+                echo '<ul class="slider-conteudo">';
+
+                while (have_rows('planta')) : the_row();
+                    $sufixo_da_planta = get_sub_field('sufixo_da_planta');
+                    $sufixo_da_metragem = get_sub_field('quartos_+_metragem');
+                    $titulo_coluna_pavimento_i = get_sub_field('titulo_coluna_pavimento_i');
+                    $titulo_coluna_pavimento_ii = get_sub_field('titulo_coluna_pavimento_ii');
+                    echo '<li class="conteudo-tipologias" data-row="' . $row_number . '">';
+                    echo '<div class="container-text">';
+                    echo '<p class="sufix-planta founders-grotesk">' . esc_html($sufixo_da_planta) . '</p>';
+                    echo '<p class="quartos-metragem-planta founders-grotesk">' . esc_html($sufixo_da_metragem) . '</p>';
+                    echo '<div class="box-repetidor-caracteristicas">';
+                    if (have_rows('lista_de_caracteristicas')) :
+                        while (have_rows('lista_de_caracteristicas')) : the_row();
+                            echo '<div class="row-caracteristicas">';
+
+                            // SVG
+                            echo '<div class="box-svg">';
+                            $svg_file = get_sub_field('svg_carateristicas');
+                            if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                                echo '<i class="element">' . file_get_contents($svg_file['url']) . '</i>';
+                            }
+                            echo '</div>';
+
+                            // Título da característica
+                            echo '<p class="titulo-caracteristicas">' . esc_html(get_sub_field('caracteristicas')) . '</p>';
+
+                            echo '</div>'; // Fim da div row-caracteristicas
+                        endwhile;
+                    endif;
+                    echo '</div>';
+                    echo '<div class="box-pavimentos">';
+                    echo '<div class="pavimentos-coluna-I">';
+                    echo '<p class="titulo-coluna-pavimento-i">' . esc_html($titulo_coluna_pavimento_i) . '</p>';
+                    echo '<div class="box-lista">';
+                    if (have_rows('lista_pavimento_i')):
+                        while (have_rows('lista_pavimento_i')): the_row();
+                            $pavimentos_coluna_i = get_sub_field('pavimentos_coluna_i');
+                            echo '<div class="row-lista">';
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">';
+                            echo '<circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />';
+                            echo '</svg>';
+                            echo '<p class="titulo-pavimento founders-grotesk">' . esc_html($pavimentos_coluna_i) . '</p>';
+                            echo '</div>';
+                        endwhile;
+                    endif;
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="pavimentos-coluna-II">';
+                    echo '<p class="titulo-coluna-pavimento-ii">' . esc_html($titulo_coluna_pavimento_ii) . '</p>';
+                    echo '<div class="box-lista">';
+                    if (have_rows('lista_pavimento_ii')):
+                        while (have_rows('lista_pavimento_ii')): the_row();
+                            $pavimentos_coluna_i = get_sub_field('pavimentos_coluna_ii');
+                            echo '<div class="row-lista">';
+                            echo '<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5" fill="none">';
+                            echo '<circle cx="2" cy="2.5" r="2" fill="#CB9E6C" />';
+                            echo '</svg>';
+                            echo '<p class="titulo-pavimento founders-grotesk">' . esc_html($pavimentos_coluna_i) . '</p>';
+                            echo '</div>';
+                        endwhile;
+                    endif;
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="box-gallery">';
+                    echo '<div class="gallery-planta">';
+                    echo '<div class="slider slider-for">';
+                    if (have_rows('repetidor_imagens_plantas')):
+                        while (have_rows('repetidor_imagens_plantas')):
+                            the_row();
+                            $titulo_da_planta = get_sub_field('titulo_da_planta');
+                            $image = get_sub_field('imagens_da_planta');
+                            if ($image):
+                                $image_url = $image['url'];
+                                $image_alt = $image['alt'];
+                                echo '<div class="row-imagem-plantas ">';
+                                echo '<p class="titulo-row-imagem-plantas terminal-test">' . esc_html($titulo_da_planta) . '</p>';
+                                echo '<img class="plantas-repetidor" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
+                                echo '</div>';
+                            endif;
+                        endwhile;
+                    endif;
+                    echo '</div>';
+                    echo '</div>';
+                    echo '<div class="gallery-thumbs-plantas">';
+                    echo '<div class="slider slider-nav ">';
+                    if (have_rows('repetidor_imagens_plantas')):
+                        while (have_rows('repetidor_imagens_plantas')):
+                            the_row();
+                            $image = get_sub_field('imagens_da_planta');
+                            if ($image):
+                                $image_url = $image['url'];
+                                $image_alt = $image['alt'];
+                                echo '<div class="row-thumbs-plantas">';
+                                echo '<img class="plantas-repetidor-thumb" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
+                                echo '</div>';
+                            endif;
+                        endwhile;
+                    endif;
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</li>';
+                    $row_number++;
+                endwhile;
+
+                echo '</ul>';
+            else:
+                echo 'Nenhuma planta cadastrada.';
+            endif;
+            ?>
+
+        </div>
+
 
     </section>
 

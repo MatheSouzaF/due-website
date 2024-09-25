@@ -69,7 +69,7 @@ if ($queryTipologia->have_posts()) {
       'location' => isset($project_location) ? $project_location : '',
       'status' => isset($project_status) ? $project_status : '',
       'isStudio' => $isStudio,
-      'lastUnits' => $lastUnits,
+      'lastUnits' => isset($lastUnits) ? $lastUnits : '',
       'rooms' => $rooms,
       'size' => $size,
       'diffs' => $diffs,

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
 </head>
 
@@ -281,11 +281,12 @@ function generate_navbar()
 					<div class="box-link-invista">
 						<?php generate_menu_links(); ?>
 					</div>
-
-					<label for="menu-toggle" id="btn-navbar" class="navigation__menu-label">
-						<span class="navigation__label-bar navigation__label-bar1 "></span>
-						<span class="navigation__label-bar navigation__label-bar3"></span>
-					</label>
+					<div class="container-menu-lateral">
+						<label for="menu-toggle" id="btn-navbar" class="navigation__menu-label">
+							<span class="navigation__label-bar navigation__label-bar1 "></span>
+							<span class="navigation__label-bar navigation__label-bar3"></span>
+						</label>
+					</div>
 
 					<ul class="sidebar">
 						<svg class="shape-mapa" width="348" height="430" viewBox="0 0 348 430" fill="none" xmlns="http://www.w3.org/2000/svg">

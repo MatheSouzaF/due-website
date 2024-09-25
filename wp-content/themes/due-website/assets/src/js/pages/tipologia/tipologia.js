@@ -274,9 +274,9 @@ function tipologiaPage() {
               maxQuartos = minQuartos;
             }
 
-            return (
-              roomsFilter.some((selectedRoom) => selectedRoom >= minQuartos && selectedRoom <= maxQuartos) ||
-              selectedRoom === minQuartos
+            return roomsFilter.some(
+              (selectedRoom) =>
+                (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || selectedRoom === minQuartos
             );
           });
 

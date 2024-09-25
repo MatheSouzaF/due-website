@@ -315,6 +315,12 @@ function tipologiaPage() {
       const diferenciaisFilter = getFilterLabel('diferenciais');
       const roomsFilter = getFilterLabel('rooms');
 
+      if (locationFilter || statusFilter || empreendimentoFilter || diferenciaisFilter || roomsFilter) {
+        $('.clean-filters-tipologia').show();
+      } else {
+        $('.clean-filters-tipologia').hide();
+      }
+
       if (locationFilter) {
         locationFilter.forEach((value) => generateBadge(value, 'location'));
       }
@@ -625,6 +631,31 @@ function tipologiaPage() {
       $('.tipologia-filter-drawer').removeClass('tipologia-open');
       $('body').removeClass('tipologia-drawer-open');
     });
+
+    $('.clean-filters-tipologia').hide();
+
+    $('.clean-filters-tipologia').click(function () {
+      clearFiltersTipologia();
+    });
+
+    function clearFiltersTipologia() {
+      $('.ckkBox').each(function () {
+        const $checkbox = $(this);
+        const isChecked = $checkbox.prop('checked');
+
+        if (
+          $checkbox.closest('#tipologia-filter-location, #mobile-tipologia-filter-location').length ||
+          $checkbox.closest('#tipologia-filter-status, #mobile-tipologia-filter-status').length ||
+          $checkbox.closest('#tipologia-filter-empreendimento, #mobile-tipologia-filter-empreendimento').length ||
+          $checkbox.closest('#tipologia-filter-diferenciais, #mobile-tipologia-filter-diferenciais').length ||
+          $checkbox.closest('#tipologia-filter-rooms, #mobile-tipologia-filter-rooms').length
+        ) {
+          if (isChecked) {
+            $checkbox.click();
+          }
+        }
+      });
+    }
   } catch (error) {
     console.error('Erro no módulo de Tipologias:', error);
   }

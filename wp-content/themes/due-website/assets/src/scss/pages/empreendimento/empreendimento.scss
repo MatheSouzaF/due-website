@@ -831,4 +831,18 @@ main.page-empreendimentos-tipologia {
       }
     }
   }
+
+  .clean-filters,
+  .clean-filters-tipologia {
+    cursor: pointer;
+    padding-block: 4px;
+    border-bottom: 1px solid #51848c66;
+    width: fit-content;
+  }
+
+  .badges-filters {
+    width: 100%;
+    display: flex;
+    gap: 4px;
+  }
 }

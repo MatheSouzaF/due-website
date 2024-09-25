@@ -34,6 +34,7 @@ if ($queryTipologia->have_posts()) {
     $project = get_field('pertence_a_qual_empreendimento', $tipologia_id);
     $location = get_field('localizacao_tipologia', $tipologia_id);
     $status = get_field('estagio_da_obra_tipologia', $tipologia_id);
+    $lastUnits = get_field('ultimas_unidades', $tipologia_id);
     $isStudio = get_field('e_um_studio_tipologia', $tipologia_id);
     $rooms = get_field('quantidade_de_quartos_tipologia', $tipologia_id);
     $size = get_field('metragem_tipologia', $tipologia_id);
@@ -68,6 +69,7 @@ if ($queryTipologia->have_posts()) {
       'location' => isset($project_location) ? $project_location : '',
       'status' => isset($project_status) ? $project_status : '',
       'isStudio' => $isStudio,
+      'lastUnits' => $lastUnits,
       'rooms' => $rooms,
       'size' => $size,
       'diffs' => $diffs,

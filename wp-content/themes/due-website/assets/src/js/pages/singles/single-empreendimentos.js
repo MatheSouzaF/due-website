@@ -93,6 +93,8 @@ function filterExperiencias() {
       // Mostra o swiper correspondente
       $('#swiper-' + value).show();
     });
+
+    $('.item-rota').first().click();
   });
 }
 

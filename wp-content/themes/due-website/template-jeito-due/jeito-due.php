@@ -177,6 +177,70 @@ get_header();
         </div>
     </section>
 
+    <section class="sintta-stay">
+        <div class="box-conteudo-sintta">
+            <div class="box-svg">
+                <?php $svg_file = get_field('logo_sintta');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
+            <h3 class="titulo-sintta"><?php echo get_field('titulo_sintta'); ?></h3>
+            <p class="descricao-sintta founders-grotesk"><?php echo get_field('descricao_sintta'); ?></p>
+            <div class="box-repetidor-sintta">
+                <?php
+                if (have_rows('repetidor_de_topicos_sintta')) :
+                    while (have_rows('repetidor_de_topicos_sintta')) : the_row(); ?>
+                        <div class="row-topicos">
+
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                                    <circle cx="4.5" cy="4.5166" r="4.5" fill="#51848C" />
+                                </svg>
+                            </i>
+                            <p class="texto-topicos founders-grotesk"><?php echo get_sub_field('textos_topicos'); ?></p>
+                        </div>
+                <?php endwhile;
+                endif; ?>
+            </div>
+            <?php
+            $link = get_field('link_sintta');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+        </div>
+
+        <div class="box-image-sintta">
+            <div class="swiper-sintta">
+                <div class="swiper-wrapper">
+                    <?php
+                    if (have_rows('repetidor_imagens_sintta')) :
+                        while (have_rows('repetidor_imagens_sintta')) : the_row();
+                    ?>
+                            <div class="swiper-slide">
+                                <?php
+                                $image = get_sub_field('imagem_sintta');
+                                if ($image) :
+                                    $image_url = $image['url'];
+                                    $image_alt = $image['alt']; ?>
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                <?php endif; ?>
+                            </div>
+                    <?php endwhile;
+                    endif; ?>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section class="big-numeros">
         <?php
         // Verifica se há conteúdo em 'image_big_numeros' ou 'card_big_numeros'

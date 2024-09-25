@@ -683,6 +683,114 @@ body.page-template-jeito-due {
       }
     }
 
+    .sintta-stay {
+      display: flex;
+      gap: 80px;
+      padding-bottom: 64px;
+      flex-direction: column-reverse;
+      align-items: center;
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        padding-bottom: 128px;
+      }
+      .box-conteudo-sintta {
+        padding: 0 20px;
+        width: 100%;
+        @include media-breakpoint-up(sm) {
+          padding: 0 0 0 48px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          padding: 0 0 0 80px;
+        }
+        .box-svg {
+          margin-bottom: 20px;
+        }
+        .titulo-sintta {
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.64px;
+          color: $due-tertiary;
+          margin-bottom: 20px;
+          @include media-breakpoint-up(md) {
+            font-size: calc(1rem + 0.9vw);
+          }
+        }
+        .descricao-sintta {
+          color: $due-tertiary;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.32px;
+          margin-bottom: 48px;
+          max-width: 90%;
+          @include media-breakpoint-up(md) {
+            font-size: calc(0.5rem + 0.6vw);
+          }
+          @include media-breakpoint-up(xxl) {
+            max-width: 60%;
+          }
+        }
+        .box-repetidor-sintta {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          margin-bottom: 48px;
+          @include media-breakpoint-up(md) {
+            max-width: 65%;
+          }
+          .row-topicos {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            align-items: center;
+            .texto-topicos {
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 300;
+              line-height: 140%;
+              letter-spacing: 0.32px;
+              color: $due-tertiary;
+              @include media-breakpoint-up(xxl) {
+                font-size: calc(0.5rem + 0.45vw);
+              }
+            }
+          }
+        }
+        .button {
+          @include media-breakpoint-down(sm) {
+            width: 100%;
+          }
+        }
+      }
+      .box-image-sintta {
+        width: 100%;
+        height: 314px;
+        @include media-breakpoint-up(md) {
+          height: 90vh;
+          max-width: 50%;
+        }
+        .swiper-sintta {
+          width: 100%;
+          height: 100%;
+          .swiper-wrapper {
+            width: 100%;
+            height: 100%;
+            .swiper-slide {
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+
     .big-numeros {
       padding: 0 0 64px;
       @include media-breakpoint-up(md) {
@@ -695,7 +803,7 @@ body.page-template-jeito-due {
         display: none;
         @include media-breakpoint-up(md) {
           position: absolute;
-          top: 0;
+          top: -260px;
           right: 0;
           width: 100%;
           height: 100%;

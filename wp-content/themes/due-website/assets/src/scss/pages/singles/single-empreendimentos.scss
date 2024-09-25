@@ -365,6 +365,7 @@ body.single-empre_single_page {
       position: relative;
       width: 100%;
       height: 700px;
+      overflow: hidden;
       .wrapper {
         display: flex;
         justify-content: space-between;
@@ -380,6 +381,7 @@ body.single-empre_single_page {
           left: 0;
           width: 100%;
           z-index: 0;
+          transition: 0.6s;
           height: 100%;
           &::after {
             content: '';
@@ -401,6 +403,7 @@ body.single-empre_single_page {
           top: 0;
           left: 0;
           width: 100%;
+          transition: 0.6s;
           z-index: 1;
           height: 100%;
           &::after {
@@ -454,6 +457,11 @@ body.single-empre_single_page {
           }
           .box-infos-cards {
             width: fit-content;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+            &.imgPath {
+              clip-path: inset(0 0 -100px -100px);
+            }
             .titulo-infos-praia {
               font-size: 20px;
               font-style: normal;
@@ -492,6 +500,12 @@ body.single-empre_single_page {
               }
             }
           }
+        }
+      }
+      &.zoom {
+        .box-img,
+        .box-video {
+          scale: 1.1;
         }
       }
     }
@@ -575,10 +589,18 @@ body.single-empre_single_page {
               width: 100%;
             }
             .img {
+              cursor: pointer;
               display: flex;
+              overflow: hidden;
               .imgGrow {
                 width: 100%;
                 object-fit: cover;
+                transition: 0.6s;
+              }
+              &:hover {
+                .imgGrow {
+                  scale: 1.1;
+                }
               }
             }
           }
@@ -852,6 +874,7 @@ body.single-empre_single_page {
             height: 510px;
             .tipologia-card {
               position: relative;
+              cursor: pointer;
               .estado-tipologia {
                 position: absolute;
                 z-index: 1;
@@ -868,11 +891,16 @@ body.single-empre_single_page {
                 letter-spacing: 0.48px;
                 text-transform: uppercase;
               }
-              .tipologia-photo {
-                height: 300px;
-                width: 100%;
-                object-fit: cover;
+              .box-image-tipologia {
+                overflow: hidden;
                 margin-bottom: 20px;
+
+                .tipologia-photo {
+                  height: 300px;
+                  transition: 0.6s;
+                  width: 100%;
+                  object-fit: cover;
+                }
               }
               .tipologia-name {
                 font-size: 28px;
@@ -938,6 +966,11 @@ body.single-empre_single_page {
                     letter-spacing: 0.32px;
                     color: $due-tertiary;
                   }
+                }
+              }
+              &:hover {
+                .tipologia-photo {
+                  scale: 1.1;
                 }
               }
             }

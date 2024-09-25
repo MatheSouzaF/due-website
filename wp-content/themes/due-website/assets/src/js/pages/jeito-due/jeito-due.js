@@ -258,6 +258,7 @@ function btnFixed() {
     },
   });
 }
+
 function faq() {
   // Deixa o primeiro desWrapper com display block
   jQuery('.desWrapper').first().css('display', 'block');
@@ -277,6 +278,20 @@ function faq() {
   });
 }
 
+function bannerSinttaStay() {
+  const swiper = new Swiper('.swiper-sintta', {
+    fadeEffect: {
+      crossFade: true,
+    },
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade',
+  });
+}
+
 function initJeitoDUE() {
   bannerJeitoDUE();
   imagemGrow();
@@ -288,6 +303,7 @@ function initJeitoDUE() {
   modalJeitoDue();
   btnFixed();
   faq();
+  bannerSinttaStay();
 }
 
 export {initJeitoDUE};

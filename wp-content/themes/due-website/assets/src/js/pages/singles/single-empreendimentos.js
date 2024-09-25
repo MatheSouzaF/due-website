@@ -145,6 +145,65 @@ function btnFixed() {
     },
   });
 }
+
+function animationPraia() {
+  const praia = document.querySelector('.praia');
+  const boxInfos = document.querySelectorAll('.box-infos-cards');
+
+  let TLFADE = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.praia',
+      start: 'top-=400',
+    },
+  });
+
+  TLFADE.from(praia, {
+    duration: 1,
+    ease: 'power.in',
+    onStart: () => praia.classList.add('zoom'),
+  }).from(
+    boxInfos,
+    {
+      duration: 1,
+      ease: 'power.in',
+      onStart: () => {
+        boxInfos.forEach((box) => box.classList.add('imgPath'));
+      },
+    },
+    '-=1'
+  );
+}
+function animationDiferenciais() {
+  const rowCards = document.querySelectorAll('.row-cards');
+  gsap.fromTo(
+    rowCards,
+    {autoAlpha: 0, y: 50},
+    {
+      duration: 1,
+      autoAlpha: 1,
+      y: 0,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: '.diferenciais',
+        start: 'top-=100 center',
+      },
+    }
+  );
+}
+function espaco() {
+  $('.porcentagem').each(function() {
+    // Seleciona o conteúdo de cada <p> individualmente
+    var porcentagem = $(this).text();
+
+    if (porcentagem) {
+      // Converte para string, substitui ponto por vírgula (se houver)
+      var porcentagemFormatada = porcentagem.toString().replace('.', ',');
+
+      // Atualiza o conteúdo do elemento <p> com o valor formatado
+      $(this).text(porcentagemFormatada );
+    }
+  });
+}
 function initSingleEmpreendimentos() {
   swiperInit();
   swiperDiferenciais();
@@ -153,6 +212,9 @@ function initSingleEmpreendimentos() {
   filterExperiencias();
   swiperTipologia();
   btnFixed();
+  animationPraia();
+  animationDiferenciais();
+  espaco();
 }
 
 export {initSingleEmpreendimentos};

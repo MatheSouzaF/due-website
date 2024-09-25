@@ -561,8 +561,10 @@ get_header();
                                     <span class="">
                                         <?php echo esc_html($tipologia['ultimas_unidades']) ?>
                                     </span>
-                                    <img class="tipologia-photo" src="<?php echo esc_url($tipologia['photo']['url']); ?>"
-                                        alt="<?php echo esc_attr($tipologia['name']); ?>">
+                                    <div class="box-image-tipologia">
+                                        <img class="tipologia-photo" src="<?php echo esc_url($tipologia['photo']['url']); ?>"
+                                            alt="<?php echo esc_attr($tipologia['name']); ?>">
+                                    </div>
                                     <h3 class="tipologia-name founders-grotesk"><?php echo esc_html($tipologia['name']); ?>
                                     </h3>
                                     <div class="box-quartos-metragem">
@@ -725,6 +727,7 @@ get_header();
                         <div class="bullet" data-fill="<?php echo get_sub_field('porcentagem_da_obra') ?>">
                             <div class="line"></div>
                         </div>
+                        
                         <p class="porcentagem founders-grotesk"><?php echo get_sub_field('porcentagem_da_obra'); ?></p>
                         <p class="titulo-estagio founders-grotesk"><?php echo get_sub_field('titulo_estagio'); ?></p>
                     </div>

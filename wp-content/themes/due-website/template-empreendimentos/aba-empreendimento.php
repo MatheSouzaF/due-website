@@ -113,7 +113,10 @@
   </div>
   <div class="empreendimentos-results">
     <p class="results-text founders-grotesk"></p>
-    <div class="filters-applied"></div>
+    <div class="badges-filters">
+      <div class="filters-applied"></div>
+      <button class="clean-filters">Limpar filtros</button>
+    </div>
   </div>
 </div>
 

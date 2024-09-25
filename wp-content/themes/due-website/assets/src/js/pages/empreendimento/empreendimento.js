@@ -70,6 +70,12 @@ async function empreendimentoPage() {
       const statusFilter = getFilterLabel('#filter-status, #mobile-filter-status');
       const roomsFilter = getFilterLabel('#filter-rooms, #mobile-filter-rooms');
 
+      if (locationFilter || statusFilter || roomsFilter) {
+        $('.clean-filters').show();
+      } else {
+        $('.clean-filters').hide();
+      }
+
       if (locationFilter) {
         locationFilter.forEach((value) => generateBadge(value, 'location'));
       }
@@ -367,6 +373,37 @@ async function empreendimentoPage() {
       updateFilterNumberIndicador();
       updateBadges();
     });
+
+    $('.clean-filters').hide();
+
+    $('.clean-filters').click(function () {
+      clearFiltersEmpreendimentos();
+    });
+
+    function clearFiltersEmpreendimentos() {
+      $('.ckkBox').each(function () {
+        const $checkbox = $(this);
+        const isChecked = $checkbox.prop('checked');
+
+        if ($checkbox.closest('#filter-location, #mobile-filter-location').length) {
+          if (isChecked) {
+            $checkbox.click();
+          }
+        }
+
+        if ($checkbox.closest('#filter-status, #mobile-filter-status').length) {
+          if (isChecked) {
+            $checkbox.click();
+          }
+        }
+
+        if ($checkbox.closest('#filter-rooms, #mobile-filter-rooms').length) {
+          if (isChecked) {
+            $checkbox.click();
+          }
+        }
+      });
+    }
   } catch (error) {
     console.error('Erro ao carregar os empreendimentos:', error);
   }

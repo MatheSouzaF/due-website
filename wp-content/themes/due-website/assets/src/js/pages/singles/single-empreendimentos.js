@@ -18,7 +18,7 @@ function swiperGaleria() {
     },
     pagination: {
       el: '.swiper-pagination',
-      clickable: true
+      clickable: true,
     },
   });
 }
@@ -93,6 +93,8 @@ function filterExperiencias() {
       // Mostra o swiper correspondente
       $('#swiper-' + value).show();
     });
+
+    $('.item-rota').first().click();
   });
 }
 

@@ -1,9 +1,9 @@
-import { renderFilters } from '../../components/filter';
-import { initBanner } from '../../components/banner'
-import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
-import { generateBadge } from '../../components/badge';
-import { getFilterValue } from '../../utils/get-filter-value';
-import { getFilterLabel } from '../../utils/get-filter-label';
+import {renderFilters} from '../../components/filter';
+import {initBanner} from '../../components/banner';
+import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
+import {generateBadge} from '../../components/badge';
+import {getFilterValue} from '../../utils/get-filter-value';
+import {getFilterLabel} from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -23,7 +23,7 @@ async function empreendimentoPage() {
         return;
       }
 
-      empreendimentos.forEach(empreendimento => {
+      empreendimentos.forEach((empreendimento) => {
         const cardTemplate = createEmpreendimentoCard(empreendimento);
         $container.append(cardTemplate);
       });
@@ -42,7 +42,8 @@ async function empreendimentoPage() {
         const matchLocation = !locationFilter || locationFilter.includes(empreendimento.location.toLowerCase());
         const matchStatus = !statusFilter || statusFilter.includes(empreendimento.status.toLowerCase());
 
-        const matchRooms = !roomsFilter || (
+        const matchRooms =
+          !roomsFilter ||
           (roomsFilter.includes('studio') && empreendimento.isStudio) ||
           empreendimento.rooms.some((room) => {
             const minQuartos = parseInt(room.minimo_de_quartos, 10);
@@ -53,10 +54,10 @@ async function empreendimentoPage() {
             }
 
             return roomsFilter.some(
-              (selectedRoom) => (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || (selectedRoom === minQuartos)
+              (selectedRoom) =>
+                (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || selectedRoom === minQuartos
             );
-          })
-        );
+          });
 
         return matchLocation && matchStatus && matchRooms;
       });
@@ -85,14 +86,15 @@ async function empreendimentoPage() {
         const filterType = $(this).data('filter');
         const filterValue = $(this).data('value');
 
-        $(`#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`).click();
+        $(
+          `#filter-${filterType} input[value="${filterValue}"]:checked, #mobile-filter-${filterType} input[value="${filterValue}"]:checked`
+        ).click();
 
         updateBadges();
         buildFilterUrl();
         updateFilterNumberIndicador();
         filterAndRender();
       });
-
     }
 
     function removeAccents(str) {
@@ -107,29 +109,23 @@ async function empreendimentoPage() {
       const params = new URLSearchParams();
 
       if (locationFilter) {
-        const formattedLocation = locationFilter.map((value) =>
-          encodeURIComponent(
-            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
-          )
-        ).join(',');
+        const formattedLocation = locationFilter
+          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+          .join(',');
         params.set('localizacao', formattedLocation);
       }
 
       if (statusFilter) {
-        const formattedStatus = statusFilter.map((value) =>
-          encodeURIComponent(
-            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
-          )
-        ).join(',');
+        const formattedStatus = statusFilter
+          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+          .join(',');
         params.set('estagio', formattedStatus);
       }
 
       if (roomsFilter) {
-        const formattedRooms = roomsFilter.map((value) =>
-          encodeURIComponent(
-            removeAccents(value).replace(/ /g, '_').replace(/%/g, '')
-          )
-        ).join(',');
+        const formattedRooms = roomsFilter
+          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+          .join(',');
         params.set('qtos', formattedRooms);
       }
 
@@ -140,16 +136,17 @@ async function empreendimentoPage() {
     function updateFilterNumberIndicador() {
       $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
         const current_filter = $(this);
-        const checked_count = $(current_filter).find('.checkboxes input:checked, .category-content input:checked').length;
+        const checked_count = $(current_filter).find(
+          '.checkboxes input:checked, .category-content input:checked'
+        ).length;
         const filter_count_el = $(current_filter).find('.filter_count');
 
         if (checked_count > 0) {
-          $(filter_count_el).html(`(${checked_count})`)
+          $(filter_count_el).html(`(${checked_count})`);
         } else {
-          $(filter_count_el).html('')
+          $(filter_count_el).html('');
         }
-
-      })
+      });
     }
 
     function applyFiltersFromUrl() {
@@ -161,18 +158,14 @@ async function empreendimentoPage() {
 
       if (locationFilter) {
         locationFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value)
-            .replace(/_/g, ' ')
-            .replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
           $(`#filter-location input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
 
       if (statusFilter) {
         statusFilter.split(',').forEach((value) => {
-          let formattedValue = decodeURIComponent(value)
-            .replace(/_/g, ' ')
-            .replace(/%/g, '');
+          let formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
           formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
           formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
           formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
@@ -182,9 +175,7 @@ async function empreendimentoPage() {
 
       if (roomsFilter) {
         roomsFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value)
-            .replace(/_/g, ' ')
-            .replace(/%/g, '');
+          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
           $(`#filter-rooms input[value="${formattedValue}"]`).prop('checked', true);
         });
       }
@@ -192,10 +183,10 @@ async function empreendimentoPage() {
       filterAndRender();
     }
 
-    let filteredEmpreendimentos = []
+    let filteredEmpreendimentos = [];
 
     function populateFilterOptions() {
-      const empreendimentos = filteredEmpreendimentos.length ? filteredEmpreendimentos : empreendimentosData
+      const empreendimentos = filteredEmpreendimentos.length ? filteredEmpreendimentos : empreendimentosData;
 
       const locationOptions = [...new Set(empreendimentos.map((e) => e.location))];
       const statusOptions = [...new Set(empreendimentos.map((e) => e.status))];
@@ -222,19 +213,19 @@ async function empreendimentoPage() {
         }
       });
 
-      const isStudio = empreendimentos.map(e => e.isStudio)
+      const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
+        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
+        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
         'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
               value: room,
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`
-            }))
+              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`,
+            })),
         ],
       };
 
@@ -321,15 +312,17 @@ async function empreendimentoPage() {
       buildFilterUrl();
       updateFilterNumberIndicador();
 
-      const selectedLocations = $('#filter-location input.ckkBox:checked, #mobile-filter-location input.ckkBox:checked').map(function () {
-        return $(this).val();
-      }).get();
+      const selectedLocations = $('#filter-location input.ckkBox:checked, #mobile-filter-location input.ckkBox:checked')
+        .map(function () {
+          return $(this).val();
+        })
+        .get();
 
-      initBanner({ location: selectedLocations });
+      initBanner({location: selectedLocations});
       hideOptions('filter-location');
     });
 
-    initBanner({ location: 'Rota DUE' })
+    initBanner({location: 'Rota DUE'});
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -453,4 +446,4 @@ async function initEmpreendimento() {
   btnFixed();
 }
 
-export { initEmpreendimento };
+export {initEmpreendimento};

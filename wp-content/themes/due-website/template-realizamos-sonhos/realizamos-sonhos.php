@@ -1,10 +1,10 @@
-<section class="realizamos-sonho">
+<section class="realizamos-sonho" id="realizamos-sonho">
 
     <div class="boxs-sections">
         <div class="box box-left">
 
 
-            <div class="box-svg">
+            <div class="box-svg svg-realizamos">
                 <?php $svg_file = get_field('svg_caixa', 'options');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                     echo file_get_contents($svg_file['url']);
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="box box-right">
+        <div class="box box-right imagem-realizamos">
 
             <div class="box-img">
                 <?php

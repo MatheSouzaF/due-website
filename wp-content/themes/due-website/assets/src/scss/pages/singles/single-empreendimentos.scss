@@ -21,6 +21,10 @@ body.single-empre_single_page {
       width: 100%;
       height: 728px;
       position: relative;
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+      }
       .box-img {
         position: absolute;
         top: 0;
@@ -145,9 +149,9 @@ body.single-empre_single_page {
     }
 
     .introducao {
-      padding: 56px 0 48px;
+      margin-bottom: 64px;
       @include media-breakpoint-up(md) {
-        padding: 56px 0 120px;
+        margin-bottom: 120px;
       }
       .wrapper {
         display: flex;
@@ -366,6 +370,10 @@ body.single-empre_single_page {
       width: 100%;
       height: 700px;
       overflow: hidden;
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+      }
       .wrapper {
         display: flex;
         justify-content: space-between;
@@ -510,9 +518,9 @@ body.single-empre_single_page {
       }
     }
     .galeria {
-      padding: 64px 0;
+      margin-bottom: 64px;
       @include media-breakpoint-up(md) {
-        padding: 120px 0;
+        margin-bottom: 120px;
       }
       .wrapper {
         display: flex;
@@ -582,6 +590,7 @@ body.single-empre_single_page {
             display: flex;
             flex-direction: column;
             gap: 16px;
+            width: 100%;
             .column-right {
               width: 100%;
             }
@@ -639,6 +648,10 @@ body.single-empre_single_page {
     }
 
     .experiencia-resort {
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+      }
       .titulo-espaco {
         font-style: normal;
         font-weight: 400;
@@ -740,9 +753,9 @@ body.single-empre_single_page {
     }
 
     .explore-empreendimento {
-      padding: 32px 0 64px;
-      @include media-breakpoint-up(sm) {
-        padding: 120px 0;
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
       }
       .wrapper {
         .titulo-explore {
@@ -849,8 +862,10 @@ body.single-empre_single_page {
     }
 
     .tipologias-do-empreendimento {
-      padding: 0 0 120px;
-
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        margin-bottom: 120px;
+      }
       .titulo-tipologia-do-empreendimento {
         font-style: normal;
         font-weight: 400;
@@ -1046,9 +1061,9 @@ body.single-empre_single_page {
     .diferenciais {
       background: $due-secondary;
       height: 100%;
-      padding: 64px 0 128px;
+      padding: 64px 0;
       @include media-breakpoint-up(md) {
-        padding: 120px 0;
+        padding: 80px 0;
       }
       .titulo-diferenciais {
         font-style: normal;
@@ -1157,9 +1172,11 @@ body.single-empre_single_page {
 
     .evolucao-obra {
       background: rgba(233, 227, 221, 0.5);
+      margin-bottom: 64px;
       padding: 64px 0;
       @include media-breakpoint-up(md) {
-        padding: 90px 0;
+        padding: 80px 0;
+        margin-bottom: 120px;
       }
       .titulo-status-obra {
         font-size: 32px;
@@ -1235,6 +1252,7 @@ body.single-empre_single_page {
               left: 0;
               width: 100%;
               height: 100%;
+              z-index: 1;
               border-radius: 100%;
             }
             &::before {
@@ -1248,11 +1266,12 @@ body.single-empre_single_page {
             .line {
               &::before,
               &::after {
-                width: 91px;
+                width: 170px;
                 height: 3px;
                 content: '';
                 position: absolute;
                 top: 50%;
+                z-index: 0;
                 right: -70%;
                 background-color: #e9e3dd;
                 transform: translate(46%, -0%);
@@ -1338,9 +1357,9 @@ body.single-empre_single_page {
     }
 
     .informacoes-obra {
-      padding: 64px 0;
+      margin-bottom: 64px;
       @include media-breakpoint-up(md) {
-        padding: 120px 0;
+        margin-bottom: 120px;
       }
       .wrapper {
         display: flex;

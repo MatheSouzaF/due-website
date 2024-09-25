@@ -89,6 +89,11 @@ function initDynamicModules() {
       modulePath: './components/tab-toggle.js',
       moduleFunction: 'initTabToggle',
     },
+    {
+      selector: '#realizamos-sonho',
+      modulePath: './base/realizamos-sonhos.js',
+      moduleFunction: 'initRealizamos',
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

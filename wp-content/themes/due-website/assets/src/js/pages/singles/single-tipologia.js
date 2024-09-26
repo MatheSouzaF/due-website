@@ -56,13 +56,13 @@ function setupPlantSliders() {
   });
 
   // Marcar o primeiro item como ativo e inicializar o slider
-$('.slider-plantas-mobile').find('option[data-row="1"]').addClass('active');
-$('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
+  $('.slider-plantas-mobile').find('option[data-row="1"]').addClass('active');
+  $('.slider-conteudo li[data-row="1"]').addClass('active').fadeIn(300);
 
-initializeSlick($('.slider-conteudo li[data-row="1"]'));
+  initializeSlick($('.slider-conteudo li[data-row="1"]'));
 
-// Evento de mudança no select ao invés de click no option
-$('.slider-plantas-mobile').on('change', function () {
+  // Evento de mudança no select ao invés de click no option
+  $('.slider-plantas-mobile').on('change', function () {
     const rowNumber = $(this).find('option:selected').data('row');
 
     // Remove a classe 'active' de todas as opções e adiciona na selecionada
@@ -71,14 +71,13 @@ $('.slider-plantas-mobile').on('change', function () {
 
     // Faz o fadeOut do conteúdo ativo atual e ativa o novo conteúdo
     $('.slider-conteudo li.active').fadeOut(300, function () {
-        $(this).removeClass('active');
-        const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
-        newContent.addClass('active').fadeIn(300, function () {
-            initializeSlick(newContent);
-        });
+      $(this).removeClass('active');
+      const newContent = $(`.slider-conteudo li[data-row="${rowNumber}"]`);
+      newContent.addClass('active').fadeIn(300, function () {
+        initializeSlick(newContent);
+      });
     });
-});
-
+  });
 
   function initializeSlick(contentElement) {
     const sliderFor = contentElement.find('.slider-for');
@@ -136,6 +135,7 @@ function setupFixedButtonsAnimation() {
 
   gsap.to('.botoes-fixed', {
     opacity: 0,
+    zIndex: -1,
     duration: 0.5,
     ease: 'power1.out',
     scrollTrigger: {

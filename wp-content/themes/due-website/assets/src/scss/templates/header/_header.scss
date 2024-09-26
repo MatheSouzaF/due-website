@@ -87,6 +87,7 @@
       @include media-breakpoint-up(md) {
         display: none;
       }
+     
       height: 64px;
       align-items: center;
       justify-content: center;
@@ -111,6 +112,9 @@
           text-transform: uppercase;
           color: $due-tertiary;
         }
+      }
+      .container-menu-lateral{
+        cursor: pointer;
       }
       .navigation__menu-label {
         margin: 24px 18px;
@@ -173,7 +177,7 @@
         }
         .box-navbar-numeros {
           display: flex;
-          gap: 12px;
+          gap: 34px;
           flex-direction: column;
           margin-bottom: 64px;
           align-items: flex-start;

@@ -13,7 +13,7 @@ function scrollsmooth() {
   });
 }
 function navbar() {
-  $('#btn-navbar').click(function () {
+  $('.container-menu-lateral').click(function () {
     $('#btn-navbar').toggleClass('active-btn');
     $('.sidebar').toggleClass('active-sidebar');
   });

@@ -832,12 +832,34 @@ main.page-empreendimentos-tipologia {
     }
   }
 
-  .clean-filters,
-  .clean-filters-tipologia {
-    cursor: pointer;
-    padding-block: 4px;
-    border-bottom: 1px solid #51848c66;
-    width: fit-content;
+  .badges-filters {
+    display: flex;
+    flex-direction: row;
+    .clean-filters {
+      cursor: pointer;
+      width: fit-content;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 0.28px;
+      position: relative;
+      &::after {
+        content: '';
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        transition: 0.6s;
+        left: 0;
+        position: absolute;
+        background-color: $due-tertiary;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
   }
 
   .badges-filters {

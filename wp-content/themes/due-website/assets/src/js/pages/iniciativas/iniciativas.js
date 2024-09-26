@@ -338,6 +338,7 @@ function btnFixed() {
     opacity: 0,
     duration: 0.5,
     ease: 'power1.out',
+    zIndex: -1,
     scrollTrigger: {
       trigger: '.selos-certificados',
       start: 'center center',

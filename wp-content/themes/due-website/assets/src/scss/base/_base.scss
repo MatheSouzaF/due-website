@@ -40,7 +40,6 @@ body {
           fill: $due-tertiary;
           @include media-breakpoint-up(md) {
             fill: $grey-0;
-             
           }
         }
       }
@@ -139,6 +138,7 @@ body {
 }
 main {
   background-color: $grey-0;
+  overflow-x: hidden;
 }
 body.lenis {
   &.lenis-smooth {

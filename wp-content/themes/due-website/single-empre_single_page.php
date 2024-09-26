@@ -41,7 +41,7 @@ get_header();
                         echo file_get_contents($svg_file['url']);
                         echo '</i>';
                     } ?>
-                    <p class="founders-grotesk quartos-hero"><?php echo get_field('quantidade_de_quartos'); ?></p>
+                    <p class="founders-grotesk quartos-hero"><?php echo get_field('e_um_studio', $empreendimento_id) ? 'Studio, ' : '' ?><?php echo get_field('quantidade_de_quartos'); ?></p>
                 </div>
                 <div class="box-metragem">
                     <?php $svg_file = get_field('svg_metragem');

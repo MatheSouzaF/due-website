@@ -435,7 +435,11 @@ get_header();
                             if ($min_rooms && $max_rooms) {
                                 $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
                             } elseif ($min_rooms) {
-                                $rooms = $min_rooms . ' quartos';
+                                if ($min_rooms === '1') {
+                                    $rooms = $min_rooms . ' quarto';
+                                } else {
+                                    $rooms = $min_rooms . ' quartos';
+                                }
                             }
                         endwhile;
                     };

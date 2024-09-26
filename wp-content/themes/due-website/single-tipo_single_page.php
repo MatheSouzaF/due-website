@@ -435,7 +435,11 @@ get_header();
                             if ($min_rooms && $max_rooms) {
                                 $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
                             } elseif ($min_rooms) {
-                                $rooms = $min_rooms . ' quartos';
+                                if ($min_rooms === '1') {
+                                    $rooms = $min_rooms . ' quarto';
+                                } else {
+                                    $rooms = $min_rooms . ' quartos';
+                                }
                             }
                         endwhile;
                     };
@@ -445,14 +449,19 @@ get_header();
                             the_row();
                             $min_size = get_sub_field('metragem_minima_tipologia');
                             $max_size = get_sub_field('metragem_maxima_tipologia');
-
+                    
                             if ($min_size && $max_size) {
-                                $size = $min_size . ' a ' . $max_size . 'm²';
+                                if ($min_size == $max_size) {
+                                    $size = $min_size . ' m²';
+                                } else {
+                                    $size = $min_size . ' a ' . $max_size . 'm²';
+                                }
                             } elseif ($min_size) {
                                 $size = $min_size . ' m²';
                             }
                         endwhile;
                     }
+                    
                     $diffs = get_field('diferenciais_tipologia', $tipologiaId);
                     $photo = get_field('foto_da_tipologia', $tipologiaId);
 

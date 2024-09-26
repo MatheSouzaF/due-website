@@ -506,18 +506,43 @@ get_header();
                     $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
                     $rooms = '';
                     if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
-                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
+                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) :
                             the_row();
                             $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
                             $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
-
-                            if ($min_rooms && $max_rooms) {
-                                $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
-                            } elseif ($min_rooms) {
-                                $rooms = $min_rooms . ' quartos';
+                    
+                            $rooms = '';
+                    
+                            if ($isStudio === true) {
+                                $rooms = 'Studio';
+                                
+                                if ($min_rooms && $max_rooms) {
+                                    $rooms .= ', ' . esc_html($min_rooms) . ' a ' . esc_html($max_rooms) . ' qtos';
+                                } elseif ($min_rooms) {
+                                    if ($min_rooms == 1) {
+                                        $rooms .= ', ' . esc_html($min_rooms) . ' quarto';
+                                    } else {
+                                        $rooms .= ', ' . esc_html($min_rooms) . ' quartos';
+                                    }
+                                }
+                            } else {
+                                if ($min_rooms && $max_rooms) {
+                                    $rooms = esc_html($min_rooms) . ' a ' . esc_html($max_rooms) . ' qtos';
+                                } elseif ($min_rooms) {
+                                    if ($min_rooms == 1) {
+                                        $rooms = esc_html($min_rooms) . ' quarto';
+                                    } else {
+                                        $rooms = esc_html($min_rooms) . ' quartos';
+                                    }
+                                }
                             }
+                    
+                            if (!empty($rooms)) {
+                                $rooms_list[] = $rooms;
+                            }
+                    
                         endwhile;
-                    };
+                    }
                     $size = '';
                     if (have_rows('metragem_tipologia', $tipologiaId)) {
                         while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -526,7 +551,11 @@ get_header();
                             $max_size = get_sub_field('metragem_maxima_tipologia');
 
                             if ($min_size && $max_size) {
-                                $size = $min_size . ' a ' . $max_size . 'm²';
+                                if ($min_size == $max_size) {
+                                    $size = $min_size . ' m²';
+                                } else {
+                                    $size = $min_size . ' a ' . $max_size . 'm²';
+                                }
                             } elseif ($min_size) {
                                 $size = $min_size . ' m²';
                             }

@@ -135,6 +135,7 @@ function btnFixed() {
 
   gsap.to('.botoes-fixed', {
     opacity: 0,
+    zIndex: -1,
     duration: 0.5,
     ease: 'power1.out',
     scrollTrigger: {
@@ -191,7 +192,7 @@ function animationDiferenciais() {
   );
 }
 function espaco() {
-  $('.porcentagem').each(function() {
+  $('.porcentagem').each(function () {
     // Seleciona o conteúdo de cada <p> individualmente
     var porcentagem = $(this).text();
 
@@ -200,7 +201,7 @@ function espaco() {
       var porcentagemFormatada = porcentagem.toString().replace('.', ',');
 
       // Atualiza o conteúdo do elemento <p> com o valor formatado
-      $(this).text(porcentagemFormatada );
+      $(this).text(porcentagemFormatada);
     }
   });
 }

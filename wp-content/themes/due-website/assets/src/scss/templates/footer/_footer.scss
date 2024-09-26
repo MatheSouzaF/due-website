@@ -287,6 +287,8 @@
       }
       .dzigual {
         transition: 0.6s;
+        z-index: 1;
+        position: relative;
         cursor: pointer;
         &:hover {
           scale: 1.05;
@@ -294,7 +296,7 @@
       }
     }
   }
-  
+
   .box-formulario-feedback {
     position: absolute;
     z-index: 1;
@@ -327,7 +329,7 @@
         }
       }
     }
-   .feedback-active{
+    .feedback-active {
       opacity: 1;
       visibility: visible;
     }

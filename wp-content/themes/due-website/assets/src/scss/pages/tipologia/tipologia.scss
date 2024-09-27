@@ -448,7 +448,7 @@ body.tipologia-drawer-open .drawer-overlay {
           display: flex;
           flex-direction: column;
           gap: 16px;
-
+          max-height: 400px;
           label {
             transition: 0.6s;
 
@@ -494,7 +494,12 @@ body.tipologia-drawer-open .drawer-overlay {
           }
         }
       }
-
+      #tipologia-filter-diferenciais {
+        right: -50px;
+        .inner-wrap {
+          padding: 4px 20px 4px 0;
+        }
+      }
       .toggle-next {
         border-radius: 0;
       }

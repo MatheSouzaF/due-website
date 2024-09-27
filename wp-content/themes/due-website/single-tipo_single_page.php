@@ -165,8 +165,11 @@ get_header();
     <?php if ($tituloPlantas) : ?>
 
         <section class="plantas">
-            <h3 class="titulo-plantas"><?php echo $tituloPlantas ?></h3>
-            <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
+            <div class="wrapper">
+
+                <h3 class="titulo-plantas"><?php echo $tituloPlantas ?></h3>
+                <p class="subtitulo-plantas"><?php echo get_field('subtitulo_plantas'); ?></p>
+            </div>
             <div class="box-titulo-plantas">
 
                 <?php
@@ -236,8 +239,9 @@ get_header();
                         $titulo_coluna_pavimento_ii = get_sub_field('titulo_coluna_pavimento_ii');
                         echo '<li class="conteudo-tipologias" data-row="' . $row_number . '">';
                         echo '<div class="container-text">';
-                        echo '<p class="sufix-planta founders-grotesk">' . esc_html($sufixo_da_planta) . '</p>';
-                        echo '<p class="quartos-metragem-planta founders-grotesk">' . esc_html($sufixo_da_metragem) . '</p>';
+                        echo '<div class="box-textos">';
+                        echo '<p class="sufix-planta terminal-test">' . esc_html($sufixo_da_planta) . '</p>';
+                        echo '<p class="quartos-metragem-planta terminal-test">' . esc_html($sufixo_da_metragem) . '</p>';
                         echo '<div class="box-repetidor-caracteristicas">';
                         if (have_rows('lista_de_caracteristicas')) :
                             while (have_rows('lista_de_caracteristicas')) : the_row();
@@ -289,6 +293,7 @@ get_header();
                                 echo '</div>';
                             endwhile;
                         endif;
+                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -449,7 +454,7 @@ get_header();
                             the_row();
                             $min_size = get_sub_field('metragem_minima_tipologia');
                             $max_size = get_sub_field('metragem_maxima_tipologia');
-                    
+
                             if ($min_size && $max_size) {
                                 if ($min_size == $max_size) {
                                     $size = $min_size . ' m²';
@@ -461,7 +466,7 @@ get_header();
                             }
                         endwhile;
                     }
-                    
+
                     $diffs = get_field('diferenciais_tipologia', $tipologiaId);
                     $photo = get_field('foto_da_tipologia', $tipologiaId);
 

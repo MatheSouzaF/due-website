@@ -899,7 +899,7 @@ body.single-empre_single_page {
               img {
                 height: 100%;
                 width: 100%;
-                object-fit: cover;
+                // object-fit: cover;
                 @include media-breakpoint-down(sm) {
                   max-inline-size: initial;
                   max-block-size: initial;
@@ -919,7 +919,7 @@ body.single-empre_single_page {
 
           .pins_image {
             top: initial !important;
-            left: -40px !important;
+            left: initial !important;
             cursor: pointer;
           }
         }

@@ -183,7 +183,11 @@ body.single-tipo_single_page {
       }
 
       &.container-imagem {
+        @include media-breakpoint-up(md) {
+          height: 80vh;
+        }
         img {
+          height: 100%;
           width: 100%;
           -o-object-fit: cover;
           object-fit: cover;
@@ -431,6 +435,18 @@ body.single-tipo_single_page {
               width: 100%;
             }
           }
+          &.active {
+            &::after {
+              content: '';
+              bottom: -2px;
+              width: 100%;
+              height: 2px;
+              transition: 0.6s;
+              left: 0;
+              position: absolute;
+              background-color: $due-tertiary;
+            }
+          }
           .sufix-planta {
             font-size: 18px;
             font-style: normal;
@@ -488,109 +504,130 @@ body.single-tipo_single_page {
           }
           .container-text {
             background-color: $background;
-            padding: 52px;
             width: 100%;
 
             min-height: 400px;
             @include media-breakpoint-up(md) {
               min-height: 620px;
             }
-            .sufix-planta {
-              font-size: 32px;
-              font-style: normal;
-              font-weight: 500;
-              line-height: 140%;
-              letter-spacing: 0.64px;
-              color: $due-tertiary;
-              margin-bottom: 12px;
-            }
-            .quartos-metragem-planta {
-              font-size: 24px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: 140%; /* 33.6px */
-              letter-spacing: 0.48px;
-              color: $due-tertiary;
-              margin-bottom: 40px;
-            }
-            .box-repetidor-caracteristicas {
-              display: flex;
-              flex-direction: column;
-              gap: 9px;
-              margin-bottom: 60px;
-              .row-caracteristicas {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 16px;
-                .box-svg {
-                  svg {
-                    width: 27px;
-                    height: 27px;
-                  }
+            .box-textos {
+              margin: 52px;
+
+              .sufix-planta {
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+                letter-spacing: 0.64px;
+                color: $due-tertiary;
+                margin-bottom: 12px;
+                @include media-breakpoint-up(md) {
+                  font-size: calc(1rem + 1.1vw);
                 }
               }
-            }
-            .box-pavimentos {
-              display: flex;
-              flex-direction: row;
-              gap: 40px;
-              .pavimentos-coluna-I {
-                .titulo-coluna-pavimento-i {
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 140%;
-                  letter-spacing: 0.48px;
-                  color: $due-tertiary;
-                  margin-bottom: 24px;
+              .quartos-metragem-planta {
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 140%; /* 33.6px */
+                letter-spacing: 0.48px;
+                color: $due-tertiary;
+                margin-bottom: 40px;
+                @include media-breakpoint-up(md) {
+                  font-size: calc(1rem + 0.6vw);
                 }
-                .box-lista {
+              }
+              .box-repetidor-caracteristicas {
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                margin-bottom: 60px;
+                .row-caracteristicas {
                   display: flex;
-                  flex-direction: column;
-                  gap: 12px;
-                  .row-lista {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 8px;
-                    .titulo-pavimento {
-                      font-size: 18px;
-                      font-style: normal;
-                      font-weight: 300;
-                      line-height: 140%; /* 25.2px */
-                      letter-spacing: 0.36px;
-                      color: $due-tertiary;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 16px;
+                  .box-svg {
+                    svg {
+                      width: 27px;
+                      height: 27px;
                     }
                   }
                 }
               }
-              .pavimentos-coluna-II {
-                .titulo-coluna-pavimento-ii {
-                  font-size: 12px;
-                  font-style: normal;
-                  font-weight: 500;
-                  line-height: 140%;
-                  letter-spacing: 0.48px;
-                  color: $due-tertiary;
-                  margin-bottom: 24px;
-                }
-                .box-lista {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 12px;
-                  .row-lista {
+              .box-pavimentos {
+                display: flex;
+                flex-direction: row;
+                gap: 40px;
+                .pavimentos-coluna-I {
+                  .titulo-coluna-pavimento-i {
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 140%;
+                    letter-spacing: 0.48px;
+                    color: $due-tertiary;
+                    margin-bottom: 24px;
+                    @include media-breakpoint-up(md) {
+                      font-size: calc(.5rem + 0.3vw);
+                    }
+                  }
+                  .box-lista {
                     display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 8px;
-                    .titulo-pavimento {
-                      font-size: 18px;
-                      font-style: normal;
-                      font-weight: 300;
-                      line-height: 140%; /* 25.2px */
-                      letter-spacing: 0.36px;
-                      color: $due-tertiary;
+                    flex-direction: column;
+                    gap: 12px;
+                    .row-lista {
+                      display: flex;
+                      flex-direction: row;
+                      align-items: center;
+                      gap: 8px;
+                      .titulo-pavimento {
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 140%; /* 25.2px */
+                        letter-spacing: 0.36px;
+                        color: $due-tertiary;
+                        @include media-breakpoint-up(md) {
+                          font-size: calc(.6rem + 0.6vw);
+                        }
+                      }
+                    }
+                  }
+                }
+                .pavimentos-coluna-II {
+                  .titulo-coluna-pavimento-ii {
+                    font-size: 12px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 140%;
+                    letter-spacing: 0.48px;
+                    color: $due-tertiary;
+                    margin-bottom: 24px;
+                    @include media-breakpoint-up(md) {
+                      font-size: calc(.5rem + 0.3vw);
+                    }
+                  }
+                  .box-lista {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    .row-lista {
+                      display: flex;
+                      flex-direction: row;
+                      align-items: center;
+                      gap: 8px;
+                      .titulo-pavimento {
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 300;
+                        line-height: 140%; /* 25.2px */
+                        letter-spacing: 0.36px;
+                        color: $due-tertiary;
+                        @include media-breakpoint-up(md) {
+                          font-size: calc(.6rem + 0.6vw);
+                        }
+                      }
                     }
                   }
                 }
@@ -599,7 +636,6 @@ body.single-tipo_single_page {
           }
           .box-gallery {
             width: 100%;
-            max-width: 656px;
             border: 1px solid #e9e3dd;
             border-left: none;
             @include media-breakpoint-down(md) {
@@ -620,6 +656,7 @@ body.single-tipo_single_page {
                 letter-spacing: 0.48px;
                 color: $due-tertiary;
                 padding-bottom: 24px;
+                
               }
               .plantas-repetidor {
                 height: 454px;
@@ -766,7 +803,6 @@ body.single-tipo_single_page {
           height: 510px;
           @include media-breakpoint-up(md) {
             height: 530px;
-            width: 296px !important;
           }
           .tipologia-card {
             position: relative;

@@ -86,7 +86,7 @@ wp_localize_script('main', 'TipologiasData', array(
 ));
 ?>
 
-<main class="page-empreendimentos-tipologia">
+<section class="page-empreendimentos-tipologia">
   <div class="wrapper">
     <section class="titulo-empreendimentos">
       <div class="titulo-ouse"><?php echo get_field('titulo_empreendimentos'); ?></div>
@@ -180,7 +180,7 @@ wp_localize_script('main', 'TipologiasData', array(
   <?php get_template_part('template-invista/invista'); ?>
   <div class="call-form" id="call-form"></div>
 
-</main>
+</section>
 <div class="drawer-overlay"></div>
 
 <?php

@@ -86,7 +86,7 @@ function tipologiaPage() {
         .text(tipologia.location || 'N/A');
       $(cardTemplate)
         .find('.label-informativo')
-        .text(tipologia.status || 'N/A');
+        .text(tipologia.status || '');
 
       updateRooms(cardTemplate, tipologia.rooms, tipologia.isStudio);
       updateSize(cardTemplate, tipologia.size);
@@ -162,7 +162,10 @@ function tipologiaPage() {
 
     function populateFilterOptions() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
-      const statusOptions = [...new Set(tipologiasData.map((e) => e.status))];
+      const statusOptions = [...new Set(tipologiasData
+        .map((e) => e.status)
+        .filter(status => status !== '')
+      )];
       const empreendimentoOptions = [...new Set(tipologiasData.map((e) => e.project))];
 
       const diferenciaisOptions = [...new Set(tipologiasData.flatMap((e) => e.diffs))];

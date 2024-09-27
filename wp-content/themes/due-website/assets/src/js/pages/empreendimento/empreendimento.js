@@ -195,7 +195,10 @@ async function empreendimentoPage() {
       const empreendimentos = filteredEmpreendimentos.length ? filteredEmpreendimentos : empreendimentosData;
 
       const locationOptions = [...new Set(empreendimentos.map((e) => e.location))];
-      const statusOptions = [...new Set(empreendimentos.map((e) => e.status))];
+      const statusOptions = [...new Set(empreendimentos
+        .map((e) => e.status)
+        .filter(status => status !== '')
+      )];
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {

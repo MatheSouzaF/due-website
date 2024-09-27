@@ -21,7 +21,7 @@ function updateCardContent(cardTemplate, empreendimento) {
     .text(empreendimento.location || 'N/A');
   $(cardTemplate)
     .find('.label-informativo')
-    .text(empreendimento.status || 'N/A');
+    .text(empreendimento.status || '');
 
   updateRooms(cardTemplate, empreendimento.rooms, empreendimento.isStudio);
   updateSize(cardTemplate, empreendimento.size);

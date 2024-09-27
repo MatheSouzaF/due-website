@@ -235,25 +235,39 @@ get_header();
                 <div class="boxs-container-galeria imagens-galeria">
                     <div class="box-column column-left">
                         <?php
-                        if (have_rows('imagens')):
-                            $index = 1;
-                            while (have_rows('imagens')):
-                                the_row();
-                                if ($index % 2 !== 0): // Odd indices
-                                    $image = get_sub_field('imagem_galeria');
-                                    if ($image):
-                                        $image_url = $image['url'];
-                                        $image_alt = $image['alt']; ?>
-                                        <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;"
-                                            href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery"
-                                            data-caption="<?php echo esc_attr($image_alt); ?>">
-                                            <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
-                                                alt="<?php echo esc_attr($image_alt); ?>">
-                                        </a>
-                        <?php
-                                    endif;
+                        if (have_rows('galeria_empreendimento')):
+                            $counter = 1; // Iniciar o contador
+                            while (have_rows('galeria_empreendimento')) : the_row();
+                                if ($counter % 2 != 0): // Se o contador for ímpar
+                                    if (get_row_layout() == 'video_galeria'):
+                                        $image = get_sub_field('imagem_background_video');
+                                        if ($image):
+                                            $image_url = $image['url'];
+                                            $image_alt = $image['alt'];
+                        ?>
+                                            <!-- Link para o vídeo no Fancybox -->
+                                            <a class="box-video" style="height: <?php echo get_sub_field('altura_da_video'); ?>;" href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
+                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                                    <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <?php elseif (get_row_layout() == 'imagem_galeria'):
+                                        $image = get_sub_field('imagem');
+                                        if ($image):
+                                            $image_url = $image['url'];
+                                            $image_alt = $image['alt'];
+                                        ?>
+                                            <!-- Link para a imagem no Fancybox -->
+                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                            </a>
+                                        <?php endif; ?>
+                        <?php endif;
                                 endif;
-                                $index++;
+                                $counter++;
                             endwhile;
                         endif;
                         ?>
@@ -261,29 +275,44 @@ get_header();
 
                     <div class="box-column column-right">
                         <?php
-                        if (have_rows('imagens')):
-                            $index = 1;
-                            while (have_rows('imagens')):
-                                the_row();
-                                if ($index % 2 === 0): // Even indices
-                                    $image = get_sub_field('imagem_galeria');
-                                    if ($image):
-                                        $image_url = $image['url'];
-                                        $image_alt = $image['alt']; ?>
-                                        <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;"
-                                            href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery"
-                                            data-caption="<?php echo esc_attr($image_alt); ?>">
-                                            <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
-                                                alt="<?php echo esc_attr($image_alt); ?>">
-                                        </a>
-                        <?php
-                                    endif;
+                        if (have_rows('galeria_empreendimento')):
+                            $counter = 1; // Iniciar o contador
+                            while (have_rows('galeria_empreendimento')) : the_row();
+                                if ($counter % 2 == 0): // Se o contador for par
+                                    if (get_row_layout() == 'video_galeria'):
+                                        $image = get_sub_field('imagem_background_video');
+                                        if ($image):
+                                            $image_url = $image['url'];
+                                            $image_alt = $image['alt'];
+                        ?>
+                                            <!-- Link para o vídeo no Fancybox -->
+                                            <a class="box-video" href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
+                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                                    <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                            </a>
+                                        <?php endif; ?>
+
+                                        <?php elseif (get_row_layout() == 'imagem_galeria'):
+                                        $image = get_sub_field('imagem');
+                                        if ($image):
+                                            $image_url = $image['url'];
+                                            $image_alt = $image['alt'];
+                                        ?>
+                                            <!-- Link para a imagem no Fancybox -->
+                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                            </a>
+                                        <?php endif; ?>
+                        <?php endif;
                                 endif;
-                                $index++;
+                                $counter++;
                             endwhile;
                         endif;
                         ?>
                     </div>
+
 
                 </div>
 
@@ -406,9 +435,17 @@ get_header();
 
                             echo '</div>'; // Fecha swiper-wrapper
                             echo '<div class="box-buttons-swiper">';
-                            echo '<svg class="swiper-btn-destino-prev"></svg>';
-                            echo '<svg class="swiper-btn-destino-next"></svg>';
+                            echo ' <svg class="swiper-btn-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="40" fill="white" />
+                                <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
+                            </svg>';
+
+                            echo '<svg class="swiper-btn-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                                <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
+                            </svg>';
                             echo '</div></div>'; // Fecha swiper
+
 
                         endwhile;
                     else:
@@ -510,12 +547,12 @@ get_header();
                             the_row();
                             $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
                             $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
-                    
+
                             $rooms = '';
-                    
+
                             if ($isStudio === true) {
                                 $rooms = 'Studio';
-                                
+
                                 if ($min_rooms && $max_rooms) {
                                     $rooms .= ', ' . esc_html($min_rooms) . ' a ' . esc_html($max_rooms) . ' qtos';
                                 } elseif ($min_rooms) {
@@ -536,11 +573,11 @@ get_header();
                                     }
                                 }
                             }
-                    
+
                             if (!empty($rooms)) {
                                 $rooms_list[] = $rooms;
                             }
-                    
+
                         endwhile;
                     }
                     $size = '';

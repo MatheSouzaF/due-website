@@ -1,8 +1,10 @@
 function addStatusClass($boxCard, status) {
   const statusMap = {
     'Em obra': 'em_obra',
-    Lançamento: 'lancamento',
+    "Lançamento": 'lancamento',
+    "Em breve lançamento": 'lancamento',
     '100% vendido': 'vendido',
+    'Pronto pra morar': 'pronto',
     'Últimas unidades': 'ultimas_unidades',
   };
 
@@ -19,7 +21,7 @@ function updateCardContent(cardTemplate, empreendimento) {
     .text(empreendimento.location || 'N/A');
   $(cardTemplate)
     .find('.label-informativo')
-    .text(empreendimento.status || 'N/A');
+    .text(empreendimento.status || '');
 
   updateRooms(cardTemplate, empreendimento.rooms, empreendimento.isStudio);
   updateSize(cardTemplate, empreendimento.size);

@@ -13,8 +13,9 @@ function updateBannerContent(banner) {
   $('#descricao-do-banner').html(banner.description || 'N/A');
 
   if (banner.link) {
-    $('#link-banner').attr('href', banner.link);
+    $('#link-banner').attr('href', banner.link.url);
     $('#link-text').html('Saiba mais');
+    $('#link-banner').show();
   } else {
     $('#link-banner').hide();
   }

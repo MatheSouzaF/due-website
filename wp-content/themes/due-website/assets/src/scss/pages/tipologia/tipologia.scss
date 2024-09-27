@@ -116,6 +116,13 @@ main.page-empreendimentos-tipologia {
             }
           }
 
+          &.pronto {
+            .label-informativo {
+              background-color: #e9e3dd;
+              color: $due-tertiary !important;
+            }
+          }
+
           .box-midia {
             width: 100%;
 

@@ -641,6 +641,8 @@ body.tipologia-drawer-open .drawer-overlay {
       .tipologia-category-content {
         display: none;
         padding: 12px;
+        max-height: 400px;
+        overflow: scroll;
         .inner-wrap {
           label {
             span {
@@ -655,6 +657,7 @@ body.tipologia-drawer-open .drawer-overlay {
           }
         }
       }
+
 
       .tipologia-category-content.tipologia-open {
         display: block;

@@ -76,7 +76,7 @@
                 "vendido": "100% vendido"
             },
             "default_value": false,
-            "return_format": "value",
+            "return_format": "label",
             "multiple": 0,
             "allow_null": 1,
             "ui": 0,
@@ -368,5 +368,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727466277
+    "modified": 1727470586
 }

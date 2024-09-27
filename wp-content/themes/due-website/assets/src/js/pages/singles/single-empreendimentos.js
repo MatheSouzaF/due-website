@@ -129,7 +129,6 @@ function swiperTipologia() {
     },
   });
 }
-
 function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -146,7 +145,6 @@ function btnFixed() {
     },
   });
 }
-
 function animationPraia() {
   const praia = document.querySelector('.praia');
   const boxInfos = document.querySelectorAll('.box-infos-cards');
@@ -205,6 +203,59 @@ function espaco() {
     }
   });
 }
+
+function animationBanner() {
+  const localizacaoHero = document.querySelector('.localizacao-hero');
+  const tituloHero = document.querySelector('.titulo-hero');
+  const quartoHero = document.querySelector('.box-quartos');
+  const metragemHero = document.querySelector('.box-metragem');
+  const videoHero = document.querySelector('.video-hero');
+  let TLFADE = gsap.timeline();
+
+  // TLFADE.to(localizacaoHero, {
+  //   duration: 1,
+  //   opacity: 1,
+  //   x: 0,
+  // });
+  // TLFADE.to(
+  //   tituloHero,
+  //   {
+  //     duration: 1,
+  //     opacity: 1,
+  //     x: 0,
+  //   },
+  //   '-=.6'
+  // );
+  // TLFADE.to(
+  //   quartoHero,
+  //   {
+  //     duration: 1,
+  //     opacity: 1,
+  //     x: 0,
+  //   },
+  //   '-=.3'
+  // );
+  // TLFADE.to(
+  //   metragemHero,
+  //   {
+  //     duration: 1,
+  //     opacity: 1,
+  //     x: 0,
+  //   },
+  //   '-=.8'
+  // );
+
+  TLFADE.from(
+    videoHero,
+    {
+      delay: 0.5,
+      duration: 1.5,
+      onStart: () => videoHero.classList.add('zoom'),
+    },
+    '-=1'
+  );
+}
+
 function initSingleEmpreendimentos() {
   swiperInit();
   swiperDiferenciais();
@@ -216,6 +267,7 @@ function initSingleEmpreendimentos() {
   animationPraia();
   animationDiferenciais();
   espaco();
+  animationBanner();
 }
 
 export {initSingleEmpreendimentos};

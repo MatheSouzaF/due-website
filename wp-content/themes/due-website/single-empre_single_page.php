@@ -14,7 +14,7 @@ get_header();
             if ($image):
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                <img class="img-single-empreendimentos" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
         </div>
         <div class="box-video">
@@ -409,7 +409,9 @@ get_header();
                                                 // Exibe a primeira imagem como destaque
                                                 if ($first_image):
                                                     echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '">';
+                                                    echo '<div class="box-imagem">';
                                                     echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
+                                                    echo '</div>';
                                                     echo '</a>';
                                                     $first_image = false; // Agora a primeira imagem já foi exibida
                                                 else:

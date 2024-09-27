@@ -51,29 +51,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_66e98dc84318b",
-            "label": "Banner do destino",
-            "name": "banner_do_destino",
-            "aria-label": "",
-            "type": "select",
-            "instructions": "Selecione qual o banner desse destino",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": [],
-            "default_value": false,
-            "return_format": "value",
-            "multiple": 0,
-            "allow_null": 0,
-            "ui": 0,
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_66bb9c5be1639",
             "label": "Este empreendimento possui tipologias em formato Studio?",
             "name": "e_um_studio",
@@ -411,5 +388,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727447787
+    "modified": 1727448035
 }

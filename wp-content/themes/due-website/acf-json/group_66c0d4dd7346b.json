@@ -755,10 +755,10 @@
         },
         {
             "key": "field_66c0d78eca8dc",
-            "label": "Imagens",
-            "name": "imagens",
+            "label": "Galeria Empreendimento",
+            "name": "galeria_empreendimento",
             "aria-label": "",
-            "type": "repeater",
+            "type": "flexible_content",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -767,62 +767,141 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "row",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Adicionar linha",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66d0b28dd7921",
-                    "label": "Imagem Galeria",
-                    "name": "imagem_galeria",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "thumbnail",
-                    "parent_repeater": "field_66c0d78eca8dc"
+            "layouts": {
+                "layout_66f6b79e2a822": {
+                    "key": "layout_66f6b79e2a822",
+                    "name": "video_galeria",
+                    "label": "Vídeo Galeria",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_66f6b7ce2d58b",
+                            "label": "Vídeo",
+                            "name": "video",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        },
+                        {
+                            "key": "field_66f6b7e72d58c",
+                            "label": "Imagem Background Vídeo",
+                            "name": "imagem_background_video",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_66d0b77e16fe6",
+                            "label": "Altura da Vídeo",
+                            "name": "altura_da_video",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Ex: 390px",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 },
-                {
-                    "key": "field_66d0b77e16fe6",
-                    "label": "Altura da Imagem",
-                    "name": "altura_da_imagem",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Ex: 390px",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66c0d78eca8dc"
+                "layout_66f6b7f02d58d": {
+                    "key": "layout_66f6b7f02d58d",
+                    "name": "imagem_galeria",
+                    "label": "Imagem Galeria",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_66f6b7fc2d58f",
+                            "label": "Imagem",
+                            "name": "imagem",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_66f6b8ae20434",
+                            "label": "Altura da Imagem",
+                            "name": "altura_da_imagem",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Ex: 390px",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
-            ]
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Adicionar linha"
         },
         {
             "key": "field_66c0d7b3ca8dd",
@@ -925,6 +1004,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66e08ebea323a",
                     "sub_fields": [
                         {
                             "key": "field_66c0d871ca8df",
@@ -968,6 +1048,7 @@
                             "collapsed": "",
                             "button_label": "Adicionar linha",
                             "rows_per_page": 20,
+                            "parent_repeater": "field_66c0d7e9ca8de",
                             "sub_fields": [
                                 {
                                     "key": "field_66f40d9c4063b",
@@ -995,11 +1076,9 @@
                                     "preview_size": "medium",
                                     "parent_repeater": "field_66c0d87bca8e0"
                                 }
-                            ],
-                            "parent_repeater": "field_66c0d7e9ca8de"
+                            ]
                         }
-                    ],
-                    "parent_repeater": "field_66e08ebea323a"
+                    ]
                 }
             ]
         },
@@ -1573,5 +1652,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727271424
+    "modified": 1727445203
 }

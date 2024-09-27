@@ -74,7 +74,7 @@
                 "100% vendido": "100% vendido"
             },
             "default_value": false,
-            "return_format": "value",
+            "return_format": "label",
             "multiple": 0,
             "allow_null": 1,
             "ui": 0,
@@ -267,7 +267,7 @@
             "name": "diferenciais_tipologia",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "Selecione os diferenciais do empreendimento",
+            "instructions": "Selecione até 4 diferenciais",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {

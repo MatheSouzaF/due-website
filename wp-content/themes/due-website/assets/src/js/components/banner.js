@@ -14,7 +14,7 @@ function updateBannerContent(banner) {
 
   if (banner.link) {
     $('#link-banner').attr('href', banner.link.url);
-    $('#link-text').html('Saiba mais');
+    $('#link-text').html(banner.link.title);
     $('#link-banner').show();
   } else {
     $('#link-banner').hide();

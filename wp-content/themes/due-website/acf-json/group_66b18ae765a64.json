@@ -269,7 +269,7 @@
             "name": "diferenciais_tipologia",
             "aria-label": "",
             "type": "checkbox",
-            "instructions": "Selecione os diferenciais do empreendimento",
+            "instructions": "Selecione até 4 diferenciais",
             "required": 1,
             "conditional_logic": 0,
             "wrapper": {
@@ -278,10 +278,23 @@
                 "id": ""
             },
             "choices": {
+                "1_vaga_na_garagem": "1 Vaga na Garagem",
+                "2_vagas_na_garagem": "2 Vagas na Garagem",
+                "3_vagas_de_garagem": "3 Vagas de Garagem",
+                "varanda_gourmet": "Varanda Gourmet",
+                "varanda_espaçosa": "Varanda Espaçosa",
+                "varanda_integrada": "Varanda Integrada",
+                "cozinha_americana": "Cozinha Americana",
+                "suite_ampliada": "Suíte Ampliada",
+                "sala_ampliada": "Sala Ampliada",
+                "planta_inteligente": "Planta Inteligente",
+                "deck_com_area_gourmet": "Deck com Área Gourmet",
                 "piscina_privativa": "Piscina Privativa",
-                "beira_mar": "Beira-mar",
-                "jardim_integrado": "Jardim Integrado",
-                "sala_ampliada": "Sala Ampliada"
+                "cobertura_privativa": "Cobertura Privativa",
+                "cobertura_com_area_gourmet": "Cobertura com Área Gourmet",
+                "area_gourmet": "Área Gourmet",
+                "jardim_privativo": "Jardim Privativo",
+                "beira_mar": "Beira-mar"
             },
             "default_value": [],
             "return_format": "label",
@@ -355,5 +368,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727446120
+    "modified": 1727466277
 }

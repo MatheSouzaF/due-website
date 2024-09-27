@@ -37,23 +37,13 @@
                 "id": ""
             },
             "choices": {
-                "1333": "Tipologia Cais Eco",
-                "1135": "Casa do Poço",
-                "1134": "NoMar Carneiros Ecoliving",
-                "1133": "Costa do Mar",
-                "1132": "Costa Azul",
-                "1131": "Boulevard Praia dos Carneiros",
-                "1130": "Praia Exclusive",
-                "741": "Praia Exclusive 2",
+                "553": "teste",
+                "469": "Habitá",
                 "436": "Tropí Eco Residência",
                 "434": "Naturê Eco Residência",
-                "1128": "Orla Praia dos Carneiros",
+                "432": "Orla Carneiros",
                 "430": "Habitá",
-                "1126": "Cais Eco Residência",
-                "422": "Praia Exclusive",
-                "420": "Tropí Eco Residência",
-                "418": "Naturê Eco Residência",
-                "412": "Cais Eco Residência"
+                "418": "Cais Eco Residência"
             },
             "default_value": false,
             "return_format": "label",
@@ -78,10 +68,12 @@
                 "id": ""
             },
             "choices": {
-                "Lançamento": "Lançamento",
-                "Em obra": "Em obra",
-                "Últimas unidades": "Últimas unidades",
-                "100% vendido": "100% vendido"
+                "breve": "Em breve lançamento",
+                "lancamento": "Lançamento",
+                "obra": "Em obra",
+                "ultimas": "Últimas unidades",
+                "pronto": "Pronto pra morar",
+                "vendido": "100% vendido"
             },
             "default_value": false,
             "return_format": "value",
@@ -363,5 +355,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727354964
+    "modified": 1727446120
 }

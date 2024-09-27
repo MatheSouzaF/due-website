@@ -248,16 +248,18 @@
                 "id": ""
             },
             "choices": {
+                "breve": "Em breve lançamento",
                 "lancamento": "Lançamento",
                 "obra": "Em obra",
                 "ultimas": "Últimas unidades",
+                "pronto": "Pronto pra morar",
                 "vendido": "100% vendido"
             },
-            "default_value": "pronto",
+            "default_value": false,
             "return_format": "label",
             "multiple": 0,
             "allow_null": 1,
-            "ui": 1,
+            "ui": 0,
             "ajax": 0,
             "placeholder": ""
         },
@@ -409,5 +411,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727354535
+    "modified": 1727447787
 }

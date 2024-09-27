@@ -53,8 +53,10 @@ function tipologiaPage() {
     function addStatusClass($boxCard, status) {
       const statusMap = {
         'Em obra': 'em_obra',
-        Lançamento: 'lancamento',
+        "Lançamento": 'lancamento',
+        "Em breve lançamento": 'lancamento',
         '100% vendido': 'vendido',
+        'Pronto pra morar': 'pronto',
         'Últimas unidades': 'ultimas_unidades',
       };
 

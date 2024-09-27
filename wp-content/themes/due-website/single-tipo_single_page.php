@@ -465,7 +465,7 @@ get_header();
                     $diffs = get_field('diferenciais_tipologia', $tipologiaId);
                     $photo = get_field('foto_da_tipologia', $tipologiaId);
 
-                    if ($project === $empreendimentoName) {
+                    if ($project === $empreendimentoName && $name !== $titulo_tipologia) {
                         $tipologiasDoEmpreendimento[] = array(
                             'name' => $name,
                             'id' => $tipologiaId,

@@ -614,8 +614,29 @@ function tipologiaPage() {
     });
 
     // Toggle filter categories
-    $('.tipologia-drawer-content').on('click', '.tipologia-category-toggle', function () {
-      $(this).next('.tipologia-category-content').toggleClass('tipologia-open');
+    $('.tipologia-drawer-content').on('click', '.tipologia-category-toggle', function (e) {
+      e.stopPropagation(); // Evita o fechamento quando clicar no próprio toggle
+
+      // Fecha todos os elementos abertos com animação
+      $('.tipologia-category-content.tipologia-open').not($(this).next()).slideUp(300).removeClass('tipologia-open');
+
+      // Abre o elemento clicado com animação
+      $(this).next('.tipologia-category-content').slideToggle(300).toggleClass('tipologia-open');
+    });
+
+    // Fecha todas as categorias abertas ao clicar fora de .tipologia-drawer-content
+    $(document).on('click', function (e) {
+      // Verifica se o clique NÃO foi dentro de .tipologia-drawer-content E NÃO foi no .filter-button
+      if (
+        !$(e.target).closest('.tipologia-drawer-content').length &&
+        !$(e.target).closest('.tipologia-filter-button').length
+      ) {
+        $('.tipologia-filter-drawer').removeClass('tipologia-open');
+        $('body').removeClass('tipologia-drawer-open');
+        
+        // Opcional: Fecha todas as categorias abertas com animação
+        $('.tipologia-category-content.tipologia-open').slideUp(300).removeClass('tipologia-open');
+      }
     });
 
     $('.tipologia-apply-filters').click(function () {

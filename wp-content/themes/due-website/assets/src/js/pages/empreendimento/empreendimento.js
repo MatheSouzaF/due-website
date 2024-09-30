@@ -1,9 +1,9 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
-import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
-import {generateBadge} from '../../components/badge';
-import {getFilterValue} from '../../utils/get-filter-value';
-import {getFilterLabel} from '../../utils/get-filter-label';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
+import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
+import { generateBadge } from '../../components/badge';
+import { getFilterValue } from '../../utils/get-filter-value';
+import { getFilterLabel } from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -225,10 +225,10 @@ async function empreendimentoPage() {
       const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-rooms': [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -327,11 +327,11 @@ async function empreendimentoPage() {
         })
         .get();
 
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
       hideOptions('filter-location');
     });
 
-    initBanner({location: 'Rota DUE'});
+    initBanner({ location: 'Rota DUE' });
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -355,14 +355,29 @@ async function empreendimentoPage() {
       $('body').addClass('drawer-open');
     });
 
-    $('.close-drawer').click(function () {
-      $('.filter-drawer').removeClass('open');
-      $('body').removeClass('drawer-open');
+    $('.drawer-content').on('click', '.category-toggle', function (e) {
+      e.stopPropagation(); // Evita o fechamento quando clicar no próprio toggle
+
+      // Fecha todos os elementos abertos com animação
+      $('.category-content.open').not($(this).next()).slideUp(300).removeClass('open');
+
+      // Abre o elemento clicado com animação
+      $(this).next('.category-content').slideToggle(300).toggleClass('open');
     });
 
-    // Toggle das categorias no filtro mobile
-    $('.drawer-content').on('click', '.category-toggle', function () {
-      $(this).next('.category-content').toggleClass('open');
+    // Fecha todas as categorias abertas ao clicar fora de .drawer-content
+    $(document).on('click', function (e) {
+      // Verifica se o clique NÃO foi dentro de .drawer-content E NÃO foi no .filter-button
+      if (
+        !$(e.target).closest('.drawer-content').length &&
+        !$(e.target).closest('.filter-button').length
+      ) {
+        $('.filter-drawer').removeClass('open');
+        $('body').removeClass('drawer-open');
+        
+        // Opcional: Fecha todas as categorias abertas com animação
+        $('.category-content.open').slideUp(300).removeClass('open');
+      }
     });
 
     $('.apply-filters').click(function () {
@@ -469,7 +484,7 @@ function btnFixed() {
 
   gsap.to('.botoes-fixed', {
     opacity: 0,
-    zIndex: -1, 
+    zIndex: -1,
     duration: 0.5,
     ease: 'power1.out',
     scrollTrigger: {
@@ -487,4 +502,4 @@ async function initEmpreendimento() {
   btnFixed();
 }
 
-export {initEmpreendimento};
+export { initEmpreendimento };

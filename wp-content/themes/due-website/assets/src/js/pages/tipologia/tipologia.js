@@ -16,8 +16,10 @@ function tipologiaPage() {
       clearContainer($container);
 
       if (tipologias.length === 0) {
-        console.log('Nenhuma tipologia para exibir.');
+        $('#no-tipologias-message').show();
         return;
+      } else {
+        $('#no-tipologias-message').hide();
       }
 
       tipologias.forEach((tipologia) => {

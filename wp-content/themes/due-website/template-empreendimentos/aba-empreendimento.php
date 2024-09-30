@@ -55,6 +55,7 @@
       </div>
       <div class="drawer-footer">
         <button class="apply-filters">Buscar</button>
+        <button class="clean-filters founders-grotesk">Limpar filtros</button>
       </div>
     </div>
 

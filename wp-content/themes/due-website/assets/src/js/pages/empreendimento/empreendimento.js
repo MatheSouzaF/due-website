@@ -19,8 +19,10 @@ async function empreendimentoPage() {
       clearContainer($container);
 
       if (empreendimentos.length === 0) {
-        console.log('Nenhum empreendimento para exibir.');
+        $('#no-empreendimentos-message').show();
         return;
+      } else {
+        $('#no-empreendimentos-message').hide();
       }
 
       empreendimentos.forEach((empreendimento) => {
@@ -374,7 +376,7 @@ async function empreendimentoPage() {
       ) {
         $('.filter-drawer').removeClass('open');
         $('body').removeClass('drawer-open');
-        
+
         // Opcional: Fecha todas as categorias abertas com animação
         $('.category-content.open').slideUp(300).removeClass('open');
       }

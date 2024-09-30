@@ -275,4 +275,7 @@
       </div>
     </div>
   </template>
+  <div id="no-tipologias-message" style="display: none;">
+    Nenhuma tipologia para exibir.
+  </div>
 </section>

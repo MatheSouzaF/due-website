@@ -206,3 +206,7 @@
     </div>
   </div>
 </template>
+
+<div id="no-empreendimentos-message" style="display: none;">
+  Nenhum empreendimento para exibir.
+</div>

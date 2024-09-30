@@ -21,7 +21,7 @@ function initializeTipologiasSwiper() {
 function initializeGaleriaSwiper() {
   new Swiper('.swiper-galeria', {
     slidesPerView: 1.2,
-    spaceBetween: 24,
+    spaceBetween: 4,
     navigation: {
       nextEl: '.swiper-button-next-galeria',
       prevEl: '.swiper-button-prev-galeria',
@@ -29,6 +29,7 @@ function initializeGaleriaSwiper() {
     breakpoints: {
       1024: {
         slidesPerView: 3,
+        spaceBetween: 8,
       },
     },
   });
@@ -149,11 +150,11 @@ function setupFixedButtonsAnimation() {
 
 // Função de Inicialização Geral
 function initSingleTipologia() {
+  setupFooterScroll();
   initializeTipologiasSwiper();
   initializeGaleriaSwiper();
   setupPlantSliders();
   initializePanoramaViewer();
-  setupFooterScroll();
   setupFixedButtonsAnimation();
 }
 

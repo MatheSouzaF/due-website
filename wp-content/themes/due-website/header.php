@@ -239,7 +239,7 @@ function generate_navbar()
 							$link_url = $link['url'];
 							$link_title = $link['title'];
 							$link_target = $link['target'] ? $link['target'] : '_self'; ?>
-							<a class="fab__link" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+							<a class="fab__link <?php echo esc_html($link_title); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
 								<div class="box-svg">
 									<?php
 									$svg_file = get_sub_field('svg_link', 'options');

@@ -173,21 +173,23 @@ function animationPraia() {
   );
 }
 function animationDiferenciais() {
-  const rowCards = document.querySelectorAll('.row-cards');
-  gsap.fromTo(
-    rowCards,
-    {autoAlpha: 0, y: 50},
-    {
-      duration: 1,
-      autoAlpha: 1,
-      y: 0,
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.diferenciais',
-        start: 'top-=100 center',
-      },
-    }
-  );
+  if (window.innerWidth > 1023) {
+    const rowCards = document.querySelectorAll('.row-cards');
+    gsap.fromTo(
+      rowCards,
+      {autoAlpha: 0, y: 50},
+      {
+        duration: 1,
+        autoAlpha: 1,
+        y: 0,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.diferenciais',
+          start: 'top-=100 center',
+        },
+      }
+    );
+  }
 }
 function espaco() {
   $('.porcentagem').each(function () {

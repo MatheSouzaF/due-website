@@ -103,6 +103,17 @@ body {
         text-transform: uppercase;
         color: $due-tertiary;
       }
+      &.chamar {
+        .box-svg {
+          svg {
+            @include media-breakpoint-down(sm) {
+              path {
+                fill: $due-tertiary;
+              }
+            }
+          }
+        }
+      }
     }
     .fab__link:nth-last-child(1) {
       transition-delay: 0.25s;

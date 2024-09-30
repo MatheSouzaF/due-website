@@ -1,6 +1,9 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-jeito-due {
+  main{
+    overflow-x: initial;
+  }
   header {
     .button-menu {
       color: $due-tertiary !important;

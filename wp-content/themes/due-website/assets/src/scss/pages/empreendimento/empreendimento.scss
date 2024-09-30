@@ -213,8 +213,7 @@ body.drawer-open .drawer-overlay {
 
         &.pronto {
           .label-informativo {
-            background-color: #e9e3dd;
-            color: $due-tertiary !important;
+            background-color: #0a6361;
           }
         }
 
@@ -387,7 +386,6 @@ body.drawer-open .drawer-overlay {
           }
         }
       }
-     
 
       .toggle-next {
         border-radius: 0;
@@ -586,7 +584,9 @@ body.drawer-open .drawer-overlay {
       display: flex;
       flex-direction: column;
       gap: 20px;
-
+      @include media-breakpoint-down(md) {
+        padding-top: 10px;
+      }
       .badge {
         border: 1px solid #51848c66;
         color: $due-secondary;

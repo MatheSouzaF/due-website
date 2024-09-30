@@ -373,7 +373,7 @@ get_header();
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
-                        <a class="button-fixed-whatsapp" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
+                        <a class="button-fixed-whatsapp"  href="<?php echo esc_url($link_url); ?>" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
                             <p class=""><?php echo esc_html($link_title); ?></p>
                         </a>
                     <?php endif; ?>

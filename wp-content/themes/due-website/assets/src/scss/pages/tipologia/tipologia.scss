@@ -673,6 +673,7 @@ body.tipologia-drawer-open .drawer-overlay {
       .tipologia-drawer-footer {
         padding: 0 16px;
         margin-bottom: 12px;
+        text-align: center;
         .tipologia-apply-filters {
           width: 100%;
           color: white;
@@ -739,29 +740,29 @@ body.tipologia-drawer-open .drawer-overlay {
       .badge-filters-tipologia {
         display: flex;
         flex-direction: row;
-        .clean-filters-tipologia {
-          cursor: pointer;
-          width: fit-content;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 100%;
-          letter-spacing: 0.28px;
-          position: relative;
+      }
+      .clean-filters-tipologia {
+        cursor: pointer;
+        width: fit-content;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 100%;
+        letter-spacing: 0.28px;
+        position: relative;
+        &::after {
+          content: '';
+          bottom: -2px;
+          width: 0;
+          height: 2px;
+          transition: 0.6s;
+          left: 0;
+          position: absolute;
+          background-color: $due-tertiary;
+        }
+        &:hover {
           &::after {
-            content: '';
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            transition: 0.6s;
-            left: 0;
-            position: absolute;
-            background-color: $due-tertiary;
-          }
-          &:hover {
-            &::after {
-              width: 100%;
-            }
+            width: 100%;
           }
         }
       }

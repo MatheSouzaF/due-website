@@ -90,10 +90,10 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="tipologia-drawer-footer">
           <button class="tipologia-apply-filters">Buscar</button>
+          <button class="clean-filters-tipologia founders-grotesk">Limpar filtros</button>
         </div>
       </div>
 

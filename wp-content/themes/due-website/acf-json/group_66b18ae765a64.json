@@ -68,10 +68,12 @@
                 "id": ""
             },
             "choices": {
-                "Lançamento": "Lançamento",
-                "Em obra": "Em obra",
-                "Últimas unidades": "Últimas unidades",
-                "100% vendido": "100% vendido"
+                "breve": "Em breve lançamento",
+                "lancamento": "Lançamento",
+                "obra": "Em obra",
+                "ultimas": "Últimas unidades",
+                "pronto": "Pronto pra morar",
+                "vendido": "100% vendido"
             },
             "default_value": false,
             "return_format": "label",
@@ -138,7 +140,7 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "min": 1,
+                    "min": 0,
                     "max": 6,
                     "placeholder": "",
                     "step": "",
@@ -366,5 +368,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727470633
+    "modified": 1727699891
 }

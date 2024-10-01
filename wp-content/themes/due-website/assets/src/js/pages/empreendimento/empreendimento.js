@@ -157,39 +157,51 @@ async function empreendimentoPage() {
       });
     }
 
+    function applyFilter(paramValue, filterSelector, transformFn) {
+      if (paramValue) {
+        paramValue.split(',').forEach((value) => {
+          let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
+    
+          if (typeof transformFn === 'function') {
+            formattedValue = transformFn(formattedValue);
+          }
+    
+          $(`${filterSelector} input`).each(function() {
+            const inputValue = removeAccents($(this).val());
+            if (inputValue === formattedValue) {
+              $(this).click();
+            }
+          });
+        });
+      }
+    }
+
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
-
+    
       const locationFilter = params.get('localizacao');
       const statusFilter = params.get('estagio');
       const roomsFilter = params.get('qtos');
-
-      if (locationFilter) {
-        locationFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-location input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (statusFilter) {
-        statusFilter.split(',').forEach((value) => {
-          let formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
-          formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
-          $(`#filter-status input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (roomsFilter) {
-        roomsFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#filter-rooms input[value="${formattedValue}"]`).click();
-        });
-      }
-
+    
+      applyFilter(locationFilter, '#filter-location');
+    
+      applyFilter(statusFilter, '#filter-status', (value) => {
+        switch (value) {
+          case 'Ultimas unidades':
+            return 'Últimas unidades';
+          case '100 vendido':
+            return '100% vendido';
+          case 'Lancamento':
+            return 'Lançamento';
+          default:
+            return value;
+        }
+      });
+    
+      applyFilter(roomsFilter, '#filter-rooms');
+    
       filterAndRender();
-    }
+    }    
 
     let filteredEmpreendimentos = [];
 

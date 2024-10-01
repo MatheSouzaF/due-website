@@ -1,5 +1,5 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -199,15 +199,15 @@ function tipologiaPage() {
       const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
 
       const options = {
-        location: Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        status: Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        location: Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        status: Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         empreendimento: Array.from(empreendimentoOptions).map((empreendimento) => ({
           value: empreendimento,
           label: empreendimento,
         })),
-        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({value: diferencial, label: diferencial})),
+        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         rooms: [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -421,9 +421,8 @@ function tipologiaPage() {
         params.set('tipologia', 'true');
       }
 
-      const newUrl = `${window.location.pathname}${window.location.hash}${
-        params.toString().length ? '?' : ''
-      }${params.toString()}`;
+      const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''
+        }${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 
@@ -443,6 +442,27 @@ function tipologiaPage() {
       });
     }
 
+    function applyFilter(paramValue, filterSelector, isStatus = false) {
+      if (paramValue) {
+        paramValue.split(',').forEach((value) => {
+          let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
+
+          if (isStatus) {
+            if (formattedValue === 'Ultimas unidades') formattedValue = 'Últimas unidades';
+            if (formattedValue === '100 vendido') formattedValue = '100% vendido';
+            if (formattedValue === 'Lancamento') formattedValue = 'Lançamento';
+          }
+
+          $(`${filterSelector} input`).each(function () {
+            const inputValue = removeAccents($(this).val());
+            if (inputValue === formattedValue) {
+              $(this).click();
+            }
+          });
+        });
+      }
+    }
+
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
 
@@ -452,46 +472,11 @@ function tipologiaPage() {
       const diferenciaisFilter = params.get('tipo-diferenciais');
       const roomsFilter = params.get('tipo-qtos');
 
-      if (locationFilter) {
-        locationFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#tipologia-filter-location input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (statusFilter) {
-        statusFilter.split(',').forEach((value) => {
-          let formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-
-          // Condição para transformar 'ultimas_unidades' em 'Últimas unidades'
-          formattedValue = formattedValue === 'Ultimas unidades' ? 'Últimas unidades' : formattedValue;
-          formattedValue = formattedValue === '100 vendido' ? '100% vendido' : formattedValue;
-          formattedValue = formattedValue === 'Lancamento' ? 'Lançamento' : formattedValue;
-
-          $(`#tipologia-filter-status input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (empreendimentoFilter) {
-        empreendimentoFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#tipologia-filter-empreendimento input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (diferenciaisFilter) {
-        diferenciaisFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#tipologia-filter-diferenciais input[value="${formattedValue}"]`).click();
-        });
-      }
-
-      if (roomsFilter) {
-        roomsFilter.split(',').forEach((value) => {
-          const formattedValue = decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, '');
-          $(`#tipologia-filter-rooms input[value="${formattedValue}"]`).click();
-        });
-      }
+      applyFilter(locationFilter, '#tipologia-filter-location');
+      applyFilter(statusFilter, '#tipologia-filter-status', true);
+      applyFilter(empreendimentoFilter, '#tipologia-filter-empreendimento');
+      applyFilter(diferenciaisFilter, '#tipologia-filter-diferenciais');
+      applyFilter(roomsFilter, '#tipologia-filter-rooms');
 
       filterAndRender();
     }
@@ -577,7 +562,7 @@ function tipologiaPage() {
           return $(this).val();
         })
         .get();
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
     });
 
     filters['status'].find('input.ckkBox').on('change', function () {
@@ -635,7 +620,7 @@ function tipologiaPage() {
       ) {
         $('.tipologia-filter-drawer').removeClass('tipologia-open');
         $('body').removeClass('tipologia-drawer-open');
-        
+
         // Opcional: Fecha todas as categorias abertas com animação
         $('.tipologia-category-content.tipologia-open').slideUp(300).removeClass('tipologia-open');
       }
@@ -720,4 +705,4 @@ function initTipologia() {
   cardHover();
 }
 
-export {initTipologia};
+export { initTipologia };

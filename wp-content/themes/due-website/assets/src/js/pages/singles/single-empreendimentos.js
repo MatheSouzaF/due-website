@@ -61,8 +61,8 @@ function filterExperiencias() {
     $('.swiper').each(function () {
       var id = $(this).attr('id');
       swipers[id] = new Swiper('#' + id, {
-        slidesPerView: 1.2,
-        spaceBetween: 24,
+        slidesPerView: 1.1,
+        spaceBetween: 8,
 
         navigation: {
           nextEl: '.swiper-btn-destino-next',
@@ -71,6 +71,7 @@ function filterExperiencias() {
         breakpoints: {
           767: {
             slidesPerView: 3.4,
+            spaceBetween: 16,
           },
         },
       });

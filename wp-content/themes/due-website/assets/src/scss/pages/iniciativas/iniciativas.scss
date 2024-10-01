@@ -758,7 +758,7 @@ body.page-template-iniciativas {
       flex-direction: column;
       justify-content: space-between;
       display: flex;
-      gap: 80px;
+      gap: 64px;
       @include media-breakpoint-up(md) {
         flex-direction: row;
         gap: 0;
@@ -777,7 +777,7 @@ body.page-template-iniciativas {
         clip-path: inset(0 0 100% 0);
         transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
         border-bottom: 1px solid #E9E3DD;
-
+padding-bottom: 64px;
         &.clipPath-selos-certificados {
           clip-path: inset(0 0 -100px -100px);
         }

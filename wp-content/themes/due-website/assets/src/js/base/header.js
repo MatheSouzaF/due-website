@@ -1,16 +1,12 @@
 function scrollsmooth() {
-  // Verifica se o usuário não está na home
+  if (window.location.pathname.includes('empreendimentos')) return;
+
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({
-    lerp: 0.07,
-  });
-
+  const lenis = new Lenis({ lerp: 0.07 });
   lenis.on('scroll', ScrollTrigger.update);
 
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
 }
 function navbar() {
   $('.container-menu-lateral').click(function () {
@@ -90,8 +86,8 @@ function animationFooter() {
 
     var siteFooterHeight = siteFooter.height();
 
-    console.log('Content Height = ' + siteContent.height() + 'px');
-    console.log('Footer Height = ' + siteFooterHeight + 'px');
+    // console.log('Content Height = ' + siteContent.height() + 'px');
+    // console.log('Footer Height = ' + siteFooterHeight + 'px');
 
     siteContent.css({
       'margin-bottom': siteFooterHeight + 120 + 'px',

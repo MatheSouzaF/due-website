@@ -742,6 +742,7 @@ body.tipologia-drawer-open .drawer-overlay {
         flex-direction: row;
       }
       .clean-filters-tipologia {
+        display: none;
         cursor: pointer;
         width: fit-content;
         font-size: 14px;

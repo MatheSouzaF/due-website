@@ -645,8 +645,6 @@ function tipologiaPage() {
       $('body').removeClass('tipologia-drawer-open');
     });
 
-    $('.clean-filters-tipologia').hide();
-
     $('.clean-filters-tipologia').click(function () {
       clearFiltersTipologia();
     });

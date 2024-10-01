@@ -406,8 +406,6 @@ async function empreendimentoPage() {
       updateBadges();
     });
 
-    $('.clean-filters').hide();
-
     $('.clean-filters').click(function () {
       clearFiltersEmpreendimentos();
     });

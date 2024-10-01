@@ -75,6 +75,7 @@ body {
       align-items: flex-end;
       gap: 0.5rem;
       background-color: transparent;
+      pointer-events: none;
     }
     .fab__link {
       white-space: nowrap;
@@ -132,6 +133,9 @@ body {
     .fab[is-open] .fab__link:nth-last-child(2) {
       transition-delay: 0.125s;
     }
+    .fab[is-open] .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
 
     .fab__link:nth-last-child(3) {
       transition-delay: 0s;
@@ -144,6 +148,9 @@ body {
     .fab[is-open] .fab__link {
       transform: translateX(0);
       opacity: 1;
+    }
+    .fab[is-open] .fab__nav {
+      pointer-events: initial;
     }
   }
 }

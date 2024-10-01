@@ -16,6 +16,7 @@
   transition: background-color 0.3s ease;
   transition: 0.6s;
   padding: 24px;
+  pointer-events: none;
   @include media-breakpoint-up(md) {
     padding: 24px 80px 0;
   }
@@ -83,11 +84,12 @@
       }
     }
     .box-menu-lateral {
+      pointer-events: auto;
       display: flex;
       @include media-breakpoint-up(md) {
         display: none;
       }
-     
+
       height: 64px;
       align-items: center;
       justify-content: center;
@@ -111,9 +113,27 @@
           letter-spacing: 0.44px;
           text-transform: uppercase;
           color: $due-tertiary;
+          .button-menu {
+            position: relative;
+            &::after {
+              content: '';
+              bottom: -2px;
+              width: 0;
+              height: 2px;
+              transition: 0.6s;
+              left: 0;
+              position: absolute;
+              background-color: $due-tertiary !important;
+            }
+            &:hover {
+              &::after {
+                width: 100%;
+              }
+            }
+          }
         }
       }
-      .container-menu-lateral{
+      .container-menu-lateral {
         cursor: pointer;
       }
       .navigation__menu-label {
@@ -148,7 +168,6 @@
         right: 0;
         top: 0;
         height: 100vh;
-        height: 100svh;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -168,6 +187,16 @@
           overflow-y: scroll;
           overflow-x: hidden;
         }
+        .container-sidebar {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 100%;
+          height: 100%;
+          @include media-breakpoint-down(sm) {
+             max-height: 90%;
+          }
+        }
         .shape-mapa {
           position: absolute;
           bottom: 0;
@@ -185,7 +214,6 @@
           @include media-breakpoint-up(md) {
             align-items: center;
 
-            justify-content: center;
             flex-direction: row;
           }
           .link-numero {
@@ -294,6 +322,7 @@
           width: 100%;
           position: relative;
           z-index: 2;
+          align-items: center;
           .box-redes {
             display: flex;
             flex-direction: row;
@@ -515,6 +544,7 @@
 
     .link-logo-menu {
       height: 100%;
+      pointer-events: auto;
       .box-svg-header {
         height: 100%;
         svg {

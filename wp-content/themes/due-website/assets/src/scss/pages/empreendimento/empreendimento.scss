@@ -588,16 +588,6 @@ body.drawer-open .drawer-overlay {
       @include media-breakpoint-down(md) {
         padding-top: 10px;
       }
-      .badge {
-        border: 1px solid #51848c66;
-        color: $due-secondary;
-        padding: 8px;
-        font-family: 'founders-grotesk', sans-serif;
-        border-radius: 4px;
-        margin-right: 8px;
-        font-size: 14px;
-        letter-spacing: 0.28px;
-      }
 
       .results-text {
         color: $due-tertiary;
@@ -608,18 +598,28 @@ body.drawer-open .drawer-overlay {
         /* 22.4px */
         letter-spacing: 0.32px;
       }
-      .filters-applied {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
+    }
+    .remove-badge {
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .filters-applied {
+      display: flex;
+      flex-direction: row;
 
-      .remove-badge {
-        font-size: 14px;
-        cursor: pointer;
-        margin-left: 4px;
-      }
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      border: 1px solid #51848c66;
+      color: $due-secondary;
+      padding: 8px;
+      font-family: 'founders-grotesk', sans-serif;
+      border-radius: 4px;
+      margin-right: 8px;
+      font-size: 14px;
+      letter-spacing: 0.28px;
     }
   }
 
@@ -842,6 +842,7 @@ body.drawer-open .drawer-overlay {
   .badges-filters {
     display: flex;
     flex-direction: row;
+    margin-bottom: 40px;
   }
 
   .clean-filters {

@@ -187,11 +187,11 @@
 
     <div class="tipologias-results">
       <p class="tipologia-results-text founders-grotesk"></p>
-      <div class="badge-filters-tipologia">
-        <div class="tipologia-filters-applied"></div>
-        <button class="clean-filters-tipologia founders-grotesk">Limpar filtros</button>
-      </div>
     </div>
+  </div>
+  <div class="badge-filters-tipologia">
+    <div class="tipologia-filters-applied"></div>
+    <button class="clean-filters-tipologia founders-grotesk">Limpar filtros</button>
   </div>
 
   <!-- Cards -->

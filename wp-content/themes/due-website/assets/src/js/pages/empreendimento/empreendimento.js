@@ -1,9 +1,9 @@
-import { renderFilters } from '../../components/filter';
-import { initBanner } from '../../components/banner';
-import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
-import { generateBadge } from '../../components/badge';
-import { getFilterValue } from '../../utils/get-filter-value';
-import { getFilterLabel } from '../../utils/get-filter-label';
+import {renderFilters} from '../../components/filter';
+import {initBanner} from '../../components/banner';
+import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
+import {generateBadge} from '../../components/badge';
+import {getFilterValue} from '../../utils/get-filter-value';
+import {getFilterLabel} from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -65,6 +65,10 @@ async function empreendimentoPage() {
       });
     }
 
+    function getUniqueValues(array) {
+      return [...new Set(array)];
+    }
+
     function updateBadges() {
       $('.filters-applied').html('');
 
@@ -79,15 +83,15 @@ async function empreendimentoPage() {
       }
 
       if (locationFilter) {
-        locationFilter.forEach((value) => generateBadge(value, 'location'));
+        getUniqueValues(locationFilter).forEach((value) => generateBadge(value, 'location'));
       }
 
       if (statusFilter) {
-        statusFilter.forEach((value) => generateBadge(value, 'status'));
+        getUniqueValues(statusFilter).forEach((value) => generateBadge(value, 'status'));
       }
 
       if (roomsFilter) {
-        roomsFilter.forEach((value) => generateBadge(value, 'rooms'));
+        getUniqueValues(roomsFilter).forEach((value) => generateBadge(value, 'rooms'));
       }
 
       $('.remove-badge').on('click', function () {
@@ -157,16 +161,18 @@ async function empreendimentoPage() {
       });
     }
 
-    function applyFilter(paramValue, filterSelector, transformFn) {
+    function applyFilter(paramValue, filterSelector, isStatus = false) {
       if (paramValue) {
         paramValue.split(',').forEach((value) => {
           let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
-    
-          if (typeof transformFn === 'function') {
-            formattedValue = transformFn(formattedValue);
+          
+          if (isStatus) {
+            if (formattedValue === 'Ultimas unidades') formattedValue = 'Últimas unidades';
+            if (formattedValue === '100 vendido') formattedValue = '100% vendido';
+            if (formattedValue === 'Lancamento') formattedValue = 'Lançamento';
           }
-    
-          $(`${filterSelector} input`).each(function() {
+
+          $(`${filterSelector} input`).each(function () {
             const inputValue = removeAccents($(this).val());
             if (inputValue === formattedValue) {
               $(this).click();
@@ -178,30 +184,34 @@ async function empreendimentoPage() {
 
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
-    
+
       const locationFilter = params.get('localizacao');
       const statusFilter = params.get('estagio');
       const roomsFilter = params.get('qtos');
-    
-      applyFilter(locationFilter, '#filter-location');
-    
-      applyFilter(statusFilter, '#filter-status', (value) => {
-        switch (value) {
-          case 'Ultimas unidades':
-            return 'Últimas unidades';
-          case '100 vendido':
-            return '100% vendido';
-          case 'Lancamento':
-            return 'Lançamento';
-          default:
-            return value;
-        }
-      });
-    
-      applyFilter(roomsFilter, '#filter-rooms');
-    
+
+      const filtersList = [
+        {
+          filterName: locationFilter,
+          selector: '#filter-location',
+          selectorMobile: '#mobile-filter-location',
+        },
+        {
+          filterName: statusFilter, 
+          selector: '#filter-status', 
+          selectorMobile: '#mobile-filter-status'
+        },
+        {
+          filterName: roomsFilter, 
+          selector: '#filter-rooms', 
+          selectorMobile: '#mobile-filter-rooms'
+        },
+      ];
+
+      filtersList.map((filter) => applyFilter(filter.filterName, filter.selector));
+      filtersList.map((filter) => applyFilter(filter.filterName, filter.selectorMobile));
+
       filterAndRender();
-    }    
+    }
 
     let filteredEmpreendimentos = [];
 
@@ -209,10 +219,7 @@ async function empreendimentoPage() {
       const empreendimentos = filteredEmpreendimentos.length ? filteredEmpreendimentos : empreendimentosData;
 
       const locationOptions = [...new Set(empreendimentos.map((e) => e.location))];
-      const statusOptions = [...new Set(empreendimentos
-        .map((e) => e.status)
-        .filter(status => status !== '')
-      )];
+      const statusOptions = [...new Set(empreendimentos.map((e) => e.status).filter((status) => status !== ''))];
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {
@@ -239,10 +246,10 @@ async function empreendimentoPage() {
       const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
+        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
+        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
         'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -341,11 +348,11 @@ async function empreendimentoPage() {
         })
         .get();
 
-      initBanner({ location: selectedLocations });
+      initBanner({location: selectedLocations});
       hideOptions('filter-location');
     });
 
-    initBanner({ location: 'Rota DUE' });
+    initBanner({location: 'Rota DUE'});
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -382,10 +389,7 @@ async function empreendimentoPage() {
     // Fecha todas as categorias abertas ao clicar fora de .drawer-content
     $(document).on('click', function (e) {
       // Verifica se o clique NÃO foi dentro de .drawer-content E NÃO foi no .filter-button
-      if (
-        !$(e.target).closest('.drawer-content').length &&
-        !$(e.target).closest('.filter-button').length
-      ) {
+      if (!$(e.target).closest('.drawer-content').length && !$(e.target).closest('.filter-button').length) {
         $('.filter-drawer').removeClass('open');
         $('body').removeClass('drawer-open');
 
@@ -514,4 +518,4 @@ async function initEmpreendimento() {
   btnFixed();
 }
 
-export { initEmpreendimento };
+export {initEmpreendimento};

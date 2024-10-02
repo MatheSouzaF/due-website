@@ -58,6 +58,9 @@ body.tipologia-drawer-open .drawer-overlay {
       }
 
       @media (min-width: 1025px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (min-width: 1600px) {
         grid-template-columns: repeat(4, 1fr);
       }
 
@@ -310,7 +313,7 @@ body.tipologia-drawer-open .drawer-overlay {
               width: 50%;
 
               .titulo-tipos {
-                font-size: 16px;
+                font-size: 15px;
                 font-style: normal;
                 font-weight: 300;
                 line-height: 140%;
@@ -737,9 +740,30 @@ body.tipologia-drawer-open .drawer-overlay {
         cursor: pointer;
         margin-left: 4px;
       }
-      .badge-filters-tipologia {
-        display: flex;
-        flex-direction: row;
+    }
+    .badge-filters-tipologia {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 40px;
+    }
+    .clean-filters-tipologia {
+      cursor: pointer;
+      width: fit-content;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 0.28px;
+      position: relative;
+      &::after {
+        content: '';
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        transition: 0.6s;
+        left: 0;
+        position: absolute;
+        background-color: $due-tertiary;
       }
       .clean-filters-tipologia {
         display: none;
@@ -751,16 +775,7 @@ body.tipologia-drawer-open .drawer-overlay {
         line-height: 100%;
         letter-spacing: 0.28px;
         position: relative;
-        &::after {
-          content: '';
-          bottom: -2px;
-          width: 0;
-          height: 2px;
-          transition: 0.6s;
-          left: 0;
-          position: absolute;
-          background-color: $due-tertiary;
-        }
+      
         &:hover {
           &::after {
             width: 100%;
@@ -768,11 +783,61 @@ body.tipologia-drawer-open .drawer-overlay {
         }
       }
     }
+    .badge {
+      border: 1px solid #51848c66;
+      color: $due-secondary;
+      padding: 8px;
+      border-radius: 4px;
+      margin-right: 8px;
+      font-size: 14px;
+      font-family: 'founders-grotesk', sans-serif;
+      letter-spacing: 0.28px;
+    }
   }
 
   .badges-filters-tipologia {
     width: 100%;
     display: flex;
     gap: 4px;
+  }
+  #no-empreendimentos-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 415px;
+    margin: 0 auto;
+    .svg-no-empreendimentos {
+      margin-bottom: 40px;
+    }
+    .titulo-no-empreendimentos {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: 0.32px;
+      color: $due-secondary;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .subtitulo-no-empreendimentos {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: 0.32px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: $due-secondary;
+    }
+    .clean-filters {
+      display: flex !important;
+      &::after {
+        width: 0;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+    }
   }
 }

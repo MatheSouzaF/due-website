@@ -588,16 +588,6 @@ body.drawer-open .drawer-overlay {
       @include media-breakpoint-down(md) {
         padding-top: 10px;
       }
-      .badge {
-        border: 1px solid #51848c66;
-        color: $due-secondary;
-        padding: 8px;
-        font-family: 'founders-grotesk', sans-serif;
-        border-radius: 4px;
-        margin-right: 8px;
-        font-size: 14px;
-        letter-spacing: 0.28px;
-      }
 
       .results-text {
         color: $due-tertiary;
@@ -608,18 +598,28 @@ body.drawer-open .drawer-overlay {
         /* 22.4px */
         letter-spacing: 0.32px;
       }
-      .filters-applied {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
+    }
+    .remove-badge {
+      font-size: 14px;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+    .filters-applied {
+      display: flex;
+      flex-direction: row;
 
-      .remove-badge {
-        font-size: 14px;
-        cursor: pointer;
-        margin-left: 4px;
-      }
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      border: 1px solid #51848c66;
+      color: $due-secondary;
+      padding: 8px;
+      font-family: 'founders-grotesk', sans-serif;
+      border-radius: 4px;
+      margin-right: 8px;
+      font-size: 14px;
+      letter-spacing: 0.28px;
     }
   }
 
@@ -842,8 +842,9 @@ body.drawer-open .drawer-overlay {
   .badges-filters {
     display: flex;
     flex-direction: row;
+    margin-bottom: 40px;
   }
-  
+
   .clean-filters {
     display: none;
     cursor: pointer;
@@ -875,5 +876,45 @@ body.drawer-open .drawer-overlay {
     width: 100%;
     display: flex;
     gap: 4px;
+  }
+  #no-empreendimentos-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 415px;
+    margin: 0 auto;
+    .svg-no-empreendimentos {
+      margin-bottom: 40px;
+    }
+    .titulo-no-empreendimentos {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: 0.32px;
+      color: $due-secondary;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .subtitulo-no-empreendimentos {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 140%; /* 22.4px */
+      letter-spacing: 0.32px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: $due-secondary;
+    }
+    .clean-filters {
+      display: flex !important;
+      &::after {
+        width: 0;
+      }
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+      }
+    }
   }
 }

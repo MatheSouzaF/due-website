@@ -165,7 +165,7 @@ async function empreendimentoPage() {
       if (paramValue) {
         paramValue.split(',').forEach((value) => {
           let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
-          
+
           if (isStatus) {
             if (formattedValue === 'Ultimas unidades') formattedValue = 'Últimas unidades';
             if (formattedValue === '100 vendido') formattedValue = '100% vendido';
@@ -196,14 +196,14 @@ async function empreendimentoPage() {
           selectorMobile: '#mobile-filter-location',
         },
         {
-          filterName: statusFilter, 
-          selector: '#filter-status', 
-          selectorMobile: '#mobile-filter-status'
+          filterName: statusFilter,
+          selector: '#filter-status',
+          selectorMobile: '#mobile-filter-status',
         },
         {
-          filterName: roomsFilter, 
-          selector: '#filter-rooms', 
-          selectorMobile: '#mobile-filter-rooms'
+          filterName: roomsFilter,
+          selector: '#filter-rooms',
+          selectorMobile: '#mobile-filter-rooms',
         },
       ];
 
@@ -283,10 +283,16 @@ async function empreendimentoPage() {
           if (key === 'filter-location') return empreendimento.location === value;
           if (key === 'filter-status') return empreendimento.status === value;
           if (key === 'filter-rooms') {
-            const minimo = parseInt(empreendimento.rooms[0].minimo_de_quartos);
-            const maximo = parseInt(empreendimento.rooms[0].maximo_de_quartos);
+            const minimo = parseInt(empreendimento.rooms[0].minimo_de_quartos, 10);
+            let maximo = parseInt(empreendimento.rooms[0].maximo_de_quartos, 10);
+
+            if (maximo === 0) {
+              maximo = minimo;
+            }
+
             return (empreendimento.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
           }
+
           return false;
         });
       };

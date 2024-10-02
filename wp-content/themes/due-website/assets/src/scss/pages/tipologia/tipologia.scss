@@ -747,6 +747,7 @@ body.tipologia-drawer-open .drawer-overlay {
       margin-bottom: 40px;
     }
     .clean-filters-tipologia {
+      display: none;
       cursor: pointer;
       width: fit-content;
       font-size: 14px;
@@ -765,21 +766,10 @@ body.tipologia-drawer-open .drawer-overlay {
         position: absolute;
         background-color: $due-tertiary;
       }
-      .clean-filters-tipologia {
-        display: none;
-        cursor: pointer;
-        width: fit-content;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 100%;
-        letter-spacing: 0.28px;
-        position: relative;
-      
-        &:hover {
-          &::after {
-            width: 100%;
-          }
+
+      &:hover {
+        &::after {
+          width: 100%;
         }
       }
     }

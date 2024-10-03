@@ -771,7 +771,7 @@
                 "layout_66f6b79e2a822": {
                     "key": "layout_66f6b79e2a822",
                     "name": "video_galeria",
-                    "label": "Vídeo Galeria",
+                    "label": "Vídeo Galeria Empreendimento",
                     "display": "block",
                     "sub_fields": [
                         {
@@ -1167,6 +1167,31 @@
             "bidirectional": 0,
             "ui": 1,
             "bidirectional_target": []
+        },
+        {
+            "key": "field_66feee3bbed44",
+            "label": "Imagem Mobile do Empreendimento",
+            "name": "imagem_mobile_do_empreendimento",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
         },
         {
             "key": "field_66cf25f3f199e",
@@ -1652,5 +1677,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727445203
+    "modified": 1727983196
 }

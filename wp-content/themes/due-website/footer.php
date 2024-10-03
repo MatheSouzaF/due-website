@@ -33,75 +33,105 @@
     </div>
     <div class="wrapper">
         <h2 class="titulo-footer-mobile terminal-test"><?php echo get_field('titulo_form', 'options'); ?></h2>
+        <h2 class="titulo-footer terminal-test"><?php echo get_field('titulo_form', 'options'); ?></h2>
         <div class="boxs-sections">
+
+
+            <div class="box box-form">
+                <div class="rd-form">
+                    <?php echo get_field('formulario_rd', 'options'); ?>
+                </div>
+            </div>
+
             <div class="box box-left-footer">
-                <h2 class="titulo-footer terminal-test"><?php echo get_field('titulo_form', 'options'); ?></h2>
                 <div class="box-conteudo-footer">
-
-                    <div class="box-links-whatsapp">
+                    <div class="box-links-footer">
                         <?php
-                        if (have_rows('repetidor_whatsapp', 'options')) :
-                            while (have_rows('repetidor_whatsapp', 'options')) : the_row(); ?>
-                                <?php
-                                $link = get_sub_field('link_numero', 'options');
-                                if ($link) :
-                                    $link_url = $link['url'];
-                                    $link_title = $link['title'];
-                                    $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                    <a class="link-whats" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                        if (have_rows('box_links_footer', 'options')) :
+                            while (have_rows('box_links_footer', 'options')) : the_row(); ?>
+                                <div class="box-row-links">
+                                    <h4 class="titulo-row-links-footer"><?php echo get_sub_field('titulo_box_links', 'options'); ?></h4>
 
-                                        <div class="box-svg">
-                                            <?php $svg_file = get_sub_field('svg_numero', 'options');
-                                            if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                                echo '<i class="element">';
-                                                echo file_get_contents($svg_file['url']);
-                                                echo '</i>';
-                                            } ?>
-                                        </div>
-                                        <p class="terminal-test"><?php echo esc_html($link_title); ?></p>
-                                    </a>
-                                <?php endif; ?>
+                                    <div class="box-link-footer">
+                                        <?php
+                                        if (have_rows('links_footer', 'options')) :
+                                            while (have_rows('links_footer', 'options')) : the_row(); ?>
+                                                <div class="row-link">
+                                                    <?php
+                                                    $link = get_sub_field('link_footer', 'options');
+                                                    if ($link) :
+                                                        $link_url = $link['url'];
+                                                        $link_title = $link['title'];
+                                                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                                                        <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                                            <p class="founders-grotesk text-link-footer"><?php echo esc_html($link_title); ?></p>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </div>
+                                        <?php endwhile;
+                                        endif; ?>
+                                    </div>
+                                </div>
                         <?php endwhile;
                         endif; ?>
                     </div>
-                    <div class="endereco">
-                        <p class="founders-grotesk"><?php echo get_field('endereco', 'options'); ?></p>
-                    </div>
-                    <div class="box-rede-social">
-
-                        <?php
-                        if (have_rows('rede_social', 'options')) :
-                            while (have_rows('rede_social', 'options')) : the_row(); ?>
-                                <div class="box-repetidor-rede-social">
-
+                    <div class="box-contato">
+                        <div class="box-links-whatsapp">
+                            <?php
+                            if (have_rows('repetidor_whatsapp', 'options')) :
+                                while (have_rows('repetidor_whatsapp', 'options')) : the_row(); ?>
                                     <?php
-                                    $link = get_sub_field('link_rede_social', 'options');
+                                    $link = get_sub_field('link_numero', 'options');
                                     if ($link) :
                                         $link_url = $link['url'];
                                         $link_title = $link['title'];
                                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                        <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                        <a class="link-whats" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
 
                                             <div class="box-svg">
-                                                <?php $svg_file = get_sub_field('svg_rede_social', 'options');
+                                                <?php $svg_file = get_sub_field('svg_numero', 'options');
                                                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                                                     echo '<i class="element">';
                                                     echo file_get_contents($svg_file['url']);
                                                     echo '</i>';
                                                 } ?>
                                             </div>
+                                            <p class="terminal-test"><?php echo esc_html($link_title); ?></p>
                                         </a>
                                     <?php endif; ?>
-                                </div>
-                        <?php endwhile;
-                        endif; ?>
-                    </div>
-                </div>
-            </div>
+                            <?php endwhile;
+                            endif; ?>
+                        </div>
+                        <div class="box-rede-social">
 
-            <div class="box">
-                <div class="rd-form">
-                    <?php echo get_field('formulario_rd', 'options'); ?>
+                            <?php
+                            if (have_rows('rede_social', 'options')) :
+                                while (have_rows('rede_social', 'options')) : the_row(); ?>
+                                    <div class="box-repetidor-rede-social">
+
+                                        <?php
+                                        $link = get_sub_field('link_rede_social', 'options');
+                                        if ($link) :
+                                            $link_url = $link['url'];
+                                            $link_title = $link['title'];
+                                            $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                                            <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+
+                                                <div class="box-svg">
+                                                    <?php $svg_file = get_sub_field('svg_rede_social', 'options');
+                                                    if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                                                        echo '<i class="element">';
+                                                        echo file_get_contents($svg_file['url']);
+                                                        echo '</i>';
+                                                    } ?>
+                                                </div>
+                                            </a>
+                                        <?php endif; ?>
+                                    </div>
+                            <?php endwhile;
+                            endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,7 +179,7 @@
         </div>
     </div>
 
-    
+
 
     <!-- <div class="box-formulario-feedback">
         <div class="box-sucesso">

@@ -1,6 +1,9 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.single-empre_single_page {
+  main {
+    overflow-x: initial;
+  }
   header {
     .link-logo-menu {
       .box-svg-header {
@@ -703,7 +706,7 @@ body.single-empre_single_page {
       }
       .titulo-espaco {
         font-style: normal;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 140%;
         letter-spacing: 0.8px;
         color: $due-tertiary;
@@ -721,7 +724,10 @@ body.single-empre_single_page {
         gap: 24px;
         align-items: center;
         margin-bottom: 24px;
-        overflow-x: auto;
+        @include media-breakpoint-down(md) {
+          overflow-x: auto;
+          overflow-y: hidden;
+        }
         .lista-rota {
           .item-rota {
             font-size: 10px;
@@ -753,10 +759,10 @@ body.single-empre_single_page {
                 width: 100%;
               }
             }
-            &.item-rota-active {
-              &::after {
-                width: 100%;
-              }
+          }
+          .item-rota-active {
+            &::after {
+              width: 100%;
             }
           }
         }
@@ -766,7 +772,9 @@ body.single-empre_single_page {
         .swiper-rota-destino {
           position: relative;
           .swiper-slide {
-            max-width: 280px;
+            @include media-breakpoint-up(sm) {
+              max-width: 280px;
+            }
           }
           .box-buttons-swiper {
             display: none;
@@ -809,7 +817,9 @@ body.single-empre_single_page {
           }
         }
         .card-rota {
-          width: 280px;
+          @include media-breakpoint-up(md) {
+            width: 280px;
+          }
           height: 548px;
           .box-imagem {
             position: relative;
@@ -918,6 +928,23 @@ body.single-empre_single_page {
             opacity: 0;
             z-index: -1;
             pointer-events: none;
+          }
+        }
+        .box-img-desktop {
+          display: none;
+          @include media-breakpoint-up(sm) {
+            display: flex;
+          }
+        }
+        .box-img-mobile {
+          display: flex;
+          overflow-x: scroll;
+          @include media-breakpoint-up(sm) {
+            display: none;
+          }
+          .img-mobile-empreedimentos {
+            max-inline-size: initial;
+            max-block-size: initial;
           }
         }
       }
@@ -1073,12 +1100,15 @@ body.single-empre_single_page {
 
                   gap: 8px;
                   .diifs-names {
-                    font-size: 16px;
                     font-style: normal;
                     font-weight: 300;
                     line-height: 140%; /* 22.4px */
                     letter-spacing: 0.32px;
                     color: $due-tertiary;
+                    font-size: 14px;
+                    @include media-breakpoint-up(md) {
+                      font-size: 16px;
+                    }
                   }
                 }
               }

@@ -65,11 +65,11 @@ function filterExperiencias() {
         spaceBetween: 8,
 
         navigation: {
-          nextEl: '.swiper-btn-destino-next',
-          prevEl: '.swiper-btn-destino-prev',
+          nextEl: '.swiper-btn-next',
+          prevEl: '.swiper-btn-prev',
         },
         breakpoints: {
-          767: {
+          768: {
             slidesPerView: 3.4,
             spaceBetween: 16,
           },
@@ -99,22 +99,6 @@ function filterExperiencias() {
   });
 }
 
-function swiperInit() {
-  const swiper = new Swiper('.swiper-rota-destino', {
-    slidesPerView: 1.2,
-    spaceBetween: 24,
-
-    breakpoints: {
-      767: {
-        slidesPerView: 3,
-      },
-    },
-    navigation: {
-      nextEl: '.swiper-btn-next',
-      prevEl: '.swiper-btn-prev',
-    },
-  });
-}
 function swiperTipologia() {
   var swiper = new Swiper('.tipologias-swiper', {
     slidesPerView: 1.2,
@@ -260,7 +244,6 @@ function animationBanner() {
 }
 
 function initSingleEmpreendimentos() {
-  swiperInit();
   swiperDiferenciais();
   swiperGaleria();
   colorBullet();

@@ -103,26 +103,6 @@
             ]
         },
         {
-            "key": "field_66a2554a63358",
-            "label": "Endereço",
-            "name": "endereco",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_66a2573663359",
             "label": "Rede Social",
             "name": "rede_social",
@@ -181,6 +161,93 @@
                     },
                     "return_format": "array",
                     "parent_repeater": "field_66a2573663359"
+                }
+            ]
+        },
+        {
+            "key": "field_66fed4b6da999",
+            "label": "Box Links Footer",
+            "name": "box_links_footer",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66fed5f5da99a",
+                    "label": "Titulo Box Links",
+                    "name": "titulo_box_links",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66fed4b6da999"
+                },
+                {
+                    "key": "field_66fed61dda99b",
+                    "label": "Links Footer",
+                    "name": "links_footer",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "table",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Adicionar linha",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_66fed65ada99c",
+                            "label": "Link footer",
+                            "name": "link_footer",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "parent_repeater": "field_66fed61dda99b"
+                        }
+                    ],
+                    "parent_repeater": "field_66fed4b6da999"
                 }
             ]
         },
@@ -316,5 +383,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726862718
+    "modified": 1727977089
 }

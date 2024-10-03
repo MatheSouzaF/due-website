@@ -1,7 +1,7 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
 body.page-template-jeito-due {
-  main{
+  main {
     overflow-x: initial;
   }
   header {
@@ -695,6 +695,7 @@ body.page-template-jeito-due {
       @include media-breakpoint-up(md) {
         flex-direction: row;
         padding-bottom: 128px;
+        gap: 0;
       }
       .box-conteudo-sintta {
         padding: 0 20px;
@@ -716,9 +717,10 @@ body.page-template-jeito-due {
           line-height: 140%;
           letter-spacing: 0.64px;
           color: $due-tertiary;
+          max-width: 86%;
           margin-bottom: 20px;
           @include media-breakpoint-up(md) {
-            font-size: calc(1rem + 0.9vw);
+            font-size: calc(1rem + 1.4vw);
           }
         }
         .descricao-sintta {
@@ -729,12 +731,11 @@ body.page-template-jeito-due {
           line-height: 140%;
           letter-spacing: 0.32px;
           margin-bottom: 48px;
-          max-width: 90%;
+
           @include media-breakpoint-up(md) {
-            font-size: calc(0.5rem + 0.6vw);
-          }
-          @include media-breakpoint-up(xxl) {
-            max-width: 60%;
+            font-size: 22px;
+
+            max-width: 82%;
           }
         }
         .box-repetidor-sintta {
@@ -757,8 +758,8 @@ body.page-template-jeito-due {
               line-height: 140%;
               letter-spacing: 0.32px;
               color: $due-tertiary;
-              @include media-breakpoint-up(xxl) {
-                font-size: calc(0.5rem + 0.45vw);
+              @include media-breakpoint-up(md) {
+                font-size: calc(0.5rem + 0.6vw);
               }
             }
           }

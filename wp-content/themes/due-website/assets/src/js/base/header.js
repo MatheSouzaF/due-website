@@ -90,7 +90,7 @@ function animationFooter() {
     // console.log('Footer Height = ' + siteFooterHeight + 'px');
 
     siteContent.css({
-      'margin-bottom': siteFooterHeight + 120 + 'px',
+      'margin-bottom': siteFooterHeight + 320 + 'px',
     });
   }
 

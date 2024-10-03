@@ -504,14 +504,26 @@ get_header();
                         echo '</i>';
                     } ?>
                 </div>
-                <?php
-                $selected_post = get_field('imagem_do_empreendimento');
-                if ($selected_post) {
-                    $post_id = $selected_post->ID;
-                    $shortcode = '[devvn_ihotspot id="' . $post_id . '"]';
-                    echo do_shortcode($shortcode);
-                }
-                ?>
+                <div class="box-img-desktop">
+
+                    <?php
+                    $selected_post = get_field('imagem_do_empreendimento');
+                    if ($selected_post) {
+                        $post_id = $selected_post->ID;
+                        $shortcode = '[devvn_ihotspot id="' . $post_id . '"]';
+                        echo do_shortcode($shortcode);
+                    }
+                    ?>
+                </div>
+                <div class="box-img-mobile">
+                    <?php
+                    $image = get_field('imagem_mobile_do_empreendimento');
+                    if ($image) :
+                        $image_url = $image['url'];
+                        $image_alt = $image['alt']; ?>
+                        <img class="img-mobile-empreedimentos" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     <?php endif; ?>

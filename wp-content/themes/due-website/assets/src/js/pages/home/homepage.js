@@ -51,36 +51,6 @@ function wordAnimation() {
 
 setTimeout(wordAnimation, 1000);
 
-// function cardHover() {
-//   $(document).ready(function () {
-//     $('.card-empreendimentos').hover(
-//       function () {
-//         // Mouse enter
-//         const video = $(this).find('.video-empreendimento');
-//         if (video.length) {
-//           video.css('opacity', 1);
-//           video[0].play();
-//         }
-//         $(this).addClass('hover-card');
-//       },
-//       function () {
-//         // Mouse leave
-//         const video = $(this).find('.video-empreendimento');
-//         if (video.length) {
-//           video.css('opacity', 0);
-//           video[0].pause();
-//           video[0].currentTime = 0;
-//         }
-
-//         // Adicionando o delay de 500ms
-//         setTimeout(() => {
-//           $(this).removeClass('hover-card');
-//         });
-//       }
-//     );
-//   });
-// }
-
 function fadeConteudoEncantese() {
   $('.slide-effect')
     .mouseleave(function () {
@@ -135,7 +105,6 @@ function nossoProposito() {
 function encantese() {
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.matchMedia({
-    // This function will be called when the viewport width is greater than or equal to 1024px
     '(min-width: 1024px)': function () {
       const encanteseZoom = document.querySelector('.encante-se');
 
@@ -144,7 +113,7 @@ function encantese() {
 
       function bgOpen() {
         if (btnAppears) {
-          btnAppears.classList.add('clipPath'); // Adiciona a classe 'background-open'
+          btnAppears.classList.add('clipPath');
         }
       }
 
@@ -168,12 +137,12 @@ function encantese() {
 
       function zommOpen() {
         if (encanteseZoom) {
-          encanteseZoom.classList.add('zoom'); // Adiciona a classe 'background-open'
+          encanteseZoom.classList.add('zoom');
         }
       }
       function bgClose() {
         if (encanteseZoom) {
-          encanteseZoom.classList.remove('zoom'); // Remove a classe 'background-open'
+          encanteseZoom.classList.remove('zoom');
         }
       }
       gsap.from('.encante-se', {
@@ -206,6 +175,14 @@ function btnFixed() {
   });
 }
 
+function checkbox() {
+  $('.titulo-checkbox-destino').on('click', function (e) {
+    e.preventDefault();
+    $(this).siblings('div.select').slideToggle();
+    $(this).toggleClass('active');
+  });
+}
+
 function initPage() {
   swiperEmpreendimento();
   // cardHover();
@@ -214,6 +191,7 @@ function initPage() {
   nossoProposito();
   wordAnimation();
   btnFixed();
+  checkbox();
 }
 
 export {initPage};

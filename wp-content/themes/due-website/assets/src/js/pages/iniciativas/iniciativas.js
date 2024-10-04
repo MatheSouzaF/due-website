@@ -329,6 +329,14 @@ function animationSelosCertificados() {
       onStart: () => card.classList.add('clipPath-selos-certificados'),
     });
   });
+  // $('.lista-selos-desktop').on('mouseenter', function () {
+  //   const hoverDescricaoHeight = $(this).find('.hover-descricao').outerHeight();
+  //   $(this).find('.box-titulo-svg').css('padding-bottom', hoverDescricaoHeight);
+  // });
+
+  // $('.lista-selos-desktop').on('mouseleave', function () {
+  //   $(this).find('.box-titulo-svg').css('padding-bottom', '');
+  // });
 }
 
 function btnFixed() {

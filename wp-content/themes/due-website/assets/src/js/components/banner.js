@@ -22,8 +22,8 @@ function updateBannerContent(banner) {
 }
 
 function updateBannerImages(banner) {
-  $('#svg-rota-due').html(`<img src="${banner.svg_rota.url || 'N/A'}" alt="${banner.svg_rota.title || 'N/A'}">`);
-  $('#svg-caribe').html(`<img src="${banner.svg_caribe_logo.url || 'N/A'}" alt="${banner.svg_caribe_logo.title || 'N/A'}">`);
+  $('#svg-rota-due').html(`<img src="${banner.svg_rota.url || 'N/A'}" alt="${banner.svg_rota.title || ''}">`);
+  $('#svg-caribe').html(`<img src="${banner.svg_caribe_logo.url || 'N/A'}" alt="${banner.svg_caribe_logo.title || ''}">`);
 }
 
 function updateBannerComments(banner) {

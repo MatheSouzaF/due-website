@@ -885,13 +885,13 @@ body.single-empre_single_page {
           }
         }
         .box-mobli-legenda {
-          display: flex;
           flex-direction: row;
           align-items: center;
           gap: 12px;
           margin-bottom: 30px;
+          display: none;
           @include media-breakpoint-up(md) {
-            display: none;
+            display: flex;
           }
           .label-legenda {
             color: $due-tertiary;

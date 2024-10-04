@@ -37,6 +37,13 @@ class EmpreendimentoRestController
             'methods' => 'GET',
             'callback' => array($this, 'get_project_by_id'),
             'permission_callback' => '__return_true',
+            'args' => array(
+            'lang' => array(
+                'required' => false,
+                'sanitize_callback' => 'sanitize_text_field',
+                'description' => 'Language code to retrieve the project details',
+            ),
+        ),
         ));
     }
 
@@ -47,9 +54,12 @@ class EmpreendimentoRestController
      * 
      * @return WP_REST_Response Um array associativo contendo os dados de todos os empreendimentos.
      */
-    public function get_all_available_projects()
+    public function get_all_available_projects($request)
     {
-        $projects = $this->empreendimentoController->getAllAvailableProjects();
+        $lang = $request->get_param('lang');
+        $order = $request->get_param('order');
+
+        $projects = $this->empreendimentoController->getAllAvailableProjects($lang, $order);
 
         if (!empty($projects)) {
             return new WP_REST_Response($projects, 200);

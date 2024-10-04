@@ -96,10 +96,10 @@ wp_localize_script('main', 'TipologiasData', array(
     <div class="empreendimentos-header">
       <div class="empreendimento-tabs">
         <div rel="stylesheet" class="show-empreendimentos">
-          <h2>EMPREENDIMENTOS</h2>
+          <h2><?php echo __('EMPREENDIMENTOS', 'due-website') ?></h2>
         </div>
         <div rel="stylesheet" class="show-tipologias">
-          <h2>TIPOLOGIAS</h2>
+          <h2><?php echo __('TIPOLOGIAS', 'due-website') ?></h2>
         </div>
       </div>
     </div>

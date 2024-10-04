@@ -448,8 +448,7 @@ get_header();
                                     echo '</div></div></div>'; // Fecha o card-rota e swiper-slide
 
                                 endwhile;
-                            else:
-                                echo '<p>Nenhuma rota encontrada para ' . esc_html($nome_categoria) . '.</p>';
+                            
                             endif;
 
                             echo '</div>'; // Fecha swiper-wrapper
@@ -467,8 +466,7 @@ get_header();
 
 
                         endwhile;
-                    else:
-                        echo '<p>Nenhuma categoria encontrada.</p>';
+                 
                     endif;
                     ?>
                 </div>

@@ -59,7 +59,7 @@ class EmpreendimentoController
      * 
      * @return array Um array associativo contendo as informações de todos os empreendimentos.
      */
-    public function getAllAvailableProjects()
+    public function getAllAvailableProjects($lang = null, $order = 'desc')
     {
         $projects = [];
 
@@ -67,8 +67,17 @@ class EmpreendimentoController
         $args = array(
             'post_type' => 'empreendimentos',
             'posts_per_page' => -1, // Obtém todos os posts
-            'post_status' => 'publish' // Apenas posts publicados
+            'post_status' => 'publish', // Apenas posts publicados
+            'suppress_filters' => false,
+            'orderby'        => 'date', // Order by publication date
+            'order'          => $order, // Newest first
         );
+
+        if ($lang) {
+            $args['lang'] = $lang;
+        } else {
+            $args['lang'] = 'pt';
+        }
 
         // Executa a consulta
         $query = new WP_Query($args);
@@ -91,6 +100,7 @@ class EmpreendimentoController
                 $offer = get_field('oferta');
                 $photo = get_field('foto_empreendimento');
                 $video = get_field('video_empreendimento');
+                $link = get_field('link_da_pagina_desse_empreendimento');
 
                 // Adiciona os dados ao array de projetos
                 if ($status !== '100% vendido') {
@@ -104,7 +114,8 @@ class EmpreendimentoController
                         'status' => $status,
                         'offer' => $offer,
                         'photo' => $photo,
-                        'video' => $video
+                        'video' => $video,
+                        'link' => $link
                     );
                 }
             }

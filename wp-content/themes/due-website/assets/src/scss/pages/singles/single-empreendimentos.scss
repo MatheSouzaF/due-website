@@ -933,7 +933,7 @@ body.single-empre_single_page {
         .box-img-desktop {
           display: none;
           @include media-breakpoint-up(sm) {
-            display: flex;
+            display: block;
           }
         }
         .box-img-mobile {

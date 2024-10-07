@@ -44,6 +44,36 @@ body.page-template-iniciativas {
         }
       }
     }
+    .wpml-box {
+      .wpml-ls {
+        ul {
+          li {
+            a {
+              span {
+                color: #003b4b;
+              }
+            }
+            &:hover {
+              background-color: #003b4b;
+              a {
+                span {
+                  color: #fff;
+                }
+              }
+            }
+          }
+          .wpml-ls-current-language {
+            background-color: #003b4b;
+
+            a {
+              span {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .banner-iniciativas {
     display: flex;

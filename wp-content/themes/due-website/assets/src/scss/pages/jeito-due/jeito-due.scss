@@ -47,6 +47,37 @@ body.page-template-jeito-due {
         }
       }
     }
+
+    .wpml-box {
+      .wpml-ls {
+        ul {
+          li {
+            a {
+              span {
+                color: #003b4b;
+              }
+            }
+            &:hover {
+              background-color: #003b4b;
+              a {
+                span {
+                  color: #fff;
+                }
+              }
+            }
+          }
+          .wpml-ls-current-language {
+            background-color: #003b4b;
+
+            a {
+              span {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .page-jeito-due {
     background-color: $grey-0;

@@ -381,40 +381,35 @@ function tipologiaPage() {
       if (locationFilter) {
         const formattedLocation = locationFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('tipo-localizacao', formattedLocation);
+        params.set('tipo-localizacao', getUniqueValues(formattedLocation).join(','));
         hasFilters = true;
       }
 
       if (statusFilter) {
         const formattedStatus = statusFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('tipo-estagio', formattedStatus);
+        params.set('tipo-estagio', getUniqueValues(formattedStatus).join(','));
         hasFilters = true;
       }
 
       if (empreendimentoFilter) {
         const formattedEmpreendimento = empreendimentoFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('tipo-empreendimento', formattedEmpreendimento);
+        params.set('tipo-empreendimento', getUniqueValues(formattedEmpreendimento).join(','));
         hasFilters = true;
       }
 
       if (diferenciaisFilter) {
         const formattedDiferenciais = diferenciaisFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('tipo-diferenciais', formattedDiferenciais);
+        params.set('tipo-diferenciais', getUniqueValues(formattedDiferenciais).join(','));
         hasFilters = true;
       }
 
       if (roomsFilter) {
         const formattedRooms = roomsFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('tipo-qtos', formattedRooms);
+        params.set('tipo-qtos', getUniqueValues(formattedRooms).join(','));
         hasFilters = true;
       }
 

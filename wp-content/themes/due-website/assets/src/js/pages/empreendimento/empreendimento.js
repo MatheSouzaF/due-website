@@ -1,9 +1,9 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
-import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
-import {generateBadge} from '../../components/badge';
-import {getFilterValue} from '../../utils/get-filter-value';
-import {getFilterLabel} from '../../utils/get-filter-label';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
+import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
+import { generateBadge } from '../../components/badge';
+import { getFilterValue } from '../../utils/get-filter-value';
+import { getFilterLabel } from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -118,31 +118,38 @@ async function empreendimentoPage() {
       const statusFilter = getFilterLabel('#filter-status, #mobile-filter-status');
       const roomsFilter = getFilterLabel('#filter-rooms, #mobile-filter-rooms');
 
-      const params = new URLSearchParams();
+      // Parse the current URL
+      const url = new URL(window.location.href);
 
-      if (locationFilter) {
+      // Get the current search parameters
+      const params = url.searchParams;
+
+      // Remove existing filter parameters to prevent duplicates
+      params.delete('localizacao');
+      params.delete('estagio');
+      params.delete('qtos');
+
+      if (locationFilter && locationFilter.length > 0) {
         const formattedLocation = locationFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('localizacao', formattedLocation);
+        params.set('localizacao', getUniqueValues(formattedLocation).join(','));
       }
 
-      if (statusFilter) {
+      if (statusFilter && statusFilter.length > 0) {
         const formattedStatus = statusFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('estagio', formattedStatus);
+        params.set('estagio', getUniqueValues(formattedStatus).join(','));
       }
 
-      if (roomsFilter) {
+      if (roomsFilter && roomsFilter.length > 0) {
         const formattedRooms = roomsFilter
           .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
-          .join(',');
-        params.set('qtos', formattedRooms);
+        params.set('qtos', getUniqueValues(formattedRooms).join(','));
       }
 
-      const newUrl = `${window.location.pathname}${params.toString().length ? '?' : ''}${params.toString()}`;
-      window.history.pushState({}, '', newUrl);
+      // Update the URL with the new search parameters
+      url.search = params.toString();
+      window.history.pushState({}, '', url);
     }
 
     function updateFilterNumberIndicador() {
@@ -246,10 +253,10 @@ async function empreendimentoPage() {
       const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-rooms': [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -354,11 +361,11 @@ async function empreendimentoPage() {
         })
         .get();
 
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
       hideOptions('filter-location');
     });
 
-    initBanner({location: 'Rota DUE'});
+    initBanner({ location: 'Rota DUE' });
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -524,4 +531,4 @@ async function initEmpreendimento() {
   btnFixed();
 }
 
-export {initEmpreendimento};
+export { initEmpreendimento };

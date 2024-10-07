@@ -578,6 +578,9 @@ get_header();
                 // Pausa o Swiper quando o modal é aberto
                 $('header').addClass('modal-active-video');
                 $('.banner-hero').addClass('modal-active-video-banner');
+                $('.botoes-fixed').addClass('modal-active-botoes-banner');
+                $('.box-fab').addClass('modal-active-botoes-banner');
+                $('.nossos-club-resorts').addClass('modal-active-busca-mobile');
                 mySwiper.autoplay.stop();
             });
 
@@ -592,6 +595,11 @@ get_header();
                     }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
                     $('header').removeClass('modal-active-video');
                     $('.banner-hero').removeClass('modal-active-video-banner');
+                    $('.botoes-fixed').removeClass('modal-active-botoes-banner');
+                    $('.box-fab').removeClass('modal-active-botoes-banner');
+                    $('.nossos-club-resorts').removeClass('modal-active--busca-mobile');
+
+
                 });
             });
         }

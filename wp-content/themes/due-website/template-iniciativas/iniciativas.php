@@ -64,8 +64,10 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-associacao-superacao-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-associacao-superacao-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -86,8 +88,11 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-associacao-superacao-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-associacao-superacao-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -115,8 +120,11 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-escola-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-escola-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -134,8 +142,11 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-escola-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-escola-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -162,8 +173,11 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-empreendedorismo-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_empreendedorismo = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-empreendedorismo-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -181,8 +195,10 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-empreendedorismo-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_empreendedorismo = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-empreendedorismo-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -209,8 +225,10 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-proposito link-proposito-desktop" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_proposito = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-proposito link-proposito-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>
@@ -228,8 +246,10 @@ get_header();
             if ($link) :
                 $link_url = $link['url'];
                 $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                <a class="button link-proposito-mobile" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_proposito = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-proposito-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                     <p class=""><?php echo esc_html($link_title); ?></p>
                 </a>
             <?php endif; ?>

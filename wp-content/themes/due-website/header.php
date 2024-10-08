@@ -51,6 +51,7 @@ function generate_menu_links()
 function generate_navbar()
 {
 	echo '<div class="box-navbar-numeros">';
+	echo '<div class="box-numeros">';
 
 	if (have_rows('numeros_repetidor', 'options')) {
 		// Inicialize o contador fora do loop
@@ -100,6 +101,11 @@ function generate_navbar()
 	}
 
 	echo '</div>';
+	echo '<div class="box-wpml-mobile">';
+	echo do_action('wpml_add_language_selector');
+
+	echo '</div>';
+	echo '</div>';
 
 
 
@@ -118,10 +124,11 @@ function generate_navbar()
 				$link_url = $link['url'];
 				$link_title = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
+				$gtm_class_conjunto = strtolower(str_replace(' ', '-', $link_title));
 
 				// Adicione qualquer condição adicional necessária aqui
 				if (!empty($link_url) && !empty($link_title)) {
-					echo '<li class="links-menu"><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
+					echo '<li class="links-menu"><a class="button-menu ' . 'gtm-' . esc_attr($gtm_class_conjunto) . '-conjunto' . '" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
 				}
 			}
 		}
@@ -139,10 +146,11 @@ function generate_navbar()
 				$link_url = $link['url'];
 				$link_title = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
+				$gtm_class_opcionais = strtolower(str_replace(' ', '-', $link_title));
 
 				// Adicione qualquer condição adicional necessária aqui
 				if (!empty($link_url) && !empty($link_title)) {
-					echo '<li class=""><a class="button-menu" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
+					echo '<li class=""><a class="button-menu ' . 'gtm-' . esc_attr($gtm_class_opcionais) . '-conjunto' . '" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">' . esc_html($link_title) . '</a></li>';
 				}
 			}
 		}
@@ -161,11 +169,13 @@ function generate_navbar()
 
 			if ($link) {
 				$link_url = $link['url'];
+				$link_title = $link['title'];
 				$link_target = $link['target'] ? $link['target'] : '_self';
+				$gtm_class_sociais = strtolower(str_replace(' ', '-', $link_title));
 
 				if (!empty($link_url)) {
 					echo '<li class="link-numero">';
-					echo '<a class="button-menu-numero" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">';
+					echo '<a class="button-menu-numero ' . 'gtm-' . esc_attr($gtm_class_sociais) . '-sociais' . '" href="' . esc_url($link_url) . '" target="' . esc_attr($link_target) . '">';
 
 					$svg_file = get_sub_field('svg_rede_sociais', 'options');
 					if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -347,7 +357,7 @@ function generate_navbar()
 							<div class="box-conteudo">
 								<p class="label-newsletter"><?php echo get_field('label_newsletter', 'options'); ?></p>
 								<p class="titulo-newsletter"><?php echo get_field('titulo_newsletter', 'options'); ?></p>
-								<div class="box-newsletter-rd">
+								<div class="box-newsletter-rd" id="form-newsletter">
 									<?php echo get_field('rd_newsletter', 'options'); ?>
 								</div>
 							</div>

@@ -647,7 +647,6 @@ body.drawer-open .drawer-overlay {
       padding: 8px;
       font-family: 'founders-grotesk', sans-serif;
       border-radius: 4px;
-      margin-right: 8px;
       font-size: 14px;
       letter-spacing: 0.28px;
     }
@@ -836,7 +835,7 @@ body.drawer-open .drawer-overlay {
 
             &:last-of-type {
               padding-top: 20px;
-              padding-bottom: 30px;
+              // padding-bottom: 30px;
             }
 
             .titulo-comentarios {
@@ -905,7 +904,7 @@ body.drawer-open .drawer-overlay {
   .badges-filters {
     width: 100%;
     display: flex;
-    gap: 4px;
+    gap: 8px;
   }
   #no-empreendimentos-message {
     display: flex;

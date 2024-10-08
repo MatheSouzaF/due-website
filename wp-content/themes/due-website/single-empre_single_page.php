@@ -127,7 +127,7 @@ get_header();
                         $link_url = $link['url'];
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                        <a class="button-fixed-atendimento" href="<?php echo esc_url($link_url); ?>"
+                        <a class="button-fixed-atendimento gtm-btn-atendimento-single-tipologia" href="<?php echo esc_url($link_url); ?>"
                             target="<?php echo esc_attr($link_target); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <circle cx="10" cy="10" r="5" fill="#8AC550" />

@@ -682,6 +682,7 @@ body.single-tipo_single_page {
               flex-direction: column;
               align-items: center;
               padding: 30px 0 24px;
+              width: 100% !important;
               .titulo-row-imagem-plantas {
                 font-size: 12px;
                 font-style: normal;
@@ -699,6 +700,7 @@ body.single-tipo_single_page {
               transform: none !important;
               display: flex;
               justify-content: center;
+              width: 100% !important;
             }
             .row-thumbs-plantas {
               width: fit-content !important;
@@ -835,7 +837,7 @@ body.single-tipo_single_page {
           border-bottom: 1px solid #fff;
           height: 510px;
           @include media-breakpoint-up(md) {
-            height: 530px;
+            height: 550px;
           }
           .tipologia-card {
             position: relative;

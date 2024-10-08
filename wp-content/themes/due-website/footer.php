@@ -38,7 +38,7 @@
 
 
             <div class="box box-form">
-                <div class="rd-form">
+                <div class="rd-form" id="rd-form">
                     <?php echo get_field('formulario_rd', 'options'); ?>
                 </div>
             </div>
@@ -62,8 +62,10 @@
                                                     if ($link) :
                                                         $link_url = $link['url'];
                                                         $link_title = $link['title'];
-                                                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                                        <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                                        $link_target = $link['target'] ? $link['target'] : '_self';
+                                                        $gtm_link_footer = strtolower(str_replace(' ', '-', $link_title));
+                                                    ?>
+                                                        <a class="gtm-<?php echo esc_attr($gtm_link_footer); ?>-footer" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                                                             <p class="founders-grotesk text-link-footer"><?php echo esc_html($link_title); ?></p>
                                                         </a>
                                                     <?php endif; ?>
@@ -71,6 +73,7 @@
                                         <?php endwhile;
                                         endif; ?>
                                     </div>
+
                                 </div>
                         <?php endwhile;
                         endif; ?>
@@ -79,29 +82,38 @@
                         <div class="box-links-whatsapp">
                             <?php
                             if (have_rows('repetidor_whatsapp', 'options')) :
-                                while (have_rows('repetidor_whatsapp', 'options')) : the_row(); ?>
-                                    <?php
+                                $row_count = 0; // Variável para rastrear a iteração
+                                while (have_rows('repetidor_whatsapp', 'options')) : the_row();
+                                    $row_count++; // Incrementa o contador de linha a cada iteração
                                     $link = get_sub_field('link_numero', 'options');
                                     if ($link) :
                                         $link_url = $link['url'];
                                         $link_title = $link['title'];
-                                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                        <a class="link-whats" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                        $link_target = $link['target'] ? $link['target'] : '_self';
 
+                                        // Define a classe baseada no número da linha
+                                        $custom_class = ($row_count == 1) ? 'gtm-telefone-footer' : (($row_count == 2) ? 'gtm-whatsapp-footer' : 'link-whats');
+                            ?>
+                                        <a class="link-whats <?php echo esc_attr($custom_class); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                                             <div class="box-svg">
-                                                <?php $svg_file = get_sub_field('svg_numero', 'options');
+                                                <?php
+                                                $svg_file = get_sub_field('svg_numero', 'options');
                                                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                                                     echo '<i class="element">';
                                                     echo file_get_contents($svg_file['url']);
                                                     echo '</i>';
-                                                } ?>
+                                                }
+                                                ?>
                                             </div>
                                             <p class="terminal-test"><?php echo esc_html($link_title); ?></p>
                                         </a>
-                                    <?php endif; ?>
-                            <?php endwhile;
-                            endif; ?>
+                            <?php
+                                    endif;
+                                endwhile;
+                            endif;
+                            ?>
                         </div>
+
                         <div class="box-rede-social">
 
                             <?php
@@ -114,8 +126,11 @@
                                         if ($link) :
                                             $link_url = $link['url'];
                                             $link_title = $link['title'];
-                                            $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                                            <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                            $link_target = $link['target'] ? $link['target'] : '_self'; 
+                                            $gtm_redes_socias_footer = strtolower(str_replace(' ', '-', $link_title));
+                                            
+                                            ?>
+                                            <a class="gtm-<?php echo esc_attr($gtm_redes_socias_footer); ?>-sociais-footer" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
 
                                                 <div class="box-svg">
                                                     <?php $svg_file = get_sub_field('svg_rede_social', 'options');
@@ -168,7 +183,7 @@
                         $link_url = $link['url'];
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                        <a class="" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                        <a class="gtm-dzigual-footer" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="62" height="9" viewBox="0 0 62 9" fill="none">
                                 <path d="M3.92761 9H0L0 0.00128461L3.81329 0.00128461C4.49097 0.00128461 5.10132 0.114973 5.64372 0.341707C6.18612 0.569084 6.64976 0.881887 7.03591 1.28012C7.42143 1.67835 7.71804 2.1543 7.92572 2.70732C8.13341 3.26035 8.23694 3.86668 8.23694 4.52633C8.23694 5.18598 8.13278 5.79039 7.92572 6.33892C7.71804 6.88745 7.42588 7.35891 7.04862 7.75328C6.67135 8.14766 6.21787 8.45404 5.68818 8.67242C5.15848 8.89081 4.57163 9 3.92761 9ZM1.94475 1.82672L1.94475 7.17456L3.73707 7.17456C4.15245 7.17456 4.51256 7.10841 4.81742 6.97545C5.12228 6.84249 5.37697 6.66072 5.58021 6.42885C5.78345 6.19762 5.93397 5.91885 6.03178 5.5932C6.12896 5.26756 6.17786 4.91172 6.17786 4.52633C6.17786 3.6862 5.95747 3.02655 5.5167 2.54675C5.07592 2.06694 4.4446 1.82672 3.62275 1.82672L1.94475 1.82672ZM17.8597 0.00128461V3.76777L9.55927 7.18741L17.9867 7.17456V9L9.50782 9L9.50782 5.14359L17.8464 1.81387L9.62214 1.82672V0.00128461L17.8591 0.00128461H17.8597ZM19.9315 0.00128461L21.8762 0.00128461V9H19.9315V0.00128461ZM28.178 1.78818C26.2624 1.78818 25.3053 2.72209 25.3053 4.59056C25.3053 5.51613 25.5574 6.1867 26.0617 6.60227C26.566 7.01784 27.2672 7.22595 28.1652 7.22595C28.453 7.22595 28.7438 7.18291 29.036 7.09749C29.3282 7.01206 29.5911 6.89388 29.8242 6.74422C30.0573 6.59456 30.2478 6.41664 30.3964 6.21046C30.5444 6.00492 30.6187 5.77755 30.6187 5.52897L28.0128 5.52897V3.85769L32.3984 3.85769V8.87089H30.6187V5.52833C30.6187 5.85398 30.5851 6.21817 30.5171 6.62089C30.4492 7.02362 30.3202 7.40065 30.1297 7.752C29.9392 8.10334 29.668 8.39944 29.3161 8.63902C28.9642 8.87924 28.5006 8.99871 27.9239 8.99871C27.2037 8.99871 26.5571 8.90044 25.9855 8.70325C25.4133 8.50607 24.928 8.21895 24.5298 7.84192C24.1316 7.46489 23.8286 6.99793 23.6209 6.44041C23.4132 5.88353 23.3097 5.24507 23.3097 4.52505C23.3097 3.73694 23.4323 3.05738 23.6781 2.48765C23.9239 1.91793 24.2669 1.4484 24.7076 1.07972C25.1484 0.711033 25.6673 0.439338 26.265 0.263346C26.8626 0.087996 27.5168 0 28.2288 0C28.7375 0 29.2284 0.0578076 29.7035 0.173423C30.178 0.289038 30.606 0.471453 30.9871 0.720026C31.3682 0.968598 31.6838 1.28975 31.9341 1.68413C32.1837 2.0785 32.3387 2.55381 32.3984 3.11133L30.4155 3.11133C30.3558 2.85441 30.2478 2.63988 30.0916 2.46838C29.9347 2.29689 29.755 2.16008 29.5511 2.05731C29.3479 1.95454 29.1275 1.88388 28.8899 1.84535C28.6524 1.80681 28.4155 1.78754 28.178 1.78754V1.78818ZM34.0103 5.52897V0.00128461L35.9551 0.00128461V5.40051C35.9551 5.79489 36.0205 6.10769 36.1519 6.33892C36.2834 6.57015 36.4632 6.74422 36.6924 6.85983C36.9211 6.97545 37.1859 7.04867 37.487 7.07822C37.7874 7.10841 38.1037 7.12318 38.4339 7.12318C38.7642 7.12318 39.0799 7.10841 39.3809 7.07822C39.6813 7.04803 39.9487 6.97545 40.1818 6.85983C40.4149 6.74422 40.5991 6.5708 40.735 6.33892C40.8703 6.10769 40.9382 5.79489 40.9382 5.40051V0.00128461L42.883 0.00128461V5.52897C42.883 6.249 42.7623 6.8335 42.521 7.28376C42.2796 7.73337 41.9532 8.08535 41.5423 8.33778C41.1313 8.59085 40.6562 8.76427 40.1183 8.85869C39.5797 8.95311 39.0189 9 38.4339 9C37.849 9 37.2901 8.95311 36.7559 8.85869C36.2218 8.76427 35.7518 8.58892 35.3447 8.33136C34.9382 8.07444 34.6137 7.72052 34.3723 7.27091C34.131 6.8213 34.0103 6.24065 34.0103 5.52897ZM50.2936 0.00128461L53.2044 9H51.0945L50.5223 7.09749L46.1494 7.09749L45.5518 9H43.4673L46.3914 0.00128461L48.3489 0.00128461L46.6455 5.4519L50.0142 5.4519L48.3489 0.00128461L50.2936 0.00128461ZM56.293 0.00128461V7.17456L61.2 7.17456V9L54.3483 9V0.00128461L56.293 0.00128461Z" fill="#E9E3DD" />
                             </svg>

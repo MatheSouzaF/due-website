@@ -161,7 +161,7 @@ wp_localize_script('main', 'TipologiasData', array(
           <p class="descricao-encante-se founders-grotesk fade-left" data-aos="fade-right" id="descricao-do-banner">
           </p>
 
-          <a class="link-encante-se button-v2 fade-left" data-aos="fade-right" id="link-banner" href=""
+          <a class="link-encante-se button-v2 fade-left gtm-btn-banner-empreendimentos" data-aos="fade-right" id="link-banner" href=""
             target="_self">
             <p id="link-text"></p>
           </a>

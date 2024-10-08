@@ -720,6 +720,8 @@ body.page-template-jeito-due {
     .sintta-stay {
       display: flex;
       gap: 80px;
+      position: relative;
+      z-index: 1;
       padding-bottom: 64px;
       flex-direction: column-reverse;
       align-items: center;

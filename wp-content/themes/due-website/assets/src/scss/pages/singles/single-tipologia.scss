@@ -40,6 +40,37 @@ body.single-tipo_single_page {
         }
       }
     }
+
+    .wpml-box {
+      .wpml-ls {
+        ul {
+          li {
+            a {
+              span {
+                color: #003b4b;
+              }
+            }
+            &:hover {
+              background-color: #003b4b;
+              a {
+                span {
+                  color: #fff;
+                }
+              }
+            }
+          }
+          .wpml-ls-current-language {
+            background-color: #003b4b;
+
+            a {
+              span {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .banner-hero-single-tipologia {
     background-color: $background;
@@ -920,6 +951,11 @@ body.single-tipo_single_page {
             }
             .tipologia-photo {
               filter: grayscale(1);
+            }
+          }
+          &.morar{
+            .estado-tipologia {
+              background-color: #0A6361;
             }
           }
         }

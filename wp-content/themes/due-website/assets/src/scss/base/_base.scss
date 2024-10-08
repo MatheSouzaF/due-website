@@ -6,6 +6,9 @@ html {
 }
 body {
   overflow-x: hidden;
+  .otgs-development-site-front-end{
+    display: none;
+  }
   .botoes-fixed {
     display: flex;
     position: fixed;

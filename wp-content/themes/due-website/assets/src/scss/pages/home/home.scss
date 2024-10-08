@@ -471,6 +471,7 @@ body.page-template-homepage {
     @include media-breakpoint-up(md) {
       padding: 120px 0;
     }
+
     .wrapper {
       max-width: initial;
       .box-busca-banner-hero-mobile {
@@ -507,7 +508,7 @@ body.page-template-homepage {
           flex-direction: column;
           align-items: flex-start;
           gap: 4px;
-          border-bottom: 2px solid #E9E3DD;
+          border-bottom: 2px solid #e9e3dd;
           .invista-busca {
             color: $due-secondary;
             font-size: 13px;
@@ -525,7 +526,7 @@ body.page-template-homepage {
         }
         .container-destino {
           justify-content: space-between;
-          border-bottom: 2px solid #E9E3DD;
+          border-bottom: 2px solid #e9e3dd;
 
           .box-svg {
             display: flex;
@@ -1021,7 +1022,9 @@ body.page-template-homepage {
       }
     }
   }
-
+  .modal-active-busca-mobile {
+    z-index: 0 !important;
+  }
   .nosso-proposito {
     position: relative;
     margin: 64px 0;
@@ -1341,5 +1344,11 @@ body.page-template-homepage {
         z-index: 0;
       }
     }
+    .box-busca-banner-hero-desktop {
+      z-index: 0;
+    }
+  }
+  .modal-active-botoes-banner {
+    z-index: 0 !important;
   }
 }

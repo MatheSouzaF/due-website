@@ -193,7 +193,7 @@
           width: 100%;
           height: 100%;
           @include media-breakpoint-down(sm) {
-             max-height: 90%;
+            max-height: 90%;
           }
         }
         .shape-mapa {
@@ -741,7 +741,7 @@
   &.sticky {
     padding: 24px 24px 0;
 
-  pointer-events: none;
+    pointer-events: none;
 
     @include media-breakpoint-up(md) {
       padding: 24px 40px 0;
@@ -755,6 +755,13 @@
           .last-item {
             display: flex;
           }
+        }
+        .wpml-box {
+          opacity: 0;
+          visibility: hidden;
+          position: absolute;
+          z-index: -1;
+          transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s 0.5s; // z-index troca após a transição
         }
       }
 
@@ -789,6 +796,13 @@
     z-index: 1;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s; // z-index troca imediatamente
   }
+  .box-sidebar .wpml-box {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, z-index 0s; // z-index troca imediatamente
+  }
 
   .box-menu-lateral {
     @include media-breakpoint-up(md) {
@@ -807,5 +821,55 @@
   .call-form {
     display: flex;
     height: 1px;
+  }
+
+  .wpml-box {
+    .wpml-ls {
+      ul {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        li {
+          border-radius: 32px;
+          min-width: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 4px 0px;
+          transition: 0.6s;
+          cursor: pointer;
+          a {
+            transition: 0.6s;
+            padding: 0px;
+            span {
+              transition: 0.6s;
+              font-size: 10px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 100%; /* 10px */
+              letter-spacing: 0.2px;
+              font-family: 'terminal-test', sans-serif;
+              color: #fff;
+            }
+          }
+          &:hover {
+            background-color: #fff;
+            a {
+              span {
+                color: #003b4b;
+              }
+            }
+          }
+        }
+        .wpml-ls-current-language {
+          background-color: #fff;
+          a {
+            span {
+              color: #003b4b;
+            }
+          }
+        }
+      }
+    }
   }
 }

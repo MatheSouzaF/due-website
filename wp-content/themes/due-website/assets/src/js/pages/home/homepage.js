@@ -185,7 +185,6 @@ function checkbox() {
 
 function initPage() {
   swiperEmpreendimento();
-  // cardHover();
   fadeConteudoEncantese();
   encantese();
   nossoProposito();

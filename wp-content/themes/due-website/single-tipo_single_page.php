@@ -309,7 +309,7 @@ get_header();
                                 if ($image):
                                     $image_url = $image['url'];
                                     $image_alt = $image['alt'];
-                                    echo '<div class="row-imagem-plantas ">';
+                                    echo '<div class="row-imagem-plantas slick">';
                                     echo '<p class="titulo-row-imagem-plantas terminal-test">' . esc_html($titulo_da_planta) . '</p>';
                                     echo '<img class="plantas-repetidor" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
                                     echo '</div>';

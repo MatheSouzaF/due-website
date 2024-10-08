@@ -98,10 +98,10 @@ function setupPlantSliders() {
       sliderNav.slick({
         slidesToShow: 3,
         slidesToScroll: 1,
-        asNavFor: sliderFor,
+        asNavFor: '.slider-for',
         dots: true,
         centerMode: true,
-        focusOnSelect: true,
+        focusOnSelect: true
       });
     }
   }

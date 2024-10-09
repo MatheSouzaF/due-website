@@ -14,12 +14,7 @@ export function renderFiltersHome(filters, options) {
   $(document).on('click', function (e) {
     if (!$(e.target).closest('.filter-wrapper').length) {
       $('.filter-wrapper').removeClass('active');
-      $('.checkboxes').slideUp(400);
     }
-  });
-
-  $('.filter-wrapper').on('mouseleave', function () {
-    $(this).removeClass('active');
   });
 
   $('.ckkBox').change(function () {

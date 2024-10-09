@@ -1600,23 +1600,21 @@ body.page-template-homepage {
       left: 0;
       background: white;
       width: 100%;
-      display: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: block;
       border-radius: 4px;
       z-index: 1000;
       padding: 10px 0;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-      max-height: 0;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     
     &.active .checkboxes {
-      display: block;
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: translateY(0); 
+      max-height: 500px;
+      overflow: auto;
     }
     
     .checkboxes .inner-wrap {

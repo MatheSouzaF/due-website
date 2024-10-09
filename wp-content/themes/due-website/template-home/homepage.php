@@ -239,12 +239,12 @@ get_header();
             <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
             <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
         </div>
-        <div class="filter-wrapper box-container-busca container-destino">
+        <div class="filter-wrapper box-container-busca container-destino toggle-next ">
             <div class="checkboxes" id="home-filter-location">
                 <div class="inner-wrap">
                 </div>
             </div>
-            <button class="box-svg form-control founders-grotesk toggle-next ellipsis">
+            <button class="box-svg form-control founders-grotesk ellipsis">
                 <?php $svg_file = get_field('svg_destino');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                     echo '<i class="element">';
@@ -257,12 +257,12 @@ get_header();
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>
-        <div class="filter-wrapper box-container-busca container-quartos">
+        <div class="filter-wrapper box-container-busca container-quartos toggle-next">
             <div class="checkboxes" id="home-filter-rooms">
                 <div class="inner-wrap">
                 </div>
             </div>
-            <button class="box-svg form-control founders-grotesk toggle-next ellipsis">
+            <button class="box-svg form-control founders-grotesk ellipsis">
                 <?php $svg_file = get_field('svg_quartos');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
                     echo '<i class="element">';

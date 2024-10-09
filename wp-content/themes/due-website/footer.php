@@ -130,7 +130,7 @@
                                             $gtm_redes_socias_footer = strtolower(str_replace(' ', '-', $link_title));
                                             
                                             ?>
-                                            <a class="gtm-<?php echo esc_attr($gtm_redes_socias_footer); ?>-sociais-footer" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                                            <a class="link-social-medias gtm-<?php echo esc_attr($gtm_redes_socias_footer); ?>-sociais-footer" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
 
                                                 <div class="box-svg">
                                                     <?php $svg_file = get_sub_field('svg_rede_social', 'options');

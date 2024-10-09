@@ -1491,9 +1491,9 @@ body.single-empre_single_page {
     }
 
     .informacoes-obra {
-      margin-bottom: 64px;
+      padding-bottom: 64px;
       @include media-breakpoint-up(md) {
-        margin-bottom: 120px;
+        padding-bottom: 120px;
       }
       .wrapper {
         display: flex;

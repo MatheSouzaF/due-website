@@ -2,12 +2,24 @@ export function renderFiltersHome(filters, options) {
   populateFilters(filters, options);
   setCheckboxSelectLabels(filters);
 
-  $('.toggle-next').click(function () {
-    $(this).next('.checkboxes').slideDown(400); 
+  $('.toggle-next').click(function (e) {
+    e.stopPropagation();
+    const $wrapper = $(this).closest('.filter-wrapper');
+
+    $('.filter-wrapper').not($wrapper).removeClass('active');
+
+    $wrapper.toggleClass('active');
   });
 
-  $('.checkboxes').parent().on('mouseleave', function () {
-    $(this).find('.checkboxes').slideUp(400); 
+  $(document).on('click', function (e) {
+    if (!$(e.target).closest('.filter-wrapper').length) {
+      $('.filter-wrapper').removeClass('active');
+      $('.checkboxes').slideUp(400);
+    }
+  });
+
+  $('.filter-wrapper').on('mouseleave', function () {
+    $(this).removeClass('active');
   });
 
   $('.ckkBox').change(function () {
@@ -15,7 +27,6 @@ export function renderFiltersHome(filters, options) {
     setCheckboxSelectLabels(filters);
   });
 }
-
 function populateFilters(filters, options) {
   $.each(filters, function (key, wrapper) {
     const optionValues = options[key] || [];

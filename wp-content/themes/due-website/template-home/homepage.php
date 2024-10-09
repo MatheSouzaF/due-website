@@ -240,6 +240,10 @@ get_header();
             <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
         </div>
         <div class="filter-wrapper box-container-busca container-destino">
+            <div class="checkboxes" id="home-filter-location">
+                <div class="inner-wrap">
+                </div>
+            </div>
             <button class="box-svg form-control founders-grotesk toggle-next ellipsis">
                 <?php $svg_file = get_field('svg_destino');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -249,15 +253,15 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
             </button>
-            <div class="checkboxes" id="home-filter-location">
-                <div class="inner-wrap">
-                </div>
-            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>
         <div class="filter-wrapper box-container-busca container-quartos">
+            <div class="checkboxes" id="home-filter-rooms">
+                <div class="inner-wrap">
+                </div>
+            </div>
             <button class="box-svg form-control founders-grotesk toggle-next ellipsis">
                 <?php $svg_file = get_field('svg_quartos');
                 if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -267,10 +271,6 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-quartos"><?php echo get_field('titulo_quartos'); ?></p>
             </button>
-            <div class="checkboxes" id="home-filter-rooms">
-                <div class="inner-wrap">
-                </div>
-            </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>

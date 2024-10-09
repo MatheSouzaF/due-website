@@ -717,7 +717,7 @@ body.drawer-open .drawer-overlay {
         .box-conteudo-left {
           position: relative;
           z-index: 2;
-
+          width: 100%;
           .box-svg {
             margin-bottom: 32px;
           }
@@ -789,7 +789,7 @@ body.drawer-open .drawer-overlay {
           padding: 48px 40px;
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
-
+width: 100%;
           &.clipPath {
             clip-path: inset(0 0 -100px -100px);
           }

@@ -100,8 +100,10 @@ function filterExperiencias() {
 }
 
 function swiperTipologia() {
+  var slideCount = document.querySelectorAll('.tipologias-swiper .swiper-slide').length;
   var swiper = new Swiper('.tipologias-swiper', {
     slidesPerView: 1.2,
+    centeredSlides: slideCount <= 2,
     spaceBetween: 24,
     breakpoints: {
       1024: {
@@ -114,6 +116,8 @@ function swiperTipologia() {
     },
   });
 }
+
+
 function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 

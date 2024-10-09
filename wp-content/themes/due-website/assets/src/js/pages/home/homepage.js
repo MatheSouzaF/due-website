@@ -1,3 +1,6 @@
+import { renderFiltersHome } from "../../components/filter-home";
+import { getFilterLabel } from "../../utils/get-filter-label";
+
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
     spaceBetween: 16,
@@ -183,6 +186,175 @@ function checkbox() {
   });
 }
 
+function loadSearchBox() {
+  const tipologiasData = TipologiasDataHome.tipologias;
+  console.log("🚀 ~ TipologiasDataHome:", TipologiasDataHome)
+
+  function populateFilterOptions() {
+    const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
+    const roomsOptions = new Set();
+    tipologiasData.forEach((e) => {
+      if (e.rooms && e.rooms.length > 0) {
+        let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
+        let maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia, 10);
+
+        if (isNaN(minimo) || minimo <= 1) {
+          minimo = 1;
+        }
+
+        if (isNaN(maximo) || maximo <= 1) {
+          maximo = 1;
+        }
+
+        if (maximo < minimo) {
+          maximo = minimo;
+        }
+
+        for (let i = minimo; i <= maximo; i++) {
+          roomsOptions.add(i);
+        }
+      }
+    });
+
+    const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
+
+    const options = {
+      location: Array.from(locationOptions).map((location) => ({value: location, label: location})),
+      rooms: [
+        ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+        ...Array.from(roomsOptions)
+          .sort()
+          .map((room) => ({
+            value: room,
+            label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`,
+          })),
+      ],
+    };
+
+    return options;
+  }
+
+  const filters = {
+    location: $('#home-filter-location'),
+    rooms: $('#home-filter-rooms'),
+  };
+  const options = populateFilterOptions();
+  renderFiltersHome(filters, options);
+
+  function removeAccents(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function getUniqueValues(array) {
+    return [...new Set(array)];
+  }
+
+  function buildFilterUrl() {
+    const locationFilter = getFilterLabel('#home-filter-location');
+    const roomsFilter = getFilterLabel('#home-filter-rooms');
+
+    const params = new URLSearchParams();
+    let hasFilters = false;
+
+    if (locationFilter) {
+      const formattedLocation = locationFilter
+        .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+      params.set('tipo-localizacao', getUniqueValues(formattedLocation).join(','));
+      hasFilters = true;
+    }
+
+    if (roomsFilter) {
+      const formattedRooms = roomsFilter
+        .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+      params.set('tipo-qtos', getUniqueValues(formattedRooms).join(','));
+      hasFilters = true;
+    }
+
+    if (hasFilters) {
+      params.set('tipologia', 'true');
+    }
+
+    const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''}`;
+    
+    $('#busca-banner').attr('href', newUrl);
+    
+    console.log("URL Filtrada:", newUrl);
+  }
+
+  let filteredTipologias = [];
+
+  function hideOptions(changedFilter) {
+    const isOptionVisible = (value, key) => {
+      return filteredTipologias.some((tipologia) => {
+        if (key === 'location') return tipologia.location === value;
+        if (key === 'rooms') {
+          const minimo = parseInt(tipologia.rooms[0].minimo_de_quartos_tipologia, 10);
+          let maximo = parseInt(tipologia.rooms[0].maximo_de_quartos_tipologia, 10);
+
+          if (maximo === 0) {
+            maximo = minimo;
+          }
+
+          return (tipologia.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
+        }
+        return false;
+      });
+    };
+
+    const getAppliedFilterCategories = () => {
+      return Object.keys(filters).filter((key) => {
+        return filters[key].find('input.ckkBox:checked').length > 0;
+      });
+    };
+
+    const appliedFilterCategories = getAppliedFilterCategories();
+
+    if (appliedFilterCategories.length === 0) {
+      Object.keys(filters).forEach((key) => {
+        filters[key].find('input.ckkBox').each(function () {
+          $(this).closest('label').show();
+        });
+      });
+      return;
+    }
+
+    if (appliedFilterCategories.length === 1) {
+      const lastFilterCategory = appliedFilterCategories[0];
+      filters[lastFilterCategory].find('input.ckkBox').each(function () {
+        $(this).closest('label').show();
+      });
+    }
+
+    Object.keys(filters).forEach((key) => {
+      if (key !== changedFilter) {
+        const $filter = filters[key];
+        if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
+          $filter.find('input.ckkBox').each(function () {
+            const $checkbox = $(this);
+            const value = $checkbox.val();
+
+            if (isOptionVisible(value, key) || $checkbox.is(':checked')) {
+              $checkbox.closest('label').show();
+            } else {
+              $checkbox.closest('label').hide();
+            }
+          });
+        }
+      }
+    });
+  }
+
+  filters['location'].find('input.ckkBox').on('change', function () {
+    buildFilterUrl();
+    // hideOptions('location');
+  });
+
+  filters['rooms'].find('input.ckkBox').on('change', function () {
+    buildFilterUrl();
+    // hideOptions('rooms');
+  });
+}
+
 function initPage() {
   swiperEmpreendimento();
   fadeConteudoEncantese();
@@ -191,6 +363,7 @@ function initPage() {
   wordAnimation();
   btnFixed();
   checkbox();
+  loadSearchBox()
 }
 
 export {initPage};

@@ -460,6 +460,10 @@ function tipologiaPage() {
       }
     }
 
+    function isMobileDevice() {
+      return window.innerWidth <= 768;
+    }
+
     function applyFiltersFromUrl() {
       const params = new URLSearchParams(window.location.search);
 
@@ -497,8 +501,14 @@ function tipologiaPage() {
         },
       ];
 
+      if(isMobileDevice()) {
+        filtersList.map((filter) => applyFilter(filter.filterName, filter.selectorMobile));
+        filterAndRender();
+        return;
+      }
+      
       filtersList.map((filter) => applyFilter(filter.filterName, filter.selector));
-      filtersList.map((filter) => applyFilter(filter.filterName, filter.selectorMobile));
+      filterAndRender();
 
       filterAndRender();
     }

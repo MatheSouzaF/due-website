@@ -21,6 +21,37 @@
             "selected": 0
         },
         {
+            "key": "field_6707fcad7b22b",
+            "label": "Empreendimento",
+            "name": "empreendimento_tipologia",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "553": "teste",
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_66c23ba4e141f",
             "label": "Tipologia",
             "name": "tipologia",
@@ -1075,5 +1106,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726793360
+    "modified": 1728576730
 }

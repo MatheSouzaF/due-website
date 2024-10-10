@@ -142,46 +142,6 @@
             "append": ""
         },
         {
-            "key": "field_66c23c37e1424",
-            "label": "Quantidade de quartos",
-            "name": "quantidade_de_quartos",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Preenchido automaticamente ao escolher a tipologia",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_66c23c3fe1425",
-            "label": "Metragem",
-            "name": "metragem",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Preenchido automaticamente ao escolher a tipologia",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_66c23ca1e1426",
             "label": "Diferenciais e Características",
             "name": "diferenciais_e_caracteristicas_select",
@@ -1106,5 +1066,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728576730
+    "modified": 1728588402
 }

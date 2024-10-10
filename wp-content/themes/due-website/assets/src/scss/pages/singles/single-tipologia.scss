@@ -447,12 +447,13 @@ body.single-tipo_single_page {
         }
         .row-slide-thumbs {
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           align-items: center;
           width: fit-content !important;
           cursor: pointer;
           padding: 12px 0;
           position: relative;
+          gap: 12px;
           &::after {
             content: '';
             bottom: -2px;
@@ -586,6 +587,14 @@ body.single-tipo_single_page {
                       height: 27px;
                     }
                   }
+                  .titulo-caracteristicas {
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: 140%; /* 25.2px */
+                    letter-spacing: 0.36px;
+                    color: $due-tertiary;
+                  }
                 }
               }
               .box-pavimentos {
@@ -601,6 +610,7 @@ body.single-tipo_single_page {
                     letter-spacing: 0.48px;
                     color: $due-tertiary;
                     margin-bottom: 24px;
+                    text-transform: uppercase;
                     @include media-breakpoint-up(md) {
                       font-size: calc(0.5rem + 0.3vw);
                     }
@@ -637,6 +647,7 @@ body.single-tipo_single_page {
                     letter-spacing: 0.48px;
                     color: $due-tertiary;
                     margin-bottom: 24px;
+                    text-transform: uppercase;
                     @include media-breakpoint-up(md) {
                       font-size: calc(0.5rem + 0.3vw);
                     }
@@ -697,15 +708,19 @@ body.single-tipo_single_page {
                 letter-spacing: 0.48px;
                 color: $due-tertiary;
                 padding-bottom: 24px;
+                text-transform: uppercase;
               }
               .plantas-repetidor {
                 height: 454px;
+                width: 454px;
+                object-fit: contain;
               }
             }
             .slick-track {
               transform: none !important;
               // display: flex;
               // justify-content: center;
+              gap: 16px;
               width: 100% !important;
             }
             .gallery-planta {
@@ -725,7 +740,7 @@ body.single-tipo_single_page {
               .plantas-repetidor-thumb {
                 width: 107.106px;
                 height: 80.125px;
-                // object-fit: cover;
+                object-fit: contain;
               }
               &.slick-current {
                 border-bottom: 2px solid #002b36;

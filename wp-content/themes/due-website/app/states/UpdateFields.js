@@ -50,7 +50,7 @@ jQuery(document).ready(function ($) {
     });
 
     // [Singlepage da Tipologia] Seletor para buscar as tipologias do empreendimento selecionado 
-    $('select[name="acf[field_66d88704efa32]"').on('change', function () {
+    $('select[name="acf[field_6707fcad7b22b]"]').on('change', function () {
         var empreendimentoNome = $(this).find("option:selected").text();
         var selectField = $('select[name="acf[field_66c23ba4e141f]"]');
 

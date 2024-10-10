@@ -87,7 +87,7 @@
               flex-direction: column;
               gap: 6px;
               .text-link-footer {
-                font-size: 16px;
+                font-size: 14px;
                 font-style: normal;
                 font-weight: 300;
                 line-height: 140%;
@@ -99,7 +99,7 @@
                 cursor: pointer;
                 transition: 0.6s;
                 @include media-breakpoint-up(xxl) {
-                  font-size: 22px;
+                  font-size: 16px;
                 }
                 &::after {
                   content: '';
@@ -153,7 +153,7 @@
                 letter-spacing: 0.28px;
                 text-transform: uppercase;
                 @include media-breakpoint-up(xxl) {
-                  font-size: 17px;
+                  font-size: 14px;
                 }
               }
             }
@@ -241,9 +241,7 @@
                 font-weight: 300 !important;
                 line-height: 140% !important;
                 letter-spacing: 0.32px !important;
-                @include media-breakpoint-up(xxl) {
-                  font-size: 20px !important;
-                }
+               
                 a {
                   cursor: pointer;
                   strong {
@@ -330,9 +328,7 @@
         @include media-breakpoint-up(md) {
           text-align: start;
         }
-        @include media-breakpoint-up(xxl) {
-          font-size: 16px;
-        }
+       
       }
     }
     .box-link-paginas {
@@ -368,9 +364,7 @@
             letter-spacing: 0.4px;
             text-transform: uppercase;
             position: relative;
-            @include media-breakpoint-up(xxl) {
-              font-size: 12px;
-            }
+            
             &::after {
               content: '';
               bottom: -6px;
@@ -395,8 +389,7 @@
         position: relative;
         cursor: pointer;
         @include media-breakpoint-up(xxl) {
-          svg{
-
+          svg {
             width: 82px;
             height: 12px;
           }

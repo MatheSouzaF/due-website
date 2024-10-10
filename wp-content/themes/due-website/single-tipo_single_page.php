@@ -256,7 +256,7 @@ get_header();
                                 echo '</div>';
 
                                 // Título da característica
-                                echo '<p class="titulo-caracteristicas">' . esc_html(get_sub_field('caracteristicas')) . '</p>';
+                                echo '<p class="titulo-caracteristicas founders-grotesk">' . esc_html(get_sub_field('caracteristicas')) . '</p>';
 
                                 echo '</div>'; // Fim da div row-caracteristicas
                             endwhile;

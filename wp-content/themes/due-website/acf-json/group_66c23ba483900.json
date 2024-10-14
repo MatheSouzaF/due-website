@@ -82,26 +82,6 @@
             "placeholder": ""
         },
         {
-            "key": "field_66c23bf0e1421",
-            "label": "Nome do empreendimento que pertence",
-            "name": "nome_do_empreendimento_que_pertence",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "Preenchido automaticamente ao escolher a tipologia",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_66c23c09e1422",
             "label": "Localização (Praia - Cidade\/Estado)",
             "name": "localizacao_tipologia_single",
@@ -127,7 +107,7 @@
             "name": "descricao_tipologia_hero",
             "aria-label": "",
             "type": "text",
-            "instructions": "Preenchido automaticamente ao escolher a tipologia",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -1066,5 +1046,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728588402
+    "modified": 1728912374
 }

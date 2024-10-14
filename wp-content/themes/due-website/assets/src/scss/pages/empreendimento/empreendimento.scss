@@ -98,7 +98,7 @@ body.drawer-open .drawer-overlay {
   .empreendimentos-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 4px;
+    margin-bottom: 40px;
   }
 
   .empreendimento-tabs {
@@ -171,10 +171,7 @@ body.drawer-open .drawer-overlay {
       flex-direction: row-reverse;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 24px;
-      @include media-breakpoint-up(sm) {
-        margin-bottom: 40px;
-      }
+     
     }
 
     /* Filter Button */

@@ -59,6 +59,11 @@ get_header();
                 $image_alt = $image['alt']; ?>
                 <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
+
+            <div class="box-texto-imagem-banner">
+                <p class="titulo-imagem"><?php echo get_field('titulo_imagem'); ?></p>
+                <p class="descricao-imagem"><?php echo get_field('descricao_imagem'); ?></p>
+            </div>
         </div>
     </div>
     <?php
@@ -373,7 +378,7 @@ get_header();
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
 
-                        <a class="button-fixed-whatsapp"  href="<?php echo esc_url($link_url); ?>" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
+                        <a class="button-fixed-whatsapp" href="<?php echo esc_url($link_url); ?>" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
                             <p class=""><?php echo esc_html($link_title); ?></p>
                         </a>
                     <?php endif; ?>

@@ -14,7 +14,8 @@ get_header();
             if ($image):
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
-                <img class="img-single-empreendimentos" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                <img class="img-single-empreendimentos" src="<?php echo esc_url($image_url); ?>"
+                    alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
         </div>
         <div class="box-video">
@@ -41,7 +42,9 @@ get_header();
                         echo file_get_contents($svg_file['url']);
                         echo '</i>';
                     } ?>
-                    <p class="founders-grotesk quartos-hero"><?php echo get_field('e_um_studio', $empreendimento_id) ? 'Studio, ' : '' ?><?php echo get_field('quantidade_de_quartos'); ?></p>
+                    <p class="founders-grotesk quartos-hero">
+                        <?php echo get_field('e_um_studio', $empreendimento_id) ? 'Studio, ' : '' ?><?php echo get_field('quantidade_de_quartos'); ?>
+                    </p>
                 </div>
                 <div class="box-metragem">
                     <?php $svg_file = get_field('svg_metragem');
@@ -77,7 +80,7 @@ get_header();
                                     <p class=""><?php echo esc_html($link_title); ?></p>
                                 </a>
                             <?php endif; ?>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
 
@@ -100,7 +103,7 @@ get_header();
                                 <p class="subtitulo-valores founders-grotesk"><?php echo get_sub_field('subtitulo_valores'); ?>
                                 </p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
 
@@ -117,7 +120,7 @@ get_header();
                                 </svg>
                                 <p class="founders-grotesk"><?php echo get_sub_field('titulo_destaque'); ?></p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
                 <div class="box-link">
@@ -127,8 +130,8 @@ get_header();
                         $link_url = $link['url'];
                         $link_title = $link['title'];
                         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                        <a class="button-fixed-atendimento gtm-btn-atendimento-single-tipologia" href="<?php echo esc_url($link_url); ?>"
-                            target="<?php echo esc_attr($link_target); ?>">
+                        <a class="button-fixed-atendimento gtm-btn-atendimento-single-tipologia"
+                            href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <circle cx="10" cy="10" r="5" fill="#8AC550" />
                                 <circle cx="10" cy="10" r="9.5" stroke="#89C550" />
@@ -156,7 +159,7 @@ get_header();
     <?php
     $tituloPraia = get_field('titulo_praia');
     ?>
-    <?php if ($tituloPraia) : ?>
+    <?php if ($tituloPraia): ?>
         <div class="praia" id="praia">
             <div class="wrapper">
 
@@ -187,12 +190,12 @@ get_header();
                         while (have_rows('cards_infos_praia')):
                             the_row();
                             $extra_class = ($counter === 2) ? 'bg-blue' : '';
-                    ?>
+                            ?>
                             <div class="box-infos-cards <?php echo $extra_class; ?>">
                                 <p class="founders-grotesk titulo-infos-praia"><?php echo get_sub_field('titulo_card'); ?></p>
                                 <p class="founders-grotesk premio-infos-praia"><?php echo get_sub_field('titulo_premio'); ?></p>
                             </div>
-                    <?php
+                            <?php
                             $counter++;
                         endwhile;
                     endif;
@@ -205,7 +208,7 @@ get_header();
     <?php
     $tituloGaleria = get_field('titulo_da_galeria');
     ?>
-    <?php if ($tituloGaleria) : ?>
+    <?php if ($tituloGaleria): ?>
         <div class="galeria" id="galeria">
             <div class="wrapper">
                 <div class="boxs-container-galeria text-galeria">
@@ -228,7 +231,7 @@ get_header();
                                         <?php echo get_sub_field('texto_da_caracteristica'); ?>
                                     </p>
                                 </div>
-                        <?php endwhile;
+                            <?php endwhile;
                         endif; ?>
                     </div>
                 </div>
@@ -251,22 +254,23 @@ get_header();
                                                 <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                                                     <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
+                                                    alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
 
-                                        <?php elseif (get_row_layout() == 'imagem_galeria'):
+                                    <?php elseif (get_row_layout() == 'imagem_galeria'):
                                         $image = get_sub_field('imagem');
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                        ?>
+                                            ?>
                                             <!-- Link para a imagem no Fancybox -->
                                             <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
                                                 <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
-                        <?php endif;
+                                    <?php endif;
                                 endif;
                                 $counter++;
                             endwhile;
@@ -292,22 +296,23 @@ get_header();
                                                 <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
                                                     <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
+                                                    alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
 
-                                        <?php elseif (get_row_layout() == 'imagem_galeria'):
+                                    <?php elseif (get_row_layout() == 'imagem_galeria'):
                                         $image = get_sub_field('imagem');
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                        ?>
+                                            ?>
                                             <!-- Link para a imagem no Fancybox -->
                                             <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
                                                 <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
-                        <?php endif;
+                                    <?php endif;
                                 endif;
                                 $counter++;
                             endwhile;
@@ -332,30 +337,38 @@ get_header();
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt']; ?>
                                                 <!-- Link para o vídeo no Fancybox -->
-                                                <a class="box-video" href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
-                                                    <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
-                                                        <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <a class="box-video" href="<?php echo esc_url(get_sub_field('video')); ?>"
+                                                    data-fancybox="gallery">
+                                                    <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60"
+                                                        viewBox="0 0 60 60" fill="none">
+                                                        <path
+                                                            d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z"
+                                                            stroke="white" stroke-width="2.5" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
                                                     </svg>
-                                                    <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                    <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
+                                                        alt="<?php echo esc_attr($image_alt); ?>">
                                                 </a>
                                             <?php endif; ?>
 
-                                            <?php elseif (get_row_layout() == 'imagem_galeria'):
+                                        <?php elseif (get_row_layout() == 'imagem_galeria'):
                                             $image = get_sub_field('imagem');
                                             if ($image):
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
-                                            ?>
+                                                ?>
                                                 <!-- Link para a imagem no Fancybox -->
-                                                <a class="img" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery" data-caption="<?php echo esc_attr($image_alt); ?>">
-                                                    <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                <a class="img" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery"
+                                                    data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                    <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
+                                                        alt="<?php echo esc_attr($image_alt); ?>">
                                                 </a>
                                             <?php endif; ?>
                                         <?php endif;
                                         $counter++;
                                         ?>
                                     </div>
-                            <?php endwhile;
+                                <?php endwhile;
                             endif; ?>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -370,12 +383,18 @@ get_header();
     <?php
     $tituloEspacos = get_field('titulo_espacos');
     ?>
-    <?php if ($tituloEspacos) : ?>
+    <?php if ($tituloEspacos): ?>
         <div class="experiencia-resort" id="espacos">
             <div class="wrapper">
                 <h2 class="titulo-espaco"><?php echo $tituloEspacos ?></h2>
                 <div class="box-lista-rota">
                     <?php
+                    // Add the "Todos" tab
+                    echo "<div class='lista-rota'>";
+                    echo "<h2 data-value='todos' class='item-rota'>Todos</h2>";
+                    echo '</div>';
+
+                    // Existing code to output other categories
                     if (have_rows('categoria_aba')):
                         while (have_rows('categoria_aba')):
                             the_row();
@@ -387,10 +406,90 @@ get_header();
                             echo '</div>';
 
                         endwhile;
-                    endif; ?>
+                    endif;
+                    ?>
                 </div>
                 <div class="box-aba-galeria">
                     <?php
+                    // Start of "Todos" swiper
+                    echo '<div id="swiper-todos" class="swiper swiper-rota-destino">';
+                    echo '<div class="swiper-wrapper">';
+
+                    // Array to keep track of displayed espaco names
+                    $displayed_espacos = array();
+
+                    if (have_rows('categoria_aba')):
+                        while (have_rows('categoria_aba')):
+                            the_row();
+
+                            if (have_rows('espaco')):
+                                while (have_rows('espaco')):
+                                    the_row();
+
+                                    $nome_do_espaco = get_sub_field('nome_do_espaco');
+
+                                    // Check if the espaco name has already been displayed
+                                    if (!in_array($nome_do_espaco, $displayed_espacos)):
+                                        // Add espaco name to the array to avoid duplicates
+                                        $displayed_espacos[] = $nome_do_espaco;
+
+                                        $espaco_id = uniqid('espaco_');
+
+                                        echo '<div class="swiper-slide">';
+                                        echo '<div class="card-rota">';
+
+                                        if (have_rows('imagens_do_espaco')):
+                                            $first_image = true;
+
+                                            while (have_rows('imagens_do_espaco')):
+                                                the_row();
+                                                $imagem = get_sub_field('imagem');
+
+                                                if ($imagem):
+                                                    $url_imagem = esc_url($imagem['url']);
+                                                    $alt_imagem = esc_attr($nome_do_espaco);
+
+                                                    if ($first_image):
+                                                        echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '">';
+                                                        echo '<div class="box-imagem">';
+                                                        echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
+                                                        echo '</div>';
+                                                        echo '</a>';
+                                                        $first_image = false;
+                                                    else:
+                                                        echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '" style="display:none;">';
+                                                        echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
+                                                        echo '</a>';
+                                                    endif;
+                                                endif;
+                                            endwhile;
+                                        endif;
+
+                                        echo '<div class="card-rota-content">';
+                                        echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
+                                        echo '</div></div></div>'; // Close card-rota and swiper-slide
+                                    endif; // End of duplicate check
+                
+                                endwhile;
+                            endif;
+
+                        endwhile;
+                    endif;
+
+                    echo '</div>'; // Fecha swiper-wrapper
+                    echo '<div class="box-buttons-swiper">';
+                    echo ' <svg class="swiper-btn-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="40" fill="white" />
+                                <path d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z" fill="#003B4B" />
+                            </svg>';
+
+                    echo '<svg class="swiper-btn-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+                                <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                                <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
+                            </svg>';
+                    echo '</div></div>'; // Close swiper container
+                
+                    // Existing code to generate swipers for each category continues here...
                     if (have_rows('categoria_aba')):
                         while (have_rows('categoria_aba')):
                             the_row();
@@ -406,49 +505,42 @@ get_header();
                                     the_row();
 
                                     $nome_do_espaco = get_sub_field('nome_do_espaco');
-
-                                    // Cria um identificador único para o conjunto de imagens deste espaco
                                     $espaco_id = uniqid('espaco_');
 
                                     echo '<div class="swiper-slide">';
                                     echo '<div class="card-rota">';
 
-                                    // Novo repetidor de imagens
                                     if (have_rows('imagens_do_espaco')):
-                                        $first_image = true; // Variável para verificar se é a primeira imagem
+                                        $first_image = true;
 
                                         while (have_rows('imagens_do_espaco')):
                                             the_row();
-                                            $imagem = get_sub_field('imagem'); // Supondo que este seja o campo de imagem
+                                            $imagem = get_sub_field('imagem');
 
                                             if ($imagem):
                                                 $url_imagem = esc_url($imagem['url']);
                                                 $alt_imagem = esc_attr($nome_do_espaco);
 
-                                                // Exibe a primeira imagem como destaque
                                                 if ($first_image):
                                                     echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '">';
                                                     echo '<div class="box-imagem">';
                                                     echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
                                                     echo '</div>';
                                                     echo '</a>';
-                                                    $first_image = false; // Agora a primeira imagem já foi exibida
+                                                    $first_image = false;
                                                 else:
-                                                    // Exibe as outras imagens na galeria, mas ocultas
                                                     echo '<a href="' . $url_imagem . '" data-fancybox="gallery-' . esc_attr($espaco_id) . '" data-caption="' . $alt_imagem . '" style="display:none;">';
                                                     echo '<img src="' . $url_imagem . '" alt="' . $alt_imagem . '">';
                                                     echo '</a>';
                                                 endif;
-
                                             endif;
                                         endwhile;
-
                                     endif;
 
                                     echo '<div class="card-rota-content">';
                                     echo '<h2 class="card-rota-title">' . esc_html($nome_do_espaco) . '</h2>';
-                                    echo '</div></div></div>'; // Fecha o card-rota e swiper-slide
-
+                                    echo '</div></div></div>'; // Close card-rota and swiper-slide
+                
                                 endwhile;
 
                             endif;
@@ -464,9 +556,7 @@ get_header();
                                 <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
                                 <path d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z" fill="#003B4B" />
                             </svg>';
-                            echo '</div></div>'; // Fecha swiper
-
-
+                            echo '</div></div>'; // Close swiper container
                         endwhile;
 
                     endif;
@@ -476,12 +566,10 @@ get_header();
         </div>
     <?php endif; ?>
 
-
-
     <?php
     $tituloExplore = get_field('titulo_explore_empreendimentos');
     ?>
-    <?php if ($tituloExplore) : ?>
+    <?php if ($tituloExplore): ?>
         <div class="explore-empreendimento">
             <div class="wrapper">
                 <h3 class="titulo-explore terminal-test"><?php echo $tituloExplore ?></h3>
@@ -517,10 +605,11 @@ get_header();
                 <div class="box-img-mobile">
                     <?php
                     $image = get_field('imagem_mobile_do_empreendimento');
-                    if ($image) :
+                    if ($image):
                         $image_url = $image['url'];
                         $image_alt = $image['alt']; ?>
-                        <img class="img-mobile-empreedimentos" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                        <img class="img-mobile-empreedimentos" src="<?php echo esc_url($image_url); ?>"
+                            alt="<?php echo esc_attr($image_alt); ?>">
                     <?php endif; ?>
                 </div>
             </div>
@@ -531,7 +620,7 @@ get_header();
     <?php
     $tituloTipologia = get_field('titulo_tipologias_do_empreendimento');
     ?>
-    <?php if ($tituloTipologia) : ?>
+    <?php if ($tituloTipologia): ?>
         <div class="tipologias-do-empreendimento" id="tipologias">
             <?php
 
@@ -573,7 +662,7 @@ get_header();
                     $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
                     $rooms = '';
                     if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
-                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) :
+                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
                             the_row();
                             $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
                             $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
@@ -652,7 +741,7 @@ get_header();
 
             // usar essa variável para renderizar as tipologias no frontend
             // var_dump($tipologiasDoEmpreendimento);
-
+        
             ?>
             <div class="wrapper">
                 <h3 class="titulo-tipologia-do-empreendimento">
@@ -664,7 +753,7 @@ get_header();
                             <?php foreach ($tipologiasDoEmpreendimento as $tipologia): ?>
                                 <?php
                                 // var_dump($tipologia);
-
+                        
                                 $statusMap = [
                                     'Em obra' => 'em_obra',
                                     'Lançamento' => 'lancamento',
@@ -684,7 +773,8 @@ get_header();
                                             <?php echo esc_html($tipologia['ultimas_unidades']) ?>
                                         </span>
                                         <div class="box-image-tipologia">
-                                            <img class="tipologia-photo" src="<?php echo esc_url($tipologia['photo']['url']); ?>"
+                                            <img class="tipologia-photo"
+                                                src="<?php echo esc_url($tipologia['photo']['url']); ?>"
                                                 alt="<?php echo esc_attr($tipologia['name']); ?>">
                                         </div>
                                         <h3 class="tipologia-name founders-grotesk"><?php echo esc_html($tipologia['name']); ?>
@@ -777,13 +867,13 @@ get_header();
     <?php
     $tituloDiferencias = get_field('titulo_diferencias');
     ?>
-    <?php if ($tituloDiferencias) : ?>
+    <?php if ($tituloDiferencias): ?>
         <div class="diferenciais" id="diferenciais">
             <div class="wrapper">
                 <h3 class="titulo-diferenciais terminal-test"><?php echo $tituloDiferencias ?></h3>
                 <div class="box-cards-diferenciais <?php if (have_rows('diferenciais') && count(get_field('diferenciais')) <= 3) {
-                                                        echo 'center-rows';
-                                                    } ?>">
+                    echo 'center-rows';
+                } ?>">
                     <?php
                     if (have_rows('diferenciais')):
                         while (have_rows('diferenciais')):
@@ -800,7 +890,7 @@ get_header();
                                 </div>
                                 <p class="text-repeater founders-grotesk"><?php echo get_sub_field('texto_do_diferencial'); ?></p>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
 
@@ -826,7 +916,7 @@ get_header();
                                             </p>
                                         </div>
                                     </div>
-                            <?php endwhile;
+                                <?php endwhile;
                             endif; ?>
 
                         </div>
@@ -844,7 +934,7 @@ get_header();
     <?php
     $tituloObra = get_field('titulo_status_de_obra');
     ?>
-    <?php if ($tituloObra) : ?>
+    <?php if ($tituloObra): ?>
         <div class="evolucao-obra">
             <div class="wrapper">
                 <h3 class="titulo-status-obra">
@@ -864,7 +954,7 @@ get_header();
                             <p class="porcentagem founders-grotesk"><?php echo get_sub_field('porcentagem_da_obra'); ?></p>
                             <p class="titulo-estagio founders-grotesk"><?php echo get_sub_field('titulo_estagio'); ?></p>
                         </div>
-                <?php endwhile;
+                    <?php endwhile;
                 endif; ?>
             </div>
             <div class="box-portal-cliente">
@@ -906,12 +996,12 @@ get_header();
     <?php
     $tituloInfoObra = get_field('titulo_informacoes_tecnicas_da_obra');
     ?>
-    <?php if ($tituloInfoObra) : ?>
+    <?php if ($tituloInfoObra): ?>
         <div class="informacoes-obra">
             <div class="wrapper">
                 <div class="box-infos-obra box-titulos">
                     <h3 class="titulo-infos-obra terminal-test">
-                        <?php echo $tituloInfoObra  ?>
+                        <?php echo $tituloInfoObra ?>
                     </h3>
                     <p class="descricao-infos-obra founders-grotesk">
                         <?php echo get_field('descricao_informacoes_tecnicas_da_obra'); ?>
@@ -933,10 +1023,10 @@ get_header();
                                         <p class="text-autor founders-grotesk">
                                             <?php echo get_sub_field('texto_autor_informacoes_tecnicas_da_obra'); ?>
                                         </p>
-                                <?php endwhile;
+                                    <?php endwhile;
                                 endif; ?>
                             </div>
-                    <?php endwhile;
+                        <?php endwhile;
                     endif; ?>
                 </div>
             </div>

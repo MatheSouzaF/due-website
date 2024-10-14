@@ -11,25 +11,59 @@ async function empreendimentoPage() {
   try {
     const empreendimentosData = EmpreendimentosData.empreendimentos;
 
+    const isMobile = isMobileDevice();
+    const itemsPerLoad = isMobile ? 4 : 12;
+    let currentItemsShown = itemsPerLoad;
+
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
       const $resultsText = $('.results-text');
-
+    
       updateResultsText($resultsText, empreendimentos.length);
       clearContainer($container);
-
+    
       if (empreendimentos.length === 0) {
         $('#no-empreendimentos-message').show();
         return;
       } else {
         $('#no-empreendimentos-message').hide();
       }
-
-      empreendimentos.forEach((empreendimento) => {
+    
+      // Limit the number of empreendimentos to show
+      const itemsToRender = empreendimentos.slice(0, currentItemsShown);
+    
+      itemsToRender.forEach((empreendimento) => {
         const cardTemplate = createEmpreendimentoCard(empreendimento);
         $container.append(cardTemplate);
       });
-    }
+    
+      // Remove any existing "Ver mais" button
+      $('.see-more-button').remove();
+    
+      // If there are more items to show, add a "Ver mais" button
+      if (currentItemsShown < empreendimentos.length) {
+        const $seemoreContainer = $('.see-more-container-button');
+
+        const $seeMoreButton = $('<button>', {
+          html: 'CARREGAR MAIS',
+          class: 'see-more-button button',
+        });
+        $seemoreContainer.append($seeMoreButton);
+    
+        $seeMoreButton.on('click', function () {
+          // Increase the number of items shown
+          currentItemsShown += itemsPerLoad;
+    
+          // Ensure we don't exceed the total number of items
+          if (currentItemsShown > empreendimentos.length) {
+            currentItemsShown = empreendimentos.length;
+          }
+    
+          // Re-render the empreendimentos
+          renderEmpreendimentos(empreendimentos);
+        });
+      }
+    }    
 
     function filterEmpreendimentos(empreendimentos) {
       const locationFilter = getFilterValue('#filter-location, #mobile-filter-location');
@@ -218,12 +252,12 @@ async function empreendimentoPage() {
         },
       ];
 
-      if(isMobileDevice()) {
+      if (isMobileDevice()) {
         filtersList.map((filter) => applyFilter(filter.filterName, filter.selectorMobile));
         filterAndRender();
         return;
       }
-      
+
       filtersList.map((filter) => applyFilter(filter.filterName, filter.selector));
       filterAndRender();
     }
@@ -288,9 +322,10 @@ async function empreendimentoPage() {
 
     function filterAndRender() {
       filteredEmpreendimentos = filterEmpreendimentos(empreendimentosData);
+      currentItemsShown = itemsPerLoad; // Reset the number of items shown
       renderEmpreendimentos(filteredEmpreendimentos);
       updateBadges();
-    }
+    }    
 
     function hideOptions(changedFilter) {
       const isOptionVisible = (value, key) => {

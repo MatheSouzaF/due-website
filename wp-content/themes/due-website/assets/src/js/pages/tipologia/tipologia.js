@@ -1,5 +1,5 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -8,25 +8,59 @@ function tipologiaPage() {
     // Tipologias passadas via wp_localize
     const tipologiasData = TipologiasData.tipologias;
 
+    const isMobile = isMobileDevice();
+    const itemsPerLoad = isMobile ? 5 : 16;
+    let currentItemsShown = itemsPerLoad;
+
     function renderTipologias(tipologias) {
       const $container = $('.cards-tipologia.cards');
       const $resultsText = $('.tipologia-results-text');
-
+    
       updateResultsText($resultsText, tipologias.length);
       clearContainer($container);
-
+    
       if (tipologias.length === 0) {
         $('#no-tipologias-message').show();
         return;
       } else {
         $('#no-tipologias-message').hide();
       }
-
-      tipologias.forEach((tipologia) => {
+    
+      // Limit the number of tipologias to show
+      const itemsToRender = tipologias.slice(0, currentItemsShown);
+    
+      itemsToRender.forEach((tipologia) => {
         const cardTemplate = createTipologiaCard(tipologia);
         $container.append(cardTemplate);
       });
-    }
+    
+      // Remove any existing "Ver mais" button
+      $('.see-more-tipo-button').remove();
+    
+      // If there are more items to show, add a "Ver mais" button
+      if (currentItemsShown < tipologias.length) {
+        const $seemoreContainer = $('.see-more-tipo-container-button');
+
+        const $seeMoreButton = $('<button>', {
+          html: 'CARREGAR MAIS',
+          class: 'see-more-tipo-button button',
+        });
+        $seemoreContainer.append($seeMoreButton);
+    
+        $seeMoreButton.on('click', function () {
+          // Increase the number of items shown by the same amount as initially shown
+          currentItemsShown += itemsPerLoad;
+    
+          // Ensure we don't exceed the total number of items
+          if (currentItemsShown > tipologias.length) {
+            currentItemsShown = tipologias.length;
+          }
+    
+          // Re-render the tipologias
+          renderTipologias(tipologias);
+        });
+      }
+    }    
 
     function updateResultsText($element, tipologiaCount) {
       const text =
@@ -196,15 +230,15 @@ function tipologiaPage() {
       const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
 
       const options = {
-        location: Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        status: Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        location: Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        status: Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         empreendimento: Array.from(empreendimentoOptions).map((empreendimento) => ({
           value: empreendimento,
           label: empreendimento,
         })),
-        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({value: diferencial, label: diferencial})),
+        diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         rooms: [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -417,9 +451,8 @@ function tipologiaPage() {
         params.set('tipologia', 'true');
       }
 
-      const newUrl = `${window.location.pathname}${window.location.hash}${
-        params.toString().length ? '?' : ''
-      }${params.toString()}`;
+      const newUrl = `${window.location.pathname}${window.location.hash}${params.toString().length ? '?' : ''
+        }${params.toString()}`;
       window.history.pushState({}, '', newUrl);
     }
 
@@ -480,8 +513,8 @@ function tipologiaPage() {
           selectorMobile: '#mobile-tipologia-filter-location',
         },
         {
-          filterName: statusFilter, 
-          selector: '#tipologia-filter-status', 
+          filterName: statusFilter,
+          selector: '#tipologia-filter-status',
           selectorMobile: '#mobile-tipologia-filter-status'
         },
         {
@@ -495,18 +528,18 @@ function tipologiaPage() {
           selectorMobile: '#mobile-tipologia-filter-diferenciais',
         },
         {
-          filterName: roomsFilter, 
-          selector: '#tipologia-filter-rooms', 
+          filterName: roomsFilter,
+          selector: '#tipologia-filter-rooms',
           selectorMobile: '#mobile-tipologia-filter-rooms'
         },
       ];
 
-      if(isMobileDevice()) {
+      if (isMobileDevice()) {
         filtersList.map((filter) => applyFilter(filter.filterName, filter.selectorMobile));
         filterAndRender();
         return;
       }
-      
+
       filtersList.map((filter) => applyFilter(filter.filterName, filter.selector));
       filterAndRender();
 
@@ -517,9 +550,10 @@ function tipologiaPage() {
 
     function filterAndRender() {
       filteredTipologias = filterTipologias(tipologiasData);
+      currentItemsShown = itemsPerLoad; // Reset the number of items shown
       renderTipologias(filteredTipologias);
       updateBadges();
-    }
+    }    
 
     renderTipologias(tipologiasData);
 
@@ -599,7 +633,7 @@ function tipologiaPage() {
           return $(this).val();
         })
         .get();
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
     });
 
     filters['status'].find('input.ckkBox').on('change', function () {
@@ -740,4 +774,4 @@ function initTipologia() {
   cardHover();
 }
 
-export {initTipologia};
+export { initTipologia };

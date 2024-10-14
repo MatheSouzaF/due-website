@@ -198,6 +198,9 @@
   <section class="cards-tipologia cards">
     <!-- Template do card de tipologia -->
   </section>
+
+  <div class="see-more-tipo-container-button"></div>
+
   <template id="tipologia-template">
     <div class="card-tipologias">
       <a class="box-card" href="#" target="_self">

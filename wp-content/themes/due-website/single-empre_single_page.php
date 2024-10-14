@@ -240,24 +240,19 @@ get_header();
                         <?php
                         if (have_rows('galeria_empreendimento')):
                             $counter = 1; // Iniciar o contador
-                            while (have_rows('galeria_empreendimento')):
-                                the_row();
-                                if ($counter % 2 != 0): // Se o contador for ímpar
+                            while (have_rows('galeria_empreendimento')) : the_row();
+                                if ($counter % 2 != 0): // Se o contador for ímpar (coluna esquerda)
                                     if (get_row_layout() == 'video_galeria'):
                                         $image = get_sub_field('imagem_background_video');
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                            ?>
+                                            $video_url = get_sub_field('video');
+                        ?>
                                             <!-- Link para o vídeo no Fancybox -->
-                                            <a class="box-video"
-                                                style="height: <?php echo get_sub_field('altura_da_video_empreendimentos'); ?>;"
-                                                href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
-                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60"
-                                                    viewBox="0 0 60 60" fill="none">
-                                                    <path
-                                                        d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z"
-                                                        stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <a class="box-video" style="height: <?php echo get_sub_field('altura_da_video_empreendimentos'); ?>;" href="<?php echo esc_url($video_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                                    <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
                                                     alt="<?php echo esc_attr($image_alt); ?>">
@@ -271,11 +266,8 @@ get_header();
                                             $image_alt = $image['alt'];
                                             ?>
                                             <!-- Link para a imagem no Fancybox -->
-                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;"
-                                                href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery"
-                                                data-caption="<?php echo esc_attr($image_alt); ?>">
-                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
-                                                    alt="<?php echo esc_attr($image_alt); ?>">
+                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
                                     <?php endif;
@@ -290,21 +282,19 @@ get_header();
                         <?php
                         if (have_rows('galeria_empreendimento')):
                             $counter = 1; // Iniciar o contador
-                            while (have_rows('galeria_empreendimento')):
-                                the_row();
-                                if ($counter % 2 == 0): // Se o contador for par
+                            while (have_rows('galeria_empreendimento')) : the_row();
+                                if ($counter % 2 == 0): // Se o contador for par (coluna direita)
                                     if (get_row_layout() == 'video_galeria'):
                                         $image = get_sub_field('imagem_background_video');
                                         if ($image):
                                             $image_url = $image['url'];
-                                            $image_alt = $image['alt']; ?>
+                                            $image_alt = $image['alt'];
+                                            $video_url = get_sub_field('video');
+                        ?>
                                             <!-- Link para o vídeo no Fancybox -->
-                                            <a class="box-video" href="<?php echo esc_url(get_sub_field('video')); ?>" data-fancybox="gallery">
-                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60"
-                                                    viewBox="0 0 60 60" fill="none">
-                                                    <path
-                                                        d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z"
-                                                        stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <a class="box-video" style="height: <?php echo get_sub_field('altura_da_video_empreendimentos'); ?>;" href="<?php echo esc_url($video_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <svg class="shape-video" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                                    <path d="M7.5 11.0801C7.5 8.36018 10.4137 6.63799 12.7968 7.94711L49.4649 28.1145C50.0261 28.4229 50.4942 28.8763 50.8203 29.4274C51.1463 29.9786 51.3183 30.6072 51.3183 31.2475C51.3183 31.8879 51.1463 32.5165 50.8203 33.0676C50.4942 33.6187 50.0261 34.0722 49.4649 34.3805L12.7968 54.5479C12.2525 54.8472 11.6396 54.9994 11.0184 54.9897C10.3973 54.9799 9.78948 54.8085 9.25482 54.4922C8.72015 54.176 8.27713 53.7258 7.96941 53.1862C7.66169 52.6466 7.49991 52.0361 7.5 51.4149V11.0801Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
                                                 <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
                                                     alt="<?php echo esc_attr($image_alt); ?>">
@@ -318,11 +308,8 @@ get_header();
                                             $image_alt = $image['alt'];
                                             ?>
                                             <!-- Link para a imagem no Fancybox -->
-                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;"
-                                                href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery"
-                                                data-caption="<?php echo esc_attr($image_alt); ?>">
-                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>"
-                                                    alt="<?php echo esc_attr($image_alt); ?>">
+                                            <a class="img" style="height: <?php echo get_sub_field('altura_da_imagem'); ?>;" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery-<?php echo $counter; ?>" data-caption="<?php echo esc_attr($image_alt); ?>">
+                                                <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                             </a>
                                         <?php endif; ?>
                                     <?php endif;
@@ -332,9 +319,8 @@ get_header();
                         endif;
                         ?>
                     </div>
-
-
                 </div>
+
 
                 <div class="boxs-container-galeria imagens-galeria-mobile">
                     <div class="swiper-container swiper-galeria">
@@ -556,6 +542,7 @@ get_header();
                                     echo '</div></div></div>'; // Close card-rota and swiper-slide
                 
                                 endwhile;
+
                             endif;
 
                             echo '</div>'; // Fecha swiper-wrapper
@@ -571,6 +558,7 @@ get_header();
                             </svg>';
                             echo '</div></div>'; // Close swiper container
                         endwhile;
+
                     endif;
                     ?>
                 </div>

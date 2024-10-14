@@ -217,7 +217,9 @@ body.single-tipo_single_page {
       &.container-imagem {
         @include media-breakpoint-up(md) {
           height: 80vh;
+          position: relative;
         }
+
         img {
           height: 100%;
           width: 100%;
@@ -226,6 +228,33 @@ body.single-tipo_single_page {
           max-height: 430px;
           @include media-breakpoint-up(md) {
             max-height: initial;
+          }
+        }
+        .box-texto-imagem-banner {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          .titulo-imagem {
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%; /* 12px */
+            letter-spacing: 0.48px;
+            text-transform: uppercase;
+            color: #FFF;
+          }
+          .descricao-imagem {
+            color: #FFF;
+
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 100%; /* 12px */
+            letter-spacing: 0.48px;
+            text-transform: uppercase;
           }
         }
       }

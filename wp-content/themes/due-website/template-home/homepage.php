@@ -253,7 +253,7 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
             </button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>
@@ -271,7 +271,7 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-quartos"><?php echo get_field('titulo_quartos'); ?></p>
             </button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>

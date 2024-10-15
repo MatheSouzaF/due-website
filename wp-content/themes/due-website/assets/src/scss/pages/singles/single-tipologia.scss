@@ -182,7 +182,7 @@ body.single-tipo_single_page {
           .row-diferencias {
             display: flex;
             flex-direction: row;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             width: 100%;
             @include media-breakpoint-up(md) {

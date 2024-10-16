@@ -108,14 +108,14 @@ function setupPlantSliders() {
 }
 
 // Inicializa o Visualizador de Panorama
-function initializePanoramaViewer() {
-  const imagePath = image.url; // Certifique-se de que 'image' está definido no escopo
+// function initializePanoramaViewer() {
+//   const imagePath = image.url;
 
-  new Viewer({
-    container: 'viewer',
-    panorama: imagePath,
-  });
-}
+//   new Viewer({
+//     container: 'viewer',
+//     panorama: imagePath,
+//   });
+// }
 
 // Configura o Scroll para o Footer
 function setupFooterScroll() {
@@ -154,7 +154,7 @@ function initSingleTipologia() {
   initializeTipologiasSwiper();
   initializeGaleriaSwiper();
   setupPlantSliders();
-  initializePanoramaViewer();
+  // initializePanoramaViewer();
   setupFixedButtonsAnimation();
 }
 

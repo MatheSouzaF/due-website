@@ -966,7 +966,7 @@ get_header();
                     $link_url = $link['url'];
                     $link_title = $link['title'];
                     $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                    <a class="button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <a class="button gtm-portal-do-cliente" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                         <p class=""><?php echo esc_html($link_title); ?></p>
                         <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_3369_6909)">

@@ -69,8 +69,8 @@ class EmpreendimentoController
             'posts_per_page' => -1, // Obtém todos os posts
             'post_status' => 'publish', // Apenas posts publicados
             'suppress_filters' => false,
-            'orderby'        => 'date', // Order by publication date
-            'order'          => $order, // Newest first
+            'orderby' => 'date', // Order by publication date
+            'order' => $order, // Newest first
         );
 
         if ($lang) {
@@ -173,6 +173,58 @@ class EmpreendimentoController
         }
 
         return $project; // Retorna o projeto encontrado
+    }
+
+    public function getProjectByName($projectName)
+    {
+        $args = array(
+            'post_type' => 'empreendimentos',
+            'meta_query' => array(
+                array(
+                    'key' => 'empreendimento_nome',
+                    'value' => $projectName,
+                    'compare' => '='
+                )
+            ),
+            'post_status' => 'publish' // Only published posts
+        );
+
+        $query = new WP_Query($args);
+
+        $project = null; // Variable to store the found project
+
+        if ($query->have_posts()) {
+            while ($query->have_posts()) {
+                $query->the_post();
+                $projectId = get_the_ID();
+
+                $name = get_field('empreendimento_nome', $projectId);
+                $location = get_field('localizacao_emprendimento', $projectId);
+                $isStudio = get_field('e_um_studio', $projectId);
+                $rooms = get_field('quantidade_de_quartos', $projectId);
+                $size = get_field('metragem', $projectId);
+                $status = get_field('estagio_da_obra', $projectId);
+                $offer = get_field('oferta', $projectId);
+                $photo = get_field('foto_empreendimento', $projectId);
+                $video = get_field('video_empreendimento', $projectId);
+
+                $project = array(
+                    'ID' => $projectId,
+                    'name' => $name,
+                    'location' => $location,
+                    'isStudio' => $isStudio,
+                    'rooms' => $rooms,
+                    'size' => $size,
+                    'status' => $status,
+                    'offer' => $offer,
+                    'photo' => $photo,
+                    'video' => $video
+                );
+            }
+            wp_reset_postdata(); // Reset global post data
+        }
+
+        return $project; // Return the found project
     }
 
     /**

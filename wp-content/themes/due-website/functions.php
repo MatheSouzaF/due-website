@@ -33,6 +33,9 @@ include('configure/shortcodes.php');
 // ACF
 include('configure/acf.php');
 
+// SITEMAP
+include('configure/create-sitemap.php');
+
 // HOOKS ADMIN
 if (is_admin()) {
 	include('configure/admin.php');

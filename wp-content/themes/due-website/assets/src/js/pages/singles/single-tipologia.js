@@ -96,7 +96,7 @@ function setupPlantSliders() {
 
     if (!sliderNav.hasClass('slick-initialized')) {
       sliderNav.slick({
-        slidesToShow: 3,
+        slidesToShow: 'auto',
         slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: true,

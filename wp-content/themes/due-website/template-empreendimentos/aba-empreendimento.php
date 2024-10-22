@@ -199,7 +199,7 @@
         <p class="entradas founders-grotesk"></p>
         <p class="valor founders-grotesk"></p>
       </div>
-      <a class="fale-com-time" href="<?php echo get_field('contato_comercial',); ?>">
+      <a class="fale-com-time" href="<?php echo get_field('contato_comercial','options'); ?>">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <circle cx="10" cy="10" r="5" fill="#8AC550" />
           <circle cx="10" cy="10" r="9.5" stroke="#89C550" />

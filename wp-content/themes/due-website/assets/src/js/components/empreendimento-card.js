@@ -83,7 +83,7 @@ function updateMedia(cardTemplate, photo, video) {
 export function createEmpreendimentoCard(empreendimento) {
   const template = document.getElementById('empreendimento-template');
   const cardTemplate = template.content.cloneNode(true);
-  const $boxCard = $(cardTemplate).find('.box-card');
+  const $boxCard = $(cardTemplate).find('.card-empreendimentos');
   $boxCard.attr('href', empreendimento.link);
 
   addStatusClass($boxCard, empreendimento.status);

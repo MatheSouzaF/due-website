@@ -2,7 +2,7 @@
 @import '../../global/colors';
 .footer {
   background-color: $due-primary;
-  padding: 80px 0 27px;
+  padding: 80px 0 14px;
   position: relative;
   overflow: hidden;
 
@@ -33,7 +33,7 @@
     letter-spacing: 0.96px;
     color: $grey-0;
     font-size: 24px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     display: none;
     @include media-breakpoint-up(md) {
       display: block;
@@ -50,7 +50,7 @@
       gap: 20px;
     }
     @media (max-height: 746px) {
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
     .box-left-footer {
       .box-conteudo-footer {

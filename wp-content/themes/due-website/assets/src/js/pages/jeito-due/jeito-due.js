@@ -247,15 +247,39 @@ function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
-    opacity: 0,
-    zIndex: -1,
-    duration: 0.5,
-    ease: 'power1.out',
     scrollTrigger: {
-      trigger: '.big-numeros',
-      start: 'center center',
-      end: 'bottom center',
-      toggleActions: 'play none none reverse',
+      trigger: document.body,
+      start: 'top+=200px top',
+      end: 'top top',
+      toggleActions: 'play none reverse none',
+      markers: false,
+    },
+    opacity: 1,
+    zIndex: 9,
+    duration: 0.5,
+    ease: 'power1.inOut',
+  });
+
+  ScrollTrigger.create({
+    trigger: '.big-numeros',
+    start: 'top top',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 0,
+        zIndex: -1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 1,
+        zIndex: 9,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
     },
   });
 }

@@ -1,5 +1,5 @@
-import { renderFiltersHome } from "../../components/filter-home";
-import { getFilterLabel } from "../../utils/get-filter-label";
+import {renderFiltersHome} from '../../components/filter-home';
+import {getFilterLabel} from '../../utils/get-filter-label';
 
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
@@ -165,15 +165,39 @@ function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
-    opacity: 0,
-    zIndex: -1,
-    duration: 0.5,
-    ease: 'power1.out',
     scrollTrigger: {
-      trigger: '.invista',
-      start: 'center center',
-      end: 'bottom center',
-      toggleActions: 'play none none reverse',
+      trigger: document.body,
+      start: 'top+=200px top',
+      end: 'top top',
+      toggleActions: 'play none reverse none',
+      markers: false,
+    },
+    opacity: 1,
+    zIndex: 9,
+    duration: 0.5,
+    ease: 'power1.inOut',
+  });
+
+  ScrollTrigger.create({
+    trigger: '.invista',
+    start: 'top top',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 0,
+        zIndex: -1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 1,
+        zIndex: 9,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
     },
   });
 }
@@ -188,7 +212,7 @@ function checkbox() {
 
 function loadSearchBox() {
   const tipologiasData = TipologiasDataHome.tipologias;
-  console.log("🚀 ~ TipologiasDataHome:", TipologiasDataHome)
+  console.log('🚀 ~ TipologiasDataHome:', TipologiasDataHome);
 
   function populateFilterOptions() {
     const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
@@ -257,15 +281,17 @@ function loadSearchBox() {
     let hasFilters = false;
 
     if (locationFilter) {
-      const formattedLocation = locationFilter
-        .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+      const formattedLocation = locationFilter.map((value) =>
+        encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, ''))
+      );
       params.set('tipo-localizacao', getUniqueValues(formattedLocation).join(','));
       hasFilters = true;
     }
 
     if (roomsFilter) {
-      const formattedRooms = roomsFilter
-        .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+      const formattedRooms = roomsFilter.map((value) =>
+        encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, ''))
+      );
       params.set('tipo-qtos', getUniqueValues(formattedRooms).join(','));
       hasFilters = true;
     }
@@ -275,10 +301,10 @@ function loadSearchBox() {
     }
 
     const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''}`;
-    
+
     $('#busca-banner').attr('href', newUrl);
-    
-    console.log("URL Filtrada:", newUrl);
+
+    console.log('URL Filtrada:', newUrl);
   }
 
   let filteredTipologias = [];
@@ -363,7 +389,7 @@ function initPage() {
   wordAnimation();
   btnFixed();
   checkbox();
-  loadSearchBox()
+  loadSearchBox();
 }
 
 export {initPage};

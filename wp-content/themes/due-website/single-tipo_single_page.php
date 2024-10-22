@@ -2,6 +2,10 @@
 wp_enqueue_style('single-tipologia', get_template_directory_uri() . '/assets/dist/css/singles/single-tipologia.css', ['main'], ASSETS_VERSION);
 get_header();
 
+$empreendimentosController = new EmpreendimentoController();
+$empreendimento_id = get_field('empreendimento_tipologia');
+$empreendimento = $empreendimentosController->getProjectByID($empreendimento_id);
+$empreendimentoName = $empreendimento['name'];
 ?>
 <section class="single-tipologia">
 
@@ -10,7 +14,7 @@ get_header();
         <div class="box-container-tipologias-hero container-texto">
             <div class="localizacao-tipologia">
                 <p class="titulo-tipologia terminal-test">
-                    <?php echo get_field('nome_do_empreendimento_que_pertence'); ?></p>
+                    <?php echo $empreendimentoName ?></p>
                 <span>|</span>
                 <p class="localizacao terminal-test"><?php echo get_field('localizacao_tipologia_single'); ?></p>
             </div>
@@ -426,7 +430,6 @@ get_header();
 
             // Executa a consulta
             $query = new WP_Query($args);
-            $empreendimentoName = get_field('nome_do_empreendimento_que_pertence');
 
             if ($query->have_posts()) {
                 while ($query->have_posts()) {

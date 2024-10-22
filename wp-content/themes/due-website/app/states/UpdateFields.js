@@ -63,7 +63,7 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    var tipologias = response.data;
+                    var tipologias = response.data.tipologias;
 
                     selectField.empty();
                     selectField.append($('<option>', {
@@ -78,6 +78,9 @@ jQuery(document).ready(function ($) {
                             text: tipologia.name
                         }));
                     });
+
+                    //Localização
+                    $('input[name="acf[field_66c23c09e1422]"]').val(response.data.location);
                 } else {
                     selectField.empty();
                     selectField.append($('<option>', {
@@ -116,9 +119,6 @@ jQuery(document).ready(function ($) {
 
                     //Empreendimento
                     $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);
-
-                    //Localização
-                    $('input[name="acf[field_66c23c09e1422]"]').val(response.data.location);
 
                     // Quantidade de quartos
                     $('input[name="acf[field_66c23c37e1424]"]').val(minRooms + ' a ' + maxRooms + ' qtos');

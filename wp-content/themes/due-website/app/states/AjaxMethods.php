@@ -1,52 +1,61 @@
-<?php 
-function ajax_get_project_by_id() {
-  if (isset($_POST['project_id'])) {
-      $projectId = intval($_POST['project_id']);
+<?php
+function ajax_get_project_by_id()
+{
+    if (isset($_POST['project_id'])) {
+        $projectId = intval($_POST['project_id']);
 
-      $project = new EmpreendimentoController();
-      
-      $project = $project->getProjectByID($projectId);
+        $project = new EmpreendimentoController();
 
-      if ($project) {
-          wp_send_json_success($project);
-      } else {
-          wp_send_json_error('Projeto não encontrado');
-      }
-  } else {
-      wp_send_json_error('ID do projeto não fornecido');
-  }
-  wp_die();
+        $project = $project->getProjectByID($projectId);
+
+        if ($project) {
+            wp_send_json_success($project);
+        } else {
+            wp_send_json_error('Projeto não encontrado');
+        }
+    } else {
+        wp_send_json_error('ID do projeto não fornecido');
+    }
+    wp_die();
 }
 
-function ajax_get_tipologia_by_id() {
-  if (isset($_POST['tipologia_id'])) {
-      $tipologiaId = intval($_POST['tipologia_id']);
+function ajax_get_tipologia_by_id()
+{
+    if (isset($_POST['tipologia_id'])) {
+        $tipologiaId = intval($_POST['tipologia_id']);
 
-      $tipologia = new TipologiaController();
-      
-      $tipologia = $tipologia->getTipologiaByID($tipologiaId);
+        $tipologia = new TipologiaController();
 
-      if ($tipologia) {
-          wp_send_json_success($tipologia);
-      } else {
-          wp_send_json_error('Projeto não encontrado');
-      }
-  } else {
-      wp_send_json_error('ID do projeto não fornecido');
-  }
-  wp_die();
+        $tipologia = $tipologia->getTipologiaByID($tipologiaId);
+
+        if ($tipologia) {
+            wp_send_json_success($tipologia);
+        } else {
+            wp_send_json_error('Projeto não encontrado');
+        }
+    } else {
+        wp_send_json_error('ID do projeto não fornecido');
+    }
+    wp_die();
 }
 
-function ajax_get_tipologias_by_empreendimento() {
+function ajax_get_tipologias_by_empreendimento()
+{
     if (isset($_POST['empreendimento_name'])) {
         $empreendimentoName = $_POST['empreendimento_name'];
 
         $tipologiaController = new TipologiaController();
-        
         $tipologias = $tipologiaController->getTipologiasByEmpreendimentoID($empreendimentoName);
 
+        $empreendimentosController = new EmpreendimentoController();
+        $empreendimento = $empreendimentosController->getProjectByName($empreendimentoName);
+
         if ($tipologias) {
-            wp_send_json_success($tipologias);
+            $response = array(
+                'tipologias' => $tipologias,
+                'location' => $empreendimento['location']
+            );
+            wp_send_json_success($response);
         } else {
             wp_send_json_error('Nenhuma tipologia encontrada para esse empreendimento');
         }

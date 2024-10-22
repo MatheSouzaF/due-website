@@ -37,14 +37,14 @@ get_header();
                                             if ($image):
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
-                                                ?>
+                                            ?>
                                                 <div class="box-imagem-hero">
                                                     <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>"
                                                         alt="<?php echo esc_attr($image_alt); ?>">
                                                     <?php if ($imageMobile):
                                                         $image_mobile_url = $imageMobile['url'];
                                                         $image_mobile_alt = $imageMobile['alt'];
-                                                        ?>
+                                                    ?>
                                                         <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>"
                                                             alt="<?php echo esc_attr($image_mobile_alt); ?>">
                                                     <?php endif; ?>
@@ -76,7 +76,7 @@ get_header();
                                                 <p class="subtitulo-banner-hero word">
                                                     <?php echo get_sub_field('subtitulo_banner_hero'); ?>
                                                 </p>
-                                            <?php endwhile;
+                                        <?php endwhile;
                                         endif; ?>
                                     </div>
 
@@ -123,7 +123,7 @@ get_header();
 
                         </div>
                     </div>
-                <?php endwhile;
+            <?php endwhile;
             endif; ?>
         </div>
 
@@ -376,7 +376,7 @@ get_header();
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                            ?>
+                                        ?>
                                             <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                                 alt="<?php echo esc_attr($image_alt); ?>">
                                         <?php endif; ?>
@@ -431,7 +431,7 @@ get_header();
                                                             <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                         </p>
                                                     </div>
-                                                <?php endwhile;
+                                            <?php endwhile;
                                             endif; ?>
                                         </div>
                                     </div>
@@ -472,7 +472,7 @@ get_header();
                     if ($count >= 3)
                         break; // Limita a 3 itens
                     $count++; // Incrementa a contagem
-                    ?>
+            ?>
                     <div class="card-empreendimentos-mobile swiper-slide">
                         <?php
                         $link = get_sub_field('link_empreendimento');
@@ -488,7 +488,7 @@ get_header();
                                     if ($image):
                                         $image_url = $image['url'];
                                         $image_alt = $image['alt'];
-                                        ?>
+                                    ?>
                                         <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                             alt="<?php echo esc_attr($image_alt); ?>">
                                     <?php endif; ?>
@@ -532,14 +532,14 @@ get_header();
                                                         <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                     </p>
                                                 </div>
-                                            <?php endwhile;
+                                        <?php endwhile;
                                         endif; ?>
                                     </div>
                                 </div>
                             </a>
                         <?php endif; ?>
                     </div>
-                <?php endwhile;
+            <?php endwhile;
             endif; ?>
         </div>
         <?php
@@ -560,6 +560,7 @@ get_header();
     </div>
 
 </section>
+
 
 <section class="nosso-proposito">
     <svg class="shape-due" xmlns="http://www.w3.org/2000/svg" width="473" height="626" viewBox="0 0 473 626"
@@ -646,7 +647,7 @@ get_header();
                 $total_comentarios = count(get_field('comentarios_encante-se'));
 
                 $extra_class = ($total_comentarios > 4) ? 'more-space' : '';
-                ?>
+            ?>
 
                 <div class="box-conteudo-right <?php echo $extra_class; ?>">
                     <div class="svg-caribe">
@@ -706,7 +707,7 @@ get_header();
                 el: '.swiper-pagination',
                 clickable: true,
                 type: 'bullets',
-                renderBullet: function (index, className) {
+                renderBullet: function(index, className) {
                     return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
                 },
             },
@@ -717,7 +718,7 @@ get_header();
         });
 
         function modalBanner() {
-            $('.js-modal-open-banner').on('click', function (e) {
+            $('.js-modal-open-banner').on('click', function(e) {
                 e.preventDefault();
                 var msrc = $(this).data('src');
                 $('.js-modal').find('.video-container').html(msrc);
@@ -732,13 +733,13 @@ get_header();
                 mySwiper.autoplay.stop();
             });
 
-            $('.js-modal-close, .js-modal-close-btn').on('click', function (e) {
+            $('.js-modal-close, .js-modal-close-btn').on('click', function(e) {
                 e.preventDefault();
-                $('.js-modal').fadeOut(function () {
+                $('.js-modal').fadeOut(function() {
                     $('.js-modal').find('.video-container').html('');
 
                     // Retoma o Swiper quando o modal é fechado
-                    setTimeout(function () {
+                    setTimeout(function() {
                         mySwiper.autoplay.start();
                     }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
                     $('header').removeClass('modal-active-video');
@@ -761,7 +762,7 @@ get_header();
         autoplay: true,
         loop: false,
     });
-    lottieAnimation.addEventListener('complete', function () {
+    lottieAnimation.addEventListener('complete', function() {
         // Iniciar o GSAP Timeline após o Lottie terminar
         gsap.timeline()
         gsap.to(".logo", {
@@ -772,7 +773,7 @@ get_header();
         gsap.to("#dotLottie-canvas", {
             opacity: 0,
             duration: 1,
-            onComplete: function () {
+            onComplete: function() {
                 swiperBanner();
             }
         });

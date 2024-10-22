@@ -156,7 +156,7 @@ body.page-template-homepage {
                   width: 100%;
                   z-index: 1;
                   border-radius: 860px;
-                  background: rgba(0, 0, 0, 1);
+                  background: rgba(0, 0, 0, .8);
                   filter: blur(200px);
                   top: 50%;
                   left: 5%;
@@ -333,7 +333,7 @@ body.page-template-homepage {
       }
 
       .swiper-pagination {
-        bottom: 48px;
+        bottom: 120px;
         right: 0;
         z-index: 2;
         left: 50%;
@@ -1176,8 +1176,8 @@ body.page-template-homepage {
     .shape-due {
       position: absolute;
       right: 0;
-      top: -120px;
-
+      top: -60px;
+      height: 600px;
       @include media-breakpoint-down(md) {
         display: none;
       }

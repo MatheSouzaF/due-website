@@ -1,9 +1,9 @@
-import { renderFilters } from '../../components/filter';
-import { initBanner } from '../../components/banner';
-import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
-import { generateBadge } from '../../components/badge';
-import { getFilterValue } from '../../utils/get-filter-value';
-import { getFilterLabel } from '../../utils/get-filter-label';
+import {renderFilters} from '../../components/filter';
+import {initBanner} from '../../components/banner';
+import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
+import {generateBadge} from '../../components/badge';
+import {getFilterValue} from '../../utils/get-filter-value';
+import {getFilterLabel} from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -18,28 +18,28 @@ async function empreendimentoPage() {
     function renderEmpreendimentos(empreendimentos) {
       const $container = $('.empreendimentos.cards');
       const $resultsText = $('.results-text');
-    
+
       updateResultsText($resultsText, empreendimentos.length);
       clearContainer($container);
-    
+
       if (empreendimentos.length === 0) {
         $('#no-empreendimentos-message').show();
         return;
       } else {
         $('#no-empreendimentos-message').hide();
       }
-    
+
       // Limit the number of empreendimentos to show
       const itemsToRender = empreendimentos.slice(0, currentItemsShown);
-    
+
       itemsToRender.forEach((empreendimento) => {
         const cardTemplate = createEmpreendimentoCard(empreendimento);
         $container.append(cardTemplate);
       });
-    
+
       // Remove any existing "Ver mais" button
       $('.see-more-button').remove();
-    
+
       // If there are more items to show, add a "Ver mais" button
       if (currentItemsShown < empreendimentos.length) {
         const $seemoreContainer = $('.see-more-container-button');
@@ -49,21 +49,21 @@ async function empreendimentoPage() {
           class: 'see-more-button button',
         });
         $seemoreContainer.append($seeMoreButton);
-    
+
         $seeMoreButton.on('click', function () {
           // Increase the number of items shown
           currentItemsShown += itemsPerLoad;
-    
+
           // Ensure we don't exceed the total number of items
           if (currentItemsShown > empreendimentos.length) {
             currentItemsShown = empreendimentos.length;
           }
-    
+
           // Re-render the empreendimentos
           renderEmpreendimentos(empreendimentos);
         });
       }
-    }    
+    }
 
     function filterEmpreendimentos(empreendimentos) {
       const locationFilter = getFilterValue('#filter-location, #mobile-filter-location');
@@ -164,20 +164,23 @@ async function empreendimentoPage() {
       params.delete('qtos');
 
       if (locationFilter && locationFilter.length > 0) {
-        const formattedLocation = locationFilter
-          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+        const formattedLocation = locationFilter.map((value) =>
+          encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, ''))
+        );
         params.set('localizacao', getUniqueValues(formattedLocation).join(','));
       }
 
       if (statusFilter && statusFilter.length > 0) {
-        const formattedStatus = statusFilter
-          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+        const formattedStatus = statusFilter.map((value) =>
+          encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, ''))
+        );
         params.set('estagio', getUniqueValues(formattedStatus).join(','));
       }
 
       if (roomsFilter && roomsFilter.length > 0) {
-        const formattedRooms = roomsFilter
-          .map((value) => encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, '')))
+        const formattedRooms = roomsFilter.map((value) =>
+          encodeURIComponent(removeAccents(value).replace(/ /g, '_').replace(/%/g, ''))
+        );
         params.set('qtos', getUniqueValues(formattedRooms).join(','));
       }
 
@@ -295,10 +298,10 @@ async function empreendimentoPage() {
       const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
-        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
+        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
+        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
         'filter-rooms': [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -325,7 +328,7 @@ async function empreendimentoPage() {
       currentItemsShown = itemsPerLoad; // Reset the number of items shown
       renderEmpreendimentos(filteredEmpreendimentos);
       updateBadges();
-    }    
+    }
 
     function hideOptions(changedFilter) {
       const isOptionVisible = (value, key) => {
@@ -404,11 +407,11 @@ async function empreendimentoPage() {
         })
         .get();
 
-      initBanner({ location: selectedLocations });
+      initBanner({location: selectedLocations});
       hideOptions('filter-location');
     });
 
-    initBanner({ location: 'Rota DUE' });
+    initBanner({location: 'Rota DUE'});
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -555,15 +558,39 @@ function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
-    opacity: 0,
-    zIndex: -1,
-    duration: 0.5,
-    ease: 'power1.out',
     scrollTrigger: {
-      trigger: '.invista',
-      start: 'center center',
-      end: 'bottom center',
-      toggleActions: 'play none none reverse',
+      trigger: document.body,
+      start: 'top+=200px top',
+      end: 'top top',
+      toggleActions: 'play none reverse none',
+      markers: false,
+    },
+    opacity: 1,
+    zIndex: 9,
+    duration: 0.5,
+    ease: 'power1.inOut',
+  });
+
+  ScrollTrigger.create({
+    trigger: '.invista',
+    start: 'top top',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 0,
+        zIndex: -1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 1,
+        zIndex: 9,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
     },
   });
 }
@@ -574,4 +601,4 @@ async function initEmpreendimento() {
   btnFixed();
 }
 
-export { initEmpreendimento };
+export {initEmpreendimento};

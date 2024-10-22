@@ -171,7 +171,6 @@ body.drawer-open .drawer-overlay {
       flex-direction: row-reverse;
       align-items: flex-start;
       justify-content: space-between;
-     
     }
 
     /* Filter Button */
@@ -208,42 +207,44 @@ body.drawer-open .drawer-overlay {
     .card-empreendimentos {
       padding: 0;
 
+      &.lancamento {
+        .label-informativo {
+          background-color: #cb9e6c;
+        }
+      }
+
+      &.em_obra {
+        .label-informativo {
+          background-color: #003b4b;
+        }
+      }
+
+      &.ultimas_unidades {
+        .label-informativo {
+          background-color: #861d1d;
+        }
+      }
+
+      &.vendido {
+        .fale-com-time {
+          display: none;
+        }
+        .label-informativo {
+          background-color: #e9e3dd;
+          color: $due-tertiary !important;
+        }
+
+        .imagem-empreendimento {
+          filter: grayscale(1);
+        }
+      }
+
+      &.pronto {
+        .label-informativo {
+          background-color: #0a6361;
+        }
+      }
       .box-card {
-        &.lancamento {
-          .label-informativo {
-            background-color: #cb9e6c;
-          }
-        }
-
-        &.em_obra {
-          .label-informativo {
-            background-color: #003b4b;
-          }
-        }
-
-        &.ultimas_unidades {
-          .label-informativo {
-            background-color: #861d1d;
-          }
-        }
-
-        &.vendido {
-          .label-informativo {
-            background-color: #e9e3dd;
-            color: $due-tertiary !important;
-          }
-
-          .imagem-empreendimento {
-            filter: grayscale(1);
-          }
-        }
-
-        &.pronto {
-          .label-informativo {
-            background-color: #0a6361;
-          }
-        }
-
         .box-label {
           position: absolute;
           width: 100%;
@@ -786,7 +787,7 @@ body.drawer-open .drawer-overlay {
           padding: 48px 40px;
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
-width: 100%;
+          width: 100%;
           &.clipPath {
             clip-path: inset(0 0 -100px -100px);
           }
@@ -943,7 +944,7 @@ width: 100%;
       }
     }
   }
-  
+
   .see-more-container-button {
     margin-top: 48px;
     display: flex;

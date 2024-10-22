@@ -1,6 +1,5 @@
 import {Viewer} from '@photo-sphere-viewer/core';
 
-// Inicializa o Swiper para Tipologias
 function initializeTipologiasSwiper() {
   new Swiper('.tipologias-swiper', {
     slidesPerView: 1.1,
@@ -17,7 +16,6 @@ function initializeTipologiasSwiper() {
   });
 }
 
-// Inicializa o Swiper para Galeria
 function initializeGaleriaSwiper() {
   new Swiper('.swiper-galeria', {
     slidesPerView: 1.2,
@@ -101,23 +99,20 @@ function setupPlantSliders() {
         asNavFor: '.slider-for',
         dots: true,
         centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
       });
     }
   }
 }
 
-// Inicializa o Visualizador de Panorama
-// function initializePanoramaViewer() {
-//   const imagePath = image.url;
+function initializePanoramaViewer() {
+  const imagePath = image.url;
+  new Viewer({
+    container: 'viewer',
+    panorama: imagePath,
+  });
+}
 
-//   new Viewer({
-//     container: 'viewer',
-//     panorama: imagePath,
-//   });
-// }
-
-// Configura o Scroll para o Footer
 function setupFooterScroll() {
   $('#irFooter').on('click', function (e) {
     e.preventDefault();
@@ -130,31 +125,53 @@ function setupFooterScroll() {
   });
 }
 
-// Configura a Animação dos Botões Fixos com GSAP
 function setupFixedButtonsAnimation() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
-    opacity: 0,
-    zIndex: -1,
-    duration: 0.5,
-    ease: 'power1.out',
     scrollTrigger: {
-      trigger: '.carrossel-tipologia',
-      start: 'center center',
-      end: 'bottom center',
-      toggleActions: 'play none none reverse',
+      trigger: document.body,
+      start: 'top+=200px top',
+      end: 'top top',
+      toggleActions: 'play none reverse none',
+      markers: false,
+    },
+    opacity: 1,
+    zIndex: 9,
+    duration: 0.5,
+    ease: 'power1.inOut',
+  });
+
+  ScrollTrigger.create({
+    trigger: '.carrossel-tipologia',
+    start: 'top top',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 0,
+        zIndex: -1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 1,
+        zIndex: 9,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
     },
   });
 }
 
-// Função de Inicialização Geral
 function initSingleTipologia() {
   setupFooterScroll();
   initializeTipologiasSwiper();
   initializeGaleriaSwiper();
   setupPlantSliders();
-  // initializePanoramaViewer();
+  initializePanoramaViewer();
   setupFixedButtonsAnimation();
 }
 

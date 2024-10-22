@@ -325,39 +325,55 @@ function animationSelosCertificados() {
     gsap.to(card, {
       delay: i * 0.3,
       duration: 1.5,
-      ease: 'power2.out', // Adiciona um easer para suavizar a animação
+      ease: 'power2.out', 
       onStart: () => card.classList.add('clipPath-selos-certificados'),
     });
   });
-  // $('.lista-selos-desktop').on('mouseenter', function () {
-  //   const hoverDescricaoHeight = $(this).find('.hover-descricao').outerHeight();
-  //   $(this).find('.box-titulo-svg').css('padding-bottom', hoverDescricaoHeight);
-  // });
-
-  // $('.lista-selos-desktop').on('mouseleave', function () {
-  //   $(this).find('.box-titulo-svg').css('padding-bottom', '');
-  // });
+  
 }
 
 function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to('.botoes-fixed', {
-    opacity: 0,
-    duration: 0.5,
-    ease: 'power1.out',
-    zIndex: -1,
     scrollTrigger: {
-      trigger: '.selos-certificados',
-      start: 'center center',
-      end: 'bottom center',
-      toggleActions: 'play none none reverse',
+      trigger: document.body,
+      start: 'top+=200px top',
+      end: 'top top',
+      toggleActions: 'play none reverse none',
+      markers: false,
+    },
+    opacity: 1,
+    zIndex: 9,
+    duration: 0.5,
+    ease: 'power1.inOut',
+  });
+
+  ScrollTrigger.create({
+    trigger: '.selos-certificados',
+    start: 'top top',
+    end: 'bottom top',
+    toggleActions: 'play none none reverse',
+    onEnter: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 0,
+        zIndex: -1,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to('.botoes-fixed', {
+        opacity: 1,
+        zIndex: 9,
+        duration: 0.5,
+        ease: 'power1.inOut',
+      });
     },
   });
 }
 
 function selosAccordion() {
-  // Deixa o primeiro desWrapper com display block
   jQuery('.hover-descricao-mobile').first().css('display', 'block');
   jQuery('.box-titulo-accordion').first().parent().addClass('active');
 

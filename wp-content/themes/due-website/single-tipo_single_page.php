@@ -311,6 +311,7 @@ $empreendimentoName = $empreendimento['name'];
                         echo '<div class="gallery-planta">';
                         echo '<div class="slider slider-for">';
                         if (have_rows('repetidor_imagens_plantas')):
+                            $counter = 1; // Inicia o contador
                             while (have_rows('repetidor_imagens_plantas')):
                                 the_row();
                                 $titulo_da_planta = get_sub_field('titulo_da_planta');
@@ -320,11 +321,15 @@ $empreendimentoName = $empreendimento['name'];
                                     $image_alt = $image['alt'];
                                     echo '<div class="row-imagem-plantas slick">';
                                     echo '<p class="titulo-row-imagem-plantas terminal-test">' . esc_html($titulo_da_planta) . '</p>';
+                                    echo '<a class="" href="' . esc_url($image_url) . '" data-fancybox="planta-' . $row_number . '-' . $counter . '" data-caption="' . esc_attr($image_alt) . '">';
                                     echo '<img class="plantas-repetidor" src="' . esc_url($image_url) . '" alt="' . esc_attr($image_alt) . '">';
+                                    echo '</a>';
                                     echo '</div>';
+                                    $counter++; // Incrementa o contador
                                 endif;
                             endwhile;
                         endif;
+
                         echo '</div>';
                         echo '</div>';
                         echo '<div class="gallery-thumbs-plantas">';

@@ -215,9 +215,9 @@ body.single-tipo_single_page {
       }
 
       &.container-imagem {
+        position: relative;
         @include media-breakpoint-up(md) {
           height: 80vh;
-          position: relative;
         }
 
         img {
@@ -225,9 +225,9 @@ body.single-tipo_single_page {
           width: 100%;
           -o-object-fit: cover;
           object-fit: cover;
-          max-height: 430px;
+          min-height: 430px;
           @include media-breakpoint-up(md) {
-            max-height: initial;
+            min-height: initial;
           }
         }
         .box-texto-imagem-banner {
@@ -244,10 +244,10 @@ body.single-tipo_single_page {
             line-height: 100%; /* 12px */
             letter-spacing: 0.48px;
             text-transform: uppercase;
-            color: #FFF;
+            color: #fff;
           }
           .descricao-imagem {
-            color: #FFF;
+            color: #fff;
 
             font-size: 12px;
             font-style: normal;

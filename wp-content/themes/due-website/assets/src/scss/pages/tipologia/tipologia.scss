@@ -34,7 +34,46 @@ body.tipologia-drawer-open .drawer-overlay {
         margin-bottom: 40px;
       }
     }
-
+    #no-tipologias-message {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      max-width: 415px;
+      margin: 0 auto;
+      .svg-no-empreendimentos {
+        margin-bottom: 40px;
+      }
+      .titulo-no-empreendimentos {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.32px;
+        color: $due-secondary;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .subtitulo-no-empreendimentos {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 140%; /* 22.4px */
+        letter-spacing: 0.32px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: $due-secondary;
+      }
+      .clean-filters {
+        display: flex !important;
+        &::after {
+          width: 0;
+        }
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+      }
+    }
     /* Filter Button */
     .tipologia-filter-button {
       display: none;

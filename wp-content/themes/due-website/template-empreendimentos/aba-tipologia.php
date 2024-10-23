@@ -278,12 +278,12 @@
       </div>
     </div>
   </template>
-  <div id="no-empreendimentos-message" style="display: none;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
-      <path d="M19.25 49V37.625C19.25 36.176 20.426 35 21.875 35H27.125C28.574 35 29.75 36.176 29.75 37.625V49M29.75 49H40.25V8.27167M29.75 49H47.25V25.0833M40.25 8.27167L43.75 7M40.25 8.27167L15.75 17.1827M47.25 25.0833L40.25 22.75M47.25 25.0833L50.75 26.25M5.25 49H8.75M8.75 49H50.75M8.75 49V7H15.75V17.1827M5.25 21L15.75 17.1827" stroke="#003B4B" stroke-opacity="0.5" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
-    </svg>
-    <p><?php echo __('Não encontramos resorts disponíveis com os filtros selecionados.', 'due-website') ?></p>
-    <p><?php echo __('Por favor, desmarque alguma opção dos filtros ou limpe todos para recomeçar.', 'due-website') ?></p>
-    <button class="clean-filters founders-grotesk">Limpar filtros</button>
-  </div>
+  <div id="no-tipologias-message" style="display: none;">
+  <svg class="svg-no-empreendimentos" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+    <path d="M19.25 49V37.625C19.25 36.176 20.426 35 21.875 35H27.125C28.574 35 29.75 36.176 29.75 37.625V49M29.75 49H40.25V8.27167M29.75 49H47.25V25.0833M40.25 8.27167L43.75 7M40.25 8.27167L15.75 17.1827M47.25 25.0833L40.25 22.75M47.25 25.0833L50.75 26.25M5.25 49H8.75M8.75 49H50.75M8.75 49V7H15.75V17.1827M5.25 21L15.75 17.1827" stroke="#003B4B" stroke-opacity="0.5" stroke-width="2.33333" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+  <p class="titulo-no-empreendimentos"><?php echo __('Não encontramos resorts disponíveis com os filtros selecionados.', 'due-website') ?></p>
+  <p class="founders-grotesk subtitulo-no-empreendimentos"><?php echo __('Por favor, desmarque alguma opção dos filtros ou limpe todos para recomeçar.', 'due-website') ?></p>
+  <button class="clean-filters button"><?php echo __('Limpar filtros', 'due-website') ?> </button>
+</div>
 </section>

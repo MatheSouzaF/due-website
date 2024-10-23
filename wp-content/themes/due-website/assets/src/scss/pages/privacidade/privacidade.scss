@@ -39,7 +39,7 @@ body.page-template-page-politicas {
       }
     }
   }
-  
+
   .privacidade-termos {
     padding: 200px 0;
 
@@ -57,30 +57,31 @@ body.page-template-page-politicas {
     }
 
     .description-termos {
+      margin: 0 auto;
+      max-width: 70%;
       h2 {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 500;
         line-height: 140%;
-        letter-spacing: 1.28px;
-        font-size: 32px;
+        letter-spacing: 0.02rem;
+        font-size: 30px;
       }
       h3 {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
-        letter-spacing: 1.28px;
-        font-size: 24px;
+        letter-spacing: 0.02rem;
+        font-size: 20px;
       }
-
       p {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 400;
         line-height: 140%;
-        letter-spacing: 1.28px;
-        font-size: 16px;
+        letter-spacing: 0.02rem;
+        font-size: 14px;
       }
       ul {
         padding-left: 40px;
@@ -90,7 +91,7 @@ body.page-template-page-politicas {
           font-style: normal;
           font-weight: 400;
           line-height: 140%;
-          letter-spacing: 1.28px;
+          letter-spacing: 0.02rem;
           font-size: 16px;
         }
       }

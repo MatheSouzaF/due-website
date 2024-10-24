@@ -42,7 +42,8 @@ body.page-template-page-politicas {
 
   .privacidade-termos {
     padding: 200px 0;
-
+    margin: 0 auto;
+    max-width: 70%;
     .title-privacidade {
       color: $due-tertiary;
       font-style: normal;
@@ -57,8 +58,7 @@ body.page-template-page-politicas {
     }
 
     .description-termos {
-      margin: 0 auto;
-      max-width: 70%;
+    
       h2 {
         color: $due-tertiary;
         font-style: normal;

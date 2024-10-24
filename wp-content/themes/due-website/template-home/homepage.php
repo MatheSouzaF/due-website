@@ -39,7 +39,7 @@ get_header();
                                                 $image_alt = $image['alt'];
                                             ?>
                                                 <div class="box-imagem-hero">
-                                                    <img class="image-banner-hero" src="<?php echo esc_url($image_url); ?>"
+                                                    <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px" src="<?php echo esc_url($image_url); ?>"
                                                         alt="<?php echo esc_attr($image_alt); ?>">
                                                     <?php if ($imageMobile):
                                                         $image_mobile_url = $imageMobile['url'];

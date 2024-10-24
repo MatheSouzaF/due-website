@@ -109,7 +109,7 @@ body.page-template-homepage {
                 .image-banner-hero {
                   height: 100%;
                   width: 100%;
-                  object-fit: cover;
+                  // object-fit: cover;
                   display: none;
 
                   @include media-breakpoint-up(md) {
@@ -156,7 +156,7 @@ body.page-template-homepage {
                   width: 100%;
                   z-index: 1;
                   border-radius: 860px;
-                  background: rgba(0, 0, 0, .8);
+                  background: rgba(0, 0, 0, 0.8);
                   filter: blur(200px);
                   top: 50%;
                   left: 5%;
@@ -809,6 +809,7 @@ body.page-template-homepage {
               padding: 0 24px;
               width: 100%;
               transition: 0.6s;
+              z-index: 1;
 
               .container-text {
                 display: flex;
@@ -970,7 +971,7 @@ body.page-template-homepage {
 
           &::after {
             content: '';
-            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+            background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.6));
             position: absolute;
             top: 0;
             left: 0;
@@ -1015,7 +1016,7 @@ body.page-template-homepage {
             padding: 0 24px;
             width: 100%;
             transition: 0.6s;
-
+            z-index: 1;
             .container-text {
               display: flex;
               flex-direction: row;
@@ -1028,6 +1029,7 @@ body.page-template-homepage {
               .box-svg {
                 transition: 0.6s;
                 opacity: 0;
+                
               }
             }
 
@@ -1071,6 +1073,10 @@ body.page-template-homepage {
                   line-height: 140%;
                   letter-spacing: 0.32px;
                 }
+              }
+              svg{
+                height: 20px;
+                width: 20px;
               }
             }
           }

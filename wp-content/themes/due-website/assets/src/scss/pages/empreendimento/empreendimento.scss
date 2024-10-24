@@ -590,17 +590,23 @@ body.drawer-open .drawer-overlay {
       .drawer-footer {
         padding: 0 16px 16px;
         text-align: center;
-      }
-
-      .apply-filters {
-        width: 100%;
-        color: white;
-        padding: 16px;
-        background: #cb9f6c;
-        border-radius: 4000px;
-        border: none;
-        cursor: pointer;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        .apply-filters {
+          width: 100%;
+          color: white;
+          padding: 16px;
+          background: #cb9f6c;
+          border-radius: 4000px;
+          border: none;
+          cursor: pointer;
+          text-align: center;
+        }
+        .clean-filters{
+          padding: 8px 0;
+        }
       }
 
       /* Prevent background scrolling when drawer is open */
@@ -870,6 +876,12 @@ body.drawer-open .drawer-overlay {
     display: flex;
     flex-direction: row;
     margin-bottom: 40px;
+    flex-direction: column;
+    gap: 20px;
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      gap: initial;
+    }
   }
 
   .clean-filters {

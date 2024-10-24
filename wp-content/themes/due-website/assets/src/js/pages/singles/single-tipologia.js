@@ -114,14 +114,19 @@ function initializePanoramaViewer() {
 }
 
 function setupFooterScroll() {
-  $('#irFooter').on('click', function (e) {
-    e.preventDefault();
-    $('html, body').animate(
-      {
-        scrollTop: $(document).height(),
-      },
-      'slow'
-    );
+  $(document).ready(function () {
+    // Selecione o link ou botão que você deseja para ativar o scroll suave
+    $('a[href="#call-form"]').on('click', function (e) {
+      e.preventDefault(); // Impede o comportamento padrão de pular diretamente para a âncora
+
+      // Suavemente fazer o scroll até o elemento alvo
+      $('html, body').animate(
+        {
+          scrollTop: $('#call-form').offset().top,
+        },
+        800
+      ); // A duração da animação em milissegundos (800ms para suavidade)
+    });
   });
 }
 

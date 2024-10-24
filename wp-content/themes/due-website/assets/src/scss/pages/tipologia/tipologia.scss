@@ -29,10 +29,6 @@ body.tipologia-drawer-open .drawer-overlay {
       flex-direction: row-reverse;
       align-items: flex-start;
       justify-content: space-between;
-      margin-bottom: 24px;
-      @include media-breakpoint-up(sm) {
-        margin-bottom: 40px;
-      }
     }
     #no-tipologias-message {
       display: flex;
@@ -716,6 +712,10 @@ body.tipologia-drawer-open .drawer-overlay {
         padding: 0 16px;
         margin-bottom: 12px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
         .tipologia-apply-filters {
           width: 100%;
           color: white;
@@ -725,6 +725,9 @@ body.tipologia-drawer-open .drawer-overlay {
           border: none;
           cursor: pointer;
           text-align: center;
+        }
+        .clean-filters-tipologia {
+          padding: 8px 0;
         }
       }
 
@@ -767,12 +770,6 @@ body.tipologia-drawer-open .drawer-overlay {
         /* 22.4px */
         letter-spacing: 0.32px;
       }
-      .tipologia-filters-applied {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
 
       .tipologia-remove-badge {
         font-size: 14px;
@@ -782,8 +779,19 @@ body.tipologia-drawer-open .drawer-overlay {
     }
     .badge-filters-tipologia {
       display: flex;
-      flex-direction: row;
       margin-bottom: 40px;
+      flex-direction: column;
+      gap: 20px;
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+        gap: initial;
+      }
+      .tipologia-filters-applied {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
     }
     .clean-filters-tipologia {
       display: none;

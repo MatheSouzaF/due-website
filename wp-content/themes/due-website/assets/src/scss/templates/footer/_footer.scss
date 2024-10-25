@@ -176,14 +176,10 @@
                   transition: 0.6s;
 
                   svg {
-                    width: 28px;
-                    height: 28px;
+                    width: 48px;
+                    height: 48px;
                     transition: 0.6s;
 
-                    @include media-breakpoint-up(md) {
-                      width: 40px;
-                      height: 40px;
-                    }
                     @include media-breakpoint-up(xxl) {
                       width: 54px;
                       height: 54px;
@@ -241,7 +237,7 @@
                 font-weight: 300 !important;
                 line-height: 140% !important;
                 letter-spacing: 0.32px !important;
-               
+
                 a {
                   cursor: pointer;
                   strong {
@@ -328,7 +324,6 @@
         @include media-breakpoint-up(md) {
           text-align: start;
         }
-       
       }
     }
     .box-link-paginas {
@@ -364,7 +359,7 @@
             letter-spacing: 0.4px;
             text-transform: uppercase;
             position: relative;
-            
+
             &::after {
               content: '';
               bottom: -6px;

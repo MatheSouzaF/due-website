@@ -38,9 +38,10 @@ function updateRooms(cardTemplate, rooms, isStudio) {
     let maxQuartos = parseInt(quartos.maximo_de_quartos, 10);
 
     if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-      roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'qto' : 'qtos'}`;
+      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
     } else {
-      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
+      const connector = maxQuartos === minQuartos + 1 ? 'e' : 'a';
+      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${connector} ${maxQuartos} quartos`;
     }
   }
 

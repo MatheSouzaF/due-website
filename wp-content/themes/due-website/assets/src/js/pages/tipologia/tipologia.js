@@ -140,9 +140,9 @@ function tipologiaPage() {
         let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
 
         if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'qto' : 'qtos'}`;
+          roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
         } else {
-          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} qtos`;
+          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} a ${maxQuartos} quartos`;
         }
       }
 
@@ -329,7 +329,7 @@ function tipologiaPage() {
       let badgeLabel = filterValue;
 
       if (filterType === 'rooms' && filterValue !== 'studio') {
-        badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
+        badgeLabel += Number(filterValue) === 1 ? ' quarto' : ' quartos';
       }
 
       const badgeTemplate = `

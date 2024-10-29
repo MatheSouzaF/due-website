@@ -212,11 +212,11 @@ function checkbox() {
 
 function loadSearchBox() {
   const tipologiasData = TipologiasDataHome.tipologias;
-  console.log('🚀 ~ TipologiasDataHome:', TipologiasDataHome);
 
   function populateFilterOptions() {
     const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
     const roomsOptions = new Set();
+
     tipologiasData.forEach((e) => {
       if (e.rooms && e.rooms.length > 0) {
         let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
@@ -243,9 +243,12 @@ function loadSearchBox() {
     const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
 
     const options = {
-      location: Array.from(locationOptions).map((location) => ({value: location, label: location})),
+      location: Array.from(locationOptions).map((location) => ({
+        value: location,
+        label: location,
+      })),
       rooms: [
-        ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+        ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
         ...Array.from(roomsOptions)
           .sort()
           .map((room) => ({
@@ -262,6 +265,7 @@ function loadSearchBox() {
     location: $('#home-filter-location'),
     rooms: $('#home-filter-rooms'),
   };
+  
   const options = populateFilterOptions();
   renderFiltersHome(filters, options);
 
@@ -271,6 +275,29 @@ function loadSearchBox() {
 
   function getUniqueValues(array) {
     return [...new Set(array)];
+  }
+
+  function updateSelectedValues(filterType) {
+    const selectedValues = getFilterLabel(`#home-filter-${filterType}`);
+    
+    let destinoElement;
+    if (filterType === 'location') {
+      destinoElement = $('.container-destino .titulo-checkbox-destino');
+    } else if (filterType === 'rooms') {
+      destinoElement = $('.container-quartos .titulo-checkbox-quartos');
+    }
+    
+    if (destinoElement && destinoElement.length > 0) {
+      if (selectedValues && selectedValues.length > 0) {
+        destinoElement.text(selectedValues.join(', '));
+      } else {
+        if (filterType === 'location') {
+          destinoElement.text('Selecione um destino');
+        } else {
+          destinoElement.text('Quantos quartos?');
+        }
+      }
+    }
   }
 
   function buildFilterUrl() {
@@ -300,84 +327,22 @@ function loadSearchBox() {
       params.set('tipologia', 'true');
     }
 
-    const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''}`;
+    const newUrl = `/empreendimentos${
+      params.toString() ? '?' + params.toString() : ''
+    }`;
 
     $('#busca-banner').attr('href', newUrl);
-
     console.log('URL Filtrada:', newUrl);
   }
 
-  let filteredTipologias = [];
-
-  function hideOptions(changedFilter) {
-    const isOptionVisible = (value, key) => {
-      return filteredTipologias.some((tipologia) => {
-        if (key === 'location') return tipologia.location === value;
-        if (key === 'rooms') {
-          const minimo = parseInt(tipologia.rooms[0].minimo_de_quartos_tipologia, 10);
-          let maximo = parseInt(tipologia.rooms[0].maximo_de_quartos_tipologia, 10);
-
-          if (maximo === 0) {
-            maximo = minimo;
-          }
-
-          return (tipologia.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
-        }
-        return false;
-      });
-    };
-
-    const getAppliedFilterCategories = () => {
-      return Object.keys(filters).filter((key) => {
-        return filters[key].find('input.ckkBox:checked').length > 0;
-      });
-    };
-
-    const appliedFilterCategories = getAppliedFilterCategories();
-
-    if (appliedFilterCategories.length === 0) {
-      Object.keys(filters).forEach((key) => {
-        filters[key].find('input.ckkBox').each(function () {
-          $(this).closest('label').show();
-        });
-      });
-      return;
-    }
-
-    if (appliedFilterCategories.length === 1) {
-      const lastFilterCategory = appliedFilterCategories[0];
-      filters[lastFilterCategory].find('input.ckkBox').each(function () {
-        $(this).closest('label').show();
-      });
-    }
-
-    Object.keys(filters).forEach((key) => {
-      if (key !== changedFilter) {
-        const $filter = filters[key];
-        if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
-          $filter.find('input.ckkBox').each(function () {
-            const $checkbox = $(this);
-            const value = $checkbox.val();
-
-            if (isOptionVisible(value, key) || $checkbox.is(':checked')) {
-              $checkbox.closest('label').show();
-            } else {
-              $checkbox.closest('label').hide();
-            }
-          });
-        }
-      }
-    });
-  }
-
   filters['location'].find('input.ckkBox').on('change', function () {
+    updateSelectedValues('location');
     buildFilterUrl();
-    // hideOptions('location');
   });
 
   filters['rooms'].find('input.ckkBox').on('change', function () {
+    updateSelectedValues('rooms');
     buildFilterUrl();
-    // hideOptions('rooms');
   });
 }
 

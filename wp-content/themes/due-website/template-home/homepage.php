@@ -37,14 +37,14 @@ get_header();
                                             if ($image):
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
-                                            ?>
+                                                ?>
                                                 <div class="box-imagem-hero">
-                                                    <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px" src="<?php echo esc_url($image_url); ?>"
-                                                        alt="<?php echo esc_attr($image_alt); ?>">
+                                                    <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px"
+                                                        src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                                     <?php if ($imageMobile):
                                                         $image_mobile_url = $imageMobile['url'];
                                                         $image_mobile_alt = $imageMobile['alt'];
-                                                    ?>
+                                                        ?>
                                                         <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>"
                                                             alt="<?php echo esc_attr($image_mobile_alt); ?>">
                                                     <?php endif; ?>
@@ -56,7 +56,6 @@ get_header();
                                 <?php endif; ?>
                             </div>
                             <div class="box-conteudo">
-
                                 <div class="wrapper-hero">
                                     <?php
                                     // Verifica se o título está preenchido
@@ -76,7 +75,7 @@ get_header();
                                                 <p class="subtitulo-banner-hero word">
                                                     <?php echo get_sub_field('subtitulo_banner_hero'); ?>
                                                 </p>
-                                        <?php endwhile;
+                                            <?php endwhile;
                                         endif; ?>
                                     </div>
 
@@ -123,7 +122,7 @@ get_header();
 
                         </div>
                     </div>
-            <?php endwhile;
+                <?php endwhile;
             endif; ?>
         </div>
 
@@ -253,7 +252,8 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
             </button>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
+                fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>
@@ -271,11 +271,12 @@ get_header();
                 } ?>
                 <p class="titulo-checkbox-quartos"><?php echo get_field('titulo_quartos'); ?></p>
             </button>
-            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
+                fill="none">
                 <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
             </svg>
         </div>
-        <a class="container-busca" id="busca-banner" target="_blank">
+        <a class="container-busca busca-banner" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
                     d="M21.0002 21.0002L16.6572 16.6572M16.6572 16.6572C17.4001 15.9143 17.9894 15.0324 18.3914 14.0618C18.7935 13.0911 19.0004 12.0508 19.0004 11.0002C19.0004 9.9496 18.7935 8.90929 18.3914 7.93866C17.9894 6.96803 17.4001 6.08609 16.6572 5.34321C15.9143 4.60032 15.0324 4.01103 14.0618 3.60898C13.0911 3.20693 12.0508 3 11.0002 3C9.9496 3 8.90929 3.20693 7.93866 3.60898C6.96803 4.01103 6.08609 4.60032 5.34321 5.34321C3.84288 6.84354 3 8.87842 3 11.0002C3 13.122 3.84288 15.1569 5.34321 16.6572C6.84354 18.1575 8.87842 19.0004 11.0002 19.0004C13.122 19.0004 15.1569 18.1575 16.6572 16.6572Z"
@@ -288,13 +289,13 @@ get_header();
 
 
 <section class="nossos-club-resorts">
-    <div class="wrapper">
+    <div class="wrapper filter-wrapper-drawer">
         <div class="box-busca-banner-hero-mobile">
             <div class="box-container-busca container-titulo">
                 <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
                 <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
             </div>
-            <div class="box-container-busca container-destino">
+            <div class="box-container-busca container-destino filter-button">
                 <button class="box-svg">
                     <?php $svg_file = get_field('svg_destino');
                     if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -305,15 +306,11 @@ get_header();
                     <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
 
                 </button>
-                <div class="checkboxes" id="home-filter-location">
-                    <div class="inner-wrap">
-                    </div>
-                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
                     <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
                 </svg>
             </div>
-            <div class="box-container-busca container-quartos">
+            <div class="box-container-busca container-quartos filter-button">
                 <div class="box-svg">
                     <?php $svg_file = get_field('svg_quartos');
                     if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -328,14 +325,14 @@ get_header();
                     <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
                 </svg>
             </div>
-            <div class="container-busca" id="busca-banner">
+            <a class="container-busca busca-banner" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path
                         d="M21.0002 21.0002L16.6572 16.6572M16.6572 16.6572C17.4001 15.9143 17.9894 15.0324 18.3914 14.0618C18.7935 13.0911 19.0004 12.0508 19.0004 11.0002C19.0004 9.9496 18.7935 8.90929 18.3914 7.93866C17.9894 6.96803 17.4001 6.08609 16.6572 5.34321C15.9143 4.60032 15.0324 4.01103 14.0618 3.60898C13.0911 3.20693 12.0508 3 11.0002 3C9.9496 3 8.90929 3.20693 7.93866 3.60898C6.96803 4.01103 6.08609 4.60032 5.34321 5.34321C3.84288 6.84354 3 8.87842 3 11.0002C3 13.122 3.84288 15.1569 5.34321 16.6572C6.84354 18.1575 8.87842 19.0004 11.0002 19.0004C13.122 19.0004 15.1569 18.1575 16.6572 16.6572Z"
                         stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <p class="titulo-buscar"><?php echo get_field('buscar'); ?></p>
-            </div>
+            </a>
         </div>
         <div class="box-titulo_link">
 
@@ -355,7 +352,6 @@ get_header();
     </div>
 
     <div class="box-cards-empreendimentos-desktop">
-
         <div class="swiper swiper-empreendimento">
             <div class="swiper-wrapper">
                 <?php if (have_rows('cards_nossos_club_resorts')): ?>
@@ -376,7 +372,7 @@ get_header();
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                        ?>
+                                            ?>
                                             <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                                 alt="<?php echo esc_attr($image_alt); ?>">
                                         <?php endif; ?>
@@ -431,7 +427,7 @@ get_header();
                                                             <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                         </p>
                                                     </div>
-                                            <?php endwhile;
+                                                <?php endwhile;
                                             endif; ?>
                                         </div>
                                     </div>
@@ -472,7 +468,7 @@ get_header();
                     if ($count >= 3)
                         break; // Limita a 3 itens
                     $count++; // Incrementa a contagem
-            ?>
+                    ?>
                     <div class="card-empreendimentos-mobile swiper-slide">
                         <?php
                         $link = get_sub_field('link_empreendimento');
@@ -488,7 +484,7 @@ get_header();
                                     if ($image):
                                         $image_url = $image['url'];
                                         $image_alt = $image['alt'];
-                                    ?>
+                                        ?>
                                         <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                             alt="<?php echo esc_attr($image_alt); ?>">
                                     <?php endif; ?>
@@ -532,14 +528,14 @@ get_header();
                                                         <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                     </p>
                                                 </div>
-                                        <?php endwhile;
+                                            <?php endwhile;
                                         endif; ?>
                                     </div>
                                 </div>
                             </a>
                         <?php endif; ?>
                     </div>
-            <?php endwhile;
+                <?php endwhile;
             endif; ?>
         </div>
         <?php
@@ -647,7 +643,7 @@ get_header();
                 $total_comentarios = count(get_field('comentarios_encante-se'));
 
                 $extra_class = ($total_comentarios > 4) ? 'more-space' : '';
-            ?>
+                ?>
 
                 <div class="box-conteudo-right <?php echo $extra_class; ?>">
                     <div class="svg-caribe">
@@ -686,6 +682,47 @@ get_header();
     </div>
 
 </section>
+<div class="filter-drawer">
+    <div class="drawer-content">
+        <div class="box-container-busca-drawer container-titulo">
+            <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
+            <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
+        </div>
+        <div class="filter-category">
+            <button class="category-toggle">
+                <p class=""><?php echo __('Destino', 'due-website') ?> <span class="filter_count"></span></p>
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                    fill="none">
+                    <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="category-content" id="home-mobile-filter-location">
+                <div class="inner-wrap">
+                </div>
+            </div>
+        </div>
+        <div class="filter-category">
+            <button class="category-toggle">
+                <p class=""><?php echo __('Nº de quartos', 'due-website') ?> <span class="filter_count"></span>
+                </p>
+                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                    fill="none">
+                    <path d="M14.625 6.1875L9 11.8125L3.375 6.1875" stroke="#003b4b" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="category-content" id="home-mobile-filter-rooms">
+                <div class="inner-wrap">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="drawer-footer">
+        <button class="apply-filters"><?php echo __('Ok', 'due-website') ?></button>
+    </div>
+</div>
+<div class="drawer-overlay"></div>
 
 <?php get_template_part('template-invista/invista'); ?>
 <div class="call-form" id="call-form"></div>
@@ -707,7 +744,7 @@ get_header();
                 el: '.swiper-pagination',
                 clickable: true,
                 type: 'bullets',
-                renderBullet: function(index, className) {
+                renderBullet: function (index, className) {
                     return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
                 },
             },
@@ -718,7 +755,7 @@ get_header();
         });
 
         function modalBanner() {
-            $('.js-modal-open-banner').on('click', function(e) {
+            $('.js-modal-open-banner').on('click', function (e) {
                 e.preventDefault();
                 var msrc = $(this).data('src');
                 $('.js-modal').find('.video-container').html(msrc);
@@ -733,13 +770,13 @@ get_header();
                 mySwiper.autoplay.stop();
             });
 
-            $('.js-modal-close, .js-modal-close-btn').on('click', function(e) {
+            $('.js-modal-close, .js-modal-close-btn').on('click', function (e) {
                 e.preventDefault();
-                $('.js-modal').fadeOut(function() {
+                $('.js-modal').fadeOut(function () {
                     $('.js-modal').find('.video-container').html('');
 
                     // Retoma o Swiper quando o modal é fechado
-                    setTimeout(function() {
+                    setTimeout(function () {
                         mySwiper.autoplay.start();
                     }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
                     $('header').removeClass('modal-active-video');
@@ -762,7 +799,7 @@ get_header();
         autoplay: true,
         loop: false,
     });
-    lottieAnimation.addEventListener('complete', function() {
+    lottieAnimation.addEventListener('complete', function () {
         // Iniciar o GSAP Timeline após o Lottie terminar
         gsap.timeline()
         gsap.to(".logo", {
@@ -773,7 +810,7 @@ get_header();
         gsap.to("#dotLottie-canvas", {
             opacity: 0,
             duration: 1,
-            onComplete: function() {
+            onComplete: function () {
                 swiperBanner();
             }
         });

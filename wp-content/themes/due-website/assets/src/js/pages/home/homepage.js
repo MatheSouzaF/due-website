@@ -1,5 +1,5 @@
-import {renderFiltersHome} from '../../components/filter-home';
-import {getFilterLabel} from '../../utils/get-filter-label';
+import { renderFiltersHome } from '../../components/filter-home';
+import { getFilterLabel } from '../../utils/get-filter-label';
 
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
@@ -262,10 +262,10 @@ function loadSearchBox() {
   }
 
   const filters = {
-    location: $('#home-filter-location'),
-    rooms: $('#home-filter-rooms'),
+    location: $('#home-filter-location, #home-mobile-filter-location'),
+    rooms: $('#home-filter-rooms, #home-mobile-filter-rooms'),
   };
-  
+
   const options = populateFilterOptions();
   renderFiltersHome(filters, options);
 
@@ -279,14 +279,14 @@ function loadSearchBox() {
 
   function updateSelectedValues(filterType) {
     const selectedValues = getFilterLabel(`#home-filter-${filterType}`);
-    
+
     let destinoElement;
     if (filterType === 'location') {
       destinoElement = $('.container-destino .titulo-checkbox-destino');
     } else if (filterType === 'rooms') {
       destinoElement = $('.container-quartos .titulo-checkbox-quartos');
     }
-    
+
     if (destinoElement && destinoElement.length > 0) {
       if (selectedValues && selectedValues.length > 0) {
         destinoElement.text(selectedValues.join(', '));
@@ -301,8 +301,8 @@ function loadSearchBox() {
   }
 
   function buildFilterUrl() {
-    const locationFilter = getFilterLabel('#home-filter-location');
-    const roomsFilter = getFilterLabel('#home-filter-rooms');
+    const locationFilter = getFilterLabel('#home-filter-location, #home-mobile-filter-location');
+    const roomsFilter = getFilterLabel('#home-filter-rooms, #home-mobile-filter-rooms');
 
     const params = new URLSearchParams();
     let hasFilters = false;
@@ -327,11 +327,10 @@ function loadSearchBox() {
       params.set('tipologia', 'true');
     }
 
-    const newUrl = `/empreendimentos${
-      params.toString() ? '?' + params.toString() : ''
-    }`;
+    const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''
+      }`;
 
-    $('#busca-banner').attr('href', newUrl);
+    $('.busca-banner').attr('href', newUrl);
     console.log('URL Filtrada:', newUrl);
   }
 
@@ -343,6 +342,48 @@ function loadSearchBox() {
   filters['rooms'].find('input.ckkBox').on('change', function () {
     updateSelectedValues('rooms');
     buildFilterUrl();
+  });
+
+  $('.filter-button').click(function () {
+    // Adiciona as classes para abrir o drawer
+    $('.filter-drawer').addClass('open');
+    $('body').addClass('drawer-open');
+    
+    // Verifica qual botão foi clicado
+    if ($(this).hasClass('container-quartos')) {
+      // Se for o botão de "Quartos", dispara o clique no botão correspondente
+      $('#home-mobile-filter-rooms').siblings('.category-toggle').click();
+    } else if ($(this).hasClass('container-destino')) {
+      // Se for o botão de "Destino", dispara o clique no botão correspondente
+      $('#home-mobile-filter-location').siblings('.category-toggle').click();
+    }
+  });  
+
+  $('.drawer-content').on('click', '.category-toggle', function (e) {
+    e.stopPropagation(); // Evita o fechamento quando clicar no próprio toggle
+
+    // Fecha todos os elementos abertos com animação
+    $('.category-content.open').not($(this).next()).slideUp(300).removeClass('open');
+
+    // Abre o elemento clicado com animação
+    $(this).next('.category-content').slideToggle(300).toggleClass('open');
+  });
+
+  $(document).on('click', function (e) {
+    // Verifica se o clique NÃO foi dentro de .drawer-content E NÃO foi no .filter-button
+    if (!$(e.target).closest('.drawer-content').length && !$(e.target).closest('.filter-button').length) {
+      $('.filter-drawer').removeClass('open');
+      $('body').removeClass('drawer-open');
+
+      // Opcional: Fecha todas as categorias abertas com animação
+      $('.category-content.open').slideUp(300).removeClass('open');
+    }
+  });
+
+  $('.apply-filters').click(function () {
+    // Fechar o drawer
+    $('.filter-drawer').removeClass('open');
+    $('body').removeClass('drawer-open');
   });
 }
 
@@ -357,4 +398,4 @@ function initPage() {
   loadSearchBox();
 }
 
-export {initPage};
+export { initPage };

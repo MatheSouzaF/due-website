@@ -1769,7 +1769,28 @@ body.page-template-homepage {
   }
 
   .drawer-content {
-    padding: 16px 16px 0;
+    padding: 32px 32px 0;
+    margin-bottom: 32px;
+
+    .box-container-busca-drawer {
+      margin-bottom: 32px;
+
+      .invista-busca {
+        color: #51848c;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%;
+      }
+
+      .encontre-busca {
+        color: #002d38;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 130%;
+      }
+    }
   }
 
   .filter-category {
@@ -1893,7 +1914,7 @@ body.page-template-homepage {
   }
 
   .drawer-footer {
-    padding: 0 16px 16px;
+    padding: 0 32px 32px;
     text-align: center;
     display: flex;
     flex-direction: column;

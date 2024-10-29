@@ -684,6 +684,10 @@ get_header();
 </section>
 <div class="filter-drawer">
     <div class="drawer-content">
+        <div class="box-container-busca-drawer container-titulo">
+            <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
+            <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
+        </div>
         <div class="filter-category">
             <button class="category-toggle">
                 <p class=""><?php echo __('Destino', 'due-website') ?> <span class="filter_count"></span></p>

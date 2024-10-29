@@ -301,7 +301,7 @@ function loadSearchBox() {
   }
 
   function buildFilterUrl() {
-    const locationFilter = getFilterLabel('#home-filter-location, #home-mobile-filter-locations');
+    const locationFilter = getFilterLabel('#home-filter-location, #home-mobile-filter-location');
     const roomsFilter = getFilterLabel('#home-filter-rooms, #home-mobile-filter-rooms');
 
     const params = new URLSearchParams();
@@ -345,9 +345,19 @@ function loadSearchBox() {
   });
 
   $('.filter-button').click(function () {
+    // Adiciona as classes para abrir o drawer
     $('.filter-drawer').addClass('open');
     $('body').addClass('drawer-open');
-  });
+    
+    // Verifica qual botão foi clicado
+    if ($(this).hasClass('container-quartos')) {
+      // Se for o botão de "Quartos", dispara o clique no botão correspondente
+      $('#home-mobile-filter-rooms').siblings('.category-toggle').click();
+    } else if ($(this).hasClass('container-destino')) {
+      // Se for o botão de "Destino", dispara o clique no botão correspondente
+      $('#home-mobile-filter-location').siblings('.category-toggle').click();
+    }
+  });  
 
   $('.drawer-content').on('click', '.category-toggle', function (e) {
     e.stopPropagation(); // Evita o fechamento quando clicar no próprio toggle

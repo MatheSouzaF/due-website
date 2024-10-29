@@ -262,8 +262,8 @@ function loadSearchBox() {
   }
 
   const filters = {
-    location: $('#home-filter-location'),
-    rooms: $('#home-filter-rooms'),
+    location: $('#home-filter-location, #home-mobile-filter-location'),
+    rooms: $('#home-filter-rooms, #home-mobile-filter-rooms'),
   };
 
   const options = populateFilterOptions();
@@ -301,8 +301,8 @@ function loadSearchBox() {
   }
 
   function buildFilterUrl() {
-    const locationFilter = getFilterLabel('#home-filter-location');
-    const roomsFilter = getFilterLabel('#home-filter-rooms');
+    const locationFilter = getFilterLabel('#home-filter-location, #home-mobile-filter-locations');
+    const roomsFilter = getFilterLabel('#home-filter-rooms, #home-mobile-filter-rooms');
 
     const params = new URLSearchParams();
     let hasFilters = false;
@@ -330,7 +330,7 @@ function loadSearchBox() {
     const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''
       }`;
 
-    $('#busca-banner').attr('href', newUrl);
+    $('.busca-banner').attr('href', newUrl);
     console.log('URL Filtrada:', newUrl);
   }
 

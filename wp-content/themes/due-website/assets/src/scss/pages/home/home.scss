@@ -30,6 +30,9 @@ body.page-template-homepage {
   .banner-hero {
     height: 100vh;
     position: relative;
+    @include media-breakpoint-up(md) {
+      height: calc(100vw * 0.5);
+    }
 
     .swiper-container {
       height: 100%;
@@ -1029,7 +1032,6 @@ body.page-template-homepage {
               .box-svg {
                 transition: 0.6s;
                 opacity: 0;
-                
               }
             }
 
@@ -1074,7 +1076,7 @@ body.page-template-homepage {
                   letter-spacing: 0.32px;
                 }
               }
-              svg{
+              svg {
                 height: 20px;
                 width: 20px;
               }

@@ -1548,6 +1548,10 @@ body.single-empre_single_page {
         .box-autores {
           width: 100%;
           max-width: 450px;
+          transition: 0.6s;
+          @include media-breakpoint-up(xxl) {
+            max-width: 550px;
+          }
           .row-autores {
             margin-bottom: 40px;
             .titulo-autores {

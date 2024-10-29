@@ -173,18 +173,45 @@ function fabFixed() {
   }
 }
 function newsletter() {
- $(document).ready(function () {
-  $(document).on('submit', '#newsletter-af4d59d14bf940f40ee8 form', function (event) {
-    event.preventDefault();
-    var $form = $(this);
-      var $boxSucesso = $('.box-sucesso');
-    $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val(''); // Adiciona a limpeza do input type="tel"
-    $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
-    $boxSucesso.addClass('visible');
-    
-  });
-});
 
+  $(document).ready(function() {
+    // Seleciona o formulário do RD Station
+    const form = $('#newsletter-af4d59d14bf940f40ee8');
+
+    // Função de validação
+    function validateForm() {
+        let isValid = true;
+
+        // Validação do campo nome
+        const name = form.find('input[name="name"]');
+        if (name.val().trim() === '') {
+            name.addClass('invalid');
+            isValid = false;
+        } else {
+            name.removeClass('invalid');
+        }
+
+        // Validação do campo e-mail
+        const email = form.find('input[name="email"]');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email.val().trim() === '' || !emailPattern.test(email.val())) {
+            email.addClass('invalid');
+            isValid = false;
+        } else {
+            email.removeClass('invalid');
+        }
+
+        return isValid;
+    }
+
+    // Evento de envio do formulário
+    form.on('submit', function(event) {
+        if (!validateForm()) {
+            event.preventDefault(); // Impede o envio se o formulário for inválido
+            alert('Por favor, preencha os campos corretamente antes de enviar.');
+        }
+    });
+});
 
 }
 function initHeader() {

@@ -43,8 +43,118 @@ get_header();
         </div>
 
     </section>
+    <section class="vila-alafia" id="vila-alafia">
 
-    <section class="associacao-superacao" id="iniciativas1">
+
+        <div class="box-conteudo-left">
+
+            <div class="box-svg box-svg-vila-alafia">
+                <?php $svg_file = get_field('svg_vila_alafia');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
+            <h2 class="titulo-vila-alafia terminal-test"><?php echo get_field('titulo_vila_alafia'); ?></h2>
+            <div class="descricao-vila-alafia"><?php echo get_field('descricao_vila_alafia'); ?></div>
+            <?php
+            $link = get_field('link_vila_alafia');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-vila-alafia-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+
+
+
+        </div>
+        <div class="box-conteudo-right box-conteudo-right-vila-alafia">
+            <?php
+            $image = get_field('imagem_vila_alafia');
+            if ($image) :
+                $image_url = $image['url'];
+                $image_alt = $image['alt']; ?>
+                <img class="image-vila-alafia" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+            <?php endif; ?>
+            <?php
+            $link = get_field('link_vila_alafia');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-vila-alafia-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+
+        </div>
+    </section>
+
+    <section class="instituto-padre-arlindo" id="instituto-padre-arlindo">
+
+
+        <div class="box-conteudo-left">
+
+            <div class="box-svg-instituto-padre-arlindo">
+                <?php $svg_file = get_field('svg_instituto_padre_arlindo');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
+            <h2 class="titulo-instituto-padre-arlindo terminal-test"><?php echo get_field('titulo_instituto_padre_arlindo'); ?></h2>
+            <div class="descricao-instituto-padre-arlindo"><?php echo get_field('descricao_instituto_padre_arlindo'); ?></div>
+            <?php
+            $link = get_field('link_instituto_padre_arlindo');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-instituto-padre-arlindo-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+        </div>
+        <div class="box-conteudo-right box-conteudo-right-instituto-padre-arlindo">
+            <?php
+            $image = get_field('imagem_instituto_padre_arlindo');
+            if ($image) :
+                $image_url = $image['url'];
+                $image_alt = $image['alt']; ?>
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+            <?php endif; ?>
+            <?php
+            $link = get_field('link_instituto_padre_arlindo');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-instituto-padre-arlindo-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+        </div>
+    </section>
+
+
+
+    <section class="associacao-superacao" id="associacao-superacao">
 
 
         <div class="box-conteudo-left">
@@ -100,7 +210,7 @@ get_header();
         </div>
     </section>
 
-    <section class="escola-formacao-due" id="iniciativas2">
+    <section class="escola-formacao-due" id="escola-formacao-due">
 
 
         <div class="box-conteudo-left">
@@ -153,7 +263,7 @@ get_header();
         </div>
     </section>
 
-    <section class="incentivo-empreendedorismo" id="iniciativas3">
+    <section class="incentivo-empreendedorismo" id="incentivo-empreendedorismo">
 
 
         <div class="box-conteudo-left">
@@ -205,7 +315,7 @@ get_header();
         </div>
     </section>
 
-    <section class="proposito" id="iniciativas4">
+    <section class="proposito" id="proposito">
 
 
         <div class="box-conteudo-left">
@@ -257,114 +367,6 @@ get_header();
         </div>
     </section>
 
-    <section class="instituto-padre-arlindo" id="iniciativas5">
-
-
-        <div class="box-conteudo-left">
-
-            <div class="box-svg-instituto-padre-arlindo">
-                <?php $svg_file = get_field('svg_instituto_padre_arlindo');
-                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                    echo '<i class="element">';
-                    echo file_get_contents($svg_file['url']);
-                    echo '</i>';
-                } ?>
-            </div>
-            <h2 class="titulo-instituto-padre-arlindo terminal-test"><?php echo get_field('titulo_instituto_padre_arlindo'); ?></h2>
-            <div class="descricao-instituto-padre-arlindo"><?php echo get_field('descricao_instituto_padre_arlindo'); ?></div>
-            <?php
-            $link = get_field('link_instituto_padre_arlindo');
-            if ($link) :
-                $link_url = $link['url'];
-                $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self';
-                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
-            ?>
-                <a class="button link-instituto-padre-arlindo-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                    <p class=""><?php echo esc_html($link_title); ?></p>
-                </a>
-            <?php endif; ?>
-
-
-
-        </div>
-        <div class="box-conteudo-right">
-            <?php
-            $image = get_field('imagem_instituto_padre_arlindo');
-            if ($image) :
-                $image_url = $image['url'];
-                $image_alt = $image['alt']; ?>
-                <img class="image-instituto-padre-arlindo" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-            <?php endif; ?>
-            <?php
-            $link = get_field('link_instituto_padre_arlindo');
-            if ($link) :
-                $link_url = $link['url'];
-                $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self';
-                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
-
-            ?>
-                <a class="button link-instituto-padre-arlindo-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                    <p class=""><?php echo esc_html($link_title); ?></p>
-                </a>
-            <?php endif; ?>
-
-        </div>
-    </section>
-
-    <section class="vila-alafia" id="iniciativas6">
-
-
-        <div class="box-conteudo-left">
-
-            <div class="box-svg box-svg-vila-alafia">
-                <?php $svg_file = get_field('svg_vila_alafia');
-                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                    echo '<i class="element">';
-                    echo file_get_contents($svg_file['url']);
-                    echo '</i>';
-                } ?>
-            </div>
-            <h2 class="titulo-vila-alafia terminal-test"><?php echo get_field('titulo_vila_alafia'); ?></h2>
-            <div class="descricao-vila-alafia"><?php echo get_field('descricao_vila_alafia'); ?></div>
-            <?php
-            $link = get_field('link_vila_alafia');
-            if ($link) :
-                $link_url = $link['url'];
-                $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self';
-                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
-
-            ?>
-                <a class="button link-vila-alafia-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                    <p class=""><?php echo esc_html($link_title); ?></p>
-                </a>
-            <?php endif; ?>
-        </div>
-        <div class="box-conteudo-right box-conteudo-right-vila-alafia">
-            <?php
-            $image = get_field('imagem_vila_alafia');
-            if ($image) :
-                $image_url = $image['url'];
-                $image_alt = $image['alt']; ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-            <?php endif; ?>
-            <?php
-            $link = get_field('link_vila_alafia');
-            if ($link) :
-                $link_url = $link['url'];
-                $link_title = $link['title'];
-                $link_target = $link['target'] ? $link['target'] : '_self';
-                $gtm_link_escola = strtolower(str_replace(' ', '-', $link_title));
-
-            ?>
-                <a class="button link-vila-alafia-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                    <p class=""><?php echo esc_html($link_title); ?></p>
-                </a>
-            <?php endif; ?>
-        </div>
-    </section>
     <div class="selos-certificados">
         <div class="wrapper">
 

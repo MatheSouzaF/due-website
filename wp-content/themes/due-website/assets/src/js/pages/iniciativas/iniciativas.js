@@ -38,6 +38,142 @@ function banner() {
   );
 }
 
+function animationVila() {
+  const logoSVG = document.querySelector('.box-svg-vila-alafia');
+  const tituloEscola = document.querySelector('.titulo-vila-alafia');
+  const descricaoEscola = document.querySelector('.descricao-vila-alafia');
+  const linkEscola = document.querySelector('.link-vila-alafia-desktop');
+  const imgEscola = document.querySelector('.image-vila-alafia');
+  let TLFADE = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.vila-alafia',
+      start: 'top-=400',
+    },
+  });
+
+  TLFADE.from(logoSVG, {
+    duration: 1,
+    ease: 'power.in',
+    onStart: () => logoSVG.classList.add('fade-left'),
+  })
+    .from(
+      tituloEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => tituloEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      descricaoEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => descricaoEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      linkEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => linkEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      imgEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => imgEscola.classList.add('imgPath'),
+      },
+      '0'
+    );
+}
+function backgroundVila() {
+  gsap.registerPlugin(ScrollTrigger);
+  const btnAppears = document.querySelector('.vila-alafia');
+
+  function bgOpen() {
+    if (btnAppears) {
+      btnAppears.classList.add('background-open'); // Adiciona a classe 'background-open'
+    }
+  }
+
+  function bgClose() {
+    if (btnAppears) {
+      btnAppears.classList.remove('background-open'); // Remove a classe 'background-open'
+    }
+  }
+
+  gsap.from('.vila-alafia', {
+    scrollTrigger: {
+      trigger: '.vila-alafia',
+      start: 'top-=300 center',
+      scrub: true,
+      onEnter: bgOpen,
+      onLeaveBack: bgClose,
+    },
+  });
+}
+function animationInstitutoSuperacao() {
+  const logoSVG = document.querySelector('.box-svg-instituto-padre-arlindo');
+  const tituloAssociacao = document.querySelector('.titulo-instituto-padre-arlindo');
+  const descricaoAssociacao = document.querySelector('.descricao-instituto-padre-arlindo');
+  const linkAssociacao = document.querySelector('.link-instituto-padre-arlindo-desktop');
+  const imgAssociacao = document.querySelector('.box-conteudo-right-instituto-padre-arlindo');
+  let TLFADE = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.instituto-padre-arlindo',
+      start: 'top-=400',
+    },
+  });
+
+  TLFADE.from(logoSVG, {
+    duration: 1,
+    ease: 'power.in',
+    onStart: () => logoSVG.classList.add('fade-right'),
+  })
+    .from(
+      tituloAssociacao,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => tituloAssociacao.classList.add('fade-right'),
+      },
+      '-=0.7'
+    )
+    .from(
+      descricaoAssociacao,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => descricaoAssociacao.classList.add('fade-right'),
+      },
+      '-=0.7'
+    )
+    .from(
+      linkAssociacao,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => linkAssociacao.classList.add('fade-right'),
+      },
+      '-=0.7'
+    )
+    .from(
+      imgAssociacao,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => imgAssociacao.classList.add('imgPath'),
+      },
+      '0'
+    );
+}
 function backgroundAssociacaoSuperacao() {
   gsap.registerPlugin(ScrollTrigger);
   const btnAppears = document.querySelector('.associacao-superacao');
@@ -331,143 +467,9 @@ function animationSelosCertificados() {
   });
   
 }
-function animationInstitutoSuperacao() {
-  const logoSVG = document.querySelector('.box-svg-instituto-padre-arlindo');
-  const tituloAssociacao = document.querySelector('.titulo-instituto-padre-arlindo');
-  const descricaoAssociacao = document.querySelector('.descricao-instituto-padre-arlindo');
-  const linkAssociacao = document.querySelector('.link-instituto-padre-arlindo-desktop');
-  const imgAssociacao = document.querySelector('.image-instituto-padre-arlindo');
-  let TLFADE = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.instituto-padre-arlindo',
-      start: 'top-=400',
-    },
-  });
 
-  TLFADE.from(logoSVG, {
-    duration: 1,
-    ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-left'),
-  })
-    .from(
-      tituloAssociacao,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => tituloAssociacao.classList.add('fade-left'),
-      },
-      '-=0.7'
-    )
-    .from(
-      descricaoAssociacao,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => descricaoAssociacao.classList.add('fade-left'),
-      },
-      '-=0.7'
-    )
-    .from(
-      linkAssociacao,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => linkAssociacao.classList.add('fade-left'),
-      },
-      '-=0.7'
-    )
-    .from(
-      imgAssociacao,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => imgAssociacao.classList.add('imgPath'),
-      },
-      '0'
-    );
-}
-function backgroundInstituto() {
-  gsap.registerPlugin(ScrollTrigger);
-  const bg = document.querySelector('.instituto-padre-arlindo');
 
-  function bgOpen() {
-    if (bg) {
-      bg.classList.add('background-open'); // Adiciona a classe 'background-open'
-    }
-  }
 
-  function bgClose() {
-    if (bg) {
-      bg.classList.remove('background-open'); // Remove a classe 'background-open'
-    }
-  }
-
-  gsap.from('.instituto-padre-arlindo', {
-    scrollTrigger: {
-      trigger: '.instituto-padre-arlindo',
-      start: 'top-=300 center',
-      scrub: true,
-      onEnter: bgOpen,
-      onLeaveBack: bgClose,
-    },
-  });
-}
-
-function animationVila() {
-  const logoSVG = document.querySelector('.box-svg-vila-alafia');
-  const tituloEscola = document.querySelector('.titulo-vila-alafia');
-  const descricaoEscola = document.querySelector('.descricao-vila-alafia');
-  const linkEscola = document.querySelector('.link-vila-alafia-desktop');
-  const imgEscola = document.querySelector('.box-conteudo-right-vila-alafia');
-  let TLFADE = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.vila-alafia',
-      start: 'top-=400',
-    },
-  });
-
-  TLFADE.from(logoSVG, {
-    duration: 1,
-    ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-right'),
-  })
-    .from(
-      tituloEscola,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => tituloEscola.classList.add('fade-right'),
-      },
-      '-=0.7'
-    )
-    .from(
-      descricaoEscola,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => descricaoEscola.classList.add('fade-right'),
-      },
-      '-=0.7'
-    )
-    .from(
-      linkEscola,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => linkEscola.classList.add('fade-right'),
-      },
-      '-=0.7'
-    )
-    .from(
-      imgEscola,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => imgEscola.classList.add('imgPath'),
-      },
-      '0'
-    );
-}
 function btnFixed() {
   gsap.registerPlugin(ScrollTrigger);
 
@@ -538,7 +540,7 @@ function initIniciativas() {
   btnFixed();
   selosAccordion();
   animationInstitutoSuperacao();
-  backgroundInstituto();
+  backgroundVila();
   animationVila();
 }
 

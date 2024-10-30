@@ -75,6 +75,9 @@ class Area {
 		// Add the options page.
 		add_action( 'admin_menu', [ $this, 'add_admin_options_page' ] );
 
+		// Add inline styles for "Upgrade to Pro" left sidebar menu item.
+		add_action( 'admin_head', [ $this, 'style_upgrade_pro_link' ] );
+
 		// Register on load Email Log admin menu hook.
 		add_action( 'load-' . $this->get_admin_page_hook( 'logs' ), [ $this, 'maybe_redirect_email_log_menu_to_email_log_settings_tab' ] );
 
@@ -96,6 +99,12 @@ class Area {
 		// Admin footer text.
 		add_filter( 'admin_footer_text', [ $this, 'get_admin_footer' ], 1, 2 );
 
+		// Outputs the plugin promotional admin footer.
+		add_action( 'in_admin_footer', [ $this, 'display_admin_footer' ] );
+
+		// Outputs the plugin version in the admin footer.
+		add_filter( 'update_footer', [ $this, 'display_update_footer' ], PHP_INT_MAX );
+
 		// Hide all unrelated to the plugin notices on the plugin admin pages.
 		add_action( 'admin_print_scripts', [ $this, 'hide_unrelated_notices' ] );
 
@@ -116,7 +125,11 @@ class Area {
 				global $pagenow;
 
 				// Redirect from `options-general.php`.
-				if ( WP::in_wp_admin() && $pagenow === 'options-general.php' ) {
+				if (
+					WP::in_wp_admin() &&
+					$pagenow === 'options-general.php' &&
+					$this->get_current_tab() !== 'auth'
+				) {
 					wp_safe_redirect( $this->get_admin_page_url() );
 					exit();
 				}
@@ -296,6 +309,17 @@ class Area {
 				[ $this, 'display' ]
 			);
 		}
+
+		if ( ! easy_wp_smtp()->is_pro() ) {
+			add_submenu_page(
+				self::SLUG,
+				esc_html__( 'Upgrade to Pro', 'easy-wp-smtp' ),
+				esc_html__( 'Upgrade to Pro', 'easy-wp-smtp' ),
+				$access_capability,
+				// phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
+				esc_url( easy_wp_smtp()->get_upgrade_link( [ 'medium' => 'admin-menu', 'content' => 'Upgrade to Pro' ] ) )
+			);
+		}
 	}
 
 	/**
@@ -406,6 +430,10 @@ class Area {
 					esc_url( easy_wp_smtp()->get_utm_url( 'https://easywpsmtp.com/docs/how-to-upgrade-easy-wp-smtp-to-pro-version/', [ 'medium' => 'plugin-settings', 'content' => 'Pro Mailer Popup - Already purchased' ] ) ),
 					esc_html__( 'Already purchased?', 'easy-wp-smtp' )
 				),
+				'rate_limit'        => [
+					'upgrade_title'   => esc_html__( 'Email Rate Limiting is a Pro Feature', 'easy-wp-smtp' ),
+					'upgrade_content' => esc_html__( 'We\'re sorry, Email Rate Limiting is not available on your plan. Please upgrade to the Pro plan to unlock all these awesome features.', 'easy-wp-smtp' ),
+				],
 			],
 			'all_mailers_supports'    => easy_wp_smtp()->get_providers()->get_supports_all(),
 			'nonce'                   => wp_create_nonce( 'easy-wp-smtp-admin' ),
@@ -794,6 +822,10 @@ class Area {
 			$this->pages = [
 				'settings'    => new Pages\SettingsTab(),
 				'logs'        => new Pages\LogsTab(),
+				'alerts'      => new Pages\AlertsTab(),
+				'connections' => new Pages\AdditionalConnectionsTab(),
+				'routing'     => new Pages\SmartRoutingTab(),
+				'control'     => new Pages\ControlTab(),
 				'misc'        => new Pages\MiscTab(),
 				'auth'        => new Pages\AuthTab(),
 			];
@@ -1198,5 +1230,145 @@ class Area {
 		}
 
 		return $hook;
+	}
+
+	/**
+	 * Display the promotional footer in our plugin pages.
+	 *
+	 * @since 2.4.0
+	 */
+	public function display_admin_footer() { //phpcs:ignore Generic.Metrics.CyclomaticComplexity.TooHigh
+
+		// Bail early on non-plugin pages.
+		if ( ! $this->is_admin_page() ) {
+			return;
+		}
+
+		$title = esc_html__( 'Made with ♥ by the Easy WP SMTP team', 'easy-wp-smtp' );
+		$links = [
+			[
+				'url'    => easy_wp_smtp()->is_pro() ?
+					easy_wp_smtp()->get_utm_url(
+						'https://easywpsmtp.com/account/support/',
+						[
+							'medium'  => 'Plugin Footer',
+							'content' => 'Contact Support',
+						]
+					) : 'https://wordpress.org/support/plugin/easy-wp-smtp/',
+				'text'   => esc_html__( 'Support', 'easy-wp-smtp' ),
+				'target' => '_blank',
+			],
+			[
+				'url'    => easy_wp_smtp()->get_utm_url(
+					'https://easywpsmtp.com/docs/',
+					[
+						'medium'  => 'Plugin Footer',
+						'content' => 'Plugin Documentation',
+					]
+				),
+				'text'   => esc_html__( 'Docs', 'easy-wp-smtp' ),
+				'target' => '_blank',
+			],
+		];
+
+		$links_count = count( $links );
+		?>
+		<div class="easy-wp-smtp-footer-promotion">
+			<p><?php echo esc_html( $title ); ?></p>
+			<ul class="easy-wp-smtp-footer-promotion-links">
+				<?php foreach ( $links as $key => $item ) : ?>
+					<li>
+						<?php
+						$attrs = 'href="' . esc_url( $item['url'] ) . '"';
+
+						if ( isset( $item['target'] ) ) {
+							$attrs .= ' target="' . esc_attr( $item['target'] ) . '"';
+							$attrs .= ' rel="noopener noreferrer"';
+						}
+
+						$text    = esc_html( $item['text'] );
+						$divider = $links_count !== $key + 1 ? '<span>/</span>' : '';
+
+						printf(
+							'<a %1$s>%2$s</a>%3$s',
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							$attrs,
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							$text,
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							$divider
+						);
+						?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Display the plugin version in the footer of our plugin pages.
+	 *
+	 * @since 2.4.0
+	 *
+	 * @param string $text Text of the footer.
+	 */
+	public function display_update_footer( $text ) {
+
+		if ( $this->is_admin_page() ) {
+			return 'Easy WP SMTP ' . EasyWPSMTP_PLUGIN_VERSION;
+		}
+
+		return $text;
+	}
+
+	/**
+	 * Define inline styles for "Upgrade to Pro" left sidebar menu item.
+	 *
+	 * @since 2.4.0
+	 */
+	public function style_upgrade_pro_link() {
+
+		global $submenu;
+
+		// Bail if plugin menu is not registered.
+		if ( ! isset( $submenu[ self::SLUG ] ) ) {
+			return;
+		}
+
+		$upgrade_link_position = key(
+			array_filter(
+				$submenu[ self::SLUG ],
+				function ( $item ) {
+					return strpos( urldecode( $item[2] ), 'easywpsmtp.com/lite-upgrade' ) !== false;
+				}
+			)
+		);
+
+		// Bail if "Upgrade to Pro" menu item is not registered.
+		if ( is_null( $upgrade_link_position ) ) {
+			return;
+		}
+
+		// Prepare a HTML class.
+		// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
+		if ( isset( $submenu[ self::SLUG ][ $upgrade_link_position ][4] ) ) {
+			$submenu[ self::SLUG ][ $upgrade_link_position ][4] .= ' easy-wp-smtp-sidebar-upgrade-pro';
+		} else {
+			$submenu[ self::SLUG ][ $upgrade_link_position ][] = 'easy-wp-smtp-sidebar-upgrade-pro';
+		}
+
+		$current_screen      = get_current_screen();
+		$upgrade_utm_content = $current_screen === null ? 'Upgrade to Pro' : 'Upgrade to Pro - ' . $current_screen->base;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$upgrade_utm_content = empty( $_GET['tab'] ) ? $upgrade_utm_content : $upgrade_utm_content . ' -- ' . sanitize_key( $_GET['tab'] );
+
+		// Add the correct utm_content to the menu item.
+		$submenu[ self::SLUG ][ $upgrade_link_position ][2] =
+			esc_url( easy_wp_smtp()->get_upgrade_link( [ 'medium' => 'admin-menu', 'content' => $upgrade_utm_content ] ) ); // phpcs:ignore WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound
+		// phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
+
+		// Output inline styles.
+		echo '<style>a.easy-wp-smtp-sidebar-upgrade-pro { background-color: #0f8a56 !important; color: #fff !important; font-weight: 600 !important; }</style>';
 	}
 }

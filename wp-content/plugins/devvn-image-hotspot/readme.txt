@@ -4,7 +4,7 @@ Donate link: https://levantoan.com/donate/
 Tags: hotspot, points, image, maps, image hotspot
 Requires at least: 4.6
 Tested up to: 6.6.1
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -49,6 +49,11 @@ Read here [change the background tooltip and text color](https://github.com/leva
 == Changelog ==
 
 For more information, see [Releases](https://levantoan.com/devvn-image-hotspot).
+
+= 1.2.8 - 26/09/2024 =
+
+* Fix shortcode in content pin.
+* Enable iframe in content pin.
 
 = 1.2.7 - 26/08/2024 =
 

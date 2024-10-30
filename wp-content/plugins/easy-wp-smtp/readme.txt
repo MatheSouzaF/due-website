@@ -1,14 +1,14 @@
-=== Easy WP SMTP by SendLayer - WordPress SMTP and Email Log Plugin ===
+=== Easy WP SMTP – WordPress SMTP and Email Logs: Gmail, Office 365, Outlook, Custom SMTP, and more ===
 Contributors: sendlayer, jaredatch, smub, capuderg
 Tags: email, smtp, email logs, gmail, outlook
 Requires at least: 5.2
 Tested up to: 6.6
 Requires PHP: 7.2
-Stable tag: 2.3.2
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Improve email delivery for WordPress with SMTP. Configure SendLayer, Mailgun, Brevo, Gmail or connect to an SMTP server.
+Make SMTP email sending and delivery easy. Configure Gmail, Outlook, Brevo, SendGrid, Mailgun, SendLayer or connect to any SMTP server.
 
 == Description ==
 
@@ -30,17 +30,25 @@ You can resolve your email deliverability issues by configuring one of these mai
 * SendGrid
 * Brevo (formerly Sendinblue)
 * SMTP.com
+* Postmark
+* SparkPost
+* SMTP2GO
 * Other SMTP - configure any SMTP mail server
 
 ### Easy WP SMTP Features
 
-* Send WordPress emails using one of the transactional mailers or an SMTP server.
-* Our Setup Wizard helps you configure your mailer or SMTP provider in no time.
-* The fastest Gmail / Google mail integration on the market (configure it in just a couple of clicks).
-* You can use different transactional mailers or SMTP: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
-* Powerful Email Logging - log all mail sent from your WordPress site, resend emails, store attachments, and more. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
-* Generate email and delivery reports in your WordPress dashboard - see how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
-* The Dashboard Widget shows you sent, delivered, failed, opened and clicked stats at a glance. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=dashboard-widget-readme" rel="friend">[Pro]</a>
+* **Send WordPress emails** using one of the transactional mailers or an SMTP server.
+* Our **Setup Wizard** helps you configure your mailer or SMTP provider in no time.
+* The fastest **Gmail / Google** mail integration on the market (configure it in just a couple of clicks).
+* You can use different **transactional mailers** or SMTP: SendLayer, Amazon SES (Pro), Gmail / Google (Pro), Mailgun, Microsoft 365 / Outlook (Pro), SendGrid, Brevo (formerly Sendinblue), SMTP.com.
+* **Powerful Email Logging** - log all mail sent from your WordPress site, resend emails, store attachments, and more. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-logs-readme" rel="friend">[Pro]</a>
+* **Email Alerts** - receive notifications via email, Slack, Microsoft Teams, SMS, or custom webhooks, when email fails to send from your site. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=alerts-readme" rel="friend">[Pro]</a>
+* **Backup Connection** - if your primary connection fails to send an email, your backup connection will make sure your email will still get delivered. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=backup-connection-readme" rel="friend">[Pro]</a>
+* **Smart Conditional Routing** - set up rules to route different types of emails through various mailers, based on many supported filters. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=smart-routing-readme" rel="friend">[Pro]</a>
+* **Rate Limiting** - control the frequency of emails sent from your WordPress site within a given time to stay aligned with your SMTP provider's limitations. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=rate-limiting-readme" rel="friend">[Pro]</a>
+* **Optimized Email Sending** - send emails in background to avoid site slowdowns and bottlenecks. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=optimized-email-sending" rel="friend">[Pro]</a>
+* Generate email and **delivery reports** in your WordPress dashboard - see how many emails were sent, opened and clicked, with the Email Reports feature. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=email-reports-readme" rel="friend">[Pro]</a>
+* The **Dashboard Widget** shows you sent, delivered, failed, opened and clicked stats at a glance. <a href="https://easywpsmtp.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=dashboard-widget-readme" rel="friend">[Pro]</a>
 * You can use Gmail, Outlook, Yahoo, Hotmail, Zoho, or any other SMTP server.
 * Seamlessly connect your WordPress site with a reliable mailer or SMTP provider to handle all outgoing emails.
 * Securely deliver emails to your recipients.
@@ -112,6 +120,28 @@ You can get started with a 30-day trial account, where you can send up to 50,000
 
 Read our <a href="https://easywpsmtp.com/docs/setting-up-the-smtp-com-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SMTP.com documentation</a> for more details.
 
+#### Postmark
+
+Postmark is a transactional email service with great deliverability and budget-friendly pricing.
+
+You can start out with their free trial option, which allows you to send up to 100 emails per month through their secure API.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-postmark-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">Postmark documentation</a> for more details.
+
+#### SparkPost
+
+SparkPost is a transactional email provider, designed to provide high-speed, reliable, and secure email delivery.
+
+You can get started with the free test account that lets you send up to 500 emails per month.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-sparkpost-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SparkPost documentation</a> for more details.
+
+#### SMTP2GO
+
+SMTP2GO delivers a powerful and reliable email service for transactional emails, supported by a worldwide infrastructure, detailed real-time analytics, and robust security measures. New users can take advantage of SMTP2GO's free plan, which includes up to 1000 emails per month.
+
+Read our <a href="https://easywpsmtp.com/docs/setting-up-the-smtp2go-mailer/?utm_source=wprepo&utm_medium=link&utm_campaign=liteplugin&utm_content=readme" rel="friend">SMTP2GO documentation</a> for more details.
+
 #### Other SMTP
 
 With our Other SMTP mailer, you can configure any SMTP server to send your WordPress emails. You can use your own SMTP server, or any of the popular email providers: Gmail, Outlook, Yahoo, Zoho, Hotmail, ...
@@ -155,6 +185,34 @@ Export your WordPress emails to CSV, EML, or Excel with ease using our intuitive
 #### Print Emails
 
 Our email logging feature allows you to easily print any email in a clear and easy-to-read format, making it simple to keep track of important email communications. Additionally, you can export email logs to PDF format for convenient digital archiving.
+
+#### Email Alerts
+
+Receive instant notifications if your emails fail to send, with alerts available through Slack, Microsoft Teams, SMS/Twilio, webhooks, or email via a secure API.
+
+Combined with our email logging and resending capabilities, Email Alerts guarantee that no critical email will ever be overlooked.
+
+#### Backup Connection
+
+Add a secondary connection that takes over if your main one fails. Easy WP SMTP identifies connection errors and effortlessly shifts to the backup mailer, ensuring that failed emails are automatically retried.
+
+#### Smart Conditional Routing
+
+Set up rules to route different types of emails through various mailers. You can filter by the email's Subject, Message content, From or To addresses, the plugin that generated the email, and more.
+
+This approach lets you combine transactional and marketing providers for enhanced deliverability.
+
+#### Rate Limiting
+
+Control the frequency of emails sent from your WordPress site within a given time to stay aligned with your SMTP provider's limitations.
+
+Easy WP SMTP lets you set limits on how many emails can be sent each minute, hour, day, week, or month and automatically manages the email queue to keep you within the allowed rate.
+
+#### Optimized Email Sending
+
+Is email sending affecting your site's speed? Easy WP SMTP can queue your emails to enhance performance.
+
+With optimized sending, emails are sent in the background when server resources are available, helping to avoid site slowdowns and bottlenecks.
 
 #### Email Reports
 
@@ -218,14 +276,31 @@ And we will try to help out as soon as possible.
 
 == Screenshots ==
 
-1. Easy WP SMTP Settings - with mailer selection.
-2. Selected Other SMTP mailer
-3. Other SMTP mailer settings
-4. General Settings
-5. Email Test page
-6. Debug Events page
+1. Easy WP SMTP Settings - with "Other SMTP" mailer selected
+2. Email Log settings
+3. Alerts settings
+4. Additional Connections settings - Backup Connection configuration using SendLayer mailer
+5. Smart Routing settings
+6. Miscellanous settings
+7. Email Test page
+8. Debug Events page
+9. Setup Wizard - Step 1
+10. Setup Wizard - Step 2
 
 == Changelog ==
+
+= 2.6.0 - 2024-09-26 =
+* Added: Optimized Email Sending - improve your site's performance by handling email requests in the background.
+* Changed: Delete `easy-wp-smtp` uploads folder on plugin uninstall when the Misc -> Uninstall Easy WP SMTP option is enabled.
+
+= 2.5.0 - 2024-08-29 =
+* Added: New SMTP2GO transactional mailer.
+
+= 2.4.1 - 2024-08-05 =
+* Fixed: the undefined array key `hide_email_alerts_banner`.
+
+= 2.4.0 - 2024-08-01 =
+* Added: New SparkPost transactional mailer.
 
 = 2.3.2 - 2024-07-23 =
 * Changed: Bumped tested WP version to 6.6.

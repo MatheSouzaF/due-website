@@ -4,7 +4,7 @@ a.rsssl-skip-link {
   margin: 15px 0 20px;
 }
 
-.rsssl-two_fa_users div[data-column-id="4"].rdt_TableCol {
+.rsssl-two_fa_users div[data-column-id="5"].rdt_TableCol {
   display: none;
 }
 
@@ -29,4 +29,13 @@ a.rsssl-skip-link {
   ul {
     max-height:initial;
   }
+}
+
+.rsssl-add-button__inner .button {
+  display: flex;
+  align-items: center;
+}
+
+.rsssl-add-button__inner .button .icon {
+  margin-left: 8px; /* Adjust the spacing as needed */
 }

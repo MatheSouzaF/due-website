@@ -277,6 +277,10 @@ function loadSearchBox() {
     return [...new Set(array)];
   }
 
+  function containsOnly(array1, array2) {
+    return array2.every(elem => array1.includes(elem)) && array1.length === array2.length;
+  }  
+
   function updateSelectedValues(filterType) {
     const selectedValues = getFilterLabel(`#home-filter-${filterType}, #home-mobile-filter-${filterType}`);
 
@@ -295,7 +299,7 @@ function loadSearchBox() {
       if (filterType === 'rooms') {
         let suffix
 
-        suffix = selectedValues.length === 1 && selectedValues[0] === '1' ? ' quarto' : ' quartos';
+        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['Studio', '1'])) ? ' quarto' : ' quartos';
         const labels = selectedValues.join(', ')
         
         destinoElement.text(`${labels} ${labels === 'Studio' ? '' : suffix}`);

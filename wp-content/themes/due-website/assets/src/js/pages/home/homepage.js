@@ -1,5 +1,5 @@
-import { renderFiltersHome } from '../../components/filter-home';
-import { getFilterLabel } from '../../utils/get-filter-label';
+import {renderFiltersHome} from '../../components/filter-home';
+import {getFilterLabel} from '../../utils/get-filter-label';
 
 function swiperEmpreendimento() {
   const swiper = new Swiper('.swiper-empreendimento', {
@@ -248,7 +248,7 @@ function loadSearchBox() {
         label: location,
       })),
       rooms: [
-        ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+        ...(isStudio ? [{value: 'Studio', label: 'Studio'}] : []),
         ...Array.from(roomsOptions)
           .sort()
           .map((room) => ({
@@ -277,6 +277,10 @@ function loadSearchBox() {
     return [...new Set(array)];
   }
 
+  function containsOnly(array1, array2) {
+    return array2.every(elem => array1.includes(elem)) && array1.length === array2.length;
+  }  
+
   function updateSelectedValues(filterType) {
     const selectedValues = getFilterLabel(`#home-filter-${filterType}, #home-mobile-filter-${filterType}`);
 
@@ -287,16 +291,29 @@ function loadSearchBox() {
       destinoElement = $('.container-quartos .titulo-checkbox-quartos');
     }
 
-    if (destinoElement && destinoElement.length > 0) {
-      if (selectedValues && selectedValues.length > 0) {
-        destinoElement.text(selectedValues.join(', '));
-      } else {
-        if (filterType === 'location') {
-          destinoElement.text(originalLabels.destino);
-        } else {
-          destinoElement.text(originalLabels.quarto);
-        }
+    if (!destinoElement || destinoElement.length === 0) {
+      return;
+    }
+
+    if (selectedValues && selectedValues.length > 0) {
+      if (filterType === 'rooms') {
+        let suffix
+
+        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['Studio', '1'])) ? ' quarto' : ' quartos';
+        const labels = selectedValues.join(', ')
+        
+        destinoElement.text(`${labels} ${labels === 'Studio' ? '' : suffix}`);
+        return;
       }
+    
+      destinoElement.text(selectedValues.join(', '));
+      return;
+    }
+
+    if (filterType === 'location') {
+      destinoElement.text(originalLabels.destino);
+    } else {
+      destinoElement.text(originalLabels.quarto);
     }
   }
 
@@ -327,11 +344,9 @@ function loadSearchBox() {
       params.set('tipologia', 'true');
     }
 
-    const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''
-      }`;
+    const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''}`;
 
     $('.busca-banner').attr('href', newUrl);
-    console.log('URL Filtrada:', newUrl);
   }
 
   filters['location'].find('input.ckkBox').on('change', function () {
@@ -349,9 +364,7 @@ function loadSearchBox() {
   function updateFilterNumberIndicador() {
     $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
       const current_filter = $(this);
-      const checked_count = $(current_filter).find(
-        '.checkboxes input:checked, .category-content input:checked'
-      ).length;
+      const checked_count = $(current_filter).find('.checkboxes input:checked, .category-content input:checked').length;
       const filter_count_el = $(current_filter).find('.filter_count');
 
       if (checked_count > 0) {
@@ -366,7 +379,7 @@ function loadSearchBox() {
     // Adiciona as classes para abrir o drawer
     $('.filter-drawer').addClass('open');
     $('body').addClass('drawer-open');
-    
+
     // Verifica qual botão foi clicado
     if ($(this).hasClass('container-quartos')) {
       // Se for o botão de "Quartos", dispara o clique no botão correspondente
@@ -375,7 +388,7 @@ function loadSearchBox() {
       // Se for o botão de "Destino", dispara o clique no botão correspondente
       $('#home-mobile-filter-location').siblings('.category-toggle').click();
     }
-  });  
+  });
 
   $('.drawer-content').on('click', '.category-toggle', function (e) {
     e.stopPropagation(); // Evita o fechamento quando clicar no próprio toggle
@@ -416,4 +429,4 @@ function initPage() {
   loadSearchBox();
 }
 
-export { initPage };
+export {initPage};

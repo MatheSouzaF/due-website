@@ -327,7 +327,7 @@ wp_localize_script('main', 'originalLabels', array(
                         echo file_get_contents($svg_file['url']);
                         echo '</i>';
                     } ?>
-                    <p><?php echo $tituloQuartos ?></p>
+                    <p class="titulo-checkbox-quartos"><?php echo $tituloQuartos ?></p>
 
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">

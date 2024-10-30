@@ -278,7 +278,7 @@ function loadSearchBox() {
   }
 
   function updateSelectedValues(filterType) {
-    const selectedValues = getFilterLabel(`#home-filter-${filterType}`);
+    const selectedValues = getFilterLabel(`#home-filter-${filterType}, #home-mobile-filter-${filterType}`);
 
     let destinoElement;
     if (filterType === 'location') {
@@ -292,9 +292,9 @@ function loadSearchBox() {
         destinoElement.text(selectedValues.join(', '));
       } else {
         if (filterType === 'location') {
-          destinoElement.text('Selecione um destino');
+          destinoElement.text(originalLabels.destino);
         } else {
-          destinoElement.text('Quantos quartos?');
+          destinoElement.text(originalLabels.quarto);
         }
       }
     }

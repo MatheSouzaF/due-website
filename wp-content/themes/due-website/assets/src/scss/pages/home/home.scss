@@ -345,17 +345,7 @@ body.page-template-homepage {
         transition: 0.6s;
 
         @include media-breakpoint-up(sm) {
-          left: 48px;
-          transform: initial;
           width: fit-content;
-        }
-
-        @include media-breakpoint-up(md) {
-          left: 80px;
-        }
-
-        @include media-breakpoint-up(lg) {
-          left: 195px;
         }
 
         .swiper-pagination-bullet {
@@ -1721,7 +1711,8 @@ body.page-template-homepage {
     }
   }
 
-  .titulo-checkbox-destino, .titulo-checkbox-quartos {
+  .titulo-checkbox-destino,
+  .titulo-checkbox-quartos {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -2,6 +2,15 @@
 //Template Name: Homepage
 wp_enqueue_style('home', get_template_directory_uri() . '/assets/dist/css/home/home.css', ['main'], ASSETS_VERSION);
 get_header();
+
+$tituloDestino = get_field('titulo_destino');
+$tituloQuartos = get_field('titulo_quartos');
+
+wp_localize_script('main', 'originalLabels', array(
+    'destino' => $tituloDestino,
+    'quarto' => $tituloQuartos,
+));
+
 ?>
 <section class="logo">
     <div id="dotLottie-canvas"></div>
@@ -250,7 +259,7 @@ get_header();
                     echo file_get_contents($svg_file['url']);
                     echo '</i>';
                 } ?>
-                <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
+                <p class="titulo-checkbox-destino"><?php echo $tituloDestino; ?></p>
             </button>
             <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
                 fill="none">
@@ -269,7 +278,7 @@ get_header();
                     echo file_get_contents($svg_file['url']);
                     echo '</i>';
                 } ?>
-                <p class="titulo-checkbox-quartos"><?php echo get_field('titulo_quartos'); ?></p>
+                <p class="titulo-checkbox-quartos"><?php echo $tituloQuartos; ?></p>
             </button>
             <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
                 fill="none">
@@ -303,7 +312,7 @@ get_header();
                         echo file_get_contents($svg_file['url']);
                         echo '</i>';
                     } ?>
-                    <p class="titulo-checkbox-destino"><?php echo get_field('titulo_destino'); ?></p>
+                    <p class="titulo-checkbox-destino"><?php echo $tituloDestino ?></p>
 
                 </button>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">
@@ -318,7 +327,7 @@ get_header();
                         echo file_get_contents($svg_file['url']);
                         echo '</i>';
                     } ?>
-                    <p><?php echo get_field('titulo_quartos'); ?></p>
+                    <p><?php echo $tituloQuartos ?></p>
 
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10" fill="none">

@@ -278,7 +278,7 @@ function loadSearchBox() {
   }
 
   function updateSelectedValues(filterType) {
-    const selectedValues = getFilterLabel(`#home-filter-${filterType}`);
+    const selectedValues = getFilterLabel(`#home-filter-${filterType}, #home-mobile-filter-${filterType}`);
 
     let destinoElement;
     if (filterType === 'location') {
@@ -292,9 +292,9 @@ function loadSearchBox() {
         destinoElement.text(selectedValues.join(', '));
       } else {
         if (filterType === 'location') {
-          destinoElement.text('Selecione um destino');
+          destinoElement.text(originalLabels.destino);
         } else {
-          destinoElement.text('Quantos quartos?');
+          destinoElement.text(originalLabels.quarto);
         }
       }
     }
@@ -337,12 +337,30 @@ function loadSearchBox() {
   filters['location'].find('input.ckkBox').on('change', function () {
     updateSelectedValues('location');
     buildFilterUrl();
+    updateFilterNumberIndicador();
   });
 
   filters['rooms'].find('input.ckkBox').on('change', function () {
     updateSelectedValues('rooms');
     buildFilterUrl();
+    updateFilterNumberIndicador();
   });
+
+  function updateFilterNumberIndicador() {
+    $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
+      const current_filter = $(this);
+      const checked_count = $(current_filter).find(
+        '.checkboxes input:checked, .category-content input:checked'
+      ).length;
+      const filter_count_el = $(current_filter).find('.filter_count');
+
+      if (checked_count > 0) {
+        $(filter_count_el).html(`(${checked_count})`);
+      } else {
+        $(filter_count_el).html('');
+      }
+    });
+  }
 
   $('.filter-button').click(function () {
     // Adiciona as classes para abrir o drawer

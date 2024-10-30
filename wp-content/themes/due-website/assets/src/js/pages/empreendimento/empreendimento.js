@@ -22,13 +22,6 @@ async function empreendimentoPage() {
       updateResultsText($resultsText, empreendimentos.length);
       clearContainer($container);
 
-      if (empreendimentos.length === 0) {
-        $('#no-empreendimentos-message').show();
-        return;
-      } else {
-        $('#no-empreendimentos-message').hide();
-      }
-
       // Limit the number of empreendimentos to show
       const itemsToRender = empreendimentos.slice(0, currentItemsShown);
 
@@ -62,6 +55,14 @@ async function empreendimentoPage() {
           // Re-render the empreendimentos
           renderEmpreendimentos(empreendimentos);
         });
+      }
+
+      if (empreendimentos.length === 0) {
+        $('#no-empreendimentos-message').show();
+        $('.see-more-button').remove();
+        return;
+      } else {
+        $('#no-empreendimentos-message').hide();
       }
     }
 

@@ -19,13 +19,6 @@ function tipologiaPage() {
       updateResultsText($resultsText, tipologias.length);
       clearContainer($container);
     
-      if (tipologias.length === 0) {
-        $('#no-tipologias-message').show();
-        return;
-      } else {
-        $('#no-tipologias-message').hide();
-      }
-    
       // Limit the number of tipologias to show
       const itemsToRender = tipologias.slice(0, currentItemsShown);
     
@@ -59,6 +52,14 @@ function tipologiaPage() {
           // Re-render the tipologias
           renderTipologias(tipologias);
         });
+      }
+
+      if (tipologias.length === 0) {
+        $('#no-tipologias-message').show();
+        $('.see-more-tipo-button').remove();
+        return;
+      } else {
+        $('#no-tipologias-message').hide();
       }
     }    
 

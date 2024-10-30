@@ -59,7 +59,7 @@ class EmpreendimentoController
      * 
      * @return array Um array associativo contendo as informações de todos os empreendimentos.
      */
-    public function getAllAvailableProjects($lang = null, $order = 'desc')
+    public function getAllAvailableProjects($lang = null, $order = 'desc', $exclude = '')
     {
         $projects = [];
 
@@ -102,8 +102,13 @@ class EmpreendimentoController
                 $video = get_field('video_empreendimento');
                 $link = get_field('link_da_pagina_desse_empreendimento');
 
-                // Adiciona os dados ao array de projetos
-                if ($status !== '100% vendido') {
+                if (!empty($exclude)) {
+                    $excludeIds = array_map('trim', explode(',', $exclude));
+                } else {
+                    $excludeIds = [];
+                }
+                
+                if ($status !== '100% vendido' && !in_array($projectId, $excludeIds)) {
                     $projects[] = array(
                         'ID' => $projectId,
                         'name' => $name,

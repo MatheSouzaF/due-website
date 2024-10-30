@@ -58,8 +58,9 @@ class EmpreendimentoRestController
     {
         $lang = $request->get_param('lang');
         $order = $request->get_param('order');
+        $exclude = $request->get_param('exclude');
 
-        $projects = $this->empreendimentoController->getAllAvailableProjects($lang, $order);
+        $projects = $this->empreendimentoController->getAllAvailableProjects($lang, $order, $exclude);
 
         if (!empty($projects)) {
             return new WP_REST_Response($projects, 200);

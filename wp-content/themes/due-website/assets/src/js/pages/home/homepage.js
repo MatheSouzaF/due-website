@@ -337,12 +337,30 @@ function loadSearchBox() {
   filters['location'].find('input.ckkBox').on('change', function () {
     updateSelectedValues('location');
     buildFilterUrl();
+    updateFilterNumberIndicador();
   });
 
   filters['rooms'].find('input.ckkBox').on('change', function () {
     updateSelectedValues('rooms');
     buildFilterUrl();
+    updateFilterNumberIndicador();
   });
+
+  function updateFilterNumberIndicador() {
+    $('.filter-desktop .filter-wrapper, .filter-drawer .filter-category').each(function () {
+      const current_filter = $(this);
+      const checked_count = $(current_filter).find(
+        '.checkboxes input:checked, .category-content input:checked'
+      ).length;
+      const filter_count_el = $(current_filter).find('.filter_count');
+
+      if (checked_count > 0) {
+        $(filter_count_el).html(`(${checked_count})`);
+      } else {
+        $(filter_count_el).html('');
+      }
+    });
+  }
 
   $('.filter-button').click(function () {
     // Adiciona as classes para abrir o drawer

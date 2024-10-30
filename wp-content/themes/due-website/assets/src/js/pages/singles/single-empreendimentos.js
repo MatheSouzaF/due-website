@@ -62,7 +62,7 @@ function filterExperiencias() {
       var id = $(this).attr('id');
       swipers[id] = new Swiper('#' + id, {
         slidesPerView: 1.1,
-        spaceBetween: 8,
+        a11y: false,
 
         navigation: {
           nextEl: '.swiper-btn-next',

@@ -4,7 +4,7 @@ Plugin Name: Image Hotspot by DevVN
 Plugin URI: https://levantoan.com/devvn-image-hotspot
 Description: Image Hotspot help you add hotspot to your images.
 Author: Le Van Toan
-Version: 1.2.7
+Version: 1.2.8
 Author URI: https://levantoan.com/
 Text Domain: devvn-image-hotspot
 Domain Path: /languages
@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define('DEVVN_IHOTSPOT_VER', '1.2.7');
+define('DEVVN_IHOTSPOT_VER', '1.2.8');
 define('DEVVN_IHOTSPOT_DEV_MOD', true);
 
 if ( !defined( 'DEVVN_IHOTSPOT_BASENAME' ) )
@@ -336,7 +336,7 @@ function devvn_ihotspot_save_meta_box_data( $post_id ) {
 	
 	/*sanitize in devvn_ihotspot_convert_array_data*/
 	$pointdata = isset($_POST['pointdata']) ? $_POST['pointdata'] : '';
-	
+
 	$choose_type = sanitize_text_field((isset($_POST['choose_type']))?$_POST['choose_type']:'');
 	
 	$custom_top = sanitize_text_field((isset($_POST['custom_top']))?$_POST['custom_top']:'');
@@ -475,6 +475,9 @@ function devvn_ihotspot_get_input_point_default($data = array()){
 	$pins_id	= isset($data['pins_id'])?$data['pins_id']:'';
 	$pins_class	= isset($data['pins_class'])?$data['pins_class']:'';
 	$pinsalt	= isset($data['pinsalt'])?$data['pinsalt']:'';
+
+    $pointContent = str_replace('\"', '"', $pointContent);
+
 	ob_start();
 	?>	
 	<div class="devvn-hotspot-popup list_points" tabindex="-1" role="dialog" id="info_draggable<?php echo intval($countPoint)?>" data-popup="info_draggable<?php echo intval($countPoint)?>" data-points="<?php echo intval($countPoint)?>">
@@ -650,10 +653,23 @@ function devvn_ihotspot_convert_array_data($inputArray = array()){
 	for ($i =0; $i<$nCountKey;$i++){
 		$element = array();
 		foreach ($inputArray as $key => $value){
-			$element[$key] = base64_encode(wp_kses_post($value[$i]));
+			//$element[$key] = base64_encode(wp_kses_post($value[$i]));
+
+			$allowed_tags = wp_kses_allowed_html( 'post' );
+            $allowed_tags['iframe'] = array(
+                'src' => array(),
+				'width' => array(),
+				'height' => array(),
+				'frameborder' => array(),
+				'scrolling' => array(),
+				'allowfullscreen' => array()
+            );
+
+			$element[$key] = base64_encode(wp_kses($value[$i], apply_filters('devvn_ihotspot_allowed_tags', $allowed_tags)));
 		}
 		array_push($aOutput,$element);
 	}
+
 	return $aOutput;
 }
 

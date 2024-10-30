@@ -26,7 +26,7 @@ class Options {
 	 * @var array Map of all the default options of the plugin.
 	 */
 	private static $map = [
-		'mail'       => [
+		'mail'                 => [
 			'from_name',
 			'from_email',
 			'mailer',
@@ -37,7 +37,7 @@ class Options {
 			'reply_to_replace_from',
 			'bcc_emails',
 		],
-		'smtp'       => [
+		'smtp'                 => [
 			'host',
 			'port',
 			'encryption',
@@ -46,16 +46,16 @@ class Options {
 			'user',
 			'pass',
 		],
-		'outlook'    => [
+		'outlook'              => [
 			'client_id',
 			'client_secret',
 		],
-		'amazonses'  => [
+		'amazonses'            => [
 			'client_id',
 			'client_secret',
 			'region',
 		],
-		'mailgun'    => [
+		'mailgun'              => [
 			'api_key',
 			'domain',
 			'region',
@@ -64,23 +64,49 @@ class Options {
 			'api_key',
 			'domain',
 		],
-		'smtpcom'    => [
+		'smtpcom'              => [
 			'api_key',
 			'channel',
 		],
-		'sendinblue' => [
+		'sendinblue'           => [
 			'api_key',
 			'domain',
 		],
-		'sendlayer'  => [
+		'sendlayer'            => [
 			'api_key',
 		],
-		'postmark'   => [
+		'smtp2go'              => [
+			'api_key',
+		],
+		'postmark'             => [
 			'server_api_token',
 			'message_stream',
 		],
-		'license'    => [
+		'sparkpost'            => [
+			'api_key',
+			'region',
+		],
+		'license'              => [
 			'key',
+		],
+		'alert_email'          => [
+			'enabled',
+			'connections',
+		],
+		'alert_slack_webhook'  => [
+			'enabled',
+			'connections',
+		],
+		'alert_twilio_sms'     => [
+			'enabled',
+			'connections',
+		],
+		'alert_custom_webhook' => [
+			'enabled',
+			'connections',
+		],
+		'alert_events'         => [
+			'email_hard_bounced',
 		],
 	];
 
@@ -99,8 +125,10 @@ class Options {
 		'gmail',
 		'mailgun',
 		'outlook',
-		'sendgrid',
 		'postmark',
+		'sendgrid',
+		'smtp2go',
+		'sparkpost',
 		'smtp',
 	];
 
@@ -196,7 +224,7 @@ class Options {
 				'auth'    => true,
 			],
 			'general' => [
-				'domain_check_allowed_domains' => wp_parse_url( get_site_url(), PHP_URL_HOST ),
+				'domain_check_allowed_domains'    => wp_parse_url( get_site_url(), PHP_URL_HOST ),
 				SummaryReportEmail::SETTINGS_SLUG => ! is_multisite() ? false : true,
 			],
 		];
@@ -261,7 +289,7 @@ class Options {
 		 * Get the values saved in DB.
 		 * If plugin is configured with constants right from the start - this will not have all the values.
 		 */
-		$options = isset( $this->options[ $group ] ) ? $this->options[ $group ] : array();
+		$options = isset( $this->options[ $group ] ) ? $this->options[ $group ] : [];
 
 		// We need to process certain constants-aware options through actual constants.
 		if ( isset( self::$map[ $group ] ) ) {
@@ -381,7 +409,7 @@ class Options {
 				break;
 
 			case 'region':
-				$value = $group === 'mailgun' ? 'US' : $value;
+				$value = $group === 'mailgun' || $group === 'sparkpost' ? 'US' : $value;
 				break;
 
 			case 'auth':
@@ -411,7 +439,7 @@ class Options {
 	 *
 	 * @param string $group
 	 * @param string $key
-	 * @param mixed $value
+	 * @param mixed  $value
 	 *
 	 * @return mixed
 	 */
@@ -489,6 +517,16 @@ class Options {
 					case 'api_key':
 						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
 						$return = $this->is_const_defined( $group, $key ) ? EASY_WP_SMTP_SENDLAYER_API_KEY : $value;
+						break;
+				}
+
+				break;
+
+			case 'smtp2go':
+				switch ( $key ) {
+					case 'api_key':
+						/** @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EASY_WP_SMTP_SMTP2GO_API_KEY : $value;
 						break;
 				}
 
@@ -572,6 +610,20 @@ class Options {
 
 				break;
 
+			case 'sparkpost':
+				switch ( $key ) {
+					case 'api_key':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_SPARKPOST_API_KEY : $value;
+						break;
+					case 'region':
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ? EasyWPSMTP_SPARKPOST_REGION : $value;
+						break;
+				}
+
+				break;
+
 			case 'smtpcom':
 				switch ( $key ) {
 					case 'api_key':
@@ -600,6 +652,62 @@ class Options {
 
 				break;
 
+			case 'alert_email':
+				switch ( $key ) {
+					case 'connections':
+						$return = $this->is_const_defined( $group, $key ) ? [ [ 'send_to' => EasyWPSMTP_ALERT_EMAIL_SEND_TO ] ] : $value;
+						break;
+				}
+
+				break;
+
+			case 'alert_slack_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = $this->is_const_defined( $group, $key ) ? [ [ 'webhook_url' => EasyWPSMTP_ALERT_SLACK_WEBHOOK_URL ] ] : $value;
+						break;
+				}
+
+				break;
+
+			case 'alert_teams_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = $this->is_const_defined( $group, $key ) ? [ [ 'webhook_url' => EasyWPSMTP_ALERT_TEAMS_WEBHOOK_URL ] ] : $value;
+						break;
+				}
+
+				break;
+
+			case 'alert_twilio_sms':
+				switch ( $key ) {
+					case 'connections':
+						if ( $this->is_const_defined( $group, $key ) ) {
+							$return = [
+								[
+									'account_sid'       => EasyWPSMTP_ALERT_TWILIO_SMS_ACCOUNT_SID,
+									'auth_token'        => EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN,
+									'from_phone_number' => EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER,
+									'to_phone_number'   => EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER,
+								],
+							];
+						} else {
+							$return = $value;
+						}
+						break;
+				}
+
+				break;
+
+			case 'alert_custom_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = $this->is_const_defined( $group, $key ) ? [ [ 'webhook_url' => EasyWPSMTP_ALERT_CUSTOM_WEBHOOK_URL ] ] : $value;
+						break;
+				}
+
+				break;
+
 			case 'license':
 				switch ( $key ) {
 					case 'key':
@@ -620,6 +728,12 @@ class Options {
 						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
 						$return = $this->is_const_defined( $group, $key ) ?
 							$this->parse_boolean( EasyWPSMTP_SUMMARY_REPORT_EMAIL_DISABLED ) :
+							$value;
+						break;
+					case OptimizedEmailSending::SETTINGS_SLUG:
+						/** No inspection comment @noinspection PhpUndefinedConstantInspection */
+						$return = $this->is_const_defined( $group, $key ) ?
+							$this->parse_boolean( EasyWPSMTP_OPTIMIZED_EMAIL_SENDING_ENABLED ) :
 							$value;
 						break;
 				}
@@ -738,6 +852,15 @@ class Options {
 
 				break;
 
+			case 'smtp2go':
+				switch ( $key ) {
+					case 'api_key':
+						$return = defined( 'EASY_WP_SMTP_SMTP2GO_API_KEY' ) && EASY_WP_SMTP_SMTP2GO_API_KEY;
+						break;
+				}
+
+				break;
+
 			case 'outlook':
 				switch ( $key ) {
 					case 'client_id':
@@ -775,6 +898,18 @@ class Options {
 						break;
 					case 'region':
 						$return = defined( 'EASY_WP_SMTP_MAILGUN_REGION' ) && EASY_WP_SMTP_MAILGUN_REGION;
+						break;
+				}
+
+				break;
+
+			case 'sparkpost':
+				switch ( $key ) {
+					case 'api_key':
+						$return = defined( 'EasyWPSMTP_SPARKPOST_API_KEY' ) && EasyWPSMTP_SPARKPOST_API_KEY;
+						break;
+					case 'region':
+						$return = defined( 'EasyWPSMTP_SPARKPOST_REGION' ) && EasyWPSMTP_SPARKPOST_REGION;
 						break;
 				}
 
@@ -828,6 +963,54 @@ class Options {
 
 				break;
 
+			case 'alert_email':
+				switch ( $key ) {
+					case 'connections':
+						$return = defined( 'EasyWPSMTP_ALERT_EMAIL_SEND_TO' ) && EasyWPSMTP_ALERT_EMAIL_SEND_TO;
+						break;
+				}
+
+				break;
+
+			case 'alert_slack_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = defined( 'EasyWPSMTP_ALERT_SLACK_WEBHOOK_URL' ) && EasyWPSMTP_ALERT_SLACK_WEBHOOK_URL;
+						break;
+				}
+
+				break;
+
+			case 'alert_teams_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = defined( 'EasyWPSMTP_ALERT_TEAMS_WEBHOOK_URL' ) && EasyWPSMTP_ALERT_TEAMS_WEBHOOK_URL;
+						break;
+				}
+
+				break;
+
+			case 'alert_twilio_sms':
+				switch ( $key ) {
+					case 'connections':
+						$return = defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_ACCOUNT_SID' ) && EasyWPSMTP_ALERT_TWILIO_SMS_ACCOUNT_SID &&
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN' ) && EasyWPSMTP_ALERT_TWILIO_SMS_AUTH_TOKEN &&
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_FROM_PHONE_NUMBER &&
+						          defined( 'EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER' ) && EasyWPSMTP_ALERT_TWILIO_SMS_TO_PHONE_NUMBER;
+						break;
+				}
+
+				break;
+
+			case 'alert_custom_webhook':
+				switch ( $key ) {
+					case 'connections':
+						$return = defined( 'EasyWPSMTP_ALERT_CUSTOM_WEBHOOK_URL' ) && EasyWPSMTP_ALERT_CUSTOM_WEBHOOK_URL;
+						break;
+				}
+
+				break;
+
 			case 'license':
 				switch ( $key ) {
 					case 'key':
@@ -845,6 +1028,9 @@ class Options {
 						break;
 					case SummaryReportEmail::SETTINGS_SLUG:
 						$return = defined( 'EasyWPSMTP_SUMMARY_REPORT_EMAIL_DISABLED' );
+						break;
+					case OptimizedEmailSending::SETTINGS_SLUG:
+						$return = defined( 'EasyWPSMTP_OPTIMIZED_EMAIL_SENDING_ENABLED' );
 						break;
 				}
 
@@ -971,6 +1157,7 @@ class Options {
 							case 'uninstall':
 							case UsageTracking::SETTINGS_SLUG:
 							case SummaryReportEmail::SETTINGS_SLUG:
+							case OptimizedEmailSending::SETTINGS_SLUG:
 								$options[ $group ][ $option_name ] = (bool) $option_value;
 								break;
 							case 'domain_check_allowed_domains':
@@ -1025,8 +1212,8 @@ class Options {
 					case 'host': // smtp.
 					case 'user': // smtp.
 					case 'encryption': // smtp.
-					case 'region': // mailgun/amazonses.
-					case 'api_key': // mailgun/sendinblue/smtpcom/sendlayer/sendgrid.
+					case 'region': // mailgun/amazonses/sparkpost.
+					case 'api_key': // mailgun/sendinblue/smtpcom/sendlayer/sendgrid/sparkpost/smtp2go.
 					case 'domain': // mailgun/sendinblue/sendgrid.
 					case 'channel': // smtpcom.
 					case 'client_id': // outlook/amazonses.
@@ -1054,7 +1241,8 @@ class Options {
 						if ( $mailer === 'smtp' && ! $this->is_const_defined( 'smtp', 'pass' ) ) {
 							try {
 								$options[ $mailer ][ $option_name ] = Crypto::encrypt( $option_value );
-							} catch ( \Exception $e ) {} // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch, Squiz.Commenting.EmptyCatchComment.Missing, Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
+							} catch ( \Exception $e ) {
+							} // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch, Squiz.Commenting.EmptyCatchComment.Missing, Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace
 						}
 						break;
 
@@ -1084,16 +1272,16 @@ class Options {
 		$arrays = func_get_args();
 
 		if ( count( $arrays ) < 2 ) {
-			return isset( $arrays[0] ) ? $arrays[0] : array();
+			return isset( $arrays[0] ) ? $arrays[0] : [];
 		}
 
-		$merged = array();
+		$merged = [];
 
 		while ( $arrays ) {
 			$array = array_shift( $arrays );
 
 			if ( ! is_array( $array ) ) {
-				return array();
+				return [];
 			}
 
 			if ( empty( $array ) ) {
@@ -1147,7 +1335,7 @@ class Options {
 	 * @return bool
 	 */
 	public function is_mailer_smtp() {
-		return apply_filters( 'easy_wp_smtp_options_is_mailer_smtp', in_array( $this->get( 'mail', 'mailer' ), array( 'smtp' ), true ) );
+		return apply_filters( 'easy_wp_smtp_options_is_mailer_smtp', in_array( $this->get( 'mail', 'mailer' ), [ 'smtp' ], true ) );
 	}
 
 	/**

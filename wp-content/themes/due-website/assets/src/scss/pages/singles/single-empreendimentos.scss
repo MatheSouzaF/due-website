@@ -778,6 +778,8 @@ body.single-empre_single_page {
         .swiper-rota-destino {
           position: relative;
           .swiper-slide {
+            margin-right: 16px;
+
             @include media-breakpoint-up(sm) {
               max-width: 280px;
             }

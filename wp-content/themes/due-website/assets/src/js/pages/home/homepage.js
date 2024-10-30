@@ -292,17 +292,19 @@ function loadSearchBox() {
     }
 
     if (selectedValues && selectedValues.length > 0) {
-      const firstValue = selectedValues[0];
-    
-      if (filterType === 'rooms' && firstValue !== 'Studio') {
-        const suffix = selectedValues.length === 1 && selectedValues[0] == '1' ? ' quarto' : ' quartos';
-        destinoElement.text(selectedValues.join(', ') + suffix);
+      if (filterType === 'rooms') {
+        let suffix
+
+        suffix = selectedValues.length === 1 && selectedValues[0] === '1' ? ' quarto' : ' quartos';
+        const labels = selectedValues.join(', ')
+        
+        destinoElement.text(`${labels} ${labels === 'Studio' ? '' : suffix}`);
         return;
       }
     
       destinoElement.text(selectedValues.join(', '));
       return;
-    }    
+    }
 
     if (filterType === 'location') {
       destinoElement.text(originalLabels.destino);
@@ -341,7 +343,6 @@ function loadSearchBox() {
     const newUrl = `/empreendimentos${params.toString() ? '?' + params.toString() : ''}`;
 
     $('.busca-banner').attr('href', newUrl);
-    console.log('URL Filtrada:', newUrl);
   }
 
   filters['location'].find('input.ckkBox').on('change', function () {

@@ -522,7 +522,6 @@
               margin-bottom: 20px;
               @include media-breakpoint-up(sm) {
                 margin-bottom: 66px;
-                 
               }
               @include media-breakpoint-up(desk) {
                 font-size: calc(1rem + 0.6vw);
@@ -537,26 +536,31 @@
                   background-color: transparent;
                   padding: 0;
                   .bricks-form__fieldset {
+                    @include media-breakpoint-up(md) {
+                      margin-bottom: 31px;
+                    }
                     .bricks-form__input {
                       background-color: transparent;
                       color: $due-secondary;
-                      border-color: $due-secondary;
+                      border-color: rgba(0, 59, 75, 0.15);
                       font-family: 'terminal-test', sans-serif;
                       font-size: 16px;
                       font-style: normal;
                       font-weight: 400;
+                      height: 50px;
                       line-height: 140%; /* 22.4px */
                       letter-spacing: 0.32px;
+                      border-radius: 0px !important;
                       @include media-breakpoint-down(sm) {
                         font-size: 12px;
-
-                         
                       }
                     }
                   }
                   .bricks-form__submit {
                     background-color: transparent;
-                    width: fit-content;
+                    @include media-breakpoint-up(sm) {
+                      width: fit-content;
+                    }
                     .bricks--component {
                       padding: 20px 48px;
                       border-color: #003b4b;
@@ -570,9 +574,9 @@
                       letter-spacing: 0.48px;
                       text-transform: uppercase;
                       transition: 0.6s;
+                      margin: 0;
                       @include media-breakpoint-down(sm) {
                         padding: 12px 48px;
-                        margin: 0;
                       }
                       &:hover {
                         background-color: $due-tertiary;

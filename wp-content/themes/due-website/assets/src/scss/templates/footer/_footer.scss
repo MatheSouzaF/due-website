@@ -404,6 +404,7 @@
   top: 22px;
   left: 50%;
   transform: translate(-50%, 0);
+  pointer-events: none;
   .box-sucesso {
     opacity: 0;
     visibility: hidden;
@@ -416,6 +417,7 @@
     &.visible {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
     .box-conteudo {
       font-size: 12px;

@@ -1,0 +1,371 @@
+{
+    "key": "group_66b18ae765a64",
+    "title": "Ficha técnica da tipologia",
+    "fields": [
+        {
+            "key": "field_66b18ae766cb8",
+            "label": "Nome",
+            "name": "nome_da_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Nome da tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66b18b1766cb9",
+            "label": "Pertence a qual empreendimento",
+            "name": "pertence_a_qual_empreendimento",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Insira a qual empreendimento pertence essa tipologia",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "553": "teste",
+                "469": "Habitá",
+                "436": "Tropí Eco Residência",
+                "434": "Naturê Eco Residência",
+                "432": "Orla Carneiros",
+                "430": "Habitá",
+                "418": "Cais Eco Residência"
+            },
+            "default_value": false,
+            "return_format": "label",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66df0ab8f7caa",
+            "label": "Estágio da obra",
+            "name": "estagio_da_obra",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "breve": "Em breve lançamento",
+                "lancamento": "Lançamento",
+                "obra": "Em obra",
+                "ultimas": "Últimas unidades",
+                "pronto": "Pronto pra morar",
+                "vendido": "100% vendido"
+            },
+            "default_value": false,
+            "return_format": "label",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_66bbb24b285fe",
+            "label": "É um Studio?",
+            "name": "e_um_studio_tipologia",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Marque se a tipologia é um Studio",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_66bbb1db285fb",
+            "label": "Quantidade de quartos",
+            "name": "quantidade_de_quartos_tipologia",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bbb1e9285fc",
+                    "label": "Mínimo de quartos",
+                    "name": "minimo_de_quartos_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": 6,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                },
+                {
+                    "key": "field_66bbb221285fd",
+                    "label": "Máximo de quartos",
+                    "name": "maximo_de_quartos_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": 6,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                }
+            ]
+        },
+        {
+            "key": "field_66e03e60ab7a1",
+            "label": "Últimas unidades",
+            "name": "ultimas_unidades",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Adicione aqui se a tipologia está nas últimas unidades",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66bbb27c285ff",
+            "label": "Metragem",
+            "name": "metragem_tipologia",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Insira a metragem da tipologia, será exibido assim: 50 a 100m²",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bbb2ac28600",
+                    "label": "Metragem mínima",
+                    "name": "metragem_minima_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb27c285ff"
+                },
+                {
+                    "key": "field_66bbb2c728601",
+                    "label": "Metragem máxima",
+                    "name": "metragem_maxima_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 1,
+                    "max": "",
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb27c285ff"
+                }
+            ]
+        },
+        {
+            "key": "field_66bbb3345e98e",
+            "label": "Diferenciais",
+            "name": "diferenciais_tipologia",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Selecione até 4 diferenciais",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1_vaga_na_garagem": "1 Vaga na Garagem",
+                "2_vagas_na_garagem": "2 Vagas na Garagem",
+                "3_vagas_de_garagem": "3 Vagas de Garagem",
+                "varanda_gourmet": "Varanda Gourmet",
+                "varanda_espaçosa": "Varanda Espaçosa",
+                "varanda_integrada": "Varanda Integrada",
+                "cozinha_americana": "Cozinha Americana",
+                "suite_ampliada": "Suíte Ampliada",
+                "sala_ampliada": "Sala Ampliada",
+                "planta_inteligente": "Planta Inteligente",
+                "deck_com_area_gourmet": "Deck",
+                "piscina_privativa": "Piscina Privativa",
+                "cobertura_privativa": "Cobertura Privativa",
+                "area_gourmet": "Área Gourmet",
+                "jardim_privativo": "Jardim Privativo",
+                "beira_mar": "Beira-mar"
+            },
+            "default_value": [],
+            "return_format": "label",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Adicionar nova escolha"
+        },
+        {
+            "key": "field_66bbb5b16a371",
+            "label": "Foto da tipologia",
+            "name": "foto_da_tipologia",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Insira uma foto da tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_66e88f7bce98b",
+            "label": "Link para a página dessa tipologia",
+            "name": "link_para_a_pagina_dessa_tipologia",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Link da singlepage dessa tipologia",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tipologias"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1728391037
+}

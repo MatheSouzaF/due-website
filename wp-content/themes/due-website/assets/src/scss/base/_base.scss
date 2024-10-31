@@ -1,0 +1,208 @@
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'terminal-test', sans-serif;
+}
+body {
+  overflow-x: hidden;
+  .otgs-development-site-front-end{
+    display: none;
+  }
+  .botoes-fixed {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    z-index: -1;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+    a {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    .button-fixed-atendimento-v2 {
+      svg {
+        path {
+          stroke: $due-tertiary;
+          transition: 0.6s;
+        }
+      }
+      &:hover {
+        svg {
+          path {
+            stroke: $grey-0;
+          }
+        }
+      }
+    }
+    .button-fixed-whatsapp {
+      svg {
+        path {
+          transition: 0.6s;
+          fill: $due-tertiary;
+          @include media-breakpoint-up(md) {
+            fill: $grey-0;
+          }
+        }
+      }
+    }
+  }
+  .box-fab {
+    display: flex;
+    position: fixed;
+    z-index: 9;
+    bottom: 20px;
+    right: 20px;
+    width: 64px;
+    height: 64px;
+    @include media-breakpoint-up(sm) {
+      display: none;
+    }
+    .fab {
+      --fab-easing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+      --fab-animation-speed: 0.25s;
+    }
+    .fab__toggle {
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+    }
+    .fab__nav {
+      position: absolute;
+      bottom: calc(100% + 0.5rem);
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 0.5rem;
+      background-color: transparent;
+      pointer-events: none;
+    }
+    .fab__link {
+      white-space: nowrap;
+      color: white;
+      text-decoration: none;
+      padding: 20px 24px;
+      border-radius: 0.5rem;
+      width: fit-content;
+      opacity: 0;
+      transform: translateX(100%);
+      display: flex;
+      background: white;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      align-items: center;
+      gap: 8px;
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+      .text-fab {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%; /* 16px */
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: $due-tertiary;
+      }
+      &.chamar {
+        .box-svg {
+          svg {
+            @include media-breakpoint-down(sm) {
+              path {
+                fill: $due-tertiary;
+              }
+            }
+          }
+        }
+      }
+    }
+    .fab__link:nth-last-child(1) {
+      transition-delay: 0.25s;
+    }
+    .fab__link {
+      transition: all var(--fab-animation-speed) var(--fab-easing-function);
+    }
+    .fab[is-open] .fab__link:nth-last-child(1) {
+      transition-delay: 0s;
+    }
+
+    .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
+
+    .fab[is-open] .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
+    .fab[is-open] .fab__link:nth-last-child(2) {
+      transition-delay: 0.125s;
+    }
+
+    .fab__link:nth-last-child(3) {
+      transition-delay: 0s;
+    }
+
+    .fab[is-open] .fab__link:nth-last-child(3) {
+      transition-delay: 0.25s;
+    }
+
+    .fab[is-open] .fab__link {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    .fab[is-open] .fab__nav {
+      pointer-events: initial;
+    }
+  }
+}
+main {
+  background-color: $grey-0;
+  overflow-x: hidden;
+}
+body.lenis {
+  &.lenis-smooth {
+    scroll-behavior: auto;
+
+    [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+  }
+
+  &.lenis-stopped {
+    overflow: hidden;
+  }
+
+  &.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+.active-sidebar-body {
+  overflow: hidden;
+}
+.smooth-scroll {
+  width: 100vw;
+}
+#scroll-content {
+  position: relative;
+}
+.bg-modal {
+  background-color: rgba($color: #000000, $alpha: 0.8);
+}
+
+sup {
+  vertical-align: super;
+  font-size: 0.7em;
+  margin-right: 5px;
+}
+
+textarea {
+  word-wrap: break-word;
+}
+
+.d-none {
+  display: none !important;
+}

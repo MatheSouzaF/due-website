@@ -1,0 +1,100 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+body.page-template-page-politicas {
+  header {
+    .button-menu {
+      color: $due-tertiary !important;
+    }
+    .link-logo-menu {
+      .box-svg-header {
+        svg {
+          path {
+            fill: $due-tertiary;
+          }
+        }
+      }
+    }
+
+    .box-sidebar {
+      .navlinks {
+        .btn-menu-navlink {
+          .button-menu {
+            color: $due-tertiary;
+            &::after {
+              background-color: $due-tertiary;
+            }
+          }
+        }
+      }
+    }
+    &.sticky {
+      .link-logo-menu {
+        .box-svg-header {
+          svg {
+            path {
+              fill: $grey-0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .privacidade-termos {
+    padding: 200px 0;
+    margin: 0 auto;
+    max-width: 70%;
+    .title-privacidade {
+      color: $due-tertiary;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
+      letter-spacing: 1.28px;
+      font-size: 32px;
+      margin-bottom: 64px;
+      @include media-breakpoint-up(md) {
+        font-size: 64px;
+      }
+    }
+
+    .description-termos {
+    
+      h2 {
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        letter-spacing: 0.02rem;
+        font-size: 30px;
+      }
+      h3 {
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 0.02rem;
+        font-size: 20px;
+      }
+      p {
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 0.02rem;
+        font-size: 14px;
+      }
+      ul {
+        padding-left: 40px;
+        list-style: initial;
+        li {
+          color: $due-tertiary;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+          letter-spacing: 0.02rem;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

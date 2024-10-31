@@ -327,6 +327,8 @@ body.single-empre_single_page {
             }
           }
           .box-link {
+            display: none !important;
+
             .button-fixed-atendimento {
               width: fit-content;
               padding: 23px 32px;
@@ -1623,7 +1625,6 @@ body.single-empre_single_page {
           max-width: initial;
           font-size: 28px;
           margin: 0 0 100px;
-
         }
       }
       .box-formulario {

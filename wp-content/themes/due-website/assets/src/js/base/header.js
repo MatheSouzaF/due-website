@@ -3,7 +3,7 @@ function scrollsmooth() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({lerp: 0.07});
+  const lenis = new Lenis({ lerp: 0.07 });
   lenis.on('scroll', ScrollTrigger.update);
 
   gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -34,7 +34,7 @@ function menuSticky() {
   });
 }
 function hoverDestinos() {
-  var tl = gsap.timeline({paused: true});
+  var tl = gsap.timeline({ paused: true });
   tl.to('header', {
     duration: 0.2,
     height: '590px',
@@ -172,16 +172,7 @@ function fabFixed() {
     customElements.define('fab-button', FabButton);
   }
 }
-function newsletter() {
-  $(document).ready(function () {
-    $(document).on('submit', '#newsletter-af4d59d14bf940f40ee8 form', function (event) {
-      event.preventDefault();
-      var $form = $(this);
-      $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val(''); // Adiciona a limpeza do input type="tel"
-      $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
-    });
-  });
-}
+
 function initHeader() {
   menuSticky();
   scrollsmooth();
@@ -191,7 +182,6 @@ function initHeader() {
   relaod();
   callForm();
   fabFixed();
-  newsletter();
 }
 
-export {initHeader};
+export { initHeader };

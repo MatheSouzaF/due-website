@@ -207,6 +207,9 @@ body.drawer-open .drawer-overlay {
     .card-empreendimentos {
       padding: 0;
 
+      .fale-com-time{
+        display: none !important;
+      }
       &.lancamento {
         .label-informativo {
           background-color: #cb9e6c;

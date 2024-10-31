@@ -694,6 +694,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66da14083d653",
@@ -716,8 +717,7 @@
                             "append": "",
                             "parent_repeater": "field_66da13ea3d652"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 },
                 {
                     "key": "field_66da13d73d651",
@@ -761,6 +761,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66da142f3d655",
@@ -783,8 +784,7 @@
                             "append": "",
                             "parent_repeater": "field_66da142f3d654"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 },
                 {
                     "key": "field_66dafb439bac1",
@@ -806,6 +806,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66c257c2af1da",
                     "sub_fields": [
                         {
                             "key": "field_66dafb23661c4",
@@ -854,14 +855,13 @@
                             "preview_size": "medium",
                             "parent_repeater": "field_66dafb439bac1"
                         }
-                    ],
-                    "parent_repeater": "field_66c257c2af1da"
+                    ]
                 }
             ]
         },
         {
-            "key": "field_66d75746cd53e",
-            "label": "Entre em Contato",
+            "key": "field_6723823afc15f",
+            "label": "Formulário Tipologia",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -878,9 +878,9 @@
             "selected": 0
         },
         {
-            "key": "field_66d7576bcd53f",
-            "label": "Título Entre em Contato",
-            "name": "titulo_entre_em_contato",
+            "key": "field_67238278fc160",
+            "label": "Título Formulário",
+            "name": "titulo_formulario",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -893,14 +893,15 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_66d757a4cd540",
-            "label": "Descrição Entre em Contato",
-            "name": "descricao_entre_em_contato",
+            "key": "field_67239127c4b96",
+            "label": "Subtitulo Formulário",
+            "name": "subtitulo_formulario",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -913,16 +914,17 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 0,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
-            "key": "field_66d7586a2f5e6",
-            "label": "Entre em contato",
-            "name": "entre_em_contato",
+            "key": "field_672382aafc161",
+            "label": "Formulário",
+            "name": "formulario",
             "aria-label": "",
-            "type": "link",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -931,23 +933,12 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
-        },
-        {
-            "key": "field_66d7587a2f5e7",
-            "label": "Atendimento Ao Cliente",
-            "name": "atendimento_ao_cliente",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_66d75f20295cd",
@@ -1046,5 +1037,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1728912374
+    "modified": 1730384177
 }

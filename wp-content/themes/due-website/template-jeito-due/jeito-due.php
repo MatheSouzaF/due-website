@@ -13,7 +13,6 @@ get_header();
         </div>
         <div class="box-video">
             <video class="imgGrow" autoplay="autoplay" src="<?php echo get_field('video_jeito_due') ?>" muted loop play></video>
-
         </div>
         <div class="wrapper-mobile">
 

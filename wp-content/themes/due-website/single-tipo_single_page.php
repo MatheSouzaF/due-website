@@ -370,48 +370,32 @@ $empreendimentoName = $empreendimento['name'];
 
 
     <?php
-    $tituloEntre = get_field('titulo_entre_em_contato');
+    $tipologia_id = get_field('tipologia');
+    $form = get_field('formulario');
+    $tituloFormulario = get_field('titulo_formulario');
+    $subTituloFormulario = get_field('subtitulo_formulario');
+
+    if ($tipologia_id) {
+        // Obtém o título do empreendimento
+        $titulo_tipologia = get_the_title($tipologia_id);
+
+        // Remove espaços e substitui por '-'
+        $titulo_classe = strtolower(str_replace(' ', '-', $titulo_tipologia));
+
+        // Exibe o título e aplica a classe na div
+        echo '<div class="formulariio-tipologia">';
+        echo '<h2 class="titulo-formulario">';
+        echo $tituloFormulario;
+        echo '</h2>';
+        echo '<p class="subtitulo-formulario founders-grotesk">';
+        echo $subTituloFormulario;
+        echo '</p>';
+        echo '<div class="box-formulario  ' . 'gtm-formulario-'  . $titulo_classe . '">';
+        echo $form; // Aqui você insere o conteúdo do formulário
+        echo '</div>';
+        echo '</div>';
+    }
     ?>
-    <?php if ($tituloEntre) : ?>
-        <div class="entre-contato">
-            <div class="wrapper">
-
-                <h3 class="titulo-entre-contato"><?php echo $tituloEntre ?></h3>
-                <p class="subtitulo-entre-contato founders-grotesk"><?php echo get_field('descricao_entre_em_contato'); ?></p>
-                <div class="box-entre-contato">
-
-                    <?php
-                    $link = get_field('entre_em_contato');
-                    if ($link):
-                        $link_url = $link['url'];
-                        $link_title = $link['title'];
-                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-
-                        <a class="button-fixed-whatsapp" href="<?php echo esc_url($link_url); ?>" id="irFooter" target="<?php echo esc_attr($link_target); ?>">
-                            <p class=""><?php echo esc_html($link_title); ?></p>
-                        </a>
-                    <?php endif; ?>
-
-                    <?php
-                    $link = get_field('atendimento_ao_cliente');
-                    if ($link):
-                        $link_url = $link['url'];
-                        $link_title = $link['title'];
-                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-                        <a class="button-fixed-atendimento gtm-btn-atendimento-single-tipologia" href="<?php echo esc_url($link_url); ?>"
-                            target="<?php echo esc_attr($link_target); ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <circle cx="10" cy="10" r="5" fill="#8AC550" />
-                                <circle cx="10" cy="10" r="9.5" stroke="#89C550" />
-                            </svg>
-                            <p class=""><?php echo esc_html($link_title); ?></p>
-                        </a>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <?php
     $tituloCarrossel = get_field('texto_localizacao_carrossel_tipologia');
     ?>

@@ -117,46 +117,7 @@ function swiperTipologia() {
   });
 }
 
-function btnFixed() {
-  gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.botoes-fixed', {
-    scrollTrigger: {
-      trigger: document.body,
-      start: 'top+=200px top',
-      end: 'top top',
-      toggleActions: 'play none reverse none',
-      markers: false,
-    },
-    opacity: 1,
-    zIndex: 9,
-    duration: 0.5,
-    ease: 'power1.inOut',
-  });
-
-  ScrollTrigger.create({
-    trigger: '.informacoes-obra',
-    start: 'top top',
-    end: 'bottom top',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to('.botoes-fixed', {
-        opacity: 0,
-        zIndex: -1,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to('.botoes-fixed', {
-        opacity: 1,
-        zIndex: 9,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      });
-    },
-  });
-}
 function animationPraia() {
   const praia = document.querySelector('.praia');
   const boxInfos = document.querySelectorAll('.box-infos-cards');
@@ -219,45 +180,10 @@ function espaco() {
 }
 
 function animationBanner() {
-  const localizacaoHero = document.querySelector('.localizacao-hero');
-  const tituloHero = document.querySelector('.titulo-hero');
-  const quartoHero = document.querySelector('.box-quartos');
-  const metragemHero = document.querySelector('.box-metragem');
+ 
   const videoHero = document.querySelector('.video-hero');
   let TLFADE = gsap.timeline();
 
-  // TLFADE.to(localizacaoHero, {
-  //   duration: 1,
-  //   opacity: 1,
-  //   x: 0,
-  // });
-  // TLFADE.to(
-  //   tituloHero,
-  //   {
-  //     duration: 1,
-  //     opacity: 1,
-  //     x: 0,
-  //   },
-  //   '-=.6'
-  // );
-  // TLFADE.to(
-  //   quartoHero,
-  //   {
-  //     duration: 1,
-  //     opacity: 1,
-  //     x: 0,
-  //   },
-  //   '-=.3'
-  // );
-  // TLFADE.to(
-  //   metragemHero,
-  //   {
-  //     duration: 1,
-  //     opacity: 1,
-  //     x: 0,
-  //   },
-  //   '-=.8'
-  // );
 
   TLFADE.from(
     videoHero,
@@ -276,7 +202,7 @@ function initSingleEmpreendimentos() {
   colorBullet();
   filterExperiencias();
   swiperTipologia();
-  btnFixed();
+
   animationPraia();
   animationDiferenciais();
   espaco();

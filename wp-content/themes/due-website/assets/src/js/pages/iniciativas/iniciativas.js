@@ -470,46 +470,7 @@ function animationSelosCertificados() {
 
 
 
-function btnFixed() {
-  gsap.registerPlugin(ScrollTrigger);
 
-  gsap.to('.botoes-fixed', {
-    scrollTrigger: {
-      trigger: document.body,
-      start: 'top+=200px top',
-      end: 'top top',
-      toggleActions: 'play none reverse none',
-      markers: false,
-    },
-    opacity: 1,
-    zIndex: 9,
-    duration: 0.5,
-    ease: 'power1.inOut',
-  });
-
-  ScrollTrigger.create({
-    trigger: '.selos-certificados',
-    start: 'top top',
-    end: 'bottom top',
-    toggleActions: 'play none none reverse',
-    onEnter: () => {
-      gsap.to('.botoes-fixed', {
-        opacity: 0,
-        zIndex: -1,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      });
-    },
-    onLeaveBack: () => {
-      gsap.to('.botoes-fixed', {
-        opacity: 1,
-        zIndex: 9,
-        duration: 0.5,
-        ease: 'power1.inOut',
-      });
-    },
-  });
-}
 
 function selosAccordion() {
   jQuery('.hover-descricao-mobile').first().css('display', 'block');
@@ -537,7 +498,6 @@ function initIniciativas() {
   animationProposito();
   backgroundIncentivo();
   animationSelosCertificados();
-  btnFixed();
   selosAccordion();
   animationInstitutoSuperacao();
   backgroundVila();

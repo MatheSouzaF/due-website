@@ -139,12 +139,15 @@ function tipologiaPage() {
       if (quartos) {
         const minQuartos = parseInt(quartos.minimo_de_quartos_tipologia, 10);
         let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
-
+    
         if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''} ${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
+          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
         } else {
-          const connector = maxQuartos === minQuartos + 1 ? 'e' : 'a';
-          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${connector} ${maxQuartos} quartos`;
+          if (maxQuartos === minQuartos + 1) {
+            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} e ${maxQuartos} quartos`;
+          } else {
+            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} a ${maxQuartos} quartos`;
+          }
         }
       }
 

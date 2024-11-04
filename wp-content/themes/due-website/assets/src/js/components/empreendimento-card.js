@@ -30,21 +30,19 @@ function updateCardContent(cardTemplate, empreendimento) {
 }
 
 function updateRooms(cardTemplate, rooms, isStudio) {
-  const quartos = rooms && rooms[0];
   let roomsText = 'N/A';
 
-  if (quartos) {
-    const minQuartos = parseInt(quartos.minimo_de_quartos, 10);
-    let maxQuartos = parseInt(quartos.maximo_de_quartos, 10);
+  if (rooms && rooms.length > 0) {
+    rooms.sort((a, b) => a - b).map(n => parseInt(n, 10));
 
-    if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
+    if (rooms.length === 1) {
+      roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+    } else if (rooms.length === 2) {
+      roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
     } else {
-      if (maxQuartos === minQuartos + 1) {
-        roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} e ${maxQuartos} quartos`;
-      } else {
-        roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} a ${maxQuartos} quartos`;
-      }
+      const minRoom = rooms[0];
+      const maxRoom = rooms[rooms.length - 1];
+      roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
     }
   }
 

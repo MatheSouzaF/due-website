@@ -1,0 +1,52 @@
+/* Main Color */
+
+$due-primary: #003b4b;
+$due-secondary: #51848c;
+$due-secondary-v2: #cb9e6c;
+$due-tertiary: #002b36;
+
+/* Complementary colors */
+
+$due-complementary: #ff6f66;
+$due-complementary-v2: #861d1d;
+$due-complementary-v3: #8ac550;
+$background: #faf2eb;
+/* Neutral Colors */
+
+$grey-0: #fff;
+$grey-600: #dfdfdf;
+$grey-700: #b1b1b1;
+$grey-800: #646464;
+$grey-900: #181818;
+$grey-1000: #000;
+
+$beige-100: #faf2ec;
+$beige-200: #eed9c6;
+$beige-300: #dfc1a3;
+$beige-400: #cfaa83;
+$beige-500: #bc9467;
+$beige-600: #926a3b;
+$beige-700: #7b572b;
+$beige-800: #4c3417;
+
+.color-grey-0 {
+  color: $grey-0;
+}
+.color-grey-600 {
+  color: $grey-600;
+}
+.color-grey-700 {
+  color: $grey-700;
+}
+.color-grey-800 {
+  color: $grey-800;
+}
+.color-grey-900 {
+  color: $grey-900;
+}
+.color-grey-1000 {
+  color: $grey-1000;
+}
+.input-color-form {
+  color: #656565;
+}

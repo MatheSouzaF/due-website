@@ -1,0 +1,298 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+.invista {
+  background-color: #fff;
+  .label-invista {
+    margin-bottom: 16px;
+    p {
+      font-style: normal;
+      font-weight: 400;
+      line-height: 100%;
+      letter-spacing: 0.64px;
+      color: $due-tertiary;
+      font-size: 14px;
+      transition: 0.6s;
+      @include media-breakpoint-up(md) {
+        font-size: calc(0.4rem + 0.5vw);
+      }
+    }
+  }
+  .titulo-invista {
+    font-style: normal;
+    font-weight: 300;
+    line-height: 140%;
+    letter-spacing: 0.8px;
+    color: $due-tertiary;
+    font-size: 24px;
+    transition: 0.6s;
+    @include media-breakpoint-up(md) {
+      font-size: calc(1rem + 1.6vw);
+
+      font-weight: 400;
+      br {
+        display: none;
+      }
+      span {
+        font-weight: 400 !important;
+      }
+    }
+  }
+  .swiper-container {
+    padding: 0 20px;
+    transition: 0.6s;
+    @include media-breakpoint-up(sm) {
+      padding: 0 48px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding: 0 80px;
+    }
+
+    .card-invista {
+      cursor: pointer;
+      @include media-breakpoint-up(md) {
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+        &.clipPath-invista {
+          clip-path: inset(0 0 -100px -100px);
+        }
+      }
+      .box-img {
+        margin-bottom: 44px;
+        margin-top: 64px;
+        position: relative;
+        transition: 0.6s;
+        pointer-events: none;
+        height: 470px;
+        @include media-breakpoint-up(xxl) {
+          height: 700px;
+        }
+        &::after {
+          transition: 0.6s;
+          position: absolute;
+          content: '';
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 0;
+          background-color: $due-secondary;
+          mix-blend-mode: multiply;
+        }
+        &::before {
+          content: '';
+          background: linear-gradient(0, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 110%);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+        }
+        .img-invista {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: 0.6s;
+          max-height: 470px;
+          @include media-breakpoint-up(xxl) {
+            max-height: 700px;
+          }
+        }
+        .box-list-hover {
+          @include media-breakpoint-down(sm) {
+            display: none;
+          }
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 47px;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          .box-svg {
+            display: flex;
+            justify-content: center;
+          }
+          .box-item-invista-hover {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            .item-invista-hover {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              transition: opacity 0.6s ease, transform 0.6s ease;
+              opacity: 0;
+              transform: translateY(20px);
+              p {
+                color: $grey-0;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 130%;
+                letter-spacing: 0.36px;
+              }
+            }
+          }
+        }
+        .svg-numeros {
+          position: absolute;
+          z-index: 2;
+          top: -45px;
+          right: 50%;
+          transform: translate(50%, 0);
+          @include media-breakpoint-up(sm) {
+            top: initial;
+            bottom: -35px;
+            right: 35px;
+            transform: initial;
+          }
+          .box-svg {
+            .element {
+              svg {
+                g {
+                  path {
+                    &:nth-of-type(2) {
+                      fill: transparent;
+                    }
+                    transition: 0.6s;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .box-textos {
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
+        .label-investimento-invista {
+          margin-bottom: 16px;
+          h4 {
+            color: $due-tertiary;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: 0.56px;
+          }
+        }
+        .descricao-investimento-invista {
+          margin-bottom: 16px;
+          p {
+            color: $due-tertiary;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 140%;
+            letter-spacing: 0.48px;
+          }
+          max-width: 93%;
+        }
+      }
+      .box-textos-mobile {
+        position: absolute;
+        padding: 0 20px;
+        bottom: 20px;
+        left: 0;
+        @include media-breakpoint-up(sm) {
+          display: none;
+        }
+        .label-investimento-invista {
+          margin-bottom: 16px;
+          h4 {
+            color: $grey-0;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 100%;
+            letter-spacing: 0.56px;
+          }
+        }
+        .descricao-investimento-invista {
+          margin-bottom: 16px;
+          p {
+            color: $grey-0;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+          }
+        }
+      }
+    }
+    .hover-invista {
+      @include media-breakpoint-up(sm) {
+        .box-img {
+          &::after {
+            height: 100%;
+          }
+          .svg-numeros {
+            .box-svg {
+              .element {
+                svg {
+                  g {
+                    path {
+                      &:nth-of-type(2) {
+                        fill: #51848c;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .box-list-hover {
+        .visible {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+      }
+    }
+    .box-buttons {
+      display: none;
+      flex-direction: row-reverse;
+      position: absolute;
+      right: 3px;
+      top: 42%;
+      width: 100%;
+      height: 74px;
+      gap: 16px;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 1;
+      pointer-events: none;
+      padding: 0 20px;
+      cursor: pointer;
+      svg {
+        filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+        transition: 0.6s;
+        width: 80px;
+        height: 80px;
+        pointer-events: auto;
+        circle {
+          transition: 0.6s;
+        }
+        &:hover {
+          scale: 1.02;
+          circle {
+            stroke-width: 2;
+          }
+        }
+      }
+      @include media-breakpoint-up(sm) {
+        display: flex;
+      }
+
+      .swiper-button-disabled {
+        opacity: 0;
+      }
+    }
+  }
+}

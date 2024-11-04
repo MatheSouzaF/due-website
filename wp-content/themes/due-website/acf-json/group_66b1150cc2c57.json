@@ -75,70 +75,31 @@
             "label": "Quantidade de quartos",
             "name": "quantidade_de_quartos",
             "aria-label": "",
-            "type": "repeater",
+            "type": "checkbox",
             "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "layout": "row",
-            "pagination": 0,
-            "min": 1,
-            "max": 1,
-            "collapsed": "",
-            "button_label": "Adicionar linha",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_66bb9e7263e13",
-                    "label": "Mínimo de quartos",
-                    "name": "minimo_de_quartos",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "min": 0,
-                    "max": 6,
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66bb988fe1637"
-                },
-                {
-                    "key": "field_66bb9e8863e14",
-                    "label": "Máximo de quartos",
-                    "name": "maximo_de_quartos",
-                    "aria-label": "",
-                    "type": "number",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "min": 0,
-                    "max": 6,
-                    "placeholder": "",
-                    "step": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66bb988fe1637"
-                }
-            ]
+            "choices": {
+                "1": "1 quarto",
+                "2": "2 quartos",
+                "3": "3 quartos",
+                "4": "4 quartos",
+                "5": "5 quartos",
+                "6": "6 quartos"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "allow_custom": 0,
+            "allow_in_bindings": 1,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Adicionar nova escolha"
         },
         {
             "key": "field_66c0df9749b46",
@@ -388,5 +349,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727448035
+    "modified": 1730740817
 }

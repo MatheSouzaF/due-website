@@ -1,9 +1,9 @@
-import {renderFilters} from '../../components/filter';
-import {initBanner} from '../../components/banner';
-import {clearContainer, createEmpreendimentoCard, updateResultsText} from '../../components/empreendimento-card';
-import {generateBadge} from '../../components/badge';
-import {getFilterValue} from '../../utils/get-filter-value';
-import {getFilterLabel} from '../../utils/get-filter-label';
+import { renderFilters } from '../../components/filter';
+import { initBanner } from '../../components/banner';
+import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
+import { generateBadge } from '../../components/badge';
+import { getFilterValue } from '../../utils/get-filter-value';
+import { getFilterLabel } from '../../utils/get-filter-label';
 
 async function empreendimentoPage() {
   console.warn('Módulo Empreendimento Iniciado!');
@@ -82,19 +82,7 @@ async function empreendimentoPage() {
         const matchRooms =
           !roomsFilter ||
           (roomsFilter.includes('studio') && empreendimento.isStudio) ||
-          empreendimento.rooms.some((room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos, 10);
-            let maxQuartos = parseInt(room.maximo_de_quartos, 10);
-
-            if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-              maxQuartos = minQuartos;
-            }
-
-            return roomsFilter.some(
-              (selectedRoom) =>
-                (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || selectedRoom === minQuartos
-            );
-          });
+          roomsFilter.some((selectedRoom) => empreendimento.rooms.includes(selectedRoom));
 
         return matchLocation && matchStatus && matchRooms;
       });
@@ -276,33 +264,21 @@ async function empreendimentoPage() {
 
       const roomsOptions = new Set();
       empreendimentos.forEach((e) => {
-        let minimo = parseInt(e.rooms[0].minimo_de_quartos);
-        let maximo = parseInt(e.rooms[0].maximo_de_quartos);
-
-        if (isNaN(minimo) || minimo <= 1) {
-          minimo = 1;
-        }
-
-        if (isNaN(maximo) || maximo <= 1) {
-          maximo = 1;
-        }
-
-        if (maximo < minimo) {
-          maximo = minimo;
-        }
-
-        for (let i = minimo; i <= maximo; i++) {
-          roomsOptions.add(i);
-        }
+        e.rooms.forEach((room) => {
+          const roomNumber = parseInt(room, 10);
+          if (!isNaN(roomNumber)) {
+            roomsOptions.add(roomNumber);
+          }
+        });
       });
 
       const isStudio = empreendimentos.map((e) => e.isStudio);
 
       const options = {
-        'filter-location': Array.from(locationOptions).map((location) => ({value: location, label: location})),
-        'filter-status': Array.from(statusOptions).map((status) => ({value: status, label: status})),
+        'filter-location': Array.from(locationOptions).map((location) => ({ value: location, label: location })),
+        'filter-status': Array.from(statusOptions).map((status) => ({ value: status, label: status })),
         'filter-rooms': [
-          ...(isStudio ? [{value: 'studio', label: 'Studio'}] : []),
+          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
@@ -408,11 +384,11 @@ async function empreendimentoPage() {
         })
         .get();
 
-      initBanner({location: selectedLocations});
+      initBanner({ location: selectedLocations });
       hideOptions('filter-location');
     });
 
-    initBanner({location: 'Rota DUE'});
+    initBanner({ location: 'Rota DUE' });
 
     $('#filter-status input.ckkBox, #mobile-filter-status input.ckkBox').on('change', function () {
       filterAndRender();
@@ -562,4 +538,4 @@ async function initEmpreendimento() {
   encanteSe();
 }
 
-export {initEmpreendimento};
+export { initEmpreendimento };

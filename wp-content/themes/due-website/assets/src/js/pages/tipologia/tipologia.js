@@ -15,21 +15,21 @@ function tipologiaPage() {
     function renderTipologias(tipologias) {
       const $container = $('.cards-tipologia.cards');
       const $resultsText = $('.tipologia-results-text');
-    
+
       updateResultsText($resultsText, tipologias.length);
       clearContainer($container);
-    
+
       // Limit the number of tipologias to show
       const itemsToRender = tipologias.slice(0, currentItemsShown);
-    
+
       itemsToRender.forEach((tipologia) => {
         const cardTemplate = createTipologiaCard(tipologia);
         $container.append(cardTemplate);
       });
-    
+
       // Remove any existing "Ver mais" button
       $('.see-more-tipo-button').remove();
-    
+
       // If there are more items to show, add a "Ver mais" button
       if (currentItemsShown < tipologias.length) {
         const $seemoreContainer = $('.see-more-tipo-container-button');
@@ -39,16 +39,16 @@ function tipologiaPage() {
           class: 'see-more-tipo-button button',
         });
         $seemoreContainer.append($seeMoreButton);
-    
+
         $seeMoreButton.on('click', function () {
           // Increase the number of items shown by the same amount as initially shown
           currentItemsShown += itemsPerLoad;
-    
+
           // Ensure we don't exceed the total number of items
           if (currentItemsShown > tipologias.length) {
             currentItemsShown = tipologias.length;
           }
-    
+
           // Re-render the tipologias
           renderTipologias(tipologias);
         });
@@ -61,7 +61,7 @@ function tipologiaPage() {
       } else {
         $('#no-tipologias-message').hide();
       }
-    }    
+    }
 
     function updateResultsText($element, tipologiaCount) {
       const text =
@@ -133,21 +133,19 @@ function tipologiaPage() {
     }
 
     function updateRooms(cardTemplate, rooms, isStudio) {
-      const quartos = rooms && rooms[0];
       let roomsText = 'N/A';
 
-      if (quartos) {
-        const minQuartos = parseInt(quartos.minimo_de_quartos_tipologia, 10);
-        let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
-    
-        if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
+      if (rooms && rooms.length > 0) {
+        rooms.sort((a, b) => a - b).map(n => parseInt(n, 10));
+
+        if (rooms.length === 1) {
+          roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+        } else if (rooms.length === 2) {
+          roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
         } else {
-          if (maxQuartos === minQuartos + 1) {
-            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} e ${maxQuartos} quartos`;
-          } else {
-            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} a ${maxQuartos} quartos`;
-          }
+          const minRoom = rooms[0];
+          const maxRoom = rooms[rooms.length - 1];
+          roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
         }
       }
 
@@ -210,26 +208,12 @@ function tipologiaPage() {
 
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
-        if (e.rooms && e.rooms.length > 0) {
-          let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
-          let maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia, 10);
-
-          if (isNaN(minimo) || minimo <= 1) {
-            minimo = 1;
+        e.rooms.forEach((room) => {
+          const roomNumber = parseInt(room, 10);
+          if (!isNaN(roomNumber)) {
+            roomsOptions.add(roomNumber);
           }
-
-          if (isNaN(maximo) || maximo <= 1) {
-            maximo = 1;
-          }
-
-          if (maximo < minimo) {
-            maximo = minimo;
-          }
-
-          for (let i = minimo; i <= maximo; i++) {
-            roomsOptions.add(i);
-          }
-        }
+        });
       });
 
       const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
@@ -309,19 +293,8 @@ function tipologiaPage() {
         const matchRooms =
           !roomsFilter ||
           (roomsFilter.includes('studio') && tipologia.isStudio) ||
-          tipologia.rooms.some((room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-            let maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+          roomsFilter.some((selectedRoom) => tipologia.rooms.includes(selectedRoom));
 
-            if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-              maxQuartos = minQuartos;
-            }
-
-            return roomsFilter.some(
-              (selectedRoom) =>
-                (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || selectedRoom === minQuartos
-            );
-          });
 
         const matchDiferenciais =
           !diferenciaisFilter || diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -558,7 +531,7 @@ function tipologiaPage() {
       currentItemsShown = itemsPerLoad; // Reset the number of items shown
       renderTipologias(filteredTipologias);
       updateBadges();
-    }    
+    }
 
     renderTipologias(tipologiasData);
 

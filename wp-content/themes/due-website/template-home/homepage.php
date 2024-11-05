@@ -46,14 +46,14 @@ wp_localize_script('main', 'originalLabels', array(
                                             if ($image):
                                                 $image_url = $image['url'];
                                                 $image_alt = $image['alt'];
-                                                ?>
+                                            ?>
                                                 <div class="box-imagem-hero">
                                                     <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px"
                                                         src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                                     <?php if ($imageMobile):
                                                         $image_mobile_url = $imageMobile['url'];
                                                         $image_mobile_alt = $imageMobile['alt'];
-                                                        ?>
+                                                    ?>
                                                         <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>"
                                                             alt="<?php echo esc_attr($image_mobile_alt); ?>">
                                                     <?php endif; ?>
@@ -84,7 +84,7 @@ wp_localize_script('main', 'originalLabels', array(
                                                 <p class="subtitulo-banner-hero word">
                                                     <?php echo get_sub_field('subtitulo_banner_hero'); ?>
                                                 </p>
-                                            <?php endwhile;
+                                        <?php endwhile;
                                         endif; ?>
                                     </div>
 
@@ -131,7 +131,7 @@ wp_localize_script('main', 'originalLabels', array(
 
                         </div>
                     </div>
-                <?php endwhile;
+            <?php endwhile;
             endif; ?>
         </div>
 
@@ -381,7 +381,7 @@ wp_localize_script('main', 'originalLabels', array(
                                         if ($image):
                                             $image_url = $image['url'];
                                             $image_alt = $image['alt'];
-                                            ?>
+                                        ?>
                                             <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                                 alt="<?php echo esc_attr($image_alt); ?>">
                                         <?php endif; ?>
@@ -436,7 +436,7 @@ wp_localize_script('main', 'originalLabels', array(
                                                             <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                         </p>
                                                     </div>
-                                                <?php endwhile;
+                                            <?php endwhile;
                                             endif; ?>
                                         </div>
                                     </div>
@@ -477,7 +477,7 @@ wp_localize_script('main', 'originalLabels', array(
                     if ($count >= 3)
                         break; // Limita a 3 itens
                     $count++; // Incrementa a contagem
-                    ?>
+            ?>
                     <div class="card-empreendimentos-mobile swiper-slide">
                         <?php
                         $link = get_sub_field('link_empreendimento');
@@ -493,7 +493,7 @@ wp_localize_script('main', 'originalLabels', array(
                                     if ($image):
                                         $image_url = $image['url'];
                                         $image_alt = $image['alt'];
-                                        ?>
+                                    ?>
                                         <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
                                             alt="<?php echo esc_attr($image_alt); ?>">
                                     <?php endif; ?>
@@ -537,14 +537,14 @@ wp_localize_script('main', 'originalLabels', array(
                                                         <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
                                                     </p>
                                                 </div>
-                                            <?php endwhile;
+                                        <?php endwhile;
                                         endif; ?>
                                     </div>
                                 </div>
                             </a>
                         <?php endif; ?>
                     </div>
-                <?php endwhile;
+            <?php endwhile;
             endif; ?>
         </div>
         <?php
@@ -652,7 +652,7 @@ wp_localize_script('main', 'originalLabels', array(
                 $total_comentarios = count(get_field('comentarios_encante-se'));
 
                 $extra_class = ($total_comentarios > 4) ? 'more-space' : '';
-                ?>
+            ?>
 
                 <div class="box-conteudo-right <?php echo $extra_class; ?>">
                     <div class="svg-caribe">
@@ -743,7 +743,7 @@ wp_localize_script('main', 'originalLabels', array(
             slidesPerView: 1,
             autoHeight: true,
             autoplay: {
-                delay: 6000, // Match the animation time
+                delay: 7000, // Tempo total do slide
             },
             effect: 'fade',
             fadeEffect: {
@@ -753,7 +753,7 @@ wp_localize_script('main', 'originalLabels', array(
                 el: '.swiper-pagination',
                 clickable: true,
                 type: 'bullets',
-                renderBullet: function (index, className) {
+                renderBullet: function(index, className) {
                     return '<span class="' + className + '">' + '<i></i>' + '<b></b>' + '</span>';
                 },
             },
@@ -763,8 +763,68 @@ wp_localize_script('main', 'originalLabels', array(
             },
         });
 
+        var wordAnimationInterval; // Variável para armazenar o ID do intervalo
+
+        function wordAnimation(wordsContainer) {
+            var words = wordsContainer.getElementsByClassName('word');
+            var currentWord = 0;
+
+            // Inicializa todos os elementos com opacity 0, exceto o primeiro
+            for (var i = 0; i < words.length; i++) {
+                words[i].style.opacity = i === 0 ? 1 : 0;
+            }
+
+            function changeWord() {
+                var cw = words[currentWord];
+                var nw = currentWord == words.length - 1 ? words[0] : words[currentWord + 1];
+
+                animateWordOut(cw);
+                animateWordIn(nw);
+
+                currentWord = currentWord == words.length - 1 ? 0 : currentWord + 1;
+            }
+
+            function animateWordOut(cw) {
+                cw.style.opacity = 0; // Esconde a palavra atual
+            }
+
+            function animateWordIn(nw) {
+                nw.style.opacity = 1; // Mostra a próxima palavra
+            }
+
+            // Inicia o intervalo e retorna o ID
+            return setInterval(changeWord, 2000);
+        }
+
+        // Inicia a animação no slide inicial ativo
+        var initialActiveSlide = mySwiper.slides[mySwiper.activeIndex];
+        var initialWordsContainer = initialActiveSlide.querySelector('.box-repetidor-subtitulo');
+
+        if (initialWordsContainer) {
+            wordAnimationInterval = wordAnimation(initialWordsContainer);
+        }
+
+        // Eventos do Swiper para controlar a animação
+        mySwiper.on('slideChangeTransitionStart', function() {
+            // Para a animação do slide anterior
+            if (wordAnimationInterval) {
+                clearInterval(wordAnimationInterval);
+                wordAnimationInterval = null;
+            }
+        });
+
+        mySwiper.on('slideChangeTransitionEnd', function() {
+            // Inicia a animação no novo slide ativo
+            var activeSlide = mySwiper.slides[mySwiper.activeIndex];
+            var wordsContainer = activeSlide.querySelector('.box-repetidor-subtitulo');
+
+            if (wordsContainer) {
+                wordAnimationInterval = wordAnimation(wordsContainer);
+            }
+        });
+
         function modalBanner() {
-            $('.js-modal-open-banner').on('click', function (e) {
+            $('.js-modal-open-banner').on('click', function(e) {
                 e.preventDefault();
                 var msrc = $(this).data('src');
                 $('.js-modal').find('.video-container').html(msrc);
@@ -779,13 +839,13 @@ wp_localize_script('main', 'originalLabels', array(
                 mySwiper.autoplay.stop();
             });
 
-            $('.js-modal-close, .js-modal-close-btn').on('click', function (e) {
+            $('.js-modal-close, .js-modal-close-btn').on('click', function(e) {
                 e.preventDefault();
-                $('.js-modal').fadeOut(function () {
+                $('.js-modal').fadeOut(function() {
                     $('.js-modal').find('.video-container').html('');
 
                     // Retoma o Swiper quando o modal é fechado
-                    setTimeout(function () {
+                    setTimeout(function() {
                         mySwiper.autoplay.start();
                     }, 0); // Pequeno delay para garantir que o swiper recomece corretamente
                     $('header').removeClass('modal-active-video');
@@ -808,7 +868,7 @@ wp_localize_script('main', 'originalLabels', array(
         autoplay: true,
         loop: false,
     });
-    lottieAnimation.addEventListener('complete', function () {
+    lottieAnimation.addEventListener('complete', function() {
         // Iniciar o GSAP Timeline após o Lottie terminar
         gsap.timeline()
         gsap.to(".logo", {
@@ -819,7 +879,7 @@ wp_localize_script('main', 'originalLabels', array(
         gsap.to("#dotLottie-canvas", {
             opacity: 0,
             duration: 1,
-            onComplete: function () {
+            onComplete: function() {
                 swiperBanner();
             }
         });

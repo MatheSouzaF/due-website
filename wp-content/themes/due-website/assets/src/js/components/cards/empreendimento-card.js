@@ -1,8 +1,21 @@
+import {updateRooms} from './update-rooms';
+import {updateOffer} from './update-offer';
+
+function updateSize(cardTemplate, size) {
+  const tamanho = size && size[0];
+  const sizeText = tamanho
+    ? tamanho.metragem_minima === tamanho.metragem_maxima
+      ? `${tamanho.metragem_maxima}m²`
+      : `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²`
+    : 'N/A';
+  $(cardTemplate).find('.info-tamanho').text(sizeText);
+}
+
 function addStatusClass($boxCard, status) {
   const statusMap = {
     'Em obra': 'em_obra',
-    "Lançamento": 'lancamento',
-    "Em breve lançamento": 'lancamento',
+    Lançamento: 'lancamento',
+    'Em breve lançamento': 'lancamento',
     '100% vendido': 'vendido',
     'Pronto pra morar': 'pronto',
     'Últimas unidades': 'ultimas_unidades',
@@ -27,45 +40,6 @@ function updateCardContent(cardTemplate, empreendimento) {
   updateSize(cardTemplate, empreendimento.size);
   updateOffer(cardTemplate, empreendimento.offer, empreendimento.tituloOffer);
   updateMedia(cardTemplate, empreendimento.photo, empreendimento.video);
-}
-
-function updateRooms(cardTemplate, rooms, isStudio) {
-  let roomsText = 'N/A';
-
-  if (rooms && rooms.length > 0) {
-    rooms.sort((a, b) => a - b).map(n => parseInt(n, 10));
-
-    if (rooms.length === 1) {
-      roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
-    } else if (rooms.length === 2) {
-      roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
-    } else {
-      const minRoom = rooms[0];
-      const maxRoom = rooms[rooms.length - 1];
-      roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
-    }
-  }
-
-  $(cardTemplate).find('.info-quartos').text(roomsText);
-}
-
-function updateSize(cardTemplate, size) {
-  const tamanho = size && size[0];
-  const sizeText = tamanho
-  ? tamanho.metragem_minima === tamanho.metragem_maxima
-    ? `${tamanho.metragem_maxima}m²`
-    : `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²`
-  : 'N/A';  
-  $(cardTemplate).find('.info-tamanho').text(sizeText);
-}
-
-function updateOffer(cardTemplate, offer, tituloOffer) {
-  $(cardTemplate)
-    .find('.valor')
-    .text(offer || 'N/A');
-  $(cardTemplate)
-    .find('.entradas')
-    .text(tituloOffer || 'N/A');
 }
 
 function updateMedia(cardTemplate, photo, video) {

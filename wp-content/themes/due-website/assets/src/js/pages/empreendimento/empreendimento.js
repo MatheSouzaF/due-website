@@ -1,6 +1,6 @@
 import { renderFilters } from '../../components/filter';
 import { initBanner } from '../../components/banner';
-import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/empreendimento-card';
+import { clearContainer, createEmpreendimentoCard, updateResultsText } from '../../components/cards/empreendimento-card';
 import { generateBadge } from '../../components/badge';
 import { getFilterValue } from '../../utils/get-filter-value';
 import { getFilterLabel } from '../../utils/get-filter-label';

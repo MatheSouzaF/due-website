@@ -23,36 +23,9 @@ function swiperEmpreendimento() {
   });
 }
 function wordAnimation() {
-  var words = document.getElementsByClassName('word');
-  var currentWord = 0;
-
-  // Inicializa todos os elementos com opacity 0, exceto o primeiro
-  for (var i = 0; i < words.length; i++) {
-    words[i].style.opacity = i === 0 ? 1 : 0;
-  }
-
-  function changeWord() {
-    var cw = words[currentWord];
-    var nw = currentWord == words.length - 1 ? words[0] : words[currentWord + 1];
-
-    animateWordOut(cw);
-    animateWordIn(nw);
-
-    currentWord = currentWord == words.length - 1 ? 0 : currentWord + 1;
-  }
-
-  function animateWordOut(cw) {
-    cw.style.opacity = 0; // Sai de cena
-  }
-
-  function animateWordIn(nw) {
-    nw.style.opacity = 1; // Entra em cena
-  }
-
-  setInterval(changeWord, 2000);
+  
 }
 
-setTimeout(wordAnimation, 1000);
 
 function fadeConteudoEncantese() {
   $('.slide-effect')

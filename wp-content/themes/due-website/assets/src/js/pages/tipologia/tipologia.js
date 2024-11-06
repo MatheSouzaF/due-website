@@ -20,7 +20,6 @@ function tipologiaPage() {
       updateResultsText($resultsText, tipologias.length);
       clearContainer($container);
 
-      // Limit the number of tipologias to show
       const itemsToRender = tipologias.slice(0, currentItemsShown);
 
       itemsToRender.forEach((tipologia) => {
@@ -28,10 +27,8 @@ function tipologiaPage() {
         $container.append(cardTemplate);
       });
 
-      // Remove any existing "Ver mais" button
       $('.see-more-tipo-button').remove();
 
-      // If there are more items to show, add a "Ver mais" button
       if (currentItemsShown < tipologias.length) {
         const $seemoreContainer = $('.see-more-tipo-container-button');
 
@@ -42,15 +39,12 @@ function tipologiaPage() {
         $seemoreContainer.append($seeMoreButton);
 
         $seeMoreButton.on('click', function () {
-          // Increase the number of items shown by the same amount as initially shown
           currentItemsShown += itemsPerLoad;
 
-          // Ensure we don't exceed the total number of items
           if (currentItemsShown > tipologias.length) {
             currentItemsShown = tipologias.length;
           }
 
-          // Re-render the tipologias
           renderTipologias(tipologias);
         });
       }

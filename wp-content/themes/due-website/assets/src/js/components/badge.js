@@ -2,7 +2,7 @@ export function generateBadge(filterValue, filterType) {
   let badgeLabel = filterValue;
 
   if (filterType === 'rooms' && filterValue !== 'studio') {
-    badgeLabel += Number(filterValue) === 1 ? ' qto' : ' qtos';
+    badgeLabel += Number(filterValue) === 1 ? ' quarto' : ' quartos';
   }
 
   const badgeTemplate = `

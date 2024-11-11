@@ -10,7 +10,7 @@
     "labels": {
         "name": "Banners",
         "singular_name": "Banner",
-        "menu_name": "Banners",
+        "menu_name": "Banners destinos",
         "all_items": "Todos os Banners",
         "edit_item": "Editar Banner",
         "view_item": "Ver Banner",

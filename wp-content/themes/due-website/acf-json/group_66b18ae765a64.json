@@ -36,18 +36,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "1509": "Tropí Eco Residência",
-                "2827": "Casa do Poço",
-                "2826": "NoMar ",
-                "886": "Costa do Mar",
-                "884": "Costa Azul",
-                "882": "Boulevard Praia de Carneiros",
-                "880": "Praia Exclusive",
-                "434": "Naturê Eco Residência",
-                "432": "Orla Praia dos Carneiros",
-                "418": "Cais Eco Residência"
-            },
+            "choices": [],
             "default_value": false,
             "return_format": "label",
             "multiple": 0,
@@ -111,31 +100,70 @@
             "label": "Quantidade de quartos",
             "name": "quantidade_de_quartos_tipologia",
             "aria-label": "",
-            "type": "checkbox",
+            "type": "repeater",
             "instructions": "Insira a quantidade de quartos, será exibido assim: 2 a 6 qtos",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "1": "1 quarto",
-                "2": "2 quartos",
-                "3": "3 quartos",
-                "4": "4 quartos",
-                "5": "5 quartos",
-                "6": "6 quartos"
-            },
-            "default_value": [],
-            "return_format": "value",
-            "allow_custom": 0,
-            "allow_in_bindings": 1,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Adicionar nova escolha"
+            "layout": "table",
+            "pagination": 0,
+            "min": 1,
+            "max": 1,
+            "collapsed": "",
+            "button_label": "Adicionar linha",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66bbb1e9285fc",
+                    "label": "Mínimo de quartos",
+                    "name": "minimo_de_quartos_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": 6,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                },
+                {
+                    "key": "field_66bbb221285fd",
+                    "label": "Máximo de quartos",
+                    "name": "maximo_de_quartos_tipologia",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": 0,
+                    "max": 6,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66bbb1db285fb"
+                }
+            ]
         },
         {
             "key": "field_66e03e60ab7a1",
@@ -331,5 +359,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730740803
+    "modified": 1731341796
 }

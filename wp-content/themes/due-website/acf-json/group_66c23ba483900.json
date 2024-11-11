@@ -34,15 +34,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "553": "teste",
-                "469": "Habitá",
-                "436": "Tropí Eco Residência",
-                "434": "Naturê Eco Residência",
-                "432": "Orla Carneiros",
-                "430": "Habitá",
-                "418": "Cais Eco Residência"
-            },
+            "choices": [],
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -65,14 +57,7 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "697": "Beach House",
-                "695": "Rooftop Poesia 02",
-                "693": "Rooftop Poesia",
-                "690": "Beach House Garden",
-                "688": "Rooftop",
-                "443": "Térreo"
-            },
+            "choices": [],
             "default_value": false,
             "return_format": "value",
             "multiple": 0,
@@ -1037,5 +1022,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1730384177
+    "modified": 1731341797
 }

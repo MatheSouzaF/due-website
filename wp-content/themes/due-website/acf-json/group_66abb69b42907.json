@@ -182,7 +182,7 @@
         },
         {
             "key": "field_66abc70f061b9",
-            "label": "Repetidor Propósito Jeito DUE",
+            "label": "Repetidor Missao e Valores",
             "name": "repetidor_proposito_jeito_due",
             "aria-label": "",
             "type": "repeater",
@@ -204,7 +204,7 @@
             "sub_fields": [
                 {
                     "key": "field_66e0c38d7af77",
-                    "label": "Título Repetidor Propósito Jeito DUE",
+                    "label": "Título",
                     "name": "titulo_repetidor_proposito_jeito_due",
                     "aria-label": "",
                     "type": "text",
@@ -218,6 +218,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -225,7 +226,7 @@
                 },
                 {
                     "key": "field_66abc746061bb",
-                    "label": "Descrição Repetidor Propósito Jeito DUE",
+                    "label": "Descrição",
                     "name": "descricao_repetidor_proposito_jeito_due",
                     "aria-label": "",
                     "type": "text",
@@ -239,6 +240,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -248,7 +250,7 @@
         },
         {
             "key": "field_66e0c55658251",
-            "label": "Nosso Proposito Título WYSIWYG",
+            "label": "Titulo Nossos Valores",
             "name": "nosso_proposito_titulo_wysiwyg",
             "aria-label": "",
             "type": "text",
@@ -262,13 +264,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66e0c50758250",
-            "label": "Repetidor Accordion",
+            "label": "Topicos Nossos Valores",
             "name": "repetidor_accordion",
             "aria-label": "",
             "type": "repeater",
@@ -290,7 +293,7 @@
             "sub_fields": [
                 {
                     "key": "field_66f175a132099",
-                    "label": "Título Accordion",
+                    "label": "Título",
                     "name": "titulo_accordion",
                     "aria-label": "",
                     "type": "text",
@@ -304,6 +307,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -311,7 +315,7 @@
                 },
                 {
                     "key": "field_66f175ae3209a",
-                    "label": "Descrição Accordion",
+                    "label": "Descrição",
                     "name": "descricao_accordion",
                     "aria-label": "",
                     "type": "wysiwyg",
@@ -324,6 +328,7 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "allow_in_bindings": 1,
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
@@ -334,7 +339,7 @@
         },
         {
             "key": "field_66abe8850af1e",
-            "label": "Reducao das diferencas sociais",
+            "label": "Redução das diferenças sociais",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -352,7 +357,7 @@
         },
         {
             "key": "field_66abe8900af1f",
-            "label": "Título Redução das diferencas sociais",
+            "label": "Título",
             "name": "titulo_reducao_das_diferencas_sociais",
             "aria-label": "",
             "type": "text",
@@ -366,13 +371,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66abe89c0af20",
-            "label": "Descrição  Redução das diferencas sociais",
+            "label": "Descrição",
             "name": "descricao_reducao_das_diferencas_sociais",
             "aria-label": "",
             "type": "wysiwyg",
@@ -385,6 +391,7 @@
                 "id": ""
             },
             "default_value": "",
+            "allow_in_bindings": 1,
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
@@ -392,7 +399,7 @@
         },
         {
             "key": "field_66abe8b21c716",
-            "label": "Imagem Redução das diferencas sociais",
+            "label": "Imagem",
             "name": "imagem_reducao_das_diferencas_sociais",
             "aria-label": "",
             "type": "image",
@@ -413,6 +420,7 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
+            "allow_in_bindings": 1,
             "preview_size": "medium"
         },
         {
@@ -838,5 +846,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727202006
+    "modified": 1731341795
 }

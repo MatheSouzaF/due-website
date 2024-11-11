@@ -266,6 +266,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66db3757a71a5",
                     "sub_fields": [
                         {
                             "key": "field_66db38eea71ab",
@@ -309,8 +310,7 @@
                             "append": "",
                             "parent_repeater": "field_66db38e1a71aa"
                         }
-                    ],
-                    "parent_repeater": "field_66db3757a71a5"
+                    ]
                 }
             ]
         },
@@ -334,7 +334,7 @@
         },
         {
             "key": "field_669fb25c94280",
-            "label": "Link Navbar",
+            "label": "Links Navbar",
             "name": "link_navbar",
             "aria-label": "",
             "type": "repeater",
@@ -356,7 +356,7 @@
             "sub_fields": [
                 {
                     "key": "field_669fb27194281",
-                    "label": "Link Navbar Menu",
+                    "label": "Links principais",
                     "name": "link_navbar_menu",
                     "aria-label": "",
                     "type": "link",
@@ -369,13 +369,14 @@
                         "id": ""
                     },
                     "return_format": "array",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_669fb25c94280"
                 }
             ]
         },
         {
             "key": "field_669fb35eb2402",
-            "label": "Link Navbar Opcionais",
+            "label": "Links Opcionais",
             "name": "link_navbar_opcionais",
             "aria-label": "",
             "type": "repeater",
@@ -416,7 +417,7 @@
         },
         {
             "key": "field_66deed4c37dba",
-            "label": "Números Repetidor",
+            "label": "Números de telefone",
             "name": "numeros_repetidor",
             "aria-label": "",
             "type": "repeater",
@@ -478,7 +479,7 @@
         },
         {
             "key": "field_66def50ef2fbf",
-            "label": "Repetidor Rede Sociais",
+            "label": "Repetidor sociais",
             "name": "repetidor_rede_sociais",
             "aria-label": "",
             "type": "repeater",
@@ -585,7 +586,7 @@
         },
         {
             "key": "field_66e43620af849",
-            "label": "Label Newsletter",
+            "label": "Subtítulo Newsletter",
             "name": "label_newsletter",
             "aria-label": "",
             "type": "text",
@@ -599,6 +600,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -776,5 +778,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1729624630
+    "modified": 1731341796
 }

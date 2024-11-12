@@ -31,7 +31,6 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     const rooms = response.data.rooms.map(Number).sort((a, b) => a - b);
-                    const isStudio = response.data.isStudio
 
                     let roomsText;
 
@@ -39,13 +38,13 @@ jQuery(document).ready(function ($) {
                         rooms.sort((a, b) => a - b);
 
                         if (rooms.length === 1) {
-                            roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+                            roomsText = `${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
                         } else if (rooms.length === 2) {
-                            roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
+                            roomsText = `${rooms[0]} e ${rooms[1]} quartos`;
                         } else {
                             const minRoom = rooms[0];
                             const maxRoom = rooms[rooms.length - 1];
-                            roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
+                            roomsText = `${minRoom} a ${maxRoom} quartos`;
                         }
                     }
 
@@ -126,7 +125,6 @@ jQuery(document).ready(function ($) {
             success: function (response) {
                 if (response.success) {
                     const rooms = response.data.rooms.map(Number).sort((a, b) => a - b);
-                    const isStudio = response.data.isStudio
 
                     let roomsText;
 
@@ -134,13 +132,13 @@ jQuery(document).ready(function ($) {
                         rooms.sort((a, b) => a - b);
 
                         if (rooms.length === 1) {
-                            roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+                            roomsText = `${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
                         } else if (rooms.length === 2) {
-                            roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
+                            roomsText = `${rooms[0]} e ${rooms[1]} quartos`;
                         } else {
                             const minRoom = rooms[0];
                             const maxRoom = rooms[rooms.length - 1];
-                            roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
+                            roomsText = `${minRoom} a ${maxRoom} quartos`;
                         }
                     }
 

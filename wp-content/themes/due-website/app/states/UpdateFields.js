@@ -30,8 +30,24 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    var minRooms = response.data.rooms[0].minimo_de_quartos;
-                    var maxRooms = response.data.rooms[0].maximo_de_quartos;
+                    const rooms = response.data.rooms.map(Number).sort((a, b) => a - b);
+                    const isStudio = response.data.isStudio
+
+                    let roomsText;
+
+                    if (rooms && rooms.length > 0) {
+                        rooms.sort((a, b) => a - b);
+
+                        if (rooms.length === 1) {
+                            roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+                        } else if (rooms.length === 2) {
+                            roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
+                        } else {
+                            const minRoom = rooms[0];
+                            const maxRoom = rooms[rooms.length - 1];
+                            roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
+                        }
+                    }
 
                     var minSize = response.data.size[0].metragem_minima;
                     var maxSize = response.data.size[0].metragem_maxima;
@@ -40,7 +56,7 @@ jQuery(document).ready(function ($) {
                     $('input[name="acf[field_66c0d5e5ca8c9]"]').val(response.data.location);
 
                     // Quantidade de quartos
-                    $('input[name="acf[field_66c0d5f4ca8ca]"]').val(minRooms + ' a ' + maxRooms + ' qtos');
+                    $('input[name="acf[field_66c0d5f4ca8ca]"]').val(roomsText);
 
                     // Metragem
                     $('input[name="acf[field_66c0d608ca8cb]"]').val(minSize + ' a ' + maxSize + 'm²');
@@ -109,8 +125,24 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 if (response.success) {
-                    var minRooms = response.data.rooms[0].minimo_de_quartos_tipologia
-                    var maxRooms = response.data.rooms[0].maximo_de_quartos_tipologia
+                    const rooms = response.data.rooms.map(Number).sort((a, b) => a - b);
+                    const isStudio = response.data.isStudio
+
+                    let roomsText;
+
+                    if (rooms && rooms.length > 0) {
+                        rooms.sort((a, b) => a - b);
+
+                        if (rooms.length === 1) {
+                            roomsText = `${isStudio ? 'Studio e ' : ''}${rooms[0]} ${rooms[0] === 1 ? 'quarto' : 'quartos'}`;
+                        } else if (rooms.length === 2) {
+                            roomsText = `${isStudio ? 'Studio, ' : ''}${rooms[0]} e ${rooms[1]} quartos`;
+                        } else {
+                            const minRoom = rooms[0];
+                            const maxRoom = rooms[rooms.length - 1];
+                            roomsText = `${isStudio ? 'Studio, ' : ''}${minRoom} a ${maxRoom} quartos`;
+                        }
+                    }
 
                     var minSize = response.data.size[0].metragem_minima_tipologia
                     var maxSize = response.data.size[0].metragem_maxima_tipologia
@@ -121,7 +153,7 @@ jQuery(document).ready(function ($) {
                     $('input[name="acf[field_66c23bf0e1421]"]').val(response.data.project);
 
                     // Quantidade de quartos
-                    $('input[name="acf[field_66c23c37e1424]"]').val(minRooms + ' a ' + maxRooms + ' qtos');
+                    $('input[name="acf[field_66c23c37e1424]"]').val(roomsText);
 
                     //Metragem
                     $('input[name="acf[field_66c23c3fe1425]"]').val(minSize + ' a ' + maxSize + 'm²');

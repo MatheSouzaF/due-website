@@ -244,7 +244,6 @@ class EmpreendimentoController
         $args = array(
             'post_type' => 'empreendimentos',
             'posts_per_page' => -1, // Obtém todos os posts
-            'post_status' => 'publish' // Apenas posts publicados
         );
 
         $query = new WP_Query($args);

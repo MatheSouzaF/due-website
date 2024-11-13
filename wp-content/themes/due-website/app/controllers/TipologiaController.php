@@ -30,7 +30,6 @@ class TipologiaController
         $args = array(
             'post_type' => 'tipologias',
             'post__in' => array($tipologiaId), // Busca apenas pelo ID fornecido
-            'post_status' => 'publish' // Apenas posts publicados
         );
 
         // Executa a consulta
@@ -110,7 +109,6 @@ class TipologiaController
         $args = array(
             'post_type' => 'tipologias',
             'posts_per_page' => -1, // Obtém todos os posts
-            'post_status' => 'publish' // Apenas posts publicados
         );
 
         // Executa a consulta
@@ -152,7 +150,6 @@ class TipologiaController
         $args = array(
             'post_type' => 'tipologias',
             'posts_per_page' => -1,
-            'post_status' => 'publish',
         );
 
         // Executa a consulta

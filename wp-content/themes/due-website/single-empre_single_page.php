@@ -30,7 +30,7 @@ get_header();
             $empreendimento_id = get_field('empreendimento_single_page');
 
             if ($empreendimento_id) {
-                $titulo_empreendimento = get_the_title($empreendimento_id);
+                $titulo_empreendimento = get_field('empreendimento_nome', $empreendimento_id);
                 echo '<h1 class="terminal-test titulo-hero">' . $titulo_empreendimento . '</h1>';
             }
             ?>

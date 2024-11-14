@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_669fdf043dfe1",
-            "label": "Realizamos o Sonho",
+            "label": "FINANCIAMENTO CAIXA",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -42,7 +42,7 @@
         },
         {
             "key": "field_669fdfd03dfe3",
-            "label": "Titulo Realizamos o Sonho",
+            "label": "Titulo",
             "name": "titulo_realizamos_o_sonho",
             "aria-label": "",
             "type": "text",
@@ -56,13 +56,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_669fdff23dfe4",
-            "label": "SubTitulo Realizamos o Sonho",
+            "label": "SubTitulo",
             "name": "subtitulo_realizamos_o_sonho",
             "aria-label": "",
             "type": "text",
@@ -76,13 +77,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_669fe08d3dfe5",
-            "label": "Lista Realizamos o Sonho",
+            "label": "Lista de tópicos",
             "name": "lista_realizamos_o_sonho",
             "aria-label": "",
             "type": "repeater",
@@ -104,7 +106,7 @@
             "sub_fields": [
                 {
                     "key": "field_669fe0a33dfe6",
-                    "label": "Item Realizamos o Sonho",
+                    "label": "Tópicos",
                     "name": "item_realizamos_o_sonho",
                     "aria-label": "",
                     "type": "text",
@@ -118,6 +120,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -144,7 +147,7 @@
         },
         {
             "key": "field_669fe18e3dfe8",
-            "label": "Imagem Realizamos o Sonho",
+            "label": "Imagem",
             "name": "imagem_realizamos_o_sonho",
             "aria-label": "",
             "type": "image",
@@ -165,6 +168,7 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
+            "allow_in_bindings": 1,
             "preview_size": "medium"
         },
         {
@@ -206,5 +210,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721939155
+    "modified": 1731346160
 }

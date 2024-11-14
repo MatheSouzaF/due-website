@@ -215,6 +215,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66d5b41e88d93",
                     "sub_fields": [
                         {
                             "key": "field_66e99612affc2",
@@ -237,8 +238,7 @@
                             "append": "",
                             "parent_repeater": "field_66d5b61388d99"
                         }
-                    ],
-                    "parent_repeater": "field_66d5b41e88d93"
+                    ]
                 },
                 {
                     "key": "field_66d5b62188d9a",
@@ -301,7 +301,7 @@
         },
         {
             "key": "field_66a3b89f7450f",
-            "label": "Título Nossos Club Resorts",
+            "label": "Título da seção",
             "name": "titulo_nossos_club_resorts",
             "aria-label": "",
             "type": "text",
@@ -315,6 +315,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -337,7 +338,7 @@
         },
         {
             "key": "field_66a3b8cd74511",
-            "label": "Cards Nossos Club Resorts",
+            "label": "Cards empreendimentos",
             "name": "cards_nossos_club_resorts",
             "aria-label": "",
             "type": "repeater",
@@ -376,7 +377,7 @@
                 },
                 {
                     "key": "field_66a3b90f74512",
-                    "label": "Label Informativo Card",
+                    "label": "Label - estagio da obra",
                     "name": "label_informativo_card",
                     "aria-label": "",
                     "type": "text",
@@ -390,6 +391,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -416,7 +418,7 @@
                 },
                 {
                     "key": "field_66a3b9c750969",
-                    "label": "Imagem Nossos Club Resorts",
+                    "label": "Imagem",
                     "name": "imagem_nossos_club_resorts",
                     "aria-label": "",
                     "type": "image",
@@ -437,6 +439,7 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
                     "preview_size": "medium",
                     "parent_repeater": "field_66a3b8cd74511"
                 },
@@ -524,6 +527,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66a3b8cd74511",
                     "sub_fields": [
                         {
                             "key": "field_66a3cde48bb16",
@@ -567,8 +571,7 @@
                             "append": "",
                             "parent_repeater": "field_66a3cd758bb15"
                         }
-                    ],
-                    "parent_repeater": "field_66a3b8cd74511"
+                    ]
                 }
             ]
         },
@@ -592,7 +595,7 @@
         },
         {
             "key": "field_66aa7e0bf5713",
-            "label": "Nossos Propósito",
+            "label": "Subtitulo",
             "name": "nosso_proposito",
             "aria-label": "",
             "type": "text",
@@ -606,13 +609,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66aa7e41f5714",
-            "label": "Título Propósito",
+            "label": "Título",
             "name": "titulo_proposito",
             "aria-label": "",
             "type": "text",
@@ -626,13 +630,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66aa7eeef5715",
-            "label": "Descrição Propósito",
+            "label": "Descrição",
             "name": "descricao_proposito",
             "aria-label": "",
             "type": "text",
@@ -646,13 +651,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66aa7fbaf5716",
-            "label": "Link Propósito",
+            "label": "Link",
             "name": "link_proposito",
             "aria-label": "",
             "type": "link",
@@ -664,11 +670,12 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "allow_in_bindings": 1
         },
         {
             "key": "field_66aa8095f5717",
-            "label": "Vídeo Propósito",
+            "label": "Vídeo",
             "name": "video_proposito",
             "aria-label": "",
             "type": "file",
@@ -684,11 +691,12 @@
             "library": "all",
             "min_size": "",
             "max_size": "",
-            "mime_types": ""
+            "mime_types": "",
+            "allow_in_bindings": 1
         },
         {
             "key": "field_66aa816af5718",
-            "label": "Imagem Propósito",
+            "label": "Imagem",
             "name": "imagem_proposito",
             "aria-label": "",
             "type": "image",
@@ -709,11 +717,12 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
+            "allow_in_bindings": 1,
             "preview_size": "medium"
         },
         {
             "key": "field_66a941009004d",
-            "label": "Encante-se",
+            "label": "Banner Rota DUE",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -731,7 +740,7 @@
         },
         {
             "key": "field_66a941e0aaf33",
-            "label": "BG Encante-se",
+            "label": "Imagem",
             "name": "bg_encante-se",
             "aria-label": "",
             "type": "image",
@@ -752,6 +761,7 @@
             "max_height": "",
             "max_size": "",
             "mime_types": "",
+            "allow_in_bindings": 1,
             "preview_size": "medium"
         },
         {
@@ -776,7 +786,7 @@
         },
         {
             "key": "field_66a9425daaf35",
-            "label": "Título Encante-se",
+            "label": "Título",
             "name": "titulo_encante-se",
             "aria-label": "",
             "type": "text",
@@ -790,13 +800,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66a94265aaf36",
-            "label": "Descrição Encante-se",
+            "label": "Descrição",
             "name": "descricao_encante-se",
             "aria-label": "",
             "type": "text",
@@ -810,13 +821,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66a9426eaaf37",
-            "label": "Link Encante-se",
+            "label": "Link",
             "name": "link_encante-se",
             "aria-label": "",
             "type": "link",
@@ -828,11 +840,12 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "allow_in_bindings": 1
         },
         {
             "key": "field_66a942f9aaf38",
-            "label": "Comentarios Encante-se",
+            "label": "Tópicos",
             "name": "comentarios_encante-se",
             "aria-label": "",
             "type": "repeater",
@@ -854,7 +867,7 @@
             "sub_fields": [
                 {
                     "key": "field_66a94362aaf39",
-                    "label": "SVG Comentários Encante-se",
+                    "label": "SVG",
                     "name": "svg_comentarios_encante-se",
                     "aria-label": "",
                     "type": "file",
@@ -871,11 +884,12 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_66a942f9aaf38"
                 },
                 {
                     "key": "field_66a9437faaf3a",
-                    "label": "Texto Comentários Encante-se",
+                    "label": "Textos",
                     "name": "texto_comentarios_encante-se",
                     "aria-label": "",
                     "type": "text",
@@ -889,6 +903,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -936,7 +951,7 @@
         },
         {
             "key": "field_66fda2b0e3fae",
-            "label": "Invista no paraíso",
+            "label": "Titulo da barra",
             "name": "invista_no_paraiso",
             "aria-label": "",
             "type": "text",
@@ -950,13 +965,14 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
         },
         {
             "key": "field_66fda10ce3fad",
-            "label": "Encontre se imóvel",
+            "label": "Subtitulo",
             "name": "encontre_se_imovel",
             "aria-label": "",
             "type": "text",
@@ -970,6 +986,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -1093,5 +1110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727898366
+    "modified": 1731346160
 }

@@ -427,24 +427,25 @@ $empreendimentoName = $empreendimento['name'];
                     $status = get_field('estagio_da_obra', $tipologiaId);
                     $ultimas_unidades = get_field('ultimas_unidades', $tipologiaId);
                     $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
-                    $rooms = '';
-                    if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
-                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
-                            the_row();
-                            $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
-                            $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
+                    $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
+                    
+                    if ($rooms && is_array($rooms)) {
+                        sort($rooms, SORT_NUMERIC); 
 
-                            if ($min_rooms && $max_rooms) {
-                                $rooms = $min_rooms . ' a ' . $max_rooms . ' qtos';
-                            } elseif ($min_rooms) {
-                                if ($min_rooms === '1') {
-                                    $rooms = $min_rooms . ' quarto';
-                                } else {
-                                    $rooms = $min_rooms . ' quartos';
-                                }
-                            }
-                        endwhile;
-                    };
+                        if (count($rooms) > 2) {
+                            $min_rooms = $rooms[0];
+                            $max_rooms = end($rooms);
+                            $rooms_text = $min_rooms . ' a ' . $max_rooms . ' quartos';
+                        } elseif (count($rooms) === 2) {
+                            $rooms_text = $rooms[0] . ' e ' . $rooms[1] . ' quartos';
+                        } else {
+                            $min_rooms = $rooms[0];
+                            $rooms_text = $min_rooms . ' quarto' . ($min_rooms > 1 ? 's' : '');
+                        }
+                    } else {
+                        $rooms_text = 'N/A';
+                    }
+
                     $size = '';
                     if (have_rows('metragem_tipologia', $tipologiaId)) {
                         while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -474,7 +475,7 @@ $empreendimentoName = $empreendimento['name'];
                             'project' => $project,
                             'location' => $location,
                             'isStudio' => $isStudio,
-                            'rooms' => $rooms,
+                            'rooms' => $rooms_text,
                             'size' => $size,
                             'status' => $status,
                             'diffs' => $diffs,
@@ -507,7 +508,6 @@ $empreendimentoName = $empreendimento['name'];
                         <div class="swiper-wrapper">
                             <?php foreach ($tipologiasDoEmpreendimento as $tipologia): ?>
                                 <?php
-                                // var_dump($tipologia);
 
                                 $statusMap = [
                                     'Em obra' => 'em_obra',
@@ -557,6 +557,7 @@ $empreendimentoName = $empreendimento['name'];
                                                 </svg>
 
                                                 <p class="quartos founders-grotesk"><?php echo esc_html($tipologia['rooms']); ?>
+                                        
                                                 </p>
                                             </div>
                                             <div class="box-metragem">

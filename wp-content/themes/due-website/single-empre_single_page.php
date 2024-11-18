@@ -652,45 +652,39 @@ get_header();
                     $status = get_field('estagio_da_obra', $tipologiaId);
                     $ultimas_unidades = get_field('ultimas_unidades', $tipologiaId);
                     $isStudio = get_field('e_um_studio_tipologia', $tipologiaId);
-                    $rooms = '';
-                    if (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)) {
-                        while (have_rows('quantidade_de_quartos_tipologia', $tipologiaId)):
-                            the_row();
-                            $min_rooms = get_sub_field('minimo_de_quartos_tipologia');
-                            $max_rooms = get_sub_field('maximo_de_quartos_tipologia');
+                    $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
+                    if ($rooms && is_array($rooms)) {
+                        sort($rooms, SORT_NUMERIC);
+                    
+                        $rooms_text = '';
+                    
+                        if (count($rooms) > 2) {
+                            $min_rooms = $rooms[0];
+                            $max_rooms = end($rooms);
+                            $rooms_text = $min_rooms . ' a ' . $max_rooms . ' quartos';
 
-                            $rooms = '';
-
-                            if ($isStudio === true) {
-                                $rooms = 'Studio';
-
-                                if ($min_rooms && $max_rooms) {
-                                    $rooms .= ', ' . esc_html($min_rooms) . ' a ' . esc_html($max_rooms) . ' qtos';
-                                } elseif ($min_rooms) {
-                                    if ($min_rooms == 1) {
-                                        $rooms .= ', ' . esc_html($min_rooms) . ' quarto';
-                                    } else {
-                                        $rooms .= ', ' . esc_html($min_rooms) . ' quartos';
-                                    }
-                                }
-                            } else {
-                                if ($min_rooms && $max_rooms) {
-                                    $rooms = esc_html($min_rooms) . ' a ' . esc_html($max_rooms) . ' qtos';
-                                } elseif ($min_rooms) {
-                                    if ($min_rooms == 1) {
-                                        $rooms = esc_html($min_rooms) . ' quarto';
-                                    } else {
-                                        $rooms = esc_html($min_rooms) . ' quartos';
-                                    }
-                                }
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ', ' . $rooms_text : '');
                             }
+                        } elseif (count($rooms) === 2) {
+                            $rooms_text = $rooms[0] . ' e ' . $rooms[1] . ' quartos';
 
-                            if (!empty($rooms)) {
-                                $rooms_list[] = $rooms;
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ', ' . $rooms_text : '');
                             }
+                        } else {
+                            $min_rooms = $rooms[0];
+                            $rooms_text = $min_rooms . ' quarto' . ($min_rooms > 1 ? 's' : '');
 
-                        endwhile;
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ' e ' . $rooms_text : '');
+                            }
+                        }
+                    
+                    } else {
+                        $rooms_text = 'N/A';
                     }
+                    
                     $size = '';
                     if (have_rows('metragem_tipologia', $tipologiaId)) {
                         while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -719,7 +713,7 @@ get_header();
                             'project' => $project,
                             'location' => $location,
                             'isStudio' => $isStudio,
-                            'rooms' => $rooms,
+                            'rooms' => $rooms_text,
                             'size' => $size,
                             'status' => $status,
                             'diffs' => $diffs,

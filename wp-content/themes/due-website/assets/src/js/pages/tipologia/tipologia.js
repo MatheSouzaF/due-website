@@ -1,5 +1,6 @@
 import { renderFilters } from '../../components/filter';
 import { initBanner } from '../../components/banner';
+import { createTipologiaCard } from '../../components/cards/tipologia-card'
 
 function tipologiaPage() {
   console.warn('Módulo Tipologia Iniciado!');
@@ -15,22 +16,19 @@ function tipologiaPage() {
     function renderTipologias(tipologias) {
       const $container = $('.cards-tipologia.cards');
       const $resultsText = $('.tipologia-results-text');
-    
+
       updateResultsText($resultsText, tipologias.length);
       clearContainer($container);
-    
-      // Limit the number of tipologias to show
+
       const itemsToRender = tipologias.slice(0, currentItemsShown);
-    
+
       itemsToRender.forEach((tipologia) => {
         const cardTemplate = createTipologiaCard(tipologia);
         $container.append(cardTemplate);
       });
-    
-      // Remove any existing "Ver mais" button
+
       $('.see-more-tipo-button').remove();
-    
-      // If there are more items to show, add a "Ver mais" button
+
       if (currentItemsShown < tipologias.length) {
         const $seemoreContainer = $('.see-more-tipo-container-button');
 
@@ -39,17 +37,14 @@ function tipologiaPage() {
           class: 'see-more-tipo-button button',
         });
         $seemoreContainer.append($seeMoreButton);
-    
+
         $seeMoreButton.on('click', function () {
-          // Increase the number of items shown by the same amount as initially shown
           currentItemsShown += itemsPerLoad;
-    
-          // Ensure we don't exceed the total number of items
+
           if (currentItemsShown > tipologias.length) {
             currentItemsShown = tipologias.length;
           }
-    
-          // Re-render the tipologias
+
           renderTipologias(tipologias);
         });
       }
@@ -61,7 +56,7 @@ function tipologiaPage() {
       } else {
         $('#no-tipologias-message').hide();
       }
-    }    
+    }
 
     function updateResultsText($element, tipologiaCount) {
       const text =
@@ -75,132 +70,6 @@ function tipologiaPage() {
       $container.html('');
     }
 
-    function createTipologiaCard(tipologia) {
-      const template = document.getElementById('tipologia-template');
-      const cardTemplate = template.content.cloneNode(true);
-      const $boxCard = $(cardTemplate).find('.box-card');
-      $boxCard.attr('href', tipologia.link);
-
-      addStatusClass($boxCard, tipologia.status);
-      updateCardContent(cardTemplate, tipologia);
-
-      return cardTemplate;
-    }
-
-    function addStatusClass($boxCard, status) {
-      const statusMap = {
-        'Em obra': 'em_obra',
-        Lançamento: 'lancamento',
-        'Em breve lançamento': 'lancamento',
-        '100% vendido': 'vendido',
-        'Pronto pra morar': 'pronto',
-        'Últimas unidades': 'ultimas_unidades',
-      };
-
-      const statusClass = statusMap[status] || status;
-      $boxCard.addClass(statusClass);
-    }
-
-    function updateCardContent(cardTemplate, tipologia) {
-      $(cardTemplate)
-        .find('.nome-tipologia')
-        .text(tipologia.name || 'N/A');
-      $(cardTemplate)
-        .find('.nome-empreendimento')
-        .text(tipologia.project || 'N/A');
-      $(cardTemplate)
-        .find('.fale-com-time')
-        .append(
-          tipologia.lastUnits.length
-            ? `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="5" fill="#861D1D" /><circle cx="10" cy="10" r="9.5" stroke="#861D1D" /></svg>`
-            : ''
-        );
-      $(cardTemplate)
-        .find('.texto-fale')
-        .text(tipologia.lastUnits || '');
-      $(cardTemplate)
-        .find('.localizacao-tipologia')
-        .text(tipologia.location || 'N/A');
-      $(cardTemplate)
-        .find('.label-informativo')
-        .text(tipologia.status || '');
-
-      updateRooms(cardTemplate, tipologia.rooms, tipologia.isStudio);
-      updateSize(cardTemplate, tipologia.size);
-      updateOffer(cardTemplate, tipologia.offer, tipologia.tituloOffer);
-      updateMedia(cardTemplate, tipologia.photo, tipologia.video);
-      updateDiffs(cardTemplate, tipologia.diffs);
-    }
-
-    function updateRooms(cardTemplate, rooms, isStudio) {
-      const quartos = rooms && rooms[0];
-      let roomsText = 'N/A';
-
-      if (quartos) {
-        const minQuartos = parseInt(quartos.minimo_de_quartos_tipologia, 10);
-        let maxQuartos = parseInt(quartos.maximo_de_quartos_tipologia, 10);
-    
-        if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-          roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
-        } else {
-          if (maxQuartos === minQuartos + 1) {
-            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} e ${maxQuartos} quartos`;
-          } else {
-            roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} a ${maxQuartos} quartos`;
-          }
-        }
-      }
-
-      $(cardTemplate).find('.info-quartos').text(roomsText);
-    }
-
-    function updateSize(cardTemplate, size) {
-      const tamanho = size && size[0];
-      const sizeText = tamanho
-        ? tamanho.metragem_minima_tipologia === tamanho.metragem_maxima_tipologia
-          ? `${tamanho.metragem_maxima_tipologia}m²`
-          : `${tamanho.metragem_minima_tipologia} a ${tamanho.metragem_maxima_tipologia}m²`
-        : 'N/A';
-      $(cardTemplate).find('.info-tamanho').text(sizeText);
-    }
-
-    function updateOffer(cardTemplate, offer, tituloOffer) {
-      $(cardTemplate)
-        .find('.valor')
-        .text(offer || 'N/A');
-      $(cardTemplate)
-        .find('.entradas')
-        .text(tituloOffer || 'N/A');
-    }
-
-    function updateMedia(cardTemplate, photo, video) {
-      if (photo && photo.url) {
-        $(cardTemplate).find('.imagem-tipologia').attr('src', photo.url);
-      } else {
-        $(cardTemplate).find('.imagem-tipologia').hide();
-      }
-
-      if (video) {
-        $(cardTemplate).find('.video-tipologia').attr('src', video);
-      } else {
-        $(cardTemplate).find('.video-tipologia').hide();
-      }
-    }
-
-    function updateDiffs(cardTemplate, diffs) {
-      const diffsContainer = $(cardTemplate).find('.box-tipos');
-      diffs.forEach((diff) => {
-        const diffTemplate = `
-          <div class="linha-tipos">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M6.33333 9.66667L8.33333 11.6667L11.6667 7M17 9C17 10.0506 16.7931 11.0909 16.391 12.0615C15.989 13.0321 15.3997 13.914 14.6569 14.6569C13.914 15.3997 13.0321 15.989 12.0615 16.391C11.0909 16.7931 10.0506 17 9 17C7.94943 17 6.90914 16.7931 5.93853 16.391C4.96793 15.989 4.08601 15.3997 3.34315 14.6569C2.60028 13.914 2.011 13.0321 1.60896 12.0615C1.20693 11.0909 1 10.0506 1 9C1 6.87827 1.84285 4.84344 3.34315 3.34315C4.84344 1.84285 6.87827 1 9 1C11.1217 1 13.1566 1.84285 14.6569 3.34315C16.1571 4.84344 17 6.87827 17 9Z" stroke="#003B4B" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <p class="titulo-tipos founders-grotesk">${diff}</p>
-          </div>`;
-        diffsContainer.append(diffTemplate);
-      });
-    }
-
     function populateFilterOptions() {
       const locationOptions = [...new Set(tipologiasData.map((e) => e.location))];
       const statusOptions = [...new Set(tipologiasData.map((e) => e.status).filter((status) => status !== ''))];
@@ -210,26 +79,12 @@ function tipologiaPage() {
 
       const roomsOptions = new Set();
       tipologiasData.forEach((e) => {
-        if (e.rooms && e.rooms.length > 0) {
-          let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
-          let maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia, 10);
-
-          if (isNaN(minimo) || minimo <= 1) {
-            minimo = 1;
+        e.rooms.forEach((room) => {
+          const roomNumber = parseInt(room, 10);
+          if (!isNaN(roomNumber)) {
+            roomsOptions.add(roomNumber);
           }
-
-          if (isNaN(maximo) || maximo <= 1) {
-            maximo = 1;
-          }
-
-          if (maximo < minimo) {
-            maximo = minimo;
-          }
-
-          for (let i = minimo; i <= maximo; i++) {
-            roomsOptions.add(i);
-          }
-        }
+        });
       });
 
       const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
@@ -309,19 +164,8 @@ function tipologiaPage() {
         const matchRooms =
           !roomsFilter ||
           (roomsFilter.includes('studio') && tipologia.isStudio) ||
-          tipologia.rooms.some((room) => {
-            const minQuartos = parseInt(room.minimo_de_quartos_tipologia, 10);
-            let maxQuartos = parseInt(room.maximo_de_quartos_tipologia, 10);
+          roomsFilter.some((selectedRoom) => tipologia.rooms.includes(selectedRoom));
 
-            if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-              maxQuartos = minQuartos;
-            }
-
-            return roomsFilter.some(
-              (selectedRoom) =>
-                (selectedRoom >= minQuartos && selectedRoom <= maxQuartos) || selectedRoom === minQuartos
-            );
-          });
 
         const matchDiferenciais =
           !diferenciaisFilter || diferenciaisFilter.every((diff) => tipologia.diffs.includes(diff));
@@ -558,7 +402,7 @@ function tipologiaPage() {
       currentItemsShown = itemsPerLoad; // Reset the number of items shown
       renderTipologias(filteredTipologias);
       updateBadges();
-    }    
+    }
 
     renderTipologias(tipologiasData);
 

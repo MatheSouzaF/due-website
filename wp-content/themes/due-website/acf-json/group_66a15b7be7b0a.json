@@ -42,7 +42,7 @@
         },
         {
             "key": "field_66a15c66318a4",
-            "label": "Repetidor Whatsapp",
+            "label": "Números de telefone",
             "name": "repetidor_whatsapp",
             "aria-label": "",
             "type": "repeater",
@@ -228,6 +228,7 @@
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66fed4b6da999",
                     "sub_fields": [
                         {
                             "key": "field_66fed65ada99c",
@@ -246,8 +247,7 @@
                             "return_format": "array",
                             "parent_repeater": "field_66fed61dda99b"
                         }
-                    ],
-                    "parent_repeater": "field_66fed4b6da999"
+                    ]
                 }
             ]
         },
@@ -291,7 +291,7 @@
         },
         {
             "key": "field_66a259b4ac8bd",
-            "label": "Links Footer",
+            "label": "Links finais",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -383,5 +383,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727977089
+    "modified": 1731346161
 }

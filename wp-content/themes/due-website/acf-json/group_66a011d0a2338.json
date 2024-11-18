@@ -22,7 +22,7 @@
         },
         {
             "key": "field_66a0125a5e96d",
-            "label": "Label Invista",
+            "label": "Subtitulo",
             "name": "label_invista",
             "aria-label": "",
             "type": "text",
@@ -36,6 +36,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -62,7 +63,7 @@
         },
         {
             "key": "field_66a0127a5e96f",
-            "label": "Repetidor Cards Invista",
+            "label": "Cards",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -80,7 +81,7 @@
         },
         {
             "key": "field_66a0130e7b34b",
-            "label": "Repetidor Card Invista",
+            "label": "Cards",
             "name": "repetidor_card_invista",
             "aria-label": "",
             "type": "repeater",
@@ -102,7 +103,7 @@
             "sub_fields": [
                 {
                     "key": "field_66a013447b34c",
-                    "label": "Imagem Invista",
+                    "label": "Imagem",
                     "name": "imagem_invista",
                     "aria-label": "",
                     "type": "image",
@@ -123,12 +124,13 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
                     "preview_size": "medium",
                     "parent_repeater": "field_66a0130e7b34b"
                 },
                 {
                     "key": "field_66a139ef7c863",
-                    "label": "Logo invista",
+                    "label": "Logo",
                     "name": "logo_invista",
                     "aria-label": "",
                     "type": "file",
@@ -145,11 +147,12 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_66a0130e7b34b"
                 },
                 {
                     "key": "field_66a0f8d3a24c0",
-                    "label": "SVG Números Invista",
+                    "label": "SVG Número Card",
                     "name": "svg_numeros_invista",
                     "aria-label": "",
                     "type": "file",
@@ -166,11 +169,12 @@
                     "min_size": "",
                     "max_size": "",
                     "mime_types": "",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_66a0130e7b34b"
                 },
                 {
                     "key": "field_66a013617b34e",
-                    "label": "Investimento Label Invista",
+                    "label": "Titulo",
                     "name": "investimento_label_invista",
                     "aria-label": "",
                     "type": "text",
@@ -184,6 +188,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -191,7 +196,7 @@
                 },
                 {
                     "key": "field_66a013737b34f",
-                    "label": "Descrição Invista",
+                    "label": "Descrição",
                     "name": "descricao_invista",
                     "aria-label": "",
                     "type": "text",
@@ -205,6 +210,7 @@
                     },
                     "default_value": "",
                     "maxlength": "",
+                    "allow_in_bindings": 1,
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
@@ -212,7 +218,7 @@
                 },
                 {
                     "key": "field_66a0137e7b350",
-                    "label": "LInk Investimento",
+                    "label": "LInk",
                     "name": "link_investimento",
                     "aria-label": "",
                     "type": "link",
@@ -225,11 +231,12 @@
                         "id": ""
                     },
                     "return_format": "array",
+                    "allow_in_bindings": 1,
                     "parent_repeater": "field_66a0130e7b34b"
                 },
                 {
                     "key": "field_66a1306a9e949",
-                    "label": "Repetidor Lista Hover",
+                    "label": "Lista de tópicos (hover)",
                     "name": "repetidor_lista_hover",
                     "aria-label": "",
                     "type": "repeater",
@@ -242,12 +249,12 @@
                         "id": ""
                     },
                     "layout": "table",
-                    "pagination": 0,
                     "min": 0,
                     "max": 0,
                     "collapsed": "",
                     "button_label": "Adicionar linha",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_66a0130e7b34b",
                     "sub_fields": [
                         {
                             "key": "field_66a130759e94a",
@@ -270,8 +277,7 @@
                             "append": "",
                             "parent_repeater": "field_66a1306a9e949"
                         }
-                    ],
-                    "parent_repeater": "field_66a0130e7b34b"
+                    ]
                 }
             ]
         }
@@ -294,5 +300,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721842207
+    "modified": 1731346160
 }

@@ -1,8 +1,21 @@
+import {updateRooms} from './update-rooms';
+import {updateOffer} from './update-offer';
+
+function updateSize(cardTemplate, size) {
+  const tamanho = size && size[0];
+  const sizeText = tamanho
+    ? tamanho.metragem_minima === tamanho.metragem_maxima
+      ? `${tamanho.metragem_maxima}m²`
+      : `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²`
+    : 'N/A';
+  $(cardTemplate).find('.info-tamanho').text(sizeText);
+}
+
 function addStatusClass($boxCard, status) {
   const statusMap = {
     'Em obra': 'em_obra',
-    "Lançamento": 'lancamento',
-    "Em breve lançamento": 'lancamento',
+    Lançamento: 'lancamento',
+    'Em breve lançamento': 'lancamento',
     '100% vendido': 'vendido',
     'Pronto pra morar': 'pronto',
     'Últimas unidades': 'ultimas_unidades',
@@ -27,47 +40,6 @@ function updateCardContent(cardTemplate, empreendimento) {
   updateSize(cardTemplate, empreendimento.size);
   updateOffer(cardTemplate, empreendimento.offer, empreendimento.tituloOffer);
   updateMedia(cardTemplate, empreendimento.photo, empreendimento.video);
-}
-
-function updateRooms(cardTemplate, rooms, isStudio) {
-  const quartos = rooms && rooms[0];
-  let roomsText = 'N/A';
-
-  if (quartos) {
-    const minQuartos = parseInt(quartos.minimo_de_quartos, 10);
-    let maxQuartos = parseInt(quartos.maximo_de_quartos, 10);
-
-    if (isNaN(maxQuartos) || maxQuartos === 0 || maxQuartos === 1) {
-      roomsText = `${isStudio ? 'Studio e ' : ''}${minQuartos} ${minQuartos === 1 ? 'quarto' : 'quartos'}`;
-    } else {
-      if (maxQuartos === minQuartos + 1) {
-        roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} e ${maxQuartos} quartos`;
-      } else {
-        roomsText = `${isStudio ? 'Studio, ' : ''}${minQuartos} a ${maxQuartos} quartos`;
-      }
-    }
-  }
-
-  $(cardTemplate).find('.info-quartos').text(roomsText);
-}
-
-function updateSize(cardTemplate, size) {
-  const tamanho = size && size[0];
-  const sizeText = tamanho
-  ? tamanho.metragem_minima === tamanho.metragem_maxima
-    ? `${tamanho.metragem_maxima}m²`
-    : `${tamanho.metragem_minima} a ${tamanho.metragem_maxima}m²`
-  : 'N/A';  
-  $(cardTemplate).find('.info-tamanho').text(sizeText);
-}
-
-function updateOffer(cardTemplate, offer, tituloOffer) {
-  $(cardTemplate)
-    .find('.valor')
-    .text(offer || 'N/A');
-  $(cardTemplate)
-    .find('.entradas')
-    .text(tituloOffer || 'N/A');
 }
 
 function updateMedia(cardTemplate, photo, video) {

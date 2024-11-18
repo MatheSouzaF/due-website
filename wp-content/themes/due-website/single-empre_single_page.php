@@ -655,20 +655,36 @@ get_header();
                     $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
                     if ($rooms && is_array($rooms)) {
                         sort($rooms, SORT_NUMERIC);
-
+                    
+                        $rooms_text = '';
+                    
                         if (count($rooms) > 2) {
                             $min_rooms = $rooms[0];
                             $max_rooms = end($rooms);
                             $rooms_text = $min_rooms . ' a ' . $max_rooms . ' quartos';
+
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ', ' . $rooms_text : '');
+                            }
                         } elseif (count($rooms) === 2) {
                             $rooms_text = $rooms[0] . ' e ' . $rooms[1] . ' quartos';
+
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ', ' . $rooms_text : '');
+                            }
                         } else {
                             $min_rooms = $rooms[0];
                             $rooms_text = $min_rooms . ' quarto' . ($min_rooms > 1 ? 's' : '');
+
+                            if ($isStudio) {
+                                $rooms_text = 'Studio' . ($rooms_text ? ' e ' . $rooms_text : '');
+                            }
                         }
+                    
                     } else {
                         $rooms_text = 'N/A';
                     }
+                    
                     $size = '';
                     if (have_rows('metragem_tipologia', $tipologiaId)) {
                         while (have_rows('metragem_tipologia', $tipologiaId)):

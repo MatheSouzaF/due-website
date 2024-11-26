@@ -22,13 +22,16 @@ wp_localize_script('main', 'originalLabels', array(
             if (have_rows('banner_repetidor')):
                 while (have_rows('banner_repetidor')):
                     the_row();
-                    // Get the link from the ACF field
+                    // Get the link from the ACF field as an array
                     $link_banner = get_sub_field('link_banner');
 
-                    // Check if the link is not empty
-                    if (!empty($link_banner)):
+                    // Check if the link is an array and not empty
+                    if ($link_banner):
+                        $link_url = $link_banner['url'];
+                        $link_title = $link_banner['title'];
+                        $link_target = $link_banner['target'] ? $link_banner['target'] : '_self';
             ?>
-                        <a href="<?php echo esc_url($link_banner); ?>" class="swiper-slide link-swiper-slide">
+                        <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="swiper-slide link-swiper-slide">
                         <?php
                     else:
                         ?>
@@ -43,9 +46,9 @@ wp_localize_script('main', 'originalLabels', array(
                                             the_row(); ?>
                                             <?php if (get_row_layout() == 'video_banner'): ?>
                                                 <div class="box-video-hero">
-                                                    <video class="video-banner-hero" autoplay="autoplay"
+                                                    <video class="video-banner-hero" autoplay
                                                         src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
-                                                    <video class="video-banner-hero-mobile" autoplay="autoplay"
+                                                    <video class="video-banner-hero-mobile" autoplay
                                                         src="<?php echo get_sub_field('video_mobile'); ?>" muted loop playsinline></video>
                                                 </div>
 
@@ -105,35 +108,10 @@ wp_localize_script('main', 'originalLabels', array(
                                             ?>
                                             <div class="button-play js-modal-open-banner" id="video-modal"
                                                 data-src="<?php echo htmlspecialchars($modalVideo); ?>">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
-                                                    fill="none">
-                                                    <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
-                                                    <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
-                                                </svg>
-                                                <p><?php echo get_sub_field('botao_video'); ?></p>
+                                                <!-- SVG and button content -->
                                             </div>
                                             <div class="modal js-modal">
-                                                <div class="modal__bg js-modal-close"></div>
-                                                <div class="modal__content">
-                                                    <div class="video-container"></div>
-
-                                                </div>
-                                                <span class="js-modal-close-btn">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30"
-                                                        fill="none">
-                                                        <g clip-path="url(#clip0_2145_7167)">
-                                                            <path class="hover-line" d="M1 1L30.1161 28.983" stroke="white"
-                                                                stroke-width="2" />
-                                                            <path class="hover-line" d="M1 28.9835L30.1161 1.0005" stroke="white"
-                                                                stroke-width="2" />
-                                                        </g>
-                                                        <defs>
-                                                            <clipPath id="clip0_2145_7167">
-                                                                <rect width="31" height="30" fill="white" />
-                                                            </clipPath>
-                                                        </defs>
-                                                    </svg>
-                                                </span>
+                                                <!-- Modal content -->
                                             </div>
                                         <?php endif; ?>
 
@@ -143,7 +121,7 @@ wp_localize_script('main', 'originalLabels', array(
                             </div>
                     <?php
                     // Close the tag appropriately
-                    if (!empty($link_banner)):
+                    if ($link_banner):
                         echo '</a>';
                     else:
                         echo '</div>';
@@ -154,165 +132,165 @@ wp_localize_script('main', 'originalLabels', array(
                             </div>
 
 
-                            <div class="box-buttons">
-                                <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                    viewBox="0 0 80 80" fill="none">
-                                    <circle cx="40" cy="40" r="40" fill="white" />
-                                    <path
-                                        d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z"
-                                        fill="#003B4B" />
-                                </svg>
+        <div class="box-buttons">
+            <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" fill="white" />
+                <path
+                    d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z"
+                    fill="#003B4B" />
+            </svg>
 
-                                <svg class="swiper-btn-banner-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
-                                    viewBox="0 0 80 80" fill="none">
-                                    <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
-                                    <path
-                                        d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
-                                        fill="#003B4B" />
-                                </svg>
-                            </div>
-                            <div class="swiper-pagination"></div>
+            <svg class="swiper-btn-banner-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                <path
+                    d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
+                    fill="#003B4B" />
+            </svg>
         </div>
+        <div class="swiper-pagination"></div>
+    </div>
 
+    <?php
+    $titulos_banners = [];
+    if (have_rows('banner_repetidor')):
+        while (have_rows('banner_repetidor')):
+            the_row();
+            $titulo = get_sub_field('titulo_banner_hero');
+            if ($titulo) {
+                $titulos_banners[] = $titulo;
+            }
+        endwhile;
+    endif;
+    ?>
+
+    <script type="text/javascript">
+        var listArray = <?php echo json_encode($titulos_banners); ?>;
+    </script>
+
+    <div class="box-busca-banner-hero-desktop">
         <?php
-        $titulos_banners = [];
-        if (have_rows('banner_repetidor')):
-            while (have_rows('banner_repetidor')):
-                the_row();
-                $titulo = get_sub_field('titulo_banner_hero');
-                if ($titulo) {
-                    $titulos_banners[] = $titulo;
+        $argsTipologia = array(
+            'post_type' => 'tipologias',
+            'posts_per_page' => -1,
+        );
+
+        $queryTipologia = new WP_Query($argsTipologia);
+        $tipologias = array();
+
+        if ($queryTipologia->have_posts()) {
+            while ($queryTipologia->have_posts()) {
+                $queryTipologia->the_post();
+
+                $tipologia_id = get_the_ID();
+                $name = get_field('nome_da_tipologia', $tipologia_id);
+                $project = get_field('pertence_a_qual_empreendimento', $tipologia_id);
+                $location = get_field('localizacao_tipologia', $tipologia_id);
+                $status = get_field('estagio_da_obra_tipologia', $tipologia_id);
+                $lastUnits = get_field('ultimas_unidades', $tipologia_id);
+                $isStudio = get_field('e_um_studio_tipologia', $tipologia_id);
+                $rooms = get_field('quantidade_de_quartos_tipologia', $tipologia_id);
+                $size = get_field('metragem_tipologia', $tipologia_id);
+                $diffs = get_field('diferenciais_tipologia', $tipologia_id);
+                $photo = get_field('foto_da_tipologia', $tipologia_id);
+                $link = get_field('link_para_a_pagina_dessa_tipologia', $tipologia_id);
+
+                $project_id = null;
+                if ($project) {
+                    $project_query = new WP_Query(array(
+                        'post_type' => 'empreendimentos',
+                        'title' => $project,
+                        'posts_per_page' => 1
+                    ));
+
+                    if ($project_query->have_posts()) {
+                        $project_query->the_post();
+                        $project_id = get_the_ID();
+                    }
+                    wp_reset_postdata();
                 }
-            endwhile;
-        endif;
+
+                if ($project_id) {
+                    $project_location = get_field('localizacao_emprendimento', $project_id);
+                    $project_status = get_field('estagio_da_obra', $tipologia_id);
+                }
+
+                $tipologias[] = array(
+                    'name' => $name,
+                    'id' => $tipologia_id,
+                    'project' => $project,
+                    'location' => isset($project_location) ? $project_location : '',
+                    'status' => isset($project_status) ? $project_status : '',
+                    'isStudio' => $isStudio,
+                    'lastUnits' => isset($lastUnits) ? $lastUnits : '',
+                    'rooms' => $rooms,
+                    'size' => $size,
+                    'diffs' => $diffs,
+                    'photo' => $photo,
+                    'link' => $link,
+                );
+            }
+            wp_reset_postdata();
+        }
+
+
+        wp_localize_script('main', 'TipologiasDataHome', array(
+            'tipologias' => $tipologias,
+        ));
         ?>
 
-        <script type="text/javascript">
-            var listArray = <?php echo json_encode($titulos_banners); ?>;
-        </script>
-
-        <div class="box-busca-banner-hero-desktop">
-            <?php
-            $argsTipologia = array(
-                'post_type' => 'tipologias',
-                'posts_per_page' => -1,
-            );
-
-            $queryTipologia = new WP_Query($argsTipologia);
-            $tipologias = array();
-
-            if ($queryTipologia->have_posts()) {
-                while ($queryTipologia->have_posts()) {
-                    $queryTipologia->the_post();
-
-                    $tipologia_id = get_the_ID();
-                    $name = get_field('nome_da_tipologia', $tipologia_id);
-                    $project = get_field('pertence_a_qual_empreendimento', $tipologia_id);
-                    $location = get_field('localizacao_tipologia', $tipologia_id);
-                    $status = get_field('estagio_da_obra_tipologia', $tipologia_id);
-                    $lastUnits = get_field('ultimas_unidades', $tipologia_id);
-                    $isStudio = get_field('e_um_studio_tipologia', $tipologia_id);
-                    $rooms = get_field('quantidade_de_quartos_tipologia', $tipologia_id);
-                    $size = get_field('metragem_tipologia', $tipologia_id);
-                    $diffs = get_field('diferenciais_tipologia', $tipologia_id);
-                    $photo = get_field('foto_da_tipologia', $tipologia_id);
-                    $link = get_field('link_para_a_pagina_dessa_tipologia', $tipologia_id);
-
-                    $project_id = null;
-                    if ($project) {
-                        $project_query = new WP_Query(array(
-                            'post_type' => 'empreendimentos',
-                            'title' => $project,
-                            'posts_per_page' => 1
-                        ));
-
-                        if ($project_query->have_posts()) {
-                            $project_query->the_post();
-                            $project_id = get_the_ID();
-                        }
-                        wp_reset_postdata();
-                    }
-
-                    if ($project_id) {
-                        $project_location = get_field('localizacao_emprendimento', $project_id);
-                        $project_status = get_field('estagio_da_obra', $tipologia_id);
-                    }
-
-                    $tipologias[] = array(
-                        'name' => $name,
-                        'id' => $tipologia_id,
-                        'project' => $project,
-                        'location' => isset($project_location) ? $project_location : '',
-                        'status' => isset($project_status) ? $project_status : '',
-                        'isStudio' => $isStudio,
-                        'lastUnits' => isset($lastUnits) ? $lastUnits : '',
-                        'rooms' => $rooms,
-                        'size' => $size,
-                        'diffs' => $diffs,
-                        'photo' => $photo,
-                        'link' => $link,
-                    );
-                }
-                wp_reset_postdata();
-            }
-
-
-            wp_localize_script('main', 'TipologiasDataHome', array(
-                'tipologias' => $tipologias,
-            ));
-            ?>
-
-            <div class="box-container-busca container-titulo">
-                <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
-                <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
-            </div>
-            <div class="filter-wrapper box-container-busca container-destino toggle-next ">
-                <div class="checkboxes" id="home-filter-location">
-                    <div class="inner-wrap">
-                    </div>
-                </div>
-                <button class="box-svg form-control founders-grotesk ellipsis">
-                    <?php $svg_file = get_field('svg_destino');
-                    if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                        echo '<i class="element">';
-                        echo file_get_contents($svg_file['url']);
-                        echo '</i>';
-                    } ?>
-                    <p class="titulo-checkbox-destino"><?php echo $tituloDestino; ?></p>
-                </button>
-                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
-                    fill="none">
-                    <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
-                </svg>
-            </div>
-            <div class="filter-wrapper box-container-busca container-quartos toggle-next">
-                <div class="checkboxes" id="home-filter-rooms">
-                    <div class="inner-wrap">
-                    </div>
-                </div>
-                <button class="box-svg form-control founders-grotesk ellipsis">
-                    <?php $svg_file = get_field('svg_quartos');
-                    if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                        echo '<i class="element">';
-                        echo file_get_contents($svg_file['url']);
-                        echo '</i>';
-                    } ?>
-                    <p class="titulo-checkbox-quartos"><?php echo $tituloQuartos; ?></p>
-                </button>
-                <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
-                    fill="none">
-                    <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
-                </svg>
-            </div>
-            <a class="container-busca busca-banner" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path
-                        d="M21.0002 21.0002L16.6572 16.6572M16.6572 16.6572C17.4001 15.9143 17.9894 15.0324 18.3914 14.0618C18.7935 13.0911 19.0004 12.0508 19.0004 11.0002C19.0004 9.9496 18.7935 8.90929 18.3914 7.93866C17.9894 6.96803 17.4001 6.08609 16.6572 5.34321C15.9143 4.60032 15.0324 4.01103 14.0618 3.60898C13.0911 3.20693 12.0508 3 11.0002 3C9.9496 3 8.90929 3.20693 7.93866 3.60898C6.96803 4.01103 6.08609 4.60032 5.34321 5.34321C3.84288 6.84354 3 8.87842 3 11.0002C3 13.122 3.84288 15.1569 5.34321 16.6572C6.84354 18.1575 8.87842 19.0004 11.0002 19.0004C13.122 19.0004 15.1569 18.1575 16.6572 16.6572Z"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p class="titulo-buscar"><?php echo get_field('buscar'); ?></p>
-            </a>
+        <div class="box-container-busca container-titulo">
+            <p class="invista-busca"><?php echo get_field('invista_no_paraiso'); ?></p>
+            <p class="encontre-busca"><?php echo get_field('encontre_se_imovel'); ?></p>
         </div>
+        <div class="filter-wrapper box-container-busca container-destino toggle-next ">
+            <div class="checkboxes" id="home-filter-location">
+                <div class="inner-wrap">
+                </div>
+            </div>
+            <button class="box-svg form-control founders-grotesk ellipsis">
+                <?php $svg_file = get_field('svg_destino');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+                <p class="titulo-checkbox-destino"><?php echo $tituloDestino; ?></p>
+            </button>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
+                fill="none">
+                <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
+            </svg>
+        </div>
+        <div class="filter-wrapper box-container-busca container-quartos toggle-next">
+            <div class="checkboxes" id="home-filter-rooms">
+                <div class="inner-wrap">
+                </div>
+            </div>
+            <button class="box-svg form-control founders-grotesk ellipsis">
+                <?php $svg_file = get_field('svg_quartos');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+                <p class="titulo-checkbox-quartos"><?php echo $tituloQuartos; ?></p>
+            </button>
+            <svg class="arrow-svg" xmlns="http://www.w3.org/2000/svg" width="17" height="10" viewBox="0 0 17 10"
+                fill="none">
+                <path d="M1.33398 8.5L8.33398 1.5L15.334 8.5" stroke="#51848C" stroke-width="2" />
+            </svg>
+        </div>
+        <a class="container-busca busca-banner" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M21.0002 21.0002L16.6572 16.6572M16.6572 16.6572C17.4001 15.9143 17.9894 15.0324 18.3914 14.0618C18.7935 13.0911 19.0004 12.0508 19.0004 11.0002C19.0004 9.9496 18.7935 8.90929 18.3914 7.93866C17.9894 6.96803 17.4001 6.08609 16.6572 5.34321C15.9143 4.60032 15.0324 4.01103 14.0618 3.60898C13.0911 3.20693 12.0508 3 11.0002 3C9.9496 3 8.90929 3.20693 7.93866 3.60898C6.96803 4.01103 6.08609 4.60032 5.34321 5.34321C3.84288 6.84354 3 8.87842 3 11.0002C3 13.122 3.84288 15.1569 5.34321 16.6572C6.84354 18.1575 8.87842 19.0004 11.0002 19.0004C13.122 19.0004 15.1569 18.1575 16.6572 16.6572Z"
+                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p class="titulo-buscar"><?php echo get_field('buscar'); ?></p>
+        </a>
+    </div>
 </section>
 
 

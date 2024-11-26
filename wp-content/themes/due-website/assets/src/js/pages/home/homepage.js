@@ -235,10 +235,10 @@ function loadSearchBox() {
       if (filterType === 'rooms') {
         let suffix
 
-        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['Studio', '1'])) ? ' quarto' : ' quartos';
+        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['studio', '1'])) ? ' quarto' : ' quartos';
         const labels = selectedValues.join(', ')
         
-        destinoElement.text(`${labels} ${labels === 'Studio' ? '' : suffix}`);
+        destinoElement.text(`${labels} ${labels === 'studio' ? '' : suffix}`);
         return;
       }
     

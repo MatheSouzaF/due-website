@@ -1047,11 +1047,6 @@ get_header();
         </div>
     <?php endif; ?>
 
-
-
- 
-
-
     <div class="call-form" id="call-form"></div>
 
 

@@ -176,7 +176,6 @@ function loadSearchBox() {
     });
 
     const isStudio = tipologiasData.map((t) => t.isStudio).includes(true);
-    console.log("🚀 ~ tipologiasData:", tipologiasData)
 
     const options = {
       location: Array.from(locationOptions).map((location) => ({

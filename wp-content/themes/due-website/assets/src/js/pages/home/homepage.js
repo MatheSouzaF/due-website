@@ -153,8 +153,9 @@ function loadSearchBox() {
 
     tipologiasData.forEach((e) => {
       if (e.rooms && e.rooms.length > 0) {
-        let minimo = parseInt(e.rooms[0].minimo_de_quartos_tipologia, 10);
-        let maximo = parseInt(e.rooms[0].maximo_de_quartos_tipologia, 10);
+        let minimo = parseInt(e.rooms[0], 10);
+        let maximo = parseInt(e.rooms[e.rooms.length - 1], 10);
+
 
         if (isNaN(minimo) || minimo <= 1) {
           minimo = 1;
@@ -182,7 +183,7 @@ function loadSearchBox() {
         label: location,
       })),
       rooms: [
-        ...(isStudio ? [{value: 'Studio', label: 'Studio'}] : []),
+        ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
         ...Array.from(roomsOptions)
           .sort()
           .map((room) => ({
@@ -233,10 +234,10 @@ function loadSearchBox() {
       if (filterType === 'rooms') {
         let suffix
 
-        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['Studio', '1'])) ? ' quarto' : ' quartos';
+        suffix = (containsOnly(selectedValues, ['1']) || containsOnly(selectedValues, ['studio', '1'])) ? ' quarto' : ' quartos';
         const labels = selectedValues.join(', ')
         
-        destinoElement.text(`${labels} ${labels === 'Studio' ? '' : suffix}`);
+        destinoElement.text(`${labels} ${labels === 'studio' ? '' : suffix}`);
         return;
       }
     
@@ -283,16 +284,120 @@ function loadSearchBox() {
     $('.busca-banner').attr('href', newUrl);
   }
 
+  let filteredTipologias = [];
+
+  function getFilterValue(filterType) {
+    const selector = filters[filterType];
+    const value = selector
+    .find('input:checked')
+    .map(function () {
+        return this.value;
+      })
+      .get();
+
+    return value.length > 0 ? value : null;
+  }
+
+  function filterTipologias(tipologias) {
+    const locationFilter = getFilterValue('location');
+    const roomsFilter = getFilterValue('rooms');
+
+    if (!locationFilter && !roomsFilter) {
+      return tipologias;
+    }
+
+    return tipologias.filter((tipologia) => {
+      const matchLocation = !locationFilter || locationFilter.includes(tipologia.location);
+      const matchRooms =
+        !roomsFilter ||
+        (roomsFilter.includes('studio') && tipologia.isStudio) ||
+        roomsFilter.some((selectedRoom) => tipologia.rooms.includes(selectedRoom));
+
+        return matchLocation && matchRooms;
+    });
+  }
+
+  function filterAndRender() {
+    filteredTipologias = filterTipologias(tipologiasData);
+  }
+
+
+  function hideOptions(changedFilter) {
+    const isOptionVisible = (value, key) => {
+      return filteredTipologias.some((tipologia) => {
+        if (key === 'location') return tipologia.location === value;
+        if (key === 'rooms') {
+          const minimo = parseInt(tipologia.rooms[0], 10);
+          let maximo = parseInt(tipologia.rooms[tipologia.rooms.length - 1], 10);
+
+
+          if (maximo === 0) {
+            maximo = minimo;
+          }
+
+          return (tipologia.isStudio && value === 'studio') || (value >= minimo && value <= maximo);
+        }
+        return false;
+      });
+    };
+
+    const getAppliedFilterCategories = () => {
+      return Object.keys(filters).filter((key) => {
+        return filters[key].find('input.ckkBox:checked').length > 0;
+      });
+    };
+
+    const appliedFilterCategories = getAppliedFilterCategories();
+
+    if (appliedFilterCategories.length === 0) {
+      Object.keys(filters).forEach((key) => {
+        filters[key].find('input.ckkBox').each(function () {
+          $(this).closest('label').show();
+        });
+      });
+      return;
+    }
+
+    if (appliedFilterCategories.length === 1) {
+      const lastFilterCategory = appliedFilterCategories[0];
+      filters[lastFilterCategory].find('input.ckkBox').each(function () {
+        $(this).closest('label').show();
+      });
+    }
+
+    Object.keys(filters).forEach((key) => {
+      if (key !== changedFilter) {
+        const $filter = filters[key];
+        if (!(appliedFilterCategories.length === 1 && key === appliedFilterCategories[0])) {
+          $filter.find('input.ckkBox').each(function () {
+            const $checkbox = $(this);
+            const value = $checkbox.val();
+
+            if (isOptionVisible(value, key) || $checkbox.is(':checked')) {
+              $checkbox.closest('label').show();
+            } else {
+              $checkbox.closest('label').hide();
+            }
+          });
+        }
+      }
+    });
+  }
+
   filters['location'].find('input.ckkBox').on('change', function () {
+    filterAndRender();
     updateSelectedValues('location');
     buildFilterUrl();
     updateFilterNumberIndicador();
+    hideOptions('location');
   });
 
   filters['rooms'].find('input.ckkBox').on('change', function () {
+    filterAndRender();
     updateSelectedValues('rooms');
     buildFilterUrl();
     updateFilterNumberIndicador();
+    hideOptions('rooms');
   });
 
   function updateFilterNumberIndicador() {

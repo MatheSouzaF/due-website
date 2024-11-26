@@ -43,6 +43,24 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
+                    "key": "field_6745d75ae5cf8",
+                    "label": "Link Banner",
+                    "name": "link_banner",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_66d5b41e88d93"
+                },
+                {
                     "key": "field_66d5b47688d94",
                     "label": "Vídeo ou Imagem",
                     "name": "video_ou_imagem",
@@ -1110,5 +1128,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1731346160
+    "modified": 1732637618
 }

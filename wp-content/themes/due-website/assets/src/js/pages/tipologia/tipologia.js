@@ -412,8 +412,9 @@ function tipologiaPage() {
           if (key === 'location') return tipologia.location === value;
           if (key === 'status') return tipologia.status === value;
           if (key === 'rooms') {
-            const minimo = parseInt(tipologia.rooms[0].minimo_de_quartos_tipologia, 10);
-            let maximo = parseInt(tipologia.rooms[0].maximo_de_quartos_tipologia, 10);
+            const minimo = parseInt(tipologia.rooms[0], 10);
+            let maximo = parseInt(tipologia.rooms[tipologia.rooms.length - 1], 10);
+
 
             if (maximo === 0) {
               maximo = minimo;

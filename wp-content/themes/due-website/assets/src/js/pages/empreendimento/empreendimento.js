@@ -313,8 +313,8 @@ async function empreendimentoPage() {
           if (key === 'filter-location') return empreendimento.location === value;
           if (key === 'filter-status') return empreendimento.status === value;
           if (key === 'filter-rooms') {
-            const minimo = parseInt(empreendimento.rooms[0].minimo_de_quartos, 10);
-            let maximo = parseInt(empreendimento.rooms[0].maximo_de_quartos, 10);
+            const minimo = parseInt(empreendimento.rooms[0], 10);
+            let maximo = parseInt(empreendimento.rooms[empreendimento.rooms.length - 1], 10);
 
             if (maximo === 0) {
               maximo = minimo;

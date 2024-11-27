@@ -12,7 +12,6 @@ function _add_javascript()
   wp_enqueue_script('AOSInit', get_template_directory_uri() . '/assets/dist/vendor/AOS/aos-init.js', ['jquery'], ASSETS_VERSION, true);
   wp_enqueue_script('lenis', get_template_directory_uri() . '/assets/src/vendor/lenis-main/dist/lenis.min.js', ['jquery'], ASSETS_VERSION, true);
   wp_enqueue_script('main', get_template_directory_uri() . '/assets/dist/js/main.min.js', ['jquery'], ASSETS_VERSION, true);
-  
 }
 add_action('wp_enqueue_scripts', '_add_javascript', 100);
 
@@ -25,8 +24,7 @@ function _add_stylesheets()
   wp_dequeue_style('global-styles');
   wp_dequeue_style('classic-theme-styles');
   wp_enqueue_style('AOS', get_template_directory_uri() . '/assets/dist/vendor/AOS/aos.min.css');
-  wp_enqueue_style('photo-sphere', get_template_directory_uri() . '/node_modules/@photo-sphere-viewer/core/index.css', ['main'], ASSETS_VERSION);
-
+  wp_enqueue_style('photo-sphere', get_template_directory_uri() . '/assets/dist/vendor/photo-sphere-viewer/index.css');
   wp_enqueue_style('main', get_template_directory_uri() . '/assets/dist/css/main.css');
 }
 add_action('wp_enqueue_scripts', '_add_stylesheets');

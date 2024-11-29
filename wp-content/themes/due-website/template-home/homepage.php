@@ -14,7 +14,6 @@ wp_localize_script('main', 'originalLabels', array(
 ?>
 <section class="logo">
     <div id="dotLottie-canvas"></div>
-
 </section>
 <section class="banner-hero">
     <div class="swiper-container swiper-banner">
@@ -22,118 +21,116 @@ wp_localize_script('main', 'originalLabels', array(
             <?php
             if (have_rows('banner_repetidor')):
                 while (have_rows('banner_repetidor')):
-                    the_row(); ?>
-                    <div class="swiper-slide">
+                    the_row();
+                    // Get the link from the ACF field as an array
+                    $link_banner = get_sub_field('link_banner');
 
-                        <div class="box-banner">
-                            <div class="box-images-videos">
-                                <?php if (have_rows('video_ou_imagem')): ?>
-                                    <?php while (have_rows('video_ou_imagem')):
-                                        the_row(); ?>
-                                        <?php if (get_row_layout() == 'video_banner'): ?>
-                                            <div class="box-video-hero">
-                                                <video class="video-banner-hero" autoplay="autoplay"
-                                                    src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
-                                                <video class="video-banner-hero-mobile" autoplay="autoplay"
-                                                    src="<?php echo get_sub_field('video_mobile'); ?>" muted loop playsinline></video>
-                                            </div>
-
-                                        <?php elseif (get_row_layout() == 'imagem_banner'): ?>
-                                            <?php
-                                            $image = get_sub_field('imagem_banner_hero');
-                                            $imageMobile = get_sub_field('imagem_banner_hero_mobile');
-
-                                            if ($image):
-                                                $image_url = $image['url'];
-                                                $image_alt = $image['alt'];
-                                            ?>
-                                                <div class="box-imagem-hero">
-                                                    <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px"
-                                                        src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                                                    <?php if ($imageMobile):
-                                                        $image_mobile_url = $imageMobile['url'];
-                                                        $image_mobile_alt = $imageMobile['alt'];
-                                                    ?>
-                                                        <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>"
-                                                            alt="<?php echo esc_attr($image_mobile_alt); ?>">
-                                                    <?php endif; ?>
+                    // Check if the link is an array and not empty
+                    if ($link_banner):
+                        $link_url = $link_banner['url'];
+                        $link_title = $link_banner['title'];
+                        $link_target = $link_banner['target'] ? $link_banner['target'] : '_self';
+            ?>
+                        <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="swiper-slide link-swiper-slide">
+                        <?php
+                    else:
+                        ?>
+                            <div class="swiper-slide">
+                            <?php
+                        endif;
+                            ?>
+                            <div class="box-banner">
+                                <div class="box-images-videos">
+                                    <?php if (have_rows('video_ou_imagem')): ?>
+                                        <?php while (have_rows('video_ou_imagem')):
+                                            the_row(); ?>
+                                            <?php if (get_row_layout() == 'video_banner'): ?>
+                                                <div class="box-video-hero">
+                                                    <video class="video-banner-hero" autoplay
+                                                        src="<?php echo get_sub_field('video_youtube'); ?>" muted loop playsinline></video>
+                                                    <video class="video-banner-hero-mobile" autoplay
+                                                        src="<?php echo get_sub_field('video_mobile'); ?>" muted loop playsinline></video>
                                                 </div>
+
+                                            <?php elseif (get_row_layout() == 'imagem_banner'): ?>
+                                                <?php
+                                                $image = get_sub_field('imagem_banner_hero');
+                                                $imageMobile = get_sub_field('imagem_banner_hero_mobile');
+
+                                                if ($image):
+                                                    $image_url = $image['url'];
+                                                    $image_alt = $image['alt'];
+                                                ?>
+                                                    <div class="box-imagem-hero">
+                                                        <img class="image-banner-hero" sizes="(max-width: 3334px) 100vw, 3334px"
+                                                            src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                                        <?php if ($imageMobile):
+                                                            $image_mobile_url = $imageMobile['url'];
+                                                            $image_mobile_alt = $imageMobile['alt'];
+                                                        ?>
+                                                            <img class="image-banner-hero-mobile" src="<?php echo esc_url($image_mobile_url); ?>"
+                                                                alt="<?php echo esc_attr($image_mobile_alt); ?>">
+                                                        <?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             <?php endif; ?>
+
+                                        <?php endwhile; ?>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="box-conteudo">
+                                    <div class="wrapper-hero">
+                                        <?php
+                                        // Check if the title is filled
+                                        $titulo_banner_hero = get_sub_field('titulo_banner_hero');
+                                        if (!empty($titulo_banner_hero)) {
+                                            echo '<div class="mask-banner"></div>';
+                                        }
+                                        ?>
+                                        <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
+                                        <?php
+                                        $has_rows = have_rows('repetidor_subtitulo_banner');
+                                        ?>
+                                        <div class="box-repetidor-subtitulo<?php echo !$has_rows ? ' d-none' : ''; ?>">
+                                            <?php if ($has_rows):
+                                                while (have_rows('repetidor_subtitulo_banner')):
+                                                    the_row(); ?>
+                                                    <p class="subtitulo-banner-hero word">
+                                                        <?php echo get_sub_field('subtitulo_banner_hero'); ?>
+                                                    </p>
+                                            <?php endwhile;
+                                            endif; ?>
+                                        </div>
+
+                                        <?php if (get_sub_field('botao_video')): ?>
+                                            <?php
+                                            $modalVideo = get_sub_field('video_modal_botao');
+                                            ?>
+                                            <div class="button-play js-modal-open-banner" id="video-modal"
+                                                data-src="<?php echo htmlspecialchars($modalVideo); ?>">
+                                                <!-- SVG and button content -->
+                                            </div>
+                                            <div class="modal js-modal">
+                                                <!-- Modal content -->
+                                            </div>
                                         <?php endif; ?>
 
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                            </div>
-                            <div class="box-conteudo">
-                                <div class="wrapper-hero">
-                                    <?php
-                                    // Verifica se o título está preenchido
-                                    $titulo_banner_hero = get_sub_field('titulo_banner_hero');
-                                    if (!empty($titulo_banner_hero)) {
-                                        echo '<div class="mask-banner"></div>';
-                                    }
-                                    ?>
-                                    <h1 class="titulo-banner-hero"><?php echo get_sub_field('titulo_banner_hero'); ?></h1>
-                                    <?php
-                                    $has_rows = have_rows('repetidor_subtitulo_banner');
-                                    ?>
-                                    <div class="box-repetidor-subtitulo<?php echo !$has_rows ? ' d-none' : ''; ?>">
-                                        <?php if ($has_rows):
-                                            while (have_rows('repetidor_subtitulo_banner')):
-                                                the_row(); ?>
-                                                <p class="subtitulo-banner-hero word">
-                                                    <?php echo get_sub_field('subtitulo_banner_hero'); ?>
-                                                </p>
-                                        <?php endwhile;
-                                        endif; ?>
                                     </div>
-
-                                    <?php if (get_sub_field('botao_video')): ?>
-                                        <?php
-                                        $modalVideo = get_sub_field('video_modal_botao');
-                                        ?>
-                                        <div class="button-play js-modal-open-banner" id="video-modal"
-                                            data-src="<?php echo htmlspecialchars($modalVideo); ?>">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"
-                                                fill="none">
-                                                <rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
-                                                <path d="M36.1055 48V36.6316V32L47.8949 40L36.1055 48Z" stroke="white" />
-                                            </svg>
-                                            <p><?php echo get_sub_field('botao_video'); ?></p>
-                                        </div>
-                                        <div class="modal js-modal">
-                                            <div class="modal__bg js-modal-close"></div>
-                                            <div class="modal__content">
-                                                <div class="video-container"></div>
-
-                                            </div>
-                                            <span class="js-modal-close-btn">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30"
-                                                    fill="none">
-                                                    <g clip-path="url(#clip0_2145_7167)">
-                                                        <path class="hover-line" d="M1 1L30.1161 28.983" stroke="white"
-                                                            stroke-width="2" />
-                                                        <path class="hover-line" d="M1 28.9835L30.1161 1.0005" stroke="white"
-                                                            stroke-width="2" />
-                                                    </g>
-                                                    <defs>
-                                                        <clipPath id="clip0_2145_7167">
-                                                            <rect width="31" height="30" fill="white" />
-                                                        </clipPath>
-                                                    </defs>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    <?php endif; ?>
-
                                 </div>
+
+                            </div>
+                    <?php
+                    // Close the tag appropriately
+                    if ($link_banner):
+                        echo '</a>';
+                    else:
+                        echo '</div>';
+                    endif;
+                endwhile;
+            endif;
+                    ?>
                             </div>
 
-                        </div>
-                    </div>
-            <?php endwhile;
-            endif; ?>
-        </div>
 
         <div class="box-buttons">
             <svg class="swiper-btn-banner-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"

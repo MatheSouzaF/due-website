@@ -106,7 +106,6 @@ function setupPlantSliders() {
 }
 
 function initializePanoramaViewer() {
-
   // image vem do wp_localize, precisa cadastrar uma imagem 360
   const imagePath = image.url;
   new Viewer({
@@ -177,10 +176,7 @@ function initSingleTipologia() {
   setupFooterScroll();
   initializeTipologiasSwiper();
   initializeGaleriaSwiper();
-  window.onload = function () {
-    setupPlantSliders();
-};
-
+  setupPlantSliders();
   initializePanoramaViewer();
   setupFixedButtonsAnimation();
 }

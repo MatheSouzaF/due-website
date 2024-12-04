@@ -50,15 +50,14 @@ body {
     }
   }
   .box-fab {
-    display: flex;
     position: fixed;
     z-index: 9;
     bottom: 20px;
     right: 20px;
     width: 64px;
     height: 64px;
+    display: none;
     @include media-breakpoint-up(sm) {
-      display: none;
     }
     .fab {
       --fab-easing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6);

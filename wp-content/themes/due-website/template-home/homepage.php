@@ -149,7 +149,7 @@ wp_localize_script('main', 'originalLabels', array(
                     fill="#003B4B" />
             </svg>
         </div>
-        <div class="swiper-pagination"></div>
+        <!-- <div class="swiper-pagination"></div> -->
     </div>
 
     <?php

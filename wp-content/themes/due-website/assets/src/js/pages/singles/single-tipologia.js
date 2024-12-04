@@ -177,7 +177,10 @@ function initSingleTipologia() {
   setupFooterScroll();
   initializeTipologiasSwiper();
   initializeGaleriaSwiper();
-  setupPlantSliders();
+  window.onload = function () {
+    setupPlantSliders();
+};
+
   initializePanoramaViewer();
   setupFixedButtonsAnimation();
 }

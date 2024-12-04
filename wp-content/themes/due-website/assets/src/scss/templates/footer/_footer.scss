@@ -49,7 +49,7 @@
       flex-direction: row;
       gap: 20px;
     }
-    @media (max-height: 746px) {
+    @media (max-height: 790px) {
       margin-bottom: 40px;
     }
     .box-left-footer {
@@ -258,7 +258,7 @@
               @include media-breakpoint-up(xxl) {
                 max-width: 70%;
               }
-              @media (max-height: 746px) {
+              @media (max-height: 790px) {
                 gap: 20px;
               }
             }
@@ -395,7 +395,6 @@
       }
     }
   }
-
 }
 
 .box-formulario-feedback {

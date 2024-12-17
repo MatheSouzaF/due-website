@@ -143,7 +143,7 @@ get_header();
                                     $duvida_response_item = get_sub_field('duvida_response_item');
                             ?>
                                     <li class="duvida-response-item">
-                                         <?php echo esc_html($duvida_response_item); ?>
+                                        <?php echo esc_html($duvida_response_item); ?>
                                     </li>
                             <?php endwhile;
                             endif; ?>
@@ -155,6 +155,30 @@ get_header();
         </div>
     </div>
 </section>
+
+<section class="section-casa-pix">
+    <h3 class="casa-pix-title">
+        <?php echo get_field('casa_pix_title'); ?>
+    </h3>
+    <p class="casa-pix-subtitle">
+        <?php echo get_field('casa_pix_subtitle'); ?>
+    </p>
+
+    <?php
+    $link = get_field('casa_pix_btn');
+    if ($link) :
+        $link_url = $link['url'];
+        $link_title = $link['title'];
+        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+        <a class="casa-pix-btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+            <h3 class="casa-pix-btn-label"><?php echo esc_html($link_title); ?></h3>
+        </a>
+    <?php endif; ?>
+
+    <p class="casa-pix-obs"><?php echo get_field('casa_pix_obs'); ?></p>
+</section>
+
+
 
 
 

@@ -307,7 +307,7 @@ body.page-template-credito-caixa-associativo {
                     gap: 34px;
                     letter-spacing: 0.36px;
                     padding-bottom: 32px;
-                    
+
 
                     &:not(:last-child) {
                         border-bottom: 1px solid rgba(0, 59, 75, 0.20);
@@ -344,15 +344,36 @@ body.page-template-credito-caixa-associativo {
             }
 
         }
+    }
 
+    /** Um Pix da realidade */
 
+    .section-casa-pix {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #FAF2EA;
+        padding: 94px 400px;
+        padding: 7% 28%;
+        gap: 32px;
 
+        .casa-pix-btn {
 
+            .casa-pix-btn-label {
+                font-size: 12px;
+                letter-spacing: 0.48px;
+                background: $due-primary;
+                color: $grey-0;
+                padding: 20px 48px;
+            }
+        }
 
-
-
-
-
+        .casa-pix-obs {
+            color: $due-tertiary;
+            font-size: 14px;
+            letter-spacing: 0.28px;
+        }
     }
 
 }

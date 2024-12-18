@@ -10,7 +10,16 @@ get_header();
         <div class="subtitle"></div>
         <a href="" class="banner-button"></a>
     </div>
-    <div class="banner-couple"></div>
+    <div class="banner-couple">
+    <?php
+        $image = get_field('banner_couple');
+        if ($image) :
+            $image_url = $image['url'];
+            $image_alt = $image['alt']; ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+        <?php endif; ?>
+
+    </div>
 </section>
 
 <section class="descubra-como-funciona">

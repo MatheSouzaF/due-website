@@ -99,6 +99,12 @@ function initDynamicModules() {
       modulePath: './base/realizamos-sonhos.js',
       moduleFunction: 'initRealizamos',
     },
+    {
+      selector: '.page-template-select',
+      modulePath: './pages/select/select.js',
+      moduleFunction: 'initSelect',
+      
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

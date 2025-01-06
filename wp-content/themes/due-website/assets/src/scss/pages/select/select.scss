@@ -1,0 +1,140 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+body.page-template-select {
+  main {
+    overflow-x: initial;
+  }
+  .beneficios {
+    padding: 180px 0;
+    background-color: #003b4b;
+    .titulo-beneficios-box {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      justify-content: center;
+      margin-bottom: 48px;
+      .titulo-beneficios {
+        color: #faf2eb;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 52px */
+        letter-spacing: 0.8px;
+      }
+    }
+    .box-repetidor-benificios {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+      }
+      .row-beneficios {
+        background: linear-gradient(135deg, rgba(233, 227, 221, 0.03) 0%, rgba(255, 254, 253, 0.1) 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px;
+        align-items: center;
+        @include media-breakpoint-up(md) {
+          align-items: initial;
+        }
+        .titulo-card-beneficios {
+          color: #fff;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 130%; /* 26px */
+          text-align: center;
+          @include media-breakpoint-up(md) {
+            max-width: 90%;
+            text-align: initial;
+          }
+        }
+        .descricao-card-beneficios {
+          color: #fff;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 300;
+          text-align: center;
+          @include media-breakpoint-up(md) {
+            max-width: 90%;
+            text-align: initial;
+          }
+          line-height: 140%; /* 25.2px */
+          letter-spacing: 0.36px;
+        }
+      }
+    }
+  }
+  .investidores {
+    padding: 120px 0;
+    position: relative;
+    .titulo-investidores {
+      color: #003240;
+      text-align: center;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 130%; /* 52px */
+      letter-spacing: 0.8px;
+      margin-bottom: 48px;
+    }
+
+    // .box-investidores {
+    //   display: flex;
+    //   flex-direction: row;
+    //   gap: 16px;
+
+    //   .row-investidores {
+    //     position: relative;
+    //     width: 387px;
+    //     height: 585px;
+    //     img {
+    //       position: absolute;
+    //       width: 100%;
+    //       height: 100%;
+    //       object-fit: cover;
+    //     }
+    //   }
+    // }
+    .box-investidores {
+      overflow: hidden; /* Esconde os elementos fora da visão */
+      width: 100%;
+      position: relative;
+    }
+
+    .investidores-carousel {
+      display: flex; /* Alinhamento horizontal */
+      gap: 20px; /* Espaçamento entre os itens */
+      transition: transform 0.5s ease; /* Transição suave */
+      will-change: transform; /* Melhora o desempenho */
+    }
+
+    .row-investidores {
+      width:  389px;; /* Largura fixa para cada item */
+      flex-shrink: 0; /* Não deixa os itens encolherem */
+      text-align: center;
+    //   background: #f4f4f4;
+      padding: 10px;
+      .titulo-investidores-card{
+        transform: translateY(-45px);
+        color: #FFF;
+
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.2px;
+      }
+    }
+
+    .investidores-carousel img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}

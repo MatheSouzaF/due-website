@@ -36,8 +36,29 @@ function select() {
   moveCarousel(); // Inicia a animação
 }
 
+function swiperEmpreendimentos() {
+  new Swiper('.swiper-excelencia', {
+    slidesPerView: 1.1,
+    spaceBetween: 24,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3.2,
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+}
+
 function initSelect() {
   select();
+  swiperEmpreendimentos();
 }
 
 export {initSelect};

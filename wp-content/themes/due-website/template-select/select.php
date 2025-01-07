@@ -40,7 +40,100 @@ wp_enqueue_style('Select', get_template_directory_uri() . '/assets/dist/css/sele
         </div>
     </div>
 </div>
+<div class="excelencia-comprovada">
+    <div class="wrapper">
 
+        <h2 class="titulo-excelencia-comprovada terminal-test"><?php echo get_field('titulo_excelencia_comprovada'); ?></h2>
+        <p class="subtitulo-excelencia-comprovada founders-grotesk"><?php echo get_field('subtitulo_excelencia_comprovada'); ?></p>
+    </div>
+    <div class="swiper-container swiper-excelencia">
+        <div class="swiper-wrapper">
+            <?php
+            if (have_rows('cards_empreendimento_excelencia_comprovada')) :
+                while (have_rows('cards_empreendimento_excelencia_comprovada')) : the_row(); ?>
+                    <?php
+                    $link = get_sub_field('link_empreendimento');
+                    if ($link) :
+                        $link_url = $link['url'];
+                        $link_title = $link['title'];
+                        $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                        <a class="swiper-slide row-excelencia-comprovada" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+
+                            <div class="box-image">
+
+                                <?php
+                                $image = get_sub_field('imagem_card_empreendimento');
+                                if ($image) :
+                                    $image_url = $image['url'];
+                                    $image_alt = $image['alt']; ?>
+                                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                                <?php endif; ?>
+                            </div>
+                            <?php
+                            $cor_da_porcentagem = get_sub_field('cor_da_porcentagem');
+                            ?>
+                            <div class="card-empreendimento">
+
+                                <div class="box-porcentagem <?php echo $cor_da_porcentagem ?>">
+                                    <p class="porcentagem terminal-test"><?php echo get_sub_field('porcentagem_da_venda'); ?></p>
+                                </div>
+                                <div class="box-conteudo">
+                                    <div class="box-textos">
+
+                                        <p class="localizacao"><?php echo get_sub_field('localizacao_empreendimento'); ?></p>
+                                        <h3 class="titulo-empreendimento founders-grotesk"><?php echo get_sub_field('nome_do_empreendimento'); ?></h3>
+                                        <div class="box-apt">
+                                            <div class="box-svg">
+                                                <?php $svg_file = get_sub_field('svg_apartamentos');
+                                                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                                                    echo '<i class="element">';
+                                                    echo file_get_contents($svg_file['url']);
+                                                    echo '</i>';
+                                                } ?>
+                                            </div>
+                                            <p class="numero-apt founders-grotesk"><?php echo get_sub_field('numero_de_apartamento'); ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="box-hover">
+                                        <p class="texto-hover"><?php echo get_sub_field('texto_hover'); ?></p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="43" height="26" viewBox="0 0 43 26" fill="none">
+                                            <path d="M-5.24537e-07 13L41.5 13M41.5 13L29.5 25M41.5 13L29.5 0.999999" stroke="white" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endif; ?>
+            <?php endwhile;
+            endif; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+
+        <div class="box-buttons">
+            <svg class="swiper-button-next desktop-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" fill="white" />
+                <path
+                    d="M24 39C23.4477 39 23 39.4477 23 40C23 40.5523 23.4477 41 24 41L24 39ZM56.7071 40.7071C57.0976 40.3166 57.0976 39.6834 56.7071 39.2929L50.3431 32.9289C49.9526 32.5384 49.3195 32.5384 48.9289 32.9289C48.5384 33.3195 48.5384 33.9526 48.9289 34.3431L54.5858 40L48.9289 45.6569C48.5384 46.0474 48.5384 46.6805 48.9289 47.0711C49.3195 47.4616 49.9526 47.4616 50.3431 47.0711L56.7071 40.7071ZM24 41L56 41L56 39L24 39L24 41Z"
+                    fill="#003B4B" />
+            </svg>
+
+            <svg class="swiper-button-next mobile-next" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                <path d="M1.99984 0L0.589844 1.41L5.16984 6L0.589844 10.59L1.99984 12L7.99984 6L1.99984 0Z" fill="#51848C" />
+            </svg>
+            <svg class="swiper-button-prev desktop-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
+                <path
+                    d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
+                    fill="#003B4B" />
+            </svg>
+            <svg class="swiper-button-prev mobile-prev" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                <path d="M7.41 1.41L6 0L0 6L6 12L7.41 10.59L2.83 6L7.41 1.41Z" fill="#51848C" />
+            </svg>
+        </div>
+    </div>
+</div>
 <div class="investidores">
     <div class="wrapper">
 
@@ -67,6 +160,6 @@ wp_enqueue_style('Select', get_template_directory_uri() . '/assets/dist/css/sele
         </div>
     </div>
 
- 
+
 </div>
 <?php get_footer() ?>

@@ -54,6 +54,23 @@ function swiperEmpreendimentos() {
       clickable: true,
     },
   });
+  new Swiper('.swiper-invista-empreendimento', {
+    slidesPerView: 1.1,
+    spaceBetween: 24,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3.2,
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
 }
 
 function initSelect() {

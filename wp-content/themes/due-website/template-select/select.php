@@ -1,9 +1,108 @@
 <?php
 //Template Name: Select
-get_header();
 wp_enqueue_style('Select', get_template_directory_uri() . '/assets/dist/css/select/select.css', ['main'], ASSETS_VERSION);
+get_header('select');
 
 ?>
+<div class="invista">
+    <div class="wrapper">
+        <h2 class="titulo-invista"><?php echo get_field('titulo_invista'); ?></h2>
+        <div class="box-label-invista">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+                <path d="M16.9997 26.9168V7.0835M16.9997 7.0835L7.08301 17.0002M16.9997 7.0835L26.9163 17.0002" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p class="label-titulo founders-grotesk"><?php echo get_field('label_invista'); ?></p>
+        </div>
+
+        <div class="box-repetidor-invista-deskotp">
+            <?php
+            if (have_rows('card_invista')) :
+                while (have_rows('card_invista')) : the_row();
+                    $tamanhoMedio = preg_replace('/\D/', '', get_sub_field('numero_medio')); // Remove tudo que não é número
+                    $tamanhoValorizado = preg_replace('/\D/', '', get_sub_field('numero_valorizado')); // Remove tudo que não é número
+            ?>
+                    <div class="row-card-invista">
+                        <div class="box-valorizacao">
+                            <div class="valor-medio" style="height: <?php echo $tamanhoMedio ?>0px">
+                                <p class="text-medio founders-grotesk"><?php echo get_sub_field('numero_medio'); ?></p>
+                            </div>
+                            <div class="valor-valorizacao" style="height: <?php echo $tamanhoValorizado ?>0px">
+                                <p class="text-valorizacao founders-grotesk"><?php echo get_sub_field('numero_valorizado'); ?></p>
+                            </div>
+                        </div>
+                        <div class="box-textos">
+                            <h3 class="titulo-card-repetidor"><?php echo get_sub_field('titulo_empreendimento_card'); ?></h3>
+                            <p class="valor-antigo founders-grotesk"><?php echo get_sub_field('valor_de_valorizacao_antigo'); ?></p>
+                            <p class="valor-valozirado founders-grotesk"><?php echo get_sub_field('valor_de_valorizacao_novo'); ?></p>
+                            <div class="box-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                    <path d="M10.5003 15.8332V4.1665M10.5003 4.1665L4.66699 9.99984M10.5003 4.1665L16.3337 9.99984" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <p class="label-valorizacao">
+                                    <?php echo get_sub_field('label_valorizou'); ?>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+            <?php endwhile;
+            endif; ?>
+        </div>
+        <div class="box-repetidor-invista-mobile">
+            <div class="swiper-container swiper-invista-empreendimento">
+                <div class="swiper-wrapper">
+                    <?php
+                    if (have_rows('card_invista')) :
+                        while (have_rows('card_invista')) : the_row();
+                            $tamanhoMedio = preg_replace('/\D/', '', get_sub_field('numero_medio')); // Remove tudo que não é número
+                            $tamanhoValorizado = preg_replace('/\D/', '', get_sub_field('numero_valorizado')); // Remove tudo que não é número
+                    ?>
+                            <div class="swiper-slide row-card-invista">
+                                <div class="box-valorizacao">
+                                    <div class="valor-medio" style="height: <?php echo $tamanhoMedio ?>0px">
+                                        <p class="text-medio founders-grotesk"><?php echo get_sub_field('numero_medio'); ?></p>
+                                    </div>
+                                    <div class="valor-valorizacao" style="height: <?php echo $tamanhoValorizado ?>0px">
+                                        <p class="text-valorizacao founders-grotesk"><?php echo get_sub_field('numero_valorizado'); ?></p>
+                                    </div>
+                                </div>
+                                <div class="box-textos">
+                                    <h3 class="titulo-card-repetidor"><?php echo get_sub_field('titulo_empreendimento_card'); ?></h3>
+                                    <p class="valor-antigo founders-grotesk"><?php echo get_sub_field('valor_de_valorizacao_antigo'); ?></p>
+                                    <p class="valor-valozirado founders-grotesk"><?php echo get_sub_field('valor_de_valorizacao_novo'); ?></p>
+                                    <div class="box-label">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                            <path d="M10.5003 15.8332V4.1665M10.5003 4.1665L4.66699 9.99984M10.5003 4.1665L16.3337 9.99984" stroke="white" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <p class="label-valorizacao">
+                                            <?php echo get_sub_field('label_valorizou'); ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                    <?php endwhile;
+                    endif; ?>
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div class="box-buttons">
+
+                    <svg class="swiper-button-next mobile-next" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                        <path d="M1.99984 0L0.589844 1.41L5.16984 6L0.589844 10.59L1.99984 12L7.99984 6L1.99984 0Z" fill="#CB9E6C" />
+                    </svg>
+
+                    <svg class="swiper-button-prev mobile-prev" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                        <path d="M7.41 1.41L6 0L0 6L6 12L7.41 10.59L2.83 6L7.41 1.41Z" fill="#CB9E6C" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="beneficios">
     <div class="wrapper">
         <div class="titulo-beneficios-box">
@@ -134,6 +233,43 @@ wp_enqueue_style('Select', get_template_directory_uri() . '/assets/dist/css/sele
         </div>
     </div>
 </div>
+
+<div class="sobre-a-due">
+    <div class="wrapper-sobre">
+
+        <div class="box-conteudo">
+            <h2 class="titulo-sobre-a-due"><?php echo get_field('titulo_sobre_a_due'); ?></h2>
+            <div class="descricao-sobre-a-due"><?php echo get_field('descricao_sobre_a_due'); ?></div>
+            <?php
+            $link = get_field('link_sobre_a_due');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+                <a class="link-sobre" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+        </div>
+        <div class="box-imagem">
+            <?php
+            $image = get_field('background_video');
+            if ($image) :
+                $image_url = $image['url'];
+                $image_alt = $image['alt']; ?>
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+            <?php endif; ?>
+            <div class="box-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80" fill="none">
+                    <rect x="1" y="0.5" width="79" height="79" rx="39.5" stroke="white" />
+                    <path d="M36.6055 48V36.6316V32L48.3949 40L36.6055 48Z" stroke="white" />
+                </svg>
+                <p class="terminal-test"><?php echo __('ASSISTA E CONHECA', 'due-website') ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="investidores">
     <div class="wrapper">
 

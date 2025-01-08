@@ -6,13 +6,34 @@ get_header();
 
 <section class="banner">
     <div class="banner-text-buttom">
-        <div class="title"></div>
-        <div class="subtitle"></div>
-        <a href="" class="banner-button"></a>
+        <div class="banner-text">
+            <h1 class="title"><?php echo get_field('banner_title'); ?></h1>
+            <p class="subtitle"><?php echo get_field('banner_subtitle'); ?></p>
+        </div>
+        <?php
+        $link = get_field('banner_button');
+        if ($link) :
+            $link_url = $link['url'];
+            $link_title = $link['title'];
+            $link_target = $link['target'] ? $link['target'] : '_self'; ?>
+            <a class="banner-button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                <p class=""><?php echo esc_html($link_title); ?></p>
+            </a>
+        <?php endif; ?>
     </div>
     <div class="banner-couple">
-    <?php
+        <?php
         $image = get_field('banner_couple');
+        if ($image) :
+            $image_url = $image['url'];
+            $image_alt = $image['alt']; ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+        <?php endif; ?>
+
+    </div>
+    <div class="banner-couple-mobile">
+        <?php
+        $image = get_field('banner_couple_mobile');
         if ($image) :
             $image_url = $image['url'];
             $image_alt = $image['alt']; ?>
@@ -28,7 +49,12 @@ get_header();
         <p class="subtitle"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
     </div>
     <div class="descubra-animation-notas">
-        <div class="descubra-animation"></div>
+        <div class="descubra-animation">
+            
+        </div>
+        <div class="descubra-animation-mobile">
+
+        </div>
         <div class="descubra-notas-rodape">
             <?php
             if (have_rows('descubra_notas_rodape')):
@@ -122,6 +148,17 @@ get_header();
 
 
     </div>
+    <div class="box-img-vantagens-mobile">
+        <?php
+        $image = get_field('img_vantagens_mobile');
+        if ($image) :
+            $image_url = $image['url'];
+            $image_alt = $image['alt']; ?>
+            <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+        <?php endif; ?>
+
+
+    </div>
 </section>
 
 <section class="duvidas-frequentes">
@@ -142,7 +179,7 @@ get_header();
                     $duvida_item_title = get_sub_field('duvida_item_title');
             ?>
                     <div class="duvidas-item">
-                        <h4 class="duvida-item-title">
+                        <h4 class="duvida-item-title" data-toggle="accordion">
                             <?php echo esc_html($duvida_item_title); ?>
                         </h4>
                         <ul class="duvida-response-list">
@@ -166,13 +203,14 @@ get_header();
 </section>
 
 <section class="section-casa-pix">
-    <h3 class="casa-pix-title">
-        <?php echo get_field('casa_pix_title'); ?>
-    </h3>
-    <p class="casa-pix-subtitle">
-        <?php echo get_field('casa_pix_subtitle'); ?>
-    </p>
-
+    <div class="casa-pix-title-subtitle">
+        <h3 class="casa-pix-title">
+            <?php echo get_field('casa_pix_title'); ?>
+        </h3>
+        <p class="casa-pix-subtitle">
+            <?php echo get_field('casa_pix_subtitle'); ?>
+        </p>
+    </div>
     <?php
     $link = get_field('casa_pix_btn');
     if ($link) :
@@ -180,7 +218,13 @@ get_header();
         $link_title = $link['title'];
         $link_target = $link['target'] ? $link['target'] : '_self'; ?>
         <a class="casa-pix-btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-            <h3 class="casa-pix-btn-label"><?php echo esc_html($link_title); ?></h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M14.2852 3.68254C13.5976 2.98799 12.7785 2.4373 11.8759 2.06258C10.9732 1.68787 10.005 1.49664 9.02766 1.50004C4.93266 1.50004 1.59516 4.83754 1.59516 8.93254C1.59516 10.245 1.94016 11.52 2.58516 12.645L1.53516 16.5L5.47266 15.465C6.56016 16.0575 7.78266 16.3725 9.02766 16.3725C13.1227 16.3725 16.4602 13.035 16.4602 8.94004C16.4602 6.95254 15.6877 5.08504 14.2852 3.68254ZM9.02766 15.1125C7.91766 15.1125 6.83016 14.8125 5.87766 14.25L5.65266 14.115L3.31266 14.73L3.93516 12.45L3.78516 12.2175C3.16847 11.2328 2.84101 10.0945 2.84016 8.93254C2.84016 5.52754 5.61516 2.75254 9.02016 2.75254C10.6702 2.75254 12.2227 3.39754 13.3852 4.56754C13.9608 5.14052 14.4169 5.82204 14.7272 6.57261C15.0375 7.32319 15.1957 8.12788 15.1927 8.94004C15.2077 12.345 12.4327 15.1125 9.02766 15.1125ZM12.4177 10.4925C12.2302 10.4025 11.3152 9.95254 11.1502 9.88504C10.9777 9.82504 10.8577 9.79504 10.7302 9.97504C10.6027 10.1625 10.2502 10.5825 10.1452 10.7025C10.0402 10.83 9.92766 10.845 9.74016 10.7475C9.55266 10.6575 8.95266 10.455 8.24766 9.82504C7.69266 9.33004 7.32516 8.72254 7.21266 8.53504C7.10766 8.34754 7.19766 8.25004 7.29516 8.15254C7.37766 8.07004 7.48266 7.93504 7.57266 7.83004C7.66266 7.72504 7.70016 7.64254 7.76016 7.52254C7.82016 7.39504 7.79016 7.29004 7.74516 7.20005C7.70016 7.11004 7.32516 6.19504 7.17516 5.82004C7.02516 5.46004 6.86766 5.50504 6.75516 5.49754H6.39516C6.26766 5.49754 6.07266 5.54254 5.90016 5.73004C5.73516 5.91754 5.25516 6.36754 5.25516 7.28254C5.25516 8.19754 5.92266 9.08254 6.01266 9.20254C6.10266 9.33004 7.32516 11.205 9.18516 12.0075C9.62766 12.2025 9.97266 12.315 10.2427 12.3975C10.6852 12.54 11.0902 12.5175 11.4127 12.4725C11.7727 12.42 12.5152 12.0225 12.6652 11.5875C12.8227 11.1525 12.8227 10.785 12.7702 10.7025C12.7177 10.62 12.6052 10.5825 12.4177 10.4925Z" fill="white" />
+            </svg>
+            <h3 class="casa-pix-btn-label">
+
+                <?php echo esc_html($link_title); ?>
+            </h3>
         </a>
     <?php endif; ?>
 
@@ -188,7 +232,34 @@ get_header();
 </section>
 
 
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const accordionTriggers = document.querySelectorAll('[data-toggle="accordion"]');
 
+    const toggleItem = (content, isOpen) => {
+        content.style.maxHeight = isOpen ? null : `${content.scrollHeight}px`;
+        content.classList.toggle("open", !isOpen);
+        content.closest(".duvidas-item").style.paddingBottom = isOpen ? "0" : "32px";
+    };
+
+    // Abre o primeiro item ao carregar
+    if (accordionTriggers[0]) {
+        toggleItem(accordionTriggers[0].nextElementSibling, false);
+    }
+
+    accordionTriggers.forEach(trigger => {
+        trigger.addEventListener("click", function () {
+            document.querySelectorAll(".duvida-response-list.open").forEach(openContent => {
+                if (openContent !== this.nextElementSibling) {
+                    toggleItem(openContent, true); // Fecha outros itens
+                }
+            });
+            toggleItem(this.nextElementSibling, this.nextElementSibling.classList.contains("open"));
+        });
+    });
+});
+
+</script>
 
 
 <?php get_footer() ?>

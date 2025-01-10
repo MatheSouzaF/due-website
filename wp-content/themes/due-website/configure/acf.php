@@ -24,6 +24,14 @@ function setup_options_page() {
             'menu_slug'   => 'menu-configuracoes',
             'parent_slug' => 'configuracoes-gerais',
         ));
+        // Submenu for Menu Select
+        
+        $menu_select_page = acf_add_options_sub_page(array(
+            'page_title'  => __('Menu Select'),
+            'menu_title'  => 'Menu Select',
+            'menu_slug'   => 'menu-select-configuracoes',
+            'parent_slug' => 'configuracoes-gerais',
+        ));
 
         // Submenu for Footer
         $footer_page = acf_add_options_sub_page(array(

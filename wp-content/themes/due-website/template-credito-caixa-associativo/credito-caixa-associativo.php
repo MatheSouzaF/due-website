@@ -48,10 +48,12 @@ get_header();
         <h3 class="title"><?php echo esc_html(get_field('descubra_title')); ?></h3>
         <p class="subtitle"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
     </div>
+
     <div class="descubra-animation-notas">
         <div class="descubra-animation">
-            
-            
+            <div id="descubra-animation" class="descubra-animation">
+                <div id="descubra-lottie-animation" class="descubra-lottie-animation"></div>
+            </div>
         </div>
         <div class="descubra-animation-mobile">
 
@@ -134,6 +136,9 @@ get_header();
             $link_title = $link['title'];
             $link_target = $link['target'] ? $link['target'] : '_self'; ?>
             <a class="recurso-patrimonio-btn" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M13.2852 2.68254C12.5976 1.98799 11.7785 1.4373 10.8759 1.06258C9.97323 0.68787 9.00499 0.49664 8.02766 0.500045C3.93266 0.500045 0.595156 3.83754 0.595156 7.93254C0.595156 9.24504 0.940156 10.52 1.58516 11.645L0.535156 15.5L4.47266 14.465C5.56016 15.0575 6.78266 15.3725 8.02766 15.3725C12.1227 15.3725 15.4602 12.035 15.4602 7.94004C15.4602 5.95254 14.6877 4.08504 13.2852 2.68254ZM8.02766 14.1125C6.91766 14.1125 5.83016 13.8125 4.87766 13.25L4.65266 13.115L2.31266 13.73L2.93516 11.45L2.78516 11.2175C2.16847 10.2328 1.84101 9.09448 1.84016 7.93254C1.84016 4.52754 4.61516 1.75254 8.02016 1.75254C9.67016 1.75254 11.2227 2.39754 12.3852 3.56754C12.9608 4.14052 13.4169 4.82204 13.7272 5.57261C14.0375 6.32319 14.1957 7.12788 14.1927 7.94004C14.2077 11.345 11.4327 14.1125 8.02766 14.1125ZM11.4177 9.49254C11.2302 9.40254 10.3152 8.95254 10.1502 8.88504C9.97766 8.82504 9.85766 8.79504 9.73016 8.97504C9.60266 9.16254 9.25016 9.58254 9.14516 9.70255C9.04016 9.83004 8.92766 9.84504 8.74016 9.74754C8.55266 9.65754 7.95266 9.45504 7.24766 8.82504C6.69266 8.33004 6.32516 7.72254 6.21266 7.53504C6.10766 7.34754 6.19766 7.25004 6.29516 7.15254C6.37766 7.07004 6.48266 6.93504 6.57266 6.83004C6.66266 6.72504 6.70016 6.64254 6.76016 6.52254C6.82016 6.39504 6.79016 6.29004 6.74516 6.20005C6.70016 6.11004 6.32516 5.19504 6.17516 4.82004C6.02516 4.46004 5.86766 4.50504 5.75516 4.49754H5.39516C5.26766 4.49754 5.07266 4.54254 4.90016 4.73004C4.73516 4.91754 4.25516 5.36754 4.25516 6.28254C4.25516 7.19754 4.92266 8.08254 5.01266 8.20254C5.10266 8.33004 6.32516 10.205 8.18516 11.0075C8.62766 11.2025 8.97266 11.315 9.24266 11.3975C9.68516 11.54 10.0902 11.5175 10.4127 11.4725C10.7727 11.42 11.5152 11.0225 11.6652 10.5875C11.8227 10.1525 11.8227 9.78504 11.7702 9.70255C11.7177 9.62004 11.6052 9.58254 11.4177 9.49254Z" fill="#003B4B" />
+                </svg>
                 <p class="label-btn"><?php echo esc_html($link_title); ?></p>
             </a>
         <?php endif; ?>
@@ -231,36 +236,5 @@ get_header();
 
     <p class="casa-pix-obs"><?php echo get_field('casa_pix_obs'); ?></p>
 </section>
-
-
-<script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const accordionTriggers = document.querySelectorAll('[data-toggle="accordion"]');
-
-    const toggleItem = (content, isOpen) => {
-        content.style.maxHeight = isOpen ? null : `${content.scrollHeight}px`;
-        content.classList.toggle("open", !isOpen);
-        content.closest(".duvidas-item").style.paddingBottom = isOpen ? "0" : "32px";
-    };
-
-    // Abre o primeiro item ao carregar
-    if (accordionTriggers[0]) {
-        toggleItem(accordionTriggers[0].nextElementSibling, false);
-    }
-
-    accordionTriggers.forEach(trigger => {
-        trigger.addEventListener("click", function () {
-            document.querySelectorAll(".duvida-response-list.open").forEach(openContent => {
-                if (openContent !== this.nextElementSibling) {
-                    toggleItem(openContent, true); // Fecha outros itens
-                }
-            });
-            toggleItem(this.nextElementSibling, this.nextElementSibling.classList.contains("open"));
-        });
-    });
-});
-
-</script>
-
 
 <?php get_footer() ?>

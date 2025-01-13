@@ -37,4 +37,4 @@
 			</a>
 		<?php endif; ?>
 	</header>
-	<main class="main">
+	<main class="main-select">

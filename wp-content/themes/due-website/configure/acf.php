@@ -40,6 +40,13 @@ function setup_options_page() {
             'menu_slug'   => 'footer-configuracoes',
             'parent_slug' => 'configuracoes-gerais',
         ));
+        // Submenu for Footer Select
+        $footer_select_page = acf_add_options_sub_page(array(
+            'page_title'  => __('Footer Select'),
+            'menu_title'  => 'Footer Select',
+            'menu_slug'   => 'footer-select-configuracoes',
+            'parent_slug' => 'configuracoes-gerais',
+        ));
         // Submenu for Realizamos o Sonho
         $realizamos_page = acf_add_options_sub_page(array(
             'page_title'  => __('Realizamos o Sonho'),

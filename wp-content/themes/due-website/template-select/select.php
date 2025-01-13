@@ -364,4 +364,4 @@ get_header('select');
 
 
 </div>
-<?php get_footer() ?>
+<?php get_footer('select') ?>

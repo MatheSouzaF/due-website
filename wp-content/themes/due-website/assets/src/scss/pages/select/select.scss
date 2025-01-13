@@ -114,6 +114,7 @@ body.page-template-select {
   .invista {
     background-color: #003b4b;
     padding: 120px 0;
+    overflow: hidden;
     .titulo-invista {
       font-style: normal;
       font-weight: 400;
@@ -838,7 +839,10 @@ body.page-template-select {
   }
 
   .sobre-a-due {
-    padding-bottom: 120px;
+    padding-bottom:64px;
+    @include media-breakpoint-up(md) {
+      padding-bottom: 120px;
+    }
     .wrapper-sobre {
       display: flex;
       flex-direction: column-reverse;
@@ -1001,7 +1005,10 @@ body.page-template-select {
     }
   }
   .investidores {
-    padding: 0 0 120px;
+    padding: 0 0 64px;
+    @include media-breakpoint-up(md) {
+      padding: 0 0 120px;
+    }
     position: relative;
     .titulo-investidores {
       color: #003240;
@@ -1024,32 +1031,46 @@ body.page-template-select {
 
     .investidores-carousel {
       display: flex; /* Alinhamento horizontal */
-      gap: 20px; /* Espaçamento entre os itens */
       transition: transform 0.5s ease; /* Transição suave */
       will-change: transform; /* Melhora o desempenho */
+      @include media-breakpoint-up(md) {
+        gap: 20px; /* Espaçamento entre os itens */
+      }
     }
 
     .row-investidores {
-      width: 389px; /* Largura fixa para cada item */
       flex-shrink: 0; /* Não deixa os itens encolherem */
       text-align: center;
       //   background: #f4f4f4;
       padding: 10px;
+      width: 146px;
+      height: 312px;
+      @include media-breakpoint-up(md) {
+        width: 389px; /* Largura fixa para cada item */
+        height: auto;
+      }
       .titulo-investidores-card {
         transform: translateY(-45px);
         color: #fff;
-
-        font-size: 20px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0.2px;
+        font-size: 10px;
+        @include media-breakpoint-up(md) {
+          font-size: 20px;
+        }
       }
     }
 
     .investidores-carousel img {
-      max-width: 100%;
-      height: auto;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      @include media-breakpoint-up(md) {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 }

@@ -1,0 +1,242 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+.footer-select {
+  background-color: #003b4b;
+  .box-footer {
+    padding: 56px 0;
+    @include media-breakpoint-up(md) {
+      padding: 120px 0;
+    }
+    .box-titulo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 56px;
+      .titulo-footer-select {
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 52px */
+        letter-spacing: 0.8px;
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 24px;
+        @include media-breakpoint-up(md) {
+          font-size: 40px;
+        }
+      }
+      .subtitulo-footer-select {
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 30.8px */
+        letter-spacing: 0.44px;
+        color: #fff;
+        font-size: 18px;
+        margin-bottom: 32px;
+        @include media-breakpoint-up(md) {
+          margin-bottom: 56px;
+          font-size: 22px;
+        }
+      }
+      .link-footer-select {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        gap: 12px;
+        background-color: #fff;
+        transition: 0.6s;
+        padding: 26px;
+        @include media-breakpoint-up(md) {
+          padding: 24px 126px;
+        }
+        p {
+          transition: 0.6s;
+          font-size: 12px;
+          font-style: normal;
+          color: #003b4b;
+          font-weight: 500;
+          line-height: 140%; /* 16.8px */
+          letter-spacing: 0.48px;
+          text-transform: uppercase;
+        }
+        svg {
+          path {
+            transition: 0.6s;
+          }
+        }
+        &:hover {
+          background-color: #cb9e6c;
+          p {
+            color: #fff;
+          }
+          svg {
+            path {
+              fill: #fff;
+            }
+          }
+        }
+      }
+    }
+    .label-select-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+      .text-label {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%; /* 25.2px */
+        letter-spacing: 0.36px;
+        color: #fff;
+      }
+      &::after {
+        content: '';
+        top: 50%;
+        left: 0;
+        transform: translate(0%, -50%);
+        position: absolute;
+        max-width: 180px;
+        width: 35%;
+        background: #fff;
+        height: 1px;
+      }
+      &::before {
+        content: '';
+        top: 50%;
+        right: 0;
+        transform: translate(0%, -50%);
+        position: absolute;
+        max-width: 180px;
+        width: 35%;
+        background: #fff;
+        height: 1px;
+      }
+    }
+    .box-rd-select {
+      #conversion-form-rodape-rota {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      .rd-section {
+        background-color: transparent !important;
+        .rd-column {
+          div {
+            padding: 0 !important;
+            background-color: transparent !important;
+            .bricks-form__field {
+              .bricks-form__input {
+                background-color: transparent !important;
+                font-family: 'terminal-test', sans-serif !important;
+                font-size: 16px !important;
+                font-style: normal !important;
+                font-weight: 400 !important;
+                line-height: 140% !important;
+                letter-spacing: 0.32px !important;
+                border-radius: initial !important;
+              }
+              .bricks-form__static {
+                font-family: 'founders-grotesk', sans-serif !important;
+                font-size: 16px !important;
+                font-style: normal !important;
+                font-weight: 300 !important;
+                line-height: 140% !important;
+                letter-spacing: 0.32px !important;
+
+                a {
+                  cursor: pointer;
+                  strong {
+                    font-weight: 500 !important;
+                  }
+                }
+              }
+              option {
+                color: $due-tertiary !important;
+              }
+            }
+            .bricks-form__fieldset {
+              gap: 40px;
+              max-width: 100%;
+              @include media-breakpoint-up(md) {
+              }
+
+              @media (max-height: 790px) {
+                gap: 20px;
+              }
+            }
+            .select2-container {
+              .select2-choice {
+                background-color: transparent !important;
+              }
+            }
+            .bricks-form__submit {
+              margin: 0 auto !important;
+              @include media-breakpoint-up(sm) {
+                width: fit-content !important;
+              }
+              .rd-button {
+                background-color: #cb9e6c !important;
+                border: initial !important;
+                padding: 20px 40px !important;
+                height: initial !important;
+                font-family: 'terminal-test', sans-serif !important;
+                font-size: 12px !important;
+                font-style: normal !important;
+                font-weight: 500 !important;
+                line-height: 140% !important;
+                letter-spacing: 0.48px !important;
+                text-transform: uppercase !important;
+                transition: 0.6s;
+                &:hover {
+                  background-color: #fff !important;
+                  color: $due-tertiary !important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .box-formulario-feedback {
+      position: fixed;
+      z-index: 99999999;
+      top: 22px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      pointer-events: none;
+      .box-sucesso {
+        opacity: 0;
+        visibility: hidden;
+        background-color: $grey-0;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        padding: 17px 23px;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        &.visible {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+        .box-conteudo {
+          font-size: 12px;
+          font-style: normal;
+          line-height: 140%; /* 16.8px */
+          letter-spacing: 0.24px;
+          .titulo-sucesso {
+            font-weight: 600;
+          }
+        }
+        .close-feedback-sucesso {
+          cursor: pointer;
+          transition: 0.6s;
+          &:hover {
+            scale: 1.05;
+          }
+        }
+      }
+    }
+  }
+}

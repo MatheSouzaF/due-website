@@ -35,6 +35,11 @@ function initDynamicModules() {
       moduleFunction: 'initPage',
     },
     {
+      selector: '.page-template-credito-caixa-associativo',
+      modulePath: './pages/credito-caixa-associativo/credito-caixa-associativo.js',
+      moduleFunction: 'initCredito',
+    },
+    {
       selector: '.page-template-jeito-due',
       modulePath: './pages/jeito-due/jeito-due.js',
       moduleFunction: 'initJeitoDUE',

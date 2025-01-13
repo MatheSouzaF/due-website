@@ -81,7 +81,7 @@ function hoverDestinos() {
 
 function animationFooter() {
   function siteFooter() {
-    var siteContent = $('main');
+    var siteContent = $('.main');
     var siteFooter = $('footer');
 
     var siteFooterHeight = siteFooter.height();

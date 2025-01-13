@@ -1,0 +1,61 @@
+@import '../../global/breakpoints';
+@import '../../global/colors';
+.header-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  gap: 40px;
+  transition: background-color 0.3s ease;
+  transition: 0.6s;
+  padding: 20px;
+  @include media-breakpoint-up(md) {
+    padding: 24px 80px 0;
+  }
+  .box-svg {
+    width: 64px;
+    height: 64px;
+    @include media-breakpoint-up(md) {
+      width: 149px;
+      height: 149px;
+    }
+    svg{
+      width: 64px;
+    height: 64px;
+    @include media-breakpoint-up(md) {
+      width: 149px;
+      height: 149px;
+    }
+    }
+  }
+
+  .link-due {
+    padding: 24px;
+    background-color: #faf2eb;
+    transition: 0.6s;
+    cursor: pointer;
+    p {
+      transition: 0.6s;
+      color: #002b36;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 100%; /* 11px */
+      letter-spacing: 0.44px;
+      text-transform: uppercase;
+      
+    }
+    &:hover {
+      background-color: #002b36;
+      p {
+        color: #faf2eb;
+      }
+    }
+  }
+}

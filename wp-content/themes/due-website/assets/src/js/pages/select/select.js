@@ -1,37 +1,43 @@
 function select() {
   const carousel = document.querySelector('.investidores-carousel');
   const items = document.querySelectorAll('.row-investidores');
-  const itemWidth = items[0].offsetWidth + 0; // Largura do card + espaçamento
+  const itemWidth = items[0].offsetWidth; // Largura do card
   let position = 0;
+  let isPaused = false; // Variável para controlar a pausa
+  const speed = 1; // Pixels por frame (ajustar conforme necessário)
 
-  // Quantidade de tempo (em minutos) que o carrossel deve levar para reiniciar
-  const targetDuration = 5; // 5 minutos
-  const speed = 1; // Pixels por frame (ajustar para alterar a velocidade)
-  const framesPerSecond = 60;
-  const totalFrames = targetDuration * 60 * framesPerSecond; // Total de frames no tempo desejado
-  const totalPixels = totalFrames * speed; // Quantidade de pixels a percorrer
-  const visibleWidth = carousel.parentElement.offsetWidth; // Largura visível do carrossel
-  const requiredItems = Math.ceil(totalPixels / itemWidth); // Número de itens necessários para preencher o tempo
-
-  // Duplicar os itens até atingir a quantidade necessária
-  const currentItems = items.length;
-  for (let i = 0; i < requiredItems - currentItems; i++) {
-    const clone = items[i % currentItems].cloneNode(true);
+  // Adicione os clones necessários para preencher o carrossel
+  const visibleWidth = carousel.parentElement.offsetWidth;
+  const totalClones = Math.ceil((visibleWidth / itemWidth) + 1);
+  for (let i = 0; i < totalClones; i++) {
+    const clone = items[i % items.length].cloneNode(true);
     carousel.appendChild(clone);
   }
 
   // Função para mover o carrossel
   function moveCarousel() {
-    position -= speed; // Move para a esquerda
-    carousel.style.transform = `translateX(${position}px)`;
+    if (!isPaused) {
+      position -= speed;
+      carousel.style.transform = `translateX(${position}px)`;
 
-    // Reinicia a posição quando todos os itens saírem da visão
-    if (Math.abs(position) >= carousel.scrollWidth / 2) {
-      position = 0; // Reinicia a posição
+      // Reinicie a posição quando todos os itens saírem da visão
+      if (Math.abs(position) >= carousel.scrollWidth / 2) {
+        position = 0;
+      }
     }
-
-    requestAnimationFrame(moveCarousel); // Continua o loop
+    requestAnimationFrame(moveCarousel);
   }
+
+  // Eventos para pausar e continuar o movimento no hover
+  items.forEach((item) => {
+    item.addEventListener('mouseenter', () => {
+      isPaused = true; // Pausa o movimento
+    });
+
+    item.addEventListener('mouseleave', () => {
+      isPaused = false; // Continua o movimento
+    });
+  });
 
   moveCarousel(); // Inicia a animação
 }
@@ -124,11 +130,39 @@ function videoFull() {
     lenis.start(); // Retoma o scroll suave
   });
 }
+function formRD() {
+  const originalXHR = window.XMLHttpRequest.prototype.open;
+  window.XMLHttpRequest.prototype.open = function () {
+    this.addEventListener('load', function () {
+      if (this.responseURL.includes('cta-redirect.rdstation.com/v2/conversions') && this.status === 200) {
+        const $form = $('#conversion-form-rodape-rota, #conversion-form-newsletter, .box-formulario form');
+        const $boxSucesso = $('.box-sucesso');
 
+        $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val('');
+        $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
+        $form.find('select').val('');
+   
+        $boxSucesso.addClass('visible');
+
+        setTimeout(() => {
+          $boxSucesso.removeClass('visible');
+        }, 5000);
+
+        console.log('RD Station Conversion Response:', this.response);
+      }
+    });
+    originalXHR.apply(this, arguments);
+  };
+
+  $(document).on('click', '.close-feedback-sucesso', function () {
+    $('.box-sucesso').removeClass('visible');
+  });
+}
 function initSelect() {
   select();
   swiperEmpreendimentos();
   videoFull();
+  formRD();
 }
 
 export {initSelect};

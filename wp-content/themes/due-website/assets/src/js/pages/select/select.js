@@ -8,7 +8,7 @@ function select() {
 
   // Adicione os clones necessários para preencher o carrossel
   const visibleWidth = carousel.parentElement.offsetWidth;
-  const totalClones = Math.ceil((visibleWidth / itemWidth) + 1);
+  const totalClones = Math.ceil(visibleWidth / itemWidth + 1);
   for (let i = 0; i < totalClones; i++) {
     const clone = items[i % items.length].cloneNode(true);
     carousel.appendChild(clone);
@@ -141,7 +141,7 @@ function formRD() {
         $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val('');
         $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
         $form.find('select').val('');
-   
+
         $boxSucesso.addClass('visible');
 
         setTimeout(() => {
@@ -158,11 +158,28 @@ function formRD() {
     $('.box-sucesso').removeClass('visible');
   });
 }
+
+function scrollTop() {
+  $('.scroll-top').on('click', function (event) {
+    event.preventDefault();
+    var target = $(this).attr('href');
+    console.warn('matheus');
+    if ($(target).length) {
+      $('html, body').animate(
+        {
+          scrollTop: $(target).offset().top,
+        },
+        800
+      );
+    }
+  });
+}
 function initSelect() {
   select();
   swiperEmpreendimentos();
   videoFull();
   formRD();
+  scrollTop();
 }
 
 export {initSelect};

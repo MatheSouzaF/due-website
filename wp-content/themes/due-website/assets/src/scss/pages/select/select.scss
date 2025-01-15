@@ -113,7 +113,10 @@ body.page-template-select {
   }
   .invista {
     background-color: #003b4b;
-    padding: 120px 0;
+    padding: 56px 0;
+    @include media-breakpoint-up(md) {
+      padding: 120px 0;
+    }
     overflow: hidden;
     .titulo-invista {
       font-style: normal;
@@ -161,8 +164,11 @@ body.page-template-select {
       align-items: flex-end;
       gap: 20px;
       display: none;
+      transition: 0.6s;
       @include media-breakpoint-up(md) {
         display: flex;
+        max-width: 1280px;
+        margin: 0 auto;
       }
       .row-card-invista {
         .box-valorizacao {
@@ -520,6 +526,7 @@ body.page-template-select {
         gap: 20px;
         padding: 40px;
         align-items: center;
+        min-height: 435px;
         @include media-breakpoint-up(md) {
           align-items: initial;
         }
@@ -555,6 +562,7 @@ body.page-template-select {
   .excelencia-comprovada {
     padding: 60px 0 120px;
     overflow: hidden;
+    background: #faf2eb;
     @include media-breakpoint-up(md) {
       padding: 120px 0;
     }
@@ -581,6 +589,7 @@ body.page-template-select {
       margin-bottom: 32px;
       @include media-breakpoint-up(md) {
         margin-bottom: 48px;
+        font-size: 22px;
       }
     }
     .swiper-excelencia {
@@ -667,7 +676,7 @@ body.page-template-select {
               position: relative;
               z-index: 2;
               .box-textos {
-                padding-bottom: 24px;
+                padding-bottom: 22px;
                 transition: 0.6s;
                 .localizacao {
                   font-size: 12px;
@@ -692,22 +701,50 @@ body.page-template-select {
                   display: flex;
                   flex-direction: row;
                   align-items: center;
-                  gap: 12px;
-                  .box-svg {
-                    width: 20px;
-                    height: 20px;
-                    svg {
+                  gap: 16px;
+                  .container-apt {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 12px;
+                    .box-svg {
                       width: 20px;
                       height: 20px;
+                      svg {
+                        width: 20px;
+                        height: 20px;
+                      }
+                    }
+                    .numero-apt {
+                      font-size: 18px;
+                      font-style: normal;
+                      color: #fff;
+                      font-weight: 300;
+                      line-height: 140%; /* 25.2px */
+                      letter-spacing: 0.36px;
                     }
                   }
-                  .numero-apt {
-                    font-size: 18px;
-                    font-style: normal;
-                    color: #fff;
-                    font-weight: 300;
-                    line-height: 140%; /* 25.2px */
-                    letter-spacing: 0.36px;
+                  .container-valorizacao {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 12px;
+                    .box-svg {
+                      width: 20px;
+                      height: 20px;
+                      svg {
+                        width: 20px;
+                        height: 20px;
+                      }
+                    }
+                    .text-valorizacao {
+                      font-size: 18px;
+                      font-style: normal;
+                      color: #fff;
+                      font-weight: 300;
+                      line-height: 140%; /* 25.2px */
+                      letter-spacing: 0.36px;
+                    }
                   }
                 }
               }
@@ -719,7 +756,7 @@ body.page-template-select {
                 width: 100%;
                 opacity: 0;
                 transition: 0.6s;
-                margin-bottom: -26px;
+                margin-bottom: -38px;
                 .texto-hover {
                   font-size: 14px;
                   font-style: normal;
@@ -839,7 +876,8 @@ body.page-template-select {
   }
 
   .sobre-a-due {
-    padding-bottom:64px;
+    background: #faf2eb;
+    padding-bottom: 64px;
     @include media-breakpoint-up(md) {
       padding-bottom: 120px;
     }
@@ -892,8 +930,12 @@ body.page-template-select {
           padding: 20px 48px;
           display: flex;
           transition: 0.6s;
-          width: fit-content;
+          width: 100%;
           cursor: pointer;
+          justify-content: center;
+          @include media-breakpoint-up(md) {
+            width: fit-content;
+          }
           p {
             font-size: 12px;
             font-style: normal;
@@ -924,7 +966,7 @@ body.page-template-select {
           position: absolute;
           top: 50%;
           left: 50%;
-          transform: translate(-50%);
+          transform: translate(-50%, -50%);
           z-index: 1;
           display: flex;
           flex-direction: row;
@@ -936,9 +978,18 @@ body.page-template-select {
             color: #fff;
             font-size: 12px;
             font-style: normal;
+            white-space: nowrap;
             font-weight: 400;
             line-height: 140%; /* 16.8px */
             letter-spacing: 0.48px;
+          }
+          .svg-open {
+            width: 60px;
+            height: 60px;
+            @include media-breakpoint-up(md) {
+              width: 75px;
+              height: 75px;
+            }
           }
         }
       }
@@ -1005,6 +1056,7 @@ body.page-template-select {
     }
   }
   .investidores {
+    background: #faf2eb;
     padding: 0 0 64px;
     @include media-breakpoint-up(md) {
       padding: 0 0 120px;
@@ -1034,20 +1086,29 @@ body.page-template-select {
       transition: transform 0.5s ease; /* Transição suave */
       will-change: transform; /* Melhora o desempenho */
       @include media-breakpoint-up(md) {
-        gap: 20px; /* Espaçamento entre os itens */
+        // gap: 20px; /* Espaçamento entre os itens */
       }
     }
 
     .row-investidores {
       flex-shrink: 0; /* Não deixa os itens encolherem */
       text-align: center;
-      //   background: #f4f4f4;
-      padding: 10px;
+      position: relative;
       width: 146px;
       height: 312px;
+      margin: 10px 4px;
       @include media-breakpoint-up(md) {
+        margin: 10px 8px;
         width: 389px; /* Largura fixa para cada item */
-        height: auto;
+        height: 585px;
+      }
+      .shadow-row-investidores {
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        left: 0;
       }
       .titulo-investidores-card {
         transform: translateY(-45px);
@@ -1056,6 +1117,8 @@ body.page-template-select {
         font-weight: 400;
         line-height: normal;
         letter-spacing: 0.2px;
+        position: relative;
+        z-index: 2;
         font-size: 10px;
         @include media-breakpoint-up(md) {
           font-size: 20px;

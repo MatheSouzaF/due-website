@@ -18,14 +18,17 @@
 
 <body <?php body_class(""); ?>>
 	<header class="header-select">
-		<div class="box-svg">
-			<?php $svg_file = get_field('logo_header', 'options');
-			if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-				echo '<i class="element">';
-				echo file_get_contents($svg_file['url']);
-				echo '</i>';
-			} ?>
-		</div>
+		<a href="#banner-select" class="scroll-top" >
+
+			<div class="box-svg">
+				<?php $svg_file = get_field('logo_header', 'options');
+				if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+					echo '<i class="element">';
+					echo file_get_contents($svg_file['url']);
+					echo '</i>';
+				} ?>
+			</div>
+		</a>
 		<?php
 		$link = get_field('link_menu_select', 'options');
 		if ($link) :

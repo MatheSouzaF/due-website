@@ -1,5 +1,5 @@
 </main>
-<footer class="footer-select">
+<footer class="footer-select" id="footer-select">
     <div class="wrapper">
         <div class="box-footer">
             <div class="box-titulo">

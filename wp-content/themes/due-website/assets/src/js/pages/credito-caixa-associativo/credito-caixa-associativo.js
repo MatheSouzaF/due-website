@@ -1,29 +1,29 @@
 function accordeon() {
     const accordionTriggers = document.querySelectorAll('[data-toggle="accordion"]');
 
-    const toggleItem = (content, isOpen) => {
+    const toggleItem = (trigger, isOpen) => {
+        const content = trigger.closest(".duvidas-title-arrow").nextElementSibling;
+        const arrow = trigger.closest(".duvidas-title-arrow").querySelector("svg");
+
         content.style.maxHeight = isOpen ? null : `${content.scrollHeight}px`;
         content.classList.toggle("open", !isOpen);
         content.closest(".duvidas-item").style.paddingBottom = isOpen ? "0" : "32px";
+        arrow.style.transform = isOpen ? "rotate(180deg)" : "rotate(0deg)";
     };
 
-    // Abre o primeiro item ao carregar
-    if (accordionTriggers[0]) {
-        toggleItem(accordionTriggers[0].nextElementSibling, false);
-    }
-
-    accordionTriggers.forEach(trigger => {
-        trigger.addEventListener("click", function () {
+    // Define estados iniciais e adiciona eventos de clique
+    accordionTriggers.forEach((trigger, index) => {
+        const isFirst = index === 0;
+        toggleItem(trigger, !isFirst); // Abre o primeiro item, fecha os demais
+        trigger.addEventListener("click", () => {
             document.querySelectorAll(".duvida-response-list.open").forEach(openContent => {
-                if (openContent !== this.nextElementSibling) {
-                    toggleItem(openContent, true); // Fecha outros itens
-                }
+                const openTrigger = openContent.closest(".duvidas-item").querySelector('[data-toggle="accordion"]');
+                if (openTrigger !== trigger) toggleItem(openTrigger, true);
             });
-            toggleItem(this.nextElementSibling, this.nextElementSibling.classList.contains("open"));
+            toggleItem(trigger, trigger.closest(".duvidas-title-arrow").nextElementSibling.classList.contains("open"));
         });
     });
-
-};
+}
 
 
 function homeResort() {

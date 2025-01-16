@@ -5,7 +5,7 @@ body.page-template-credito-caixa-associativo {
 
     background-color: #FAF2EA;
 
-    p {
+    /* p {
         font-family: 'founders-grotesk', sans-serif;
         font-size: 24px;
         font-weight: 300;
@@ -22,7 +22,7 @@ body.page-template-credito-caixa-associativo {
         font-weight: 500;
         line-height: 140%;
 
-    }
+    } */
 
     strong {
         font-weight: 500;
@@ -32,17 +32,20 @@ body.page-template-credito-caixa-associativo {
 
     .banner {
         position: relative;
-        height: 90vh;
+        height: 100vh;
         background: $due-primary;
 
         .banner-text-buttom {
             position: relative;
             display: flex;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: 0 80px;
             gap: 40px;
             flex-direction: column;
             z-index: 1;
-            top: 30%;
-            left: 5.6%;
+            /*top: 30%; */
 
             .banner-text {
                 position: relative;
@@ -69,8 +72,9 @@ body.page-template-credito-caixa-associativo {
 
                 .subtitle {
                     max-width: 465px;
-                    font-size: 28px;
                     letter-spacing: 0.28px;
+                    font-size: 28px;
+
 
                     @media(max-width: 768px) {
                         font-size: 20px;
@@ -89,7 +93,6 @@ body.page-template-credito-caixa-associativo {
                 background: $due-secondary;
 
                 p {
-                    font-family: 'terminal-test', sans-serif;
                     font-size: 12px;
                     font-weight: 500;
                     letter-spacing: 0.48px;
@@ -97,7 +100,9 @@ body.page-template-credito-caixa-associativo {
             }
 
             @media (max-width: 768px) {
-                top: 10%;
+                justify-content: flex-start;
+                padding: 80px 20px;
+
 
             }
 
@@ -108,6 +113,8 @@ body.page-template-credito-caixa-associativo {
                     gap: 16px;
                 }
             }
+
+
         }
 
         .banner-couple {
@@ -163,6 +170,8 @@ body.page-template-credito-caixa-associativo {
         flex-direction: column;
         align-items: center;
         padding: 60px 80px 200px;
+        max-width: 130vh;
+        margin: 0 auto;
 
 
         .descubra-title-subtitle {
@@ -173,11 +182,15 @@ body.page-template-credito-caixa-associativo {
 
             .title {
                 color: $due-tertiary;
+                font-size: 32px;
+                font-weight: 500;
 
             }
 
             .subtitle {
                 letter-spacing: 0.48px;
+                font-size: 24px;
+                font-weight: 300;
             }
 
             @media (max-width: 768px) {
@@ -200,7 +213,12 @@ body.page-template-credito-caixa-associativo {
             width: 100%;
 
             .descubra-animation {
-                margin: 64px 0 19px
+
+                margin: 64px 0 19px;
+
+                @media (max-width: 768px) {
+                    margin: 24px 0 19px;
+                }
             }
 
             .descubra-animation-mobile {
@@ -212,6 +230,7 @@ body.page-template-credito-caixa-associativo {
                 .descubra-nota-rodape {
                     color: $grey-1000;
                     font-size: 15px;
+                    font-weight: 300;
                     line-height: 110%;
                     letter-spacing: 0.3px;
 
@@ -232,7 +251,7 @@ body.page-template-credito-caixa-associativo {
         }
 
         @media (max-width: 768px) {
-            padding: 60px 40px 200px;
+            padding: 60px 20px 200px;
         }
 
     }
@@ -244,12 +263,13 @@ body.page-template-credito-caixa-associativo {
         padding-bottom: 35rem;
 
         .caixa-textos {
+
             background-color: $due-primary;
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            max-width: 70%;
-            gap: 32px;
+            justify-content: center;
+            max-width: 78%;
+            gap: 50px;
             margin: 0 auto;
             padding: 32px 64px;
             transform: translate(0px, -50%);
@@ -258,16 +278,23 @@ body.page-template-credito-caixa-associativo {
 
 
             .textos {
-                width: 44%;
+                width: 59%;
             }
 
             .textos p {
                 font-size: 18px;
+                font-family: "founders-grotesk";
+                font-weight: 300;
+                line-height: 140%;
+                /* 25.2px */
+
                 letter-spacing: 0.36px;
                 color: $grey-0;
             }
 
             @media (max-width: 768px) {
+                padding: 32px 24px;
+
                 max-width: 90%;
                 display: flex;
                 flex-direction: column;
@@ -292,27 +319,31 @@ body.page-template-credito-caixa-associativo {
         }
 
         .vantagens {
+            margin-bottom: 80px;
             position: relative;
             z-index: 1;
 
             .vantagens-main-title {
+                padding-bottom: 80px;
                 position: relative;
                 color: $grey-0;
                 text-align: center;
                 letter-spacing: 0.64px;
+                font-size: 32px;
+                font-weight: 500;
 
             }
 
             .vantagens-list {
+                max-width: 1440px;
                 display: flex;
                 justify-content: space-between;
                 gap: 80px;
-                padding: 85px 120px;
                 flex-wrap: wrap;
 
                 .vantagem-item {
                     align-items: center;
-                    max-width: 40%;
+                    max-width: 45%;
                     padding-bottom: 56px;
                     display: flex;
                     gap: 24px;
@@ -349,6 +380,8 @@ body.page-template-credito-caixa-associativo {
 
                         .vantagem-title {
                             font-size: 20px;
+                            font-weight: 500;
+                            line-height: 140%;
 
                         }
 
@@ -356,19 +389,19 @@ body.page-template-credito-caixa-associativo {
                             font-size: 18px;
                             line-height: 135%;
                             letter-spacing: 0.36px;
+                            font-weight: 300;
+
 
                         }
                     }
                 }
 
-                @media (max-width:1200px) {
-                    padding: 85px 60px;
-                }
-
                 @media (max-width: 768px) {
-                    padding: 85px 40px;
+                    gap: 32px;
 
                     .vantagem-item {
+                        padding-bottom: 32px;
+
                         max-width: 100%;
                         align-items: flex-start;
 
@@ -387,7 +420,6 @@ body.page-template-credito-caixa-associativo {
                 }
 
                 @media (max-width: 630px) {
-                    padding: 85px 20px;
 
                     .vantagem-item {
 
@@ -405,10 +437,13 @@ body.page-template-credito-caixa-associativo {
                             }
                         }
                     }
+
                 }
             }
 
-
+            @media (max-width: 600px) {
+                margin-top: -48px;
+            }
         }
 
         .box-img-vantagens {
@@ -462,12 +497,18 @@ body.page-template-credito-caixa-associativo {
 
 
             .recurso-patrimonio-text {
+                text-align: center;
+                width: 850px;
+                font-size: 28px;
+                color: $grey-0;
+                font-weight: 300;
+                line-height: 140%;
+                letter-spacing: 0.56px;
 
-                p {
-                    font-family: 'terminal-test', sans-serif;
-                    font-size: 28px;
-                    color: $grey-0;
-                    letter-spacing: 0.56px;
+                @media (max-width:900px) {
+                    width: auto;
+                    padding: 0 36px;
+
                 }
 
 
@@ -503,84 +544,82 @@ body.page-template-credito-caixa-associativo {
         flex-direction: column;
         gap: 16px;
         padding: 150px 80px;
-
-        .duvidas-anchor {
-            color: $due-secondary;
-            font-size: 12px;
-            line-height: 100%;
-            letter-spacing: 0.48px;
-        }
-
+    
         .main-duvidas-title-list {
-            position: relative;
             display: flex;
             justify-content: space-between;
             gap: 175px;
-
+            position: relative; // Certifique-se de que o pai do sticky tem posição definida
+            align-items: flex-start; // Garante alinhamento correto
+    
             .duvidas-main-title-subtitle {
                 color: $due-tertiary;
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
-                height: 100%;
-                position: sticky; // Torna o elemento "sticky"
-                top: 0; // Distância do topo ao rolar
-                align-self: flex-start; // Garante o alinhamento inicial
-
+                position: sticky;
+                top: 0; // Define a distância em relação ao topo do container ou viewport
+                z-index: 10; // Garante que o tamanho respeite o conteúdo
+    
                 .duvidas-title {
                     font-size: 40px;
                     font-weight: 400;
                     line-height: 130%;
                     letter-spacing: 0.8px;
-
-
                 }
-
+    
                 .duvidas-subtitle {
                     font-size: 20px;
                     font-weight: 400;
                     letter-spacing: 0.4px;
                     line-height: 135%;
-
-
                 }
             }
-
+    
             .duvidas-main-list {
                 display: flex;
                 flex-direction: column;
                 gap: 32px;
-
+    
                 .duvidas-title-list {
                     color: $due-secondary-v2;
                     font-size: 24px;
                     line-height: 140%;
                     letter-spacing: 0.48px;
-
                 }
-
+    
                 .duvidas-item {
                     color: $due-tertiary;
                     display: flex;
                     flex-direction: column;
                     gap: 34px;
                     letter-spacing: 0.36px;
-                    /* padding-bottom: 32px; */
-
-
+    
                     &:not(:last-child) {
                         border-bottom: 1px solid rgba(0, 59, 75, 0.20);
                     }
-
-                    .duvida-item-title {
-                        font-size: 16px;
-                        font-weight: 500;
-
-                        &:hover {
-                            cursor: pointer;
+    
+                    .duvidas-title-arrow {
+                        display: flex;
+                        justify-content: space-between;
+                        gap: 10px;
+                        align-items: center;
+    
+                        .duvida-item-title {
+                            font-size: 16px;
+                            font-weight: 500;
+                            line-height: 140%;
+    
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+    
+                        svg {
+                            min-width: 20px;
                         }
                     }
-
+    
                     .duvida-response-list {
                         max-height: 0; // Fechado por padrão
                         overflow: hidden;
@@ -589,44 +628,42 @@ body.page-template-credito-caixa-associativo {
                         flex-direction: column;
                         gap: 20px;
                         padding-left: 20px;
-
-
+    
                         &.open {
                             max-height: 500px; // Ajuste conforme necessário para o tamanho esperado
                         }
-
+    
                         .duvida-response-item {
                             font-family: 'founders-grotesk', sans-serif;
                             font-size: 18px;
                             font-weight: 300;
                             line-height: 140%;
                             list-style-type: disc;
-
+    
                             &::marker {
                                 color: $due-secondary-v2;
                             }
                         }
                     }
-
                 }
             }
-
         }
-
+    
         @media (max-width: 768px) {
-            padding: 100px 21px;
-
+            padding: 64px 21px;
+    
             .main-duvidas-title-list {
                 flex-direction: column;
                 gap: 32px;
-
-
+    
+                .duvidas-main-title-subtitle {
+                    position: relative; // Desativa o sticky no mobile
+                    top: 0; // Remove o espaçamento no topo
+                }
             }
         }
-
-
-
     }
+    
 
     /** Um Pix da realidade */
 
@@ -645,7 +682,12 @@ body.page-template-credito-caixa-associativo {
             gap: 16px;
 
             .casa-pix-title {
-                padding: 0 30%;
+                padding: 0 22%;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 140%;
+                letter-spacing: 0.64px;
 
                 @media (max-width: 1024px) {
                     padding: 0 20%;
@@ -654,13 +696,15 @@ body.page-template-credito-caixa-associativo {
 
                 @media (max-width: 660px) {
                     font-size: 24px;
-                    padding: 0 40px;
+                    padding: 0 20px;
                 }
             }
+
         }
 
         .casa-pix-btn {
             display: flex;
+            align-items: center;
             gap: 12px;
             background: $due-primary;
             padding: 20px 48px;
@@ -679,6 +723,9 @@ body.page-template-credito-caixa-associativo {
         }
 
 
+        @media (max-width: 660px) {
+            padding: 9% 20px;
+        }
     }
 
 }

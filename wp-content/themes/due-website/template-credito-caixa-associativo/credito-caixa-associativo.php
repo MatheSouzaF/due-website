@@ -8,7 +8,7 @@ get_header();
     <div class="banner-text-buttom">
         <div class="banner-text">
             <h1 class="title"><?php echo get_field('banner_title'); ?></h1>
-            <p class="subtitle"><?php echo get_field('banner_subtitle'); ?></p>
+            <p class="subtitle founders-grotesk"><?php echo get_field('banner_subtitle'); ?></p>
         </div>
         <?php
         $link = get_field('banner_button');
@@ -17,7 +17,7 @@ get_header();
             $link_title = $link['title'];
             $link_target = $link['target'] ? $link['target'] : '_self'; ?>
             <a class="banner-button" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
-                <p class=""><?php echo esc_html($link_title); ?></p>
+                <p class="terminal-test"><?php echo esc_html($link_title); ?></p>
             </a>
         <?php endif; ?>
     </div>
@@ -46,7 +46,7 @@ get_header();
 <section class="descubra-como-funciona">
     <div class="descubra-title-subtitle">
         <h3 class="title"><?php echo esc_html(get_field('descubra_title')); ?></h3>
-        <p class="subtitle"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
+        <p class="subtitle founders-grotesk"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
     </div>
 
     <div class="descubra-animation-notas">
@@ -63,7 +63,7 @@ get_header();
             if (have_rows('descubra_notas_rodape')):
                 while (have_rows('descubra_notas_rodape')) : the_row();
                     $descubra_nota = get_sub_field('descubra_nota'); ?>
-                    <p class="descubra-nota-rodape"><?php echo esc_html($descubra_nota) ?> </p>
+                    <p class="descubra-nota-rodape founders-grotesk"><?php echo esc_html($descubra_nota) ?> </p>
             <?php
                 endwhile;
             endif; ?>
@@ -99,7 +99,7 @@ get_header();
     </div>
     <div class="vantagens">
         <h3 class="vantagens-main-title"><?php echo esc_html(get_field('main_title')); ?></h3>
-        <div class="vantagens-list">
+        <div class="vantagens-list wrapper">
             <?php
             if (have_rows('vantagem_item')) :
                 while (have_rows('vantagem_item')) : the_row();
@@ -117,7 +117,7 @@ get_header();
                         </div>
                         <div class="vantagem-texts">
                             <h3 class="vantagem-title"><?php echo esc_html($vantagem_item_title); ?></h3>
-                            <p class="vantagem-paragraph"><?php echo esc_html($vantagem_item_description); ?></p>
+                            <p class="vantagem-paragraph founders-grotesk"><?php echo esc_html($vantagem_item_description); ?></p>
                         </div>
                     </div>
 
@@ -139,7 +139,7 @@ get_header();
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path d="M13.2852 2.68254C12.5976 1.98799 11.7785 1.4373 10.8759 1.06258C9.97323 0.68787 9.00499 0.49664 8.02766 0.500045C3.93266 0.500045 0.595156 3.83754 0.595156 7.93254C0.595156 9.24504 0.940156 10.52 1.58516 11.645L0.535156 15.5L4.47266 14.465C5.56016 15.0575 6.78266 15.3725 8.02766 15.3725C12.1227 15.3725 15.4602 12.035 15.4602 7.94004C15.4602 5.95254 14.6877 4.08504 13.2852 2.68254ZM8.02766 14.1125C6.91766 14.1125 5.83016 13.8125 4.87766 13.25L4.65266 13.115L2.31266 13.73L2.93516 11.45L2.78516 11.2175C2.16847 10.2328 1.84101 9.09448 1.84016 7.93254C1.84016 4.52754 4.61516 1.75254 8.02016 1.75254C9.67016 1.75254 11.2227 2.39754 12.3852 3.56754C12.9608 4.14052 13.4169 4.82204 13.7272 5.57261C14.0375 6.32319 14.1957 7.12788 14.1927 7.94004C14.2077 11.345 11.4327 14.1125 8.02766 14.1125ZM11.4177 9.49254C11.2302 9.40254 10.3152 8.95254 10.1502 8.88504C9.97766 8.82504 9.85766 8.79504 9.73016 8.97504C9.60266 9.16254 9.25016 9.58254 9.14516 9.70255C9.04016 9.83004 8.92766 9.84504 8.74016 9.74754C8.55266 9.65754 7.95266 9.45504 7.24766 8.82504C6.69266 8.33004 6.32516 7.72254 6.21266 7.53504C6.10766 7.34754 6.19766 7.25004 6.29516 7.15254C6.37766 7.07004 6.48266 6.93504 6.57266 6.83004C6.66266 6.72504 6.70016 6.64254 6.76016 6.52254C6.82016 6.39504 6.79016 6.29004 6.74516 6.20005C6.70016 6.11004 6.32516 5.19504 6.17516 4.82004C6.02516 4.46004 5.86766 4.50504 5.75516 4.49754H5.39516C5.26766 4.49754 5.07266 4.54254 4.90016 4.73004C4.73516 4.91754 4.25516 5.36754 4.25516 6.28254C4.25516 7.19754 4.92266 8.08254 5.01266 8.20254C5.10266 8.33004 6.32516 10.205 8.18516 11.0075C8.62766 11.2025 8.97266 11.315 9.24266 11.3975C9.68516 11.54 10.0902 11.5175 10.4127 11.4725C10.7727 11.42 11.5152 11.0225 11.6652 10.5875C11.8227 10.1525 11.8227 9.78504 11.7702 9.70255C11.7177 9.62004 11.6052 9.58254 11.4177 9.49254Z" fill="#003B4B" />
                 </svg>
-                <p class="label-btn"><?php echo esc_html($link_title); ?></p>
+                <p class="label-btn terminal-test"><?php echo esc_html($link_title); ?></p>
             </a>
         <?php endif; ?>
     </div>
@@ -174,20 +174,27 @@ get_header();
     <div class="main-duvidas-title-list">
         <div class="duvidas-main-title-subtitle">
             <h3 class="duvidas-title"><?php the_field('duvidas_title'); ?></h3>
-            <p class="duvidas-subtitle"><?php the_field('duvidas_subtitle'); ?></p>
+            <p class="duvidas-subtitle founders-grotesk"><?php the_field('duvidas_subtitle'); ?></p>
 
         </div>
         <div class="duvidas-main-list">
+
             <h3 class="duvidas-title-list"><?php echo get_field('duvidas_title_list'); ?></h3>
+
             <?php
             if (have_rows('duvidas_item')) :
                 while (have_rows('duvidas_item')) : the_row();
                     $duvida_item_title = get_sub_field('duvida_item_title');
             ?>
                     <div class="duvidas-item">
-                        <h4 class="duvida-item-title" data-toggle="accordion">
-                            <?php echo esc_html($duvida_item_title); ?>
-                        </h4>
+                        <div class="duvidas-title-arrow">
+                            <h4 class="duvida-item-title" data-toggle="accordion">
+                                <?php echo esc_html($duvida_item_title); ?>
+                            </h4>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5" fill="none">
+                                <path d="M0.709635 4.39587L4.5013 0.604208L8.29297 4.39587" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
                         <ul class="duvida-response-list">
                             <?php
                             if (have_rows('duvida_response_list')) :
@@ -234,7 +241,7 @@ get_header();
         </a>
     <?php endif; ?>
 
-    <p class="casa-pix-obs"><?php echo get_field('casa_pix_obs'); ?></p>
+    <p class="casa-pix-obs founders-grotesk"><?php echo get_field('casa_pix_obs'); ?></p>
 </section>
 
 <?php get_footer() ?>

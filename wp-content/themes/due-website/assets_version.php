@@ -1,1 +1,1 @@
-<?php define("ASSETS_VERSION", "1737044336656");
+<?php define("ASSETS_VERSION", "1737060050483");

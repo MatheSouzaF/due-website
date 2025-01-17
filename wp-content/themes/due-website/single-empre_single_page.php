@@ -655,9 +655,9 @@ get_header();
                     $rooms = get_field('quantidade_de_quartos_tipologia', $tipologiaId);
                     if ($rooms && is_array($rooms)) {
                         sort($rooms, SORT_NUMERIC);
-                    
+
                         $rooms_text = '';
-                    
+
                         if (count($rooms) > 2) {
                             $min_rooms = $rooms[0];
                             $max_rooms = end($rooms);
@@ -680,11 +680,10 @@ get_header();
                                 $rooms_text = 'Studio' . ($rooms_text ? ' e ' . $rooms_text : '');
                             }
                         }
-                    
                     } else {
                         $rooms_text = 'N/A';
                     }
-                    
+
                     $size = '';
                     if (have_rows('metragem_tipologia', $tipologiaId)) {
                         while (have_rows('metragem_tipologia', $tipologiaId)):
@@ -744,7 +743,9 @@ get_header();
                                     'Em obra' => 'em_obra',
                                     'Lançamento' => 'lancamento',
                                     '100% vendido' => 'vendido',
-                                    'Últimas unidades' => 'ultimas_unidades'
+                                    'Últimas unidades' => 'ultimas_unidades',
+                                    'Pronto pra morar' => 'morar',
+                                    'Em breve lançamento' => 'breve'
                                 ];
 
                                 $statusClass = isset($statusMap[$tipologia['status']]) ? $statusMap[$tipologia['status']] : esc_html($tipologia['status']);
@@ -919,7 +920,8 @@ get_header();
     $tituloFormulario = get_field('titulo_formulario');
     $subTituloFormulario = get_field('subtitulo_formulario');
 
-    if ($empreendimento_id) {
+    // Verifica se o ID do empreendimento e o formulário estão preenchidos
+    if ($empreendimento_id && !empty($form)) {
         // Obtém o título do empreendimento
         $titulo_empreendimento = get_the_title($empreendimento_id);
 
@@ -934,12 +936,13 @@ get_header();
         echo '<p class="subtitulo-formulario founders-grotesk">';
         echo $subTituloFormulario;
         echo '</p>';
-        echo '<div class="box-formulario  ' . 'gtm-formulario-'  . $titulo_classe . '">';
+        echo '<div class="box-formulario  ' . 'gtm-formulario-' . $titulo_classe . '">';
         echo $form; // Aqui você insere o conteúdo do formulário
         echo '</div>';
         echo '</div>';
     }
     ?>
+
 
     <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
     <?php get_template_part('template-invista/invista'); ?>

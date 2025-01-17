@@ -721,7 +721,10 @@ body.single-empre_single_page {
         margin-bottom: 40px;
         font-size: 24px;
         transition: 0.6s;
+
+        padding-right: 20px;
         @include media-breakpoint-up(sm) {
+          padding-right: 0;
           font-size: calc(1rem + 1.6vw);
         }
       }
@@ -732,6 +735,10 @@ body.single-empre_single_page {
         gap: 24px;
         align-items: center;
         padding-bottom: 24px;
+        padding-right: 20px;
+        @include media-breakpoint-up(sm) {
+          padding-right: 0;
+        }
         @include media-breakpoint-down(md) {
           overflow-x: auto;
           overflow-y: hidden;
@@ -779,8 +786,15 @@ body.single-empre_single_page {
       .box-aba-galeria {
         .swiper-rota-destino {
           position: relative;
+         
           .swiper-slide {
-            margin-right: 16px;
+            &:nth-last-child(1) {
+              // Selecciona el último elemento
+              padding-right: 20px;
+              @include media-breakpoint-up(sm) {
+                padding-right: 0;
+              }
+            }
 
             @include media-breakpoint-up(sm) {
               max-width: 280px;
@@ -1023,7 +1037,10 @@ body.single-empre_single_page {
           .swiper-slide {
             padding-bottom: 20px;
             border-bottom: 1px solid #002b36;
-            height: 510px;
+            height: 570px;
+            @include media-breakpoint-up(md) {
+              height: 510px;
+            }
             .tipologia-card {
               position: relative;
               cursor: pointer;
@@ -1131,6 +1148,11 @@ body.single-empre_single_page {
             }
 
             &.lancamento {
+              .estado-tipologia {
+                background-color: #cb9e6c;
+              }
+            }
+            &.breve {
               .estado-tipologia {
                 background-color: #cb9e6c;
               }

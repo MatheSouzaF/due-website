@@ -559,7 +559,7 @@ body.page-template-credito-caixa-associativo {
                 color: $due-tertiary;
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: 20px;
                 position: sticky;
                 top: 0; // Define a distância em relação ao topo do container ou viewport
                 z-index: 10; // Garante que o tamanho respeite o conteúdo
@@ -584,7 +584,7 @@ body.page-template-credito-caixa-associativo {
             .duvidas-main-list {
                 display: flex;
                 flex-direction: column;
-                gap: 32px;
+                gap: 40px;
 
 
                 .duvidas-title-list {
@@ -640,7 +640,7 @@ body.page-template-credito-caixa-associativo {
                         transition: max-height 0.3s ease-out;
                         display: flex;
                         flex-direction: column;
-                        gap: 20px;
+                        gap: 12px;
                         padding-left: 20px;
 
 
@@ -669,7 +669,7 @@ body.page-template-credito-caixa-associativo {
 
             .main-duvidas-title-list {
                 flex-direction: column;
-                gap: 32px;
+                gap: 64px;
 
                 .duvidas-main-title-subtitle {
                     position: relative;

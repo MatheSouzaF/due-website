@@ -62,7 +62,7 @@ body.page-template-select {
           margin-bottom: 24px;
           font-size: 32px;
           @include media-breakpoint-up(md) {
-            font-size: 40px;
+            font-size: calc(1rem + 1.8vw);
           }
         }
         .descricao-banner {
@@ -75,8 +75,11 @@ body.page-template-select {
           font-size: 16px;
           max-width: 90%;
           @include media-breakpoint-up(md) {
-            width: 549px;
-            font-size: 22px;
+            max-width: 600px;
+            font-size: calc(0.8rem + 0.8vw);
+          }
+          @include media-breakpoint-up(xxl) {
+             max-width: 690px;
           }
         }
         .link-sobre {

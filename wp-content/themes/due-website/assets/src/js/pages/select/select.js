@@ -1,45 +1,60 @@
 function select() {
-  const carousel = document.querySelector('.investidores-carousel');
-  const items = document.querySelectorAll('.row-investidores');
-  const itemWidth = items[0].offsetWidth; // Largura do card
-  let position = 0;
-  let isPaused = false; // Variável para controlar a pausa
-  const speed = 1; // Pixels por frame (ajustar conforme necessário)
-
-  // Adicione os clones necessários para preencher o carrossel
-  const visibleWidth = carousel.parentElement.offsetWidth;
-  const totalClones = Math.ceil(visibleWidth / itemWidth + 1);
-  for (let i = 0; i < totalClones; i++) {
-    const clone = items[i % items.length].cloneNode(true);
-    carousel.appendChild(clone);
-  }
-
-  // Função para mover o carrossel
-  function moveCarousel() {
-    if (!isPaused) {
-      position -= speed;
-      carousel.style.transform = `translateX(${position}px)`;
-
-      // Reinicie a posição quando todos os itens saírem da visão
-      if (Math.abs(position) >= carousel.scrollWidth / 2) {
-        position = 0;
-      }
-    }
-    requestAnimationFrame(moveCarousel);
-  }
-
-  // Eventos para pausar e continuar o movimento no hover
-  items.forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-      isPaused = true; // Pausa o movimento
-    });
-
-    item.addEventListener('mouseleave', () => {
-      isPaused = false; // Continua o movimento
-    });
-  });
-
-  moveCarousel(); // Inicia a animação
+  // const carousel = document.querySelector('.investidores-carousel');
+  // const items = document.querySelectorAll('.row-investidores');
+  // const itemWidth = items[0].offsetWidth; // Largura do card
+  // let position = 0;
+  // let isPaused = false; // Variável para controlar a pausa
+  // const speed = 1; // Pixels por frame (ajustar conforme necessário)
+  // // Adicione os clones necessários para preencher o carrossel
+  // const visibleWidth = carousel.parentElement.offsetWidth;
+  // const totalClones = Math.ceil(visibleWidth / itemWidth + 1);
+  // for (let i = 0; i < totalClones; i++) {
+  //   const clone = items[i % items.length].cloneNode(true);
+  //   carousel.appendChild(clone);
+  // }
+  // // Função para mover o carrossel
+  // function moveCarousel() {
+  //   if (!isPaused) {
+  //     position -= speed;
+  //     carousel.style.transform = `translateX(${position}px)`;
+  //     // Reinicie a posição quando todos os itens saírem da visão
+  //     if (Math.abs(position) >= carousel.scrollWidth / 2) {
+  //       position = 0;
+  //     }
+  //   }
+  //   requestAnimationFrame(moveCarousel);
+  // }
+  // // Eventos para pausar e continuar o movimento no hover
+  // items.forEach((item) => {
+  //   item.addEventListener('mouseenter', () => {
+  //     isPaused = true; // Pausa o movimento
+  //   });
+  //   item.addEventListener('mouseleave', () => {
+  //     isPaused = false; // Continua o movimento
+  //   });
+  // });
+  // moveCarousel(); // Inicia a animação
+}
+function swiperMove() {
+  // new Swiper('.swiper-investidores', {
+  //   slidesPerView: 1.1,
+  //   spaceBetween: 24,
+  //   loop: true,
+    
+  //   breakpoints: {
+  //     1024: {
+  //       slidesPerView: 3.2,
+  //     },
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //     clickable: true,
+  //   },
+  // });
 }
 
 function swiperEmpreendimentos() {
@@ -180,6 +195,7 @@ function initSelect() {
   videoFull();
   formRD();
   scrollTop();
+  swiperMove();
 }
 
 export {initSelect};

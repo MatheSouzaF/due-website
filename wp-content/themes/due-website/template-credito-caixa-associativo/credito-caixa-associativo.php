@@ -187,11 +187,11 @@ get_header();
                     $duvida_item_title = get_sub_field('duvida_item_title');
             ?>
                     <div class="duvidas-item">
-                        <div class="duvidas-title-arrow">
-                            <h4 class="duvida-item-title" data-toggle="accordion">
+                        <div class="duvidas-title-arrow" data-toggle="accordion">
+                            <h4 class="duvida-item-title">
                                 <?php echo esc_html($duvida_item_title); ?>
                             </h4>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="5" viewBox="0 0 9 5" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 5" fill="none">
                                 <path d="M0.709635 4.39587L4.5013 0.604208L8.29297 4.39587" stroke="black" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>

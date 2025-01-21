@@ -290,6 +290,11 @@ body.page-template-credito-caixa-associativo {
                     text-align: center;
                 }
 
+                .textos p {
+                    font-size: 18px;
+
+                }
+
             }
 
             @media (max-width: 500px) {
@@ -431,6 +436,9 @@ body.page-template-credito-caixa-associativo {
 
             @media (max-width: 600px) {
                 margin-top: -48px;
+                .vantagens-main-title {
+                    font-size: 32px;
+                }
             }
         }
 

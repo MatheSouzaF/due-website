@@ -4,33 +4,7 @@ wp_enqueue_style('Select', get_template_directory_uri() . '/assets/dist/css/sele
 get_header('select');
 
 ?>
-<!-- <div class="investidores-carousel">
- <?php
-    if (have_rows('card_investidores')) :
-        while (have_rows('card_investidores')) : the_row(); ?>
-                        <div class="row-investidores">
-                            <?php
-                            $image = get_sub_field('imagem_investidores');
-                            if ($image) :
-                                $image_url = $image['url'];
-                                $image_alt = $image['alt']; ?>
-                                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-                            <?php endif; ?>
-                            <p class="titulo-investidores-card"><?php echo get_sub_field('nome_investidores'); ?></p>
-                            <svg class="shadow-row-investidores" width="387" height="585" viewBox="0 0 387 585" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="387" height="585" fill="url(#paint0_linear_5792_18833)" fill-opacity="0.8" />
-                                <defs>
-                                    <linearGradient id="paint0_linear_5792_18833" x1="193.5" y1="376.312" x2="193.5" y2="585" gradientUnits="userSpaceOnUse">
-                                        <stop stop-opacity="0" />
-                                        <stop offset="1" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
 
-                        </div>
-                <?php endwhile;
-        endif; ?>
-            </div> -->
 <div class="banner" id="banner-select">
     <div class="box-img">
         <?php
@@ -437,5 +411,5 @@ get_header('select');
 
     </div>
 <?php endif; ?>
-
+<div class="ancora-form" id="footer-select"></div>
 <?php get_footer('select') ?>

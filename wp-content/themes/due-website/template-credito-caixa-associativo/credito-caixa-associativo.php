@@ -16,7 +16,7 @@ get_header();
             $link_url = $link['url'];
             $link_title = $link['title'];
             $link_target = $link['target'] ? $link['target'] : '_self'; ?>
-            <a class="button-fixed-whatsapp" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+            <a class="button-fixed-whatsapp ancora-descubra" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
                 <p class="terminal-test"><?php echo esc_html($link_title); ?></p>
             </a>
         <?php endif; ?>
@@ -44,7 +44,8 @@ get_header();
 </section>
 
 <section class="descubra-como-funciona">
-    <div class="descubra-title-subtitle">
+    <!-- <div class="ancora" id="descubra-como-funciona"></div> -->
+    <div class="descubra-title-subtitle" id="descubra-como-funciona">
         <h3 class="title"><?php echo esc_html(get_field('descubra_title')); ?></h3>
         <p class="subtitle founders-grotesk"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
     </div>
@@ -168,9 +169,6 @@ get_header();
 </section>
 
 <section class="duvidas-frequentes">
-    <h3 class="duvidas-anchor">
-        <?php echo get_field('duvidas_anchor'); ?>
-    </h3>
     <div class="main-duvidas-title-list">
         <div class="duvidas-main-title-subtitle">
             <h3 class="duvidas-title"><?php the_field('duvidas_title'); ?></h3>

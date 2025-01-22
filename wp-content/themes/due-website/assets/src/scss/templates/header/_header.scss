@@ -79,6 +79,23 @@
         }
         .btn-menu-navlink {
           transition: all 0.5s ease;
+          height: 21px;
+        }
+        #jeito-due {
+          display: flex;
+          align-items: center;
+          a {
+            display: flex;
+            align-items: flex-end;
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            align-items: center;
+          }
+          i {
+            display: flex;
+            align-items: center;
+          }
         }
       }
     }

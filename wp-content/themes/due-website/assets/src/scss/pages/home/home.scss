@@ -118,7 +118,7 @@ body.page-template-homepage {
                 .image-banner-hero {
                   height: 100%;
                   width: 100%;
-                  // object-fit: cover;
+                  object-fit: cover;
                   display: none;
 
                   @include media-breakpoint-up(md) {

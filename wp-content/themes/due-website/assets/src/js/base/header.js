@@ -3,7 +3,7 @@ function scrollsmooth() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis({ lerp: 0.07 });
+  const lenis = new Lenis({lerp: 0.07});
   lenis.on('scroll', ScrollTrigger.update);
 
   gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -34,7 +34,7 @@ function menuSticky() {
   });
 }
 function hoverDestinos() {
-  var tl = gsap.timeline({ paused: true });
+  var tl = gsap.timeline({paused: true});
   tl.to('header', {
     duration: 0.2,
     height: '590px',
@@ -172,6 +172,83 @@ function fabFixed() {
     customElements.define('fab-button', FabButton);
   }
 }
+function hoverJeitoDue() {
+  var tl = gsap.timeline({ paused: true });
+
+  // Define a animação para o header
+  tl.to('header', {
+    duration: 0.4,
+    height: '282px',
+    backgroundColor: '#faf2eb',
+    ease: 'power1.inOut',
+    onStart: function () {
+      $('header').addClass('hover-box-cards'); // Adiciona a classe no início da animação
+    },
+    onReverseComplete: function () {
+      $('header').removeClass('hover-box-cards'); // Remove a classe quando a animação reverte
+    },
+  });
+
+  // Define o stagger para os elementos dentro do header
+  tl.to('header .some-element', {
+    duration: 0.4,
+    opacity: 1,
+    stagger: 0.1, // Ajuste esse valor para controlar o intervalo entre as animações
+    ease: 'power1.inOut',
+  }, "+=0.3");
+
+  // Define o stagger para os elementos dentro do header
+  tl.to('header .some-image', {
+    duration: 0.4,
+    opacity: 1,
+    clipPath: 'inset(0 0 -100px -100px)',
+    ease: 'power1.inOut',
+  }, "-=1.8");
+
+  // Ao clicar no link com ID "jeito-due"
+  $('#jeito-due').on('click', function (e) {
+    e.preventDefault(); // Previne o comportamento padrão do link
+    $('header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
+
+    // Reinicia a animação do início
+    tl.restart();
+  });
+
+  // Quando o mouse sai do <header>
+  $('header').on('mouseleave', function () {
+    // Aplica uma animação de saída direta ao header
+    gsap.to('header', {
+      height: '72px', // Reverte a altura para o valor original
+      backgroundColor: 'initial', // Reverte a cor de fundo
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: function () {
+        $('header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
+        $('header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
+      },
+    });
+
+    // Remove a opacidade de todos os elementos simultaneamente
+    gsap.to('header .some-element', {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: function () {
+        tl.pause(0); // Reseta a timeline para o estado inicial
+      },
+    });
+
+    gsap.to('header .some-image', {
+      opacity: 0,
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: function () {
+        tl.pause(0); // Reseta a timeline para o estado inicial
+      },
+    });
+  });
+}
+
 
 function initHeader() {
   menuSticky();
@@ -182,6 +259,7 @@ function initHeader() {
   relaod();
   callForm();
   fabFixed();
+  hoverJeitoDue();
 }
 
-export { initHeader };
+export {initHeader};

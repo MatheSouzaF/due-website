@@ -1,3 +1,25 @@
+function ancoraDescubra() {
+    $('.ancora-descubra').on('click', function (e) {
+      var target = this.hash;
+      if (target && $(target).length) {
+        e.preventDefault();
+        var $target = $(target);
+        $('html, body')
+          .stop()
+          .animate(
+            {
+              scrollTop: $target.offset().top - 100,
+            },
+            900,
+            'swing'
+          );
+      } else {
+        window.location.href = this.href;
+      }
+    });
+  }
+
+
 function accordeon() {
     const accordionTriggers = document.querySelectorAll('[data-toggle="accordion"]');
 
@@ -57,6 +79,7 @@ function homeResort() {
 function initCredito() {
     accordeon();
     homeResort();
+    ancoraDescubra();
 }
 
 export { initCredito };

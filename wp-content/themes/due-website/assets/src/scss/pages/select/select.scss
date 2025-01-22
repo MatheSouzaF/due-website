@@ -535,6 +535,7 @@ body.page-template-select {
         @include media-breakpoint-up(md) {
           min-height: 435px;
           padding: 40px;
+          width: 100%;
         }
 
         .titulo-card-beneficios {
@@ -621,7 +622,7 @@ body.page-template-select {
             height: 528px;
           }
           @include media-breakpoint-up(xxl) {
-             height: calc(528px * 1.1);
+            height: calc(528px * 1.1);
           }
           .box-image {
             position: absolute;
@@ -1168,7 +1169,7 @@ body.page-template-select {
       }
     }
   }
-  .ancora-form{
+  .ancora-form {
     height: 1px;
     width: 100%;
   }

@@ -53,7 +53,7 @@ function generate_menu_links()
 					// Adiciona o SVG dentro de uma tag <i> se o ID for "jeito-due"
 					if ($id === 'jeito-due') {
 						echo '<i>
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
+								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
 									<path d="M0.999023 0.5L5.99902 5.5L10.999 0.5" stroke="#003b4b" stroke-width="0.714286"/>
 								</svg>
 							  </i>';

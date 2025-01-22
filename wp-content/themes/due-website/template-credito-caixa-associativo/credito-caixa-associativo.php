@@ -168,9 +168,6 @@ get_header();
 </section>
 
 <section class="duvidas-frequentes">
-    <h3 class="duvidas-anchor">
-        <?php echo get_field('duvidas_anchor'); ?>
-    </h3>
     <div class="main-duvidas-title-list">
         <div class="duvidas-main-title-subtitle">
             <h3 class="duvidas-title"><?php the_field('duvidas_title'); ?></h3>

@@ -34,6 +34,15 @@ body.page-template-template-empreendimentos {
         }
       }
     }
+    #jeito-due {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     &.sticky {
       .link-logo-menu {
         .box-svg-header {

@@ -53,8 +53,8 @@ function generate_menu_links()
 					// Adiciona o SVG dentro de uma tag <i> se o ID for "jeito-due"
 					if ($id === 'jeito-due') {
 						echo '<i>
-								<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-									<path d="M0.999023 0.5L5.99902 5.5L10.999 0.5" stroke="#003b4b" stroke-width="0.714286"/>
+								<svg class="rotate-svg" xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6" fill="none">
+									<path d="M0.999023 0.5L5.99902 5.5L10.999 0.5" stroke="#fff" stroke-width="0.714286"/>
 								</svg>
 							  </i>';
 					}
@@ -450,35 +450,46 @@ function generate_navbar()
 			endif; ?>
 		</div>
 		<div class="box-cards-jeito-due">
-			<div class="box-cards">
-				<?php
-				if (have_rows('cards_jeito_due', 'options')) :
-					while (have_rows('cards_jeito_due', 'options')) : the_row(); ?>
-						<div class="row-cards-jeito-due">
-							<div class="box-img">
-								<?php
-								$image = get_sub_field('imagem_cards_jeito_due');
-								if ($image) :
-									$image_url = $image['url'];
-									$image_alt = $image['alt']; ?>
-									<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
-								<?php endif; ?>
-							</div>
-							<div class="box-conteudo">
-								<div class="box-hover-jeito-due">
-									<p class="label-card-jeito"><?php echo get_sub_field('label_cards_jeito_due'); ?></p>
-									<p class="titulo-card-jeito-due"><?php echo get_sub_field('titulo_cards_jeito_due'); ?></p>
-									<p class="descricao-card-jeito-due"><?php echo get_sub_field('descricao_cards_jeito_due'); ?></p>
-								</div>
-								<div class="box-svg">
-									<svg xmlns="http://www.w3.org/2000/svg" width="42" height="8" viewBox="0 0 42 8" fill="none">
-										<path d="M41.0205 4.35355C41.2158 4.15829 41.2158 3.84171 41.0205 3.64645L37.8386 0.464466C37.6433 0.269204 37.3267 0.269204 37.1315 0.464466C36.9362 0.659728 36.9362 0.976311 37.1315 1.17157L39.9599 4L37.1315 6.82843C36.9362 7.02369 36.9362 7.34027 37.1315 7.53553C37.3267 7.7308 37.6433 7.7308 37.8386 7.53553L41.0205 4.35355ZM0.666992 4.5H40.667V3.5H0.666992V4.5Z" fill="#CB9E6C" />
-									</svg>
-								</div>
-							</div>
-						</div>
-				<?php endwhile;
-				endif; ?>
+			<div class="wrapper">
+
+				<div class="box-cards">
+					<?php
+					if (have_rows('cards_jeito_due', 'options')) :
+						while (have_rows('cards_jeito_due', 'options')) : the_row(); ?>
+							<?php
+							$link = get_sub_field('link_card_jeito_due','options');
+							if ($link) :
+								$link_url = $link['url'];
+								$link_title = $link['title'];
+								$link_target = $link['target'] ? $link['target'] : '_self'; ?>
+								<a class="row-cards-jeito-due " href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+
+									<div class="box-img some-image">
+										<?php
+										$image = get_sub_field('imagem_cards_jeito_due');
+										if ($image) :
+											$image_url = $image['url'];
+											$image_alt = $image['alt']; ?>
+											<img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+										<?php endif; ?>
+									</div>
+									<div class="box-conteudo">
+										<div class="box-hover-jeito-due">
+											<p class="label-card-jeito some-element"><?php echo get_sub_field('label_cards_jeito_due'); ?></p>
+											<p class="titulo-card-jeito-due some-element"><?php echo get_sub_field('titulo_cards_jeito_due'); ?></p>
+											<p class="descricao-card-jeito-due founders-grotesk some-element"><?php echo get_sub_field('descricao_cards_jeito_due'); ?></p>
+										</div>
+										<div class="box-svg some-element">
+											<svg xmlns="http://www.w3.org/2000/svg" width="42" height="8" viewBox="0 0 42 8" fill="none">
+												<path d="M41.0205 4.35355C41.2158 4.15829 41.2158 3.84171 41.0205 3.64645L37.8386 0.464466C37.6433 0.269204 37.3267 0.269204 37.1315 0.464466C36.9362 0.659728 36.9362 0.976311 37.1315 1.17157L39.9599 4L37.1315 6.82843C36.9362 7.02369 36.9362 7.34027 37.1315 7.53553C37.3267 7.7308 37.6433 7.7308 37.8386 7.53553L41.0205 4.35355ZM0.666992 4.5H40.667V3.5H0.666992V4.5Z" fill="#CB9E6C" />
+											</svg>
+										</div>
+									</div>
+								</a>
+							<?php endif; ?>
+					<?php endwhile;
+					endif; ?>
+				</div>
 			</div>
 		</div>
 	</header>

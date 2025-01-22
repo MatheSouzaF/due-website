@@ -111,6 +111,9 @@ body.page-template-select {
       @include media-breakpoint-up(md) {
         left: initial;
         right: 72px;
+        width: 8vw;
+        height: 8vw;
+        transition: 0.6s;
       }
     }
   }
@@ -616,6 +619,9 @@ body.page-template-select {
           overflow: hidden;
           @include media-breakpoint-up(md) {
             height: 528px;
+          }
+          @include media-breakpoint-up(xxl) {
+             height: calc(528px * 1.1);
           }
           .box-image {
             position: absolute;
@@ -1161,5 +1167,9 @@ body.page-template-select {
         }
       }
     }
-  }   
+  }
+  .ancora-form{
+    height: 1px;
+    width: 100%;
+  }
 }

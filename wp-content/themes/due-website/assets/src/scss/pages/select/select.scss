@@ -106,13 +106,13 @@ body.page-template-select {
     }
     .svg-banner {
       position: absolute;
-      bottom: 42px;
+      bottom: 20px;
       left: 20px;
       @include media-breakpoint-up(md) {
         left: initial;
         right: 72px;
         width: 8vw;
-        height: 8vw;
+        height: 5vw;
         transition: 0.6s;
       }
     }

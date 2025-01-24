@@ -1,11 +1,9 @@
-
-
 function swiperEmpreendimentos() {
   new Swiper('.swiper-excelencia', {
     slidesPerView: 1.1,
     spaceBetween: 24,
     breakpoints: {
-      1024: {
+      768: {
         slidesPerView: 2.2,
       },
       1440: {
@@ -153,7 +151,6 @@ function scrollTop() {
   $('.scroll-top').on('click', function (event) {
     event.preventDefault();
     var target = $(this).attr('href');
-    console.warn('matheus');
     if ($(target).length) {
       $('html, body').animate(
         {
@@ -164,13 +161,18 @@ function scrollTop() {
     }
   });
 }
+function openWhats() {
+  $('#open-whats').click(function () {
+    $('.floating-button--close').remove();
+  });
+}
 function initSelect() {
   swiperEmpreendimentos();
   videoFull();
   formRD();
   scrollTop();
   animationFooter();
-  swiperMove();
+  openWhats();
 }
 
 export {initSelect};

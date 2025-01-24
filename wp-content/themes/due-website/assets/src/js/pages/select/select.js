@@ -3,7 +3,7 @@ function swiperEmpreendimentos() {
     slidesPerView: 1.1,
     spaceBetween: 24,
     breakpoints: {
-      1024: {
+      768: {
         slidesPerView: 2.2,
       },
       1440: {
@@ -164,7 +164,6 @@ function scrollTop() {
 function openWhats() {
   $('#open-whats').click(function () {
     $('.floating-button--close').remove();
-    console.warn('matheus');
   });
 }
 function initSelect() {

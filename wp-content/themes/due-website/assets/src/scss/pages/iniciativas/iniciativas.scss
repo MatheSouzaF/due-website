@@ -33,6 +33,15 @@ body.page-template-iniciativas {
         }
       }
     }
+    #jeito-due {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     &.sticky {
       .link-logo-menu {
         .box-svg-header {

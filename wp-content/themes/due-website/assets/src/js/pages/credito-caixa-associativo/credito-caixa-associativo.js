@@ -1,3 +1,10 @@
+function openWhats() {
+  $('.open-whats-credito').click(function () {
+    $('.floating-button--close').remove();
+  });
+}
+
+
 function ancoraDescubra() {
     $('.ancora-descubra').on('click', function (e) {
       var target = this.hash;
@@ -80,6 +87,7 @@ function initCredito() {
     accordeon();
     homeResort();
     ancoraDescubra();
+    openWhats();
 }
 
 export { initCredito };

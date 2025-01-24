@@ -55,15 +55,19 @@ function initializeGaleriaSwiper() {
   new Swiper('.swiper-galeria', {
     slidesPerView: 1.2,
     spaceBetween: 8,
-    navigation: {
-      nextEl: '.swiper-button-next-galeria',
-      prevEl: '.swiper-button-prev-galeria',
-    },
     breakpoints: {
       1024: {
         slidesPerView: 2.6,
         spaceBetween: 19,
       },
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
   });
 }
@@ -80,10 +84,64 @@ function swiperAuto() {
     effect: 'fade',
   });
 }
+
+function growNumbers() {
+  function numbers() {
+    // Função para incrementar o número
+    function increment(span, finalVal, duration) {
+      var currVal = 0;
+      var increment = finalVal / (duration / 10); // Define o incremento
+      var interval = setInterval(function () {
+        currVal += increment;
+        if (currVal >= finalVal) {
+          currVal = finalVal;
+          clearInterval(interval);
+        }
+        span.innerHTML = Math.floor(currVal); // Atualiza o valor do span
+      }, 10); // Define o intervalo de tempo em milissegundos
+    }
+
+    // Seleciona todos os spans com a classe "numbers"
+    var numberSpans = document.querySelectorAll('.numero');
+
+    // Itera sobre cada span e define o incremento
+    numberSpans.forEach(function (span) {
+      var finalVal = parseInt(span.innerHTML, 10);
+      span.innerHTML = '0'; // Define o valor inicial como 0
+      increment(span, finalVal, 2000); // Passa a duração de 1000 ms (1 segundo)
+    });
+  }
+  gsap.from('.transformando-vidas', {
+    scrollTrigger: {
+      trigger: '.transformando-vidas',
+      start: 'top+=500 center',
+      scrub: true,
+      onEnter: numbers,
+    },
+  });
+}
+
+function bannerZoom() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animação do zoom suave
+  gsap.to('.imagem-banner img, .imagem-banner video', {
+    scrollTrigger: {
+      trigger: '.imagem-banner',
+      start: 'center center', // Quando o topo do componente entra no centro da viewport
+      end: 'bottom center', // Quando o final do componente sai do centro da viewport
+      scrub: 1, // Faz com que a animação seja sincronizada com o scroll
+    },
+    scale: 1.2, // Define o nível de zoom
+    ease: 'power1.out',
+  });
+}
 function initPage() {
   videoFull();
   initializeGaleriaSwiper();
   swiperAuto();
+  bannerZoom();
+  growNumbers();
 }
 
 export {initPage};

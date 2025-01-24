@@ -72,7 +72,7 @@ body.page-template-select {
           line-height: 140%; /* 30.8px */
           letter-spacing: 0.44px;
           margin-bottom: 40px;
-          font-size: 16px;
+          font-size: 18px;
           max-width: 90%;
           @include media-breakpoint-up(md) {
             max-width: 600px;
@@ -124,6 +124,7 @@ body.page-template-select {
       padding: 120px 0;
     }
     overflow: hidden;
+    margin-top: -1px;
     .titulo-invista {
       font-style: normal;
       font-weight: 400;

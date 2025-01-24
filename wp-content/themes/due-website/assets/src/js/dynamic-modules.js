@@ -103,7 +103,11 @@ function initDynamicModules() {
       selector: '.page-template-select',
       modulePath: './pages/select/select.js',
       moduleFunction: 'initSelect',
-      
+    },
+    {
+      selector: '.page-template-single-iniciativas',
+      modulePath: './pages/iniciativas/single-inciativas.js',
+      moduleFunction: 'initPage',
     },
   ];
 

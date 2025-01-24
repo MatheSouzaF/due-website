@@ -153,15 +153,20 @@ $tituloGaleria = get_field('titulo_atividade_que_realizamos');
                                     <a class="box-img" href="<?php echo esc_url($image_url); ?>" data-fancybox="gallery" data-caption="<?php echo esc_attr($image_alt); ?>">
                                         <img class="imgGrow" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                                     </a>
+
                                 <?php endif; ?>
+
+
+                                <p class="label-slide"><?php echo get_sub_field('titulo_imagem_atividade_que_realizamos'); ?></p>
                             </div>
                         <?php endwhile; ?>
                     <?php endif; ?>
                 </div>
 
-                <!-- Adicione botões de navegação -->
+                <div class="swiper-pagination"></div>
+
                 <div class="box-buttons">
-                    <svg class="swiper-button-next-galeria" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                    <svg class="swiper-button-next desktop-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                         viewBox="0 0 80 80" fill="none">
                         <circle cx="40" cy="40" r="40" fill="white" />
                         <path
@@ -169,14 +174,21 @@ $tituloGaleria = get_field('titulo_atividade_que_realizamos');
                             fill="#003B4B" />
                     </svg>
 
-                    <svg class="swiper-button-prev-galeria" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
+                    <svg class="swiper-button-next mobile-next" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                        <path d="M1.99984 0L0.589844 1.41L5.16984 6L0.589844 10.59L1.99984 12L7.99984 6L1.99984 0Z" fill="#51848C" />
+                    </svg>
+                    <svg class="swiper-button-prev desktop-prev" xmlns="http://www.w3.org/2000/svg" width="80" height="80"
                         viewBox="0 0 80 80" fill="none">
                         <circle cx="40" cy="40" r="40" transform="matrix(-1 0 0 1 80 0)" fill="white" />
                         <path
                             d="M56 39C56.5523 39 57 39.4477 57 40C57 40.5523 56.5523 41 56 41L56 39ZM23.2929 40.7071C22.9024 40.3166 22.9024 39.6834 23.2929 39.2929L29.6569 32.9289C30.0474 32.5384 30.6805 32.5384 31.0711 32.9289C31.4616 33.3195 31.4616 33.9526 31.0711 34.3431L25.4142 40L31.0711 45.6569C31.4616 46.0474 31.4616 46.6805 31.0711 47.0711C30.6805 47.4616 30.0474 47.4616 29.6569 47.0711L23.2929 40.7071ZM56 41L24 41L24 39L56 39L56 41Z"
                             fill="#003B4B" />
                     </svg>
+                    <svg class="swiper-button-prev mobile-prev" xmlns="http://www.w3.org/2000/svg" width="8" height="12" viewBox="0 0 8 12" fill="none">
+                        <path d="M7.41 1.41L6 0L0 6L6 12L7.41 10.59L2.83 6L7.41 1.41Z" fill="#51848C" />
+                    </svg>
                 </div>
+
             </div>
         </div>
     </div>

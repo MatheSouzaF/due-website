@@ -20,7 +20,7 @@ function swiperEmpreendimentos() {
     },
   });
   new Swiper('.swiper-invista-empreendimento', {
-    slidesPerView: 1.1,
+    slidesPerView: 1.05,
     spaceBetween: 24,
     breakpoints: {
       1024: {

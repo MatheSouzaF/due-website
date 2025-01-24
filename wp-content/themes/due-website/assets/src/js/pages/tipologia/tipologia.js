@@ -619,6 +619,7 @@ function cardHover() {
   });
 }
 
+
 function initTipologia() {
   tipologiaPage();
   cardHover();

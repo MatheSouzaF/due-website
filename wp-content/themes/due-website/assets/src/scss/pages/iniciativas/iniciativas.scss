@@ -33,6 +33,15 @@ body.page-template-iniciativas {
         }
       }
     }
+    #jeito-due {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     &.sticky {
       .link-logo-menu {
         .box-svg-header {
@@ -208,7 +217,7 @@ body.page-template-iniciativas {
       }
     }
   }
-  .vila-alafia {
+  .instituto-neymar {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -219,7 +228,7 @@ body.page-template-iniciativas {
       gap: 140px;
     }
     &.background-open {
-      background-color: $background;
+      background-color: #FAF2EB;
     }
     @include media-breakpoint-up(md) {
       padding: 180px 0 120px;
@@ -239,7 +248,7 @@ body.page-template-iniciativas {
       @include media-breakpoint-up(lg) {
         padding: 0 0 0 80px;
       }
-      .box-svg-vila-alafia {
+      .box-svg-instituto-neymar {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
           transform: translateX(-180%);
@@ -250,7 +259,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .titulo-vila-alafia {
+      .titulo-instituto-neymar {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 300;
@@ -269,7 +278,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .descricao-vila-alafia {
+      .descricao-instituto-neymar {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
           transform: translateX(-180%);
@@ -295,7 +304,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .link-vila-alafia-desktop {
+      .link-instituto-neymar-desktop {
         transition: 0.6s;
         display: none;
 
@@ -313,7 +322,7 @@ body.page-template-iniciativas {
     .box-conteudo-right {
       width: 100%;
       transition: 0.6s;
-      .image-vila-alafia {
+      .image-instituto-neymar {
         width: 100%;
         height: 315px;
         object-fit: cover;
@@ -332,7 +341,7 @@ body.page-template-iniciativas {
         }
       }
 
-      .link-vila-alafia-mobile {
+      .link-instituto-neymar-mobile {
         display: none;
         @include media-breakpoint-down(md) {
           display: flex;
@@ -353,8 +362,7 @@ body.page-template-iniciativas {
       }
     }
   }
-
-  .instituto-padre-arlindo {
+  .vila-alafia {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -382,7 +390,7 @@ body.page-template-iniciativas {
       @include media-breakpoint-up(lg) {
         padding: 0 80px 0 0;
       }
-      .box-svg-instituto-padre-arlindo {
+      .box-svg-vila-alafia {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
           transform: translateX(300%);
@@ -393,7 +401,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .titulo-instituto-padre-arlindo {
+      .titulo-vila-alafia {
         color: $due-tertiary;
         font-style: normal;
         font-weight: 300;
@@ -413,7 +421,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .descricao-instituto-padre-arlindo {
+      .descricao-vila-alafia {
         max-width: 440px;
         transition: 0.6s;
         @include media-breakpoint-up(md) {
@@ -440,7 +448,7 @@ body.page-template-iniciativas {
           }
         }
       }
-      .link-instituto-padre-arlindo-desktop {
+      .link-instituto-vila-alafia {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
           transform: translateX(300%);
@@ -471,6 +479,152 @@ body.page-template-iniciativas {
       @include media-breakpoint-up(md) {
         height: 90vh;
       }
+      .link-instituto-vila-alafia {
+        display: none;
+        @include media-breakpoint-down(md) {
+          display: flex;
+        }
+      }
+      @include media-breakpoint-down(md) {
+        min-height: initial;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 0 20px;
+        align-items: center;
+      }
+      .button {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .instituto-padre-arlindo {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 48px 0;
+    transition: 0.6s;
+
+    @include media-breakpoint-up(desk) {
+      gap: 140px;
+    }
+    &.background-open {
+      background-color: #FAF2EB;
+    }
+    @include media-breakpoint-up(md) {
+      padding: 180px 0 120px;
+      flex-direction: row;
+    }
+    .box-conteudo-left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      justify-content: center;
+      padding: 0 20px;
+      @include media-breakpoint-up(sm) {
+        padding: 0 0 0 48px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        padding: 0 0 0 80px;
+      }
+      .box-svg-instituto-padre-arlindo {
+        transition: 0.6s;
+        @include media-breakpoint-up(md) {
+          transform: translateX(-180%);
+        }
+        &.fade-left {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+      }
+      .titulo-instituto-padre-arlindo {
+        color: $due-tertiary;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 140%;
+        letter-spacing: 0.64px;
+        font-size: 24px;
+        transition: 0.6s;
+        max-width: 890px;
+        @include media-breakpoint-up(md) {
+          transform: translateX(-180%);
+          font-size: calc(1rem + 1.6vw);
+        }
+        &.fade-left {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+      }
+      .descricao-instituto-padre-arlindo {
+        transition: 0.6s;
+        @include media-breakpoint-up(md) {
+          transform: translateX(-180%);
+        }
+
+        &.fade-left {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+        p {
+          font-family: 'founders-grotesk', sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: 140%;
+          letter-spacing: 0.36px;
+        }
+        @include media-breakpoint-up(md) {
+          max-width: 700px;
+          p {
+            font-size: calc(1rem + 0.35vw);
+          }
+        }
+      }
+      .link-instituto-padre-arlindo-desktop {
+        transition: 0.6s;
+        display: none;
+
+        @include media-breakpoint-up(md) {
+          transform: translateX(-180%);
+          display: flex;
+        }
+        &.fade-left {
+          @include media-breakpoint-up(md) {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+    .box-conteudo-right {
+      width: 100%;
+      transition: 0.6s;
+      .image-instituto-padre-arlindo {
+        width: 100%;
+        height: 315px;
+        object-fit: cover;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+        &.imgPath {
+          clip-path: inset(0 0 -100px -100px);
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+        @include media-breakpoint-up(md) {
+          height: 90vh;
+        }
+      }
+
       .link-instituto-padre-arlindo-mobile {
         display: none;
         @include media-breakpoint-down(md) {
@@ -498,38 +652,35 @@ body.page-template-iniciativas {
     flex-direction: column;
     gap: 40px;
     padding: 48px 0;
-    transition: 0.6s;
 
+    @include media-breakpoint-up(md) {
+      padding: 120px 0;
+      flex-direction: row-reverse;
+    }
     @include media-breakpoint-up(desk) {
       gap: 140px;
-    }
-    &.background-open {
-      background-color: $background;
-    }
-    @include media-breakpoint-up(md) {
-      padding: 180px 0 120px;
-      flex-direction: row;
     }
     .box-conteudo-left {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 40px;
-      justify-content: center;
       padding: 0 20px;
+      justify-content: center;
+      transition: 0.6s;
       @include media-breakpoint-up(sm) {
-        padding: 0 0 0 48px;
+        padding: 0 48px;
       }
 
       @include media-breakpoint-up(lg) {
-        padding: 0 0 0 80px;
+        padding: 0 80px 0 0;
       }
       .box-svg-associacao-superacao {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
         }
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -545,22 +696,24 @@ body.page-template-iniciativas {
         transition: 0.6s;
         max-width: 890px;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
           font-size: calc(1rem + 1.6vw);
         }
-        &.fade-left {
+
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
       }
       .descricao-associacao-superacao {
+        max-width: 440px;
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
         }
 
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -582,41 +735,35 @@ body.page-template-iniciativas {
       }
       .link-associacao-superacao-desktop {
         transition: 0.6s;
-        display: none;
-
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
-          display: flex;
+          transform: translateX(300%);
         }
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
       }
     }
     .box-conteudo-right {
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
       width: 100%;
-      transition: 0.6s;
-      .image-associacao-superacao {
-        width: 100%;
-        height: 315px;
-        object-fit: cover;
-        clip-path: inset(0 0 100% 0);
-        transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
-        &.imgPath {
-          clip-path: inset(0 0 -100px -100px);
-        }
-        img {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
-        }
-        @include media-breakpoint-up(md) {
-          height: 90vh;
-        }
-      }
 
+      &.imgPath {
+        clip-path: inset(0 0 -100px -100px);
+      }
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      @include media-breakpoint-up(md) {
+        height: 90vh;
+      }
       .link-associacao-superacao-mobile {
         display: none;
         @include media-breakpoint-down(md) {
@@ -644,35 +791,38 @@ body.page-template-iniciativas {
     flex-direction: column;
     gap: 40px;
     padding: 48px 0;
+    transition: 0.6s;
 
-    @include media-breakpoint-up(md) {
-      padding: 120px 0;
-      flex-direction: row-reverse;
-    }
     @include media-breakpoint-up(desk) {
       gap: 140px;
+    }
+    &.background-open {
+      background-color: #FAF2EB;
+    }
+    @include media-breakpoint-up(md) {
+      padding: 180px 0 120px;
+      flex-direction: row;
     }
     .box-conteudo-left {
       width: 100%;
       display: flex;
       flex-direction: column;
       gap: 40px;
-      padding: 0 20px;
       justify-content: center;
-      transition: 0.6s;
+      padding: 0 20px;
       @include media-breakpoint-up(sm) {
-        padding: 0 48px;
+        padding: 0 0 0 48px;
       }
 
       @include media-breakpoint-up(lg) {
-        padding: 0 80px 0 0;
+        padding: 0 0 0 80px;
       }
-      .box-svg {
+      .box-svg-escola {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
         }
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -688,24 +838,22 @@ body.page-template-iniciativas {
         transition: 0.6s;
         max-width: 890px;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
           font-size: calc(1rem + 1.6vw);
         }
-
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
       }
       .descricao-escola-formacao-due {
-        max-width: 440px;
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
         }
 
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -725,39 +873,44 @@ body.page-template-iniciativas {
           }
         }
       }
-      .link-escola-desktop {
+      .link-escola-formacao-due-desktop {
         transition: 0.6s;
+        display: none;
+
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
+          display: flex;
         }
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
-        @include media-breakpoint-down(md) {
-          display: none;
-        }
       }
     }
     .box-conteudo-right {
-      clip-path: inset(0 0 100% 0);
-      transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
       width: 100%;
-      height: 315px;
-
-      &.imgPath {
-        clip-path: inset(0 0 -100px -100px);
-      }
-      img {
-        height: 100%;
+      transition: 0.6s;
+      .image-escola-formacao-due {
         width: 100%;
+        height: 315px;
         object-fit: cover;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+        &.imgPath {
+          clip-path: inset(0 0 -100px -100px);
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+        @include media-breakpoint-up(md) {
+          height: 90vh;
+        }
       }
-      @include media-breakpoint-up(md) {
-        height: 90vh;
-      }
-      .link-escola-mobile {
+
+      .link-escola-formacao-due-mobile {
         display: none;
         @include media-breakpoint-down(md) {
           display: flex;
@@ -781,16 +934,15 @@ body.page-template-iniciativas {
 
   .incentivo-empreendedorismo {
     transition: 0.6s;
-    &.background-open {
-      background-color: $background;
-    }
+ 
     display: flex;
     flex-direction: column;
     gap: 40px;
     padding: 48px 0;
+
     @include media-breakpoint-up(md) {
-      padding: 120px 0 120px;
-      flex-direction: row;
+      padding: 120px 0;
+      flex-direction: row-reverse;
     }
     @include media-breakpoint-up(desk) {
       gap: 140px;
@@ -800,22 +952,22 @@ body.page-template-iniciativas {
       display: flex;
       flex-direction: column;
       gap: 40px;
+      padding: 0 20px;
       justify-content: center;
       transition: 0.6s;
-      padding: 0 20px;
       @include media-breakpoint-up(sm) {
-        padding: 0 0 0 48px;
+        padding: 0 48px;
       }
 
       @include media-breakpoint-up(lg) {
-        padding: 0 0 0 80px;
+        padding: 0 80px 0 0;
       }
-      .box-svg {
+      .box-svg-incentivo-empreendedorismo {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
         }
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -831,10 +983,11 @@ body.page-template-iniciativas {
         transition: 0.6s;
         max-width: 890px;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
           font-size: calc(1rem + 1.6vw);
         }
-        &.fade-left {
+
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -844,10 +997,10 @@ body.page-template-iniciativas {
         max-width: 440px;
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
+          transform: translateX(300%);
         }
 
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -867,27 +1020,26 @@ body.page-template-iniciativas {
           }
         }
       }
-      .link-empreendedorismo-desktop {
+      .link-incentivo-empreendedorismo-desktop {
         transition: 0.6s;
-        display: none;
-
         @include media-breakpoint-up(md) {
-          transform: translateX(-180%);
-          display: flex;
+          transform: translateX(300%);
         }
-        &.fade-left {
+        &.fade-right {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
+        @include media-breakpoint-down(md) {
+          display: none;
+        }
       }
     }
     .box-conteudo-right {
-      width: 100%;
-      height: 315px;
-      object-fit: cover;
       clip-path: inset(0 0 100% 0);
       transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+      width: 100%;
+
       &.imgPath {
         clip-path: inset(0 0 -100px -100px);
       }
@@ -899,7 +1051,7 @@ body.page-template-iniciativas {
       @include media-breakpoint-up(md) {
         height: 90vh;
       }
-      .link-empreendedorismo-mobile {
+      .link-incentivo-empreendedorismo-mobile {
         display: none;
         @include media-breakpoint-down(md) {
           display: flex;
@@ -913,6 +1065,11 @@ body.page-template-iniciativas {
         padding: 0 20px;
         align-items: center;
       }
+      .button {
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -921,12 +1078,17 @@ body.page-template-iniciativas {
     flex-direction: column;
     gap: 40px;
     padding: 48px 0;
-    @include media-breakpoint-up(md) {
-      padding: 120px 0 120px;
-      flex-direction: row-reverse;
-    }
+    transition: 0.6s;
+
     @include media-breakpoint-up(desk) {
       gap: 140px;
+    }
+    &.background-open {
+      background-color: #FAF2EB;
+    }
+    @include media-breakpoint-up(md) {
+      padding: 180px 0 120px;
+      flex-direction: row;
     }
     .box-conteudo-left {
       width: 100%;
@@ -936,15 +1098,18 @@ body.page-template-iniciativas {
       justify-content: center;
       padding: 0 20px;
       @include media-breakpoint-up(sm) {
-        padding: 0 48px 0 0;
+        padding: 0 0 0 48px;
       }
 
-      .box-svg {
+      @include media-breakpoint-up(lg) {
+        padding: 0 0 0 80px;
+      }
+      .box-svg-proposito {
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
         }
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -960,23 +1125,22 @@ body.page-template-iniciativas {
         transition: 0.6s;
         max-width: 890px;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
           font-size: calc(1rem + 1.6vw);
         }
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
       }
       .descricao-proposito {
-        max-width: 440px;
         transition: 0.6s;
         @include media-breakpoint-up(md) {
-          transform: translateX(300%);
+          transform: translateX(-180%);
         }
 
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
@@ -998,36 +1162,41 @@ body.page-template-iniciativas {
       }
       .link-proposito-desktop {
         transition: 0.6s;
+        display: none;
+
         @include media-breakpoint-up(md) {
-          transform: translateX(400%);
+          transform: translateX(-180%);
+          display: flex;
         }
-        &.fade-right {
+        &.fade-left {
           @include media-breakpoint-up(md) {
             transform: translateX(0);
           }
         }
-        @include media-breakpoint-down(md) {
-          display: none;
-        }
       }
     }
     .box-conteudo-right {
-      clip-path: inset(0 0 100% 0);
-      transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
-      &.imgPath {
-        clip-path: inset(0 0 -100px -100px);
-      }
-      height: 100%;
-
       width: 100%;
-      img {
-        height: 100%;
+      transition: 0.6s;
+      .image-proposito {
         width: 100%;
+        height: 315px;
         object-fit: cover;
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+        &.imgPath {
+          clip-path: inset(0 0 -100px -100px);
+        }
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+        @include media-breakpoint-up(md) {
+          height: 90vh;
+        }
       }
-      @include media-breakpoint-up(md) {
-        height: 90vh;
-      }
+
       .link-proposito-mobile {
         display: none;
         @include media-breakpoint-down(md) {

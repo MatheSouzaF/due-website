@@ -762,6 +762,9 @@ body.single-tipo_single_page {
             .gallery-planta {
               .slick-list {
                 height: 500px;
+                @include media-breakpoint-down(md) {
+                  margin-bottom: 20px;
+                }
               }
             }
             .gallery-thumbs-plantas {
@@ -989,9 +992,9 @@ body.single-tipo_single_page {
         .swiper-slide {
           padding-bottom: 20px;
           border-bottom: 1px solid #fff;
-          height: 510px;
+          height: 570px;
           @include media-breakpoint-up(md) {
-            height: 550px;
+            height: 510px;
           }
           .tipologia-card {
             position: relative;
@@ -1086,6 +1089,11 @@ body.single-tipo_single_page {
           }
 
           &.lancamento {
+            .estado-tipologia {
+              background-color: #cb9e6c;
+            }
+          }
+          &.lançamento  {
             .estado-tipologia {
               background-color: #cb9e6c;
             }

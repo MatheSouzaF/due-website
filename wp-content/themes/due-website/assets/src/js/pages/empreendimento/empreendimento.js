@@ -531,11 +531,18 @@ function encanteSe() {
     },
   });
 }
-
+function openWhatsEmpreendimentos() {
+  $('.call-whats-open').click(function () {
+    $('.floating-button--close').remove();
+    console.warn("matheus");
+    
+  });
+}
 
 async function initEmpreendimento() {
   await empreendimentoPage();
   encanteSe();
+  openWhatsEmpreendimentos();
 }
 
 export { initEmpreendimento };

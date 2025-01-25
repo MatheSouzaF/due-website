@@ -63,6 +63,7 @@ function filterExperiencias() {
       swipers[id] = new Swiper('#' + id, {
         slidesPerView: 1.1,
         a11y: false,
+        spaceBetween: 16,
 
         navigation: {
           nextEl: '.swiper-btn-next',
@@ -71,7 +72,6 @@ function filterExperiencias() {
         breakpoints: {
           768: {
             slidesPerView: 3.4,
-            spaceBetween: 16,
           },
         },
       });

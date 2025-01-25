@@ -43,6 +43,62 @@ get_header();
         </div>
 
     </section>
+    <section class="instituto-neymar" id="instituto-neymar">
+
+
+        <div class="box-conteudo-left">
+
+            <div class="box-svg box-svg-instituto-neymar">
+                <?php $svg_file = get_field('svg_instituto_neymar');
+                if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
+                    echo '<i class="element">';
+                    echo file_get_contents($svg_file['url']);
+                    echo '</i>';
+                } ?>
+            </div>
+            <h2 class="titulo-instituto-neymar terminal-test"><?php echo get_field('titulo_instituto_neymar'); ?></h2>
+            <div class="descricao-instituto-neymar"><?php echo get_field('descricao_instituto_neymar'); ?></div>
+            <?php
+            $link = get_field('link_instituto_neymar');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+            ?>
+                <a class="button link-instituto-neymar-desktop gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+
+
+
+        </div>
+        <div class="box-conteudo-right box-conteudo-right-instituto-neymar">
+            <?php
+            $image = get_field('imagem_instituto_neymar');
+            if ($image) :
+                $image_url = $image['url'];
+                $image_alt = $image['alt']; ?>
+                <img class="image-instituto-neymar" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+            <?php endif; ?>
+            <?php
+            $link = get_field('link_instituto_neymar');
+            if ($link) :
+                $link_url = $link['url'];
+                $link_title = $link['title'];
+                $link_target = $link['target'] ? $link['target'] : '_self';
+                $gtm_link_associacao = strtolower(str_replace(' ', '-', $link_title));
+
+            ?>
+                <a class="button link-instituto-neymar-mobile gtm-<?php echo esc_attr($gtm_link_associacao); ?>" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>">
+                    <p class=""><?php echo esc_html($link_title); ?></p>
+                </a>
+            <?php endif; ?>
+
+        </div>
+    </section>
+
     <section class="vila-alafia" id="vila-alafia">
 
 
@@ -134,7 +190,7 @@ get_header();
             if ($image) :
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                <img class="image-instituto-padre-arlindo" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
             <?php
             $link = get_field('link_instituto_padre_arlindo');
@@ -185,7 +241,7 @@ get_header();
 
 
         </div>
-        <div class="box-conteudo-right">
+        <div class="box-conteudo-right box-conteudo-right-associacao-superacao">
             <?php
             $image = get_field('imagem_associacao_superacao');
             if ($image) :
@@ -245,7 +301,7 @@ get_header();
             if ($image) :
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                <img class="image-escola-formacao-due" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
             <?php
             $link = get_field('link_escola_de_formacao_due');
@@ -349,7 +405,7 @@ get_header();
             if ($image) :
                 $image_url = $image['url'];
                 $image_alt = $image['alt']; ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
+                <img class="image-proposito" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
             <?php endif; ?>
             <?php
             $link = get_field('link_proposito');

@@ -35,6 +35,11 @@ function initDynamicModules() {
       moduleFunction: 'initPage',
     },
     {
+      selector: '.page-template-credito-caixa-associativo',
+      modulePath: './pages/credito-caixa-associativo/credito-caixa-associativo.js',
+      moduleFunction: 'initCredito',
+    },
+    {
       selector: '.page-template-jeito-due',
       modulePath: './pages/jeito-due/jeito-due.js',
       moduleFunction: 'initJeitoDUE',
@@ -93,6 +98,16 @@ function initDynamicModules() {
       selector: '#realizamos-sonho',
       modulePath: './base/realizamos-sonhos.js',
       moduleFunction: 'initRealizamos',
+    },
+    {
+      selector: '.page-template-select',
+      modulePath: './pages/select/select.js',
+      moduleFunction: 'initSelect',
+    },
+    {
+      selector: '.page-template-single-iniciativas',
+      modulePath: './pages/iniciativas/single-inciativas.js',
+      moduleFunction: 'initPage',
     },
   ];
 

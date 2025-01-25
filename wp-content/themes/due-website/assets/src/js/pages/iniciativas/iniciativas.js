@@ -38,15 +38,15 @@ function banner() {
   );
 }
 
-function animationVila() {
-  const logoSVG = document.querySelector('.box-svg-vila-alafia');
-  const tituloEscola = document.querySelector('.titulo-vila-alafia');
-  const descricaoEscola = document.querySelector('.descricao-vila-alafia');
-  const linkEscola = document.querySelector('.link-vila-alafia-desktop');
-  const imgEscola = document.querySelector('.image-vila-alafia');
+function animationNeymar() {
+  const logoSVG = document.querySelector('.box-svg-instituto-neymar');
+  const tituloEscola = document.querySelector('.titulo-instituto-neymar');
+  const descricaoEscola = document.querySelector('.descricao-instituto-neymar');
+  const linkEscola = document.querySelector('.link-instituto-neymar-desktop');
+  const imgEscola = document.querySelector('.image-instituto-neymar');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
-      trigger: '.vila-alafia',
+      trigger: '.instituto-neymar',
       start: 'top-=400',
     },
   });
@@ -93,41 +93,15 @@ function animationVila() {
       '0'
     );
 }
-function backgroundVila() {
-  gsap.registerPlugin(ScrollTrigger);
-  const btnAppears = document.querySelector('.vila-alafia');
-
-  function bgOpen() {
-    if (btnAppears) {
-      btnAppears.classList.add('background-open'); // Adiciona a classe 'background-open'
-    }
-  }
-
-  function bgClose() {
-    if (btnAppears) {
-      btnAppears.classList.remove('background-open'); // Remove a classe 'background-open'
-    }
-  }
-
-  gsap.from('.vila-alafia', {
-    scrollTrigger: {
-      trigger: '.vila-alafia',
-      start: 'top-=300 center',
-      scrub: true,
-      onEnter: bgOpen,
-      onLeaveBack: bgClose,
-    },
-  });
-}
-function animationInstitutoSuperacao() {
-  const logoSVG = document.querySelector('.box-svg-instituto-padre-arlindo');
-  const tituloAssociacao = document.querySelector('.titulo-instituto-padre-arlindo');
-  const descricaoAssociacao = document.querySelector('.descricao-instituto-padre-arlindo');
-  const linkAssociacao = document.querySelector('.link-instituto-padre-arlindo-desktop');
-  const imgAssociacao = document.querySelector('.box-conteudo-right-instituto-padre-arlindo');
+function animationVila() {
+  const logoSVG = document.querySelector('.box-svg-vila-alafia');
+  const tituloAssociacao = document.querySelector('.titulo-vila-alafia');
+  const descricaoAssociacao = document.querySelector('.descricao-vila-alafia');
+  const linkAssociacao = document.querySelector('.link-vila-alafia-desktop');
+  const imgAssociacao = document.querySelector('.box-conteudo-right-vila-alafia');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
-      trigger: '.instituto-padre-arlindo',
+      trigger: '.vila-alafia',
       start: 'top-=400',
     },
   });
@@ -174,9 +148,9 @@ function animationInstitutoSuperacao() {
       '0'
     );
 }
-function backgroundAssociacaoSuperacao() {
+function backgroundVila() {
   gsap.registerPlugin(ScrollTrigger);
-  const btnAppears = document.querySelector('.associacao-superacao');
+  const btnAppears = document.querySelector('.instituto-neymar');
 
   function bgOpen() {
     if (btnAppears) {
@@ -190,9 +164,90 @@ function backgroundAssociacaoSuperacao() {
     }
   }
 
-  gsap.from('.associacao-superacao', {
+  gsap.from('.instituto-neymar', {
     scrollTrigger: {
-      trigger: '.associacao-superacao',
+      trigger: '.instituto-neymar',
+      start: 'top-=300 center',
+      scrub: true,
+      onEnter: bgOpen,
+      onLeaveBack: bgClose,
+    },
+  });
+}
+function animationInstitutoSuperacao() {
+  const logoSVG = document.querySelector('.box-svg-instituto-padre-arlindo');
+  const tituloEscola = document.querySelector('.titulo-instituto-padre-arlindo');
+  const descricaoEscola = document.querySelector('.descricao-instituto-padre-arlindo');
+  const linkEscola = document.querySelector('.link-instituto-padre-arlindo-desktop');
+  const imgEscola = document.querySelector('.image-instituto-padre-arlindo');
+  let TLFADE = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.instituto-padre-arlindo',
+      start: 'top-=400',
+    },
+  });
+
+  TLFADE.from(logoSVG, {
+    duration: 1,
+    ease: 'power.in',
+    onStart: () => logoSVG.classList.add('fade-left'),
+  })
+    .from(
+      tituloEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => tituloEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      descricaoEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => descricaoEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      linkEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => linkEscola.classList.add('fade-left'),
+      },
+      '-=0.7'
+    )
+    .from(
+      imgEscola,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => imgEscola.classList.add('imgPath'),
+      },
+      '0'
+    );
+}
+function backgroundAssociacaoSuperacao() {
+  gsap.registerPlugin(ScrollTrigger);
+  const btnAppears = document.querySelector('.instituto-padre-arlindo');
+
+  function bgOpen() {
+    if (btnAppears) {
+      btnAppears.classList.add('background-open'); // Adiciona a classe 'background-open'
+    }
+  }
+
+  function bgClose() {
+    if (btnAppears) {
+      btnAppears.classList.remove('background-open'); // Remove a classe 'background-open'
+    }
+  }
+
+  gsap.from('.instituto-padre-arlindo', {
+    scrollTrigger: {
+      trigger: '.instituto-padre-arlindo',
       start: 'top-=300 center',
       scrub: true,
       onEnter: bgOpen,
@@ -205,7 +260,7 @@ function animationAssociacaoSuperacao() {
   const tituloAssociacao = document.querySelector('.titulo-associacao-superacao');
   const descricaoAssociacao = document.querySelector('.descricao-associacao-superacao');
   const linkAssociacao = document.querySelector('.link-associacao-superacao-desktop');
-  const imgAssociacao = document.querySelector('.image-associacao-superacao');
+  const imgAssociacao = document.querySelector('.box-conteudo-right-associacao-superacao');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
       trigger: '.associacao-superacao',
@@ -216,14 +271,14 @@ function animationAssociacaoSuperacao() {
   TLFADE.from(logoSVG, {
     duration: 1,
     ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-left'),
+    onStart: () => logoSVG.classList.add('fade-right'),
   })
     .from(
       tituloAssociacao,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => tituloAssociacao.classList.add('fade-left'),
+        onStart: () => tituloAssociacao.classList.add('fade-right'),
       },
       '-=0.7'
     )
@@ -232,7 +287,7 @@ function animationAssociacaoSuperacao() {
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => descricaoAssociacao.classList.add('fade-left'),
+        onStart: () => descricaoAssociacao.classList.add('fade-right'),
       },
       '-=0.7'
     )
@@ -241,7 +296,7 @@ function animationAssociacaoSuperacao() {
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => linkAssociacao.classList.add('fade-left'),
+        onStart: () => linkAssociacao.classList.add('fade-right'),
       },
       '-=0.7'
     )
@@ -260,8 +315,8 @@ function animationEscola() {
   const logoSVG = document.querySelector('.box-svg-escola');
   const tituloEscola = document.querySelector('.titulo-escola-formacao-due');
   const descricaoEscola = document.querySelector('.descricao-escola-formacao-due');
-  const linkEscola = document.querySelector('.link-escola-desktop');
-  const imgEscola = document.querySelector('.box-conteudo-right-escola');
+  const linkEscola = document.querySelector('.link-escola-formacao-due-desktop');
+  const imgEscola = document.querySelector('.image-escola-formacao-due');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
       trigger: '.escola-formacao-due',
@@ -272,14 +327,14 @@ function animationEscola() {
   TLFADE.from(logoSVG, {
     duration: 1,
     ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-right'),
+    onStart: () => logoSVG.classList.add('fade-left'),
   })
     .from(
       tituloEscola,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => tituloEscola.classList.add('fade-right'),
+        onStart: () => tituloEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
@@ -288,7 +343,7 @@ function animationEscola() {
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => descricaoEscola.classList.add('fade-right'),
+        onStart: () => descricaoEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
@@ -297,7 +352,7 @@ function animationEscola() {
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => linkEscola.classList.add('fade-right'),
+        onStart: () => linkEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
@@ -314,10 +369,10 @@ function animationEscola() {
 
 function animationIncentivo() {
   const logoSVG = document.querySelector('.box-svg-incentivo-empreendedorismo');
-  const tituloincentivo = document.querySelector('.titulo-incentivo-empreendedorismo');
-  const descricaoincentivo = document.querySelector('.descricao-incentivo-empreendedorismo');
-  const linkEmpreendedorismo = document.querySelector('.link-empreendedorismo-desktop');
-  const imgincentivo = document.querySelector('.box-conteudo-right-incentivo-empreendedorismo');
+  const tituloAssociacao = document.querySelector('.titulo-incentivo-empreendedorismo');
+  const descricaoAssociacao = document.querySelector('.descricao-incentivo-empreendedorismo');
+  const linkAssociacao = document.querySelector('.link-incentivo-empreendedorismo-desktop');
+  const imgAssociacao = document.querySelector('.box-conteudo-right-incentivo-empreendedorismo');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
       trigger: '.incentivo-empreendedorismo',
@@ -328,49 +383,48 @@ function animationIncentivo() {
   TLFADE.from(logoSVG, {
     duration: 1,
     ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-left'),
+    onStart: () => logoSVG.classList.add('fade-right'),
   })
     .from(
-      tituloincentivo,
+      tituloAssociacao,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => tituloincentivo.classList.add('fade-left'),
+        onStart: () => tituloAssociacao.classList.add('fade-right'),
       },
       '-=0.7'
     )
     .from(
-      descricaoincentivo,
+      descricaoAssociacao,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => descricaoincentivo.classList.add('fade-left'),
-      },
-      '-=0.7'
-    )
-
-    .from(
-      linkEmpreendedorismo,
-      {
-        duration: 1,
-        ease: 'power.in',
-        onStart: () => linkEmpreendedorismo.classList.add('fade-left'),
+        onStart: () => descricaoAssociacao.classList.add('fade-right'),
       },
       '-=0.7'
     )
     .from(
-      imgincentivo,
+      linkAssociacao,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => imgincentivo.classList.add('imgPath'),
+        onStart: () => linkAssociacao.classList.add('fade-right'),
+      },
+      '-=0.7'
+    )
+    .from(
+      imgAssociacao,
+      {
+        duration: 1,
+        ease: 'power.in',
+        onStart: () => imgAssociacao.classList.add('imgPath'),
       },
       '0'
     );
 }
 function backgroundIncentivo() {
   gsap.registerPlugin(ScrollTrigger);
-  const bg = document.querySelector('.incentivo-empreendedorismo');
+  const bg = document.querySelector('.escola-formacao-due');
 
   function bgOpen() {
     if (bg) {
@@ -384,9 +438,35 @@ function backgroundIncentivo() {
     }
   }
 
-  gsap.from('.incentivo-empreendedorismo', {
+  gsap.from('.escola-formacao-due', {
     scrollTrigger: {
-      trigger: '.incentivo-empreendedorismo',
+      trigger: '.escola-formacao-due',
+      start: 'top-=300 center',
+      scrub: true,
+      onEnter: bgOpen,
+      onLeaveBack: bgClose,
+    },
+  });
+}
+function backgroundProposito() {
+  gsap.registerPlugin(ScrollTrigger);
+  const bg = document.querySelector('.proposito');
+
+  function bgOpen() {
+    if (bg) {
+      bg.classList.add('background-open'); // Adiciona a classe 'background-open'
+    }
+  }
+
+  function bgClose() {
+    if (bg) {
+      bg.classList.remove('background-open'); // Remove a classe 'background-open'
+    }
+  }
+
+  gsap.from('.proposito', {
+    scrollTrigger: {
+      trigger: '.proposito',
       start: 'top-=300 center',
       scrub: true,
       onEnter: bgOpen,
@@ -397,10 +477,10 @@ function backgroundIncentivo() {
 
 function animationProposito() {
   const logoSVG = document.querySelector('.box-svg-proposito');
-  const tituloProposito = document.querySelector('.titulo-proposito');
-  const descricaoProposito = document.querySelector('.descricao-proposito');
-  const linkProposito = document.querySelector('.link-proposito');
-  const imgProposito = document.querySelector('.box-conteudo-right-proposito');
+  const tituloEscola = document.querySelector('.titulo-proposito');
+  const descricaoEscola = document.querySelector('.descricao-proposito');
+  const linkEscola = document.querySelector('.link-proposito-desktop');
+  const imgEscola = document.querySelector('.image-proposito');
   let TLFADE = gsap.timeline({
     scrollTrigger: {
       trigger: '.proposito',
@@ -411,42 +491,41 @@ function animationProposito() {
   TLFADE.from(logoSVG, {
     duration: 1,
     ease: 'power.in',
-    onStart: () => logoSVG.classList.add('fade-right'),
+    onStart: () => logoSVG.classList.add('fade-left'),
   })
     .from(
-      tituloProposito,
+      tituloEscola,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => tituloProposito.classList.add('fade-right'),
+        onStart: () => tituloEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
     .from(
-      descricaoProposito,
+      descricaoEscola,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => descricaoProposito.classList.add('fade-right'),
+        onStart: () => descricaoEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
     .from(
-      linkProposito,
+      linkEscola,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => linkProposito.classList.add('fade-right'),
+        onStart: () => linkEscola.classList.add('fade-left'),
       },
       '-=0.7'
     )
-
     .from(
-      imgProposito,
+      imgEscola,
       {
         duration: 1,
         ease: 'power.in',
-        onStart: () => imgProposito.classList.add('imgPath'),
+        onStart: () => imgEscola.classList.add('imgPath'),
       },
       '0'
     );
@@ -461,16 +540,11 @@ function animationSelosCertificados() {
     gsap.to(card, {
       delay: i * 0.3,
       duration: 1.5,
-      ease: 'power2.out', 
+      ease: 'power2.out',
       onStart: () => card.classList.add('clipPath-selos-certificados'),
     });
   });
-  
 }
-
-
-
-
 
 function selosAccordion() {
   jQuery('.hover-descricao-mobile').first().css('display', 'block');
@@ -502,6 +576,8 @@ function initIniciativas() {
   animationInstitutoSuperacao();
   backgroundVila();
   animationVila();
+  animationNeymar();
+  backgroundProposito();
 }
 
 export {initIniciativas};

@@ -243,8 +243,6 @@ function modalJeitoDue() {
   });
 }
 
-
-
 function faq() {
   // Deixa o primeiro desWrapper com display block
   jQuery('.desWrapper').first().css('display', 'block');
@@ -276,8 +274,108 @@ function bannerSinttaStay() {
     },
     effect: 'fade',
   });
+  const swiperIniciativas = new Swiper('.swiper-iniciativas', {
+    slidesPerView: 1.05,
+    spaceBetween: 16,
+    draggable: true,
+    breakpoints: {
+      767: {
+        slidesPerView: 2.4,
+      },
+    },
+    navigation: {
+      nextEl: '.swiper-btn-next',
+      prevEl: '.swiper-btn-prev',
+    },
+  });
 }
+function videoFull() {
+  $('.box-video').on('click', function (event) {
+    event.preventDefault(); // Evita que o link siga o href
 
+    // Animação de entrada
+    gsap.to('.box-youtube-vivencie', {
+      duration: 0.8,
+      scale: 1,
+      opacity: 1,
+      ease: 'power3.out',
+      onStart: function () {
+        $('.box-youtube-vivencie').css('pointer-events', 'all'); // Permite interação
+      },
+    });
+
+    // Adiciona a classe 'vivencie-modal' ao elemento '.vivencie'
+    $('.sobre-a-due').addClass('vivencie-modal');
+    $('.box-youtube-vivencie').addClass('box-youtube-vivencie-modal');
+
+    lenis.stop(); // Pausa o scroll suave
+  });
+
+  $('.svg-close').on('click', function (event) {
+    event.preventDefault(); // Evita que o link siga o href
+
+    // Função para parar o vídeo
+    function stopYouTubeVideo() {
+      var $iframe = $('#youtube-player');
+      var src = $iframe.attr('src'); // Captura o src atual
+      $iframe.attr('src', ''); // Remove o src para parar o vídeo
+      $iframe.attr('src', src); // Reatribui o src para resetar o player
+    }
+
+    stopYouTubeVideo();
+    // Animação de saída
+    gsap.to('.box-youtube-vivencie', {
+      duration: 0.8,
+      scale: 0,
+      opacity: 0,
+      ease: 'power3.in',
+      onComplete: function () {
+        $('.box-youtube-vivencie').css('pointer-events', 'none'); // Remove interação
+      },
+    });
+
+    // Remove a classe 'vivencie-modal' do elemento '.vivencie'
+    $('.sobre-a-due').removeClass('vivencie-modal');
+    $('.box-youtube-vivencie').removeClass('box-youtube-vivencie-modal');
+
+    lenis.start(); // Retoma o scroll suave
+  });
+}
+function cursoVideo() {
+  const $cursor = $('<div id="custom-cursor"></div>');
+  $('body').append($cursor);
+
+  // Estilizando o cursor customizado
+  $('#custom-cursor').css({
+    position: 'absolute',
+    width: '80px',
+    height: '80px',
+    'background-image': `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="0.5" y="0.5" width="79" height="79" rx="39.5" fill="white"/><rect x="0.5" y="0.5" width="79" height="79" rx="39.5" stroke="white"/><path d="M37 48V36.6316V32L48.7895 40L37 48Z" stroke="#003B4B"/></svg>')`,
+    'background-size': 'contain',
+    'pointer-events': 'none', // Evita interferências no clique
+    'z-index': 9999,
+    display: 'none', // Escondido por padrão
+  });
+
+  // Exibindo e movimentando o cursor na área da seção
+  $('.box-video').on('mouseenter', function () {
+    $('#custom-cursor').fadeIn();
+    $('body').css('cursor', 'none'); // Esconde o cursor padrão
+  });
+
+  $('.box-video').on('mousemove', function (e) {
+    gsap.to('#custom-cursor', {
+      x: e.pageX - 40, // Centraliza o SVG no ponteiro
+      y: e.pageY - 40,
+      duration: 0.2,
+    });
+  });
+
+  $('.box-video').on('mouseleave', function () {
+    $('#custom-cursor').fadeOut();
+    $('body').css('cursor', 'default'); // Restaura o cursor padrão
+  });
+}
 function initJeitoDUE() {
   bannerJeitoDUE();
   imagemGrow();
@@ -289,6 +387,8 @@ function initJeitoDUE() {
   modalJeitoDue();
   faq();
   bannerSinttaStay();
+  videoFull();
+  cursoVideo();
 }
 
 export {initJeitoDUE};

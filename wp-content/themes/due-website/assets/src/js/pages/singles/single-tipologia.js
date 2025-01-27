@@ -82,25 +82,29 @@ function setupPlantSliders() {
     const sliderFor = contentElement.find('.slider-for');
     const sliderNav = contentElement.find('.slider-nav');
 
-    if (!sliderFor.hasClass('slick-initialized')) {
-      sliderFor.slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: sliderNav,
-      });
-    }
+    if (sliderFor.length && sliderNav.length) {
+      if (!sliderFor.hasClass('slick-initialized')) {
+        sliderFor.slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          asNavFor: sliderNav, // Usando a instância do sliderNav
+        });
+      }
 
-    if (!sliderNav.hasClass('slick-initialized')) {
-      sliderNav.slick({
-        slidesToShow: 'auto',
-        slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        dots: true,
-        centerMode: true,
-        focusOnSelect: true,
-      });
+      if (!sliderNav.hasClass('slick-initialized')) {
+        sliderNav.slick({
+          slidesToShow: 3, // Alterar para um número fixo, como 3, caso o 'auto' esteja causando problemas
+          slidesToScroll: 1,
+          asNavFor: sliderFor, // Usando a instância do sliderFor
+          dots: true,
+          centerMode: true,
+          focusOnSelect: true,
+        });
+      }
+    } else {
+      console.error('Slider elements not found in the DOM.');
     }
   }
 }

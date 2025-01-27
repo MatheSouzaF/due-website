@@ -386,6 +386,8 @@ function generate_navbar()
 								</div>
 							</div>
 						</div>
+						
+
 					</div>
 				</ul>
 			</div>
@@ -457,7 +459,7 @@ function generate_navbar()
 					if (have_rows('cards_jeito_due', 'options')) :
 						while (have_rows('cards_jeito_due', 'options')) : the_row(); ?>
 							<?php
-							$link = get_sub_field('link_card_jeito_due','options');
+							$link = get_sub_field('link_card_jeito_due', 'options');
 							if ($link) :
 								$link_url = $link['url'];
 								$link_title = $link['title'];

@@ -711,7 +711,7 @@ body.page-template-jeito-due {
         font-size: 32px;
         font-style: normal;
         font-weight: 300;
-        line-height: 140%; /* 44.8px */
+        line-height: 100%; /* 44.8px */
         letter-spacing: 0.64px;
         margin-bottom: 16px;
       }
@@ -720,7 +720,7 @@ body.page-template-jeito-due {
         font-style: normal;
         font-weight: 300;
         color: #002b36;
-        line-height: 140%; /* 25.2px */
+        line-height: 100%; /* 25.2px */
         letter-spacing: 0.36px;
         margin-bottom: 40px;
       }
@@ -758,7 +758,7 @@ body.page-template-jeito-due {
               height: 100%;
               background-color: rgba(0, 59, 75, 0.7);
             }
-            height: 415px;
+            height: 480px;
             width: 49%;
           }
           @include media-breakpoint-up(xxl) {
@@ -1023,7 +1023,7 @@ body.page-template-jeito-due {
           padding: 0 0 0 80px;
         }
         .box-svg {
-          margin-bottom: 20px;
+          margin-bottom: 48px;
         }
         .label-sintta {
           color: #cb9e6c;
@@ -1055,7 +1055,7 @@ body.page-template-jeito-due {
           font-weight: 300;
           line-height: 140%;
           letter-spacing: 0.32px;
-          margin-bottom: 48px;
+          margin-bottom: 24px;
 
           @include media-breakpoint-up(md) {
             font-size: 22px;

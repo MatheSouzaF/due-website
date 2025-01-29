@@ -280,7 +280,7 @@ function bannerSinttaStay() {
     draggable: true,
     breakpoints: {
       767: {
-        slidesPerView: 2.4,
+        slidesPerView: 3.4,
       },
     },
     navigation: {

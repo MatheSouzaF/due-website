@@ -9,7 +9,6 @@ function formRD() {
         $form.find('input[type="text"], input[type="email"], input[type="tel"], textarea').val('');
         $form.find('input[type="checkbox"], input[type="radio"]').prop('checked', false);
         $form.find('select').val('');
-        z;
 
         $boxSucesso.addClass('visible');
 

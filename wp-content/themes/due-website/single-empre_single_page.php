@@ -939,12 +939,6 @@ get_header();
         echo '</div>';
     }
     ?>
-
-
-    <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
-    <?php get_template_part('template-invista/invista'); ?>
-
-
     <?php
     $tituloObra = get_field('titulo_status_de_obra');
     ?>
@@ -1046,6 +1040,12 @@ get_header();
             </div>
         </div>
     <?php endif; ?>
+
+    <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
+    <?php get_template_part('template-invista/invista'); ?>
+
+
+
 
     <div class="call-form" id="call-form"></div>
 

@@ -6,7 +6,7 @@ function initializeTipologiasSwiper() {
     spaceBetween: 24,
     breakpoints: {
       1024: {
-        slidesPerView: 3.8,
+        slidesPerView: 3.2,
       },
     },
     navigation: {

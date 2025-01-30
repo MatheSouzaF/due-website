@@ -42,7 +42,7 @@ $tituloResultado = get_field('titulo_resultados_que_falam');
             </div>
             <div class="box-conteudo-resultado conteudo-imagem">
                 <?php
-                $videoSrc = get_field('video_de_background_resultados_que_falam');
+                $videoSrc = get_field('link_do_video');
                 ?>
 
                 <video class="video-resultado" autoplay="autoplay" src="<?php echo $videoSrc; ?>" muted loop play></video>

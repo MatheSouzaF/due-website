@@ -946,10 +946,10 @@ body.page-template-jeito-due {
         .box-repetidor-sintta {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 16px;
           margin-bottom: 48px;
           @include media-breakpoint-up(md) {
-            max-width: 65%;
+            max-width: 75%;
           }
           .row-topicos {
             display: flex;
@@ -979,7 +979,7 @@ body.page-template-jeito-due {
         width: 100%;
         height: 314px;
         @include media-breakpoint-up(md) {
-          height: 90vh;
+          height: 100vh;
           max-width: 50%;
         }
         .swiper-sintta {
@@ -1005,7 +1005,7 @@ body.page-template-jeito-due {
       position: relative;
       z-index: 1;
       padding-bottom: 64px;
-      flex-direction: column-reverse;
+      flex-direction: column;
       align-items: center;
       @include media-breakpoint-up(md) {
         flex-direction: row;
@@ -1066,10 +1066,10 @@ body.page-template-jeito-due {
         .box-repetidor-sintta {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 16px;
           margin-bottom: 48px;
           @include media-breakpoint-up(md) {
-            max-width: 65%;
+            max-width: 75%;
           }
           .row-topicos {
             display: flex;
@@ -1099,7 +1099,7 @@ body.page-template-jeito-due {
         width: 100%;
         height: 314px;
         @include media-breakpoint-up(md) {
-          height: 90vh;
+          height: 100vh;
           max-width: 50%;
         }
         .swiper-sintta {
@@ -1191,7 +1191,7 @@ body.page-template-jeito-due {
           }
           @include media-breakpoint-up(desk) {
             right: -20%;
-            transform: translate(50%, -40%);
+            transform: translate(50%, -50%);
             width: 100%;
           }
 

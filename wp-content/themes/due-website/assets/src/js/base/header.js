@@ -190,15 +190,15 @@ function hoverJeitoDue() {
   });
 
   // Define o stagger para os elementos dentro do header
-  tl.to('header .some-element', {
+  tl.to('.header .some-element', {
     duration: 0.4,
     opacity: 1,
     stagger: 0.1, // Ajuste esse valor para controlar o intervalo entre as animações
     ease: 'power1.inOut',
   }, "+=0.3");
 
-  // Define o stagger para os elementos dentro do header
-  tl.to('header .some-image', {
+  // Define o stagger para os elementos dentro do .header
+  tl.to('.header .some-image', {
     duration: 0.4,
     opacity: 1,
     clipPath: 'inset(0 0 -100px -100px)',
@@ -208,28 +208,28 @@ function hoverJeitoDue() {
   // Ao clicar no link com ID "jeito-due"
   $('#jeito-due').on('click', function (e) {
     e.preventDefault(); // Previne o comportamento padrão do link
-    $('header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
+    $('.header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
 
     // Reinicia a animação do início
     tl.restart();
   });
 
-  // Quando o mouse sai do <header>
-  $('header').on('mouseleave', function () {
-    // Aplica uma animação de saída direta ao header
-    gsap.to('header', {
+  // Quando o mouse sai do <.header>
+  $('.header').on('mouseleave', function () {
+    // Aplica uma animação de saída direta ao .header
+    gsap.to('.header', {
       height: '72px', // Reverte a altura para o valor original
       backgroundColor: 'initial', // Reverte a cor de fundo
       duration: 0.2,
       ease: 'power1.inOut',
       onComplete: function () {
-        $('header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
-        $('header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
+        $('.header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
+        $('.header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
       },
     });
 
     // Remove a opacidade de todos os elementos simultaneamente
-    gsap.to('header .some-element', {
+    gsap.to('.header .some-element', {
       opacity: 0,
       duration: 0.2,
       ease: 'power1.inOut',
@@ -238,7 +238,7 @@ function hoverJeitoDue() {
       },
     });
 
-    gsap.to('header .some-image', {
+    gsap.to('.header .some-image', {
       opacity: 0,
       duration: 0.2,
       ease: 'power1.inOut',

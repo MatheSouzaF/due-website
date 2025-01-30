@@ -51,6 +51,27 @@
             "placeholder": ""
         },
         {
+            "key": "field_679ba74a94476",
+            "label": "Exibir no App Sintta",
+            "name": "exibir_no_app_sintta",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Quando marcado, esse empreendimento aparecerá no app Sintta",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_66bb9c5be1639",
             "label": "Este empreendimento possui tipologias em formato Studio?",
             "name": "e_um_studio",
@@ -349,5 +370,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1731341796
+    "modified": 1738254416
 }

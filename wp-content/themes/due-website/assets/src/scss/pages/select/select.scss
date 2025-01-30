@@ -63,6 +63,7 @@ body.page-template-select {
           font-size: 32px;
           @include media-breakpoint-up(md) {
             font-size: calc(1rem + 1.8vw);
+            padding-top: 70px;
           }
         }
         .descricao-banner {

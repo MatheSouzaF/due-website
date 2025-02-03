@@ -236,6 +236,8 @@ get_header();
                 endif;
                 ?>
             </div>
+            <div class="swiper-pagination"></div>
+
             <div class="box-buttons">
 
                 <svg class="swiper-btn-next" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">

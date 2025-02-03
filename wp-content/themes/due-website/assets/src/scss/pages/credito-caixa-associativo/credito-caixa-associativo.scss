@@ -4,7 +4,48 @@
 body.page-template-credito-caixa-associativo {
 
     background-color: #FAF2EA;
-
+    .hover-jeito-due {
+        .button-menu {
+          color: $due-tertiary !important;
+        }
+        .link-logo-menu {
+          .box-svg-header {
+            svg {
+              path {
+                fill: $due-tertiary;
+              }
+            }
+          }
+        }
+    
+        .box-sidebar {
+          .navlinks {
+            .btn-menu-navlink {
+              .button-menu {
+                &::after {
+                  background-color: $due-tertiary;
+                }
+              }
+            }
+            #jeito-due {
+              .button-menu {
+                &::after {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+        #jeito-due {
+          i {
+            svg {
+              path {
+                stroke: #003b4b;
+              }
+            }
+          }
+        }
+      }
     main {
         overflow-x: initial;
     }

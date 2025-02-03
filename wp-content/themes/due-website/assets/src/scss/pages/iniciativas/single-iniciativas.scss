@@ -228,6 +228,17 @@ body.page-template-single-iniciativas {
         @include media-breakpoint-up(xxl) {
           height: calc(500px * 1.15);
         }
+        &::after {
+          content: '';
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          transition: 0.6s;
+          left: 0;
+          z-index: 1;
+          position: absolute;
+          background: rgba(0, 0, 0, 0.3);
+        }
         .video-resultado,
         .img-resultado {
           height: 100%;
@@ -238,6 +249,7 @@ body.page-template-single-iniciativas {
           left: 0;
           top: 0;
         }
+
         .video-resultado {
           z-index: 1;
         }
@@ -361,7 +373,7 @@ body.page-template-single-iniciativas {
       }
       .titulo-transformando-vidas {
         position: absolute;
-        z-index: 2;
+        z-index: 3;
         top: 50%;
         left: 20px;
         transform: translate(-0%, -50%);
@@ -381,6 +393,14 @@ body.page-template-single-iniciativas {
         }
         @include media-breakpoint-up(desk) {
         }
+      }
+      .shadow-text{
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        top: 0;
       }
     }
     .box-numeros {

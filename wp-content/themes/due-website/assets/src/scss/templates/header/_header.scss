@@ -331,7 +331,7 @@
           }
         }
         .conjunto-links {
-          margin-bottom: 77px;
+          // margin-bottom: 77px;
           @media (max-height: 760px) {
             margin-bottom: 0;
           }
@@ -364,7 +364,8 @@
                 font-size: 22px;
                 transition: 0.6s;
                 @include media-breakpoint-up(md) {
-                  font-size: calc(1rem + 1.1vw);
+                  font-size: 22px;
+
                 }
                 @media (max-height: 760px) {
                   font-size: 22px;
@@ -383,7 +384,7 @@
             flex-direction: column;
             gap: 28px;
             @include media-breakpoint-up(md) {
-              gap: 34px;
+              gap: 20px;
             }
             .button-menu {
               color: $due-tertiary;

@@ -276,10 +276,15 @@ function bannerSinttaStay() {
   });
   const swiperIniciativas = new Swiper('.swiper-iniciativas', {
     slidesPerView: 1.05,
-    spaceBetween: 16,
+    spaceBetween: 7,
     draggable: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
     breakpoints: {
       767: {
+        spaceBetween: 16,
         slidesPerView: 3.4,
       },
     },

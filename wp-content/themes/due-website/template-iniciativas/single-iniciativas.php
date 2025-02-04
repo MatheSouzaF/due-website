@@ -42,7 +42,7 @@ $tituloResultado = get_field('titulo_resultados_que_falam');
             </div>
             <div class="box-conteudo-resultado conteudo-imagem">
                 <?php
-                $videoSrc = get_field('video_de_background_resultados_que_falam');
+                $videoSrc = get_field('link_do_video');
                 ?>
 
                 <video class="video-resultado" autoplay="autoplay" src="<?php echo $videoSrc; ?>" muted loop play></video>
@@ -75,6 +75,7 @@ $tituloResultado = get_field('titulo_resultados_que_falam');
                     $image_alt = $image['alt']; ?>
                     <img class="img-resultado" src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                 <?php endif; ?>
+
                 <div class="box-svg">
                     <?php $svg_file = get_field('svg_resultados_que_falam');
                     if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
@@ -111,6 +112,16 @@ $tituloTransformando = get_field('titulo_transformando_vidas');
             <h2 class="titulo-transformando-vidas">
                 <?php echo get_field('titulo_transformando_vidas'); ?>
             </h2>
+            <svg class="shadow-text" width="946" height="550" viewBox="0 0 946 550" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="473" cy="275" rx="473" ry="275" fill="url(#paint0_radial_6141_502)" fill-opacity="0.5" />
+                <defs>
+                    <radialGradient id="paint0_radial_6141_502" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(473 275) rotate(90) scale(275 473)">
+                        <stop />
+                        <stop offset="1" stop-opacity="0" />
+                    </radialGradient>
+                </defs>
+            </svg>
+
         </div>
         <div class="box-numeros">
             <div class="repetidor">

@@ -101,6 +101,7 @@ class EmpreendimentoController
                 $photo = get_field('foto_empreendimento');
                 $video = get_field('video_empreendimento');
                 $link = get_field('link_da_pagina_desse_empreendimento');
+                $visibleInApp = get_field('exibir_no_app_sintta', $projectId);
 
                 if (!empty($exclude)) {
                     $excludeIds = array_map('trim', explode(',', $exclude));
@@ -120,7 +121,8 @@ class EmpreendimentoController
                         'offer' => $offer,
                         'photo' => $photo,
                         'video' => $video,
-                        'link' => $link
+                        'link' => $link,
+                        'visibleInApp' => $visibleInApp,
                     );
                 }
             }
@@ -264,4 +266,3 @@ class EmpreendimentoController
         return $projects; // Retorna o array de empreendimentos
     }
 }
-

@@ -54,6 +54,11 @@ get_header();
                 <div id="descubra-lottie-animation" class="descubra-lottie-animation"></div>
             </div>
         </div>
+        <div class="descubra-animation-mobile">
+            <div id="descubra-animation-mobile" class="descubra-animation-mobile">
+                <div id="descubra-lottie-animation-mobile" class="descubra-lottie-animation-mobile"></div>
+            </div>
+        </div>
 
         <div class="descubra-notas-rodape">
             <?php

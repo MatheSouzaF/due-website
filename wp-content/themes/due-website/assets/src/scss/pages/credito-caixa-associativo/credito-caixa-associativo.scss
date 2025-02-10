@@ -4,48 +4,53 @@
 body.page-template-credito-caixa-associativo {
 
     background-color: #FAF2EA;
+
     .hover-jeito-due {
         .button-menu {
-          color: $due-tertiary !important;
+            color: $due-tertiary !important;
         }
+
         .link-logo-menu {
-          .box-svg-header {
-            svg {
-              path {
-                fill: $due-tertiary;
-              }
+            .box-svg-header {
+                svg {
+                    path {
+                        fill: $due-tertiary;
+                    }
+                }
             }
-          }
         }
-    
+
         .box-sidebar {
-          .navlinks {
-            .btn-menu-navlink {
-              .button-menu {
-                &::after {
-                  background-color: $due-tertiary;
+            .navlinks {
+                .btn-menu-navlink {
+                    .button-menu {
+                        &::after {
+                            background-color: $due-tertiary;
+                        }
+                    }
                 }
-              }
-            }
-            #jeito-due {
-              .button-menu {
-                &::after {
-                  width: 100%;
+
+                #jeito-due {
+                    .button-menu {
+                        &::after {
+                            width: 100%;
+                        }
+                    }
                 }
-              }
             }
-          }
         }
+
         #jeito-due {
-          i {
-            svg {
-              path {
-                stroke: #003b4b;
-              }
+            i {
+                svg {
+                    path {
+                        stroke: #003b4b;
+                    }
+                }
             }
-          }
         }
-      }
+    }
+
     main {
         overflow-x: initial;
     }
@@ -191,13 +196,10 @@ body.page-template-credito-caixa-associativo {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 120px 80px 200px;
+        padding: 120px 0px 200px;
         max-width: 130vh;
         margin: 0 auto;
-        /*         #descubra-como-funciona{
-            height: 120px;
 
-        } */
 
 
         .descubra-title-subtitle {
@@ -238,27 +240,23 @@ body.page-template-credito-caixa-associativo {
         .descubra-animation-notas {
             width: 100%;
 
-            .marcacao {
-                background-color: $grey-600;
-                margin: 30px 0 30px;
-                height: 50vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
             .descubra-animation {
+                display: block;
 
                 margin: 64px 0 19px;
 
-                @media (max-width: 768px) {
-                    margin: 24px 0 19px;
+                @media (max-width: 540px) {
+                    display: none;
                 }
             }
 
             .descubra-animation-mobile {
                 display: none;
-                margin: 64px 0 19px
+
+                @media (max-width: 540px) {
+                    margin: 30px 0 19px;
+                    display: block;
+                }
             }
 
             .descubra-notas-rodape {

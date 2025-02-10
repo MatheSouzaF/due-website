@@ -80,12 +80,38 @@ function homeResort() {
     },
   });
 }
+function homeResortMob() {
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('descubra-lottie-animation-mobile'),
+    renderer: 'svg',
+    loop: false, // Inicialmente, sem loop
+    autoplay: false, // A reprodução será controlada manualmente
+    path: '/wp-content/themes/due-website/assets/src/lottie/due_infografico-mob.json',
+
+  });
+
+  animation.addEventListener('complete', function () {
+    animation.playSegments([145, 185], true);
+  });
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  ScrollTrigger.create({
+    trigger: '.descubra-como-funciona',
+    start: 'top center',
+    once: true,
+    onEnter: () => {
+      animation.play();
+    },
+  });
+}
 
 
 
 function initCredito() {
   accordeon();
   homeResort();
+  homeResortMob()
   ancoraDescubra();
   openWhats();
 }

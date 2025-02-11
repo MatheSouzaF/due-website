@@ -205,8 +205,8 @@ function hoverJeitoDue() {
     ease: 'power1.inOut',
   }, "-=1.8");
 
-  // Ao clicar no link com ID "jeito-due"
-  $('#jeito-due').on('click', function (e) {
+  // Ao entrar no link com ID "jeito-due"
+  $('#jeito-due').on('mouseenter', function (e) {
     e.preventDefault(); // Previne o comportamento padrão do link
     $('.header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
 

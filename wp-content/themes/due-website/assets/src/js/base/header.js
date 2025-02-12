@@ -205,14 +205,28 @@ function hoverJeitoDue() {
     ease: 'power1.inOut',
   }, "-=1.8");
 
-  // Ao clicar no link com ID "jeito-due"
-  $('#jeito-due').on('click', function (e) {
+  // Ao entrar no link com ID "jeito-due"
+  $('#jeito-due').on('mouseenter', function (e) {
     e.preventDefault(); // Previne o comportamento padrão do link
     $('.header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
 
     // Reinicia a animação do início
     tl.restart();
   });
+
+  
+  $('#destinos').on('mouseenter', function (e) {
+    gsap.to('#jeito-due', {
+      height: '72px', // Reverte a altura para o valor original
+      backgroundColor: 'initial', // Reverte a cor de fundo
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: function () {
+        $('.header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
+        $('.header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
+      },
+    }
+  )});
 
   // Quando o mouse sai do <.header>
   $('.header').on('mouseleave', function () {

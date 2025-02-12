@@ -214,6 +214,20 @@ function hoverJeitoDue() {
     tl.restart();
   });
 
+  
+  $('#destinos').on('mouseenter', function (e) {
+    gsap.to('#jeito-due', {
+      height: '72px', // Reverte a altura para o valor original
+      backgroundColor: 'initial', // Reverte a cor de fundo
+      duration: 0.2,
+      ease: 'power1.inOut',
+      onComplete: function () {
+        $('.header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
+        $('.header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
+      },
+    }
+  )});
+
   // Quando o mouse sai do <.header>
   $('.header').on('mouseleave', function () {
     // Aplica uma animação de saída direta ao .header

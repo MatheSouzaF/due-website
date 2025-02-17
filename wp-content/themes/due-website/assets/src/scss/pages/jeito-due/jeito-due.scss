@@ -926,6 +926,7 @@ body.page-template-jeito-due {
         gap: 0;
       }
       .box-conteudo-sintta {
+        height: 100vh;
         padding: 0 20px;
         width: 100%;
         @include media-breakpoint-up(sm) {
@@ -969,7 +970,7 @@ body.page-template-jeito-due {
         .box-repetidor-sintta {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 8px;
           margin-bottom: 48px;
           @include media-breakpoint-up(md) {
             max-width: 75%;

@@ -9,9 +9,9 @@ get_header();
 
         <div class="page-404">
             <h1 class="terminal-test titulo-error">Obrigado pelo seu interesse!</h1><br>
-            <p class="founders-grotesk descricao-error">Em alguns instantes, você será direcionado para o whatsapp da DUE Incoporadora.</p>
+            <p class="founders-grotesk descricao-error">Em breve, um de nossos consultores entrará em contato para te ajudar com o seu próximo investimento.<br><br>Precisa de ajuda agora mesmo?</p>
 
-            <a class="button" href="<?php echo home_url(); ?>">ir para a home</a>
+            <a class="button" href="https://api.whatsapp.com/send?phone=5581989619479" target="_blank">Clique e fale com um especialista</a>
         </div>
     </div>
 </section>

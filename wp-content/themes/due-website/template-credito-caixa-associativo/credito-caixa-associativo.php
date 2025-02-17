@@ -48,18 +48,18 @@ get_header();
         <h3 class="title"><?php echo esc_html(get_field('descubra_title')); ?></h3>
         <p class="subtitle founders-grotesk"><?php echo esc_html(get_field('descubra_subtitle')); ?></p>
     </div>
-
     <div class="descubra-animation-notas">
-        <?php /*  
-         <div class="descubra-animation">
+        <div class="descubra-animation">
             <div id="descubra-animation" class="descubra-animation">
                 <div id="descubra-lottie-animation" class="descubra-lottie-animation"></div>
             </div>
-        </div> */ ?>
-        <div class="marcacao">Aqui terá uma animação</div>
-        <div class="descubra-animation-mobile">
-
         </div>
+        <div class="descubra-animation-mobile">
+            <div id="descubra-animation-mobile" class="descubra-animation-mobile">
+                <div id="descubra-lottie-animation-mobile" class="descubra-lottie-animation-mobile"></div>
+            </div>
+        </div>
+
         <div class="descubra-notas-rodape">
             <?php
             if (have_rows('descubra_notas_rodape')):

@@ -352,7 +352,7 @@ get_header();
             </div>
             <h3 class="label-sintta"><?php echo get_field('label_tuo_incorporadora'); ?></h3>
             <h3 class="titulo-sintta"><?php echo get_field('titulo_tuo_incorporadora'); ?></h3>
-            <p class="descricao-sintta founders-grotesk"><?php echo get_field('descricao_sintta'); ?></p>
+            <p class="descricao-sintta founders-grotesk"><?php echo get_field('descricao_tuo_incorporadora'); ?></p>
 
             <?php
             $link = get_field('link_tuo_incorporadora');

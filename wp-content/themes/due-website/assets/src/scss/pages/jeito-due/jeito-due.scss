@@ -1,13 +1,16 @@
 @import '../../global/breakpoints';
 @import '../../global/colors';
+
 body.page-template-jeito-due {
   main {
     overflow-x: initial;
   }
+
   header {
     .button-menu {
       color: $due-tertiary !important;
     }
+
     .link-logo-menu {
       .box-svg-header {
         svg {
@@ -27,6 +30,7 @@ body.page-template-jeito-due {
             }
           }
         }
+
         #jeito-due {
           .button-menu {
             &::after {
@@ -36,6 +40,7 @@ body.page-template-jeito-due {
         }
       }
     }
+
     #jeito-due {
       i {
         svg {
@@ -45,6 +50,7 @@ body.page-template-jeito-due {
         }
       }
     }
+
     &.sticky {
       .link-logo-menu {
         .box-svg-header {
@@ -66,8 +72,10 @@ body.page-template-jeito-due {
                 color: #003b4b;
               }
             }
+
             &:hover {
               background-color: #003b4b;
+
               a {
                 span {
                   color: #fff;
@@ -75,6 +83,7 @@ body.page-template-jeito-due {
               }
             }
           }
+
           .wpml-ls-current-language {
             background-color: #003b4b;
 
@@ -88,13 +97,17 @@ body.page-template-jeito-due {
       }
     }
   }
+
   .page-jeito-due {
     background-color: $grey-0;
+
     .banner-jeito-due {
       padding: 151px 0 74px;
+
       @include media-breakpoint-up(md) {
         padding: 212px 0 120px;
       }
+
       .wrapper {
         display: flex;
         justify-content: space-between;
@@ -102,6 +115,7 @@ body.page-template-jeito-due {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+
         @include media-breakpoint-up(md) {
           gap: 80px;
           align-items: flex-end;
@@ -112,13 +126,16 @@ body.page-template-jeito-due {
           font-size: 12px;
           font-style: normal;
           font-weight: 400;
-          line-height: 100%; /* 12px */
+          line-height: 100%;
+          /* 12px */
           letter-spacing: 0.24px;
           color: $due-tertiary;
+
           @include media-breakpoint-up(md) {
             display: none;
           }
         }
+
         .titulo-jeito-due {
           font-style: normal;
           font-weight: 400;
@@ -129,13 +146,16 @@ body.page-template-jeito-due {
           max-width: 645px;
           opacity: 0;
           transform: translateX(-200%);
+
           @include media-breakpoint-up(sm) {
             font-size: calc(1rem + 0.9vw);
           }
+
           @include media-breakpoint-up(md) {
             max-width: 700px;
           }
         }
+
         .descricao-jeito-due {
           color: $due-tertiary;
           max-width: 447px;
@@ -148,15 +168,18 @@ body.page-template-jeito-due {
           display: none;
           opacity: 0;
           transform: translateX(200%);
+
           @include media-breakpoint-up(sm) {
             display: flex;
             font-size: calc(1rem + 0.3vw);
           }
+
           @include media-breakpoint-up(md) {
             max-width: 547px;
           }
         }
       }
+
       .box-video {
         display: flex;
         align-items: center;
@@ -164,23 +187,29 @@ body.page-template-jeito-due {
         justify-content: center;
         clip-path: inset(0 0 100% 0);
         transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
         &.imgPath {
           clip-path: inset(0 0 -100px -100px);
         }
+
         @include media-breakpoint-down(sm) {
           height: 517px;
           margin-bottom: 48px;
         }
+
         height: 100vh;
         width: 100%;
+
         video {
           height: 100%;
           object-fit: cover;
           width: 100%;
+
           @include media-breakpoint-up(sm) {
             width: 406px;
           }
         }
+
         .botao-mobile {
           position: absolute;
           top: 50%;
@@ -194,24 +223,29 @@ body.page-template-jeito-due {
           gap: 16px;
           flex-direction: row;
           align-items: center;
+
           svg {
             height: 45px;
             width: 45px;
           }
+
           p {
             font-size: 12px;
             font-style: normal;
             font-weight: 400;
-            line-height: 140%; /* 16.8px */
+            line-height: 140%;
+            /* 16.8px */
             letter-spacing: 0.36px;
             color: #fff;
             white-space: nowrap;
           }
+
           @include media-breakpoint-up(sm) {
             display: none;
           }
         }
       }
+
       $svg-cursor: url('/wp-content/themes/due-website/assets/src/img/svg-curso.svg');
 
       .box-video {
@@ -225,6 +259,7 @@ body.page-template-jeito-due {
       .wrapper-mobile {
         display: flex;
         justify-content: flex-end;
+
         .descricao-jeito-due-mobile {
           color: $due-tertiary;
           max-width: 447px;
@@ -235,15 +270,18 @@ body.page-template-jeito-due {
           letter-spacing: 0.36px;
           margin-bottom: 30px;
           text-align: end;
+
           @include media-breakpoint-up(sm) {
             display: none;
           }
         }
       }
+
       .box-youtube-vivencie {
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0); /* Inicialmente invisível e reduzido */
+        transform: translate(-50%, -50%) scale(0);
+        /* Inicialmente invisível e reduzido */
         opacity: 0;
         width: 100%;
         height: 100%;
@@ -253,6 +291,7 @@ body.page-template-jeito-due {
 
         display: flex;
         align-items: center;
+
         .svg-close {
           position: absolute;
           cursor: pointer;
@@ -260,19 +299,23 @@ body.page-template-jeito-due {
           height: 24px;
           top: 80px;
           right: 30px;
+
           path {
             stroke: #fff;
           }
+
           @include media-breakpoint-up(sm) {
             top: 40px;
             right: 20px;
             width: 32px;
             height: 32px;
+
             path {
               stroke: #212121;
             }
           }
         }
+
         .my-video {
           width: 100%;
           display: flex;
@@ -280,10 +323,12 @@ body.page-template-jeito-due {
           margin: 0 auto;
           align-items: center;
           height: 100%;
+
           @include media-breakpoint-up(sm) {
             height: 90%;
             max-width: 90%;
           }
+
           iframe {
             width: 100%;
             height: 100%;
@@ -293,10 +338,12 @@ body.page-template-jeito-due {
           }
         }
       }
+
       .box-youtube-vivencie-modal {
         pointer-events: auto;
         z-index: 999;
       }
+
       &.vivencie-modal {
         z-index: 9999;
       }
@@ -304,13 +351,17 @@ body.page-template-jeito-due {
 
     .proposito-jeito-due {
       margin-bottom: 68px;
+
       @include media-breakpoint-up(md) {
         margin-bottom: 168px;
       }
+
       .wrapper {
+
         // max-width: 1600px;
         .box-texto {
           overflow: hidden;
+
           .titulo-proposito-jeito-due {
             color: $due-tertiary;
             max-width: 509px;
@@ -323,33 +374,40 @@ body.page-template-jeito-due {
             border-left: 1px solid $due-tertiary;
             transition: 0.6s;
             margin-bottom: 40px;
+
             @include media-breakpoint-up(sm) {
               font-size: 32px;
             }
+
             @include media-breakpoint-up(md) {
               transform: translateX(-180%);
             }
+
             @include media-breakpoint-up(xxl) {
               max-width: 560px;
               font-size: 40px;
             }
           }
+
           .fade-left {
             @include media-breakpoint-up(md) {
               transform: translateX(0);
             }
           }
         }
+
         .box-img-repeater {
           display: flex;
           flex-direction: column;
           gap: 40px;
           justify-content: flex-start;
           transition: 0.6s;
+
           @include media-breakpoint-up(md) {
             gap: 80px;
             flex-direction: row;
           }
+
           @include media-breakpoint-up(xxl) {
             gap: 150px;
           }
@@ -359,6 +417,7 @@ body.page-template-jeito-due {
             transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
             height: 655px;
             position: relative;
+
             &::after {
               content: '';
               position: absolute;
@@ -370,19 +429,23 @@ body.page-template-jeito-due {
               background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 100%, rgba(247, 247, 247, 0) 100%);
               z-index: 1;
             }
+
             @include media-breakpoint-up(md) {
               position: sticky;
               top: 100px;
               width: 60%;
             }
+
             &.imgPath {
               clip-path: inset(0 0 -100px -100px);
             }
+
             img {
               height: 100%;
               width: 100%;
               object-fit: cover;
             }
+
             .button-play {
               position: absolute;
               top: 50%;
@@ -392,8 +455,10 @@ body.page-template-jeito-due {
               transform: translate(-50%, -50%);
               justify-content: center;
               z-index: 2;
+
               @include media-breakpoint-down(sm) {
                 width: 100%;
+
                 svg {
                   width: 45px;
                   height: 45px;
@@ -401,6 +466,7 @@ body.page-template-jeito-due {
               }
             }
           }
+
           .modal {
             display: none;
             height: 100vh;
@@ -427,12 +493,15 @@ body.page-template-jeito-due {
             transform: translate(-50%, -50%);
             width: 100%;
             height: 100%;
+
             @include media-breakpoint-up(sm) {
               width: 80%;
               height: 80%;
             }
+
             .video-container {
               height: 100%;
+
               iframe {
                 width: 100%;
                 height: 100%;
@@ -446,12 +515,15 @@ body.page-template-jeito-due {
             position: absolute;
             right: 25px;
             top: 65px;
+
             @include media-breakpoint-up(sm) {
               top: 25px;
             }
+
             svg {
               transition: 0.6s;
             }
+
             &:hover {
               svg {
                 scale: 1.05;
@@ -465,31 +537,38 @@ body.page-template-jeito-due {
             vertical-align: bottom;
             margin-bottom: 8px;
           }
+
           .container-text {
             display: flex;
             flex-direction: column;
+
             @include media-breakpoint-up(md) {
               width: 40%;
             }
+
             .box-svg-text {
               display: flex;
               flex-direction: column;
               gap: 64px;
               overflow: hidden;
               margin-bottom: 64px;
+
               .box-repeater {
                 display: flex;
                 flex-direction: column;
                 gap: 24px;
                 transition: 0.6s;
+
                 @include media-breakpoint-up(md) {
                   transform: translateX(180%);
                 }
+
                 &.fade-right {
                   @include media-breakpoint-up(md) {
                     transform: translateX(0);
                   }
                 }
+
                 .titulo-repetidor {
                   font-size: 24px;
                   font-style: normal;
@@ -498,6 +577,7 @@ body.page-template-jeito-due {
                   letter-spacing: 0.48px;
                   color: #cb9e6c;
                 }
+
                 .text-box-repeater {
                   max-width: 347px;
                   min-width: 300px;
@@ -508,9 +588,11 @@ body.page-template-jeito-due {
                   transition: 0.6s;
                   letter-spacing: 0.36px;
                   color: $due-tertiary;
+
                   @include media-breakpoint-up(desk) {
                     max-width: 430px;
                   }
+
                   @include media-breakpoint-up(xxl) {
                     font-size: 22px;
 
@@ -536,6 +618,7 @@ body.page-template-jeito-due {
                 padding-bottom: 20px;
                 border-bottom: 1px solid #e4e7e8;
                 position: relative;
+
                 .title-svg {
                   gap: 80px;
                   // padding-bottom: 16px;
@@ -543,22 +626,27 @@ body.page-template-jeito-due {
                   display: flex;
                   justify-content: space-between;
                   align-items: center;
+
                   h4 {
                     transition: 0.6s;
                     line-height: 140%;
                     font-size: 20px;
                     font-style: normal;
                     font-weight: 500;
-                    line-height: 140%; /* 28px */
+                    line-height: 140%;
+                    /* 28px */
                     letter-spacing: 0.4px;
                     color: $due-tertiary;
                   }
+
                   .svg-proposito {
                     svg {
                       transition: 0.6s;
+
                       path {
                         transition: 0.6s;
                       }
+
                       circle {
                         transition: 0.6s;
                       }
@@ -570,6 +658,7 @@ body.page-template-jeito-due {
                   h4 {
                     color: $due-tertiary;
                   }
+
                   .svg-proposito {
                     svg {
                       transform: rotate(180deg);
@@ -580,12 +669,14 @@ body.page-template-jeito-due {
                 .desWrapper {
                   display: none;
                   max-width: 95%;
+
                   .description-off {
                     font-size: 18px;
                     color: $due-tertiary;
                     font-style: normal;
                     font-weight: 300;
-                    line-height: 140%; /* 25.2px */
+                    line-height: 140%;
+                    /* 25.2px */
                     letter-spacing: 0.36px;
                   }
                 }
@@ -593,6 +684,7 @@ body.page-template-jeito-due {
             }
           }
         }
+
         .modal-open-box-img {
           .img-video {
             clip-path: initial !important;
@@ -605,12 +697,15 @@ body.page-template-jeito-due {
     .reducao-social {
       transition: 0.6s;
       margin-bottom: 64px;
+
       @include media-breakpoint-up(md) {
-       margin-bottom: 0;  
+        margin-bottom: 0;
       }
+
       &.background-open {
         background-color: $background;
       }
+
       .container-social {
         display: flex;
         flex-direction: column;
@@ -618,15 +713,18 @@ body.page-template-jeito-due {
         align-items: center;
         gap: 40px;
         padding: 64px 0 0;
+
         @include media-breakpoint-up(md) {
           gap: 100px;
           padding: 120px 0 180px;
           flex-direction: row;
         }
+
         .box-texto-reducao-social {
           transition: 0.6s;
           padding: 0 20px;
           width: 100%;
+
           @include media-breakpoint-up(sm) {
             padding: 0 0 0 48px;
           }
@@ -634,8 +732,8 @@ body.page-template-jeito-due {
           @include media-breakpoint-up(lg) {
             padding: 0 0 0 80px;
           }
-          @include media-breakpoint-up(xxl) {
-          }
+
+          @include media-breakpoint-up(xxl) {}
 
           .titulo-reducao-social {
             color: $due-tertiary;
@@ -646,36 +744,45 @@ body.page-template-jeito-due {
             font-size: 24px;
             transition: 0.6s;
             margin-bottom: 24px;
+
             @include media-breakpoint-up(sm) {
               font-size: calc(1rem + 1.6vw);
             }
+
             @include media-breakpoint-up(md) {
               transform: translateX(-180%);
             }
+
             &.fade-left {
               @include media-breakpoint-up(md) {
                 transform: translateX(0);
               }
             }
           }
+
           .descricao-reducao-social {
             transition: 0.6s;
             max-width: 740px;
+
             p {
               color: $due-tertiary;
               font-style: normal;
               font-weight: 300;
-              line-height: 140%; /* 25.2px */
+              line-height: 140%;
+              /* 25.2px */
               letter-spacing: 0.36px;
               font-family: 'founders-grotesk', sans-serif;
               font-size: 18px;
+
               @include media-breakpoint-up(xxl) {
                 font-size: 22px;
               }
             }
+
             @include media-breakpoint-up(md) {
               transform: translateX(-180%);
             }
+
             &.fade-left {
               @include media-breakpoint-up(md) {
                 transform: translateX(0);
@@ -683,21 +790,26 @@ body.page-template-jeito-due {
             }
           }
         }
+
         .box-img-reducao-social {
           width: 100%;
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
           @include media-breakpoint-down(md) {
             height: 315px;
           }
+
           @include media-breakpoint-up(desk) {
             height: 70vh;
           }
+
           img {
             height: 100%;
             width: 100%;
             object-fit: cover;
           }
+
           &.imgPath {
             clip-path: inset(0 0 -100px -100px);
           }
@@ -709,24 +821,29 @@ body.page-template-jeito-due {
       @include media-breakpoint-up(sm) {
         padding: 120px 0;
       }
+
       .titulo-card-iniciativas {
         color: #002b36;
         font-size: 32px;
         font-style: normal;
         font-weight: 300;
-        line-height: 100%; /* 44.8px */
+        line-height: 100%;
+        /* 44.8px */
         letter-spacing: 0.64px;
         margin-bottom: 16px;
       }
+
       .subtitulo-card-iniciativas {
         font-size: 18px;
         font-style: normal;
         font-weight: 300;
         color: #002b36;
-        line-height: 100%; /* 25.2px */
+        line-height: 100%;
+        /* 25.2px */
         letter-spacing: 0.36px;
         margin-bottom: 40px;
       }
+
       .swiper-iniciativas {
         display: flex;
         flex-wrap: wrap;
@@ -736,20 +853,24 @@ body.page-template-jeito-due {
         transition: 0.6s;
         justify-content: center;
         padding: 64px 20px;
+
         @include media-breakpoint-up(sm) {
           flex-direction: row;
           padding: 0 48px;
         }
+
         @include media-breakpoint-up(md) {
           padding: 0 80px;
         }
-        @include media-breakpoint-up(xxl) {
-        }
+
+        @include media-breakpoint-up(xxl) {}
+
         .lista-card {
           position: relative;
           width: 100%;
           height: 422px;
           transition: 0.6s;
+
           &::after {
             transition: 0.6s;
             content: '';
@@ -760,14 +881,17 @@ body.page-template-jeito-due {
             height: 100%;
             background-color: rgba(0, 59, 75, 0.7);
           }
+
           @include media-breakpoint-up(sm) {
             height: 480px;
             width: 49%;
           }
+
           @include media-breakpoint-up(xxl) {
             max-width: 554px;
             height: 500px;
           }
+
           .box-texto {
             width: 100%;
             height: 100%;
@@ -780,8 +904,8 @@ body.page-template-jeito-due {
             transition: 0.6s; // Ajuste na transição
             padding: 24px 0;
             justify-content: center;
-            @include media-breakpoint-up(sm) {
-            }
+
+            @include media-breakpoint-up(sm) {}
 
             .titulo-card {
               font-size: 20px;
@@ -806,6 +930,7 @@ body.page-template-jeito-due {
             z-index: 0;
 
             transition: opacity 0.8s ease-in-out;
+
             &::before {
               content: '';
               background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
@@ -816,17 +941,20 @@ body.page-template-jeito-due {
               height: 100%;
               z-index: 1;
             }
+
             img {
               height: 100%;
               width: 100%;
               object-fit: cover;
             }
           }
+
           @include media-breakpoint-up(sm) {
             &:hover {
               &::after {
                 height: 0;
               }
+
               .box-texto {
                 .titulo-card {
                   margin-bottom: 200px;
@@ -835,20 +963,25 @@ body.page-template-jeito-due {
             }
           }
         }
+
         .lista-card-right {
           clip-path: inset(0 0 0 100%);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
           &.imgPathRight {
             clip-path: inset(0 0 -100px -100px);
           }
         }
+
         .lista-card-left {
           clip-path: inset(0 100% 0 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
           &.imgPathLeft {
             clip-path: inset(0 0 -100px -100px);
           }
         }
+
         .swiper-pagination {
           bottom: 30px;
           transition: 0.6s;
@@ -856,20 +989,24 @@ body.page-template-jeito-due {
           margin: 0 auto;
           left: 50%;
           transform: translateX(-50%);
+
           @include media-breakpoint-up(md) {
             display: none;
           }
+
           .swiper-pagination-bullet {
             width: 20px;
             background-color: #003b4b;
             height: 3px;
             border-radius: 0px;
           }
+
           .swiper-pagination-bullet-active {
             width: 40px;
             transition: width 0.5s;
           }
         }
+
         .box-buttons {
           display: none;
           flex-direction: row-reverse;
@@ -885,22 +1022,27 @@ body.page-template-jeito-due {
           pointer-events: none;
           padding: 0 20px;
           cursor: pointer;
+
           svg {
             filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
             transition: 0.6s;
             width: 80px;
             height: 80px;
             pointer-events: auto;
+
             circle {
               transition: 0.6s;
             }
+
             &:hover {
               scale: 1.02;
+
               circle {
                 stroke-width: 2;
               }
             }
           }
+
           @include media-breakpoint-up(sm) {
             display: flex;
           }
@@ -920,25 +1062,36 @@ body.page-template-jeito-due {
       padding-bottom: 64px;
       flex-direction: column-reverse;
       align-items: center;
+
       @include media-breakpoint-up(md) {
         flex-direction: row;
         padding-bottom: 128px;
         gap: 0;
       }
+
       .box-conteudo-sintta {
-        height: 100vh;
+        height: auto;
         padding: 0 20px;
         width: 100%;
+
         @include media-breakpoint-up(sm) {
           padding: 0 0 0 48px;
+
+        }
+
+        @include media-breakpoint-up(md) {
+          height: 100vh;
+
         }
 
         @include media-breakpoint-up(lg) {
           padding: 0 0 0 80px;
         }
+
         .box-svg {
           margin-bottom: 20px;
         }
+
         .titulo-sintta {
           font-size: 22px;
           font-style: normal;
@@ -948,10 +1101,12 @@ body.page-template-jeito-due {
           color: $due-tertiary;
           max-width: 86%;
           margin-bottom: 20px;
+
           @include media-breakpoint-up(md) {
             font-size: calc(1rem + 1.4vw);
           }
         }
+
         .descricao-sintta {
           color: $due-tertiary;
           font-size: 16px;
@@ -967,19 +1122,23 @@ body.page-template-jeito-due {
             max-width: 82%;
           }
         }
+
         .box-repetidor-sintta {
           display: flex;
           flex-direction: column;
           gap: 8px;
           margin-bottom: 48px;
+
           @include media-breakpoint-up(md) {
             max-width: 75%;
           }
+
           .row-topicos {
             display: flex;
             flex-direction: row;
             gap: 12px;
             align-items: center;
+
             .texto-topicos {
               font-size: 16px;
               font-style: normal;
@@ -987,31 +1146,38 @@ body.page-template-jeito-due {
               line-height: 140%;
               letter-spacing: 0.32px;
               color: $due-tertiary;
+
               @include media-breakpoint-up(md) {
                 font-size: calc(0.5rem + 0.6vw);
               }
             }
           }
         }
+
         .button {
           @include media-breakpoint-down(sm) {
             width: 100%;
           }
         }
       }
+
       .box-image-sintta {
         width: 100%;
         height: 314px;
+
         @include media-breakpoint-up(md) {
           height: 100vh;
           max-width: 50%;
         }
+
         .swiper-sintta {
           width: 100%;
           height: 100%;
+
           .swiper-wrapper {
             width: 100%;
             height: 100%;
+
             .swiper-slide {
               img {
                 height: 100%;
@@ -1023,6 +1189,7 @@ body.page-template-jeito-due {
         }
       }
     }
+
     .tuo-incorporadora {
       display: flex;
       gap: 40px;
@@ -1031,34 +1198,47 @@ body.page-template-jeito-due {
       padding-bottom: 64px;
       flex-direction: column;
       align-items: center;
+
       @include media-breakpoint-up(md) {
         flex-direction: row;
         padding-bottom: 128px;
         gap: 0;
       }
+
       .box-conteudo-sintta {
+        height: auto;
         padding: 0 20px;
         width: 100%;
+
         @include media-breakpoint-up(sm) {
           padding: 0 0 0 48px;
+        }
+
+        @include media-breakpoint-up(md) {
+          height: 100vh;
+
         }
 
         @include media-breakpoint-up(lg) {
           padding: 0 0 0 80px;
         }
+
         .box-svg {
           margin-bottom: 48px;
         }
+
         .label-sintta {
           color: #cb9e6c;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
-          line-height: 140%; /* 19.6px */
+          line-height: 140%;
+          /* 19.6px */
           letter-spacing: 0.56px;
           text-transform: uppercase;
           margin-bottom: 12px;
         }
+
         .titulo-sintta {
           font-size: 22px;
           font-style: normal;
@@ -1068,10 +1248,12 @@ body.page-template-jeito-due {
           color: #002b36;
           max-width: 86%;
           margin-bottom: 20px;
+
           @include media-breakpoint-up(md) {
             font-size: calc(1rem + 1.4vw);
           }
         }
+
         .descricao-sintta {
           color: $due-tertiary;
           font-size: 16px;
@@ -1087,19 +1269,23 @@ body.page-template-jeito-due {
             max-width: 82%;
           }
         }
+
         .box-repetidor-sintta {
           display: flex;
           flex-direction: column;
           gap: 16px;
           margin-bottom: 48px;
+
           @include media-breakpoint-up(md) {
             max-width: 75%;
           }
+
           .row-topicos {
             display: flex;
             flex-direction: row;
             gap: 12px;
             align-items: center;
+
             .texto-topicos {
               font-size: 16px;
               font-style: normal;
@@ -1107,36 +1293,45 @@ body.page-template-jeito-due {
               line-height: 140%;
               letter-spacing: 0.32px;
               color: $due-tertiary;
+
               @include media-breakpoint-up(md) {
                 font-size: calc(0.5rem + 0.6vw);
               }
             }
           }
         }
+
         .button {
           @include media-breakpoint-down(sm) {
             width: 100%;
           }
         }
       }
+
       .box-image-sintta {
         width: 100%;
         height: 314px;
+
         @include media-breakpoint-up(md) {
           height: 100vh;
           max-width: 50%;
         }
+
         .swiper-sintta {
           width: 100%;
           height: 100%;
+
           .swiper-wrapper {
             width: 100%;
             height: 100%;
+
             .swiper-slide {
               img {
                 height: 100%;
                 width: 100%;
                 object-fit: cover;
+                object-position: top;
+
               }
             }
           }
@@ -1146,14 +1341,18 @@ body.page-template-jeito-due {
 
     .big-numeros {
       padding: 0 0 64px;
+
       @include media-breakpoint-up(md) {
         padding: 0 0 120px;
       }
+
       display: flex;
       flex-direction: row;
       position: relative;
+
       .shape-bg-due {
         display: none;
+
         @include media-breakpoint-up(md) {
           position: absolute;
           top: -70px;
@@ -1165,46 +1364,56 @@ body.page-template-jeito-due {
           padding-right: 44px;
         }
       }
+
       .box-image-big-numeros {
         width: 100%;
         height: 100%;
         transition: 0.6s;
+
         @include media-breakpoint-up(md) {
           max-width: 55%;
         }
+
         position: relative;
+
         .img-path-big-numeros {
           clip-path: inset(0 0 100% 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+
           &.imgPath {
             clip-path: inset(0 0 -100px -100px);
           }
         }
+
         img {
           height: 100%;
           width: 100%;
           object-fit: cover;
           max-height: 803px;
         }
+
         .box-card-big-numeros {
           background-color: $background;
           height: fit-content;
           display: flex;
           flex-direction: column;
           transition: 0.6s;
-          margin: -70px 20px 0 ;
+          margin: -70px 20px 0;
           padding: 40px;
           z-index: 1;
           position: relative;
           clip-path: inset(100% 0 0 0);
           transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
           transition: 0.6s;
+
           &.imgPath {
             clip-path: inset(0 0 -100px -100px);
           }
+
           @include media-breakpoint-up(sm) {
-            margin: 0 auto ;
+            margin: 0 auto;
           }
+
           @include media-breakpoint-up(md) {
             max-width: 70%;
             padding: 64px;
@@ -1213,6 +1422,7 @@ body.page-template-jeito-due {
             top: 50%;
             transform: translate(30%, -50%);
           }
+
           @include media-breakpoint-up(desk) {
             right: -20%;
             transform: translate(50%, -50%);
@@ -1221,6 +1431,7 @@ body.page-template-jeito-due {
 
           .lista-big-numeros {
             width: 100%;
+
             @include media-breakpoint-up(md) {
               width: 100%;
             }
@@ -1228,9 +1439,11 @@ body.page-template-jeito-due {
             &:not(:first-of-type):not(:last-of-type) {
               padding: 32px 0;
             }
+
             &:not(:last-of-type) {
               border-bottom: 1px solid #eed9c6;
             }
+
             &:first-of-type {
               padding-top: 0;
               padding-bottom: 32px;
@@ -1240,6 +1453,7 @@ body.page-template-jeito-due {
               padding-top: 32px;
               padding-bottom: 0;
             }
+
             .titulo-card-big-numeros {
               font-style: normal;
               font-weight: 500;
@@ -1247,10 +1461,12 @@ body.page-template-jeito-due {
               letter-spacing: 0.52px;
               color: $due-tertiary;
               font-size: 20px;
+
               @include media-breakpoint-up(sm) {
                 font-size: 26px;
               }
             }
+
             .descricao-card-big-numeros {
               font-style: normal;
               font-weight: 300;
@@ -1258,6 +1474,7 @@ body.page-template-jeito-due {
               color: $due-tertiary;
               letter-spacing: 0.48px;
               font-size: 16px;
+
               @include media-breakpoint-up(sm) {
                 font-size: 24px;
               }

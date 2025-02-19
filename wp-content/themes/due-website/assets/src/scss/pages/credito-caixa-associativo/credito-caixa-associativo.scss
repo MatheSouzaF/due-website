@@ -820,9 +820,18 @@ body.page-template-credito-caixa-associativo {
         }
 
         .casa-pix-obs {
+            padding: 0 22%;
             color: $due-tertiary;
             font-size: calc(13px + 0.1vw);
             letter-spacing: 0.28px;
+            @media (max-width: 1024px) {
+                padding: 0 20%;
+
+            }
+
+            @media (max-width: 660px) {
+                padding: 0 20px;
+            }
         }
 
 

@@ -118,8 +118,8 @@ get_header();
                             <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>">
                         </div>
                         <div class="vantagem-texts">
-                            <h3 class="vantagem-title"><?php echo esc_html($vantagem_item_title); ?></h3>
-                            <p class="vantagem-paragraph founders-grotesk"><?php echo esc_html($vantagem_item_description); ?></p>
+                            <h3 class="vantagem-title"><?php echo $vantagem_item_title; ?></h3>
+                            <p class="vantagem-paragraph founders-grotesk"><?php echo $vantagem_item_description; ?></p>
                         </div>
                     </div>
 

@@ -266,4 +266,3 @@ class EmpreendimentoController
         return $projects; // Retorna o array de empreendimentos
     }
 }
-

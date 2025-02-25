@@ -34,6 +34,15 @@ body.page-template-template-empreendimentos {
         }
       }
     }
+    #destinos {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     #jeito-due {
       i {
         svg {
@@ -216,7 +225,6 @@ body.drawer-open .drawer-overlay {
     .card-empreendimentos {
       padding: 0;
 
-    
       &.lancamento {
         .label-informativo {
           background-color: #cb9e6c;

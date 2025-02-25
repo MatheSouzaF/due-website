@@ -40,7 +40,15 @@ body.page-template-jeito-due {
         }
       }
     }
-
+    #destinos {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     #jeito-due {
       i {
         svg {
@@ -357,7 +365,6 @@ body.page-template-jeito-due {
       }
 
       .wrapper {
-
         // max-width: 1600px;
         .box-texto {
           overflow: hidden;
@@ -733,7 +740,8 @@ body.page-template-jeito-due {
             padding: 0 0 0 80px;
           }
 
-          @include media-breakpoint-up(xxl) {}
+          @include media-breakpoint-up(xxl) {
+          }
 
           .titulo-reducao-social {
             color: $due-tertiary;
@@ -863,7 +871,8 @@ body.page-template-jeito-due {
           padding: 0 80px;
         }
 
-        @include media-breakpoint-up(xxl) {}
+        @include media-breakpoint-up(xxl) {
+        }
 
         .lista-card {
           position: relative;
@@ -905,7 +914,8 @@ body.page-template-jeito-due {
             padding: 24px 0;
             justify-content: center;
 
-            @include media-breakpoint-up(sm) {}
+            @include media-breakpoint-up(sm) {
+            }
 
             .titulo-card {
               font-size: 20px;
@@ -1076,12 +1086,10 @@ body.page-template-jeito-due {
 
         @include media-breakpoint-up(sm) {
           padding: 0 0 0 48px;
-
         }
 
         @include media-breakpoint-up(md) {
           height: 100vh;
-
         }
 
         @include media-breakpoint-up(lg) {
@@ -1216,7 +1224,6 @@ body.page-template-jeito-due {
 
         @include media-breakpoint-up(md) {
           height: 100vh;
-
         }
 
         @include media-breakpoint-up(lg) {
@@ -1331,7 +1338,6 @@ body.page-template-jeito-due {
                 width: 100%;
                 object-fit: cover;
                 object-position: top;
-
               }
             }
           }

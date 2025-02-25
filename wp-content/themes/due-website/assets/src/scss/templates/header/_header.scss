@@ -83,7 +83,10 @@
         @include media-breakpoint-up(md) {
           display: flex;
         }
-
+        #destinos {
+          display: flex;
+          align-items: center;
+        }
         .last-item {
           display: none;
         }
@@ -133,7 +136,6 @@
             flex-direction: row;
             gap: 8px;
             align-items: center;
-
           }
 
           i {
@@ -154,15 +156,9 @@
               path {
                 stroke: $due-tertiary;
               }
-
             }
           }
         }
-
-
-
-
-
       }
     }
 
@@ -426,7 +422,6 @@
         }
 
         .conjunto-links {
-
           // margin-bottom: 77px;
           @media (max-height: 760px) {
             margin-bottom: 0;
@@ -467,12 +462,10 @@
 
                 @include media-breakpoint-up(md) {
                   font-size: 22px;
-
                 }
 
                 @media (max-height: 760px) {
                   font-size: 22px;
-
                 }
 
                 &:hover {
@@ -1099,7 +1092,6 @@
       .wrapper {
         padding: 0 24px;
       }
-
     }
   }
 
@@ -1108,12 +1100,14 @@
     gap: 0;
 
     .navlinks {
-      .button-menu {
-        color: $due-tertiary !important;
-        position: relative;
+      #destinos {
+        .button-menu {
+          color: $due-tertiary !important;
+          position: relative;
 
-        &::after {
-          background-color: $due-tertiary;
+          &::after {
+            width: 100%;
+          }
         }
       }
     }
@@ -1127,7 +1121,6 @@
         }
       }
     }
-
   }
 
   &.hover-box-cards {

@@ -16,7 +16,24 @@ body.single-tipo_single_page {
         }
       }
     }
-
+    #destinos {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
+    #jeito-due {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
     .box-sidebar {
       .navlinks {
         .btn-menu-navlink {
@@ -1093,7 +1110,7 @@ body.single-tipo_single_page {
               background-color: #cb9e6c;
             }
           }
-          &.lançamento  {
+          &.lançamento {
             .estado-tipologia {
               background-color: #cb9e6c;
             }

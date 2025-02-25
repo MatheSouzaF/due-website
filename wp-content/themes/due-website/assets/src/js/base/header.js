@@ -49,7 +49,7 @@ function hoverDestinos() {
   });
   tl.to('.box-video-destinos', {
     duration: 0.2,
-    zIndex: 1, // Aumenta o z-index para 1
+    zIndex: 4, // Aumenta o z-index para 1
     ease: 'power1.inOut',
     pointerEvents: 'initial',
   });
@@ -173,7 +173,7 @@ function fabFixed() {
   }
 }
 function hoverJeitoDue() {
-  var tl = gsap.timeline({ paused: true });
+  var tl = gsap.timeline({paused: true});
 
   // Define a animação para o header
   tl.to('header', {
@@ -190,20 +190,28 @@ function hoverJeitoDue() {
   });
 
   // Define o stagger para os elementos dentro do header
-  tl.to('.header .some-element', {
-    duration: 0.4,
-    opacity: 1,
-    stagger: 0.1, // Ajuste esse valor para controlar o intervalo entre as animações
-    ease: 'power1.inOut',
-  }, "+=0.3");
+  tl.to(
+    '.header .some-element',
+    {
+      duration: 0.4,
+      opacity: 1,
+      stagger: 0.1, // Ajuste esse valor para controlar o intervalo entre as animações
+      ease: 'power1.inOut',
+    },
+    '+=0.3'
+  );
 
   // Define o stagger para os elementos dentro do .header
-  tl.to('.header .some-image', {
-    duration: 0.4,
-    opacity: 1,
-    clipPath: 'inset(0 0 -100px -100px)',
-    ease: 'power1.inOut',
-  }, "-=1.8");
+  tl.to(
+    '.header .some-image',
+    {
+      duration: 0.4,
+      opacity: 1,
+      clipPath: 'inset(0 0 -100px -100px)',
+      ease: 'power1.inOut',
+    },
+    '-=1.8'
+  );
 
   // Ao entrar no link com ID "jeito-due"
   $('#jeito-due').on('mouseenter', function (e) {
@@ -213,20 +221,6 @@ function hoverJeitoDue() {
     // Reinicia a animação do início
     tl.restart();
   });
-
-  
-  $('#destinos').on('mouseenter', function (e) {
-    gsap.to('#jeito-due', {
-      height: '72px', // Reverte a altura para o valor original
-      backgroundColor: 'initial', // Reverte a cor de fundo
-      duration: 0.2,
-      ease: 'power1.inOut',
-      onComplete: function () {
-        $('.header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
-        $('.header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
-      },
-    }
-  )});
 
   // Quando o mouse sai do <.header>
   $('.header').on('mouseleave', function () {
@@ -262,7 +256,6 @@ function hoverJeitoDue() {
     });
   });
 }
-
 
 function initHeader() {
   menuSticky();

@@ -2,9 +2,23 @@
 @import '../../global/colors';
 
 body.page-template-homepage {
-  .hover-jeito-due {
+  i {
+    svg {
+      path {
+        transition: 0.6s;
+      }
+    }
+  }
+  .hover-box-cards {
     .button-menu {
       color: $due-tertiary !important;
+    }
+    i {
+      svg {
+        path {
+          stroke: #003b4b;
+        }
+      }
     }
     .link-logo-menu {
       .box-svg-header {
@@ -44,7 +58,45 @@ body.page-template-homepage {
       }
     }
   }
-
+  .hover-destinos {
+    .button-menu {
+      color: $due-tertiary !important;
+    }
+    i {
+      svg {
+        path {
+          stroke: #003b4b;
+        }
+      }
+    }
+    .box-sidebar {
+      .navlinks {
+        .btn-menu-navlink {
+          .button-menu {
+            &::after {
+              background-color: $due-tertiary;
+            }
+          }
+        }
+        #destinos {
+          .button-menu {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    #destinos {
+      i {
+        svg {
+          path {
+            stroke: #003b4b;
+          }
+        }
+      }
+    }
+  }
   .main {
     position: relative;
   }

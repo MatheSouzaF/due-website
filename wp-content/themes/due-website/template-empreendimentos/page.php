@@ -20,6 +20,9 @@ function wp_translations() {
 			'single_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologia</span> para você', 'due-website'),
 			'multiple_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologias </span> para você', 'due-website'),
 			'load_more_button' => __('CARREGAR MAIS', 'due-website'),
+      'studio_label' => __('Studio', 'due-website'),
+      'room_label_single' => __('quarto', 'due-website'),
+      'room_label_multiple' => __('quartos', 'due-website'),
 	);
 }
 wp_localize_script('main', 'wp_translations', wp_translations());

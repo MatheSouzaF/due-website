@@ -100,12 +100,12 @@ function tipologiaPage() {
         })),
         diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         rooms: [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...(isStudio ? [{ value: 'studio', label: wp_translations.studio_label }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
               value: room,
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`,
+              label: `${room} ${room === 1 ? wp_translations.room_label_single : wp_translations.room_label_single}`,
             })),
         ],
       };

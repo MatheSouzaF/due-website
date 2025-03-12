@@ -13,6 +13,17 @@ wp_localize_script('main', 'EmpreendimentosData', array(
   'empreendimentos' => $empreendimentos,
 ));
 
+function wp_translations() {
+	return array(
+			'single_selection' => __('Selecionamos <span class="bold-5">{count} imóvel</span> para você', 'due-website'),
+			'multiple_selection' => __('Selecionamos <span class="bold-5">{count} imóveis</span> para você', 'due-website'),
+			'single_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologia</span> para você', 'due-website'),
+			'multiple_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologias </span> para você', 'due-website'),
+			'load_more_button' => __('CARREGAR MAIS', 'due-website'),
+	);
+}
+wp_localize_script('main', 'wp_translations', wp_translations());
+
 ?>
 
 <!-- Tipologias -->

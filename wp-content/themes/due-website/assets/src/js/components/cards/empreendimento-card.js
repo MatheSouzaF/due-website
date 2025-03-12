@@ -71,10 +71,12 @@ export function createEmpreendimentoCard(empreendimento) {
 }
 
 export function updateResultsText($element, empreendimentoCount) {
-  const text =
+  const template =
     empreendimentoCount === 1
-      ? `Selecionamos <span class="bold-5">${empreendimentoCount} imóvel</span> para você`
-      : `Selecionamos <span class="bold-5">${empreendimentoCount} imóveis</span> para você`;
+      ? wp_translations.single_selection
+      : wp_translations.multiple_selection;
+
+  const text = template.replace("{count}", empreendimentoCount);
   $element.html(text);
 }
 

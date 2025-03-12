@@ -38,7 +38,7 @@ async function empreendimentoPage() {
         const $seemoreContainer = $('.see-more-container-button');
 
         const $seeMoreButton = $('<button>', {
-          html: 'CARREGAR MAIS',
+          html: wp_translations.load_more_button,
           class: 'see-more-button button',
         });
         $seemoreContainer.append($seeMoreButton);

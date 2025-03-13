@@ -23,6 +23,9 @@ function wp_translations() {
       'studio_label' => __('Studio', 'due-website'),
       'room_label_single' => __('quarto', 'due-website'),
       'room_label_multiple' => __('quartos', 'due-website'),
+      'last_units' => __('Últimas unidades', 'due-website'),
+      'sold' => __('100% vendido', 'due-website'),
+      'launch' => __('Lançamento', 'due-website'),
 	);
 }
 wp_localize_script('main', 'wp_translations', wp_translations());

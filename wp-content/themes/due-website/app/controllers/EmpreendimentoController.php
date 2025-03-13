@@ -17,10 +17,15 @@ class EmpreendimentoController
     {
         $projects = [];
 
+        $current_lang = apply_filters('wpml_current_language', NULL);
+
+        error_log($current_lang);
+
         $args = array(
             'post_type' => 'empreendimentos',
             'posts_per_page' => -1, // Obtém todos os posts
-            'post_status' => 'publish' // Apenas posts publicados
+            'post_status' => 'publish', // Apenas posts publicados
+            'lang' => $current_lang
         );
 
         $query = new WP_Query($args);

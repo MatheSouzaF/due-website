@@ -13,6 +13,7 @@ async function empreendimentoPage() {
 
     const isMobile = isMobileDevice();
     const itemsPerLoad = isMobile ? 4 : 12;
+    console.log("🚀 ~ empreendimentosData:", empreendimentosData)
     let currentItemsShown = itemsPerLoad;
 
     function renderEmpreendimentos(empreendimentos) {
@@ -200,9 +201,9 @@ async function empreendimentoPage() {
           let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
 
           if (isStatus) {
-            if (formattedValue === 'Ultimas unidades') formattedValue = 'Últimas unidades';
-            if (formattedValue === '100 vendido') formattedValue = '100% vendido';
-            if (formattedValue === 'Lancamento') formattedValue = 'Lançamento';
+            if (formattedValue === 'Ultimas unidades') formattedValue = wp_translations.last_units;
+            if (formattedValue === '100 vendido') formattedValue = wp_translations.sold;
+            if (formattedValue === 'Lancamento') formattedValue = wp_translations.launch;
           }
 
           $(`${filterSelector} input`).each(function () {

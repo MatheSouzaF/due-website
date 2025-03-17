@@ -129,53 +129,64 @@ function fabFixed() {
 }
 
 function hoverDestinos() {
-  var tl = gsap.timeline({paused: true});
+  var tl = gsap.timeline({paused: true, reversed: true});
+
   tl.to('header', {
     duration: 0.2,
     height: '590px',
     backgroundColor: '#faf2eb',
     ease: 'power1.inOut',
     onStart: function () {
-      $('header').addClass('hover-destinos'); // Adiciona a classe no início da animação
+      $('header').addClass('hover-destinos');
     },
     onReverseComplete: function () {
-      $('header').removeClass('hover-destinos'); // Remove a classe quando a animação reverte
+      $('header').removeClass('hover-destinos');
     },
   });
+
   tl.to('.box-video-destinos', {
     duration: 0.2,
-    zIndex: 4, // Aumenta o z-index para 1
+    zIndex: 4,
     ease: 'power1.inOut',
     pointerEvents: 'initial',
   });
+
   tl.to('.row-videos', {
     duration: 0.2,
     clipPath: 'inset(0 0 -100px -100px)',
     ease: 'power1.inOut',
   });
 
-  function revertAnimation() {
-    tl.timeScale(3); // Aumenta a velocidade da animação reversa
-    tl.reverse();
-  }
+  var isPlaying = false;
 
-  $('#destinos').hover(function () {
-    tl.play();
+  $('#destinos').click(function () {
+    if (isPlaying) {
+      tl.timeScale(3).reverse();
+    } else {
+      tl.timeScale(1).play();
+    }
+    isPlaying = !isPlaying; // Alterna entre true e false
   });
 
   $('header').mouseleave(function () {
-    revertAnimation();
+    if (isPlaying) {
+      tl.timeScale(3).reverse();
+      isPlaying = false;
+    }
   });
 
   $('.btn-menu-navlink')
     .not('#destinos')
     .hover(function () {
-      revertAnimation();
+      if (isPlaying) {
+        tl.timeScale(3).reverse();
+        isPlaying = false;
+      }
     });
 }
 
 function hoverJeitoDue() {
-  var tl = gsap.timeline({paused: true});
+  var tl = gsap.timeline({paused: true, reversed: true});
 
   // Define a animação para o header
   tl.to('header', {
@@ -184,10 +195,10 @@ function hoverJeitoDue() {
     backgroundColor: '#faf2eb',
     ease: 'power1.inOut',
     onStart: function () {
-      $('header').addClass('hover-box-cards'); // Adiciona a classe no início da animação
+      $('header').addClass('hover-box-cards');
     },
     onReverseComplete: function () {
-      $('header').removeClass('hover-box-cards'); // Remove a classe quando a animação reverte
+      $('header').removeClass('hover-box-cards');
     },
   });
 
@@ -197,7 +208,7 @@ function hoverJeitoDue() {
     {
       duration: 0.4,
       opacity: 1,
-      stagger: 0.1, // Ajuste esse valor para controlar o intervalo entre as animações
+      stagger: 0.1,
       ease: 'power1.inOut',
     },
     '+=0.3'
@@ -214,64 +225,33 @@ function hoverJeitoDue() {
     },
     '-=1.8'
   );
-  function revertAnimation() {
-    tl.timeScale(4); // Aumenta a velocidade da animação reversa
-    tl.reverse();
-  }
-  $('#jeito-due').hover(function () {
-    tl.play();
+
+  var isPlaying = false;
+
+  $('#jeito-due').click(function () {
+    if (isPlaying) {
+      tl.timeScale(3).reverse();
+    } else {
+      tl.timeScale(1).play();
+    }
+    isPlaying = !isPlaying;
   });
 
   $('header').mouseleave(function () {
-    revertAnimation();
+    if (isPlaying) {
+      tl.timeScale(3).reverse();
+      isPlaying = false;
+    }
   });
+
   $('.btn-menu-navlink')
     .not('#jeito-due')
     .hover(function () {
-      revertAnimation();
+      if (isPlaying) {
+        tl.timeScale(3).reverse();
+        isPlaying = false;
+      }
     });
-  // Ao entrar no link com ID "jeito-due"
-  // $('#jeito-due').on('mouseenter', function (e) {
-  //   e.preventDefault(); // Previne o comportamento padrão do link
-  //   $('.header').addClass('hover-jeito-due'); // Adiciona a classe "hover-jeito-due"
-
-  //   // Reinicia a animação do início
-  //   tl.restart();
-  // });
-
-  // // Quando o mouse sai do <.header>
-  // $('.header').on('mouseleave', function () {
-  //   // Aplica uma animação de saída direta ao .header
-  //   gsap.to('.header', {
-  //     height: '72px', // Reverte a altura para o valor original
-  //     backgroundColor: 'initial', // Reverte a cor de fundo
-  //     duration: 0.2,
-  //     ease: 'power1.inOut',
-  //     onComplete: function () {
-  //       $('.header').removeClass('hover-jeito-due'); // Remove a classe "hover-jeito-due" após a animação
-  //       $('.header').removeClass('hover-box-cards'); // Remove a classe "hover-box-cards" após a animação
-  //     },
-  //   });
-
-  //   // Remove a opacidade de todos os elementos simultaneamente
-  //   gsap.to('.header .some-element', {
-  //     opacity: 0,
-  //     duration: 0.2,
-  //     ease: 'power1.inOut',
-  //     onComplete: function () {
-  //       tl.pause(0); // Reseta a timeline para o estado inicial
-  //     },
-  //   });
-
-  //   gsap.to('.header .some-image', {
-  //     opacity: 0,
-  //     duration: 0.2,
-  //     ease: 'power1.inOut',
-  //     onComplete: function () {
-  //       tl.pause(0); // Reseta a timeline para o estado inicial
-  //     },
-  //   });
-  // });
 }
 
 function initHeader() {

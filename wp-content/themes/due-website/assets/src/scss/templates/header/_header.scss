@@ -149,15 +149,15 @@
             }
           }
 
-          &:hover {
-            .rotate-svg-destinos {
-              transform: rotate(180deg);
+          // &:hover {
+          //   .rotate-svg-destinos {
+          //     transform: rotate(180deg);
 
-              path {
-                stroke: $due-tertiary;
-              }
-            }
-          }
+          //     path {
+          //       stroke: $due-tertiary;
+          //     }
+          //   }
+          // }
         }
       }
     }
@@ -1107,6 +1107,12 @@
 
           &::after {
             width: 100%;
+          }
+        }
+        .rotate-svg-destinos {
+          transform: rotate(180deg);
+          path {
+            stroke: $due-tertiary;
           }
         }
       }

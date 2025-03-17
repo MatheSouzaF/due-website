@@ -41,7 +41,7 @@ function updateBannerComments(banner) {
       $('#comentarios-container').append(commentHTML);
     });
   } else {
-    $('#comentarios-container').append('<p>Sem comentários</p>');
+    $('#comentarios-container').append(`<p>${wp_translations.no_comments}</p>`);
   }
 }
 

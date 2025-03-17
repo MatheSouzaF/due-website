@@ -27,6 +27,7 @@ function wp_translations()
     'last_units' => __('Últimas unidades', 'due-website'),
     'sold' => __('100% vendido', 'due-website'),
     'launch' => __('Lançamento', 'due-website'),
+    'no_comments' => __('Sem comentários', 'due-website'),
   );
 }
 wp_localize_script('main', 'wp_translations', wp_translations());
@@ -146,14 +147,14 @@ wp_localize_script('main', 'TipologiasData', array(
 
       $bannerId = get_the_ID();
       $banners[] = array(
-        'location' => get_field('nome_do_destino'),
-        'media' => get_field('foto_ou_video_do_destino'),
-        'title' => get_field('titulo_do_banner'),
-        'svg_rota' => get_field('svg_rota_due'),
-        'description' => get_field('descricao_do_banner'),
-        'link' => get_field('link'),
-        'comments' => get_field('comentarios_do_banner'),
-        'svg_caribe_logo' => get_field('svg_caribe'),
+        'location' => __(get_field('nome_do_destino'), 'due-website'),
+        'media' => __(get_field('foto_ou_video_do_destino'), 'due-website'),
+        'title' => __(get_field('titulo_do_banner'), 'due-website'),
+        'svg_rota' => __(get_field('svg_rota_due'), 'due-website'),
+        'description' => __(get_field('descricao_do_banner'), 'due-website'),
+        'link' => __(get_field('link'), 'due-website'),
+        'comments' => __(get_field('comentarios_do_banner'), 'due-website'),
+        'svg_caribe_logo' => __(get_field('svg_caribe'), 'due-website'),
       );
     }
     wp_reset_postdata();

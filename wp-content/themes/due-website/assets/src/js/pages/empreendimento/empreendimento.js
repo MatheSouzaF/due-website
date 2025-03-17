@@ -13,7 +13,6 @@ async function empreendimentoPage() {
 
     const isMobile = isMobileDevice();
     const itemsPerLoad = isMobile ? 4 : 12;
-    console.log("🚀 ~ empreendimentosData:", empreendimentosData)
     let currentItemsShown = itemsPerLoad;
 
     function renderEmpreendimentos(empreendimentos) {
@@ -196,24 +195,37 @@ async function empreendimentoPage() {
     }
 
     function applyFilter(paramValue, filterSelector, isStatus = false) {
-      if (paramValue) {
-        paramValue.split(',').forEach((value) => {
-          let formattedValue = removeAccents(decodeURIComponent(value).replace(/_/g, ' ').replace(/%/g, ''));
-
-          if (isStatus) {
-            if (formattedValue === 'Ultimas unidades') formattedValue = wp_translations.last_units;
-            if (formattedValue === '100 vendido') formattedValue = wp_translations.sold;
-            if (formattedValue === 'Lancamento') formattedValue = wp_translations.launch;
+      if (!paramValue) return;
+    
+      const statusMap = {
+        'ultimas unidades': wp_translations.last_units,
+        'últimas unidades': wp_translations.last_units,
+        'last units': wp_translations.last_units,
+    
+        '100 vendido': wp_translations.sold,
+        '100 sold': wp_translations.sold,
+    
+        'lancamento': wp_translations.launch,
+        'lançamento': wp_translations.launch,
+        'launch': wp_translations.launch,
+      };
+    
+      paramValue.split(',').forEach((value) => {
+        let formattedValue = decodeURIComponent(value)
+          .replace(/[_%]/g, ''); // Substitui "_" e "%" por espaços
+    
+        formattedValue = removeAccents(formattedValue.toLowerCase());
+    
+        if (isStatus && statusMap[formattedValue]) {
+          formattedValue = statusMap[formattedValue];
+        }
+    
+        $(`${filterSelector} input`).each(function () {
+          if (removeAccents($(this).val().toLowerCase()) === formattedValue) {
+            $(this).click();
           }
-
-          $(`${filterSelector} input`).each(function () {
-            const inputValue = removeAccents($(this).val());
-            if (inputValue === formattedValue) {
-              $(this).click();
-            }
-          });
         });
-      }
+      });
     }
 
     function isMobileDevice() {

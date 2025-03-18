@@ -33,7 +33,7 @@ function tipologiaPage() {
         const $seemoreContainer = $('.see-more-tipo-container-button');
 
         const $seeMoreButton = $('<button>', {
-          html: 'CARREGAR MAIS',
+          html: wp_translations.load_more_button,
           class: 'see-more-tipo-button button',
         });
         $seemoreContainer.append($seeMoreButton);
@@ -58,11 +58,13 @@ function tipologiaPage() {
       }
     }
 
-    function updateResultsText($element, tipologiaCount) {
-      const text =
-        tipologiaCount === 1
-          ? `Selecionamos <span class="bold-5">${tipologiaCount} tipologia</span>  para você`
-          : `Selecionamos <span class="bold-5">${tipologiaCount} tipologias</span>  para você`;
+    function updateResultsText($element, empreendimentoCount) {
+      const template =
+        empreendimentoCount === 1
+          ? wp_translations.single_selection_tipo
+          : wp_translations.multiple_selection_tipo;
+    
+      const text = template.replace("{count}", empreendimentoCount);
       $element.html(text);
     }
 
@@ -98,12 +100,12 @@ function tipologiaPage() {
         })),
         diferenciais: Array.from(diferenciaisOptions).map((diferencial) => ({ value: diferencial, label: diferencial })),
         rooms: [
-          ...(isStudio ? [{ value: 'studio', label: 'Studio' }] : []),
+          ...(isStudio ? [{ value: 'studio', label: wp_translations.studio_label }] : []),
           ...Array.from(roomsOptions)
             .sort()
             .map((room) => ({
               value: room,
-              label: `${room} ${room === 1 ? 'quarto' : 'quartos'}`,
+              label: `${room} ${room === 1 ? wp_translations.room_label_single : wp_translations.room_label_single}`,
             })),
         ],
       };

@@ -13,6 +13,25 @@ wp_localize_script('main', 'EmpreendimentosData', array(
   'empreendimentos' => $empreendimentos,
 ));
 
+function wp_translations()
+{
+  return array(
+    'single_selection' => __('Selecionamos <span class="bold-5">{count} imóvel</span> para você', 'due-website'),
+    'multiple_selection' => __('Selecionamos <span class="bold-5">{count} imóveis</span> para você', 'due-website'),
+    'single_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologia</span> para você', 'due-website'),
+    'multiple_selection_tipo' => __('Selecionamos <span class="bold-5">{count} tipologias </span> para você', 'due-website'),
+    'load_more_button' => __('CARREGAR MAIS', 'due-website'),
+    'studio_label' => __('Studio', 'due-website'),
+    'room_label_single' => __('quarto', 'due-website'),
+    'room_label_multiple' => __('quartos', 'due-website'),
+    'last_units' => __('Últimas unidades', 'due-website'),
+    'sold' => __('100% vendido', 'due-website'),
+    'launch' => __('Lançamento', 'due-website'),
+    'no_comments' => __('Sem comentários', 'due-website'),
+  );
+}
+wp_localize_script('main', 'wp_translations', wp_translations());
+
 ?>
 
 <!-- Tipologias -->
@@ -128,14 +147,14 @@ wp_localize_script('main', 'TipologiasData', array(
 
       $bannerId = get_the_ID();
       $banners[] = array(
-        'location' => get_field('nome_do_destino'),
-        'media' => get_field('foto_ou_video_do_destino'),
-        'title' => get_field('titulo_do_banner'),
-        'svg_rota' => get_field('svg_rota_due'),
-        'description' => get_field('descricao_do_banner'),
-        'link' => get_field('link'),
-        'comments' => get_field('comentarios_do_banner'),
-        'svg_caribe_logo' => get_field('svg_caribe'),
+        'location' => get_field('nome_do_destino'), 'due-website',
+        'media' => get_field('foto_ou_video_do_destino'), 'due-website',
+        'title' => get_field('titulo_do_banner'), 'due-website',
+        'svg_rota' => get_field('svg_rota_due'), 'due-website',
+        'description' => get_field('descricao_do_banner'), 'due-website',
+        'link' => get_field('link'), 'due-website',
+        'comments' => get_field('comentarios_do_banner'), 'due-website',
+        'svg_caribe_logo' => get_field('svg_caribe'), 'due-website',
       );
     }
     wp_reset_postdata();
@@ -161,8 +180,8 @@ wp_localize_script('main', 'TipologiasData', array(
           <p class="descricao-encante-se founders-grotesk fade-left" data-aos="fade-right" id="descricao-do-banner">
           </p>
 
-          <a class="link-encante-se button-v2 fade-left gtm-btn-banner-empreendimentos" data-aos="fade-right" id="link-banner" href=""
-            target="_self">
+          <a class="link-encante-se button-v2 fade-left gtm-btn-banner-empreendimentos" data-aos="fade-right"
+            id="link-banner" href="" target="_self">
             <p id="link-text"></p>
           </a>
         </div>
@@ -175,7 +194,7 @@ wp_localize_script('main', 'TipologiasData', array(
       </div>
     </div>
   </section>
-  
+
   <?php get_template_part('template-realizamos-sonhos/realizamos-sonhos'); ?>
   <?php get_template_part('template-invista/invista'); ?>
   <div class="call-form" id="call-form"></div>

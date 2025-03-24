@@ -701,6 +701,82 @@ body.page-template-jeito-due {
       }
     }
 
+    .nossa-politicas {
+      .wrapper-politicas {
+        margin-bottom: 64px;
+        display: flex;
+        gap: 80px;
+        position: relative;
+        flex-direction: column;
+        @include media-breakpoint-up(md) {
+          margin-bottom: 190px;
+          flex-direction: row;
+        }
+        .box-conteudo {
+          width: 100%;
+          padding: 0 20px;
+          transition: 0.6s;
+          @include media-breakpoint-up(sm) {
+            padding-left: 48px;
+          }
+
+          @include media-breakpoint-up(md) {
+            padding-left: 80px;
+          }
+          .titulo-nossa-politicas {
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 140%;
+            color: #002b36;
+            letter-spacing: 0.64px;
+            margin-bottom: 32px;
+          }
+          .descricao-nossa-politicas {
+            color: #002b36;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 140%;
+            letter-spacing: 0.36px;
+            margin-bottom: 80px;
+          }
+          .box-repetidor {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            .row-textos {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 20px;
+              .texto-repetidor {
+                color: #002b36;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: 140%;
+                letter-spacing: 0.36px;
+              }
+            }
+          }
+        }
+        .box-img {
+          width: 100%;
+          max-height: 800px;
+          @include media-breakpoint-up(md) {
+            position: sticky;
+            top: 80px;
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
     .reducao-social {
       transition: 0.6s;
       margin-bottom: 64px;

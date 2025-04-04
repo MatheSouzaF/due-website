@@ -705,10 +705,11 @@ body.page-template-jeito-due {
       .wrapper-politicas {
         margin-bottom: 64px;
         display: flex;
-        gap: 80px;
         position: relative;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        gap: 32px;
         @include media-breakpoint-up(md) {
+          gap: 80px;
           margin-bottom: 190px;
           flex-direction: row;
         }
@@ -722,15 +723,19 @@ body.page-template-jeito-due {
 
           @include media-breakpoint-up(md) {
             padding-left: 80px;
+            width: 80%;
           }
           .titulo-nossa-politicas {
-            font-size: 32px;
+            font-size: 22px;
             font-style: normal;
             font-weight: 300;
             line-height: 140%;
             color: #002b36;
             letter-spacing: 0.64px;
             margin-bottom: 32px;
+            @include media-breakpoint-up(md) {
+              font-size: calc(1rem + 1.1vw);
+            }
           }
           .descricao-nossa-politicas {
             color: #002b36;
@@ -740,15 +745,17 @@ body.page-template-jeito-due {
             line-height: 140%;
             letter-spacing: 0.36px;
             margin-bottom: 80px;
+            @include media-breakpoint-up(md) {
+              font-size: calc(0.6rem + 0.6vw);
+            }
           }
           .box-repetidor {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 24px;
             .row-textos {
               display: flex;
               flex-direction: row;
-              align-items: center;
               gap: 20px;
               .texto-repetidor {
                 color: #002b36;
@@ -757,6 +764,9 @@ body.page-template-jeito-due {
                 font-weight: 300;
                 line-height: 140%;
                 letter-spacing: 0.36px;
+                @include media-breakpoint-up(md) {
+                  font-size: calc(0.6rem + 0.6vw);
+                }
               }
             }
           }

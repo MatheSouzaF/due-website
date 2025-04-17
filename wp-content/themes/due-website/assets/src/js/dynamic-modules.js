@@ -109,6 +109,11 @@ function initDynamicModules() {
       modulePath: './pages/iniciativas/single-inciativas.js',
       moduleFunction: 'initPage',
     },
+    {
+      selector: '.page-template-simulador',
+      modulePath: './pages/simulador/simulador.js',
+      moduleFunction: 'initSimulador',
+    },
   ];
 
   dynamicModules.forEach(({selector, modulePath, moduleFunction}) => {

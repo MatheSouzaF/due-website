@@ -1,3 +1,5 @@
+import { createEmrpeendimentoCard } from "./card";
+
 function initSimulador() {
   console.log('Page simulador loaded');
 
@@ -45,39 +47,53 @@ function initSimulador() {
     const $nextButton = $currentStep.find('.next-step');
     $nextButton.prop('disabled', true);
 
-    const hasChecked = $currentStep.find('input[type="radio"]:checked').length > 0;
-    if (hasChecked) {
-      $nextButton.prop('disabled', false);
-    }
+    if ($currentStep.hasClass('dados-cliente-step')) {
+      checkRequiredFields($currentStep, $nextButton);
+      
+      $currentStep.find('input[required]').on('input', function() {
+        checkRequiredFields($currentStep, $nextButton);
+      });
+    } else {
+      const hasChecked = $currentStep.find('input[type="radio"]:checked').length > 0;
+      if (hasChecked) {
+        $nextButton.prop('disabled', false);
+      }
 
-    // Habilita o botão "Avançar" quando uma opção de rádio for selecionada
-    $currentStep.find('input[type="radio"]').on('change', function () {
-      $nextButton.prop('disabled', false);
-    });
+      $currentStep.find('input[type="radio"]').on('change', function () {
+        $nextButton.prop('disabled', false);
+      });
+    }
   }
 
-  // Troca visual dos radio cards ao selecionar uma opção
+  function checkRequiredFields($step, $button) {
+    let allFilled = true;
+    
+    $step.find('input[required]').each(function() {
+      if ($(this).val() === '') {
+        allFilled = false;
+        return false; // Sai do loop each
+      }
+    });
+    
+    $button.prop('disabled', !allFilled);
+  }
+
   $('input[type=radio]').on('change', function () {
     const name = $(this).attr('name');
     
-    // Armazena o valor selecionado no objeto formData
     formData[name] = $(this).val();
 
-    // Remove a classe 'active' de todos os radio cards do mesmo grupo
     $(`input[name="${name}"]`).each(function () {
       $(this).closest('.radio-card').removeClass('active');
     });
 
-    // Adiciona a classe 'active' ao radio card selecionado
     $(this).closest('.radio-card').addClass('active');
   });
 
-  // Botão "Avançar"
   $('.next-step').on('click', function () {
     const $current = $formSteps.filter('.active');
     const currentStepNumber = parseInt($current.data('step'));
 
-    // Coleta os dados do step atual
     $current.find('input, select, textarea').each(function () {
       const name = $(this).attr('name');
       const value = $(this).val();
@@ -114,8 +130,36 @@ function initSimulador() {
         }
       });
 
-    $resultadoSection.show()
-  }); 
+    const faixaInvestimento = formData['faixa-investimento'];
+    
+    renderResultados(faixaInvestimento);
+
+    $simuladorWrapper.hide();
+    $resultadoSection.show();
+  });
+
+  function renderResultados(faixaInvestimento) {
+    if (!window.simuladorData || !window.simuladorData.projects) {
+      console.error('Dados dos empreendimentos não disponíveis');
+      return;
+    }
+
+    const empreendimentosPermitidos = window.simuladorData.investmentRanges[faixaInvestimento] || [];
+
+    const empreedimentosFiltrados = window.simuladorData.projects.filter(project => {
+      return empreendimentosPermitidos.includes(project.name);
+    });
+
+    const $resultadoCards = $('#resultado-cards');
+    $resultadoCards.empty();
+
+    if (empreedimentosFiltrados.length > 0) {
+      empreedimentosFiltrados.forEach(empreedimento => {
+        const card = createEmrpeendimentoCard(empreedimento);
+        $resultadoCards.append(card);
+      });
+    } 
+  }
 }
 
 export {initSimulador};

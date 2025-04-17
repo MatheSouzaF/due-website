@@ -3,17 +3,9 @@
  * Template para exibir o resultado do simulador
  */
 
-// Função para obter e filtrar os empreendimentos com base no range de investimento
-function get_filtered_projects() {
+// Função para obter todos os empreendimentos
+function get_all_projects() {
     $current_lang = apply_filters('wpml_current_language', NULL);
-
-    // Obtém o valor da faixa de investimento do formulário via query string
-    $investment_range = isset($_GET['faixa-investimento']) ? $_GET['faixa-investimento'] : '';
-    
-    // Se não houver faixa de investimento, retorna array vazio
-    if (empty($investment_range)) {
-        return [];
-    }
     
     $args = array(
         'post_type' => 'empreendimentos',
@@ -23,7 +15,7 @@ function get_filtered_projects() {
     );
 
     $query = new WP_Query($args);
-    $filtered_projects = [];
+    $all_projects = [];
 
     if ($query->have_posts()) {
         while ($query->have_posts()) {
@@ -32,7 +24,7 @@ function get_filtered_projects() {
             $projectId = get_the_ID();
             $project_name = get_field('empreendimento_nome');
 
-            $project = array(
+            $all_projects[] = array(
                 'ID' => $projectId,
                 'name' => $project_name,
                 'location' => get_field('localizacao_emprendimento'),
@@ -47,30 +39,25 @@ function get_filtered_projects() {
                 'link' => get_field('link_da_pagina_desse_empreendimento'),
                 'banner' => get_field('banner_do_destino')
             );
-
-            // Aplica filtro com base na faixa de investimento
-            if ($investment_range == 'ate-500mil' && 
-                in_array($project_name, ['Costa dos Coqueiros', 'Costa do Mar', 'Costa Azul', 'Boulevard Praia dos Carneiros'])) {
-                $filtered_projects[] = $project;
-            } 
-            elseif ($investment_range == '500mil-1milhao' && 
-                    in_array($project_name, ['Orla Praia dos Carneiros', 'Habitá Praia do Cupe'])) {
-                $filtered_projects[] = $project;
-            }
-            elseif ($investment_range == 'acima-1milhao' && 
-                    in_array($project_name, ['Habitá Praia do Cupe', 'Cais Eco Residência', 'Orla Praia dos Carneiros'])) {
-                $filtered_projects[] = $project;
-            }
         }
         wp_reset_postdata();
     }
 
-    return $filtered_projects;
+    return $all_projects;
 }
 
-// Obtém os projetos filtrados
-$filtered_projects = get_filtered_projects();
-$total_projects = count($filtered_projects);
+// Obtém todos os empreendimentos para passar ao JavaScript
+$all_projects = get_all_projects();
+
+// Adiciona os dados ao JavaScript
+wp_localize_script('main', 'simuladorData', [
+    'projects' => $all_projects,
+    'investmentRanges' => [
+        'ate-500mil' => ['Costa dos Coqueiros', 'Costa do Mar', 'Costa Azul', 'Boulevard Praia dos Carneiros'],
+        '500mil-1milhao' => ['Orla Praia dos Carneiros', 'Habitá Praia do Cupe'],
+        'acima-1milhao' => ['Habitá Praia do Cupe', 'Cais Eco Residência', 'Orla Praia dos Carneiros']
+    ]
+]);
 ?>
 
 <section class="resultado-simulador" style="display: none;">
@@ -79,48 +66,20 @@ $total_projects = count($filtered_projects);
             <i class="logo-due">
                 <?php include('wp-content/themes/due-website/assets/src/img/logo-due.svg') ?>
             </i>
-            <h1>Obrigado por responder o nosso questionário!</h1>
-            <p>Um dos nossos especialistas entrará em contato com você para apresentar a melhor opção DUE para o seu
-                investimento.</p>
+            <h1><?php echo __('Obrigado por responder o nosso questionário!', 'due-website') ?></h1>
+            <p><?php echo __('Um dos nossos especialistas entrará em contato com você para apresentar a melhor opção DUE para o seu
+                investimento.', 'due-website') ?></p>
 
         </div>
 
         <div class="resultado-label-wrapper">
-            <div class="resultado-label">Resultado do seu perfil</div>
+            <div class="resultado-label"><?php echo __('Resultado do seu perfil', 'due-website') ?></div>
         </div>
 
         <div class="resultado-lista">
-            <?php if (!empty($filtered_projects)) : ?>
-            <h2>Encontramos <?php echo $total_projects; ?> empreendimentos para o seu perfil:</h2>
-            <div class="resultado-cards">
-                <?php 
-                    foreach ($filtered_projects as $project) : 
-                ?>
-                    <div class="resultado-card">
-                        <?php if (!empty($project['photo'])) : ?>
-                            <img src="<?php echo esc_url($project['photo']); ?>" alt="Imagem de <?php echo esc_attr($project['name']); ?>">
-                        <?php else : ?>
-                            <img src="<?php echo get_template_directory_uri(); ?>/assets/src/img/exemplo-imovel.jpg" alt="Imagem do Imóvel">
-                        <?php endif; ?>
-                        
-                        <div class="card-content">
-                            <h3><?php echo esc_html($project['location']); ?></h3>
-                            <p><?php echo esc_html($project['name']); ?></p>
-                            <ul>
-                                <?php if (!empty($project['rooms'])) : ?>
-                                <li><?php echo esc_html($project['rooms']); ?> quartos</li>
-                                <?php endif; ?>
-                                <?php if (!empty($project['size'])) : ?>
-                                <li><?php echo esc_html($project['size']); ?></li>
-                                <?php endif; ?>
-                            </ul>
-                        </div>
-                    </div>
-                <?php 
-                    endforeach;
-                ?>
+            <div class="resultado-cards" id="resultado-cards">
+                <!-- Os cards de resultados serão inseridos aqui pelo JavaScript -->
             </div>
-            <?php endif; ?>
         </div>
     </div>
 </section>

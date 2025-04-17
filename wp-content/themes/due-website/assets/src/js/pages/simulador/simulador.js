@@ -68,6 +68,9 @@ function initSimulador() {
   // Troca visual dos radio cards ao selecionar uma opção
   $('input[type=radio]').on('change', function () {
     const name = $(this).attr('name');
+    
+    // Armazena o valor selecionado no objeto formData
+    formData[name] = $(this).val();
 
     // Remove a classe 'active' de todos os radio cards do mesmo grupo
     $(`input[name="${name}"]`).each(function () {
@@ -118,9 +121,28 @@ function initSimulador() {
 
     console.log('Dados simulados enviados:', formData);
 
+    // Atualiza a URL com os parâmetros dos dados do formulário
+    const queryParams = new URLSearchParams();
+    
+    // Adiciona os dados do formulário aos parâmetros da URL
+    for (const key in formData) {
+      if (typeof formData[key] === 'object') {
+        // Para objetos complexos, podemos concatenar valores ou ignorá-los
+        continue;
+      }
+      queryParams.append(key, formData[key]);
+    }
+    
+    // Recarrega a página com os novos parâmetros
+    const currentUrl = new URL(window.location.href);
+    currentUrl.search = queryParams.toString();
+    
     // Simula o envio bem-sucedido
     setTimeout(() => {
       $simuladorWrapper.hide(); // Oculta o simulador
+      window.history.pushState({}, '', currentUrl);
+      // Recarrega a seção de resultados para obter dados filtrados
+      location.reload();
       $resultadoSection.show(); // Exibe o resultado
     }, 1000); // Simula um atraso de 1 segundo
   }
@@ -149,6 +171,15 @@ function initSimulador() {
   $('.simulate-submit').on('click', function () {
     simulateFormSubmission();
   });
+  
+  // Verifica se existem parâmetros na URL para exibir diretamente os resultados
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('faixa-investimento')) {
+    // Se a página foi carregada com parâmetros, mostra diretamente os resultados
+    $introSection.hide();
+    $simuladorWrapper.hide();
+    $resultadoSection.show();
+  }
 }
 
 export {initSimulador};

@@ -34,7 +34,5 @@ $pergunta = $args['pergunta'] ?? '';
 
     <div class="form-navigation">
         <button type="submit" class="next-step button-submit">Ver Resultado</button>
-
-        <button class="simulate-submit">Simular Envio</button>
     </div>
 </div>

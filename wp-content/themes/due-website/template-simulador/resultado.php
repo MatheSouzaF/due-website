@@ -73,7 +73,7 @@ $filtered_projects = get_filtered_projects();
 $total_projects = count($filtered_projects);
 ?>
 
-<section class="resultado-simulador">
+<section class="resultado-simulador" style="display: none;">
     <div class="container">
         <div class="resultado-header">
             <i class="logo-due">
@@ -90,10 +90,10 @@ $total_projects = count($filtered_projects);
         </div>
 
         <div class="resultado-lista">
+            <?php if (!empty($filtered_projects)) : ?>
             <h2>Encontramos <?php echo $total_projects; ?> empreendimentos para o seu perfil:</h2>
             <div class="resultado-cards">
                 <?php 
-                if (!empty($filtered_projects)) :
                     foreach ($filtered_projects as $project) : 
                 ?>
                     <div class="resultado-card">
@@ -118,11 +118,9 @@ $total_projects = count($filtered_projects);
                     </div>
                 <?php 
                     endforeach;
-                else:
                 ?>
-                    <p>Nenhum empreendimento encontrado para o seu perfil. Por favor, entre em contato com nosso time de vendas.</p>
-                <?php endif; ?>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>

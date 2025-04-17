@@ -10,28 +10,22 @@ function initSimulador() {
   const $simuladorForm = $('#simuladorForm');
   let currentStep = 1;
 
-  // Objeto para armazenar os dados do formulário
   const formData = {};
 
-  // Inicializa o simulador ocultando o formulário, o step-indicator e o resultado
   $simuladorWrapper.hide();
   $stepIndicator.hide();
-  $resultadoSection.hide();
 
-  // Inicia o simulador ao clicar no botão "Comece Agora"
   $('.start-simulador').on('click', function () {
-    $introSection.hide(); // Oculta a introdução
-    $simuladorWrapper.show(); // Exibe o simulador
-    $stepIndicator.show(); // Exibe o indicador de steps
-    showStep(currentStep); // Mostra o primeiro step
+    $introSection.hide();
+    $simuladorWrapper.show();
+    $stepIndicator.show();
+    showStep(currentStep);
   });
 
   function showStep(step) {
-    // Atualiza a exibição dos steps
     $formSteps.removeClass('active');
     $formSteps.filter(`[data-step="${step}"]`).addClass('active');
 
-    // Atualiza os indicadores de progresso
     $stepCircles.removeClass('active');
     if (step <= $stepCircles.length) {
       $stepCircles.each(function (index) {
@@ -41,19 +35,16 @@ function initSimulador() {
       });
     }
 
-    // Oculta o step-indicator no último step (dados-usuario)
     if (step === $formSteps.length) {
       $stepIndicator.addClass('hidden');
     } else {
       $stepIndicator.removeClass('hidden');
     }
 
-    // Desabilita o botão "Avançar" no início do step
     const $currentStep = $formSteps.filter(`[data-step="${step}"]`);
     const $nextButton = $currentStep.find('.next-step');
     $nextButton.prop('disabled', true);
 
-    // Verifica se já existe uma opção de rádio selecionada
     const hasChecked = $currentStep.find('input[type="radio"]:checked').length > 0;
     if (hasChecked) {
       $nextButton.prop('disabled', false);
@@ -109,49 +100,9 @@ function initSimulador() {
     }
   });
 
-  // Função para simular o envio do formulário
-  function simulateFormSubmission() {
-    // Adiciona dados mockados para simulação
-    formData.mockData = {
-      userId: '12345',
-      sessionId: 'abcde',
-      timestamp: new Date().toISOString(),
-      exampleField: 'Example Value',
-    };
-
-    console.log('Dados simulados enviados:', formData);
-
-    // Atualiza a URL com os parâmetros dos dados do formulário
-    const queryParams = new URLSearchParams();
-    
-    // Adiciona os dados do formulário aos parâmetros da URL
-    for (const key in formData) {
-      if (typeof formData[key] === 'object') {
-        // Para objetos complexos, podemos concatenar valores ou ignorá-los
-        continue;
-      }
-      queryParams.append(key, formData[key]);
-    }
-    
-    // Recarrega a página com os novos parâmetros
-    const currentUrl = new URL(window.location.href);
-    currentUrl.search = queryParams.toString();
-    
-    // Simula o envio bem-sucedido
-    setTimeout(() => {
-      $simuladorWrapper.hide(); // Oculta o simulador
-      window.history.pushState({}, '', currentUrl);
-      // Recarrega a seção de resultados para obter dados filtrados
-      location.reload();
-      $resultadoSection.show(); // Exibe o resultado
-    }, 1000); // Simula um atraso de 1 segundo
-  }
-
-  // Envio do formulário
   $simuladorForm.on('submit', function (e) {
-    e.preventDefault(); // Impede o envio padrão do formulário
+    e.preventDefault();
 
-    // Coleta os dados do último step
     $formSteps
       .filter('.active')
       .find('input, select, textarea')
@@ -163,23 +114,8 @@ function initSimulador() {
         }
       });
 
-    // Simula o envio do formulário
-    simulateFormSubmission();
-  });
-
-  // Botão para simular envio manualmente (opcional para testes)
-  $('.simulate-submit').on('click', function () {
-    simulateFormSubmission();
-  });
-  
-  // Verifica se existem parâmetros na URL para exibir diretamente os resultados
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('faixa-investimento')) {
-    // Se a página foi carregada com parâmetros, mostra diretamente os resultados
-    $introSection.hide();
-    $simuladorWrapper.hide();
-    $resultadoSection.show();
-  }
+    $resultadoSection.show()
+  }); 
 }
 
 export {initSimulador};

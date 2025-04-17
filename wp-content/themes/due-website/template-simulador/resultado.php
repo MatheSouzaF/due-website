@@ -5,12 +5,15 @@
 
 // Função para obter e filtrar os empreendimentos com base no range de investimento
 function get_filtered_projects() {
-    $projects = [];
-
     $current_lang = apply_filters('wpml_current_language', NULL);
 
-    // Obtém o valor da faixa de investimento do formulário via JavaScript
+    // Obtém o valor da faixa de investimento do formulário via query string
     $investment_range = isset($_GET['faixa-investimento']) ? $_GET['faixa-investimento'] : '';
+    
+    // Se não houver faixa de investimento, retorna array vazio
+    if (empty($investment_range)) {
+        return [];
+    }
     
     $args = array(
         'post_type' => 'empreendimentos',
@@ -58,10 +61,6 @@ function get_filtered_projects() {
                     in_array($project_name, ['Habitá Praia do Cupe', 'Cais Eco Residência', 'Orla Praia dos Carneiros'])) {
                 $filtered_projects[] = $project;
             }
-            // Se não houver filtro, inclui todos os projetos
-            elseif (empty($investment_range)) {
-                $filtered_projects[] = $project;
-            }
         }
         wp_reset_postdata();
     }
@@ -97,74 +96,26 @@ $total_projects = count($filtered_projects);
                 if (!empty($filtered_projects)) :
                     foreach ($filtered_projects as $project) : 
                 ?>
-                    <a class="box-card" href="<?php echo esc_url($link_url); ?>"
-                                    target="<?php echo esc_attr($link_target); ?>">
-                                    <div class="box-midia">
-                                        <?php
-                                        $image = get_sub_field('imagem_nossos_club_resorts');
-                                        if ($image):
-                                            $image_url = $image['url'];
-                                            $image_alt = $image['alt'];
-                                        ?>
-                                            <img class="imagem-empreendimento" src="<?php echo esc_url($image_url); ?>"
-                                                alt="<?php echo esc_attr($image_alt); ?>">
-                                        <?php endif; ?>
-
-                                        <video class="video-empreendimento" autoplay="autoplay"
-                                            src="<?php echo get_sub_field('video_hover_empreendimento') ?>" muted loop
-                                            playsinline></video>
-                                    </div>
-
-                                    <div class="box-label"
-                                        style="background-color: <?php echo get_sub_field('background_label_card'); ?>;">
-                                        <p class="terminal-test label-informativo">
-                                            <?php echo get_sub_field('label_informativo_card'); ?>
-                                        </p>
-                                    </div>
-
-                                    <div class="box-textos-empreendimentos">
-                                        <div class="container-text">
-
-                                            <div class="box-titulos">
-                                                <p class="localizacao-empreendimento terminal-test">
-                                                    <?php echo get_sub_field('localizacao_emprendimento'); ?>
-                                                </p>
-                                                <h4 class="nome-empreendimento founders-grotesk">
-                                                    <?php echo get_sub_field('nome_empreendimento'); ?>
-                                                </h4>
-                                            </div>
-                                            <div class="box-svg">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="43" height="26" viewBox="0 0 43 26"
-                                                    fill="none">
-                                                    <path d="M-5.24537e-07 13L41.5 13M41.5 13L29.5 25M41.5 13L29.5 0.999999"
-                                                        stroke="white" />
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="box-informacoes">
-                                            <?php
-                                            if (have_rows('informacoes_empreendimento')):
-                                                while (have_rows('informacoes_empreendimento')):
-                                                    the_row(); ?>
-
-                                                    <div class="informacoes">
-                                                        <div class="box-svg">
-                                                            <?php $svg_file = get_sub_field('svg_informacao_empreendimento');
-                                                            if ($svg_file && pathinfo($svg_file['url'], PATHINFO_EXTENSION) === 'svg') {
-                                                                echo '<i class="element">';
-                                                                echo file_get_contents($svg_file['url']);
-                                                                echo '</i>';
-                                                            } ?>
-                                                        </div>
-                                                        <p class="founders-grotesk">
-                                                            <?php echo get_sub_field('texto_informacao_empreendimento'); ?>
-                                                        </p>
-                                                    </div>
-                                            <?php endwhile;
-                                            endif; ?>
-                                        </div>
-                                    </div>
-                                </a>
+                    <div class="resultado-card">
+                        <?php if (!empty($project['photo'])) : ?>
+                            <img src="<?php echo esc_url($project['photo']); ?>" alt="Imagem de <?php echo esc_attr($project['name']); ?>">
+                        <?php else : ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/src/img/exemplo-imovel.jpg" alt="Imagem do Imóvel">
+                        <?php endif; ?>
+                        
+                        <div class="card-content">
+                            <h3><?php echo esc_html($project['location']); ?></h3>
+                            <p><?php echo esc_html($project['name']); ?></p>
+                            <ul>
+                                <?php if (!empty($project['rooms'])) : ?>
+                                <li><?php echo esc_html($project['rooms']); ?> quartos</li>
+                                <?php endif; ?>
+                                <?php if (!empty($project['size'])) : ?>
+                                <li><?php echo esc_html($project['size']); ?></li>
+                                <?php endif; ?>
+                            </ul>
+                        </div>
+                    </div>
                 <?php 
                     endforeach;
                 else:

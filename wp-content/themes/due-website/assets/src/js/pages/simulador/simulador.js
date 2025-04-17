@@ -1,4 +1,4 @@
-import { createEmrpeendimentoCard } from "./card";
+import { createEmpreendimentoCard } from "./card";
 
 function initSimulador() {
   console.log('Page simulador loaded');
@@ -155,7 +155,7 @@ function initSimulador() {
 
     if (empreedimentosFiltrados.length > 0) {
       empreedimentosFiltrados.forEach(empreedimento => {
-        const card = createEmrpeendimentoCard(empreedimento);
+        const card = createEmpreendimentoCard(empreedimento);
         $resultadoCards.append(card);
       });
     } 
